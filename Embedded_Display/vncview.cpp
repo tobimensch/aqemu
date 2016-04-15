@@ -27,8 +27,8 @@
     #include <QMessageBox>
     #include <QInputDialog>
     #define KMessageBox QMessageBox
-    #define error(parent, message, caption) \
-        critical(parent, caption, message)
+/*    #define error(parent, message, caption) \
+        critical(parent, caption, message)*/
 #else
     #include "settings.h"
     #include <KActionCollection>
