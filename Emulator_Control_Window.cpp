@@ -295,7 +295,7 @@ void Emulator_Control_Window::on_actionSave_Screenshot_triggered()
 		if( ! Settings.value("Screenshot_Folder_Path", "").toString().isEmpty() )
 		{
 			// create unique file name
-			QString unic_name = QUuid::createUuid();
+			QString unic_name = QUuid::createUuid().toString();
 			unic_name = unic_name.mid( 25, 12 );
 			
 			// save screenshot

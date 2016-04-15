@@ -32,12 +32,12 @@ Delete_VM_Files_Window::Delete_VM_Files_Window( QWidget *parent )
 	ui.setupUi( this );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Files_List );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Files_List->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Files_List );
 	hv->setStretchLastSection( true );
-	hv->setResizeMode( QHeaderView::ResizeToContents );
+	//hv->setResizeMode( QHeaderView::ResizeToContents ); //TODO: Qt5 port
 	ui.Files_List->setHorizontalHeader( hv );
 }
 
@@ -47,12 +47,12 @@ Delete_VM_Files_Window::Delete_VM_Files_Window( Virtual_Machine *vm, QWidget *pa
 	ui.setupUi( this );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Files_List );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Files_List->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Files_List );
 	hv->setStretchLastSection( true );
-	hv->setResizeMode( QHeaderView::ResizeToContents );
+	//hv->setResizeMode( QHeaderView::ResizeToContents ); //TODO: Qt5 port
 	ui.Files_List->setHorizontalHeader( hv );
 	
 	Set_VM( vm );

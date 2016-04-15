@@ -37,11 +37,11 @@ Emulator_Options_Window::Emulator_Options_Window( QWidget *parent )
 	ui.Table_Systems->resizeRowsToContents();
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Table_Systems );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Table_Systems->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Table_Systems );
-	hv->setResizeMode( QHeaderView::Stretch );
+	//hv->setResizeMode( QHeaderView::Stretch ); //TODO: Qt5 port
 	ui.Table_Systems->setHorizontalHeader( hv );
 	
 	Update_Info = false;

@@ -36,6 +36,7 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	// Minimum Size
 	resize( width(), minimumSizeHint().height() );
 	
+    /* //TODO: Qt5 port
 	HTTP = new QHttp( this );
 	
 	connect( HTTP, SIGNAL(requestFinished(int, bool)),
@@ -43,7 +44,8 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	
 	connect( HTTP, SIGNAL(responseHeaderReceived(const QHttpResponseHeader&)),
 			 this, SLOT(Read_Response_Header(const QHttpResponseHeader&)) );
-	
+    */	
+
 	// Thanks HTML Text
 	ui.Edit_Thanks_To_Text->setHtml( tr(
 	"<b>Developers:</b>\n"
@@ -92,6 +94,8 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 
 void About_Window::on_Button_Update_Links_clicked()
 {
+    //TODO: Qt5 port
+    /*
 	QUrl url( "http://aqemu.sourceforge.net/aqemu_links.html" );
 	
 	//if( QFile::exists(linksFilePath) ) QFile::remove( linksFilePath );
@@ -116,6 +120,7 @@ void About_Window::on_Button_Update_Links_clicked()
 	HTTP_Get_Id = HTTP->get( path, File );
 	
 	ui.Button_Update_Links->setEnabled( false );
+    */
 }
 
 void About_Window::Show_Links_File()
@@ -156,13 +161,18 @@ void About_Window::Show_Links_File()
 
 void About_Window::Cancel_Download()
 {
+    //TODO: Qt5 port
+    /*
 	HTTP_Request_Aborted = true;
 	HTTP->abort();
 	ui.Button_Update_Links->setEnabled( true );
+    */
 }
 
 void About_Window::HTTP_Request_Finished( int requestId, bool error )
 {
+    //TODO: Qt5 port
+    /*
 	if( requestId != HTTP_Get_Id ) return;
 	
 	if( HTTP_Request_Aborted )
@@ -191,8 +201,11 @@ void About_Window::HTTP_Request_Finished( int requestId, bool error )
 	File = 0;
 	
 	if( ! error ) Show_Links_File();
+    */
 }
 
+    //TODO: Qt5 port
+    /*
 void About_Window::Read_Response_Header( const QHttpResponseHeader &responseHeader )
 {
 	switch( responseHeader.statusCode() )
@@ -211,3 +224,5 @@ void About_Window::Read_Response_Header( const QHttpResponseHeader &responseHead
 			HTTP->abort();
 	}
 }
+*/
+

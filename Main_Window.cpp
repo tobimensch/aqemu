@@ -152,19 +152,19 @@ Main_Window::Main_Window( QWidget *parent )
 	
 	// This For Network Redirections Table
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Redirections_List->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Redirections_List );
-	hv->setResizeMode( QHeaderView::Stretch );
+	//hv->setResizeMode( QHeaderView::Stretch ); //TODO: Qt5 port
 	ui.Redirections_List->setHorizontalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Redirections_List->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Redirections_List );
-	hv->setResizeMode( QHeaderView::Stretch );
+	//hv->setResizeMode( QHeaderView::Stretch ); //TODO: Qt5 port
 	ui.Redirections_List->setHorizontalHeader( hv );
 	
 	// Get max RAM size

@@ -37,11 +37,11 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	ui.setupUi( this );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Emulators_Table );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Emulators_Table->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Emulators_Table );
-	hv->setResizeMode( QHeaderView::Stretch );
+	//hv->setResizeMode( QHeaderView::Stretch ); //TODO: Qt5 port
 	ui.Emulators_Table->setHorizontalHeader( hv );
 	
 	// Minimum Size

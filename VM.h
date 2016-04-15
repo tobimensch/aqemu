@@ -24,15 +24,131 @@
 #define VM_H
 
 #include <QDateTime>
-#include <QDomElement>
 #include <QProcess>
 #include <QTcpSocket>
+#include <QFile>
 
 #include "VM_Devices.h"
 #include "Error_Log_Window.h"
 #include "Create_Template_Window.h"
 
 class Emulator_Control_Window;
+
+class QDomElement;
+class QDomProcessingInstruction;
+
+class QDomText
+{
+    public:
+    private:
+};
+
+class QDomNode
+{
+    public:
+        const QDomNode& nextSibling()
+        {
+        }
+        bool isNull()
+        {
+        }
+        const QDomElement& toElement() const
+        {
+        }
+};
+
+class QDomDocument
+{
+    public:
+        QDomDocument()
+        {
+        }
+        void appendChild(const QDomText&)
+        {
+        }
+        void appendChild(const QDomElement&)
+        {
+        }
+        void appendChild(const QDomProcessingInstruction&)
+        {
+        }
+        QDomDocument(const QString&)
+        {
+        }
+        QDomElement& documentElement()
+        {
+        }
+        QDomElement& createElement(const QString&)
+        {
+        }
+        QDomText& createTextNode(const QString&)
+        {
+        }
+        void save(const QTextStream&,int)
+        {
+        }
+        QDomProcessingInstruction& createProcessingInstruction(const QString&, const QString&)
+        {
+        }
+        bool setContent(QFile*, bool, QString*, int*, int*)
+        {
+        }
+    private:
+};
+
+
+class QDomProcessingInstruction
+{
+    public:
+    private:
+};
+
+class QDomElement
+{
+    public:
+        void appendChild(const QDomText&)
+        {
+        }
+        void appendChild(const QDomElement&)
+        {
+        }
+        void setAttribute(const QString&, const QString&)
+        {
+        }
+        const QDomNode& firstChild() const
+        {
+        }
+        const QDomElement firstChildElement() const
+        {
+        }
+        const QDomElement& firstChildElement(const QString&) const
+        {
+        }
+        QList<QDomElement> childNodes()
+        {
+        }
+        bool hasAttribute(const QString&)
+        {
+            return false;
+        }
+        QString attribute(const QString&)
+        {
+            return "";
+        }
+        const QString& text() const
+        {
+            return "";
+        }
+        bool isNull()
+        {
+            return false;
+        }
+        QString tagName()
+        {
+            return "";
+        }
+    private:
+};
 
 // Vitrual Machine
 class Virtual_Machine: public QObject

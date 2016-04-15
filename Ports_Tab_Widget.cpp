@@ -40,12 +40,12 @@ Ports_Tab_Widget::Ports_Tab_Widget( QWidget *parent )
 	Index = 0;
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Ports_Table );
-	hv->setResizeMode( QHeaderView::Fixed );
+	//hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
 	ui.Ports_Table->setVerticalHeader( hv );
 	
 	hv = new QHeaderView( Qt::Horizontal, ui.Ports_Table );
 	hv->setStretchLastSection( true );
-	hv->setResizeMode( QHeaderView::ResizeToContents );
+	//hv->setResizeMode( QHeaderView::ResizeToContents ); //TODO: Qt5 port
 	ui.Ports_Table->setHorizontalHeader( hv );
 }
 

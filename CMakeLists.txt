@@ -5,7 +5,7 @@
 # Timothy Redaelli (Fix for build in a different folder)
 
 PROJECT( AQEMU )
-CMAKE_MINIMUM_REQUIRED( VERSION 2.4.0 )
+CMAKE_MINIMUM_REQUIRED( VERSION 2.8.11 )
 
 # Available options
 OPTION( DEBUG "Build with debug information" )
@@ -141,16 +141,25 @@ SET( aqemu_ui
 
 SET( aqemu_resouces shared_images.qrc )
 SET( translations German.ts Russian.ts Ukrainian.ts French.ts English.ts )
+
 SET( files_to_translate ${files_to_translate} ${aqemu_headers} ${aqemu_sources} ${aqemu_ui} )
 
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
 
 # Check Qt
-SET( QT_MIN_VERSION "4.4.2" )
-FIND_PACKAGE( Qt4 REQUIRED )
-INCLUDE( ${QT_USE_FILE} )
-SET( QT_USE_QTXML TRUE )
-SET( QT_USE_QTNETWORK TRUE )
-SET( QT_USE_QTTEST TRUE )
+FIND_PACKAGE( Qt5Core )
+FIND_PACKAGE( Qt5Widgets )
+FIND_PACKAGE( Qt5Network )
+FIND_PACKAGE( Qt5Test )
+
+#INCLUDE( ${QT5_USE_FILE} )
+
+#SET( QT_USE_QTXML TRUE )
+#SET( QT_USE_QTNETWORK TRUE )
+#SET( QT_USE_QTTEST TRUE )
 
 
 # Embedded VNC display
@@ -169,36 +178,35 @@ IF( NOT WITHOUT_EMBEDDED_DISPLAY )
 	INCLUDE_DIRECTORIES( ${VNCCLIENT_INCLUDE_DIRS} ${LIBVNCCLIENT_INCLUDE_DIR} )
 ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
 
-# Add Qt definitions
-ADD_DEFINITIONS( ${QT_DEFINITIONS} )
-
 # MOC and other Qt stuff
-QT4_WRAP_UI( ui_headers ${aqemu_ui} )
-QT4_WRAP_CPP( moc_srcs ${aqemu_headers} )
-QT4_ADD_RESOURCES( moc_srcs ${aqemu_resouces} )
+#QT5_WRAP_UI( ui_headers ${aqemu_ui} )
+#QT5_WRAP_CPP( moc_srcs ${aqemu_headers} )
+#QT5_ADD_RESOURCES( moc_srcs ${aqemu_resouces} )
 
 
+# TODO: port from Qt4 to Qt5
 # For translation
-IF( UPDATE_TRANSLATIONS )
-	QT4_CREATE_TRANSLATION( qm_files ${CMAKE_CURRENT_SOURCE_DIR} ${files_to_translate} ${translations} )
-ELSE( UPDATE_TRANSLATIONS )
-	QT4_ADD_TRANSLATION( qm_files ${translations} )
-ENDIF( UPDATE_TRANSLATIONS )
+#IF( UPDATE_TRANSLATIONS )
+#	QT5_CREATE_TRANSLATION( qm_files ${CMAKE_CURRENT_SOURCE_DIR} ${files_to_translate} ${translations} )
+#ELSE( UPDATE_TRANSLATIONS )
+#	QT5_ADD_TRANSLATION( qm_files ${translations} )
+#ENDIF( UPDATE_TRANSLATIONS )
 
 ADD_CUSTOM_TARGET( translations_target DEPENDS ${qm_files} )
 
 
 # Building
-INCLUDE_DIRECTORIES(
-	${QT_INCLUDES}
-	${CMAKE_CURRENT_BINARY_DIR}
-	${CMAKE_CURRENT_SOURCE_DIR}
-	${QT_INCLUDE_DIR}
-	${CMAKE_BINARY_DIR}
-	${CMAKE_SOURCE_DIR}
-	${QT_QTNETWORK_INCLUDE_DIR}
-	${QT_QTTEST_INCLUDE_DIR}
-)
+#INCLUDE_DIRECTORIES(
+#    ${QT_INCLUDES}
+#    ${CMAKE_CURRENT_BINARY_DIR}
+#    ${CMAKE_CURRENT_SOURCE_DIR}
+#    ${QT_INCLUDE_DIR}
+#    ${CMAKE_BINARY_DIR}
+#    ${CMAKE_SOURCE_DIR}
+#    ${QT_QTNETWORK_INCLUDE_DIR}
+#    ${QT_QTCORE_INCLUDE_DIR}
+#    ${QT_QTTEST_INCLUDE_DIR}
+#)
 
 IF( COMMAND CMAKE_POLICY )
 	CMAKE_POLICY( SET CMP0003 NEW )
@@ -212,12 +220,9 @@ ADD_EXECUTABLE( aqemu
 )
 
 TARGET_LINK_LIBRARIES( aqemu
-	${QT_LIBRARIES}
-	${QT_QTCORE_LIBRARY}
-	${QT_QTGUI_LIBRARY}
-	${QT_QTNETWORK_LIBRARIES}
-	${QT_QTTEST_LIBRARIES}
-	${QT_QTXML_LIBRARY}
+	Qt5::Widgets
+    Qt5::Network
+    Qt5::Test
 )
 
 # Embedded VNC display

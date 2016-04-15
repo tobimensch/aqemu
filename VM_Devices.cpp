@@ -26,9 +26,9 @@
 #include <QFile>
 #include <QDir>
 #include <QStringList>
-#include <QDomDocument>
 #include <QTextStream>
 
+#include "VM.h"
 #include "VM_Devices.h"
 #include "Utils.h"
 #include "HDD_Image_Info.h"
@@ -3361,7 +3361,7 @@ QString VM_Net_Card::Generate_MAC() const
 	QSettings settings;
 	QString mode = settings.value( "MAC_Generation_Mode", "" ).toString();
 	
-	QString nmac = QUuid::createUuid(); // Random HEX for MAC
+	QString nmac = QUuid::createUuid().toString(); // Random HEX for MAC
 	
 	if( mode == "Random" )
 	{
@@ -3453,20 +3453,20 @@ QString VM_Net_Card::Generate_MAC() const
 		else if( model == "fseth" )
 		{
 			// FIXME qemu-system-cris
-			nmac = QUuid::createUuid(); // Random HEX for MAC
+			nmac = QUuid::createUuid().toString(); // Random HEX for MAC
 			nmac = nmac.mid( 25, 10 );
 			nmac.prepend( "00" ); // Two Zero First, For Valid MAC
 		}
 		else if( model == "xilinx-ethlite" )
 		{
 			// FIXME qemu-system-microblaze
-			nmac = QUuid::createUuid(); // Random HEX for MAC
+			nmac = QUuid::createUuid().toString(); // Random HEX for MAC
 			nmac = nmac.mid( 25, 10 );
 			nmac.prepend( "00" ); // Two Zero First, For Valid MAC
 		}
 		else if( model == "" ) // Default 00 + Random
 		{
-			nmac = QUuid::createUuid(); // Random HEX for MAC
+			nmac = QUuid::createUuid().toString(); // Random HEX for MAC
 			nmac = nmac.mid( 25, 10 );
 			nmac.prepend( "00" ); // Two Zero First, For Valid MAC
 		}
@@ -3482,7 +3482,7 @@ QString VM_Net_Card::Generate_MAC() const
 			AQError( "QString VM_Net_Card::Generate_MAC() const",
 					 "Cannot Get MAC for This Card!" );
 			
-			nmac = QUuid::createUuid(); // Random HEX for MAC
+			nmac = QUuid::createUuid().toString(); // Random HEX for MAC
 			nmac = nmac.mid( 25, 6 );
 			nmac.prepend( "525400" ); // QEMU Segment
 		}

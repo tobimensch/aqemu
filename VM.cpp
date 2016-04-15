@@ -26,7 +26,6 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QTextStream>
-#include <QDomDocument>
 #include <QMessageBox>
 #include <QSettings>
 #include <QUuid>
@@ -4573,11 +4572,13 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				else
 				{
 					QList<VM::SPICE_Renderer> rendererList;
-					QDomNodeList renderNodes = rendererListElement.childNodes();
-					
-					for( int ix = 0; ix < renderNodes.count(); ++ix )
+					QList<QDomElement> renderNodes = rendererListElement.childNodes();
+                    QListIterator<QDomElement> it(renderNodes);					
+
+					while( it.hasNext() )
 					{
-						QString rendererTypeStr = renderNodes.at(ix).toElement().tagName();
+                        QDomElement el = it.next();
+						QString rendererTypeStr = el.tagName();
 						
 						if( rendererTypeStr == "oglpbuf" )
 							rendererList << VM::SPICE_Renderer_oglpbuf;
@@ -7205,9 +7206,9 @@ bool Virtual_Machine::Take_Screenshot( const QString &file_name, int width, int 
 	bool save_ok = false;
 	
 	if( fmt == "JPEG" )
-		save_ok = im.save( file_name, fmt.toAscii(), Settings.value("Jpeg_Quality", 75).toInt() );
+		save_ok = im.save( file_name, fmt.toLatin1(), Settings.value("Jpeg_Quality", 75).toInt() );
 	else
-		save_ok = im.save( file_name, fmt.toAscii() );
+		save_ok = im.save( file_name, fmt.toLatin1() );
 	
 	if( save_ok )
 	{
