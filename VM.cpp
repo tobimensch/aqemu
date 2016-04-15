@@ -6323,10 +6323,10 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		spiceArgs << QString( "port=%1" ).arg( SPICE.Get_Port() );
 		
 		if( SPICE.Use_SPort() )
-			spiceArgs << QString( "sport=%1" ).arg( SPICE.Get_SPort() );
+			spiceArgs << QString( "tls-port=%1" ).arg( SPICE.Get_SPort() );
 		
 		if( SPICE.Use_Hostname() )
-			spiceArgs << QString( "hostname=%1" ).arg( SPICE.Get_Hostname() );
+			spiceArgs << QString( "addr=%1" ).arg( SPICE.Get_Hostname() );
 		
 		// Image, video & audio options
 		if( SPICE.Use_Image_Compression() )
@@ -6334,31 +6334,31 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			switch( SPICE.Get_Image_Compression() )
 			{
 				case VM::SPICE_IC_Type_on:
-					spiceArgs << "ic=on";
+					spiceArgs << "image-compression=on";
 					break;
 					
 				case VM::SPICE_IC_Type_auto_glz:
-					spiceArgs << "ic=auto_glz";
+					spiceArgs << "image-compression=auto_glz";
 					break;
 					
 				case VM::SPICE_IC_Type_auto_lz:
-					spiceArgs << "ic=auto_lz";
+					spiceArgs << "image-compressionc=auto_lz";
 					break;
 					
 				case VM::SPICE_IC_Type_quic:
-					spiceArgs << "ic=quic";
+					spiceArgs << "image-compression=quic";
 					break;
 					
 				case VM::SPICE_IC_Type_glz:
-					spiceArgs << "ic=glz";
+					spiceArgs << "image-compression=glz";
 					break;
 					
 				case VM::SPICE_IC_Type_lz:
-					spiceArgs << "ic=lz";
+					spiceArgs << "image-compression=lz";
 					break;
 					
 				case VM::SPICE_IC_Type_off:
-					spiceArgs << "ic=off";
+					spiceArgs << "image-compression=off";
 					break;
 					
 				default:
@@ -6370,7 +6370,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		
 		// Set video streams detection and (lossy) compression (default=on)
 		if( ! SPICE.Use_Video_Stream_Compression() )
-			spiceArgs << "sv=off";
+			spiceArgs << "streaming-video=off";
 		
 		// Select renderers. Multiple choice prioritized by order (default=cairo)		
 		if( SPICE.Use_Renderer() )
