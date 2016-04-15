@@ -30,7 +30,7 @@ Add_USB_Port_Window::Add_USB_Port_Window( QWidget *parent )
 	ui.setupUi( this );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Table_Host_USB );
-//	hv->setResizeMode( QHeaderView::Fixed ); //TODO: Qt5 port
+	hv->setSectionResizeMode( QHeaderView::Fixed );
 	ui.Table_Host_USB->setVerticalHeader( hv );
 	
 	/*hv = new QHeaderView( Qt::Horizontal, ui.Table_Host_USB );
