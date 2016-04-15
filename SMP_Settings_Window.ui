@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>SMP_Settings_Window</class>
+ <widget class="QDialog" name="SMP_Settings_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>350</width>
+    <height>199</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SMP Settings</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0" colspan="3">
+    <widget class="QLabel" name="Label_Info_Text">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>If any on the values can be omitted.
+Missing (zero) values will be computed.</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="Line" name="line_1">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="Label_CPUs">
+       <property name="text">
+        <string>CPUs count</string>
+       </property>
+       <property name="buddy">
+        <cstring>SB_SMP</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QSpinBox" name="SB_SMP">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="Label_Sockets">
+       <property name="text">
+        <string>Sockets count</string>
+       </property>
+       <property name="buddy">
+        <cstring>SB_Sockets</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QSpinBox" name="SB_Sockets">
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>1</width>
+       <height>55</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="2">
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="Label_Cores">
+       <property name="text">
+        <string>Cores per socket</string>
+       </property>
+       <property name="buddy">
+        <cstring>SB_Cores</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QSpinBox" name="SB_Cores">
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="Lebel_Threads">
+       <property name="text">
+        <string>Threads per core</string>
+       </property>
+       <property name="buddy">
+        <cstring>SB_Threads</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QSpinBox" name="SB_Threads">
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="Label_MaxCPUs">
+       <property name="text">
+        <string>Max number of hotpluggable CPUs</string>
+       </property>
+       <property name="buddy">
+        <cstring>SB_MaxCPUs</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="SB_MaxCPUs">
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>0</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="4" column="0" colspan="3">
+    <widget class="Line" name="line_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>205</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_OK">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>SB_SMP</tabstop>
+  <tabstop>SB_Sockets</tabstop>
+  <tabstop>SB_Cores</tabstop>
+  <tabstop>SB_Threads</tabstop>
+  <tabstop>SB_MaxCPUs</tabstop>
+  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Old_Network_Widget</class>
+ <widget class="QWidget" name="Old_Network_Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>469</width>
+    <height>362</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Old Network Widget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_6">
+   <item row="0" column="0">
+    <widget class="QLabel" name="Label_Cards_List">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Cards List:</string>
+     </property>
+     <property name="buddy">
+      <cstring>Network_Cards_List</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QListWidget" name="Network_Cards_List">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QPushButton" name="Button_Add_Net_Card">
+         <property name="text">
+          <string>Add</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/add.png</normaloff>:/add.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>13</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Button_Delete_Net_Card">
+         <property name="text">
+          <string>&amp;Delete</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <widget class="QWidget" name="Net_Card_Options" native="true">
+     <layout class="QGridLayout" name="gridLayout_5">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <item row="0" column="0" colspan="3">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QLabel" name="Label_NetCard_Model">
+          <property name="text">
+           <string>Network Card Model:</string>
+          </property>
+          <property name="buddy">
+           <cstring>CB_Network_Card_Model</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QComboBox" name="CB_Network_Card_Model">
+          <property name="maxCount">
+           <number>32</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="Label_Connection_Mode">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Connection &amp;Mode:</string>
+          </property>
+          <property name="buddy">
+           <cstring>CB_Connection_Mode</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QComboBox" name="CB_Connection_Mode">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="currentIndex">
+           <number>8</number>
+          </property>
+          <property name="maxCount">
+           <number>32</number>
+          </property>
+          <item>
+           <property name="text">
+            <string>Use the user mode network stack</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Open a TUN/TAP interface</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Use an already open TUN/TAP interface</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Open a listening TCP socket</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Use an already open TCP socket</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Connect to listening TCP socket</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Create shared VLAN via UDP multicast socket</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Use an already open UDP multicast socket</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>No connection</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <widget class="Line" name="Line_nc_1">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QLabel" name="Label_Host_Name">
+          <property name="text">
+           <string>VM Hostname:</string>
+          </property>
+          <property name="buddy">
+           <cstring>Edit_Hostname</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="Edit_Hostname"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="Label_IP">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>&amp;IP Address:</string>
+          </property>
+          <property name="buddy">
+           <cstring>Edit_IP_Address</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="Edit_IP_Address">
+          <property name="text">
+           <string/>
+          </property>
+          <property name="maxLength">
+           <number>24</number>
+          </property>
+          <property name="cursorPosition">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="Label_MAC">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>&amp;MAC Address:</string>
+          </property>
+          <property name="buddy">
+           <cstring>Edit_MAC_Address</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="Edit_MAC_Address">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="maxLength">
+             <number>18</number>
+            </property>
+            <property name="cursorPosition">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="TB_Generate_New_MAC">
+            <property name="toolTip">
+             <string>Generate New MAC</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/update.png</normaloff>:/update.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="1">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>10</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="2" column="2">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QLabel" name="Label_VLAN">
+          <property name="text">
+           <string>&amp;VLAN:</string>
+          </property>
+          <property name="buddy">
+           <cstring>SB_VLAN</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QSpinBox" name="SB_VLAN">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="Label_Port">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>&amp;Port:</string>
+          </property>
+          <property name="buddy">
+           <cstring>SB_Port</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QSpinBox" name="SB_Port">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="maximum">
+           <number>50000</number>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="Label_File_Descriptor">
+          <property name="text">
+           <string>&amp;FD:</string>
+          </property>
+          <property name="buddy">
+           <cstring>SB_File_Descriptor</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QSpinBox" name="SB_File_Descriptor">
+          <property name="minimumSize">
+           <size>
+            <width>80</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>80</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="toolTip">
+           <string>If the value is 0 then it will not be used</string>
+          </property>
+          <property name="minimum">
+           <number>0</number>
+          </property>
+          <property name="maximum">
+           <number>99999999</number>
+          </property>
+          <property name="value">
+           <number>0</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="Line" name="Line_nc_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="3">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="QCheckBox" name="CH_TUN_TAP_Script">
+          <property name="text">
+           <string>&amp;TUN/TAP Script:</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>4</number>
+          </property>
+          <item>
+           <widget class="QLineEdit" name="Edit_TUN_TAP_Script"/>
+          </item>
+          <item>
+           <widget class="QToolButton" name="TB_Browse_TUN_Script">
+            <property name="text">
+             <string>...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="images.qrc">
+              <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="Label_If_Name">
+          <property name="text">
+           <string>&amp;Interface Name:</string>
+          </property>
+          <property name="buddy">
+           <cstring>Edit_Interface_Name</cstring>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="Edit_Interface_Name"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>Network_Cards_List</tabstop>
+  <tabstop>Button_Add_Net_Card</tabstop>
+  <tabstop>Button_Delete_Net_Card</tabstop>
+  <tabstop>CB_Network_Card_Model</tabstop>
+  <tabstop>CB_Connection_Mode</tabstop>
+  <tabstop>Edit_Hostname</tabstop>
+  <tabstop>Edit_IP_Address</tabstop>
+  <tabstop>Edit_MAC_Address</tabstop>
+  <tabstop>TB_Generate_New_MAC</tabstop>
+  <tabstop>SB_VLAN</tabstop>
+  <tabstop>SB_Port</tabstop>
+  <tabstop>SB_File_Descriptor</tabstop>
+  <tabstop>CH_TUN_TAP_Script</tabstop>
+  <tabstop>Edit_TUN_TAP_Script</tabstop>
+  <tabstop>TB_Browse_TUN_Script</tabstop>
+  <tabstop>Edit_Interface_Name</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>CH_TUN_TAP_Script</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Edit_TUN_TAP_Script</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>84</x>
+     <y>308</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>156</x>
+     <y>309</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_TUN_TAP_Script</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>TB_Browse_TUN_Script</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>313</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>442</x>
+     <y>308</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

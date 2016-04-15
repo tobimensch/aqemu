@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Select_Icon_Window</class>
+ <widget class="QDialog" name="Select_Icon_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>486</width>
+    <height>468</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Change Icon</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/icon.png</normaloff>:/icon.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="Label_Select_Icon">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Select Icon For Your VM</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QRadioButton" name="RB_Icon_Other">
+       <property name="text">
+        <string>Default &amp;Other System Icon</string>
+       </property>
+       <property name="icon">
+        <iconset resource="shared_images.qrc">
+         <normaloff>:/images/other.png</normaloff>:/images/other.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RB_Icon_Linux">
+       <property name="text">
+        <string>Default &amp;Linux Icon</string>
+       </property>
+       <property name="icon">
+        <iconset resource="shared_images.qrc">
+         <normaloff>:/images/default_linux.png</normaloff>:/images/default_linux.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RB_Icon_Windows">
+       <property name="text">
+        <string>Default &amp;Windows Icon</string>
+       </property>
+       <property name="icon">
+        <iconset resource="shared_images.qrc">
+         <normaloff>:/images/default_windows.png</normaloff>:/images/default_windows.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QRadioButton" name="RB_All_System_Icons">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>&amp;All OS Icons From AQEMU Collection</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QListWidget" name="All_Icons_List">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="autoScroll">
+        <bool>true</bool>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::NoEditTriggers</set>
+       </property>
+       <property name="dragDropMode">
+        <enum>QAbstractItemView::NoDragDrop</enum>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>64</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="textElideMode">
+        <enum>Qt::ElideMiddle</enum>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="movement">
+        <enum>QListView::Static</enum>
+       </property>
+       <property name="isWrapping" stdset="0">
+        <bool>true</bool>
+       </property>
+       <property name="resizeMode">
+        <enum>QListView::Adjust</enum>
+       </property>
+       <property name="layoutMode">
+        <enum>QListView::Batched</enum>
+       </property>
+       <property name="gridSize">
+        <size>
+         <width>80</width>
+         <height>85</height>
+        </size>
+       </property>
+       <property name="viewMode">
+        <enum>QListView::IconMode</enum>
+       </property>
+       <property name="uniformItemSizes">
+        <bool>true</bool>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="RB_User_Icons">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Other &amp;Icon</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="Label_You_Icon_Path">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Your Icon Path:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="Edit_Other_Icon_Path">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Browse">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>&amp;Browse...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Line" name="line_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout">
+     <property name="margin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="Button_OK">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>RB_Icon_Other</tabstop>
+  <tabstop>RB_Icon_Linux</tabstop>
+  <tabstop>RB_Icon_Windows</tabstop>
+  <tabstop>RB_All_System_Icons</tabstop>
+  <tabstop>All_Icons_List</tabstop>
+  <tabstop>RB_User_Icons</tabstop>
+  <tabstop>Edit_Other_Icon_Path</tabstop>
+  <tabstop>Button_Browse</tabstop>
+  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+  <include location="shared_images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Select_Icon_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>488</x>
+     <y>481</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>219</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RB_All_System_Icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>All_Icons_List</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>72</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RB_User_Icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Label_You_Icon_Path</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>364</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>21</x>
+     <y>396</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RB_User_Icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Edit_Other_Icon_Path</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>69</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>64</x>
+     <y>430</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RB_User_Icons</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Button_Browse</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>457</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

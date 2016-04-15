@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Create_HDD_Image_Window</class>
+ <widget class="QDialog" name="Create_HDD_Image_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>341</width>
+    <height>359</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Create HDD Image</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QLabel" name="Label_New_Image">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>New Image &amp;File Name:</string>
+     </property>
+     <property name="buddy">
+      <cstring>Edit_File_Name</cstring>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QLineEdit" name="Edit_File_Name"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Browse_New_Image">
+       <property name="text">
+        <string>Browse...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="Lebel_Format">
+     <property name="text">
+      <string>&amp;Format:</string>
+     </property>
+     <property name="buddy">
+      <cstring>CB_Format</cstring>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QComboBox" name="CB_Format">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maxCount">
+        <number>32</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>qcow2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>qcow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>vmdk</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cow</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>raw</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>cloop</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Format_Help">
+       <property name="text">
+        <string>&amp;Help...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="Label_Size">
+     <property name="text">
+      <string>&amp;Size:</string>
+     </property>
+     <property name="buddy">
+      <cstring>SB_Size</cstring>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QDoubleSpinBox" name="SB_Size">
+       <property name="decimals">
+        <number>1</number>
+       </property>
+       <property name="minimum">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>1024.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>1.000000000000000</double>
+       </property>
+       <property name="value">
+        <double>10.000000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="CB_Suffix">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>KB</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MB</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>GB</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>5</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="QLabel" name="Label_Options">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Additional features</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="CH_Encrypted">
+       <property name="text">
+        <string>Image Must be &amp;Encrypted (QCOW Format Only)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="CH_Base_Image">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Use &amp;Base HDD Image</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <item>
+        <widget class="QLineEdit" name="Edit_Base_Image_File_Name">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Button_Browse_Base_Image">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Browse...</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>201</width>
+         <height>29</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Create">
+       <property name="text">
+        <string>C&amp;reate</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/go.png</normaloff>:/go.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="9"/>
+ <tabstops>
+  <tabstop>Edit_File_Name</tabstop>
+  <tabstop>Button_Browse_New_Image</tabstop>
+  <tabstop>CB_Format</tabstop>
+  <tabstop>Button_Format_Help</tabstop>
+  <tabstop>SB_Size</tabstop>
+  <tabstop>CB_Suffix</tabstop>
+  <tabstop>CH_Encrypted</tabstop>
+  <tabstop>CH_Base_Image</tabstop>
+  <tabstop>Edit_Base_Image_File_Name</tabstop>
+  <tabstop>Button_Browse_Base_Image</tabstop>
+  <tabstop>Button_Create</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Create_HDD_Image_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>578</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>411</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Base_Image</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>Edit_Base_Image_File_Name</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>73</x>
+     <y>56</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Base_Image</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>Button_Browse_Base_Image</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>134</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>59</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Convert_HDD_Image_Window</class>
+ <widget class="QDialog" name="Convert_HDD_Image_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>386</width>
+    <height>326</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Convert HDD Image</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Input image</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>File name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="Edit_Base_File_Name"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="Button_Browse_Base">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_16">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetMinimumSize</enum>
+        </property>
+        <item>
+         <widget class="QLabel" name="Label_HDD_Info_L">
+          <property name="text">
+           <string>Image Format: none
+Allocated Disk Space: 0</string>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="s2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>10</width>
+            <height>15</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="Label_HDD_Info_R">
+          <property name="text">
+           <string>Virtual Size: 0
+Cluster Size: 0</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <spacer name="s3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>368</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0" colspan="3">
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="title">
+      <string>Output image</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>File name:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="Edit_Output_File_Name"/>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="Button_Browse_Output">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="Label_Output_Format">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Format:</string>
+        </property>
+        <property name="buddy">
+         <cstring>CB_Output_Format</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="CB_Output_Format"/>
+      </item>
+      <item row="2" column="1">
+       <spacer name="s4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>30</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>QCOW format options</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="4" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="CH_Compressed">
+          <property name="text">
+           <string>Com&amp;press image</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="s5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="CH_Encrypted">
+          <property name="text">
+           <string>&amp;Encrypt image</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <spacer name="s1">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>141</width>
+       <height>29</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="Button_Convert">
+     <property name="text">
+      <string>Con&amp;vert</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/go.png</normaloff>:/go.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QPushButton" name="Button_Cancel">
+     <property name="text">
+      <string>&amp;Cancel</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="9"/>
+ <tabstops>
+  <tabstop>Edit_Base_File_Name</tabstop>
+  <tabstop>Button_Browse_Base</tabstop>
+  <tabstop>Edit_Output_File_Name</tabstop>
+  <tabstop>Button_Browse_Output</tabstop>
+  <tabstop>CB_Output_Format</tabstop>
+  <tabstop>CH_Compressed</tabstop>
+  <tabstop>CH_Encrypted</tabstop>
+  <tabstop>Button_Convert</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Convert_HDD_Image_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>457</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>137</x>
+     <y>315</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

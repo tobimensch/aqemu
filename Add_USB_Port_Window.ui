@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Add_USB_Port_Window</class>
+ <widget class="QDialog" name="Add_USB_Port_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>490</width>
+    <height>405</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Adding USB </string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/usb.png</normaloff>:/usb.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_8">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QRadioButton" name="RB_QEMU_USB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Connecting virtual QEMU/KVM USB device</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QWidget" name="Widget_QEMU_Devices" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QRadioButton" name="RB_QEMU_Mouse">
+          <property name="text">
+           <string>Mouse</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_QEMU_Keyboard">
+          <property name="text">
+           <string>Keyboard</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>83</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QRadioButton" name="RB_QEMU_Tablet">
+          <property name="text">
+           <string>Tablet</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_QEMU_WacomTablet">
+          <property name="text">
+           <string>Wacom tablet</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>83</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QRadioButton" name="RB_QEMU_Braille">
+          <property name="text">
+           <string>Braille</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QRadioButton" name="RB_Host_USB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Connecting USB host device</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="autoExclusive">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QWidget" name="Widget_Host_Devices" native="true">
+     <layout class="QVBoxLayout" name="verticalLayout_7">
+      <property name="leftMargin">
+       <number>10</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QTableWidget" name="Table_Host_USB">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::SingleSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <property name="verticalScrollMode">
+         <enum>QAbstractItemView::ScrollPerPixel</enum>
+        </property>
+        <property name="horizontalScrollMode">
+         <enum>QAbstractItemView::ScrollPerPixel</enum>
+        </property>
+        <column>
+         <property name="text">
+          <string>Manufacturer:</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Product:</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>bus.addr:</string>
+         </property>
+        </column>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Show devices</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QRadioButton" name="RB_Show_All">
+          <property name="text">
+           <string>All host devices</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>13</width>
+            <height>18</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_Show_Not_Used_Runtime">
+          <property name="text">
+           <string>Not used in running VM</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>100</width>
+          <height>10</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="Label_Selected_Device">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Selected device</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_4">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="S_Manufacturer">
+            <property name="text">
+             <string>Manufacturer:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="S_Product">
+            <property name="text">
+             <string>Product:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>123</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QLabel" name="S_Speed">
+            <property name="text">
+             <string>Speed:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="S_BusAddr">
+            <property name="text">
+             <string>Bus.Address:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_8">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>122</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QLabel" name="S_Vendor_ID">
+            <property name="text">
+             <string>Vendor ID:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="S_Product_ID">
+            <property name="text">
+             <string>Product ID:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="Button_Update_Host_USB">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Update USB host list</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/update.png</normaloff>:/update.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>68</width>
+         <height>26</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_OK">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>RB_QEMU_USB</tabstop>
+  <tabstop>RB_QEMU_Mouse</tabstop>
+  <tabstop>RB_QEMU_Keyboard</tabstop>
+  <tabstop>RB_QEMU_Tablet</tabstop>
+  <tabstop>RB_QEMU_WacomTablet</tabstop>
+  <tabstop>RB_QEMU_Braille</tabstop>
+  <tabstop>RB_Host_USB</tabstop>
+  <tabstop>Table_Host_USB</tabstop>
+  <tabstop>RB_Show_All</tabstop>
+  <tabstop>RB_Show_Not_Used_Runtime</tabstop>
+  <tabstop>Button_Update_Host_USB</tabstop>
+  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Add_USB_Port_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>466</x>
+     <y>381</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_OK</sender>
+   <signal>clicked()</signal>
+   <receiver>Add_USB_Port_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>364</x>
+     <y>386</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>377</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

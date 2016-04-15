@@ -1,0 +1,308 @@
+2011-07-27 Andrey Rijov (Version 0.8.2)
+
+	* Added QEMU/KVM 0.14 support
+	
+	* Bug Fixes
+
+2010-12-21 Andrey Rijov (Version 0.8.1)
+
+	* Added SPICE support
+	
+	* Added QEMU/KVM 0.13 support
+	
+	* Initial Windows support
+
+	* Improved English localization
+	
+	* Added German localization (Not complete)
+	
+	* Improved Device Manager
+	
+	* GUI restyling (Changes affect almost all windows)
+	
+	* Added new OS icons
+	
+	* Added ability to change the font in the emulator monitor
+	
+	* Major Bug Fix
+
+2010-07-12 Andrey Rijov (Version 0.8)
+
+	* Support finding available emulator options and devices.
+	
+	* Change to CMake build system
+	
+	* Improved Ports Tab GUI
+	
+	* Improved USB System (Support read data from /sys, /dev, /proc)
+	
+	* Support Connecting QEMU Virtual USB Devices (mouse, tablet, wacom-tablet, keyboard, braille)
+	
+	* Support Change GUI Icon Theme
+	
+	* Support Change VM Icons Size
+	
+	* Support boot orger list
+	
+	* Support set SMP settings
+	
+	* Support remove VM with all files (like HDD images)
+	
+	* Improved code determines the amount of available memory
+	
+	* Added support new sound systems: PulseAudio, ESD, SDL
+	
+	* Added possibility to set advanced storage device settings
+	
+	* Rebuild "Convert HDD Image" window
+
+	* Other Small Improvements and Bug Fixes
+
+2009-09-28 Andrey Rijov (Version 0.7.3)
+
+	* Added New Network Settings GUI
+	
+	* Added Devices /dev/srX in CD/DVD List
+	
+	* Support Adding User Devices in CD/DVD List
+	
+	* "Format" Button on HDD Tab
+	
+	* Support Resize Machines List Width
+	
+	* AQEMU Window Save Position on Desktop
+	
+	* Improved Support New Versions QEMU and KVM
+	
+	* Added "Create Shell Script" Command
+	
+	* Updated VM Templates
+	
+	* Other Small Improvements and Bug Fixes
+
+2009-06-18 Andrey Rijov (Version 0.7.2)
+	
+	* Improved Support KVM
+	
+	* Added Support for Simultaneous use of Multiple Versions of Emulators
+	
+	* Added First Start Wizard
+	
+	* Changed Settings Window
+	
+	* Improved Support "Additional Arguments"
+	
+	* Support Include Emulator Control in Main Window
+	
+	* Support Include QEMU Display in Main Window
+	
+	* Improved Handling QEMU Errors
+	
+	* A Huge Amount of a Small Improvements and Bug Fixes
+
+2009-03-31 Andrey Rijov (Version 0.7.1)
+
+	* Added Support QEMU 0.10.0 and KVM 8X
+	
+	* Added 'No Shutdown' Option
+	
+	* Added 'Curces' Option
+	
+	* Added 'Show Cursor' Option
+	
+	* Added 'RTC TD Hack' Option
+	
+	* Added 'KVM Nesting' Option
+	
+	* Added 'Disable KVM kernel mode PIT interrupt reinjection' Option
+	
+	* Added 'No Use Embedded VNC Display' Option
+	
+	* Minor Interface Rebuilding
+	
+	* Fix in Network Redirections (thanks Guillem Rieu)
+	
+	* Fix in IP Address RegExp (thanks Karol Krenski)
+	
+	* Major Bug Fix
+
+2009-03-04 Andrey Rijov (Version 0.7)
+
+	* Embedded VNC Display (This Experimental Function)
+	
+	* Option Screenshot in Info Tab
+	
+	* Discard Button Enable If VM Changet
+	
+	* Full Support for Not English VM Names
+	
+	* New Copy VM Window
+	
+	* Support Full VM Copy
+	
+	* Rebuild Interface Settings Window
+	
+	* And Other Minor Changes
+
+2009-01-27 Andrey Rijov (Version 0.6.1)
+
+	* Complete Support for QEMU 0.9.1 Device Style
+	
+	* Added More Functionaly in Multi-Snapshot Mode
+	
+	* New 'Start Date' Option
+	
+	* Recent CD-ROM Images Menu in 'Emulator Control'
+	
+	* New VM Templates
+	
+	* Added VM Icons
+	
+	* And Other Minor Changes
+
+2008-12-13 Andrey Rijov (Version 0.6)
+
+	* Multi-Snapshot Mode
+
+	* Support VNC (Remote Control)
+	
+	* Setting Generation MAC Address
+
+	* New Code to Support Translation Into Other Languages.
+	 (Now you can simply copy translation file)
+	
+	* Initial Support Settings For Sound Driver
+	
+	* Manage AQEMU Logging
+	
+	* VM Copy Function
+	
+	* Improvement in Network Settings
+	
+	* Major Code Improvement
+	
+	* Big Bugs Fix
+
+2008-10-17 Andrey Rijov (Version 0.5.2)
+
+	* Created Russian Documentation
+
+	* New Manage QEMU Binary Window
+
+	* Minor Interface Rebuilding.
+
+	* More Bug Fix
+
+2008-09-17 Andrey Rijov (Version 0.5.1)
+
+	* New Network Option "Hostname".
+	
+	* New OS Logos Icons (From Qemulator).
+	
+	* Minor Interface Rebuilding.
+	
+	* Major Bug Fix.
+
+2008-09-01 Andrey Rijov (Version 0.5)
+
+	* AQEMU compiles and works under FreeBSD.
+	
+	* Code rewritten globally.
+	
+	* Heavily reworked interface.
+	
+	* Completed "Device Manager".
+	
+	* Network cards settings has changed.
+	
+	* Tab "Ports" completely transformed.
+	
+	* Added tab Additional settings.
+	
+	* Information displayed on the tab Info can be configured.
+	
+	* Added choice binaries QEMU, for all supported architectures.
+	  (Especially helpful to those who KVM)
+	
+	* Users QEMU 0.9.1, can now choose the type of processor
+	  for the VM (486, Pentium 3, etc.)
+	
+	* Using QEMU 0.9.1 QEMU in the window now displays the name VM.
+	
+	* Options AQEMU now are in two boxes, ordinary and extra (Advanced).
+	
+	* You can choose what format to save screenshots.
+	
+	* Ability to use as a screen icon VM (in save state).
+	
+	* AQEMU checks the version of QEMU, and adjusts opportunities under
+	  the desired version (there is a regime installed by force
+	  compatibility with QEMU 0.9.0 or 0.9.1).
+	
+	* It checks whether the module loaded KVM (For systems with KVM).
+	
+	* Setting withdrawal logera QEMU (not AQEMU, namely QEMU).
+	
+	* Converting the image HDD is now happening in a separate thread.
+	
+	* AQEMU remembers the size of its main window.
+	
+	* Added many additional options for the QEMU 0.9.1 and KVM QEMU.
+	  (For example choice model network card or support a larger number of models
+	  of audio cards, the ability to connect images of memory cards, etc.).
+	
+	* Improved support for USB.
+	
+	* Fix errors discovered since the 0.4 version.
+	
+2008-07-12 Andrey Rijov (Version 0.4)
+
+	* Added USB Support
+	
+	* Added VM Temlates Support
+	
+	* Added ROM File Option (For EtherBoot)
+	
+	* Info Panel in Device Manager
+	
+	* Fixes Typographical Errors
+	
+	* Initial KVM Support
+	
+	* Bug Fixes
+	
+	* And Other Minor Changes
+
+2008-06-12 Andrey Rijov (Version 0.3)
+
+	* Added Other x86 Platforms VM Settings
+	
+	* Initial Device Manager Mode Support
+	
+	* New OS Logos Icons
+	
+	* New QEMU Monitor Window
+	
+	* Created Info Tab Logic
+	
+	* And Other Minor Changes
+	
+2008-06-08 Andrey Rijov (Version 0.2.1)
+
+	* Binary Version Build Without Network
+	  Audio System (libaudio)
+
+2008-06-05 Andrey Rijov (Version 0.2)
+
+	* Added Select OS Icon Window
+	
+	* Added OS Icon Menu
+	
+	* Create Logic for IBM PC Template Generation on
+	  Release Date (New VM Wizard Window)
+	
+	* Bug Fixes and Code Clean
+
+2008-05-31  Andrey Rijov (Version: 0.1)
+
+	* First Public Release

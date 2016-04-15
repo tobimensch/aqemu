@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Error_Log_Window</class>
+ <widget class="QDialog" name="Error_Log_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>477</width>
+    <height>346</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QEMU Error Log</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/bug.png</normaloff>:/bug.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QTextEdit" name="Edit_Log">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="Label_Show_Mode">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Error Window Show Mode</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QRadioButton" name="RB_Normal_Mode">
+       <property name="text">
+        <string>Normal Mode</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RB_Show_VM_Started">
+       <property name="text">
+        <string>Do Not Show Until Next VM Started</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RB_Show_AQEMU_Started">
+       <property name="text">
+        <string>Do Not Show Until Next AQEMU Started</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RB_No_Show_Forever">
+       <property name="text">
+        <string>Never show it
+(For View Error Log Select VM-&gt;Show QEMU/KVM Error Log Window)</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="Button_Clear_Log">
+       <property name="text">
+        <string>&amp;Clear Errors List</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/error.png</normaloff>:/error.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Hide">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>Edit_Log</tabstop>
+  <tabstop>RB_Normal_Mode</tabstop>
+  <tabstop>RB_Show_VM_Started</tabstop>
+  <tabstop>RB_Show_AQEMU_Started</tabstop>
+  <tabstop>RB_No_Show_Forever</tabstop>
+  <tabstop>Button_Clear_Log</tabstop>
+  <tabstop>Button_Hide</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Clear_Log</sender>
+   <signal>clicked()</signal>
+   <receiver>Edit_Log</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>53</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

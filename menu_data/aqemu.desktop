@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=AQEMU
+Exec=aqemu
+Terminal=false
+Type=Application
+Icon=aqemu_48x48.png
+StartupNotify=true
+Categories=System;Emulator;
+
+Name[ru]=AQEMU
+Name[en]=AQEMU
+Comment[ru]=Управление виртуальными машинами
+Comment[en]=Virtual machine manager

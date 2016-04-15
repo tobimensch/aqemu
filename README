@@ -1,0 +1,76 @@
+AQEMU is a graphical interface to QEMU and KVM emulators.
+
+
+AQEMU compiling and running Linux, BSD and Windows!
+(Windows support in developing process)
+
+AQEMU Minimal Version Dependencies:
+ * Qt >= 4.4.2
+ * CMake >= 2.6 (Not required in Windows)
+ * QEMU >= 0.9.0 or KVM or QEMU-KVM
+ * GCC >= 3.4 or 4.X (MinGW in Windows)
+
+
+!!! ATTENTION READ THIS FIRST !!!
+
+In AQEMU 0.7 added support "Embedded VNC Display".
+This is experimental function, many bugs not fixed!
+
+When you upgrade from version 0.5 or above, simply
+click "Apply" for each VM to keep it in the new version.
+
+Installation is now verifies the existence of previous versions AQEMU
+and remove them before installing (If you installed AQEMU not in /usr/share/aqemu
+or /usr/share/apps/aqemu, you will have to delete a folder with the
+resources last version AQEMU manually!)
+
+
+INSTALLATION (For Unix):
+
+ 1. Extract AQEMU source code.
+
+ 2. `cd' to AQEMU source directory.
+
+ 3. Configure:
+
+    -DCMAKE_INSTALL_PREFIX = Path to installation directory (Default is: /usr/local)
+        Sample `cmake -DCMAKE_INSTALL_PREFIX=/usr/local/' this install AQEMU binary
+        in /usr/local/bin and install data in /usr/local/share/aqemu
+
+    -DWITHOUT_EMBEDDED_DISPLAY = on | off (Default is: on)
+        For building without support Embedded VNC Display.
+
+    -DDEBUG = on | off (Default is: off)
+        For build in debug mode run: `cmake -DDEBUG=on'
+
+    -DINSTALL_MAN = on | off (Default is: on)
+        Install AQEMU man page file.
+
+    -DMAN_PAGE_COMPRESSOR = gzip | bzip2 | lzma | off (Default is: off)
+        Set compressor for AQEMU man page file.
+
+    Example:
+        cmake -DCMAKE_INSTALL_PREFIX=/usr -DMAN_PAGE_COMPRESSOR=bzip2
+
+ 4. type `make'
+
+ 5. Enter root mode and type `make install'
+
+ 6. Installation complete! For start AQEMU type: `aqemu' in shell.
+
+INSTALLATION (For Windows):
+
+ 1. Extract AQEMU source code.
+
+ 2. `cd' to AQEMU source directory.
+
+ 3. type `qmake AQEMU-For-Windows.pro'
+
+ 4. type `make'
+
+ 5. type `rcc -binary crystalsvg_icons.qrc -o crystalsvg_icons.rcc'
+         `rcc -binary oxygen_icons.qrc -o oxygen_icons.rcc'
+
+ 6. Run aqemu.exe
+
+Sorry for bad English.

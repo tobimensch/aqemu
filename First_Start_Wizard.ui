@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>First_Start_Wizard</class>
+ <widget class="QDialog" name="First_Start_Wizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>518</width>
+    <height>391</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>First Start Wizard</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/wizard.png</normaloff>:/wizard.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QLabel" name="Label_Caption">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QStackedWidget" name="All_Pages">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="Welcome_Page">
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QLabel" name="Label_Welcome_Text">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>100</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="Label_Select_Language">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="CB_Language">
+           <item>
+            <property name="text">
+             <string>English</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>101</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="General_Settings_Page">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="Label_VM_Dir">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="Edit_VM_Dir"/>
+           </item>
+           <item row="0" column="1">
+            <widget class="QToolButton" name="TB_Browse_VM_Dir">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="images.qrc">
+               <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QCheckBox" name="CH_Device_Manager">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="Label_Device_Manager">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>23</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QCheckBox" name="CH_Embedded_VNC">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <property name="leftMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="Label_Embedded_VNC">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>23</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Find_Emulators_Page">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0" colspan="4">
+        <widget class="QLabel" name="Label_Find_Emulators">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="4">
+        <widget class="QPlainTextEdit" name="Edit_Enulators_List">
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOn</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="Button_Find_Emulators">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/find.png</normaloff>:/find.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="Button_Skip_Find">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/go.png</normaloff>:/go.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QPushButton" name="Button_Edit">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>306</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Add_Emulator_Page">
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <widget class="QLabel" name="Label_Add_Emulator_Help">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="Label_Add_Emulator_Path">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="spacing">
+          <number>4</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="Edit_Add_Emulator_Path"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QToolButton" name="TB_Add_Emulator_Browse">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="images.qrc">
+             <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <spacer name="verticalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="Label_Add_Emulator_Version">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QComboBox" name="CB_Add_Emulator_Version">
+           <property name="currentIndex">
+            <number>5</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>QEMU 0.9.0</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>QEMU 0.9.1</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>QEMU 0.10.X</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>QEMU 0.11.X</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>QEMU 0.12.X</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>QEMU 0.13.X</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>10</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QPushButton" name="Button_Add_Emulator_Find">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="images.qrc">
+               <normaloff>:/find.png</normaloff>:/find.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="Button_Add_Emulator_Manual_Mode">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="images.qrc">
+               <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_4">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_8">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>17</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="Finish_Page">
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="QLabel" name="Label_Finish_Text">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Back">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/previous.png</normaloff>:/previous.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Next">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/next.png</normaloff>:/next.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>

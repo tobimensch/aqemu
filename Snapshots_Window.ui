@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Snapshots_Window</class>
+ <widget class="QDialog" name="Snapshots_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>475</width>
+    <height>301</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Manage VM Snapshots</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/clock.png</normaloff>:/clock.png</iconset>
+  </property>
+  <layout class="QGridLayout">
+   <property name="margin">
+    <number>9</number>
+   </property>
+   <property name="spacing">
+    <number>6</number>
+   </property>
+   <item row="5" column="0" rowspan="2">
+    <widget class="QFrame" name="Info_Frame">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <layout class="QGridLayout">
+      <property name="margin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item row="2" column="0" colspan="2">
+       <widget class="QLabel" name="Label_Description">
+        <property name="text">
+         <string>Description:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="Label_Size">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Size:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLabel" name="Label_VM_Clock">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>VM Clock:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="Label_ID">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>ID:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="Label_Date">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Date:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="Button_Properties">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Properties</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="Button_Start">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/play.png</normaloff>:/play.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="Button_Delete">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QPushButton" name="Button_Create">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Create</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/add.png</normaloff>:/add.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QPushButton" name="Button_OK">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>OK</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="Button_Update">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Update Info</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images.qrc">
+       <normaloff>:/update.png</normaloff>:/update.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" rowspan="5">
+    <widget class="QTreeWidget" name="Snapshots_Tree">
+     <column>
+      <property name="text">
+       <string>Snapshot List:</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>Snapshots_Tree</tabstop>
+  <tabstop>Button_Create</tabstop>
+  <tabstop>Button_Delete</tabstop>
+  <tabstop>Button_Start</tabstop>
+  <tabstop>Button_Properties</tabstop>
+  <tabstop>Button_Update</tabstop>
+  <tabstop>Button_OK</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_OK</sender>
+   <signal>clicked()</signal>
+   <receiver>Snapshots_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>443</x>
+     <y>281</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>235</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

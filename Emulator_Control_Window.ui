@@ -1,0 +1,636 @@
+<ui version="4.0" >
+ <author>Andrey Rijov</author>
+ <class>Emulator_Control_Window</class>
+ <widget class="QMainWindow" name="Emulator_Control_Window" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>416</width>
+    <height>46</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Emulator Control</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="images.qrc" >
+    <normaloff>:/go.png</normaloff>:/go.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="enabled" >
+    <bool>false</bool>
+   </property>
+   <property name="sizePolicy" >
+    <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>416</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout_Emulator_Control" />
+   </widget>
+   <widget class="QMenu" name="menuVM" >
+    <property name="title" >
+     <string>&amp;VM</string>
+    </property>
+    <addaction name="actionSave_Screenshot" />
+    <addaction name="actionSave_Screenshot_As" />
+    <addaction name="separator" />
+    <addaction name="actionSave_VM" />
+    <addaction name="separator" />
+    <addaction name="actionManage_Snapshots" />
+    <addaction name="separator" />
+    <addaction name="actionCommit" />
+    <addaction name="separator" />
+    <addaction name="actionPause_VM" />
+    <addaction name="actionPower_Off" />
+    <addaction name="actionReset_VM" />
+    <addaction name="separator" />
+    <addaction name="actionQEMU_Monitor" />
+    <addaction name="separator" />
+    <addaction name="actionQuit" />
+   </widget>
+   <widget class="QMenu" name="menuSend_Keys" >
+    <property name="title" >
+     <string>Send &amp;Keys</string>
+    </property>
+    <widget class="QMenu" name="menuCtrl_Alt_F" >
+     <property name="title" >
+      <string>Ctrl-Alt-&amp;F#</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="images.qrc" >
+       <normaloff>:/key.png</normaloff>:/key.png</iconset>
+     </property>
+     <addaction name="actionCtrl_Alt_F1" />
+     <addaction name="actionCtrl_Alt_F2" />
+     <addaction name="actionCtrl_Alt_F3" />
+     <addaction name="actionCtrl_Alt_F4" />
+     <addaction name="actionCtrl_Alt_F5" />
+     <addaction name="actionCtrl_Alt_F6" />
+     <addaction name="actionCtrl_Alt_F7" />
+     <addaction name="actionCtrl_Alt_F8" />
+     <addaction name="actionCtrl_Alt_F9" />
+     <addaction name="actionCtrl_Alt_F10" />
+     <addaction name="actionCtrl_Alt_F11" />
+     <addaction name="actionCtrl_Alt_F12" />
+    </widget>
+    <addaction name="actionCtrl_Alt_Delete" />
+    <addaction name="menuCtrl_Alt_F" />
+    <addaction name="actionCtrl_Alt_Backspace" />
+    <addaction name="actionOther_Keys" />
+   </widget>
+   <widget class="QMenu" name="menuConnect" >
+    <property name="title" >
+     <string>&amp;Connect</string>
+    </property>
+    <widget class="QMenu" name="menuFloppy_B" >
+     <property name="title" >
+      <string>Floppy &amp;B</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="images.qrc" >
+       <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuFD1_Recent_Files" >
+      <property name="title" >
+       <string>Recent Files</string>
+      </property>
+     </widget>
+     <addaction name="actionFD1_dev_fd0" />
+     <addaction name="actionFD1_dev_null" />
+     <addaction name="menuFD1_Recent_Files" />
+     <addaction name="actionFD1_Other" />
+     <addaction name="separator" />
+     <addaction name="actionFD1_Eject" />
+    </widget>
+    <widget class="QMenu" name="menuFloppy_A" >
+     <property name="title" >
+      <string>Floppy &amp;A</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="images.qrc" >
+       <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuFD0_Recent_Files" >
+      <property name="title" >
+       <string>Recent Files</string>
+      </property>
+     </widget>
+     <addaction name="actionFD0_dev_fd0" />
+     <addaction name="actionFD0_dev_null" />
+     <addaction name="menuFD0_Recent_Files" />
+     <addaction name="actionFD0_Other" />
+     <addaction name="separator" />
+     <addaction name="actionFD0_Eject" />
+    </widget>
+    <widget class="QMenu" name="menuUSB" >
+     <property name="title" >
+      <string>&amp;USB</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="images.qrc" >
+       <normaloff>:/usb.png</normaloff>:/usb.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuUSB_Connect" >
+      <property name="title" >
+       <string>Connect</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="images.qrc" >
+        <normaloff>:/connect.png</normaloff>:/connect.png</iconset>
+      </property>
+      <addaction name="actionUSB_Update_Device_List" />
+      <addaction name="separator" />
+     </widget>
+     <widget class="QMenu" name="menuDisconnect" >
+      <property name="title" >
+       <string>Disconnect</string>
+      </property>
+      <property name="icon" >
+       <iconset resource="images.qrc" >
+        <normaloff>:/disconnect.png</normaloff>:/disconnect.png</iconset>
+      </property>
+      <addaction name="actionUSB_Disconnect_All_Devices" />
+      <addaction name="actionBy_Bus_Address" />
+      <addaction name="separator" />
+     </widget>
+     <addaction name="menuUSB_Connect" />
+     <addaction name="menuDisconnect" />
+    </widget>
+    <widget class="QMenu" name="menuCD_ROM" >
+     <property name="title" >
+      <string>&amp;CD-ROM</string>
+     </property>
+     <property name="icon" >
+      <iconset resource="images.qrc" >
+       <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
+     </property>
+     <widget class="QMenu" name="menuCDROM_Recent_Files" >
+      <property name="title" >
+       <string>Recent Files</string>
+      </property>
+     </widget>
+     <addaction name="actionCDROM_dev_cdrom" />
+     <addaction name="actionCDROM_dev_null" />
+     <addaction name="separator" />
+     <addaction name="menuCDROM_Recent_Files" />
+     <addaction name="actionCDROM_Other" />
+     <addaction name="separator" />
+     <addaction name="actionCDROM_Eject" />
+    </widget>
+    <addaction name="menuFloppy_A" />
+    <addaction name="menuFloppy_B" />
+    <addaction name="menuCD_ROM" />
+    <addaction name="menuUSB" />
+   </widget>
+   <widget class="QMenu" name="menuView" >
+    <property name="title" >
+     <string>View</string>
+    </property>
+    <addaction name="actionDisplay_Scaling" />
+    <addaction name="actionFullscreen_Mode" />
+    <addaction name="actionReinit_VNC" />
+   </widget>
+   <addaction name="menuVM" />
+   <addaction name="menuConnect" />
+   <addaction name="menuSend_Keys" />
+   <addaction name="menuView" />
+   <addaction name="menuHelp" />
+  </widget>
+  <action name="actionSave_Screenshot" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/save.png</normaloff>:/save.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Save Screens&amp;hot</string>
+   </property>
+  </action>
+  <action name="actionSave_VM" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/save.png</normaloff>:/save.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Save VM</string>
+   </property>
+  </action>
+  <action name="actionLoad_VM" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Load VM</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionPause_VM" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/pause.png</normaloff>:/pause.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Pause VM</string>
+   </property>
+  </action>
+  <action name="actionQuit" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/exit.png</normaloff>:/exit.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Quit</string>
+   </property>
+  </action>
+  <action name="actionSave_VM_State_As" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Save VM S&amp;tate...</string>
+   </property>
+  </action>
+  <action name="actionLoad_VM_State" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Load VM St&amp;ate...</string>
+   </property>
+  </action>
+  <action name="actionReset_VM" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/restart.png</normaloff>:/restart.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Reset VM</string>
+   </property>
+  </action>
+  <action name="actionPower_Off" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/stop.png</normaloff>:/stop.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Power &amp;Off</string>
+   </property>
+  </action>
+  <action name="actionCommit" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/save-all.png</normaloff>:/save-all.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Commit</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_Delete" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/key.png</normaloff>:/key.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Ctrl-Alt-&amp;Delete</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F1" >
+   <property name="text" >
+    <string>1</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F2" >
+   <property name="text" >
+    <string>2</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F3" >
+   <property name="text" >
+    <string>3</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F4" >
+   <property name="text" >
+    <string>4</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F5" >
+   <property name="text" >
+    <string>5</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F6" >
+   <property name="text" >
+    <string>6</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F7" >
+   <property name="text" >
+    <string>7</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F8" >
+   <property name="text" >
+    <string>8</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F9" >
+   <property name="text" >
+    <string>9</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F10" >
+   <property name="text" >
+    <string>10</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F11" >
+   <property name="text" >
+    <string>11</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_F12" >
+   <property name="text" >
+    <string>12</string>
+   </property>
+  </action>
+  <action name="actionFD0_dev_fd0" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
+   </property>
+   <property name="text" >
+    <string>/dev/fd0</string>
+   </property>
+  </action>
+  <action name="actionFD0_dev_null" >
+   <property name="text" >
+    <string>/dev/null</string>
+   </property>
+  </action>
+  <action name="actionFD0_Other" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Other...</string>
+   </property>
+  </action>
+  <action name="actionFD0_Eject" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/eject.png</normaloff>:/eject.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Eject</string>
+   </property>
+  </action>
+  <action name="actionUSB_Update_Device_List" >
+   <property name="text" >
+    <string>Update Device List</string>
+   </property>
+  </action>
+  <action name="actionAbout_Emulator_Control" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/about.png</normaloff>:/about.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;About Emulator Control...</string>
+   </property>
+  </action>
+  <action name="actionFD1_dev_fd0" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
+   </property>
+   <property name="text" >
+    <string>/dev/fd0</string>
+   </property>
+  </action>
+  <action name="actionFD1_Other" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Other...</string>
+   </property>
+  </action>
+  <action name="actionFD1_Eject" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/eject.png</normaloff>:/eject.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Eject</string>
+   </property>
+  </action>
+  <action name="actionFD1_dev_null" >
+   <property name="text" >
+    <string>/dev/null</string>
+   </property>
+  </action>
+  <action name="actionCDROM_dev_cdrom" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
+   </property>
+   <property name="text" >
+    <string>/dev/cdrom</string>
+   </property>
+  </action>
+  <action name="actionCDROM_Other" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Other...</string>
+   </property>
+  </action>
+  <action name="actionCDROM_Eject" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/eject.png</normaloff>:/eject.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Eject</string>
+   </property>
+  </action>
+  <action name="actionSave_Screenshot_As" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Save Screenshot As...</string>
+   </property>
+  </action>
+  <action name="actionCDROM_dev_null" >
+   <property name="text" >
+    <string>/dev/null</string>
+   </property>
+  </action>
+  <action name="actionUSB_Disconnect_All_Devices" >
+   <property name="text" >
+    <string>All Devices</string>
+   </property>
+  </action>
+  <action name="actionOther_Keys" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/key.png</normaloff>:/key.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Other Keys...</string>
+   </property>
+  </action>
+  <action name="actionQEMU_Monitor" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/terminal.png</normaloff>:/terminal.png</iconset>
+   </property>
+   <property name="text" >
+    <string>QEMU/KVM &amp;Monitor</string>
+   </property>
+  </action>
+  <action name="actionCtrl_Alt_Backspace" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/key.png</normaloff>:/key.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Ctrl-Alt-Backspace</string>
+   </property>
+  </action>
+  <action name="actionSerial_Null" >
+   <property name="text" >
+    <string>null (/dev/null)</string>
+   </property>
+  </action>
+  <action name="actionStdio_Standard_In_Out" >
+   <property name="text" >
+    <string>stdio (Standard In Out)</string>
+   </property>
+  </action>
+  <action name="actionSerial_Other" >
+   <property name="text" >
+    <string>Other...</string>
+   </property>
+  </action>
+  <action name="action_Serial_ttyS0" >
+   <property name="text" >
+    <string>/dev/ttyS0</string>
+   </property>
+  </action>
+  <action name="actionParport_Other" >
+   <property name="text" >
+    <string>Other...</string>
+   </property>
+  </action>
+  <action name="actionParport_Null" >
+   <property name="text" >
+    <string>null (/dev/null)</string>
+   </property>
+  </action>
+  <action name="actionBy_Bus_Address" >
+   <property name="text" >
+    <string>By Bus.Address</string>
+   </property>
+  </action>
+  <action name="actionManage_Snapshots" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/clock.png</normaloff>:/clock.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Manage Snapshots</string>
+   </property>
+  </action>
+  <action name="actionD" >
+   <property name="text" >
+    <string>d</string>
+   </property>
+  </action>
+  <action name="actionDisplay_Scaling" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/scale.png</normaloff>:/scale.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Display Scaling</string>
+   </property>
+  </action>
+  <action name="actionFullscreen_Mode" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/fullscreen.png</normaloff>:/fullscreen.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Fullscreen Mode</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Alt+F</string>
+   </property>
+  </action>
+  <action name="actionShow_Status_Bar" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="text" >
+    <string>Show Status Bar</string>
+   </property>
+  </action>
+  <action name="actionReinit_VNC" >
+   <property name="icon" >
+    <iconset resource="images.qrc" >
+     <normaloff>:/bug.png</normaloff>:/bug.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Reinit VNC</string>
+   </property>
+  </action>
+  <action name="actionA" >
+   <property name="text" >
+    <string>a</string>
+   </property>
+  </action>
+  <action name="actionA_2" >
+   <property name="text" >
+    <string>a</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="images.qrc" />
+ </resources>
+ <connections/>
+</ui>

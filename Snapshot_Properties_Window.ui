@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Snapshot_Properties_Window</class>
+ <widget class="QDialog" name="Snapshot_Properties_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>283</width>
+    <height>222</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Snapshot Properties</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <widget class="QLabel" name="Label_Name">
+     <property name="text">
+      <string>Snapshot Name:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QLineEdit" name="Edit_Name">
+       <property name="maxLength">
+        <number>512</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="Label_Desc">
+     <property name="text">
+      <string>Snapshot Description:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QPlainTextEdit" name="Edit_Description">
+       <property name="plainText">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="margin">
+        <number>0</number>
+       </property>
+       <item>
+        <spacer>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Button_OK">
+         <property name="text">
+          <string>&amp;OK</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Button_Cancel">
+         <property name="text">
+          <string>&amp;Cancel</string>
+         </property>
+         <property name="icon">
+          <iconset resource="images.qrc">
+           <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>Edit_Name</tabstop>
+  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Snapshot_Properties_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>298</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>135</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

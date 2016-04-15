@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Properties_Window</class>
+ <widget class="QDialog" name="Properties_Window">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>409</width>
+    <height>455</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Properties</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="GB_Floppy">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Floppy</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="0" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QComboBox" name="CB_FD_Devices">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="TB_FD_Image_Browse">
+          <property name="toolTip">
+           <string>Browse</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>114</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1">
+       <widget class="QToolButton" name="TB_FD_Advanced_Settings">
+        <property name="text">
+         <string>Advaced settings</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GB_CDROM">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>CD/DVD-ROM</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <widget class="QComboBox" name="CB_CDROM_Devices">
+          <property name="editable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="TB_CDROM_Image_Browse">
+          <property name="toolTip">
+           <string>Browse</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>114</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1">
+       <widget class="QToolButton" name="TB_CDROM_Advanced_Settings">
+        <property name="text">
+         <string>Advaced settings</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GB_HDD">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Hard Disk</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="Label_HDD_Path_to_Image">
+        <property name="text">
+         <string>Path to Image:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3">
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="Edit_HDD_Image_Path"/>
+        </item>
+        <item>
+         <widget class="QToolButton" name="TB_HDD_Image_Browse">
+          <property name="toolTip">
+           <string>Browse</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="images.qrc">
+            <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="Button_HDD_New">
+        <property name="text">
+         <string>Create &amp;New</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/add.png</normaloff>:/add.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="Button_HDD_Format">
+        <property name="text">
+         <string>&amp;Format Exist</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QToolButton" name="TB_HDD_Advanced_Settings">
+        <property name="text">
+         <string>Advaced settings</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="GB_Info">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="title">
+      <string>Information</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="Label_Name">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Device Name: </string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="Button_Update_Info">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Up&amp;date Info</string>
+        </property>
+        <property name="icon">
+         <iconset resource="images.qrc">
+          <normaloff>:/update.png</normaloff>:/update.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QLabel" name="Label_Info">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::TextSelectableByMouse</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_OK">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>CB_FD_Devices</tabstop>
+  <tabstop>TB_FD_Advanced_Settings</tabstop>
+  <tabstop>TB_FD_Image_Browse</tabstop>
+  <tabstop>CB_CDROM_Devices</tabstop>
+  <tabstop>TB_CDROM_Advanced_Settings</tabstop>
+  <tabstop>TB_CDROM_Image_Browse</tabstop>
+  <tabstop>Edit_HDD_Image_Path</tabstop>
+  <tabstop>TB_HDD_Image_Browse</tabstop>
+  <tabstop>Button_HDD_New</tabstop>
+  <tabstop>Button_HDD_Format</tabstop>
+  <tabstop>TB_HDD_Advanced_Settings</tabstop>
+  <tabstop>Button_Update_Info</tabstop>
+  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Properties_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>429</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>407</x>
+     <y>402</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

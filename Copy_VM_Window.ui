@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <author>Andrey Rijov</author>
+ <class>Copy_VM_Window</class>
+ <widget class="QDialog" name="Copy_VM_Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>354</width>
+    <height>128</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Copy VM</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="images.qrc">
+    <normaloff>:/copy.png</normaloff>:/copy.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="Label_Name">
+     <property name="text">
+      <string>New VM Name:</string>
+     </property>
+     <property name="buddy">
+      <cstring>Edit_New_VM_Name</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="Edit_New_VM_Name"/>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QCheckBox" name="CH_Copy_Disk_Images">
+     <property name="text">
+      <string>Copy Disk Images</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="CH_Copy_Floppy">
+       <property name="text">
+        <string>Copy Floppy Images</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="CH_Copy_Hard_Drive">
+       <property name="text">
+        <string>Copy Hard Drive Images</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_OK">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="icon">
+        <iconset resource="images.qrc">
+         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>Edit_New_VM_Name</tabstop>
+  <tabstop>CH_Copy_Disk_Images</tabstop>
+  <tabstop>CH_Copy_Floppy</tabstop>
+  <tabstop>CH_Copy_Hard_Drive</tabstop>
+  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Cancel</tabstop>
+ </tabstops>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>CH_Copy_Disk_Images</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CH_Copy_Floppy</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>89</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>82</x>
+     <y>68</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Copy_Disk_Images</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CH_Copy_Hard_Drive</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>155</x>
+     <y>48</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Button_Cancel</sender>
+   <signal>clicked()</signal>
+   <receiver>Copy_VM_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>267</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>290</x>
+     <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
