@@ -31,6 +31,9 @@
 #include "VM_Devices.h"
 #include "Error_Log_Window.h"
 #include "Create_Template_Window.h"
+#include "tinyxml2.h"
+
+using namespace tinyxml2;
 
 class Emulator_Control_Window;
 
@@ -45,16 +48,31 @@ class QDomText
 
 class QDomNode
 {
+    friend class QDomElement;
+    friend class QDomDocument;
+
     public:
+        QDomNode(XMLNode* _node)
+        {
+            node = _node;
+        }
         const QDomNode& nextSibling()
         {
+            next = new QDomNode(node->NextSibling());
+            return *next;
         }
         bool isNull()
         {
         }
         const QDomElement& toElement() const
         {
+            auto element = new QDomElement(node->ToElement(););
+            return *element;
         }
+
+    private:
+        QDomNode* next;
+        XMLNode* node;
 };
 
 class QDomDocument
@@ -76,7 +94,7 @@ class QDomDocument
         {
         }
         QDomElement& documentElement()
-        {
+        {   
         }
         QDomElement& createElement(const QString&)
         {
@@ -106,6 +124,10 @@ class QDomProcessingInstruction
 class QDomElement
 {
     public:
+        QDomElement(XMLElement* _el)
+        {
+            element = _el;
+        }
         void appendChild(const QDomText&)
         {
         }
@@ -148,6 +170,7 @@ class QDomElement
             return "";
         }
     private:
+        XMLElement* element;
 };
 
 // Vitrual Machine

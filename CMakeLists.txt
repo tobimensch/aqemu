@@ -3,9 +3,10 @@
 # Authors:
 # Andrey Rijov (AQEMU developer)
 # Timothy Redaelli (Fix for build in a different folder)
+# Tobias Gläßer (Qt5 port)
 
-PROJECT( AQEMU )
-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.11 )
+PROJECT( AQEMU CXX )
+CMAKE_MINIMUM_REQUIRED( VERSION 3.1.0 FATAL_ERROR )
 
 # Available options
 OPTION( DEBUG "Build with debug information" )
@@ -27,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    tinyxml2.h
 	About_Window.h
 	Add_New_Device_Window.h
 	Add_Port_Window.h
@@ -66,6 +68,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    tinyxml2.cpp
 	About_Window.cpp
 	Add_New_Device_Window.cpp
 	Add_Port_Window.cpp
@@ -218,6 +221,10 @@ ADD_EXECUTABLE( aqemu
 	${moc_srcs}
 	${qm_files}
 )
+
+# Require C++-11 standard
+SET_PROPERTY(TARGET aqemu PROPERTY CXX_STANDARD 11)
+SET_PROPERTY(TARGET aqemu PROPERTY CXX_STANDARD_REQUIRED ON)
 
 TARGET_LINK_LIBRARIES( aqemu
 	Qt5::Widgets
