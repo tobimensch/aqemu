@@ -21,7 +21,7 @@ class QDomText
     public:
         QDomText();
         QDomText(XMLText*);
-        QDomText(const QDomText&);
+        //QDomText(const QDomText&);
     private:
         XMLText* text;
 };

@@ -8,10 +8,12 @@ QDomText::QDomText()
     text = 0;
 }
 
+/*
 QDomText::QDomText(const QDomText& t)
 {
     //text = new XMLText(*t.text);
 }
+*/
 
 QDomText::QDomText(XMLText* _text)
 {
@@ -74,6 +76,17 @@ const QDomElement QDomElement::firstChildElement(const QString& s) const
 
 QList<QDomElement> QDomElement::childNodes()
 {
+    if ( element )
+    {
+        QList<QDomElement> list;
+        for (auto el = element->FirstChildElement(); el = el->NextSiblingElement();)
+        {
+            list.append(el);
+        }
+        return list;
+    }
+    else
+        return QList<QDomElement>();
 }
 
 bool QDomElement::hasAttribute(const QString& s)
@@ -110,7 +123,18 @@ const QString QDomElement::text() const
 
 bool QDomElement::isNull()
 {
-    return false;
+    //TODO
+    if ( element )
+    {
+        if ( element->NoChildren() )
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return true;
 }
 
 QString QDomElement::tagName()
@@ -140,9 +164,23 @@ const QDomNode QDomNode::nextSibling()
     else
         return QDomNode();
 }
+
 bool QDomNode::isNull()
 {
+    if ( node )
+    {
+        if ( node->NoChildren() )
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+    else
+        return true;
+    //TODO
 }
+
 const QDomElement QDomNode::toElement() const
 {
     if ( node )
@@ -219,11 +257,20 @@ void QDomDocument::save(QTextStream& stream,int)
 
 QDomProcessingInstruction QDomDocument::createProcessingInstruction(const QString&, const QString&)
 {
+    //TODO
 }
 
 bool QDomDocument::setContent(QFile* file, bool b, QString* s, int* i, int* i2)
 {
     if ( document )
+    {
         document->LoadFile(file->fileName().toLatin1());
+        //TODO: error handling
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
