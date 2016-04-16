@@ -28,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    QDom.h
     tinyxml2.h
 	About_Window.h
 	Add_New_Device_Window.h
@@ -68,6 +69,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    QDom.cpp
     tinyxml2.cpp
 	About_Window.cpp
 	Add_New_Device_Window.cpp
@@ -158,28 +160,21 @@ FIND_PACKAGE( Qt5Widgets )
 FIND_PACKAGE( Qt5Network )
 FIND_PACKAGE( Qt5Test )
 
-#INCLUDE( ${QT5_USE_FILE} )
-
-#SET( QT_USE_QTXML TRUE )
-#SET( QT_USE_QTNETWORK TRUE )
-#SET( QT_USE_QTTEST TRUE )
-
-
 # Embedded VNC display
-IF( NOT WITHOUT_EMBEDDED_DISPLAY )
-	FIND_PACKAGE( LibVNCServer REQUIRED )
-	
-	SET( aqemu_headers ${aqemu_headers} Embedded_Display/Machine_View.h Embedded_Display/remoteview.h
-										Embedded_Display/vncclientthread.h Embedded_Display/vncview.h )
-	
-	SET( aqemu_sources ${aqemu_sources} Embedded_Display/Machine_View.cpp Embedded_Display/remoteview.cpp
-										Embedded_Display/vncclientthread.cpp Embedded_Display/vncview.cpp )
-	
-	ADD_DEFINITIONS( -DVNC_DISPLAY -DQTONLY )
-	ADD_LIBRARY( libvncclient SHARED ${aqemu_headers} ${aqemu_sources} )
-	
-	INCLUDE_DIRECTORIES( ${VNCCLIENT_INCLUDE_DIRS} ${LIBVNCCLIENT_INCLUDE_DIR} )
-ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
+#IF( NOT WITHOUT_EMBEDDED_DISPLAY )
+#	FIND_PACKAGE( LibVNCServer REQUIRED )
+#	
+#	SET( aqemu_headers ${aqemu_headers} Embedded_Display/Machine_View.h Embedded_Display/remoteview.h
+#										Embedded_Display/vncclientthread.h Embedded_Display/vncview.h )
+#	
+#	SET( aqemu_sources ${aqemu_sources} Embedded_Display/Machine_View.cpp Embedded_Display/remoteview.cpp
+#										Embedded_Display/vncclientthread.cpp Embedded_Display/vncview.cpp )
+#	
+#	ADD_DEFINITIONS( -DVNC_DISPLAY -DQTONLY )
+#	ADD_LIBRARY( libvncclient SHARED ${aqemu_headers} ${aqemu_sources} )
+#	
+#	INCLUDE_DIRECTORIES( ${VNCCLIENT_INCLUDE_DIRS} ${LIBVNCCLIENT_INCLUDE_DIR} )
+#ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
 
 # MOC and other Qt stuff
 #QT5_WRAP_UI( ui_headers ${aqemu_ui} )
