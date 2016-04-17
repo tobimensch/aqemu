@@ -161,26 +161,22 @@ FIND_PACKAGE( Qt5Network )
 FIND_PACKAGE( Qt5Test )
 
 # Embedded VNC display
-#IF( NOT WITHOUT_EMBEDDED_DISPLAY )
-#	FIND_PACKAGE( LibVNCServer REQUIRED )
-#	
-#	SET( aqemu_headers ${aqemu_headers} Embedded_Display/Machine_View.h Embedded_Display/remoteview.h
-#										Embedded_Display/vncclientthread.h Embedded_Display/vncview.h )
-#	
-#	SET( aqemu_sources ${aqemu_sources} Embedded_Display/Machine_View.cpp Embedded_Display/remoteview.cpp
-#										Embedded_Display/vncclientthread.cpp Embedded_Display/vncview.cpp )
-#	
-#	ADD_DEFINITIONS( -DVNC_DISPLAY -DQTONLY )
-#	ADD_LIBRARY( libvncclient SHARED ${aqemu_headers} ${aqemu_sources} )
-#	
-#	INCLUDE_DIRECTORIES( ${VNCCLIENT_INCLUDE_DIRS} ${LIBVNCCLIENT_INCLUDE_DIR} )
-#ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
-
-# MOC and other Qt stuff
-#QT5_WRAP_UI( ui_headers ${aqemu_ui} )
-#QT5_WRAP_CPP( moc_srcs ${aqemu_headers} )
-#QT5_ADD_RESOURCES( moc_srcs ${aqemu_resouces} )
-
+IF( NOT WITHOUT_EMBEDDED_DISPLAY )
+	FIND_PACKAGE( LibVNCServer REQUIRED )
+	
+	SET( aqemu_headers ${aqemu_headers} Embedded_Display/Machine_View.h Embedded_Display/remoteview.h
+										Embedded_Display/vncclientthread.h Embedded_Display/vncview.h )
+	
+	SET( aqemu_sources ${aqemu_sources} Embedded_Display/Machine_View.cpp Embedded_Display/remoteview.cpp
+										Embedded_Display/vncclientthread.cpp Embedded_Display/vncview.cpp )
+	
+	ADD_DEFINITIONS( -DVNC_DISPLAY -DQTONLY )
+	#ADD_LIBRARY( libvncclient SHARED ${aqemu_headers} ${aqemu_sources} )
+	
+	#INCLUDE_DIRECTORIES( ${VNCCLIENT_INCLUDE_DIRS} ${LIBVNCCLIENT_INCLUDE_DIR} Qt5::Widgets
+    #Qt5::Network
+    #Qt5::Test)
+ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
 
 # TODO: port from Qt4 to Qt5
 # For translation
@@ -191,20 +187,6 @@ FIND_PACKAGE( Qt5Test )
 #ENDIF( UPDATE_TRANSLATIONS )
 
 ADD_CUSTOM_TARGET( translations_target DEPENDS ${qm_files} )
-
-
-# Building
-#INCLUDE_DIRECTORIES(
-#    ${QT_INCLUDES}
-#    ${CMAKE_CURRENT_BINARY_DIR}
-#    ${CMAKE_CURRENT_SOURCE_DIR}
-#    ${QT_INCLUDE_DIR}
-#    ${CMAKE_BINARY_DIR}
-#    ${CMAKE_SOURCE_DIR}
-#    ${QT_QTNETWORK_INCLUDE_DIR}
-#    ${QT_QTCORE_INCLUDE_DIR}
-#    ${QT_QTTEST_INCLUDE_DIR}
-#)
 
 IF( COMMAND CMAKE_POLICY )
 	CMAKE_POLICY( SET CMP0003 NEW )
