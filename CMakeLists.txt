@@ -153,12 +153,15 @@ SET( files_to_translate ${files_to_translate} ${aqemu_headers} ${aqemu_sources} 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
+# Instruct CMake to run uic automatically when needed.
+SET(CMAKE_AUTOUIC ON)
 
 # Check Qt
 FIND_PACKAGE( Qt5Core )
 FIND_PACKAGE( Qt5Widgets )
 FIND_PACKAGE( Qt5Network )
 FIND_PACKAGE( Qt5Test )
+FIND_PACKAGE( Qt5PrintSupport )
 
 # Embedded VNC display
 IF( NOT WITHOUT_EMBEDDED_DISPLAY )
@@ -207,6 +210,7 @@ TARGET_LINK_LIBRARIES( aqemu
 	Qt5::Widgets
     Qt5::Network
     Qt5::Test
+    Qt5::PrintSupport
 )
 
 # Embedded VNC display
