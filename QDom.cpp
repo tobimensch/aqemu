@@ -79,7 +79,7 @@ QList<QDomElement> QDomElement::childNodes()
     if ( element )
     {
         QList<QDomElement> list;
-        for (auto el = element->FirstChildElement(); el = el->NextSiblingElement();)
+        for (auto el = element->FirstChildElement(); (el = el->NextSiblingElement());)
         {
             list.append(el);
         }
@@ -110,7 +110,7 @@ QString QDomElement::attribute(const QString& s)
     if ( element )
         return element->Attribute(s.toLatin1());
     else
-        return QString();
+        return QString("");
 }
 
 const QString QDomElement::text() const
@@ -118,7 +118,7 @@ const QString QDomElement::text() const
     if ( element )
         return element->GetText();
     else
-        return QString();
+        return QString("");
 }
 
 bool QDomElement::isNull()
@@ -128,6 +128,12 @@ bool QDomElement::isNull()
     {
         if ( element->NoChildren() )
         {
+            if ( element->GetText() != NULL && strcmp(element->GetText(),"") != 0 )
+                return false;
+            else if ( element->FirstAttribute() != NULL )
+                return false;
+            else if  ( tagName() != "" )
+                return false;
             return true;
         }
         else
@@ -142,7 +148,7 @@ QString QDomElement::tagName()
     if ( element )
         return element->Name();
     else
-        return QString();
+        return QString("");
 }
 
 //QDomNode
@@ -171,6 +177,21 @@ bool QDomNode::isNull()
     {
         if ( node->NoChildren() )
         {
+            auto test =  node->ToElement();
+            if ( test != NULL )
+            {
+                if ( test->GetText() != NULL && strcmp(test->GetText(),"") != 0 )
+                    return false;
+                else if ( test->FirstAttribute() != NULL )
+                    return false;
+                else if ( test->Name() != NULL )
+                    return false;
+                else
+                    return true;
+            }
+            auto test2 = node->ToText();
+            if ( test2 != NULL )
+                return false;
             return true;
         }
         else
@@ -257,7 +278,7 @@ void QDomDocument::save(QTextStream& stream,int)
 
 QDomProcessingInstruction QDomDocument::createProcessingInstruction(const QString&, const QString&)
 {
-    //TODO
+    return QDomProcessingInstruction();
 }
 
 bool QDomDocument::setContent(QFile* file, bool b, QString* s, int* i, int* i2)
