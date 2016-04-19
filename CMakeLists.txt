@@ -144,7 +144,13 @@ SET( aqemu_ui
 	VNC_Password_Window.ui
 )
 
-SET( aqemu_resouces shared_images.qrc )
+SET( aqemu_qrc 
+    shared_images.qrc
+    oxygen_icons.qrc
+    images.qrc
+    crystalsvg_icons.qrc
+)
+
 SET( translations German.ts Russian.ts Ukrainian.ts French.ts English.ts )
 
 SET( files_to_translate ${files_to_translate} ${aqemu_headers} ${aqemu_sources} ${aqemu_ui} )
@@ -155,6 +161,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 # Instruct CMake to run uic automatically when needed.
 SET(CMAKE_AUTOUIC ON)
+# Instruct CMake to run rcc automatically when needed.
+SET(CMAKE_AUTORCC ON)
 
 # Check Qt
 FIND_PACKAGE( Qt5Core )
@@ -200,6 +208,7 @@ ADD_EXECUTABLE( aqemu
 	${ui_headers}
 	${moc_srcs}
 	${qm_files}
+    ${aqemu_qrc}
 )
 
 # Require C++-11 standard
