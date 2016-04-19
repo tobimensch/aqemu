@@ -651,8 +651,8 @@ bool Old_Network_Widget::Net_Card_is_Valid( int index )
 		
 		if( ! rx_ip.exactMatch(Network_Cards[index].Get_IP_Address()) )
 		{
-			if( ! Network_Cards[index].Get_Net_Mode() == VM::Net_Mode_Tcplisten &&
-				Network_Cards[index].Get_IP_Address().isEmpty() )
+			if( ! ( Network_Cards[index].Get_Net_Mode() == VM::Net_Mode_Tcplisten &&
+				Network_Cards[index].Get_IP_Address().isEmpty() ))
 			{
 				AQGraphic_Warning( tr("Error!"),
 									tr("IP Address in Card ") + QString::number(index+1) + tr(" Invalid!") );
