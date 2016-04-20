@@ -200,7 +200,7 @@ class Main_Window: public QMainWindow
 		
 		void Connect_Signals();
 		
-		const QMap<QString, Available_Devices> &Get_Devices_Info( bool *ok ) const;
+		const QMap<QString, Available_Devices> Get_Devices_Info( bool *ok ) const;
 		Available_Devices Get_Current_Machine_Devices( bool *ok ) const;
 		
 		bool Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm );

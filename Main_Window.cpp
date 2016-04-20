@@ -616,11 +616,11 @@ void Main_Window::Connect_Signals()
 			 this, SLOT(VM_Changet()) );
 }
 
-const QMap<QString, Available_Devices> &Main_Window::Get_Devices_Info( bool *ok ) const
+const QMap<QString, Available_Devices> Main_Window::Get_Devices_Info( bool *ok ) const
 {
 	// Get current emulator
 	Emulator curEmul;
-	static QMap<QString, Available_Devices> retList;
+	QMap<QString, Available_Devices> retList;
 	
 	if( ui.CB_Emulator_Version->currentIndex() > 0 )
 	{
