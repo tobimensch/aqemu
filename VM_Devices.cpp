@@ -35,6 +35,8 @@
 #include "HDD_Image_Info.h"
 #include "System_Info.h"
 
+using namespace TinyXML2QDomWrapper;
+
 // Available_Devices ---------------------------------------------------------
 
 Available_Devices::Available_Devices()

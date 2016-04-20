@@ -48,6 +48,8 @@
 #include "Emulator_Control_Window.h"
 #include "System_Info.h"
 
+using namespace TinyXML2QDomWrapper;
+
 // VM Class -----------------------------------------------------------------
 
 Virtual_Machine::Virtual_Machine()

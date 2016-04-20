@@ -23,6 +23,7 @@
 
 #include "QDom.h"
 
+using namespace TinyXML2QDomWrapper;
 //QDomText
 
 QDomText::QDomText()

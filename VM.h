@@ -448,8 +448,8 @@ class Virtual_Machine: public QObject
 		// for Emulator_Control_Window
 		void Execute_Emu_Ctl_Command( const QString &com );
 		
-		VM_Nativ_Storage_Device Load_VM_Nativ_Storage_Device( const QDomElement &Second_Element ) const;
-		void Save_VM_Nativ_Storage_Device( QDomDocument &New_Dom_Document, QDomElement &Dom_Element,
+		VM_Nativ_Storage_Device Load_VM_Nativ_Storage_Device( const TXML2QDOM::QDomElement &Second_Element ) const;
+		void Save_VM_Nativ_Storage_Device( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
 										   const VM_Nativ_Storage_Device &device ) const;
 		
 	private:
@@ -462,7 +462,7 @@ class Virtual_Machine: public QObject
 
 		VM::VM_State State; // Saved, Running, etc...
 		VM::VM_State Old_State;
-		QDomDocument VM_Dom_Document; // vm xml file
+		TXML2QDOM::QDomDocument VM_Dom_Document; // vm xml file
 		QString VM_XML_File_Path; // for load and save
 		QString Start_Snapshot_Tag;
 		bool Load_Mode;
