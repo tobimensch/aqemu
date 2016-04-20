@@ -246,6 +246,13 @@ QDomDocument::QDomDocument(const QString&)
     //TODO
 }
 
+QDomDocument::~QDomDocument()
+{
+    /* //TODO: tried to fix memory leak, but leads to segfault
+    delete document;
+    document = nullptr; */
+}
+
 void QDomDocument::appendChild(const QDomText& t)
 {
     if ( document )

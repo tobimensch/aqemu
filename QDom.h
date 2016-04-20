@@ -94,6 +94,7 @@ class QDomDocument : public QDomNode
 
     public:
         QDomDocument();
+        ~QDomDocument();
         void appendChild(const QDomText&);
         void appendChild(const QDomElement&);
         void appendChild(const QDomProcessingInstruction&);
