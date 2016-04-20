@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2008-2010 Andrey Rijov <ANDron142@yandex.ru>
+** Copyright (C) 2016 Tobias Gläßer (Qt5 port)
 **
 ** This file is part of AQEMU.
 **
@@ -52,6 +53,7 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	"<br>Andrey Rijov (aka RDron) - Author\n"
 	
 	"<br><br><b>Contributors:</b>\n"
+	"<br>Tobias Gläßer - Qt5 port\n"
 	"<br>Max Brazhnikov - FreeBSD Port\n"
 	"<br>Boris Savelev - ALTLinux Package\n"
 	"<br>Denis Smirnov (aka reMiND) - Arch Linux Package and Other Help\n"
