@@ -1180,6 +1180,32 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	
 	VM_Element.appendChild( Dom_Element );
 	
+	// Audio_HDA
+	Sec_Element = New_Dom_Document.createElement( "Audio_HDA" );
+	Dom_Element.appendChild( Sec_Element );
+	
+	if( Audio_Card.Audio_HDA )
+		Dom_Text = New_Dom_Document.createTextNode( "true" );
+	else
+		Dom_Text = New_Dom_Document.createTextNode( "false" );
+	
+	Sec_Element.appendChild( Dom_Text );
+	
+	VM_Element.appendChild( Dom_Element );
+	
+	// Audio_cs4231a
+	Sec_Element = New_Dom_Document.createElement( "Audio_cs4231a" );
+	Dom_Element.appendChild( Sec_Element );
+	
+	if( Audio_Card.Audio_AC97 )
+		Dom_Text = New_Dom_Document.createTextNode( "true" );
+	else
+		Dom_Text = New_Dom_Document.createTextNode( "false" );
+	
+	Sec_Element.appendChild( Dom_Text );
+	
+	VM_Element.appendChild( Dom_Element );
+	
 	// Check Free RAM
 	Dom_Element = New_Dom_Document.createElement( "Remove_RAM_Size_Limitation" );
 	VM_Element.appendChild( Dom_Element );
@@ -3743,6 +3769,12 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			// Audio_AC97
 			snd_card.Audio_AC97 = Second_Element.firstChildElement("Audio_AC97").text() == "true";
 			
+			// Audio_HDA
+			snd_card.Audio_HDA = Second_Element.firstChildElement("Audio_HDA").text() == "true";
+			
+			// Audio_cs4231
+			snd_card.Audio_cs4231a = Second_Element.firstChildElement("Audio_cs4231a").text() == "true";
+			
 			Set_Audio_Cards( snd_card );
 			
 			// Check Free RAM
@@ -5163,6 +5195,8 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	if( Audio_Card.Audio_PC_Speaker && Current_Emulator_Devices.Audio_Card_List.Audio_PC_Speaker ) audio_list << "pcspk";
 	if( Audio_Card.Audio_GUS && Current_Emulator_Devices.Audio_Card_List.Audio_GUS ) audio_list << "gus";
 	if( Audio_Card.Audio_AC97 && Current_Emulator_Devices.Audio_Card_List.Audio_AC97 ) audio_list << "ac97";
+	if( Audio_Card.Audio_HDA && Current_Emulator_Devices.Audio_Card_List.Audio_HDA ) audio_list << "hda";
+	if( Audio_Card.Audio_cs4231a && Current_Emulator_Devices.Audio_Card_List.Audio_cs4231a ) audio_list << "cs4231a";
 	
 	if( audio_list.count() > 0 )
 	{

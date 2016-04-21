@@ -44,7 +44,7 @@ class VM
 		// Virtual Machine State
 		enum VM_State { VMS_Running, VMS_Power_Off, VMS_Pause, VMS_Saved, VMS_In_Error };
 		
-		// x86 audio cars ( one or more )
+		// x86 audio cards ( one or more )
 		class Sound_Cards
 		{
 			public:
@@ -54,10 +54,12 @@ class VM
 				bool Audio_PC_Speaker;
 				bool Audio_GUS;
 				bool Audio_AC97;
+				bool Audio_HDA;
+				bool Audio_cs4231a;
 				
 				Sound_Cards()
 				{
-					Audio_sb16 = Audio_es1370 = Audio_Adlib = Audio_PC_Speaker = Audio_GUS = Audio_AC97 = false;
+					Audio_sb16 = Audio_es1370 = Audio_Adlib = Audio_PC_Speaker = Audio_GUS = Audio_AC97 = Audio_HDA = Audio_cs4231a = false;
 				}
 				
 				bool operator==( const Sound_Cards &v ) const
@@ -67,7 +69,9 @@ class VM
 						Audio_Adlib == v.Audio_Adlib &&
 						Audio_PC_Speaker == v.Audio_PC_Speaker &&
 						Audio_GUS == v.Audio_GUS &&
-						Audio_AC97 == v.Audio_AC97 )
+						Audio_AC97 == v.Audio_AC97 &&
+						Audio_HDA == v.Audio_HDA &&
+						Audio_cs4231a == v.Audio_cs4231a )
 					{
 						return true;
 					}

@@ -1170,6 +1170,36 @@
                  </property>
                 </widget>
                </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="CH_HDA">
+                 <property name="text">
+                  <string>Intel HDA</string>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <spacer>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>21</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="2" column="2">
+                <widget class="QCheckBox" name="CH_cs4231a">
+                 <property name="text">
+                  <string>cs4231a</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </item>
@@ -4736,8 +4766,10 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   <tabstop>CH_Remove_RAM_Size_Limitation</tabstop>
   <tabstop>CH_sb16</tabstop>
   <tabstop>CH_AC97</tabstop>
+  <tabstop>CH_HDA</tabstop>
   <tabstop>CH_es1370</tabstop>
   <tabstop>CH_GUS</tabstop>
+  <tabstop>CH_cs4231a</tabstop>
   <tabstop>CH_Adlib</tabstop>
   <tabstop>CH_PCSPK</tabstop>
   <tabstop>CH_Fullscreen</tabstop>

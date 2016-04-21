@@ -326,6 +326,12 @@ void Main_Window::Connect_Signals()
 	connect( ui.CH_PCSPK, SIGNAL(clicked()),
 			 this, SLOT(VM_Changet()) );
 	
+	connect( ui.CH_HDA, SIGNAL(clicked()),
+			 this, SLOT(VM_Changet()) );
+	
+	connect( ui.CH_cs4231a, SIGNAL(clicked()),
+			 this, SLOT(VM_Changet()) );
+	
 	connect( ui.CH_Fullscreen, SIGNAL(clicked()),
 			 this, SLOT(VM_Changet()) );
 	
@@ -810,6 +816,12 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	
 	if( ui.CH_AC97->isChecked() ) snd_card.Audio_AC97 = true;
 	else snd_card.Audio_AC97 = false;
+	
+	if( ui.CH_HDA->isChecked() ) snd_card.Audio_HDA = true;
+	else snd_card.Audio_HDA = false;
+	
+	if( ui.CH_cs4231a->isChecked() ) snd_card.Audio_cs4231a = true;
+	else snd_card.Audio_cs4231a = false;
 	
 	tmp_vm->Set_Audio_Cards( snd_card );
 	
@@ -1499,6 +1511,12 @@ void Main_Window::Update_VM_Ui()
 	if( tmp_vm->Get_Audio_Cards().Audio_AC97 ) ui.CH_AC97->setChecked( true );
 	else ui.CH_AC97->setChecked( false );
 	
+	if( tmp_vm->Get_Audio_Cards().Audio_HDA ) ui.CH_HDA->setChecked( true );
+	else ui.CH_HDA->setChecked( false );
+	
+	if( tmp_vm->Get_Audio_Cards().Audio_cs4231a ) ui.CH_cs4231a->setChecked( true );
+	else ui.CH_cs4231a->setChecked( false );
+	
 	// RAM
 	if( tmp_vm->Get_Memory_Size() < 1 )
 	{
@@ -2117,7 +2135,8 @@ void Main_Window::Update_Info_Text( int info_mode )
 			cell_cursor = cell.firstCursorPosition();
 			
 			if( ui.CH_sb16->isChecked() || ui.CH_es1370->isChecked() || ui.CH_Adlib->isChecked() ||
-				ui.CH_AC97->isChecked() || ui.CH_GUS->isChecked()	 || ui.CH_PCSPK->isChecked() )
+				ui.CH_AC97->isChecked() || ui.CH_GUS->isChecked()	 || ui.CH_PCSPK->isChecked() ||
+				ui.CH_HDA->isChecked() || ui.CH_cs4231a->isChecked() )
 			{
 				cell_cursor.insertText( tr("Yes"), format );
 			}
@@ -6099,6 +6118,12 @@ void Main_Window::Apply_Emulator( int mode )
 			
 			if( curComp.Audio_Card_List.Audio_PC_Speaker ) ui.CH_PCSPK->setEnabled( true );
 			else ui.CH_PCSPK->setEnabled( false );
+			
+			if( curComp.Audio_Card_List.Audio_HDA ) ui.CH_HDA->setEnabled( true );
+			else ui.CH_HDA->setEnabled( false );
+			
+			if( curComp.Audio_Card_List.Audio_cs4231a ) ui.CH_cs4231a->setEnabled( true );
+			else ui.CH_cs4231a->setEnabled( false );
 			
 			// Other Options
 			Update_Disabled_Controls();

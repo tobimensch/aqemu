@@ -22,6 +22,8 @@
             <Audio_PC_Speaker>false</Audio_PC_Speaker>
             <Audio_GUS>false</Audio_GUS>
             <Audio_AC97>false</Audio_AC97>
+            <Audio_HDA>false</Audio_HDA>
+            <Audio_cs4231a>false</Audio_cs4231a>
         </Audio_Cards>
         <Check_Free_RAM>false</Check_Free_RAM>
         <Memory_Size>192</Memory_Size>

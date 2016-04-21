@@ -2363,10 +2363,12 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		
 		if( qemu_dev_name == "sb16" ) tmp_dev.Audio_Card_List.Audio_sb16 = true;
 		else if( qemu_dev_name == "es1370" ) tmp_dev.Audio_Card_List.Audio_es1370 = true;
-		else if( qemu_dev_name == "gus" ) tmp_dev.Audio_Card_List.Audio_Adlib = true;
-		else if( qemu_dev_name == "adlib" ) tmp_dev.Audio_Card_List.Audio_PC_Speaker = true;
-		else if( qemu_dev_name == "pcspk" ) tmp_dev.Audio_Card_List.Audio_GUS = true;
+		else if( qemu_dev_name == "gus" ) tmp_dev.Audio_Card_List.Audio_GUS = true;
+		else if( qemu_dev_name == "adlib" ) tmp_dev.Audio_Card_List.Audio_Adlib = true;
+		else if( qemu_dev_name == "pcspk" ) tmp_dev.Audio_Card_List.Audio_PC_Speaker = true;
 		else if( qemu_dev_name == "ac97" ) tmp_dev.Audio_Card_List.Audio_AC97 = true;
+		else if( qemu_dev_name == "hda" ) tmp_dev.Audio_Card_List.Audio_HDA = true;
+		else if( qemu_dev_name == "cs4231a" ) tmp_dev.Audio_Card_List.Audio_cs4231a = true;
 		else
 		{
 			if( ! qemu_dev_name.isEmpty() )

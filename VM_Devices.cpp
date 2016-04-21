@@ -427,6 +427,8 @@ bool Emulator::Load( const QString &path )
 			tmpDev.Audio_Card_List.Audio_PC_Speaker = (thirdElement.firstChildElement("PC_Speaker").text() == "yes");
 			tmpDev.Audio_Card_List.Audio_GUS = (thirdElement.firstChildElement("GUS").text() == "yes");
 			tmpDev.Audio_Card_List.Audio_AC97 = (thirdElement.firstChildElement("AC97").text() == "yes");
+			tmpDev.Audio_Card_List.Audio_HDA = (thirdElement.firstChildElement("HDA").text() == "yes");
+			tmpDev.Audio_Card_List.Audio_cs4231a = (thirdElement.firstChildElement("cs4231a").text() == "yes");
 			
 			// Video Cards
 			tmpDev.Video_Card_List.clear();
@@ -780,6 +782,16 @@ bool Emulator::Save() const
 		
 		thirdElement = domDocument.createElement( "AC97" );
 		domText = domDocument.createTextNode( (tmpDev.Audio_Card_List.Audio_AC97 ? "yes" : "no") );
+		thirdElement.appendChild( domText );
+		deviceElement.appendChild( thirdElement );
+		
+		thirdElement = domDocument.createElement( "HDA" );
+		domText = domDocument.createTextNode( (tmpDev.Audio_Card_List.Audio_HDA ? "yes" : "no") );
+		thirdElement.appendChild( domText );
+		deviceElement.appendChild( thirdElement );
+		
+		thirdElement = domDocument.createElement( "cs4231a" );
+		domText = domDocument.createTextNode( (tmpDev.Audio_Card_List.Audio_cs4231a ? "yes" : "no") );
 		thirdElement.appendChild( domText );
 		deviceElement.appendChild( thirdElement );
 		
