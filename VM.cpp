@@ -4565,7 +4565,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				else
 					AQError( "bool Virtual_Machine::Load_VM( const QString &file_name )", "SPICE image compression type invalid!" );
 				
-				SPICE.Use_Video_Stream_Compression( Second_Element.firstChildElement( "Use_Video_Stream_Compression" ).text() == "false" );
+				SPICE.Use_Video_Stream_Compression( Second_Element.firstChildElement( "Use_Video_Stream_Compression" ).text() != "false" );
 				
 				SPICE.Use_Renderer( Second_Element.firstChildElement( "Use_Renderer" ).text() == "true" );
 				
