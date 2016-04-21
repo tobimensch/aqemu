@@ -40,6 +40,7 @@
 
 class Ports_Tab_Widget;
 class Device_Manager_Widget;
+class Folder_Sharing_Widget;
 class Network_Card_Widget;
 
 class Main_Window: public QMainWindow
@@ -262,6 +263,7 @@ class Main_Window: public QMainWindow
 		
 		Ports_Tab_Widget *Ports_Tab;
 		Device_Manager_Widget *Dev_Manager;
+        Folder_Sharing_Widget* Folder_Sharing;
 		
 		Network_Widget *New_Network_Settings_Widget;
 		Old_Network_Widget *Old_Network_Settings_Widget;

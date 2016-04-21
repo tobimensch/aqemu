@@ -33,6 +33,7 @@
 #include "Main_Window.h"
 #include "Delete_VM_Files_Window.h"
 #include "Device_Manager_Widget.h"
+#include "Folder_Sharing_Widget.h"
 #include "Select_Icon_Window.h"
 #include "Settings_Window.h"
 #include "About_Window.h"
@@ -150,6 +151,8 @@ Main_Window::Main_Window( QWidget *parent )
 	ui.Tabs->insertTab( 5, Ports_Tab, tr("Ports") );
 	
 	Dev_Manager = new Device_Manager_Widget();
+	Folder_Sharing = new Folder_Sharing_Widget();
+	ui.Tabs->insertTab( 6, Folder_Sharing, tr("Folder Sharing") );	
 	
 	// This For Network Redirections Table
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
@@ -3611,6 +3614,7 @@ void Main_Window::Set_Widgets_State( bool enabled )
 	ui.Tab_HDD->setEnabled( enabled );
 	ui.Tab_Removable_Disks->setEnabled( enabled );
 	Dev_Manager->Set_Enabled( enabled );
+	Folder_Sharing->Set_Enabled( enabled );
 	Ports_Tab->setEnabled( enabled );
 	
 	// Tab network

@@ -2030,6 +2030,65 @@ void VM_Storage_Device::Set_Nativ_Device( const VM_Nativ_Storage_Device &device 
 
 //===========================================================================
 
+
+// VM_Shared_Folder Class --------------------------------------------------
+
+VM_Shared_Folder::VM_Shared_Folder()
+{
+	Enabled = false;
+	Folder = "";
+}
+
+VM_Shared_Folder::VM_Shared_Folder( const VM_Shared_Folder &device )
+{
+	Enabled = device.Get_Enabled();
+	Folder = device.Get_Folder();
+}
+
+VM_Shared_Folder::VM_Shared_Folder( bool enabled, const QString &folder )
+{
+	Enabled = enabled;
+	Folder = folder;
+}
+
+bool VM_Shared_Folder::operator==( const VM_Shared_Folder &folder ) const
+{
+	if( Enabled == folder.Get_Enabled() &&
+		Folder == folder.Get_Folder() )
+	{
+		return true;
+	}
+	else return false;
+}
+
+bool VM_Shared_Folder::operator!=( const VM_Shared_Folder &folder ) const
+{
+	return ! operator==( folder );
+}
+
+bool VM_Shared_Folder::Get_Enabled() const
+{
+	return Enabled;
+}
+
+void VM_Shared_Folder::Set_Enabled( bool enabled )
+{
+	Enabled = enabled;
+}
+
+const QString &VM_Shared_Folder::Get_Folder() const
+{
+	return Folder;
+}
+
+void VM_Shared_Folder::Set_Folder( const QString &folder )
+{
+	Folder = folder;
+}
+
+//===========================================================================
+
+
 // VM_HDD Class -------------------------------------------------------------
 
 VM_HDD::VM_HDD() : VM_Storage_Device()

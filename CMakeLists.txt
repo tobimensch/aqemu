@@ -46,6 +46,7 @@ SET( aqemu_headers
 	Emulator_Control_Window.h
 	Error_Log_Window.h
 	First_Start_Wizard.h
+    Folder_Sharing_Widget.h
 	HDD_Image_Info.h
 	Main_Window.h
 	Monitor_Window.h
@@ -87,6 +88,7 @@ SET( aqemu_sources
 	Emulator_Control_Window.cpp
 	Error_Log_Window.cpp
 	First_Start_Wizard.cpp
+    Folder_Sharing_Widget.cpp
 	HDD_Image_Info.cpp
 	main.cpp
 	Main_Window.cpp
@@ -127,6 +129,7 @@ SET( aqemu_ui
 	Emulator_Control_Window.ui
 	Error_Log_Window.ui
 	First_Start_Wizard.ui
+    Folder_Sharing_Widget.ui
 	Main_Window.ui
 	Monitor_Window.ui
 	Network_Widget.ui

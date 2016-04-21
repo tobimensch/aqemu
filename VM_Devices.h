@@ -534,6 +534,29 @@ class VM_Storage_Device
 		VM_Nativ_Storage_Device Nativ_Device;
 };
 
+
+// Virtual Machine Shared Folder (shared between host and guest)
+class VM_Shared_Folder
+{
+	public:
+		VM_Shared_Folder();
+		VM_Shared_Folder( const VM_Shared_Folder &device );
+		VM_Shared_Folder( bool enabled, const QString &folder );
+		
+		bool operator==( const VM_Shared_Folder &device ) const;
+		bool operator!=( const VM_Shared_Folder &device ) const;
+		
+		bool Get_Enabled() const;
+		void Set_Enabled( bool enabled );
+		
+		const QString &Get_Folder() const;
+		void Set_Folder( const QString &folder );
+
+	protected:
+		bool Enabled;
+		QString Folder;
+};
+
 // Virtual Machine Hard Drive Device
 class VM_HDD: public VM_Storage_Device
 {
