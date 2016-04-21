@@ -624,6 +624,10 @@ void Main_Window::Connect_Signals()
 	
 	connect( ui.Edit_Linux_Command_Line, SIGNAL(textChanged(const QString &)),
 			 this, SLOT(VM_Changet()) );
+
+
+	connect( Folder_Sharing, SIGNAL(Folder_Changed()),
+	         this, SLOT(VM_Changet()) );
 }
 
 const QMap<QString, Available_Devices> Main_Window::Get_Devices_Info( bool *ok ) const
@@ -907,6 +911,10 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 		tmp_hd.Set_Nativ_Device( Nativ_HDD );
 		tmp_vm->Set_HDD( tmp_hd );
 	}
+
+
+    // Shared Folders
+	tmp_vm->Set_Shared_Folders_List( Folder_Sharing->Shared_Folders );
 	
 	// Network Tab
 	tmp_vm->Set_Use_Network( ui.CH_Use_Network->isChecked() );
@@ -1589,6 +1597,10 @@ void Main_Window::Update_VM_Ui()
 		HDD_Info->Update_Disk_Info( tmp_vm->Get_HDD().Get_File_Name() );
 		Nativ_HDD = tmp_vm->Get_HDD().Get_Nativ_Device();
 	}
+
+    // Shared Folders
+
+	Folder_Sharing->Set_VM( *tmp_vm ); // FIXME Use it pointer
 	
 	// Network tab. Redirections
 	

@@ -158,6 +158,9 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 	// Storage Devices
 	this->Set_Storage_Devices_List( vm.Get_Storage_Devices_List() );
 	
+	// Shared Folders
+	this->Set_Shared_Folders_List( vm.Get_Shared_Folders_List() );
+
 	// Network Tab
 	this->Use_Network = vm.Get_Use_Network();
 	this->Nativ_Network = vm.Use_Nativ_Network();
@@ -273,6 +276,7 @@ Virtual_Machine::~Virtual_Machine()
 	Boot_Order_List.clear();
 	Snapshots.clear();
 	Storage_Devices.clear();
+	Shared_Folders.clear();
 	Network_Cards.clear();
 	Network_Redirections.clear();
 	USB_Ports.clear();
@@ -564,6 +568,16 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 			}
 		}
 		else return false;
+
+		// Storage Devices
+		if( Shared_Folders.count() == vm.Get_Shared_Folders_List().count() )
+		{
+			for( int sx = 0; sx < Shared_Folders.count(); ++sx )
+			{
+				if( Shared_Folders[sx] != vm.Get_Shared_Folders_List()[sx] ) return false;
+			}
+		}
+		else return false;
 		
 		// Network Cards
 		if( Get_Network_Cards_Count() == vm.Get_Network_Cards_Count() )
@@ -725,6 +739,9 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	// Storage Devices
 	this->Set_Storage_Devices_List( vm.Get_Storage_Devices_List() );
 	
+	// Shared Folders
+	this->Set_Shared_Folders_List( vm.Get_Shared_Folders_List() );
+
 	// Network Tab
 	this->Use_Network = vm.Get_Use_Network();
 	this->Nativ_Network = vm.Use_Nativ_Network();
@@ -1691,6 +1708,31 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( QString::number(0) );
 		Dom_Element.appendChild( Dom_Text );
 	}
+
+	// Shared Folders
+	if( true /*(template_mode == false || (template_mode == true && Template_Opts & Create_Template_Window::Template_Save_Shared_Folders)) //TODO: not using template mode, not sure if it's needed */ )
+	{
+		// Storage Device Count
+		Dom_Element = New_Dom_Document.createElement( "Shared_Folder_Count" );
+		VM_Element.appendChild( Dom_Element );
+		Dom_Text = New_Dom_Document.createTextNode( QString::number(Shared_Folders.count()) );
+		Dom_Element.appendChild( Dom_Text );
+		
+		for( int sx = 0; sx < Shared_Folders.count(); ++sx )
+		{
+			Dom_Element = New_Dom_Document.createElement( "Shared_Folder_" + QString::number(sx) );
+			Save_VM_Shared_Folder( New_Dom_Document, Dom_Element, Shared_Folders[sx] );
+			VM_Element.appendChild( Dom_Element );
+		}
+	} /*
+	else
+	{
+		// Not Devices
+		Dom_Element = New_Dom_Document.createElement( "Shared_Folders_Count" );
+		VM_Element.appendChild( Dom_Element );
+		Dom_Text = New_Dom_Document.createTextNode( QString::number(0) );
+		Dom_Element.appendChild( Dom_Text );
+	}*/
 	
 	// Snapshots
 	if( template_mode )
@@ -4000,7 +4042,18 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				// Add Device
 				Storage_Devices << Load_VM_Nativ_Storage_Device( Second_Element );
 			}
+
+			// Shared Folders
+			int Shared_Folder_Count = Child_Element.firstChildElement( "Shared_Folder_Count" ).text().toInt();
 			
+			for( int sx = 0; sx < Shared_Folder_Count; ++sx )
+			{
+				Second_Element = Child_Element.firstChildElement( "Shared_Folder_" + QString::number(sx) );
+				
+				// Add Device
+				Shared_Folders << Load_VM_Shared_Folder( Second_Element );
+			}
+						
 			// Snapshots
 			int Snapshots_Count = Child_Element.firstChildElement( "Snapshots_Count" ).text().toInt();
 			
@@ -4796,6 +4849,18 @@ VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDo
 	return tmp_device;
 }
 
+
+VM_Shared_Folder Virtual_Machine::Load_VM_Shared_Folder( const QDomElement &Second_Element ) const
+{
+	VM_Shared_Folder tmp_device;
+	
+	// Folder Path
+	tmp_device.Set_Folder( Second_Element.firstChildElement("Path").text() );
+	
+	return tmp_device;
+}
+
+
 void Virtual_Machine::Save_VM_Nativ_Storage_Device( QDomDocument &New_Dom_Document, QDomElement &Dom_Element,
 													const VM_Nativ_Storage_Device &device ) const
 {
@@ -5073,6 +5138,18 @@ void Virtual_Machine::Save_VM_Nativ_Storage_Device( QDomDocument &New_Dom_Docume
 	
 	Sec_Element.appendChild( Dom_Text );
 }
+
+void Virtual_Machine::Save_VM_Shared_Folder( QDomDocument &New_Dom_Document, QDomElement &Dom_Element,
+													const VM_Shared_Folder &shared_folder ) const
+{
+	// Folder Path
+	QDomElement Sec_Element = New_Dom_Document.createElement( "Path" );
+	Dom_Element.appendChild( Sec_Element );
+	QDomText Dom_Text = New_Dom_Document.createTextNode( shared_folder.Get_Folder() );	
+	
+	Sec_Element.appendChild( Dom_Text );
+}
+
 
 bool Virtual_Machine::Save_VM()
 {
@@ -5494,6 +5571,15 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		}
 	}
 	
+    // Shared Folders //TODO
+	if( Shared_Folders.count() > 0 )
+	{
+		for( int ix = 0; ix < Shared_Folders.count(); ++ix )
+		{
+			Args << Build_Shared_Folder_Args( Shared_Folders[ix], ix,  Build_QEMU_Args_for_Tab_Info );
+		}
+	}
+
 	// Boot Device
 	if( Current_Emulator_Devices.PSO_Boot_Order )
 	{
@@ -6708,6 +6794,34 @@ QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device de
 	return args;
 }
 
+QStringList Virtual_Machine::Build_Shared_Folder_Args( VM_Shared_Folder folder, int id, bool Build_QEMU_Args_for_Script_Mode )
+{
+	QStringList opt;
+	
+    QString path = folder.Get_Folder();
+
+    //    -virtfs fsdriver,id=[id],path=[path to share],security_model=[mapped|passthrough|none][,writeout=writeout][,readonly]
+    // [,socket=socket|sock_fd=sock_fd],mount_tag=[mount tag]
+
+    opt << "-virtfs";
+ 
+    QStringList virtfs;
+
+    QString driver = "local";    
+
+    virtfs << driver+",id="+QString("shared_folder_dev_")+QString::number(id);
+
+    virtfs << "path="+path;
+
+    virtfs << "security_model=none";
+
+    virtfs << "mount_tag=shared_folder_"+QString::number(id);
+
+    opt << virtfs.join(",");
+
+    return opt;
+}
+
 bool Virtual_Machine::Start()
 {
 	QEMU_Error_Win = new Error_Log_Window();
@@ -7822,6 +7936,11 @@ const QList<VM_Nativ_Storage_Device> &Virtual_Machine::Get_Storage_Devices_List(
 	return Storage_Devices;
 }
 
+const QList<VM_Shared_Folder> &Virtual_Machine::Get_Shared_Folders_List() const
+{
+	return Shared_Folders;
+}
+
 void Virtual_Machine::Set_Storage_Devices_List( const QList<VM_Nativ_Storage_Device> &list )
 {
 	Storage_Devices.clear();
@@ -7829,6 +7948,16 @@ void Virtual_Machine::Set_Storage_Devices_List( const QList<VM_Nativ_Storage_Dev
 	for( int ix = 0; ix < list.count(); ++ix )
 	{
 		Storage_Devices.append( VM_Nativ_Storage_Device(list[ix]) );
+	}
+}
+
+void Virtual_Machine::Set_Shared_Folders_List( const QList<VM_Shared_Folder> &list )
+{
+	Shared_Folders.clear();
+	
+	for( int ix = 0; ix < list.count(); ++ix )
+	{
+		Shared_Folders.append( VM_Shared_Folder(list[ix]) );
 	}
 }
 

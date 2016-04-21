@@ -24,6 +24,7 @@
 #include <QFileInfo>
 #include <QMessageBox>
 #include <QMenu>
+#include <QFileDialog>
 
 #include "Folder_Sharing_Widget.h"
 #include "Add_New_Device_Window.h"
@@ -57,16 +58,14 @@ void Folder_Sharing_Widget::Set_VM( const Virtual_Machine &vm )
 	ui.Folders_List->clear();
 	ui.Label_Connected_To->setText( "" );
 	
-	if( vm.Get_Current_Emulator_Devices()->PSO_Drive ) ui.TB_Add_Folder->setEnabled( true ); 
+	ui.TB_Add_Folder->setEnabled( true ); 
 	
-	//Shared_Folders.clear();
+	Shared_Folders.clear();
 	
-    /*
-	for( int ix = 0; ix < vm.Get_Storage_Folders_List().count(); ++ix )
+	for( int ix = 0; ix < vm.Get_Shared_Folders_List().count(); ++ix )
 	{
-		Shared_Folders << vm.Get_Storage_Folders_List()[ix];
-	} //TODO
-    */
+		Shared_Folders << vm.Get_Shared_Folders_List()[ix];
+	}
 	
 	Update_Icons();
 	Update_Enabled_Actions();
@@ -240,25 +239,20 @@ void Folder_Sharing_Widget::on_Folders_List_itemDoubleClicked( QListWidgetItem *
 
 void Folder_Sharing_Widget::on_actionAdd_Folder_triggered()
 {
-    /*
-	Device_Window = new Add_New_Device_Window();
-	VM_Nativ_Storage_Device tmp_dev;
-	Device_Window->Set_Emulator_Devices( *Current_Machine_Devices );
-	Device_Window->Set_Device( tmp_dev );
-	
-	if( Device_Window->exec() == QDialog::Accepted )
-	{
-		Shared_Folders << Device_Window->Get_Device();
+    QString path = QFileDialog::getExistingDirectory(this, "Select to folder to be shared");
+
+    if ( ! path.isEmpty() )
+    {
+		Shared_Folders << VM_Shared_Folder(true,path);
 		
-		QListWidgetItem *devit = new QListWidgetItem( QIcon(":blockdevice.png"),
-													  Device_Window->Get_Device().Get_QEMU_Device_Name(), ui.Folders_List );
-		devit->setData( 512, "device" + QString::number(Shared_Folders.count() - 1) );
+		QListWidgetItem *devit = new QListWidgetItem( QIcon(":folder-open.png"),
+													  path, ui.Folders_List );
+		devit->setData( 512, "folder" + QString::number(Shared_Folders.count() - 1) );
 		
 		ui.Folders_List->addItem( devit );
 		
 		emit Folder_Changed();
-	}
-    */
+    }
 }
 
 void Folder_Sharing_Widget::on_actionProperties_triggered()
@@ -476,12 +470,12 @@ void Folder_Sharing_Widget::on_actionRemove_triggered()
 	
 	if( mes_ret == QMessageBox::No ) return;
 	
-	/* //TODO
+	 //TODO
         bool found = false;
 	
 	for( int fx = 0; fx < 32; ++fx )
 	{
-		if( ui.Folders_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
+		if( ui.Folders_List->currentItem()->data(512).toString() == "folder" + QString::number(fx) )
 		{
 			found = true;
 			
@@ -491,10 +485,10 @@ void Folder_Sharing_Widget::on_actionRemove_triggered()
 	
 	if( ! found )
 	{
-		AQError( "void Folder_Sharing_Widget::on_actionDelete_triggered()",
+		AQError( "void Folder_Sharing_Widget::on_actionRemove_triggered()",
 				 "Incorrect Device!" );
 		return;
-	}*/
+	}
 	
 	ui.Folders_List->takeItem( ui.Folders_List->currentRow() );
 	

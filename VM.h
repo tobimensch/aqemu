@@ -71,6 +71,7 @@ class Virtual_Machine: public QObject
 		QStringList Build_QEMU_Args_For_Script();
 		
 		QStringList Build_Nativ_Device_Args( VM_Nativ_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode );
+		QStringList Build_Shared_Folder_Args( VM_Shared_Folder folder, int id, bool Build_QEMU_Args_for_Script_Mode );
 		
 		bool Start();
 		void Pause(); // qemu command stop
@@ -228,6 +229,9 @@ class Virtual_Machine: public QObject
 		const QList<VM_Nativ_Storage_Device> &Get_Storage_Devices_List() const;
 		void Set_Storage_Devices_List( const QList<VM_Nativ_Storage_Device> &list );
 		
+		const QList<VM_Shared_Folder> &Get_Shared_Folders_List() const;
+		void Set_Shared_Folders_List( const QList<VM_Shared_Folder> &list );
+
 		bool Get_Use_Network() const;
 		void Set_Use_Network( bool use );
 		
@@ -449,9 +453,12 @@ class Virtual_Machine: public QObject
 		void Execute_Emu_Ctl_Command( const QString &com );
 		
 		VM_Nativ_Storage_Device Load_VM_Nativ_Storage_Device( const TXML2QDOM::QDomElement &Second_Element ) const;
+		VM_Shared_Folder Load_VM_Shared_Folder( const TXML2QDOM::QDomElement &Second_Element ) const;
 		void Save_VM_Nativ_Storage_Device( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
 										   const VM_Nativ_Storage_Device &device ) const;
 		
+		void Save_VM_Shared_Folder( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
+										   const VM_Shared_Folder &device ) const;
 	private:
 		QProcess *QEMU_Process;
 
@@ -517,7 +524,10 @@ class Virtual_Machine: public QObject
 		VM_HDD HDC; // ide2 if cdrom is enabled, hdc be disabled
 		VM_HDD HDD; // ide3
 		QList<VM_Snapshot> Snapshots; // VM State Snapshots
-		QList<VM_Nativ_Storage_Device> Storage_Devices; // For QEMU 0.9.1 Device Style
+		QList<VM_Nativ_Storage_Device> Storage_Devices; // For QEMU 0.8.2 Device Style
+
+        // shared folders
+        QList<VM_Shared_Folder> Shared_Folders;
 		
 		// Network
 		bool Use_Network;
