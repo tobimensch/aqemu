@@ -7832,7 +7832,7 @@ On Disk Size: </source>
         <location filename="Properties_Window.ui" line="81"/>
         <location filename="Properties_Window.ui" line="151"/>
         <location filename="Properties_Window.ui" line="230"/>
-        <source>Advaced settings</source>
+        <source>Advanced settings</source>
         <translation>Дополнительные параметры</translation>
     </message>
 </context>

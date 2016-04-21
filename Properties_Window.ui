@@ -78,7 +78,7 @@
       <item row="1" column="1">
        <widget class="QToolButton" name="TB_FD_Advanced_Settings">
         <property name="text">
-         <string>Advaced settings</string>
+         <string>Advanced settings</string>
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
@@ -148,7 +148,7 @@
       <item row="1" column="1">
        <widget class="QToolButton" name="TB_CDROM_Advanced_Settings">
         <property name="text">
-         <string>Advaced settings</string>
+         <string>Advanced settings</string>
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
@@ -227,7 +227,7 @@
       <item row="2" column="2">
        <widget class="QToolButton" name="TB_HDD_Advanced_Settings">
         <property name="text">
-         <string>Advaced settings</string>
+         <string>Advanced settings</string>
         </property>
         <property name="icon">
          <iconset resource="images.qrc">
