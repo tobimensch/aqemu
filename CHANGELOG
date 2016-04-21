@@ -1,4 +1,16 @@
-2016-04-20 Tobias Gläßer (Version  0.9.0)
+2016-04-20 Tobias Gläßer (Version 0.9.1)
+
+	* Fixed bug where SPICE dialog didn't validate correctly.
+
+	* Applied patches for Intel HDA and CS4231A sound suppport (thanks to Eli Carter and others!)
+
+	* Applied patch for fixing SPICE video stream compression support
+
+	* Applied patch that fixes typo
+
+	* Put QDom* TinyXML2 wrapper into its own namespace. Fixes runtime problems in conjunction with KDE.
+
+2016-04-20 Tobias Gläßer (Version 0.9.0)
 
 	* Ported to Qt5
 
