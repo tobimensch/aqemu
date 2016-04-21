@@ -54,6 +54,7 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	
 	"<br><br><b>Contributors:</b>\n"
 	"<br>Tobias Gläßer - Qt5 port\n"
+	"<br>Eli Carter - Sound card support patches\n"
 	"<br>Max Brazhnikov - FreeBSD Port\n"
 	"<br>Boris Savelev - ALTLinux Package\n"
 	"<br>Denis Smirnov (aka reMiND) - Arch Linux Package and Other Help\n"
