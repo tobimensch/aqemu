@@ -60,6 +60,12 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 	static VM_SPICE spiceSettings;
 	
 	spiceSettings.Use_SPICE( ui.CH_Use_SPICE->isChecked() );
+
+    if ( ! ui.CH_Use_SPICE->isChecked() )
+    {
+        settingsValidated = true;
+        return spiceSettings;
+    }
 	
 	spiceSettings.Set_GXL_Devices_Count( ui.SB_QXL_Num->value() );
 	
