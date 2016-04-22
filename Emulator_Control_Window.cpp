@@ -189,6 +189,8 @@ void Emulator_Control_Window::Set_Current_VM( Virtual_Machine *vm )
 		
 		ui.menuDisconnect->addAction( new_act );
 	}
+
+    setWindowIcon(QIcon(vm->Get_Icon_Path()));
 }
 
 void Emulator_Control_Window::Init()
