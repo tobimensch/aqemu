@@ -28,133 +28,138 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
-    QDom.h
-    tinyxml2.h
-	About_Window.h
-	Add_New_Device_Window.h
-	Add_Port_Window.h
-	Add_USB_Port_Window.h
-	Advanced_Settings_Window.h
-	Boot_Device_Window.h
-	Convert_HDD_Image_Window.h
-	Copy_VM_Window.h
-	Create_HDD_Image_Window.h
-	Create_Template_Window.h
-	Delete_VM_Files_Window.h
-	Device_Manager_Widget.h
-	Edit_Emulator_Version_Window.h
-	Emulator_Control_Window.h
-	Error_Log_Window.h
-	First_Start_Wizard.h
-    Folder_Sharing_Widget.h
-	HDD_Image_Info.h
-	Main_Window.h
-	Monitor_Window.h
-	Network_Widget.h
-	Old_Network_Widget.h
-	Ports_Tab_Widget.h
-	Properties_Window.h
-	Emulator_Options_Window.h
-	Select_Icon_Window.h
-	Settings_Window.h
-	SMP_Settings_Window.h
-	Snapshot_Properties_Window.h
-	Snapshots_Window.h
-	SPICE_Settings_Widget.h
-	System_Info.h
-	Utils.h
-	VM.h
-	VM_Devices.h
-	VM_Wizard_Window.h
-	VNC_Password_Window.h
+    src/QDom.h
+    src/tinyxml2.h
+	src/About_Window.h
+	src/Add_New_Device_Window.h
+	src/Add_Port_Window.h
+	src/Add_USB_Port_Window.h
+	src/Advanced_Settings_Window.h
+	src/Boot_Device_Window.h
+	src/Convert_HDD_Image_Window.h
+	src/Copy_VM_Window.h
+	src/Create_HDD_Image_Window.h
+	src/Create_Template_Window.h
+	src/Delete_VM_Files_Window.h
+	src/Device_Manager_Widget.h
+	src/Edit_Emulator_Version_Window.h
+	src/Emulator_Control_Window.h
+	src/Error_Log_Window.h
+	src/First_Start_Wizard.h
+    src/Folder_Sharing_Widget.h
+	src/HDD_Image_Info.h
+	src/Main_Window.h
+	src/Monitor_Window.h
+	src/Network_Widget.h
+	src/Old_Network_Widget.h
+	src/Ports_Tab_Widget.h
+	src/Properties_Window.h
+	src/Emulator_Options_Window.h
+	src/Select_Icon_Window.h
+	src/Settings_Window.h
+	src/SMP_Settings_Window.h
+	src/Snapshot_Properties_Window.h
+	src/Snapshots_Window.h
+	src/SPICE_Settings_Widget.h
+	src/System_Info.h
+	src/Utils.h
+	src/VM.h
+	src/VM_Devices.h
+	src/VM_Wizard_Window.h
+	src/VNC_Password_Window.h
 )
 
 SET( aqemu_sources
-    QDom.cpp
-    tinyxml2.cpp
-	About_Window.cpp
-	Add_New_Device_Window.cpp
-	Add_Port_Window.cpp
-	Add_USB_Port_Window.cpp
-	Advanced_Settings_Window.cpp
-	Boot_Device_Window.cpp
-	Convert_HDD_Image_Window.cpp
-	Copy_VM_Window.cpp
-	Create_HDD_Image_Window.cpp
-	Create_Template_Window.cpp
-	Delete_VM_Files_Window.cpp
-	Device_Manager_Widget.cpp
-	Edit_Emulator_Version_Window.cpp
-	Emulator_Control_Window.cpp
-	Error_Log_Window.cpp
-	First_Start_Wizard.cpp
-    Folder_Sharing_Widget.cpp
-	HDD_Image_Info.cpp
-	main.cpp
-	Main_Window.cpp
-	Monitor_Window.cpp
-	Network_Widget.cpp
-	Old_Network_Widget.cpp
-	Ports_Tab_Widget.cpp
-	Properties_Window.cpp
-	Emulator_Options_Window.cpp
-	Select_Icon_Window.cpp
-	Settings_Window.cpp
-	SMP_Settings_Window.cpp
-	Snapshot_Properties_Window.cpp
-	Snapshots_Window.cpp
-	SPICE_Settings_Widget.cpp
-	System_Info.cpp
-	Utils.cpp
-	VM.cpp
-	VM_Devices.cpp
-	VM_Wizard_Window.cpp
-	VNC_Password_Window.cpp
+    src/QDom.cpp
+    src/tinyxml2.cpp
+	src/About_Window.cpp
+	src/Add_New_Device_Window.cpp
+	src/Add_Port_Window.cpp
+	src/Add_USB_Port_Window.cpp
+	src/Advanced_Settings_Window.cpp
+	src/Boot_Device_Window.cpp
+	src/Convert_HDD_Image_Window.cpp
+	src/Copy_VM_Window.cpp
+	src/Create_HDD_Image_Window.cpp
+	src/Create_Template_Window.cpp
+	src/Delete_VM_Files_Window.cpp
+	src/Device_Manager_Widget.cpp
+	src/Edit_Emulator_Version_Window.cpp
+	src/Emulator_Control_Window.cpp
+	src/Error_Log_Window.cpp
+	src/First_Start_Wizard.cpp
+    src/Folder_Sharing_Widget.cpp
+	src/HDD_Image_Info.cpp
+	src/main.cpp
+	src/Main_Window.cpp
+	src/Monitor_Window.cpp
+	src/Network_Widget.cpp
+	src/Old_Network_Widget.cpp
+	src/Ports_Tab_Widget.cpp
+	src/Properties_Window.cpp
+	src/Emulator_Options_Window.cpp
+	src/Select_Icon_Window.cpp
+	src/Settings_Window.cpp
+	src/SMP_Settings_Window.cpp
+	src/Snapshot_Properties_Window.cpp
+	src/Snapshots_Window.cpp
+	src/SPICE_Settings_Widget.cpp
+	src/System_Info.cpp
+	src/Utils.cpp
+	src/VM.cpp
+	src/VM_Devices.cpp
+	src/VM_Wizard_Window.cpp
+	src/VNC_Password_Window.cpp
 )
 
 SET( aqemu_ui
-	About_Window.ui
-	Add_New_Device_Window.ui
-	Add_Port_Window.ui
-	Add_USB_Port_Window.ui
-	Advanced_Settings_Window.ui
-	Boot_Device_Window.ui
-	Convert_HDD_Image_Window.ui
-	Copy_VM_Window.ui
-	Create_HDD_Image_Window.ui
-	Create_Template_Window.ui
-	Delete_VM_Files_Window.ui
-	Device_Manager_Widget.ui
-	Edit_Emulator_Version_Window.ui
-	Emulator_Control_Window.ui
-	Error_Log_Window.ui
-	First_Start_Wizard.ui
-    Folder_Sharing_Widget.ui
-	Main_Window.ui
-	Monitor_Window.ui
-	Network_Widget.ui
-	Old_Network_Widget.ui
-	Ports_Tab_Widget.ui
-	Properties_Window.ui
-	Emulator_Options_Window.ui
-	Select_Icon_Window.ui
-	Settings_Window.ui
-	SMP_Settings_Window.ui
-	Snapshot_Properties_Window.ui
-	Snapshots_Window.ui
-	SPICE_Settings_Widget.ui
-	VM_Wizard_Window.ui
-	VNC_Password_Window.ui
+	src/About_Window.ui
+	src/Add_New_Device_Window.ui
+	src/Add_Port_Window.ui
+	src/Add_USB_Port_Window.ui
+	src/Advanced_Settings_Window.ui
+	src/Boot_Device_Window.ui
+	src/Convert_HDD_Image_Window.ui
+	src/Copy_VM_Window.ui
+	src/Create_HDD_Image_Window.ui
+	src/Create_Template_Window.ui
+	src/Delete_VM_Files_Window.ui
+	src/Device_Manager_Widget.ui
+	src/Edit_Emulator_Version_Window.ui
+	src/Emulator_Control_Window.ui
+	src/Error_Log_Window.ui
+	src/First_Start_Wizard.ui
+    src/Folder_Sharing_Widget.ui
+	src/Main_Window.ui
+	src/Monitor_Window.ui
+	src/Network_Widget.ui
+	src/Old_Network_Widget.ui
+	src/Ports_Tab_Widget.ui
+	src/Properties_Window.ui
+	src/Emulator_Options_Window.ui
+	src/Select_Icon_Window.ui
+	src/Settings_Window.ui
+	src/SMP_Settings_Window.ui
+	src/Snapshot_Properties_Window.ui
+	src/Snapshots_Window.ui
+	src/SPICE_Settings_Widget.ui
+	src/VM_Wizard_Window.ui
+	src/VNC_Password_Window.ui
 )
 
 SET( aqemu_qrc 
-    shared_images.qrc
-    oxygen_icons.qrc
-    images.qrc
-    crystalsvg_icons.qrc
+    resources/shared_images.qrc
+    resources/oxygen_icons.qrc
+    resources/images.qrc
+    resources/crystalsvg_icons.qrc
 )
 
-SET( translations German.ts Russian.ts Ukrainian.ts French.ts English.ts )
+SET( translations 
+     translations/German.ts
+     transtations/Russian.ts
+     translations/Ukrainian.ts
+     translations/French.ts
+     translations/English.ts )
 
 SET( files_to_translate ${files_to_translate} ${aqemu_headers} ${aqemu_sources} ${aqemu_ui} )
 
@@ -178,11 +183,11 @@ FIND_PACKAGE( Qt5PrintSupport )
 IF( NOT WITHOUT_EMBEDDED_DISPLAY )
 	FIND_PACKAGE( LibVNCServer REQUIRED )
 	
-	SET( aqemu_headers ${aqemu_headers} Embedded_Display/Machine_View.h Embedded_Display/remoteview.h
-										Embedded_Display/vncclientthread.h Embedded_Display/vncview.h )
+	SET( aqemu_headers ${aqemu_headers} src/Embedded_Display/Machine_View.h src/Embedded_Display/remoteview.h
+										src/Embedded_Display/vncclientthread.h src/Embedded_Display/vncview.h )
 	
-	SET( aqemu_sources ${aqemu_sources} Embedded_Display/Machine_View.cpp Embedded_Display/remoteview.cpp
-										Embedded_Display/vncclientthread.cpp Embedded_Display/vncview.cpp )
+	SET( aqemu_sources ${aqemu_sources} src/Embedded_Display/Machine_View.cpp src/Embedded_Display/remoteview.cpp
+										src/Embedded_Display/vncclientthread.cpp src/Embedded_Display/vncview.cpp )
 	
 	ADD_DEFINITIONS( -DVNC_DISPLAY -DQTONLY )
 	#ADD_LIBRARY( libvncclient SHARED ${aqemu_headers} ${aqemu_sources} )
@@ -213,6 +218,8 @@ ADD_EXECUTABLE( aqemu
 	${qm_files}
     ${aqemu_qrc}
 )
+
+target_include_directories(aqemu PUBLIC src/ )
 
 # Require C++-11 standard
 SET_PROPERTY(TARGET aqemu PROPERTY CXX_STANDARD 11)
@@ -282,7 +289,7 @@ MACRO( pack_icons _sources )
 	ENDFOREACH( curFile )
 ENDMACRO( pack_icons )
 
-PACK_ICONS( gui_icons crystalsvg_icons.qrc oxygen_icons.qrc )
+PACK_ICONS( gui_icons resources/crystalsvg_icons.qrc resources/oxygen_icons.qrc )
 ADD_CUSTOM_TARGET( icons ALL DEPENDS ${gui_icons} )
 INSTALL( FILES ${gui_icons} DESTINATION share/aqemu )
 
