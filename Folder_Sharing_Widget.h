@@ -68,8 +68,6 @@ class Folder_Sharing_Widget: public QWidget
 		//Properties_Window *pw;
 		Ui::Folder_Sharing_Widget ui;
 		QMenu *Context_Menu;
-		
-		const Available_Devices *Current_Machine_Devices;
 };
 
 #endif

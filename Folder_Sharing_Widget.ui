@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>663</width>
-    <height>430</height>
+    <width>706</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -155,7 +155,7 @@
      <item>
       <widget class="QLabel" name="Label_Manage_Folders">
        <property name="text">
-        <string>Manage Folders</string>
+        <string>Remove Folder</string>
        </property>
       </widget>
      </item>
@@ -177,29 +177,9 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QToolButton" name="TB_Edit_Folder">
-         <property name="toolTip">
-          <string>Properties</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="images.qrc">
-           <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QToolButton" name="TB_Remove_Folder">
          <property name="toolTip">
-          <string>Delete</string>
+          <string>Remove from shared folders list</string>
          </property>
          <property name="text">
           <string/>
@@ -247,7 +227,7 @@
      <item>
       <widget class="QLabel" name="Label_Add_Folders">
        <property name="text">
-        <string>Add Folders</string>
+        <string>Add Folder</string>
        </property>
       </widget>
      </item>
@@ -274,7 +254,7 @@
           <bool>false</bool>
          </property>
          <property name="toolTip">
-          <string>Add Shared Folder</string>
+          <string>Add to shared folders list</string>
          </property>
          <property name="text">
           <string/>
@@ -322,7 +302,7 @@
      <item>
       <widget class="QLabel" name="Label_Folders_List">
        <property name="text">
-        <string>Folder List:</string>
+        <string>Folder list:</string>
        </property>
       </widget>
      </item>
@@ -371,8 +351,13 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
-        <string>Information:</string>
+        <string>How to mount the shared folder on the guest (9p fs support is required on the guest):</string>
        </property>
       </widget>
      </item>
@@ -380,6 +365,9 @@
       <widget class="QLabel" name="Label_Connected_To">
        <property name="text">
         <string/>
+       </property>
+       <property name="textInteractionFlags">
+        <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
        </property>
       </widget>
      </item>
@@ -416,7 +404,7 @@
      <normaloff>:/images/button_cancel.png</normaloff>:/images/button_cancel.png</iconset>
    </property>
    <property name="text">
-    <string>Delete</string>
+    <string>Remove From List</string>
    </property>
   </action>
   <action name="actionList_Mode">
@@ -463,7 +451,6 @@
   </action>
  </widget>
  <tabstops>
-  <tabstop>TB_Edit_Folder</tabstop>
   <tabstop>TB_Remove_Folder</tabstop>
   <tabstop>TB_Icon_Mode</tabstop>
   <tabstop>TB_List_Mode</tabstop>
@@ -473,38 +460,6 @@
   <include location="images.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>TB_Edit_Folder</sender>
-   <signal>clicked()</signal>
-   <receiver>actionProperties</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>205</x>
-     <y>49</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>TB_Remove_Folder</sender>
-   <signal>clicked()</signal>
-   <receiver>actionDelete</receiver>
-   <slot>trigger()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>256</x>
-     <y>49</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>TB_Icon_Mode</sender>
    <signal>clicked()</signal>
@@ -546,6 +501,22 @@
     <hint type="sourcelabel">
      <x>175</x>
      <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Remove_Folder</sender>
+   <signal>clicked()</signal>
+   <receiver>actionRemove</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>60</y>
     </hint>
     <hint type="destinationlabel">
      <x>-1</x>
