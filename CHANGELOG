@@ -1,14 +1,8 @@
 2016-04-22 Tobias Gläßer (Version 0.9.1)
 
-<<<<<<< HEAD
 	* New feature: Folder sharing
 
 	* New feature: Send clipboard as keys to the VM
-=======
-    * New feature: Folder sharing
-
-    * New feature: Send clipboard as keys to the VM
->>>>>>> refs/remotes/origin/master
 
 	* Fixed bug where SPICE dialog didn't validate correctly.
 
