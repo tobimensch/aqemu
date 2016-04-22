@@ -435,17 +435,17 @@ void Advanced_Settings_Window::on_TB_Add_Emulator_clicked()
 		Emulator new_emul = emulatorOptionsWin->Get_Emulator();
 		
 		// This Default Emulator?
-		bool finded = false;
+		bool found = false;
 		for( int ix = 0; ix < Emulators.count(); ix++ )
 		{
 			if( Emulators[ix].Get_Type() == new_emul.Get_Type() &&
 				Emulators[ix].Get_Default() )
 			{
-				finded = true;
+				found = true;
 			}
 		}
 		
-		if( finded == false ) new_emul.Set_Default( true );
+		if( found == false ) new_emul.Set_Default( true );
 		
 		Emulators << new_emul;
 		Update_Emulators_Info();

@@ -345,7 +345,7 @@ bool Snapshots_Window::Update_Info()
 	
 	QStringList info_lines = RegInfo.capturedTexts();
 	
-	QList<VM_Snapshot> finded_snapshots;
+	QList<VM_Snapshot> found_snapshots;
 	
 	if( info_lines.count() == 2 )
 	{
@@ -370,7 +370,7 @@ bool Snapshots_Window::Update_Info()
 			tmp_snap.Set_Date( snap_info[4] );
 			tmp_snap.Set_VM_Clock( snap_info[5] );
 			
-			finded_snapshots << tmp_snap;
+			found_snapshots << tmp_snap;
 		}
 	}
 	else
@@ -381,18 +381,18 @@ bool Snapshots_Window::Update_Info()
 	// Unique
 	QList<VM_Snapshot> compare_list = Current_VM->Get_Snapshots();
 	
-	for( int fx = 0; fx < finded_snapshots.count(); ++fx )
+	for( int fx = 0; fx < found_snapshots.count(); ++fx )
 	{
 		bool next = true;
 		
 		for( int cx = 0; next && cx < compare_list.count(); ++cx )
 		{
-			if( finded_snapshots[fx].Get_Tag() == compare_list[cx].Get_Tag() )
+			if( found_snapshots[fx].Get_Tag() == compare_list[cx].Get_Tag() )
 			{
 				next = false;
 				
-				finded_snapshots[fx].Set_Name( compare_list[cx].Get_Name() );
-				finded_snapshots[fx].Set_Description( compare_list[cx].Get_Description() );
+				found_snapshots[fx].Set_Name( compare_list[cx].Get_Name() );
+				found_snapshots[fx].Set_Description( compare_list[cx].Get_Description() );
 				
 				compare_list.removeAt( cx );
 			}
@@ -400,7 +400,7 @@ bool Snapshots_Window::Update_Info()
 	}
 	
 	// Add and Save
-	Current_VM->Set_Snapshots( finded_snapshots );
+	Current_VM->Set_Snapshots( found_snapshots );
 	Current_VM->Save_VM();
 	
 	return true;

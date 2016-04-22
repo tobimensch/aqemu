@@ -36,7 +36,7 @@ class Monitor_Window: public QDialog
 		void Add_QEMU_Out( const QString &new_text );
 		
 	signals:
-		void Command_Sended( const QString &com );
+		void Command_Sent( const QString &com );
 		void Closing_Win();
 		
 	private slots:

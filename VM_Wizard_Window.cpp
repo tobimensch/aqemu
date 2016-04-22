@@ -255,7 +255,7 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 		New_VM->Set_Emulator( Current_Emulator );
 		
 		// Find CPU List For This Template
-		bool devices_finded = false;
+		bool devices_found = false;
 		
 		if( ui.RB_Emulator_KVM->isChecked() )
 		{
@@ -270,12 +270,12 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 			}
 			
 			Current_Devices = &All_Systems[ "qemu-kvm" ];
-			devices_finded = true;
+			devices_found = true;
 		}
 		else
 		{
 			Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_finded = true;
+			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 		}
 		
 		// Use Selected Template
@@ -304,7 +304,7 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 			
 			// Find CPU List For This Template
 			Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_finded = true;
+			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 		}
 		else // Create New VM in Date Mode
 		{
@@ -356,12 +356,12 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 				if( it.value().System.Caption == compCaption )
 				{
 					Current_Devices = &it.value();
-					if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_finded = true;
+					if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 				}
 			}
 		}
 		
-		if( ! devices_finded )
+		if( ! devices_found )
 		{
 			AQGraphic_Error( "void VM_Wizard_Window::on_Button_Next_clicked()", tr("Error!"),
 							tr("Cannot Find Emulator System ID!") );
@@ -537,7 +537,7 @@ bool VM_Wizard_Window::Create_New_VM()
 	}
 	else
 	{
-		bool devices_finded = false;
+		bool devices_found = false;
 		
 		// CPU Type
 		if( ui.RB_VM_Template->isChecked() )
@@ -546,12 +546,12 @@ bool VM_Wizard_Window::Create_New_VM()
 			if( ui.RB_Emulator_KVM->isChecked() )
 			{
 				Current_Devices = &All_Systems[ "qemu-kvm" ];
-				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_finded = true;
+				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 			}
 			else // QEMU
 			{
 				Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_finded = true;
+				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 			}
 		}
 		else
@@ -560,7 +560,7 @@ bool VM_Wizard_Window::Create_New_VM()
 			if( ui.RB_Emulator_KVM->isChecked() )
 			{
 				Current_Devices = &All_Systems[ "qemu-kvm" ];
-				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_finded = true;
+				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 			}
 			else // QEMU
 			{
@@ -569,14 +569,14 @@ bool VM_Wizard_Window::Create_New_VM()
 					if( it.value().System.Caption == ui.CB_Computer_Type->currentText() )
 					{
 						Current_Devices = &it.value();
-						devices_finded = true;
+						devices_found = true;
 						break;
 					}
 				}
 			}
 		}
 		
-		if( ! devices_finded )
+		if( ! devices_found )
 		{
 			AQGraphic_Error( "bool VM_Wizard_Window::Create_New_VM()", tr("Error!"),
 							 tr("Cannot Find QEMU System ID!") );

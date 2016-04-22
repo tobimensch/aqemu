@@ -375,7 +375,7 @@ void Emulator_Control_Window::on_actionReset_VM_triggered()
 
 void Emulator_Control_Window::on_actionQEMU_Monitor_triggered()
 {
-	connect( Mon_Win, SIGNAL(Command_Sended(QString)), Cur_VM,
+	connect( Mon_Win, SIGNAL(Command_Sent(QString)), Cur_VM,
 			 SLOT(Execute_Emu_Ctl_Command(QString)) );
 	
 	connect( Cur_VM, SIGNAL(Clean_Console(QString)), Mon_Win,

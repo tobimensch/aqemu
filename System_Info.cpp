@@ -2186,18 +2186,18 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		if( ! (qemu_dev_name.isEmpty() ||
 			   qemu_dev_name.indexOf(QRegExp("/^\\S+$/"), 0) != -1) )
 		{
-			bool cpu_finded = false;
+			bool cpu_found = false;
 			for( int ix = 0; ix < default_device.CPU_List.count(); ix++ )
 			{
 				if( qemu_dev_name == default_device.CPU_List[ix].QEMU_Name )
 				{
 					tmp_dev.CPU_List << default_device.CPU_List[ ix ];
-					cpu_finded = true;
+					cpu_found = true;
 				}
 			}
 			
 			// No this device name in default list
-			if( cpu_finded == false )
+			if( cpu_found == false )
 				tmp_dev.CPU_List << Device_Map( qemu_dev_name, qemu_dev_name );
 		}
 		else continue;
@@ -2248,18 +2248,18 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		
 		if( ! (dev_map.QEMU_Name.isEmpty() || dev_map.QEMU_Name.indexOf(QRegExp("/^\\S+$/"), 0) != -1) )
 		{
-			bool machine_finded = false;
+			bool machine_found = false;
 			for( int ix = 0; ix < default_device.Machine_List.count(); ix++ )
 			{
 				if( dev_map.QEMU_Name == default_device.Machine_List[ix].QEMU_Name )
 				{
 					tmp_dev.Machine_List << default_device.Machine_List[ ix ];
-					machine_finded = true;
+					machine_found = true;
 				}
 			}
 			
 			// No this device name in default list
-			if( machine_finded == false ) tmp_dev.Machine_List << dev_map;
+			if( machine_found == false ) tmp_dev.Machine_List << dev_map;
 		}
 		else continue;
 	}
@@ -2305,19 +2305,19 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 			{
 				for( int gx = 0; gx < vga_devices_list.count(); gx++ )
 				{
-					bool vga_finded = false;
+					bool vga_found = false;
 					
 					for( int ix = 0; ix < default_device.Video_Card_List.count(); ix++ )
 					{
 						if( vga_devices_list[gx] == default_device.Video_Card_List[ix].QEMU_Name )
 						{
 							tmp_dev.Video_Card_List << default_device.Video_Card_List[ ix ];
-							vga_finded = true;
+							vga_found = true;
 						}
 					}
 					
 					// No this device name in default list
-					if( vga_finded == false ) tmp_dev.Video_Card_List << Device_Map( vga_devices_list[gx], vga_devices_list[gx] );
+					if( vga_found == false ) tmp_dev.Video_Card_List << Device_Map( vga_devices_list[gx], vga_devices_list[gx] );
 				}
 			}
 		}
@@ -2409,7 +2409,7 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		// Find names in devices list
 		for( int ax = 0; ax < net_cards_models.count(); ax++ )
 		{
-			bool net_finded = false;
+			bool net_found = false;
 			QString net_dev_str = "";
 			
 			for( int bx = 0; bx < default_device.Network_Card_List.count(); bx++ )
@@ -2419,13 +2419,13 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 				if( net_dev_str == default_device.Network_Card_List[bx].QEMU_Name )
 				{
 					tmp_dev.Network_Card_List << default_device.Network_Card_List[ bx ];
-					net_finded = true;
+					net_found = true;
 					break;
 				}
 			}
 			
 			// No this device name in default list
-			if( net_finded == false ) tmp_dev.Network_Card_List << Device_Map( net_dev_str, net_dev_str );
+			if( net_found == false ) tmp_dev.Network_Card_List << Device_Map( net_dev_str, net_dev_str );
 		}
 		
 		break; // All Done

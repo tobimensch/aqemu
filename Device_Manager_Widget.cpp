@@ -361,13 +361,13 @@ void Device_Manager_Widget::Update_Enabled_Actions()
 		}
 		else
 		{
-			bool finded = false;
+			bool found = false;
 			
 			for( int fx = 0; fx < 32; ++fx )
 			{
 				if( ui.Devices_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
 				{
-					finded = true;
+					found = true;
 					
 					ui.Label_Connected_To->setText( tr("Type: Storage Device") );
 					
@@ -385,7 +385,7 @@ void Device_Manager_Widget::Update_Enabled_Actions()
 				}
 			}
 			
-			if( ! finded )
+			if( ! found )
 			{
 				ui.TB_Edit_Device->setEnabled( false );
 				ui.actionProperties->setEnabled( false);
@@ -496,13 +496,13 @@ void Device_Manager_Widget::on_Devices_List_customContextMenuRequested( const QP
 		}
 		else
 		{
-			bool finded = false;
+			bool found = false;
 			
 			for( int fx = 0; fx < 32; ++fx )
 			{
 				if( ui.Devices_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
 				{
-					finded = true;
+					found = true;
 					
 					Context_Menu = new QMenu( ui.Devices_List );
 					
@@ -513,7 +513,7 @@ void Device_Manager_Widget::on_Devices_List_customContextMenuRequested( const QP
 				}
 			}
 			
-			if( ! finded )
+			if( ! found )
 			{
 				AQError( "void Device_Manager_Widget::on_Devices_List_customContextMenuRequested( const QPoint &pos )",
 						 "Incorrect Device!" );
@@ -897,13 +897,13 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else
 	{
-		bool finded = false;
+		bool found = false;
 		
 		for( int fx = 0; fx < 32; ++fx )
 		{
 			if( ui.Devices_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
 			{
-				finded = true;
+				found = true;
 				
 				Device_Window = new Add_New_Device_Window();
 				Device_Window->Set_Enabled( Enabled );
@@ -926,7 +926,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 			}
 		}
 		
-		if( ! finded )
+		if( ! found )
 		{
 			AQError( "void Device_Manager_Widget::on_actionProperties_triggered()",
 					 "Incorrect Device!" );
@@ -975,19 +975,19 @@ void Device_Manager_Widget::on_actionDelete_triggered()
 	}
 	else
 	{
-		bool finded = false;
+		bool found = false;
 		
 		for( int fx = 0; fx < 32; ++fx )
 		{
 			if( ui.Devices_List->currentItem()->data(512).toString() == "device" + QString::number(fx) )
 			{
-				finded = true;
+				found = true;
 				
 				Storage_Devices.removeAt( fx );
 			}
 		}
 		
-		if( ! finded )
+		if( ! found )
 		{
 			AQError( "void Device_Manager_Widget::on_actionDelete_triggered()",
 					 "Incorrect Device!" );

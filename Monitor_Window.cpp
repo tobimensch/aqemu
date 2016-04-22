@@ -42,7 +42,7 @@ void Monitor_Window::Add_QEMU_Out( const QString &new_text )
 void Monitor_Window::on_Button_Run_clicked()
 {
 	ui.Edit_Monitor_Out->append( "<b>" + ui.CB_Com_Line->currentText() + "</b>\n" );
-	emit Command_Sended( ui.CB_Com_Line->currentText() );
+	emit Command_Sent( ui.CB_Com_Line->currentText() );
 	ui.CB_Com_Line->clearEditText();
 }
 

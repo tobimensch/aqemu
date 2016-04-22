@@ -174,5 +174,5 @@ int Boot_Device_Window::Get_Current_Index()
 		if( ui.Boot_Devices_List->topLevelItem(ix) == currentItem ) return ix;
 	}
 	
-	return -1; // not finded
+	return -1; // not found
 }
