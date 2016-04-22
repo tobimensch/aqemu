@@ -29,6 +29,8 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QDesktopWidget>
+#include <QClipboard>
+
 #ifdef Q_OS_WIN32
 // FIXME
 #else
@@ -739,6 +741,115 @@ void Emulator_Control_Window::on_actionOther_Keys_triggered()
 	
 	if( ok && ! keys.isEmpty() )
 		emit Ready_Read_Command( "sendkey " + keys );
+}
+
+
+/*
+shift	shift_r	alt	alt_r	altgr	altgr_r
+ctrl	ctrl_r	menu	esc	1	2
+3	4	5	6	7	8
+9	0	minus	equal	backspace	tab
+q	w	e	r	t	y
+u	i	o	p	ret	a
+s	d	f	g	h	j
+k	l	z	x	c	v
+b	n	m	comma	dot	slash
+asterisk	spc	caps_lock	f1	f2	f3
+f4	f5	f6	f7	f8	f9
+f10	num_lock	scroll_lock	kp_divide	kp_multiply	kp_subtract
+kp_add	kp_enter	kp_decimal	sysrq	kp_0	kp_1
+kp_2	kp_3	kp_4	kp_5	kp_6	kp_7
+kp_8	kp_9	<	f11	f12	print
+home	pgup	pgdn	end	left	up
+down	right	insert	delete*/
+
+QString convert_char(QString s)
+{
+    if ( s.length() != 1 )
+        return s;
+    
+    if ( s == "/" )
+        return "slash";
+    if ( s == ":" )
+        return "shift-semicolon";
+    if ( s == ";" )
+        return "semicolon";
+    if ( s == "=" )
+        return "equal";
+    if ( s == "-" )
+        return "minus";
+    if ( s == "+" )
+        return "kp_add";
+    if ( s == "\t" )
+        return "tab";
+    if ( s == "." )
+        return "dot";
+    if ( s == "*" )
+        return "asterisk";
+    if ( s == "," )
+        return "comma";
+    if ( s == "\\" )
+        return "kp_divide";
+    if ( s == " " )
+        return "spc";
+    if ( s == "!" )
+        return "shift-1";
+    if ( s == "@" )
+        return "shift-2";
+    if ( s == "#" )
+        return "shift-3";
+    if ( s == "$" )
+        return "shift-4";
+    if ( s == "%" )
+        return "shift-5";
+    if ( s == "^" )
+        return "shift-6";
+    if ( s == "&" )
+        return "shift-7";
+    if ( s == "(" )
+        return "shift-9";
+    if ( s == ")" )
+        return "shift-0";
+    if ( s == "_" )
+        return "shift-minus";
+    if ( s == "<" )
+        return "shift-comma";
+    if ( s == ">" )
+        return "shift-dot";
+    if ( s == ">" )
+        return "shift-dot";
+    if ( s == "\n" )
+        return "kp_enter";
+    if ( s.at(0).isLetter() && s.at(0).isUpper() )
+        return "shift-"+s.toLower();
+    if ( s == "[" )
+        return "ctrl-shift-u-5-b";
+    if ( s == "]" )
+        return "ctrl-shift-u-5-b";
+    if ( s == "{" )
+        return "ctrl-shift-u-7-b";
+    if ( s == "}" )
+        return "ctrl-shift-u-7-d";
+    if ( s == "'" )
+        return "apostrophe";
+    if ( s == "\"" )
+        return "shift-apostrophe";
+
+    return s;
+}
+
+void Emulator_Control_Window::on_actionClipboard_triggered()
+{
+   QClipboard *clipboard = QApplication::clipboard();
+   QString text = clipboard->text();
+
+	if( ! text.isEmpty() )
+    {
+        for (int i = 0; i < text.length(); i++)
+        {
+		    emit Ready_Read_Command( QString("sendkey ") + convert_char(text.at(i)) );
+        }
+    }
 }
 
 void Emulator_Control_Window::on_actionCtrl_Alt_Backspace_triggered()
