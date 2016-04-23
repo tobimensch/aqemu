@@ -1,5 +1,7 @@
 2016-04-22 Tobias Gläßer (Version 0.9.1)
 
+	* Fixed bug that led to VMs not being terminated when closing the application
+
 	* New feature: Folder sharing
 
 	* New feature: Send clipboard as keys to the VM
