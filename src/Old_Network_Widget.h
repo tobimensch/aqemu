@@ -65,7 +65,7 @@ class Old_Network_Widget: public QWidget
 		bool Net_Card_is_Valid( int index );
 	
 	signals:
-		void Changet();
+		void Changed();
 		
 	private:
 		Ui::Old_Network_Widget ui;

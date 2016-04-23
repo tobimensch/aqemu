@@ -3599,7 +3599,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			AQDebug( "bool Virtual_Machine::Load_VM( const QString &file_name )",
 					 "Emulator Name: " + Current_Emulator.Get_Name() );
 			
-			// Emulator Finded?
+			// Emulator Found?
 			if( Current_Emulator.Get_Name().isEmpty() && (Current_Emulator.Get_Version() == VM::Obsolete) )
 			{
 				AQError( "bool Virtual_Machine::Load_VM( const QString &file_name )",
@@ -7522,7 +7522,7 @@ void Virtual_Machine::Set_State( VM::VM_State s, bool real_poewer_off )
 	Old_State = State;
 	
 	State = s;
-	emit State_Changet( this, State );
+	emit State_Changed( this, State );
 }
 
 const QString &Virtual_Machine::Get_Machine_Name() const
@@ -8277,13 +8277,13 @@ QString Virtual_Machine::Get_USB_Bus_Address( const QString &id )
 		// info_lines[2] == USB UPS
 		if( info_lines[2] == dev_name )
 		{
-			AQDebug( "Finded: ", info_lines[ 1 ] );
+			AQDebug( "Found: ", info_lines[ 1 ] );
 			return info_lines[ 1 ]; // OK. This is Bus.Adr
 		}
 	}
 	
 	AQError( "QString Virtual_Machine::Get_USB_Bus_Address( const QString &id )",
-			 "Not Finded!" );
+			 "Not Found!" );
 	
 	return "";
 }

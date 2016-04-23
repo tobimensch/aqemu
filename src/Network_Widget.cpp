@@ -232,217 +232,217 @@ void Network_Widget::Set_Enabled( bool on )
 void Network_Widget::Connect_Slots()
 {
 	connect( ui.CB_Network_Type, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CB_model, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_macaddr, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_macaddr, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_vlan, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_vlan, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_name, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_name, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_hostname, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_hostname, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_port_dev, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_fd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_fd, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_ifname, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_ifname, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_script, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_script, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_downscript, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_downscript, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_listen, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_listen, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_connect, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_connect, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_mcast, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_mcast, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_sock, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_sock, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_port, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_port, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_group, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_group, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_mode, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_mode, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_file, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_file, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_len, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CB_len, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_addr, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_addr, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_vectors, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_vectors, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_net, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_net, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_host, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_host, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_restrict, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CB_restrict, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_dhcpstart, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_dhcpstart, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_dns, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_dns, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_tftp, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_tftp, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_bootfile, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_bootfile, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_smb, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_smb, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_smbserver, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_smbserver, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_sndbuf, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_sndbuf, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_vnet_hdr, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CB_vnet_hdr, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_vhost, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CB_vhost, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_vhostfd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_vhostfd, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_hostfwd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_hostfwd, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_guestfwd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_guestfwd, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	// Update Name
 	connect( ui.CH_name, SIGNAL(clicked()),
@@ -458,217 +458,217 @@ void Network_Widget::Connect_Slots()
 void Network_Widget::Disconnect_Slots()
 {
 	disconnect( ui.CB_Network_Type, SIGNAL(currentIndexChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CB_model, SIGNAL(currentIndexChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_macaddr, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_macaddr, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_vlan, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_vlan, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_name, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_name, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_hostname, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_hostname, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_port_dev, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_fd, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_fd, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_ifname, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_ifname, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_script, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_script, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_downscript, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_downscript, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_listen, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_listen, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_connect, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_connect, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_mcast, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_mcast, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_sock, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_sock, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_port, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_port, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_group, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_group, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_mode, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_mode, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_file, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_file, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_len, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CB_len, SIGNAL(currentIndexChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_addr, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_addr, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_vectors, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_vectors, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_net, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_net, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_host, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_host, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_restrict, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CB_restrict, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_dhcpstart, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_dhcpstart, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_dns, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_dns, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_tftp, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_tftp, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_bootfile, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_bootfile, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_smb, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_smb, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_smbserver, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_smbserver, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_sndbuf, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_sndbuf, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_vnet_hdr, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CB_vnet_hdr, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_vhost, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CB_vhost, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_vhostfd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_vhostfd, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_hostfwd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_hostfwd, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_guestfwd, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_guestfwd, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	// Update Name
 	disconnect( ui.CH_name, SIGNAL(clicked()),
@@ -698,7 +698,7 @@ void Network_Widget::on_Button_Add_clicked()
 		
 		Update_Card_Item();
 		
-		emit Changet();
+		emit Changed();
 	}
 }
 
@@ -712,7 +712,7 @@ void Network_Widget::on_Button_Delete_clicked()
 	if( Network_Cards.count() <= 0 ) Enable_Buttons( true, false );
 	else if( Network_Cards.count() < 8 ) Enable_Buttons( true, true );
 	
-	emit Changet();
+	emit Changed();
 }
 
 void Network_Widget::on_Items_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous )

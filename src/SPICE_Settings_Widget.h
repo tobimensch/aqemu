@@ -43,7 +43,7 @@ class SPICE_Settings_Widget: public QWidget
 		void on_TB_Down_clicked();
 		
 	signals:
-		void State_Changet();
+		void State_Changed();
 	
 	private:
 		void Show_Renderer_List( const QList<VM::SPICE_Renderer> &list );

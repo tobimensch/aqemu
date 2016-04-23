@@ -82,7 +82,7 @@ void Emulator_Control_Window::QEMU_Quit()
 	#endif
 }
 
-void Emulator_Control_Window::VM_State_Changet( Virtual_Machine *vm, VM::VM_State state )
+void Emulator_Control_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_State state )
 {
 	switch( state )
 	{
@@ -163,8 +163,8 @@ void Emulator_Control_Window::Set_Current_VM( Virtual_Machine *vm )
 			 this, SLOT(QEMU_Quit()) );
 	
 	// VM state changet
-	connect( Cur_VM, SIGNAL(State_Changet(Virtual_Machine*,VM::VM_State)),
-			 this, SLOT(VM_State_Changet(Virtual_Machine*,VM::VM_State)) );
+	connect( Cur_VM, SIGNAL(State_Changed(Virtual_Machine*,VM::VM_State)),
+			 this, SLOT(VM_State_Changed(Virtual_Machine*,VM::VM_State)) );
 	
 	#ifdef VNC_DISPLAY
 	if( Use_VNC() )

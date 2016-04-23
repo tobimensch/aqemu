@@ -118,73 +118,73 @@ void Old_Network_Widget::Set_Enabled( bool on )
 void Old_Network_Widget::Connect_Slots()
 {
 	connect( ui.CB_Connection_Mode, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CB_Network_Card_Model, SIGNAL(currentIndexChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_Hostname, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_IP_Address, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_MAC_Address, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_File_Descriptor, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_Port, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.SB_VLAN, SIGNAL(valueChanged(int)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.CH_TUN_TAP_Script, SIGNAL(clicked()),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_TUN_TAP_Script, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 	
 	connect( ui.Edit_Interface_Name, SIGNAL(textChanged(const QString &)),
-			 this, SIGNAL(Changet()) );
+			 this, SIGNAL(Changed()) );
 }
 
 void Old_Network_Widget::Disconnect_Slots()
 {
 	disconnect( ui.CB_Connection_Mode, SIGNAL(currentIndexChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CB_Network_Card_Model, SIGNAL(currentIndexChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_Hostname, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_IP_Address, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_MAC_Address, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_File_Descriptor, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_Port, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.SB_VLAN, SIGNAL(valueChanged(int)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.CH_TUN_TAP_Script, SIGNAL(clicked()),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_TUN_TAP_Script, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 	
 	disconnect( ui.Edit_Interface_Name, SIGNAL(textChanged(const QString &)),
-				this, SIGNAL(Changet()) );
+				this, SIGNAL(Changed()) );
 }
 
 void Old_Network_Widget::on_Network_Cards_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous )
@@ -227,7 +227,7 @@ void Old_Network_Widget::on_Button_Add_Net_Card_clicked()
 		if( ui.Network_Cards_List->count() == 8 )
 			ui.Button_Add_Net_Card->setEnabled( false );
 		
-		emit Changet();
+		emit Changed();
 	}
 }
 
@@ -265,7 +265,7 @@ void Old_Network_Widget::on_Button_Delete_Net_Card_clicked()
 		
 		Check_Network_Card = true;
 		
-		emit Changet();
+		emit Changed();
 	}
 	else QMessageBox::information( this, tr("Warning!"), tr("Cannot Delete Network Card!") );
 }

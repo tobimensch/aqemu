@@ -30,29 +30,29 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	ui.setupUi( this );
 	
 	// Connect slots
-	connect( ui.CH_Use_SPICE, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
+	connect( ui.CH_Use_SPICE, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.SB_QXL_Num, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changet()) );
-	connect( ui.CB_RAM_Size, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changet()) );
+	connect( ui.SB_QXL_Num, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
+	connect( ui.CB_RAM_Size, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.Edit_SPICE_Port, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changet()) );
-	connect( ui.CH_SPICE_SPort, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
-	connect( ui.Edit_SPICE_SPort, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changet()) );
-	connect( ui.CH_SPICE_Host, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
-	connect( ui.Edit_SPICE_Host, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changet()) );
+	connect( ui.Edit_SPICE_Port, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
+	connect( ui.CH_SPICE_SPort, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
+	connect( ui.Edit_SPICE_SPort, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
+	connect( ui.CH_SPICE_Host, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
+	connect( ui.Edit_SPICE_Host, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.CH_Use_Image_Compression, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
-	connect( ui.CB_Image_Compression, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changet()) );
+	connect( ui.CH_Use_Image_Compression, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
+	connect( ui.CB_Image_Compression, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.CH_Set_Renderer, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
-	connect( ui.TB_Up, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
-	connect( ui.TB_Down, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
+	connect( ui.CH_Set_Renderer, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
+	connect( ui.TB_Up, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
+	connect( ui.TB_Down, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.CH_Use_Video_Compression, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
-	connect( ui.CH_Use_Playback_Compression, SIGNAL(clicked()), this, SIGNAL(State_Changet()) );
+	connect( ui.CH_Use_Video_Compression, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
+	connect( ui.CH_Use_Playback_Compression, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.RB_No_Password, SIGNAL(toggled(bool)), this, SIGNAL(State_Changet()) );
-	connect( ui.Edit_Password, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changet()) );
+	connect( ui.RB_No_Password, SIGNAL(toggled(bool)), this, SIGNAL(State_Changed()) );
+	connect( ui.Edit_Password, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
 }
 
 const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) const

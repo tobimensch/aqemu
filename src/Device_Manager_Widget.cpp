@@ -565,7 +565,7 @@ void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 			
 			ui.Devices_List->addItem( fdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else if( ! Floppy2.Get_Enabled() )
@@ -585,7 +585,7 @@ void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 			
 			ui.Devices_List->addItem( fdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else
@@ -616,7 +616,7 @@ void Device_Manager_Widget::on_actionAdd_CD_ROM_triggered()
 			
 			ui.Devices_List->addItem( cdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else
@@ -644,7 +644,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 			
 			ui.Devices_List->addItem( hdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else if( ! HDB.Get_Enabled() )
@@ -663,7 +663,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 			
 			ui.Devices_List->addItem( hdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else if( HDC.Get_Enabled() == false && CD_ROM.Get_Enabled() == false )
@@ -682,7 +682,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 		
 			ui.Devices_List->addItem( hdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else if( ! HDD.Get_Enabled() )
@@ -701,7 +701,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 			
 			ui.Devices_List->addItem( hdit );
 			
-			emit Device_Changet();
+			emit Device_Changed();
 		}
 	}
 	else
@@ -728,7 +728,7 @@ void Device_Manager_Widget::on_actionAdd_Device_triggered()
 		
 		ui.Devices_List->addItem( devit );
 		
-		emit Device_Changet();
+		emit Device_Changed();
 	}
 }
 
@@ -753,7 +753,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("Floppy 1") + " (" + Floppy1.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -776,7 +776,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("Floppy 2") + " (" + Floppy2.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -799,7 +799,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("CD-ROM") + " (" + CD_ROM.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -822,7 +822,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("HDA") + " (" + HDA.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -845,7 +845,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("HDB") + " (" + HDB.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -868,7 +868,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("HDC") + " (" + HDC.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -891,7 +891,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 				
 				ui.Devices_List->currentItem()->setText( tr("HDD") + " (" + HDC.Get_File_Name() + ")" );
 				
-				emit Device_Changet();
+				emit Device_Changed();
 			}
 		}
 	}
@@ -920,7 +920,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 					{
 						Storage_Devices[fx] = Device_Window->Get_Device();
 						
-						emit Device_Changet();
+						emit Device_Changed();
 					}
 				}
 			}
@@ -997,7 +997,7 @@ void Device_Manager_Widget::on_actionDelete_triggered()
 	
 	ui.Devices_List->takeItem( ui.Devices_List->currentRow() );
 	
-	emit Device_Changet();
+	emit Device_Changed();
 }
 
 void Device_Manager_Widget::on_actionFormat_HDD_triggered()
@@ -1039,7 +1039,7 @@ void Device_Manager_Widget::on_actionFormat_HDD_triggered()
 	
 	Update_Enabled_Actions();
 	
-	emit Device_Changet();
+	emit Device_Changed();
 }
 
 void Device_Manager_Widget::on_actionQuick_Format_triggered()
@@ -1103,7 +1103,7 @@ void Device_Manager_Widget::on_actionQuick_Format_triggered()
 	
 	Update_Enabled_Actions();
 	
-	emit Device_Changet();
+	emit Device_Changed();
 }
 
 void Device_Manager_Widget::on_actionIcon_Mode_triggered()

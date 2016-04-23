@@ -58,7 +58,7 @@ class Ports_Tab_Widget: public QWidget
 		void on_Ports_Table_itemDoubleClicked( QTableWidgetItem *item );
 		
 	signals:
-		void Settings_Changet();
+		void Settings_Changed();
 		
 	private:
 		Ui::Ports_Tab_Widget ui;

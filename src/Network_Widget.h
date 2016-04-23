@@ -70,7 +70,7 @@ class Network_Widget: public QWidget
 		void Enable_Buttons( bool add, bool del );
 		
 	signals:
-		void Changet();
+		void Changed();
 		
 	private:
 		Ui::Network_Widget ui;

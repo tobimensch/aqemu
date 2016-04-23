@@ -196,37 +196,37 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 		else
 		{
 			// Find QEMU-IMG
-			bool qemuIMG_Finded = false;
+			bool qemuIMG_Found = false;
 			
 			for( int ix = 0; ix < paths.count(); ++ix )
 			{
 				if( QFile::exists(paths[ix] + "qemu-img") )
 				{
 					Settings.setValue( "QEMU-IMG_Path", paths[ix] + "qemu-img" );
-					qemuIMG_Finded = true;
+					qemuIMG_Found = true;
 					break;
 				}
 				else if( QFile::exists(paths[ix] + "kvm-img") )
 				{
 					Settings.setValue( "QEMU-IMG_Path", paths[ix] + "kvm-img" );
-					qemuIMG_Finded = true;
+					qemuIMG_Found = true;
 					break;
 				}
 				else if( QFile::exists(paths[ix] + "qemu-img-kvm") )
 				{
 					Settings.setValue( "QEMU-IMG_Path", paths[ix] + "qemu-img-kvm" );
-					qemuIMG_Finded = true;
+					qemuIMG_Found = true;
 					break;
 				}
 				else if( QFile::exists(paths[ix] + "qemu-kvm-img") )
 				{
 					Settings.setValue( "QEMU-IMG_Path", paths[ix] + "qemu-kvm-img" );
-					qemuIMG_Finded = true;
+					qemuIMG_Found = true;
 					break;
 				}
 			}
 			
-			if( qemuIMG_Finded )
+			if( qemuIMG_Found )
 				AQDebug( "void First_Start_Wizard::on_Button_Find_Emulators_clicked()",
 						 "qemu-img find on: " + Settings.value("QEMU-IMG_Path","").toString() );
 			else

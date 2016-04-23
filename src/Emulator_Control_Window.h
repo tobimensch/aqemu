@@ -56,7 +56,7 @@ class Emulator_Control_Window: public QMainWindow
 	private slots:
 		void Apply_Full_Size( int w, int h );
 		void QEMU_Quit();
-		void VM_State_Changet( Virtual_Machine *vm, VM::VM_State state );
+		void VM_State_Changed( Virtual_Machine *vm, VM::VM_State state );
 		
 		void on_actionSave_Screenshot_triggered();
 		void on_actionSave_Screenshot_As_triggered();

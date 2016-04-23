@@ -230,7 +230,7 @@ void Ports_Tab_Widget::on_TB_Add_Serial_Port_clicked()
 			newItem->setData( Qt::UserRole, "COM" );
 			ui.Ports_Table->setItem( ui.Ports_Table->rowCount()-1, 0, newItem );
 			
-			emit Settings_Changet();
+			emit Settings_Changed();
 		}
 		
 		delete add_port_win;
@@ -263,7 +263,7 @@ void Ports_Tab_Widget::on_TB_Add_Parallel_Port_clicked()
 			newItem->setData( Qt::UserRole, "LPT" );
 			ui.Ports_Table->setItem( ui.Ports_Table->rowCount()-1, 0, newItem );
 			
-			emit Settings_Changet();
+			emit Settings_Changed();
 		}
 		
 		delete add_port_win;
@@ -290,7 +290,7 @@ void Ports_Tab_Widget::on_TB_Add_USB_Port_clicked()
 		newItem->setData( Qt::UserRole, "USB" );
 		ui.Ports_Table->setItem( ui.Ports_Table->rowCount()-1, 0, newItem );
 		
-		emit Settings_Changet();
+		emit Settings_Changed();
 	}
 	
 	delete add_usb_win;
@@ -317,7 +317,7 @@ void Ports_Tab_Widget::on_TB_Edit_Port_clicked()
 			if( add_port_win->exec() == QDialog::Accepted )
 			{
 				Serial_Ports[ ix ] = add_port_win->Get_Port();
-				emit Settings_Changet();
+				emit Settings_Changed();
 			}
 			
 			delete add_port_win;
@@ -330,7 +330,7 @@ void Ports_Tab_Widget::on_TB_Edit_Port_clicked()
 			if( add_port_win->exec() == QDialog::Accepted )
 			{
 				Parallel_Ports[ ix ] = add_port_win->Get_Port();
-				emit Settings_Changet();
+				emit Settings_Changed();
 			}
 			
 			delete add_port_win;
@@ -343,7 +343,7 @@ void Ports_Tab_Widget::on_TB_Edit_Port_clicked()
 			if( add_usb_win->exec() == QDialog::Accepted )
 			{
 				USB_Ports[ ix ] = add_usb_win->Get_Port();
-				emit Settings_Changet();
+				emit Settings_Changed();
 			}
 			
 			delete add_usb_win;
@@ -381,7 +381,7 @@ void Ports_Tab_Widget::on_TB_Delete_Port_clicked()
 		
 		ui.Ports_Table->removeRow( ui.Ports_Table->currentRow() );
 		
-		emit Settings_Changet();
+		emit Settings_Changed();
 	}
 }
 

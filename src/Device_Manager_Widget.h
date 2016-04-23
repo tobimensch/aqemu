@@ -55,7 +55,7 @@ class Device_Manager_Widget: public QWidget
 		void Update_List_Mode();
 		
 	signals:
-		void Device_Changet();
+		void Device_Changed();
 	
 	private slots:
 		// For Context Menu

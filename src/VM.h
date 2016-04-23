@@ -424,7 +424,7 @@ class Virtual_Machine: public QObject
 		Emulator_Control_Window *Emu_Ctl;
 		
 	signals:
-		void State_Changet( Virtual_Machine *vm, VM::VM_State s );
+		void State_Changed( Virtual_Machine *vm, VM::VM_State s );
 		
 		void Ready_StdIn( const QString &text );
 		void Ready_StdOut( const QString &text );

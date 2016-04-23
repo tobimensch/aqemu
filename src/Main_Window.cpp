@@ -246,6 +246,7 @@ void Main_Window::closeEvent( QCloseEvent *event )
 		{
 			VM_List[ ex ]->Hide_Emu_Ctl_Win();
 			VM_List[ ex ]->Hide_QEMU_Error_Log();
+			VM_List[ ex ]->Stop();
 		}
 		
 		event->accept();
@@ -276,170 +277,170 @@ void Main_Window::Connect_Signals()
 {
 	// General Tab
 	connect( ui.Edit_Machine_Name, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_Computer_Type, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_CPU_Type, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_CPU_Count, SIGNAL(editTextChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_Machine_Type, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_Boot_Prioritet, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_Boot_Prioritet, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(CB_Boot_Prioritet_currentIndexChanged(int)) );
 	
 	connect( ui.CB_Video_Card, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_Keyboard_Layout, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Memory_Size, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_RAM_Size, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Remove_RAM_Size_Limitation, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_sb16, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_es1370, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Adlib, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_AC97, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_GUS, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_PCSPK, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_HDA, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_cs4231a, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Fullscreen, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Local_Time, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Snapshot, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_ACPI, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_No_Reboot, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_No_Shutdown, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// Hard Drives
 	connect( ui.GB_HDA, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_HDA_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.GB_HDB, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_HDB_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.GB_HDC, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_HDC_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.GB_HDD, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_HDD_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	// CD-ROM
 	connect( ui.CH_CDROM, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_CDROM_Devices, SIGNAL(currentIndexChanged(int)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	// FDD 1
 	connect( ui.CH_Floppy0, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_FD0_Devices, SIGNAL(currentIndexChanged(int)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	// FDD 2
 	connect( ui.CH_Floppy1, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_FD1_Devices, SIGNAL(currentIndexChanged(int)),
-	        this, SLOT(VM_Changet()) );
+	        this, SLOT(VM_Changed()) );
 	
 	// Network Tab
 	connect( ui.CH_Use_Network, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_Network_Mode_Old, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_Network_Mode_New, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
-	connect( New_Network_Settings_Widget, SIGNAL(Changet()),
-			 this, SLOT(VM_Changet()) );
+	connect( New_Network_Settings_Widget, SIGNAL(Changed()),
+			 this, SLOT(VM_Changed()) );
 
-	connect( Old_Network_Settings_Widget, SIGNAL(Changet()),
-			 this, SLOT(VM_Changet()) );
+	connect( Old_Network_Settings_Widget, SIGNAL(Changed()),
+			 this, SLOT(VM_Changed()) );
 	
 	// Ports
-	connect( Ports_Tab, SIGNAL(Settings_Changet()),
-			 this, SLOT(VM_Changet()) );
+	connect( Ports_Tab, SIGNAL(Settings_Changed()),
+			 this, SLOT(VM_Changed()) );
 	
 	// Additional Network Settings
 	connect( ui.CH_Redirections, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Redirections_List, SIGNAL(itemChanged(QTableWidgetItem*)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_TCP, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_UDP, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.SB_Redir_Port, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_Guest_IP, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.SB_Guest_Port, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_TCP, SIGNAL(toggled(bool)),
 			 this, SLOT(Update_Current_Redirection_Item()) );
@@ -457,177 +458,177 @@ void Main_Window::Connect_Signals()
 			 this, SLOT(Update_Current_Redirection_Item()) );
 	
 	connect( ui.Edit_TFTP_Prefix, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_SMB_Folder, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// Advanced Tab
 	connect( ui.CH_No_Frame, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Alt_Grab, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_No_Quit, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Portrait, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Curses, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Show_Cursor, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Start_CPU, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_FDD_Boot, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Win2K_Hack, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_RTC_TD_Hack, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Start_Date, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.DTE_Start_Date, SIGNAL(dateTimeChanged(const QDateTime &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Init_Graphic_Mode, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.SB_InitGM_Width, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.SB_InitGM_Height, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_InitGM_Depth, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// Other Tab
 	connect( ui.Edit_Additional_Args, SIGNAL(textChanged()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Only_User_Args, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Use_User_Binary, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// Hardware Virtualization Tab
 	connect( ui.CH_Enable_KVM, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_No_KVM_IRQChip, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_No_KVM_Pit, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_KVM_Shadow_Memory, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.SB_KVM_Shadow_Memory_Size, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_KQEMU_Disabled, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_KQEMU_Use_if_Possible, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_KQEMU_Enabled, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_KQEMU_Full, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// SPICE
-	connect( SPICE_Widget, SIGNAL(State_Changet()),
-			 this, SLOT(VM_Changet()) );
+	connect( SPICE_Widget, SIGNAL(State_Changed()),
+			 this, SLOT(VM_Changed()) );
 	
 	// VNC Tab
 	connect( ui.CH_Activate_VNC, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_VNC_Display_Number, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.SB_VNC_Display, SIGNAL(valueChanged(int)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.RB_VNC_Unix_Socket, SIGNAL(toggled(bool)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_VNC_Password, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_Use_VNC_TLS, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_x509_Folder, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_x509_Folder, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_x509verify_Folder, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_x509verify_Folder, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_No_Use_Embedded_Display, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// Optional Images
 	connect( ui.CH_ROM_File, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_ROM_File, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_MTDBlock, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_MTDBlock_File, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_SD_Image, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_SD_Image_File, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.CH_PFlash, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_PFlash_File, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	// Boot Linux Kernel
 	connect( ui.CH_Use_Linux_Boot, SIGNAL(clicked()),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_Linux_bzImage_Path, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_Linux_Initrd_Path, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 	
 	connect( ui.Edit_Linux_Command_Line, SIGNAL(textChanged(const QString &)),
-			 this, SLOT(VM_Changet()) );
+			 this, SLOT(VM_Changed()) );
 
 
 	connect( Folder_Sharing, SIGNAL(Folder_Changed()),
-	         this, SLOT(VM_Changet()) );
+	         this, SLOT(VM_Changed()) );
 }
 
 const QMap<QString, Available_Devices> Main_Window::Get_Devices_Info( bool *ok ) const
@@ -1151,8 +1152,8 @@ bool Main_Window::Load_Settings()
 		// Apply Settings...
 		if( Settings.value( "Use_Device_Manager", "yes" ).toString() == "yes" )
 		{
-			connect( Dev_Manager, SIGNAL(Device_Changet()),
-			         this, SLOT(VM_Changet()) );
+			connect( Dev_Manager, SIGNAL(Device_Changed()),
+			         this, SLOT(VM_Changed()) );
 			
 			if( ui.Tabs->indexOf(ui.Tab_HDD) != -1 ) // delete
 				ui.Tabs->removeTab( ui.Tabs->indexOf(ui.Tab_HDD) );
@@ -1167,8 +1168,8 @@ bool Main_Window::Load_Settings()
 		}
 		else
 		{
-			disconnect( Dev_Manager, SIGNAL(Device_Changet()),
-			            this, SLOT(VM_Changet()) );
+			disconnect( Dev_Manager, SIGNAL(Device_Changed()),
+			            this, SLOT(VM_Changed()) );
 			
 			if( ui.Tabs->indexOf(Dev_Manager) != -1 ) // delete
 				ui.Tabs->removeTab( ui.Tabs->indexOf(Dev_Manager) );
@@ -1266,8 +1267,8 @@ bool Main_Window::Load_Virtual_Machines()
 		{
 			new_vm->Set_UID( QUuid::createUuid().toString() ); // Create UID
 			
-			QObject::connect( new_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-							  this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+			QObject::connect( new_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+							  this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 			
 			QListWidgetItem *item = new QListWidgetItem( new_vm->Get_Machine_Name(), ui.Machines_List );
 			item->setData( 256, new_vm->Get_UID() );
@@ -3503,11 +3504,11 @@ QString Main_Window::Get_Storage_Device_Info_String( const QString &path )
 	return tr("Type: Image     Size: ") + QString::number(size, 'f', 2) + suf;
 }
 
-void Main_Window::VM_State_Changet( Virtual_Machine *vm, VM::VM_State s )
+void Main_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_State s )
 {
 	if( vm == NULL )
 	{
-		AQError( "void Main_Window::VM_State_Changet( Virtual_Machine *vm, VM::VM_State s )",
+		AQError( "void Main_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_State s )",
 				 "Error: vm == NULL" );
 		return;
 	}
@@ -3515,7 +3516,7 @@ void Main_Window::VM_State_Changet( Virtual_Machine *vm, VM::VM_State s )
 	Virtual_Machine *cur_vm = Get_Current_VM();
 	if( cur_vm == NULL )
 	{
-		AQError( "void Main_Window::VM_State_Changet( Virtual_Machine *vm, VM::VM_State s )",
+		AQError( "void Main_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_State s )",
 				 "Cannot Get Current VM" );
 		return;
 	}
@@ -3652,7 +3653,7 @@ void Main_Window::Set_Widgets_State( bool enabled )
 	ui.Tab_Boot_Linux->setEnabled( enabled );
 }
 
-void Main_Window::VM_Changet()
+void Main_Window::VM_Changed()
 {
 	ui.Button_Apply->setEnabled( true );
 	ui.Button_Cancel->setEnabled( true );
@@ -3804,13 +3805,13 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 		
 		if( mes_res == QMessageBox::Yes )
 		{
-			disconnect( old_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-						this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+			disconnect( old_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+						this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 			
 			*old_vm = *tmp_vm;
 			
-			connect( old_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-					 this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+			connect( old_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+					 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 			
 			old_vm->Save_VM();
 			Update_VM_Ui();
@@ -3834,7 +3835,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 		}
 		
 		AQWarning( "void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem* current, QListWidgetItem* previous )",
-				   "Changet VM Not Saved!" );
+				   "Changed VM Not Saved!" );
 	}
 	else
 	{
@@ -4502,8 +4503,8 @@ void Main_Window::on_actionShow_New_VM_Wizard_triggered()
 		vm->Set_UID( QUuid::createUuid().toString() ); // Create UID
 		VM_List << vm;
 		
-		QObject::connect( vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-						  this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+		QObject::connect( vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+						  this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 		
 		QListWidgetItem *item = new QListWidgetItem( vm->Get_Machine_Name(), ui.Machines_List );
 		item->setIcon( QIcon(vm->Get_Icon_Path()) );
@@ -4581,8 +4582,8 @@ void Main_Window::on_actionAdd_New_VM_triggered()
 	
 	VM_List << new_vm;
 	
-	QObject::connect( new_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-			 this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+	QObject::connect( new_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+			 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 	
 	QListWidgetItem *item = new QListWidgetItem( new_vm->Get_Machine_Name(), ui.Machines_List );
 	item->setData( 256, new_vm->Get_UID() );
@@ -4694,7 +4695,7 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 							Settings.value("Log/Save_Warning","yes").toString() == "yes",
 							Settings.value("Log/Save_Error","yes").toString() == "yes" );
 		
-		// Emulators Information Changet?
+		// Emulators Information Changed?
 		QList<Emulator> tmpEmulatorsList = Get_Emulators_List();
 		if( tmpEmulatorsList != All_Emulators_List )
 		{
@@ -4802,13 +4803,13 @@ void Main_Window::on_actionPower_On_triggered()
 		
 			if( mes_res == QMessageBox::Yes )
 			{
-				disconnect( cur_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-							this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+				disconnect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+							this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 				
 				*cur_vm = *tmp_vm;
 				
-				connect( cur_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-						 this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+				connect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+						 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 				
 				cur_vm->Save_VM();
 				Update_VM_Ui();
@@ -4972,8 +4973,8 @@ void Main_Window::on_actionLoad_VM_From_File_triggered()
 	
 	VM_List << new_vm;
 	
-	connect( new_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-			 this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+	connect( new_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+			 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 	
 	QListWidgetItem *item = new QListWidgetItem( new_vm->Get_Machine_Name(), ui.Machines_List );
 	item->setIcon( QIcon(new_vm->Get_Icon_Path()) );
@@ -5057,8 +5058,8 @@ void Main_Window::on_actionCopy_triggered()
 		
 		VM_List << new_vm;
 		
-		connect( new_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-				 this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+		connect( new_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+				 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 		
 		QListWidgetItem *item = new QListWidgetItem( new_vm->Get_Machine_Name(), ui.Machines_List );
 		item->setIcon( QIcon(new_vm->Get_Icon_Path()) );
@@ -5424,7 +5425,7 @@ void Main_Window::on_TB_FD0_Advanced_Settings_clicked()
 			Nativ_FD0.Use_File_Path() == false )
 			ui.CB_FD0_Devices->setEditText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -5489,7 +5490,7 @@ void Main_Window::on_TB_FD1_Advanced_Settings_clicked()
 			Nativ_FD1.Use_File_Path() == false )
 			ui.CB_FD0_Devices->setEditText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -5554,7 +5555,7 @@ void Main_Window::on_TB_CDROM_Advanced_Settings_clicked()
 			Nativ_CD_ROM.Use_File_Path() == false )
 			ui.CB_CDROM_Devices->setEditText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -5638,7 +5639,7 @@ void Main_Window::on_TB_HDA_Advanced_Settings_clicked()
 			Nativ_HDA.Use_File_Path() == false )
 			ui.Edit_HDA_Image_Path->setText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -5723,7 +5724,7 @@ void Main_Window::on_TB_HDB_Advanced_Settings_clicked()
 			Nativ_HDB.Use_File_Path() == false )
 			ui.Edit_HDB_Image_Path->setText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -5808,7 +5809,7 @@ void Main_Window::on_TB_HDC_Advanced_Settings_clicked()
 			Nativ_HDC.Use_File_Path() == false )
 			ui.Edit_HDC_Image_Path->setText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -5893,7 +5894,7 @@ void Main_Window::on_TB_HDD_Advanced_Settings_clicked()
 			Nativ_HDD.Use_File_Path() == false )
 			ui.Edit_HDD_Image_Path->setText( "" );
 		
-		VM_Changet(); // show changes
+		VM_Changed(); // show changes
 	}
 }
 
@@ -6331,7 +6332,7 @@ void Main_Window::on_TB_Show_SMP_Settings_Window_clicked()
 		{
 			// Settings changed?
 			if( SMP_Settings.Get_Values() != Get_Current_VM()->Get_SMP() )
-				VM_Changet();
+				VM_Changed();
 		}
 	}
 }
@@ -6408,13 +6409,13 @@ void Main_Window::on_Button_Apply_clicked()
 	}
 	
 	// save all Settings
-	disconnect( cur_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-				this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+	disconnect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+				this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 	
 	*cur_vm = *tmp_vm;
 	
-	connect( cur_vm, SIGNAL(State_Changet(Virtual_Machine*, VM::VM_State)),
-			 this, SLOT(VM_State_Changet(Virtual_Machine*, VM::VM_State)) );
+	connect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
+			 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 	
 	// save to file
 	if( ! old_path.isEmpty() )

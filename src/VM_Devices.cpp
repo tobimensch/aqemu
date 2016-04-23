@@ -3550,7 +3550,7 @@ QString VM_Net_Card::Generate_MAC() const
 					   "Net Card Model Invalid!" );
 		}
 		
-		// MAC Finded?
+		// MAC Found?
 		if( nmac.count() != 12 )
 		{
 			AQError( "QString VM_Net_Card::Generate_MAC() const",
