@@ -3798,7 +3798,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 	
 	// on priv machine Settings be changed
 	if( *old_vm != *tmp_vm &&
-		old_vm->Get_State() != VM::VMS_In_Error )
+		old_vm->Get_State() != VM::VMS_In_Error && ui.Button_Apply->isEnabled() )
 	{
 		int mes_res = QMessageBox::question( this, tr("Warning!"), tr("Current VM was changed. Save all changes?"),
 											 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes );

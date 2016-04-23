@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>739</width>
-    <height>592</height>
+    <width>894</width>
+    <height>777</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>AQEMU</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -23,7 +23,16 @@
     <property name="spacing">
      <number>4</number>
     </property>
-    <property name="margin">
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>6</number>
+    </property>
+    <property name="rightMargin">
+     <number>6</number>
+    </property>
+    <property name="bottomMargin">
      <number>6</number>
     </property>
     <item>
@@ -95,7 +104,16 @@
         </sizepolicy>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <item>
@@ -418,7 +436,7 @@
                    <string/>
                   </property>
                   <property name="icon">
-                   <iconset resource="images.qrc">
+                   <iconset resource="../resources/images.qrc">
                     <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                   </property>
                  </widget>
@@ -554,7 +572,7 @@
                    <string/>
                   </property>
                   <property name="icon">
-                   <iconset resource="images.qrc">
+                   <iconset resource="../resources/images.qrc">
                     <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                   </property>
                  </widget>
@@ -892,7 +910,7 @@
                       <string>Free memory: 768 MB</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="images.qrc">
+                      <iconset resource="../resources/images.qrc">
                        <normaloff>:/update.png</normaloff>:/update.png</iconset>
                      </property>
                      <property name="toolButtonStyle">
@@ -1067,7 +1085,16 @@
                <string>Audio Cards</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_21">
-               <property name="margin">
+               <property name="leftMargin">
+                <number>6</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <property name="bottomMargin">
                 <number>6</number>
                </property>
                <property name="spacing">
@@ -1351,7 +1378,7 @@
                   <string>Open</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1374,7 +1401,7 @@
                   <string>Create</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/add.png</normaloff>:/add.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1449,7 +1476,7 @@ Cluster Size: 0</string>
                   <string>Format</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1472,7 +1499,7 @@ Cluster Size: 0</string>
                   <string>All settings</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1547,7 +1574,7 @@ Cluster Size: 0</string>
                   <string>Open</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1570,7 +1597,7 @@ Cluster Size: 0</string>
                   <string>Create</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/add.png</normaloff>:/add.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1645,7 +1672,7 @@ Cluster Size: 0</string>
                   <string>Format</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1668,7 +1695,7 @@ Cluster Size: 0</string>
                   <string>All settings</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1743,7 +1770,7 @@ Cluster Size: 0</string>
                   <string>Open</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1766,7 +1793,7 @@ Cluster Size: 0</string>
                   <string>Create</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/add.png</normaloff>:/add.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1841,7 +1868,7 @@ Cluster Size: 0</string>
                   <string>Format</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1864,7 +1891,7 @@ Cluster Size: 0</string>
                   <string>All settings</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1939,7 +1966,7 @@ Cluster Size: 0</string>
                   <string>Open</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -1962,7 +1989,7 @@ Cluster Size: 0</string>
                   <string>Create</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/add.png</normaloff>:/add.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -2037,7 +2064,7 @@ Cluster Size: 0</string>
                   <string>Format</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -2060,7 +2087,7 @@ Cluster Size: 0</string>
                   <string>All settings</string>
                  </property>
                  <property name="icon">
-                  <iconset resource="images.qrc">
+                  <iconset resource="../resources/images.qrc">
                    <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                  </property>
                  <property name="toolButtonStyle">
@@ -2151,7 +2178,7 @@ Cluster Size: 0</string>
                      <string>Open</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -2192,7 +2219,7 @@ Cluster Size: 0</string>
                      <string>All settings</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                     </property>
                     <property name="toolButtonStyle">
@@ -2282,7 +2309,7 @@ Cluster Size: 0</string>
                      <string>Open</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -2323,7 +2350,7 @@ Cluster Size: 0</string>
                      <string>All settings</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                     </property>
                     <property name="toolButtonStyle">
@@ -2413,7 +2440,7 @@ Cluster Size: 0</string>
                      <string>Open</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -2454,7 +2481,7 @@ Cluster Size: 0</string>
                      <string>All settings</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
                     </property>
                     <property name="toolButtonStyle">
@@ -2491,7 +2518,16 @@ Cluster Size: 0</string>
             <item row="0" column="0">
              <widget class="QWidget" name="Widget_Use_Network" native="true">
               <layout class="QHBoxLayout" name="horizontalLayout_5">
-               <property name="margin">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item>
@@ -2517,7 +2553,16 @@ Cluster Size: 0</string>
                <item>
                 <widget class="QWidget" name="Widget_Network_Mode" native="true">
                  <layout class="QHBoxLayout" name="horizontalLayout_4">
-                  <property name="margin">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="bottomMargin">
                    <number>0</number>
                   </property>
                   <item>
@@ -2582,7 +2627,16 @@ Cluster Size: 0</string>
                 <item row="0" column="0" colspan="2">
                  <widget class="QWidget" name="Widget_Redirection_CheckBox" native="true">
                   <layout class="QHBoxLayout" name="horizontalLayout_15">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <item>
@@ -2665,7 +2719,16 @@ Cluster Size: 0</string>
                 <item row="1" column="1">
                  <widget class="QWidget" name="Widget_Redirection_Buttons" native="true">
                   <layout class="QVBoxLayout" name="verticalLayout_6">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <item>
@@ -2674,7 +2737,7 @@ Cluster Size: 0</string>
                       <string>A&amp;dd item</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="images.qrc">
+                      <iconset resource="../resources/images.qrc">
                        <normaloff>:/add.png</normaloff>:/add.png</iconset>
                      </property>
                     </widget>
@@ -2691,7 +2754,7 @@ Cluster Size: 0</string>
                       <string>D&amp;elete item</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="images.qrc">
+                      <iconset resource="../resources/images.qrc">
                        <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
                      </property>
                     </widget>
@@ -2708,7 +2771,7 @@ Cluster Size: 0</string>
                       <string>&amp;Clear list</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="images.qrc">
+                      <iconset resource="../resources/images.qrc">
                        <normaloff>:/error.png</normaloff>:/error.png</iconset>
                      </property>
                     </widget>
@@ -2738,7 +2801,16 @@ Cluster Size: 0</string>
                    </sizepolicy>
                   </property>
                   <layout class="QGridLayout" name="gridLayout_10">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <item row="0" column="0" colspan="2">
@@ -2746,7 +2818,16 @@ Cluster Size: 0</string>
                      <property name="spacing">
                       <number>6</number>
                      </property>
-                     <property name="margin">
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
                       <number>0</number>
                      </property>
                      <item>
@@ -2911,7 +2992,16 @@ Cluster Size: 0</string>
                 <item row="4" column="0" colspan="2">
                  <widget class="QWidget" name="Widget_Network_Other" native="true">
                   <layout class="QVBoxLayout" name="verticalLayout_19">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <item>
@@ -2981,7 +3071,7 @@ Cluster Size: 0</string>
                         <string>...</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="images.qrc">
+                        <iconset resource="../resources/images.qrc">
                          <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
                        </property>
                       </widget>
@@ -3389,7 +3479,16 @@ Cluster Size: 0</string>
             <item>
              <widget class="QWidget" name="Widget_Advanced_Emulator_Arguments" native="true">
               <layout class="QGridLayout" name="gridLayout_11">
-               <property name="margin">
+               <property name="leftMargin">
+                <number>0</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
                 <number>0</number>
                </property>
                <item row="1" column="0" colspan="2">
@@ -3730,7 +3829,16 @@ Cluster Size: 0</string>
                    <bool>false</bool>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_17">
-                   <property name="margin">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
                     <number>0</number>
                    </property>
                    <item>
@@ -3811,7 +3919,7 @@ Cluster Size: 0</string>
                         <string>...</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="images.qrc">
+                        <iconset resource="../resources/images.qrc">
                          <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                        </property>
                       </widget>
@@ -3910,7 +4018,7 @@ Cluster Size: 0</string>
                              <string>...</string>
                             </property>
                             <property name="icon">
-                             <iconset resource="images.qrc">
+                             <iconset resource="../resources/images.qrc">
                               <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
                             </property>
                            </widget>
@@ -3948,7 +4056,7 @@ Cluster Size: 0</string>
                              <string>...</string>
                             </property>
                             <property name="icon">
-                             <iconset resource="images.qrc">
+                             <iconset resource="../resources/images.qrc">
                               <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
                             </property>
                            </widget>
@@ -4029,7 +4137,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
                      <string>...</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -4067,7 +4175,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
                      <string>...</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -4105,7 +4213,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
                      <string>...</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -4143,7 +4251,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
                      <string>...</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -4214,7 +4322,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
                      <string>...</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -4258,7 +4366,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
                      <string>...</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
                     </property>
                    </widget>
@@ -4318,7 +4426,16 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
           <property name="spacing">
            <number>6</number>
           </property>
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -4336,22 +4453,28 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
           </item>
           <item>
            <widget class="QPushButton" name="Button_Apply">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>&amp;Apply</string>
             </property>
             <property name="icon">
-             <iconset resource="images.qrc">
+             <iconset resource="../resources/images.qrc">
               <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QPushButton" name="Button_Cancel">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>&amp;Discard Changes</string>
             </property>
             <property name="icon">
-             <iconset resource="images.qrc">
+             <iconset resource="../resources/images.qrc">
               <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
             </property>
            </widget>
@@ -4369,8 +4492,8 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>739</width>
-     <height>18</height>
+     <width>894</width>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVM">
@@ -4382,7 +4505,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
       <string>&amp;New VM</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/add.png</normaloff>:/add.png</iconset>
      </property>
      <addaction name="actionAdd_New_VM"/>
@@ -4469,7 +4592,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </widget>
   <action name="actionAbout_AQEMU">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/help.png</normaloff>:/help.png</iconset>
    </property>
    <property name="text">
@@ -4487,7 +4610,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionAbout_Qt">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/about.png</normaloff>:/about.png</iconset>
    </property>
    <property name="text">
@@ -4496,7 +4619,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionDelete_VM">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
    </property>
    <property name="text">
@@ -4505,7 +4628,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionExit">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/exit.png</normaloff>:/exit.png</iconset>
    </property>
    <property name="text">
@@ -4517,7 +4640,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionShow_New_VM_Wizard">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/wizard.png</normaloff>:/wizard.png</iconset>
    </property>
    <property name="text">
@@ -4529,7 +4652,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionAdd_New_VM">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/add.png</normaloff>:/add.png</iconset>
    </property>
    <property name="text">
@@ -4541,7 +4664,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionCreate_HDD_Image">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
    </property>
    <property name="text">
@@ -4550,7 +4673,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionConvert_HDD_Image">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
    </property>
    <property name="text">
@@ -4565,7 +4688,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionShow_Settings_Window">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
    </property>
    <property name="text">
@@ -4580,7 +4703,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionPower_On">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/play.png</normaloff>:/play.png</iconset>
    </property>
    <property name="text">
@@ -4592,11 +4715,11 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionPower_Off">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/stop.png</normaloff>:/stop.png</iconset>
    </property>
    <property name="text">
-    <string>Sto&amp;p</string>
+    <string>St&amp;op</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
@@ -4607,7 +4730,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/pause.png</normaloff>:/pause.png</iconset>
    </property>
    <property name="text">
@@ -4619,7 +4742,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionReset">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/update.png</normaloff>:/update.png</iconset>
    </property>
    <property name="text">
@@ -4631,7 +4754,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionLoad_VM_From_File">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
    </property>
    <property name="text">
@@ -4640,7 +4763,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionSave_As_Template">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
    </property>
    <property name="text">
@@ -4649,7 +4772,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionShow_QEMU_Arguments">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/terminal.png</normaloff>:/terminal.png</iconset>
    </property>
    <property name="text">
@@ -4658,7 +4781,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionSave">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/save.png</normaloff>:/save.png</iconset>
    </property>
    <property name="text">
@@ -4667,52 +4790,52 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionChange_Icon">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/icon.png</normaloff>:/icon.png</iconset>
    </property>
    <property name="text">
-    <string>Change Icon</string>
+    <string>Change &amp;Icon</string>
    </property>
   </action>
   <action name="actionCopy">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/copy.png</normaloff>:/copy.png</iconset>
    </property>
    <property name="text">
-    <string>Copy</string>
+    <string>&amp;Copy</string>
    </property>
   </action>
   <action name="actionManage_Snapshots">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/clock.png</normaloff>:/clock.png</iconset>
    </property>
    <property name="text">
-    <string>Manage Snapshots</string>
+    <string>&amp;Manage Snapshots</string>
    </property>
   </action>
   <action name="actionShow_Emulator_Control">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/go.png</normaloff>:/go.png</iconset>
    </property>
    <property name="text">
-    <string>Show Emulator Control</string>
+    <string>Show &amp;Emulator Control</string>
    </property>
   </action>
   <action name="actionShow_QEMU_Error_Log_Window">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/bug.png</normaloff>:/bug.png</iconset>
    </property>
    <property name="text">
-    <string>Show QEMU/KVM Error Log Window</string>
+    <string>Show &amp;QEMU/KVM Error Log Window</string>
    </property>
   </action>
   <action name="actionShow_Advanced_Settings_Window">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
    </property>
    <property name="text">
@@ -4721,7 +4844,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionShow_First_Run_Wizard">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/wizard.png</normaloff>:/wizard.png</iconset>
    </property>
    <property name="text">
@@ -4730,20 +4853,20 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   </action>
   <action name="actionCreate_Shell_Script">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
    </property>
    <property name="text">
-    <string>Create Shell Script</string>
+    <string>Create She&amp;ll Script</string>
    </property>
   </action>
   <action name="actionDelete_VM_And_Files">
    <property name="icon">
-    <iconset resource="images.qrc">
+    <iconset resource="../resources/images.qrc">
      <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
    </property>
    <property name="text">
-    <string>Delete VM And Files</string>
+    <string>Delete VM And &amp;Files</string>
    </property>
   </action>
  </widget>
@@ -4841,7 +4964,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
   <tabstop>Edit_Linux_Initrd_Path</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>
