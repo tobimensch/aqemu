@@ -28,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    src/docopt/docopt.h
     src/QDom.h
     src/tinyxml2.h
 	src/About_Window.h
@@ -70,6 +71,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    src/docopt/docopt.cpp
     src/QDom.cpp
     src/tinyxml2.cpp
 	src/About_Window.cpp
@@ -190,11 +192,6 @@ IF( NOT WITHOUT_EMBEDDED_DISPLAY )
 										src/Embedded_Display/vncclientthread.cpp src/Embedded_Display/vncview.cpp )
 	
 	ADD_DEFINITIONS( -DVNC_DISPLAY -DQTONLY )
-	#ADD_LIBRARY( libvncclient SHARED ${aqemu_headers} ${aqemu_sources} )
-	
-	#INCLUDE_DIRECTORIES( ${VNCCLIENT_INCLUDE_DIRS} ${LIBVNCCLIENT_INCLUDE_DIR} Qt5::Widgets
-    #Qt5::Network
-    #Qt5::Test)
 ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
 
 # TODO: port from Qt4 to Qt5
@@ -242,14 +239,14 @@ INSTALL( TARGETS aqemu DESTINATION bin )
 
 INSTALL( FILES ${qm_files} DESTINATION share/aqemu )
 
-FILE( GLOB os_icons "${CMAKE_CURRENT_SOURCE_DIR}/os_icons/*.*" )
+FILE( GLOB os_icons "${CMAKE_CURRENT_SOURCE_DIR}/resources/os_icons/*.*" )
 INSTALL( FILES ${os_icons} DESTINATION share/aqemu/os_icons )
 
-FILE( GLOB os_templates "${CMAKE_CURRENT_SOURCE_DIR}/os_templates/*.*")
+FILE( GLOB os_templates "${CMAKE_CURRENT_SOURCE_DIR}/resources/os_templates/*.*")
 INSTALL( FILES ${os_templates} DESTINATION share/aqemu/os_templates )
 
-FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/aqemu_links.html" )
-INSTALL( FILES ${links} DESTINATION share/aqemu )
+#FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/aqemu_links.html" )
+#INSTALL( FILES ${links} DESTINATION share/aqemu )
 
 FILE( GLOB pixmaps "${CMAKE_CURRENT_SOURCE_DIR}/menu_data/*.png" )
 INSTALL( FILES ${pixmaps} DESTINATION share/pixmaps )
