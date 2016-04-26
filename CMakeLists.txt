@@ -28,7 +28,6 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
-    src/docopt/docopt.h
     src/QDom.h
     src/tinyxml2.h
 	src/About_Window.h
@@ -71,7 +70,6 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
-    src/docopt/docopt.cpp
     src/QDom.cpp
     src/tinyxml2.cpp
 	src/About_Window.cpp
