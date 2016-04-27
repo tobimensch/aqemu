@@ -225,8 +225,8 @@ int main( int argc, char *argv[] )
 		{
 			QDir dataDir( dataDirs[dx] );
 			
-			if( dataDir.exists(dataDirs[dx] + "os_icons") &&
-				dataDir.exists(dataDirs[dx] + "os_templates") &&
+			if( dataDir.exists("./os_icons") &&
+				dataDir.exists("./os_templates") &&
 				dataDir.entryList(QStringList("*.rcc"), QDir::Files).isEmpty() == false )
 			{
 				settings.setValue( "AQEMU_Data_Folder", dataDirs[dx] );
@@ -234,7 +234,7 @@ int main( int argc, char *argv[] )
 			}
 		}
 		
-		// Finded?
+		// Found?
 		if( settings.value("AQEMU_Data_Folder", "").toString().isEmpty() )
 		{
 			QMessageBox::information( NULL, QObject::tr("Error!"),
