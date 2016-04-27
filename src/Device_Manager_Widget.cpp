@@ -984,6 +984,8 @@ void Device_Manager_Widget::on_actionDelete_triggered()
 				found = true;
 				
 				Storage_Devices.removeAt( fx );
+				ui.Devices_List->takeItem( ui.Devices_List->currentRow() );
+				break;
 			}
 		}
 		
@@ -991,6 +993,21 @@ void Device_Manager_Widget::on_actionDelete_triggered()
 		{
 			AQError( "void Device_Manager_Widget::on_actionDelete_triggered()",
 					 "Incorrect Device!" );
+			return;
+		}
+		else
+		{
+			// Rename items
+			for( int ix = 0, count = 0; ix < ui.Devices_List->count(); ++ix )
+			{
+				if( ui.Devices_List->item(ix)->data(512).toString().contains("device") )
+				{
+					ui.Devices_List->item(ix)->setData( 512, QString("device%1").arg(count) );
+					++count;
+				}
+			}
+			
+			emit Device_Changed();
 			return;
 		}
 	}
