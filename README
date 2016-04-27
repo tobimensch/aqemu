@@ -37,7 +37,7 @@ INSTALLATION (For Unix):
         Sample `cmake -DCMAKE_INSTALL_PREFIX=/usr/local/' this install AQEMU binary
         in /usr/local/bin and install data in /usr/local/share/aqemu
 
-    -DWITHOUT_EMBEDDED_DISPLAY = on | off (Default is: on)
+    -DWITHOUT_EMBEDDED_DISPLAY = on | off (Default is: off)
         For building without support Embedded VNC Display.
 
     -DDEBUG = on | off (Default is: off)
