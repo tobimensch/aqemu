@@ -30,8 +30,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>423</width>
-        <height>560</height>
+        <width>479</width>
+        <height>665</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -60,7 +60,16 @@
           <bool>false</bool>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -440,7 +449,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/up.png</normaloff>:/up.png</iconset>
                     </property>
                    </widget>
@@ -467,7 +476,7 @@
                      <string/>
                     </property>
                     <property name="icon">
-                     <iconset resource="images.qrc">
+                     <iconset resource="../resources/images.qrc">
                       <normaloff>:/down.png</normaloff>:/down.png</iconset>
                     </property>
                    </widget>
@@ -550,7 +559,7 @@
               <item row="0" column="0">
                <widget class="QRadioButton" name="RB_No_Password">
                 <property name="text">
-                 <string>Enables client connection with no password</string>
+                 <string>Enables client connection with &amp;no password</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
@@ -560,7 +569,7 @@
               <item row="1" column="0">
                <widget class="QRadioButton" name="RB_Use_Password">
                 <property name="text">
-                 <string>Use password</string>
+                 <string>&amp;Use password</string>
                 </property>
                </widget>
               </item>
@@ -615,7 +624,7 @@
   <tabstop>Edit_Password</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

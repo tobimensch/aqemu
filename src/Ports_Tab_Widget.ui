@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>491</width>
+    <width>542</width>
     <height>274</height>
    </rect>
   </property>
@@ -45,7 +45,7 @@
           <string>Serial (COM)</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/port.png</normaloff>:/port.png</iconset>
          </property>
          <property name="iconSize">
@@ -68,7 +68,7 @@
           <string>Parallel (LPT)</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/port.png</normaloff>:/port.png</iconset>
          </property>
          <property name="iconSize">
@@ -91,7 +91,7 @@
           <string>USB</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/usb.png</normaloff>:/usb.png</iconset>
          </property>
          <property name="iconSize">
@@ -168,7 +168,7 @@
           <string>Edit Port</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
          </property>
          <property name="iconSize">
@@ -191,7 +191,7 @@
           <string>Delete Port</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -279,7 +279,7 @@
   <tabstop>Ports_Table</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections/>
 </ui>

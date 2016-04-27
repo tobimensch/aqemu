@@ -15,7 +15,7 @@
    <string>Delete VM and Files</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -47,7 +47,7 @@
      <item>
       <widget class="QRadioButton" name="RB_Show_HDD">
        <property name="text">
-        <string>&amp;Hard drive images</string>
+        <string>Hard drive ima&amp;ges</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -73,7 +73,7 @@
      <item>
       <widget class="QRadioButton" name="RB_Show_All">
        <property name="text">
-        <string>&amp;All VM files</string>
+        <string>A&amp;ll VM files</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -156,7 +156,7 @@
         <string>&amp;Delete selected</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/go.png</normaloff>:/go.png</iconset>
        </property>
       </widget>
@@ -167,7 +167,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -184,7 +184,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

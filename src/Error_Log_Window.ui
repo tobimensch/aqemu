@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>477</width>
+    <width>624</width>
     <height>346</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
    <string>QEMU Error Log</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/bug.png</normaloff>:/bug.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -64,7 +64,7 @@
      <item>
       <widget class="QRadioButton" name="RB_Normal_Mode">
        <property name="text">
-        <string>Normal Mode</string>
+        <string>&amp;Normal Mode</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -74,7 +74,7 @@
      <item>
       <widget class="QRadioButton" name="RB_Show_VM_Started">
        <property name="text">
-        <string>Do Not Show Until Next VM Started</string>
+        <string>&amp;Do Not Show Until Next VM Started</string>
        </property>
        <property name="checked">
         <bool>false</bool>
@@ -84,7 +84,7 @@
      <item>
       <widget class="QRadioButton" name="RB_Show_AQEMU_Started">
        <property name="text">
-        <string>Do Not Show Until Next AQEMU Started</string>
+        <string>Do Not Show &amp;Until Next AQEMU Started</string>
        </property>
       </widget>
      </item>
@@ -92,7 +92,7 @@
       <widget class="QRadioButton" name="RB_No_Show_Forever">
        <property name="text">
         <string>Never show it
-(For View Error Log Select VM-&gt;Show QEMU/KVM Error Log Window)</string>
+(For View Error &amp;Log Select VM-&gt;Show QEMU/KVM Error Log Window)</string>
        </property>
       </widget>
      </item>
@@ -106,7 +106,7 @@
         <string>&amp;Clear Errors List</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/error.png</normaloff>:/error.png</iconset>
        </property>
       </widget>
@@ -130,7 +130,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -149,7 +149,7 @@
   <tabstop>Button_Hide</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

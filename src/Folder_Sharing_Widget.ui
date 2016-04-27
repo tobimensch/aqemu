@@ -100,7 +100,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/view_icon.png</normaloff>:/view_icon.png</iconset>
          </property>
          <property name="iconSize">
@@ -120,7 +120,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
          </property>
          <property name="iconSize">
@@ -185,7 +185,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -260,7 +260,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
          </property>
          <property name="iconSize">
@@ -457,7 +457,7 @@
   <tabstop>Folders_List</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

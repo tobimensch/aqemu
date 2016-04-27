@@ -8,18 +8,27 @@
     <x>0</x>
     <y>0</y>
     <width>475</width>
-    <height>301</height>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Manage VM Snapshots</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/clock.png</normaloff>:/clock.png</iconset>
   </property>
   <layout class="QGridLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
     <number>9</number>
    </property>
    <property name="spacing">
@@ -40,7 +49,16 @@
       <enum>QFrame::Sunken</enum>
      </property>
      <layout class="QGridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
        <number>9</number>
       </property>
       <property name="spacing">
@@ -133,7 +151,7 @@
       <string>Properties</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
      </property>
      <property name="iconSize">
@@ -156,7 +174,7 @@
       <string>Start</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/play.png</normaloff>:/play.png</iconset>
      </property>
      <property name="iconSize">
@@ -179,7 +197,7 @@
       <string>Delete</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
      </property>
      <property name="iconSize">
@@ -202,7 +220,7 @@
       <string>Create</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/add.png</normaloff>:/add.png</iconset>
      </property>
      <property name="iconSize">
@@ -225,7 +243,7 @@
       <string>OK</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
      </property>
      <property name="iconSize">
@@ -251,7 +269,7 @@
       <string>Update Info</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/update.png</normaloff>:/update.png</iconset>
      </property>
      <property name="iconSize">
@@ -283,8 +301,8 @@
   <tabstop>Button_OK</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

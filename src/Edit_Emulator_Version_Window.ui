@@ -1,8 +1,9 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <author>Andrey Rijov</author>
  <class>Edit_Emulator_Version_Window</class>
- <widget class="QDialog" name="Edit_Emulator_Version_Window" >
-  <property name="geometry" >
+ <widget class="QDialog" name="Edit_Emulator_Version_Window">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -10,44 +11,44 @@
     <height>202</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Edit Emulator Version</string>
   </property>
-  <property name="windowIcon" >
-   <iconset resource="images.qrc" >
+  <property name="windowIcon">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QListWidget" name="List_Emulators" />
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QListWidget" name="List_Emulators"/>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" name="horizontalLayout_2" >
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="Label_Versions" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Preferred" hsizetype="Maximum" >
+      <widget class="QLabel" name="Label_Versions">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text" >
-        <string>&amp;Available Versions:</string>
+       <property name="text">
+        <string>Avai&amp;lable Versions:</string>
        </property>
-       <property name="buddy" >
+       <property name="buddy">
         <cstring>CB_Versions</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer" >
-       <property name="orientation" >
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Fixed</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>10</width>
          <height>20</height>
@@ -56,9 +57,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QComboBox" name="CB_Versions" >
-       <property name="sizePolicy" >
-        <sizepolicy vsizetype="Fixed" hsizetype="Minimum" >
+      <widget class="QComboBox" name="CB_Versions">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -67,21 +68,21 @@
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
-    <widget class="Line" name="line" >
-     <property name="orientation" >
+   <item row="2" column="0">
+    <widget class="Line" name="line">
+     <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="3" column="0" >
-    <layout class="QHBoxLayout" name="horizontalLayout" >
+   <item row="3" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <spacer name="horizontalSpacer_2" >
-       <property name="orientation" >
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>177</width>
          <height>20</height>
@@ -90,23 +91,23 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK" >
-       <property name="text" >
+      <widget class="QPushButton" name="Button_OK">
+       <property name="text">
         <string>&amp;OK</string>
        </property>
-       <property name="icon" >
-        <iconset resource="images.qrc" >
+       <property name="icon">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_Cancel" >
-       <property name="text" >
+      <widget class="QPushButton" name="Button_Cancel">
+       <property name="text">
         <string>&amp;Cancel</string>
        </property>
-       <property name="icon" >
-        <iconset resource="images.qrc" >
+       <property name="icon">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -115,7 +116,7 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="4" margin="7" />
+ <layoutdefault spacing="4" margin="7"/>
  <tabstops>
   <tabstop>List_Emulators</tabstop>
   <tabstop>CB_Versions</tabstop>
@@ -123,7 +124,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc" />
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -132,11 +133,11 @@
    <receiver>Edit_Emulator_Version_Window</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>298</x>
      <y>180</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>91</x>
      <y>178</y>
     </hint>

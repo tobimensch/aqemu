@@ -100,7 +100,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/view_icon.png</normaloff>:/view_icon.png</iconset>
          </property>
          <property name="iconSize">
@@ -120,7 +120,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
          </property>
          <property name="iconSize">
@@ -185,7 +185,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
          </property>
          <property name="iconSize">
@@ -205,7 +205,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -225,7 +225,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
          </property>
          <property name="iconSize">
@@ -245,7 +245,7 @@
           <string>Quick Format</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
          </property>
          <property name="iconSize">
@@ -317,7 +317,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
          </property>
          <property name="iconSize">
@@ -337,7 +337,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
          </property>
          <property name="iconSize">
@@ -357,7 +357,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
          </property>
          <property name="iconSize">
@@ -380,7 +380,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/blockdevice.png</normaloff>:/blockdevice.png</iconset>
          </property>
          <property name="iconSize">
@@ -607,7 +607,7 @@
   <tabstop>Devices_List</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

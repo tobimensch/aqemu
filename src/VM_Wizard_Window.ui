@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>484</width>
+    <width>617</width>
     <height>375</height>
    </rect>
   </property>
@@ -15,11 +15,20 @@
    <string>New Virtual Machine Wizard</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/add.png</normaloff>:/add.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_99">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>9</number>
+   </property>
+   <property name="topMargin">
+    <number>9</number>
+   </property>
+   <property name="rightMargin">
+    <number>9</number>
+   </property>
+   <property name="bottomMargin">
     <number>9</number>
    </property>
    <property name="spacing">
@@ -30,7 +39,16 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="margin">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
       <number>0</number>
      </property>
      <item>
@@ -55,7 +73,7 @@
         <string>&amp;Back</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/previous.png</normaloff>:/previous.png</iconset>
        </property>
       </widget>
@@ -66,7 +84,7 @@
         <string>&amp;Next</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/next.png</normaloff>:/next.png</iconset>
        </property>
        <property name="default">
@@ -96,7 +114,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -152,7 +170,16 @@
      </property>
      <widget class="QWidget" name="Welcome_Page">
       <layout class="QGridLayout">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>9</number>
+       </property>
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <property name="rightMargin">
+        <number>9</number>
+       </property>
+       <property name="bottomMargin">
         <number>9</number>
        </property>
        <property name="spacing">
@@ -366,7 +393,16 @@ p, li { white-space: pre-wrap; }
          <property name="spacing">
           <number>6</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -443,7 +479,16 @@ p, li { white-space: pre-wrap; }
          <property name="spacing">
           <number>6</number>
          </property>
-         <property name="margin">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
           <number>0</number>
          </property>
          <item>
@@ -802,7 +847,7 @@ p, li { white-space: pre-wrap; }
                 <string>Free memory: 768 MB</string>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
+                <iconset resource="../resources/images.qrc">
                  <normaloff>:/update.png</normaloff>:/update.png</iconset>
                </property>
                <property name="toolButtonStyle">
@@ -1045,7 +1090,7 @@ p, li { white-space: pre-wrap; }
             <string>N&amp;ew...</string>
            </property>
            <property name="icon">
-            <iconset resource="images.qrc">
+            <iconset resource="../resources/images.qrc">
              <normaloff>:/add.png</normaloff>:/add.png</iconset>
            </property>
           </widget>
@@ -1056,7 +1101,7 @@ p, li { white-space: pre-wrap; }
             <string>E&amp;xisting...</string>
            </property>
            <property name="icon">
-            <iconset resource="images.qrc">
+            <iconset resource="../resources/images.qrc">
              <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
            </property>
           </widget>
@@ -1150,7 +1195,16 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QWidget" name="Finish_Page">
       <layout class="QGridLayout" name="gridLayout_101">
-       <property name="margin">
+       <property name="leftMargin">
+        <number>9</number>
+       </property>
+       <property name="topMargin">
+        <number>9</number>
+       </property>
+       <property name="rightMargin">
+        <number>9</number>
+       </property>
+       <property name="bottomMargin">
         <number>9</number>
        </property>
        <property name="spacing">
@@ -1281,7 +1335,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>SB_HDD_Size</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

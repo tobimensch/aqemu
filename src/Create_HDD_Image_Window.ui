@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>341</width>
-    <height>359</height>
+    <width>446</width>
+    <height>468</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Create HDD Image</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -28,7 +28,7 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>New Image &amp;File Name:</string>
+      <string>&amp;New Image File Name:</string>
      </property>
      <property name="buddy">
       <cstring>Edit_File_Name</cstring>
@@ -71,7 +71,7 @@
    <item>
     <widget class="QLabel" name="Lebel_Format">
      <property name="text">
-      <string>&amp;Format:</string>
+      <string>Forma&amp;t:</string>
      </property>
      <property name="buddy">
       <cstring>CB_Format</cstring>
@@ -154,7 +154,7 @@
    <item>
     <widget class="QLabel" name="Label_Size">
      <property name="text">
-      <string>&amp;Size:</string>
+      <string>Si&amp;ze:</string>
      </property>
      <property name="buddy">
       <cstring>SB_Size</cstring>
@@ -330,7 +330,7 @@
         <string>C&amp;reate</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/go.png</normaloff>:/go.png</iconset>
        </property>
       </widget>
@@ -341,7 +341,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -366,7 +366,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

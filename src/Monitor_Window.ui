@@ -15,11 +15,20 @@
    <string>QEMU/KVM Monitor</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/terminal.png</normaloff>:/terminal.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="margin">
+   <property name="leftMargin">
+    <number>6</number>
+   </property>
+   <property name="topMargin">
+    <number>6</number>
+   </property>
+   <property name="rightMargin">
+    <number>6</number>
+   </property>
+   <property name="bottomMargin">
     <number>6</number>
    </property>
    <item>
@@ -250,7 +259,7 @@
         <string>&amp;Run</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/go.png</normaloff>:/go.png</iconset>
        </property>
       </widget>
@@ -267,7 +276,7 @@
         <string>&amp;Clear</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/error.png</normaloff>:/error.png</iconset>
        </property>
       </widget>
@@ -287,7 +296,7 @@
         <string>Font</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/font.png</normaloff>:/font.png</iconset>
        </property>
       </widget>
@@ -304,7 +313,7 @@
   <tabstop>Edit_Monitor_Out</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

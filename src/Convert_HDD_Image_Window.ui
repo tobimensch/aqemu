@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>326</height>
+    <width>390</width>
+    <height>423</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Convert HDD Image</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -41,7 +41,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset resource="../resources/images.qrc">
           <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
         </property>
        </widget>
@@ -126,7 +126,7 @@ Cluster Size: 0</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset resource="../resources/images.qrc">
           <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
         </property>
        </widget>
@@ -140,7 +140,7 @@ Cluster Size: 0</string>
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Format:</string>
+         <string>Forma&amp;t:</string>
         </property>
         <property name="buddy">
          <cstring>CB_Output_Format</cstring>
@@ -246,7 +246,7 @@ Cluster Size: 0</string>
       <string>Con&amp;vert</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/go.png</normaloff>:/go.png</iconset>
      </property>
     </widget>
@@ -257,7 +257,7 @@ Cluster Size: 0</string>
       <string>&amp;Cancel</string>
      </property>
      <property name="icon">
-      <iconset resource="images.qrc">
+      <iconset resource="../resources/images.qrc">
        <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
      </property>
     </widget>
@@ -277,7 +277,7 @@ Cluster Size: 0</string>
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

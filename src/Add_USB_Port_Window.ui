@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>490</width>
-    <height>405</height>
+    <height>496</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Adding USB </string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/usb.png</normaloff>:/usb.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -29,7 +29,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Connecting virtual QEMU/KVM USB device</string>
+        <string>Connecting virtual &amp;QEMU/KVM USB device</string>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -78,7 +78,7 @@
         <item>
          <widget class="QRadioButton" name="RB_QEMU_Keyboard">
           <property name="text">
-           <string>Keyboard</string>
+           <string>&amp;Keyboard</string>
           </property>
          </widget>
         </item>
@@ -102,7 +102,7 @@
         <item>
          <widget class="QRadioButton" name="RB_QEMU_Tablet">
           <property name="text">
-           <string>Tablet</string>
+           <string>&amp;Tablet</string>
           </property>
          </widget>
         </item>
@@ -166,7 +166,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Connecting USB host device</string>
+        <string>Connecting &amp;USB host device</string>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -266,7 +266,7 @@
         <item>
          <widget class="QRadioButton" name="RB_Show_All">
           <property name="text">
-           <string>All host devices</string>
+           <string>A&amp;ll host devices</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -289,7 +289,7 @@
         <item>
          <widget class="QRadioButton" name="RB_Show_Not_Used_Runtime">
           <property name="text">
-           <string>Not used in running VM</string>
+           <string>&amp;Not used in running VM</string>
           </property>
          </widget>
         </item>
@@ -446,7 +446,7 @@
         <string>Update USB host list</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/update.png</normaloff>:/update.png</iconset>
        </property>
       </widget>
@@ -470,7 +470,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -481,7 +481,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -506,7 +506,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

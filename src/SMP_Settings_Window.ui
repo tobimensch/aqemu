@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
-    <height>199</height>
+    <width>424</width>
+    <height>257</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SMP Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
@@ -45,7 +45,7 @@ Missing (zero) values will be computed.</string>
      <item row="0" column="0">
       <widget class="QLabel" name="Label_CPUs">
        <property name="text">
-        <string>CPUs count</string>
+        <string>CP&amp;Us count</string>
        </property>
        <property name="buddy">
         <cstring>SB_SMP</cstring>
@@ -68,7 +68,7 @@ Missing (zero) values will be computed.</string>
      <item row="1" column="0">
       <widget class="QLabel" name="Label_Sockets">
        <property name="text">
-        <string>Sockets count</string>
+        <string>Soc&amp;kets count</string>
        </property>
        <property name="buddy">
         <cstring>SB_Sockets</cstring>
@@ -125,7 +125,7 @@ Missing (zero) values will be computed.</string>
      <item row="1" column="0">
       <widget class="QLabel" name="Lebel_Threads">
        <property name="text">
-        <string>Threads per core</string>
+        <string>&amp;Threads per core</string>
        </property>
        <property name="buddy">
         <cstring>SB_Threads</cstring>
@@ -149,7 +149,7 @@ Missing (zero) values will be computed.</string>
      <item>
       <widget class="QLabel" name="Label_MaxCPUs">
        <property name="text">
-        <string>Max number of hotpluggable CPUs</string>
+        <string>Max &amp;number of hotpluggable CPUs</string>
        </property>
        <property name="buddy">
         <cstring>SB_MaxCPUs</cstring>
@@ -196,7 +196,7 @@ Missing (zero) values will be computed.</string>
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -207,7 +207,7 @@ Missing (zero) values will be computed.</string>
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -226,7 +226,7 @@ Missing (zero) values will be computed.</string>
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections/>
 </ui>

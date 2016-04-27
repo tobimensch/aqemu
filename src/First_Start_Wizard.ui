@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>518</width>
-    <height>391</height>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>First Start Wizard</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/wizard.png</normaloff>:/wizard.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
@@ -149,7 +149,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
              </property>
             </widget>
@@ -326,7 +326,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/find.png</normaloff>:/find.png</iconset>
          </property>
         </widget>
@@ -337,7 +337,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/go.png</normaloff>:/go.png</iconset>
          </property>
         </widget>
@@ -351,7 +351,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
          </property>
         </widget>
@@ -424,7 +424,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="images.qrc">
+            <iconset resource="../resources/images.qrc">
              <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
            </property>
           </widget>
@@ -524,7 +524,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/find.png</normaloff>:/find.png</iconset>
              </property>
             </widget>
@@ -535,7 +535,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
              </property>
             </widget>
@@ -612,7 +612,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/previous.png</normaloff>:/previous.png</iconset>
        </property>
       </widget>
@@ -623,7 +623,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/next.png</normaloff>:/next.png</iconset>
        </property>
       </widget>
@@ -650,7 +650,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -660,7 +660,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections/>
 </ui>

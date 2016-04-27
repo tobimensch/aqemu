@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>358</width>
+    <width>379</width>
     <height>1241</height>
    </rect>
   </property>
@@ -36,7 +36,16 @@
       <enum>QFrame::Plain</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <property name="spacing">
@@ -82,7 +91,7 @@
          <string>&amp;Add</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset resource="../resources/images.qrc">
           <normaloff>:/add.png</normaloff>:/add.png</iconset>
         </property>
        </widget>
@@ -112,7 +121,7 @@
          <string>&amp;Delete</string>
         </property>
         <property name="icon">
-         <iconset resource="images.qrc">
+         <iconset resource="../resources/images.qrc">
           <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
         </property>
        </widget>
@@ -143,8 +152,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>340</width>
-        <height>1087</height>
+        <width>350</width>
+        <height>1579</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -160,7 +169,16 @@
        <item>
         <widget class="QWidget" name="General_Widget" native="true">
          <layout class="QGridLayout" name="gridLayout">
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item row="0" column="0">
@@ -203,7 +221,7 @@
                <string>?</string>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../resources/images.qrc">
                 <normaloff>:/help.png</normaloff>:/help.png</iconset>
               </property>
              </widget>
@@ -285,7 +303,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../resources/images.qrc">
                 <normaloff>:/update.png</normaloff>:/update.png</iconset>
               </property>
              </widget>
@@ -488,7 +506,7 @@
                <string>...</string>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../resources/images.qrc">
                 <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
               </property>
              </widget>
@@ -538,7 +556,7 @@
                <string>...</string>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../resources/images.qrc">
                 <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
               </property>
              </widget>
@@ -965,7 +983,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../resources/images.qrc">
                 <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
               </property>
              </widget>
@@ -1000,7 +1018,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="images.qrc">
+               <iconset resource="../resources/images.qrc">
                 <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
               </property>
              </widget>
@@ -1201,7 +1219,7 @@
   <tabstop>Edit_macaddr</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

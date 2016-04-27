@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>566</width>
-    <height>521</height>
+    <width>638</width>
+    <height>693</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Advanced Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_5">
@@ -40,7 +40,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -51,7 +51,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -110,7 +110,7 @@
                 </sizepolicy>
                </property>
                <property name="text">
-                <string>File Format:</string>
+                <string>Fi&amp;le Format:</string>
                </property>
                <property name="buddy">
                 <cstring>RB_Format_PPM</cstring>
@@ -132,14 +132,14 @@
                <item>
                 <widget class="QRadioButton" name="RB_Format_Jpeg">
                  <property name="text">
-                  <string>JPEG</string>
+                  <string>&amp;JPEG</string>
                  </property>
                 </widget>
                </item>
                <item>
                 <widget class="QRadioButton" name="RB_Format_PNG">
                  <property name="text">
-                  <string>PNG</string>
+                  <string>P&amp;NG</string>
                  </property>
                 </widget>
                </item>
@@ -162,7 +162,7 @@
                 <bool>false</bool>
                </property>
                <property name="text">
-                <string>Jpeg Quality:</string>
+                <string>Jpeg &amp;Quality:</string>
                </property>
                <property name="buddy">
                 <cstring>SB_Jpeg_Quality</cstring>
@@ -280,7 +280,7 @@
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="images.qrc">
+                <iconset resource="../resources/images.qrc">
                  <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
                </property>
               </widget>
@@ -328,7 +328,7 @@
           <string>Find All Emulators</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/update.png</normaloff>:/update.png</iconset>
          </property>
          <property name="iconSize">
@@ -348,7 +348,7 @@
           <string>Add</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/add.png</normaloff>:/add.png</iconset>
          </property>
          <property name="iconSize">
@@ -368,7 +368,7 @@
           <string>Delete</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -388,7 +388,7 @@
           <string>Edit</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
          </property>
          <property name="iconSize">
@@ -408,7 +408,7 @@
           <string>Use Default</string>
          </property>
          <property name="icon">
-          <iconset resource="images.qrc">
+          <iconset resource="../resources/images.qrc">
            <normaloff>:/apply.png</normaloff>:/apply.png</iconset>
          </property>
          <property name="iconSize">
@@ -695,7 +695,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
              </property>
             </widget>
@@ -760,7 +760,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
              </property>
             </widget>
@@ -1005,7 +1005,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
              </property>
             </widget>
@@ -1029,7 +1029,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
              </property>
             </widget>
@@ -1363,7 +1363,7 @@
               <string>Add</string>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/add.png</normaloff>:/add.png</iconset>
              </property>
             </widget>
@@ -1374,7 +1374,7 @@
               <string>Edit</string>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
              </property>
             </widget>
@@ -1385,7 +1385,7 @@
               <string>Delete</string>
              </property>
              <property name="icon">
-              <iconset resource="images.qrc">
+              <iconset resource="../resources/images.qrc">
                <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
              </property>
             </widget>
@@ -1472,8 +1472,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>507</width>
-            <height>702</height>
+            <width>481</width>
+            <height>953</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
@@ -1965,7 +1965,7 @@
   <tabstop>CH_Emulator_Version</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

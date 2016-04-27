@@ -640,6 +640,15 @@
     <string>C&amp;lipboard</string>
    </property>
   </action>
+  <action name="actionGrab_Mouse">
+   <property name="icon">
+    <iconset resource="../resources/images.qrc">
+     <normaloff>:/input-mouse.png</normaloff>:/input-mouse.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Grab Mouse</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../resources/images.qrc"/>

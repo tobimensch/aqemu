@@ -7,22 +7,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>354</width>
-    <height>128</height>
+    <width>452</width>
+    <height>173</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Copy VM</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/copy.png</normaloff>:/copy.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="Label_Name">
      <property name="text">
-      <string>New VM Name:</string>
+      <string>&amp;New VM Name:</string>
      </property>
      <property name="buddy">
       <cstring>Edit_New_VM_Name</cstring>
@@ -87,7 +87,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -98,7 +98,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -116,7 +116,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>

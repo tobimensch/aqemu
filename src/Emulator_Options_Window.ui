@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>614</height>
+    <width>814</width>
+    <height>641</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Emulator Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -64,7 +64,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="images.qrc">:/ok.png</pixmap>
+        <pixmap resource="../resources/images.qrc">:/ok.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -154,7 +154,7 @@
       <item>
        <widget class="QRadioButton" name="RB_QEMU">
         <property name="text">
-         <string>QEMU</string>
+         <string>&amp;QEMU</string>
         </property>
        </widget>
       </item>
@@ -177,7 +177,7 @@
       <item>
        <widget class="QRadioButton" name="RB_KVM">
         <property name="text">
-         <string>KVM</string>
+         <string>&amp;KVM</string>
         </property>
        </widget>
       </item>
@@ -234,7 +234,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
        </property>
       </widget>
@@ -254,7 +254,7 @@
         <string>&amp;Find Emulators</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/find.png</normaloff>:/find.png</iconset>
        </property>
       </widget>
@@ -356,7 +356,16 @@
    <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout">
-      <property name="margin">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item row="0" column="0">
@@ -391,7 +400,7 @@
         <item>
          <widget class="QRadioButton" name="RB_Save_Options">
           <property name="text">
-           <string>Use saved available emulator options (Recomended to choose it again after emulator updating)</string>
+           <string>&amp;Use saved available emulator options (Recomended to choose it again after emulator updating)</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -401,14 +410,14 @@
         <item>
          <widget class="QRadioButton" name="RB_Check_Options">
           <property name="text">
-           <string>Always check available emulator options while starting AQEMU (Slow)</string>
+           <string>A&amp;lways check available emulator options while starting AQEMU (Slow)</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="RB_Check_Version">
           <property name="text">
-           <string>Always check emulator version while starting AQEMU</string>
+           <string>Alwa&amp;ys check emulator version while starting AQEMU</string>
           </property>
           <property name="checked">
            <bool>false</bool>
@@ -426,7 +435,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Set version and available options manually</string>
+             <string>Se&amp;t version and available options manually</string>
             </property>
            </widget>
           </item>
@@ -500,7 +509,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -511,7 +520,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -537,6 +546,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
+  <include location="../resources/images.qrc"/>
   <include location="images.qrc"/>
  </resources>
  <connections>

@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>464</width>
-    <height>367</height>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Adding Port</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="images.qrc">
+   <iconset resource="../resources/images.qrc">
     <normaloff>:/port.png</normaloff>:/port.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -52,7 +52,7 @@
        <item>
         <widget class="QRadioButton" name="RB_Default">
          <property name="text">
-          <string>Default</string>
+          <string>&amp;Default</string>
          </property>
          <property name="checked">
           <bool>true</bool>
@@ -72,21 +72,21 @@
           <bool>false</bool>
          </property>
          <property name="text">
-          <string>pty (Pseudo TTY)</string>
+          <string>pt&amp;y (Pseudo TTY)</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QRadioButton" name="RB_none">
          <property name="text">
-          <string>none</string>
+          <string>&amp;none</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QRadioButton" name="RB_null">
          <property name="text">
-          <string>null (/dev/null)</string>
+          <string>nu&amp;ll (/dev/null)</string>
          </property>
         </widget>
        </item>
@@ -154,7 +154,7 @@
        <item>
         <widget class="QRadioButton" name="RB_UDP">
          <property name="text">
-          <string>UDP</string>
+          <string>&amp;UDP</string>
          </property>
         </widget>
        </item>
@@ -185,7 +185,7 @@
        <item>
         <widget class="QRadioButton" name="RB_TCP">
          <property name="text">
-          <string>TCP</string>
+          <string>&amp;TCP</string>
          </property>
         </widget>
        </item>
@@ -199,7 +199,7 @@
        <item>
         <widget class="QRadioButton" name="RB_Unix">
          <property name="text">
-          <string>Unix</string>
+          <string>Uni&amp;x</string>
          </property>
         </widget>
        </item>
@@ -288,7 +288,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
        </property>
       </widget>
@@ -375,7 +375,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -386,7 +386,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="images.qrc">
+        <iconset resource="../resources/images.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -419,7 +419,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="images.qrc"/>
+  <include location="../resources/images.qrc"/>
  </resources>
  <connections>
   <connection>
