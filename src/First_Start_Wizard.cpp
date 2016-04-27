@@ -614,7 +614,7 @@ void First_Start_Wizard::Load_Settings()
 	#endif
 
 	// Use Device Manager
-	ui.CH_Device_Manager->setChecked( Settings.value("Use_Device_Manager", "no").toString() == "yes" );
+	ui.CH_Device_Manager->setChecked( Settings.value("Use_Device_Manager", "yes").toString() == "yes" );
 	
 	// Use VNC Embedded Display
 	#ifdef VNC_DISPLAY
