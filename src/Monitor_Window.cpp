@@ -36,6 +36,7 @@ Monitor_Window::Monitor_Window( QWidget *parent )
 
 void Monitor_Window::Add_QEMU_Out( const QString &new_text )
 {
+ 	ui.Edit_Monitor_Out->moveCursor( QTextCursor::End );
 	ui.Edit_Monitor_Out->insertPlainText( new_text );
 }
 
