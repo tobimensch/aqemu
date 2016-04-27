@@ -62,6 +62,8 @@ class System_Info
 		static QMap<QString, Available_Devices> Emulator_QEMU_0_12;
 		static QMap<QString, Available_Devices> Emulator_QEMU_0_13;
 		static QMap<QString, Available_Devices> Emulator_QEMU_0_14;
+		static QMap<QString, Available_Devices> Emulator_QEMU_0_15;
+		static QMap<QString, Available_Devices> Emulator_QEMU_1_0;
 		
 		static QMap<QString, Available_Devices> Emulator_KVM_7X;
 		static QMap<QString, Available_Devices> Emulator_KVM_8X;
@@ -69,6 +71,8 @@ class System_Info
 		static QMap<QString, Available_Devices> Emulator_KVM_0_12;
 		static QMap<QString, Available_Devices> Emulator_KVM_0_13;
 		static QMap<QString, Available_Devices> Emulator_KVM_0_14;
+		static QMap<QString, Available_Devices> Emulator_KVM_0_15;
+		static QMap<QString, Available_Devices> Emulator_KVM_1_0;
 		
 	private:
 		#ifdef Q_OS_LINUX

@@ -520,12 +520,16 @@ VM::Emulator_Version String_To_Emulator_Version( const QString &str )
 	else if( str == "QEMU 0.12.X" ) return VM::QEMU_0_12;
 	else if( str == "QEMU 0.13.X" ) return VM::QEMU_0_13;
 	else if( str == "QEMU 0.14.X" ) return VM::QEMU_0_14;
+	else if( str == "QEMU 0.15.X" ) return VM::QEMU_0_15;
+	else if( str == "QEMU 1.0" ) return VM::QEMU_1_0;
 	else if( str == "KVM 7X" ) return VM::KVM_7X;
 	else if( str == "KVM 8X" ) return VM::KVM_8X;
 	else if( str == "KVM 0.11.X" ) return VM::KVM_0_11;
 	else if( str == "KVM 0.12.X" ) return VM::KVM_0_12;
 	else if( str == "KVM 0.13.X" ) return VM::KVM_0_13;
 	else if( str == "KVM 0.14.X" ) return VM::KVM_0_14;
+	else if( str == "KVM 0.15.X" ) return VM::KVM_0_15;
+	else if( str == "KVM 1.0" ) return VM::KVM_1_0;
 	else if( str == "Obsolete" ) return VM::Obsolete;
 	else
 	{
@@ -560,6 +564,12 @@ QString Emulator_Version_To_String( VM::Emulator_Version ver )
 		case VM::QEMU_0_14:
 			return "QEMU 0.14.X";
 			
+		case VM::QEMU_0_15:
+			return "QEMU 0.15.X";
+			
+		case VM::QEMU_1_0:
+			return "QEMU 1.0";
+			
 		case VM::KVM_7X:
 			return "KVM 7X";
 			
@@ -577,6 +587,12 @@ QString Emulator_Version_To_String( VM::Emulator_Version ver )
 			
 		case VM::KVM_0_14:
 			return "KVM 0.14.X";
+			
+		case VM::KVM_0_15:
+			return "KVM 0.15.X";
+			
+		case VM::KVM_1_0:
+			return "KVM 1.0";
 			
 		case VM::Obsolete:
 			return "Obsolete";

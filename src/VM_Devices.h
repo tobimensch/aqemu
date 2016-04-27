@@ -38,8 +38,11 @@ class VM
 		
 		// Emulators Version
 		enum Emulator_Version { Obsolete,
-								QEMU_0_9_0, QEMU_0_9_1, QEMU_0_10, QEMU_0_11, QEMU_0_12, QEMU_0_13, QEMU_0_14,
-								KVM_7X, KVM_8X, KVM_0_11, KVM_0_12, KVM_0_13, KVM_0_14 };
+								QEMU_0_9_0, QEMU_0_9_1, QEMU_0_10, QEMU_0_11, QEMU_0_12, QEMU_0_13, QEMU_0_14, QEMU_0_15,
+								QEMU_1_0,
+								KVM_7X, KVM_8X,
+								KVM_0_11, KVM_0_12, KVM_0_13, KVM_0_14, KVM_0_15,
+								KVM_1_0 };
 		
 		// Virtual Machine State
 		enum VM_State { VMS_Running, VMS_Power_Off, VMS_Pause, VMS_Saved, VMS_In_Error };

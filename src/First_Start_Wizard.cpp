@@ -469,7 +469,10 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 					for( int ix = 0; ix < qemuEmulatorsList.count(); ++ix )
 					{
 						if( qemuEmulatorsList[ix].Get_Version() > maxVer )
+						{
+							maxVer = qemuEmulatorsList[ix].Get_Version();
 							maxVerIndex = ix;
+						}
 					}
 					
 					qemuEmulatorsList[ maxVerIndex ].Set_Default( true );
@@ -492,7 +495,10 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 					for( int ix = 0; ix < kvmEmulatorsList.count(); ++ix )
 					{
 						if( kvmEmulatorsList[ix].Get_Version() > maxVer )
+						{
+							maxVer = kvmEmulatorsList[ix].Get_Version();
 							maxVerIndex = ix;
+						}
 					}
 					
 					kvmEmulatorsList[ maxVerIndex ].Set_Default( true );

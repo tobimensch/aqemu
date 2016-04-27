@@ -59,6 +59,8 @@ QMap<QString, Available_Devices> System_Info::Emulator_QEMU_0_11;
 QMap<QString, Available_Devices> System_Info::Emulator_QEMU_0_12;
 QMap<QString, Available_Devices> System_Info::Emulator_QEMU_0_13;
 QMap<QString, Available_Devices> System_Info::Emulator_QEMU_0_14;
+QMap<QString, Available_Devices> System_Info::Emulator_QEMU_0_15;
+QMap<QString, Available_Devices> System_Info::Emulator_QEMU_1_0;
 
 QMap<QString, Available_Devices> System_Info::Emulator_KVM_7X;
 QMap<QString, Available_Devices> System_Info::Emulator_KVM_8X;
@@ -66,6 +68,8 @@ QMap<QString, Available_Devices> System_Info::Emulator_KVM_0_11;
 QMap<QString, Available_Devices> System_Info::Emulator_KVM_0_12;
 QMap<QString, Available_Devices> System_Info::Emulator_KVM_0_13;
 QMap<QString, Available_Devices> System_Info::Emulator_KVM_0_14;
+QMap<QString, Available_Devices> System_Info::Emulator_KVM_0_15;
+QMap<QString, Available_Devices> System_Info::Emulator_KVM_1_0;
 
 QList<VM_USB> System_Info::All_Host_USB;
 QList<VM_USB> System_Info::Used_Host_USB;

@@ -1208,6 +1208,8 @@ bool System_Info::Update_VM_Computers_List()
 	System_Info::Emulator_QEMU_0_12 = System_Info::Emulator_QEMU_0_11;
 	System_Info::Emulator_QEMU_0_13 = System_Info::Emulator_QEMU_0_11;
 	System_Info::Emulator_QEMU_0_14 = System_Info::Emulator_QEMU_0_11;
+	System_Info::Emulator_QEMU_0_15 = System_Info::Emulator_QEMU_0_11;
+	System_Info::Emulator_QEMU_1_0 = System_Info::Emulator_QEMU_0_11;
 	
 	// KVM 7X
 	ad = Available_Devices();
@@ -1354,6 +1356,8 @@ bool System_Info::Update_VM_Computers_List()
 	
 	System_Info::Emulator_KVM_0_13 = System_Info::Emulator_KVM_0_12;
 	System_Info::Emulator_KVM_0_14 = System_Info::Emulator_KVM_0_12;
+	System_Info::Emulator_KVM_0_15 = System_Info::Emulator_KVM_0_12;
+	System_Info::Emulator_KVM_1_0 = System_Info::Emulator_KVM_0_12;
 	
 	return true;
 }
@@ -1402,52 +1406,89 @@ VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )
 	
 	// This QEMU or KVM?
 	bool emulatorKVM = false;
-	if( path.indexOf("kvm", 0, Qt::CaseInsensitive) != -1 ) emulatorKVM = true;
+	if( path.contains("kvm", Qt::CaseInsensitive) ) emulatorKVM = true;
+	//if( path.contains("qemu", Qt::CaseInsensitive) ) emulatorKVM = false;
 	
 	if( emulatorKVM )
 	{
 		QRegExp kvmVer = QRegExp( ".*version\\s+([\\d]+)[.]([\\d]+)[.]([\\d]+).*" );
 		QRegExp kvmVerOldStyle = QRegExp( ".*version.*([\\d]{2,3}).*" );
+		QRegExp kvmVerNewStyle = QRegExp( ".*version\\s+([\\d]+)[.]([\\d]+).*" );
 		QStringList versionLines;
 		
-		// KVM version is: X.XX.X or XX ?
+		// KVM version is: X.XX.X or XX or X.X?
 		if( ! kvmVer.exactMatch(line) )
 		{
-			if( ! kvmVerOldStyle.exactMatch(line) )
+			if( ! kvmVerNewStyle.exactMatch(line) )
 			{
-				AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
-						 "Cannot Match RegExp!\nData: " + line );
-				AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
-						 "Cannot Find KVM Version!" );
-				return VM::Obsolete;
+				if( ! kvmVerOldStyle.exactMatch(line) )
+				{
+					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+							 "Cannot Match RegExp!\nData: " + line );
+					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+							 "Cannot Find KVM Version!" );
+					return VM::Obsolete;
+				}
+				else // Version like: 85
+				{
+					versionLines = kvmVerOldStyle.capturedTexts();
+					if( versionLines.count() < 2 )
+					{
+						AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+								 "Cannot get KVM version! Line: " + line );
+						return VM::Obsolete;
+					}
+					
+					bool ok = false;
+					int kvmVersion = versionLines[1].toInt( &ok, 10 );
+					
+					if( ! ok )
+					{
+						AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+								 "Cannot convert KVM version to int! String: " + versionLines[1] );
+						return VM::Obsolete;
+					}
+					
+					if( kvmVersion < 70 ) return VM::Obsolete;
+					else if( kvmVersion >= 70 && kvmVersion < 80 ) return VM::KVM_7X;
+					else if( kvmVersion >= 80 ) return VM::KVM_8X;
+					else
+					{
+						AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+								 QString("KVM version \"%1\"not defined!").arg(kvmVersion) );
+						return VM::Obsolete;
+					}
+				}
 			}
-			else // Version like: 85
+			else // Version like: 1.0
 			{
-				versionLines = kvmVerOldStyle.capturedTexts();
-				if( versionLines.count() < 2 )
+				versionLines = kvmVerNewStyle.capturedTexts();
+				if( versionLines.count() < 3 )
 				{
 					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
 							 "Cannot get KVM version! Line: " + line );
 					return VM::Obsolete;
 				}
 				
-				bool ok = false;
-				int kvmVersion = versionLines[1].toInt( &ok, 10 );
+				int major_ver, minor_ver;
+				bool ok1, ok2;
 				
-				if( ! ok )
+				major_ver = versionLines[1].toInt( &ok1, 10 );
+				minor_ver = versionLines[2].toInt( &ok2, 10 );
+				
+				if( ! (ok1 && ok2) )
 				{
 					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
-							 "Cannot convert KVM version to int! String: " + versionLines[1] );
+							 "Cannot Convert to Int! Line: " + versionLines[0] );
 					return VM::Obsolete;
 				}
 				
-				if( kvmVersion < 70 ) return VM::Obsolete;
-				else if( kvmVersion >= 70 && kvmVersion < 80 ) return VM::KVM_7X;
-				else if( kvmVersion >= 80 ) return VM::KVM_8X;
+				if( major_ver == 1 && minor_ver == 0 ) return VM::KVM_1_0;
+				else if( major_ver > 1 || (major_ver == 1 && minor_ver > 0) ) return VM::KVM_1_0;
 				else
 				{
 					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
-							 QString("KVM version \"%1\"not defined!").arg(kvmVersion) );
+							 QString("KVM Version %1.%2 not defined!").arg(major_ver).arg(minor_ver) );
 					return VM::Obsolete;
 				}
 			}
@@ -1485,7 +1526,7 @@ VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )
 			else
 			{
 				AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
-						 QString("Version %1.%2.%3 not defined!").arg(major_ver).arg(minor_ver).arg(bugfix_ver) );
+						 QString("QEMU Version %1.%2.%3 not defined!").arg(major_ver).arg(minor_ver).arg(bugfix_ver) );
 				return VM::Obsolete;
 			}
 		}
@@ -1493,13 +1534,51 @@ VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )
 	else // QEMU
 	{
 		QRegExp emulVerRegExp = QRegExp( ".*version\\s+([\\d]+)[.]([\\d]+)[.]([\\d]+).*" );
+		QRegExp emulVerRegExpNew = QRegExp( ".*version\\s+([\\d]+)[.]([\\d]+).*" );
+		
 		if( ! emulVerRegExp.exactMatch(line) )
 		{
-			AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
-					 "Cannot match emulVerRegExp! Line: " + line );
-			return VM::Obsolete;
+			if( ! emulVerRegExpNew.exactMatch(line) )
+			{
+				AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+						 "Cannot match emulVerRegExp! Line: " + line );
+				return VM::Obsolete;
+			}
+			else // Version like: 1.0
+			{
+				QStringList versionLines = emulVerRegExpNew.capturedTexts();
+				if( versionLines.count() < 3 )
+				{
+					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+							 "Cannot get major_ver, minor_ver vairables!" );
+					return VM::Obsolete;
+				}
+				
+				int major_ver, minor_ver;
+				bool ok1, ok2;
+				
+				major_ver = versionLines[1].toInt( &ok1, 10 );
+				minor_ver = versionLines[2].toInt( &ok2, 10 );
+				
+				if( ! (ok1 && ok2) )
+				{
+					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+							 "Cannot Convert to Int! Line: " + versionLines[0] );
+					return VM::Obsolete;
+				}
+				
+				if( major_ver == 1 && minor_ver == 0 ) return VM::QEMU_1_0;
+				else if( major_ver > 1 || (major_ver == 1 && minor_ver > 0) ) return VM::QEMU_1_0;
+				else
+				{
+					AQError( "VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )",
+							 QString("QEMU Version %1.%2 not defined!").arg(major_ver).arg(minor_ver) );
+					return VM::Obsolete;
+				}
+			}
 		}
 		
+		// Version like: 0.12.0
 		QStringList versionLines = emulVerRegExp.capturedTexts();
 		if( versionLines.count() < 4 )
 		{
@@ -1522,7 +1601,7 @@ VM::Emulator_Version System_Info::Get_Emulator_Version( const QString &path )
 			return VM::Obsolete;
 		}
 		
-		if( major_ver == 0 && minor_ver <  9 ) return VM::Obsolete;
+		if( major_ver == 0 && minor_ver < 9 ) return VM::Obsolete;
 		else if( major_ver == 0 && minor_ver == 9 && bugfix_ver == 0 ) return VM::QEMU_0_9_0;
 		else if( major_ver == 0 && minor_ver == 9 && bugfix_ver == 1 ) return VM::QEMU_0_9_1;
 		else if( major_ver == 0 && minor_ver == 10 ) return VM::QEMU_0_10;
@@ -1586,6 +1665,16 @@ QMap<QString, QString> System_Info::Find_QEMU_Binary_Files( const QString &path 
 		#endif
 		
 		++iter;
+	}
+	
+	// Next code for QEMU 1.0 in it version 'qemu' binary name changet to 'qemu-system-i386'
+	if( emulFiles["qemu"].isEmpty() )
+	{
+		#ifdef Q_OS_WIN32
+		if( QFile::exists(dirPath + "qemu-system-i386.exe") ) emulFiles[ "qemu" ] = dirPath + "qemu-system-i386.exe";
+		#else
+		if( QFile::exists(dirPath + "qemu-system-i386") ) emulFiles[ "qemu" ] = dirPath + "qemu-system-i386";
+		#endif
 	}
 	
 	return emulFiles;
@@ -2088,6 +2177,14 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 			default_device = Emulator_QEMU_0_14[ internalName ];
 			break;
 			
+		case VM::QEMU_0_15:
+			default_device = Emulator_QEMU_0_15[ internalName ];
+			break;
+			
+		case VM::QEMU_1_0:
+			default_device = Emulator_QEMU_1_0[ internalName ];
+			break;
+			
 		case VM::KVM_7X:
 			default_device = Emulator_KVM_7X[ internalName ];
 			break;
@@ -2110,6 +2207,14 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 			
 		case VM::KVM_0_14:
 			default_device = Emulator_KVM_0_14[ internalName ];
+			break;
+			
+		case VM::KVM_0_15:
+			default_device = Emulator_KVM_0_15[ internalName ];
+			break;
+			
+		case VM::KVM_1_0:
+			default_device = Emulator_KVM_1_0[ internalName ];
 			break;
 			
 		default:
@@ -2210,7 +2315,7 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		tmp_dev.CPU_List = default_device.CPU_List; // FIXME Emul Version
 		AQWarning( "Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,"
 				   "VM::Emulator_Version version, const QString &internalName )",
-				   "Cannot get CPU's info from emulator. Use default list" );
+				   QString("Cannot get CPU's info from emulator \"%1\". Use default list").arg(path) );
 	}
 	
 	// Get Machines Models
@@ -2271,7 +2376,7 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		tmp_dev.Machine_List = default_device.Machine_List; // FIXME Emul Version
 		AQWarning( "Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,"
 				   "VM::Emulator_Version version, const QString &internalName )",
-				   "Cannot get machines info from emulator. Use default list" );
+				   QString("Cannot get machines info from emulator \"%1\". Use default list").arg(path) );
 	}
 	
 	// -vga
@@ -2339,6 +2444,9 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	{
 		tmp = text_stream->readLine();
 		QString qemu_dev_name = "";
+		
+		// This target platform support soundhw?
+		if( tmp.contains("not supported") ) break;
 		
 		// This description?
 		if( tmp.isEmpty() ||
@@ -2440,7 +2548,7 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		tmp_dev.Network_Card_List = default_device.Network_Card_List; // FIXME Emul Version
 		AQWarning( "Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,"
 				   "VM::Emulator_Version version, const QString &internalName )",
-				   "Cannot get net cards info from emulator. Use default list" );
+				   QString("Cannot get net cards info from emulator \"%1\". Use default list").arg(path) );
 	}
 	
 	// Return info
