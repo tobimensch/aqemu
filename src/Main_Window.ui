@@ -8,15 +8,15 @@
     <x>0</x>
     <y>0</y>
     <width>894</width>
-    <height>777</height>
+    <height>782</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>AQEMU</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
-    <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
+   <iconset resource="../resources/shared_images.qrc">
+    <normaloff>:/images/aqemu.png</normaloff>:/images/aqemu.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -4493,7 +4493,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
      <x>0</x>
      <y>0</y>
      <width>894</width>
-     <height>30</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVM">
@@ -4965,6 +4965,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
  </tabstops>
  <resources>
   <include location="../resources/images.qrc"/>
+  <include location="../resources/shared_images.qrc"/>
  </resources>
  <connections>
   <connection>
