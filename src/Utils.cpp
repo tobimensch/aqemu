@@ -227,19 +227,19 @@ bool Create_New_HDD_Image( bool encrypted, const QString &base_image,
 	args << "-f" << format;
 	
 	args << file_name;
-	 
+	
 	switch( size.Suffix )
 	{
 		case VM::Size_Suf_Mb: // MB
-			args << QString::number( (long)(size.Size * 1024) );
+			args << QString::number( size.Size ) + "M";
 			break;
 			
 		case VM::Size_Suf_Gb: // GB
-			args << QString::number( (long)(size.Size * 1024) ) + "M";
+			args << QString::number( size.Size ) + "G";
 			break;
 			
 		default: // KG
-			args << QString::number( (long)size.Size );
+			args << QString::number( size.Size );
 			break;
 	}
 	

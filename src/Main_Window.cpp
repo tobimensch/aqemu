@@ -5691,7 +5691,6 @@ void Main_Window::on_TB_HDB_Format_HDD_clicked()
 	
 	hdd_win->Set_Image_File_Name( ui.Edit_HDB_Image_Path->text() );
 	hdd_win->Set_Image_Info( HDB_Info->Get_Disk_Info() );
-	hdd_win->exec();
 	
 	if( hdd_win->exec() == QDialog::Accepted )
 		HDB_Info->Update_Disk_Info( ui.Edit_HDB_Image_Path->text() );
@@ -5776,7 +5775,6 @@ void Main_Window::on_TB_HDC_Format_HDD_clicked()
 	
 	hdd_win->Set_Image_File_Name( ui.Edit_HDC_Image_Path->text() );
 	hdd_win->Set_Image_Info( HDC_Info->Get_Disk_Info() );
-	hdd_win->exec();
 	
 	if( hdd_win->exec() == QDialog::Accepted )
 		HDC_Info->Update_Disk_Info( ui.Edit_HDC_Image_Path->text() );
@@ -5861,7 +5859,6 @@ void Main_Window::on_TB_HDD_Format_HDD_clicked()
 	
 	hdd_win->Set_Image_File_Name( ui.Edit_HDD_Image_Path->text() );
 	hdd_win->Set_Image_Info( HDD_Info->Get_Disk_Info() );
-	hdd_win->exec();
 	
 	if( hdd_win->exec() == QDialog::Accepted )
 		HDD_Info->Update_Disk_Info( ui.Edit_HDD_Image_Path->text() );

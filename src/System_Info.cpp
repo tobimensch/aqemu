@@ -2396,6 +2396,8 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		
 		// Get all models string
 		QString all_models = tmp.mid( tmp.indexOf("models:") + QString("models:").count(), tmp.count() );
+		all_models.remove( QChar(' ') ); // Remove all spaces
+		
 		QStringList net_cards_models = all_models.split( ',', QString::SkipEmptyParts );
 		
 		if( net_cards_models.isEmpty() )
