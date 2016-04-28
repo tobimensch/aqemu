@@ -74,8 +74,6 @@ class Convert_HDD_Image_Window: public QDialog
 		
 		HDD_Image_Info *HDD_Info;
 		bool Valid_Info;
-		
-		bool Possible_Encrypte;
 };
 
 #endif

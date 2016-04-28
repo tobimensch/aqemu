@@ -63,7 +63,7 @@ void Copy_VM_Window::on_Button_OK_clicked()
 		if( All_Machine_Names[ix] == ui.Edit_New_VM_Name->text() )
 		{
 			AQGraphic_Warning( tr("Error!"),
-							   tr("This VM Name is Already Used!") );
+							   tr("This VM Name Is Already Used!") );
 			return;
 		}
 	}

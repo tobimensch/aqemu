@@ -402,7 +402,7 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 		{
 			if( VM_List->at(vx)->Get_Machine_Name() == ui.Edit_VM_Name->text() )
 			{
-				AQGraphic_Warning( tr("Warning"), tr("This VM Name is Already Exists!") );
+				AQGraphic_Warning( tr("Warning"), tr("This VM Name Does Already Exist!") );
 				return;
 			}
 		}

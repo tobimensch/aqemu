@@ -215,13 +215,6 @@ Cluster Size: 0</string>
           </property>
          </spacer>
         </item>
-        <item>
-         <widget class="QCheckBox" name="CH_Encrypted">
-          <property name="text">
-           <string>&amp;Encrypt image</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
      </layout>
@@ -272,7 +265,6 @@ Cluster Size: 0</string>
   <tabstop>Button_Browse_Output</tabstop>
   <tabstop>CB_Output_Format</tabstop>
   <tabstop>CH_Compressed</tabstop>
-  <tabstop>CH_Encrypted</tabstop>
   <tabstop>Button_Convert</tabstop>
   <tabstop>Button_Cancel</tabstop>
  </tabstops>

@@ -89,7 +89,7 @@ Convert_HDD_Image_Window::Convert_HDD_Image_Window( QWidget *parent )
 			 this, SLOT(Update_Info(bool)) );
 	Valid_Info = false;
 	
-	Possible_Encrypte = false;
+	//Possible_Encrypte = false;
 	
 	if( ! Get_QEMU_IMG_Info() )
 	{
@@ -161,14 +161,10 @@ void Convert_HDD_Image_Window::on_CB_Output_Format_currentIndexChanged( const QS
 	if( text.contains("qcow", Qt::CaseInsensitive) )
 	{
 		ui.CH_Compressed->setEnabled( true );
-		
-		if( Possible_Encrypte )
-			ui.CH_Encrypted->setEnabled( true );
 	}
 	else
 	{
 		ui.CH_Compressed->setEnabled( false );
-		ui.CH_Encrypted->setEnabled( false );
 	}
 }
 
@@ -193,9 +189,10 @@ void Convert_HDD_Image_Window::on_Button_Convert_clicked()
 	if( ui.CH_Compressed->isEnabled() && 
 		ui.CH_Compressed->isChecked() ) args << "-c";
 	
+    /*
 	// encrypted
 	if( ui.CH_Encrypted->isEnabled() &&
-		ui.CH_Encrypted->isChecked() ) args << "-e";
+		ui.CH_Encrypted->isChecked() ) args << "-e";*/
 	
 	args << "-f" << HDD_Info->Get_Disk_Info().Disk_Format; // Input format
 	
@@ -274,10 +271,11 @@ bool Convert_HDD_Image_Window::Get_QEMU_IMG_Info()
 	}
 	else // Parse text
 	{
+        /*
 		// Encryption
 		QRegExp possibleEncrypte = QRegExp( "-e\\s+" );
 		if( possibleEncrypte.exactMatch(allText) ) Possible_Encrypte = true;
-		else Possible_Encrypte = false;
+		else Possible_Encrypte = false; */
 		
 		// Formats
 		QRegExp formats = QRegExp( ".*Supported formats:\\s+(.*)\n" );

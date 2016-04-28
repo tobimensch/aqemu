@@ -4502,7 +4502,7 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
     </property>
     <widget class="QMenu" name="menuNew_VM">
      <property name="title">
-      <string>&amp;New VM</string>
+      <string>&amp;Add VM</string>
      </property>
      <property name="icon">
       <iconset resource="../resources/images.qrc">
