@@ -5,10 +5,10 @@ AQEMU compiling and running Linux, BSD and Windows!
 (Windows support in developing process)
 
 AQEMU Minimal Version Dependencies:
- * Qt >= 4.4.2
- * CMake >= 2.6 (Not required in Windows)
+ * Qt >= 5.X
+ * CMake >= 2.6
  * QEMU >= 0.9.0 or KVM or QEMU-KVM
- * GCC >= 3.4 or 4.X (MinGW in Windows)
+ * GCC >= 4.X (MinGW in Windows)
 
 
 !!! ATTENTION READ THIS FIRST !!!
@@ -57,21 +57,6 @@ INSTALLATION (For Unix):
  5. type `sudo make install'
 
  6. Installation complete! To start AQEMU type: `aqemu' in shell.
-
-INSTALLATION (For Windows):
-
- 1. Extract AQEMU source code.
-
- 2. `cd' to AQEMU source directory.
-
- 3. type `qmake AQEMU-For-Windows.pro'
-
- 4. type `make'
-
- 5. type `rcc -binary crystalsvg_icons.qrc -o crystalsvg_icons.rcc'
-         `rcc -binary oxygen_icons.qrc -o oxygen_icons.rcc'
-
- 6. Run aqemu.exe
 
 Note:
 I'm not the original author of this software, all credits go to him.
