@@ -81,13 +81,14 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 		{
 			ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
 			ui.Label_Page->setText( tr("Wizard Mode") );
+		    ui.Button_Back->setEnabled( false );
 		}
-		ui.Button_Back->setEnabled( false );
 	}
 	else if( ui.Emulator_Type_Page == ui.Wizard_Pages->currentWidget() )
 	{
 		ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
 		ui.Label_Page->setText( tr("Wizard Mode") );
+		ui.Button_Back->setEnabled( false );
 	}
 	else if( ui.General_Settings_Page == ui.Wizard_Pages->currentWidget() )
 	{
@@ -202,6 +203,8 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 			on_RB_VM_Template_toggled( ui.RB_VM_Template->isChecked() );
 			ui.Label_Page->setText( tr("Template For VM") );
 		}
+        
+		ui.Button_Back->setEnabled( true );
 	}
 	else if( ui.Emulator_Type_Page == ui.Wizard_Pages->currentWidget() )
 	{
