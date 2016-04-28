@@ -198,7 +198,7 @@
          <item>
           <widget class="QRadioButton" name="RB_Typical">
            <property name="text">
-            <string>&amp;Typical (For Beginners)</string>
+            <string>&amp;Typical</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -214,7 +214,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Create new virtua&amp;l machine with most common devices and configuration options.</string>
+            <string>Create a virtua&amp;l machine with the most common devices and configuration options.</string>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
@@ -260,7 +260,7 @@
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Create new virtual machine with additional confi&amp;guration options.</string>
+            <string>Create a virtual machine with additional confi&amp;guration options.</string>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
