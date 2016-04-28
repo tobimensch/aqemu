@@ -111,14 +111,14 @@ void Create_HDD_Image_Window::on_Button_Browse_New_Image_clicked()
 
 void Create_HDD_Image_Window::on_CB_Format_currentIndexChanged( const QString &text )
 {
-	if( text == "qcow2" || text == "qcow" )
+	/*if( text == "qcow2" || text == "qcow" )
 	{
 		ui.CH_Encrypted->setEnabled( true );
 	}
 	else
 	{
 		ui.CH_Encrypted->setEnabled( false );
-	}
+	}*/
 }
 
 void Create_HDD_Image_Window::on_Button_Create_clicked()
@@ -164,13 +164,13 @@ void Create_HDD_Image_Window::on_Button_Create_clicked()
 		}
 		else
 		{
-			Create_OK = Create_New_HDD_Image( ui.CH_Encrypted->isChecked(), ui.Edit_Base_Image_File_Name->text(),
+			Create_OK = Create_New_HDD_Image( false, ui.Edit_Base_Image_File_Name->text(),
 											  ui.Edit_File_Name->text(), ui.CB_Format->currentText(), hd_size, true );
 		}
 	}
 	else
 	{
-		Create_OK = Create_New_HDD_Image( ui.CH_Encrypted->isChecked(), "", ui.Edit_File_Name->text(),
+		Create_OK = Create_New_HDD_Image( false, "", ui.Edit_File_Name->text(),
 										  ui.CB_Format->currentText(), hd_size, true );
 	}
 	

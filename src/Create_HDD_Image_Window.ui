@@ -261,13 +261,6 @@
       <number>10</number>
      </property>
      <item>
-      <widget class="QCheckBox" name="CH_Encrypted">
-       <property name="text">
-        <string>Image Must be &amp;Encrypted (QCOW Format Only)</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QCheckBox" name="CH_Base_Image">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -358,7 +351,6 @@
   <tabstop>Button_Format_Help</tabstop>
   <tabstop>SB_Size</tabstop>
   <tabstop>CB_Suffix</tabstop>
-  <tabstop>CH_Encrypted</tabstop>
   <tabstop>CH_Base_Image</tabstop>
   <tabstop>Edit_Base_Image_File_Name</tabstop>
   <tabstop>Button_Browse_Base_Image</tabstop>
