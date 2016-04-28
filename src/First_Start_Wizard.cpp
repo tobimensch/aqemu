@@ -762,7 +762,7 @@ void First_Start_Wizard::retranslateUi()
 	Header_Captions << tr( "General Settings" );
 	Header_Captions << tr( "Find Emulators" );
 	Header_Captions << tr( "Setup Emulator" );
-	Header_Captions << tr( "Finish" );
+	Header_Captions << tr( "Finished" );
 	
 	ui.Label_Caption->setText( Header_Captions[0] );
 	
@@ -770,21 +770,21 @@ void First_Start_Wizard::retranslateUi()
 	ui.Button_Next->setText( tr("&Next") );
 	ui.Button_Cancel->setText( tr("&Cancel") );
 	
-	ui.Label_Welcome_Text->setText( tr("Welcome to AQEMU settings wizard!\nThis wizard will help you to choose options AQEMU needed to work correctly.\nPush the \"Next\" button to go to next page or \"Back\" button to go back to previous page.") );
-	ui.Label_Select_Language->setText( tr("Here you can choose interface language") );
-	ui.Label_VM_Dir->setText( tr("Please select folder for AQEMU virtual machines") );
-	ui.Label_Device_Manager->setText( tr("If the \"Device manager\" mode is active, storage devices (Floppy, CD/DVD, HDD) will be displayed in virtual machine as icons, like in file manager window.") );
+	ui.Label_Welcome_Text->setText( tr("Welcome to the AQEMU settings wizard!\nThis wizard will help you to choose options AQEMU needs to work correctly.\nPush the \"Next\" button to go to next page or the \"Back\" button to go to the previous page.") );
+	ui.Label_Select_Language->setText( tr("Here you can choose the interface language") );
+	ui.Label_VM_Dir->setText( tr("Please select the folder for AQEMU virtual machines") );
+	ui.Label_Device_Manager->setText( tr("If the \"Device manager\" mode is active, storage devices (Floppy, CD/DVD, HDD) will be displayed in the virtual machine settings as icons, like in a file manager.") );
 	ui.CH_Device_Manager->setText( tr("Use Device manager") );
-	ui.Label_Embedded_VNC->setText( tr("New experimental work mode is available in AQEMU. In this mode QEMU/KVM display will be showed in AQEMU main window. Note that this mode is still unstable so here may be some problems. If you want to enable this feature you must mark the \"Include Emdedded VNC Display in Main Window\" flag.") );
-	ui.CH_Embedded_VNC->setText( tr("Include Emdedded VNC Display in Main Window") );
-	ui.Label_Find_Emulators->setText( tr("For correct working AQEMU must know your emulators locations and versions. For searching push the \"Search\" button. If automatic search can't find out your emulators, you should configure AQEMU yourself later. You can do it in \"File->Advanced Settings\" menu.") );
+	ui.Label_Embedded_VNC->setText( tr("In this new experimental mode the QEMU/KVM display will be shown inside AQEMU main window. Note that this mode is still unstable. If you want to enable this feature, you must set the \"Include Emdedded VNC Display in Main Window\" checkbox.") );
+	ui.CH_Embedded_VNC->setText( tr("Include Embedded VNC Display in Main Window") );
+	ui.Label_Find_Emulators->setText( tr("To work correctly AQEMU must know your emulator locations and versions. To search automatically push the \"Search\" button. If the search can't find your emulators, you can reconfigure AQEMU later. You can do it in the \"File->Advanced Settings\" menu.") );
 	ui.Button_Find_Emulators->setText( tr("&Search") );
 	ui.Button_Skip_Find->setText( tr("S&kip Search") );
 	ui.Button_Edit->setText( tr("Set &Versions Manualy") );
-	ui.Label_Add_Emulator_Help->setText( "Help text (not writed...)" );
-	ui.Label_Add_Emulator_Path->setText( "Path to emulator directory" );
+	ui.Label_Add_Emulator_Help->setText( "Help text (not written...)" );
+	ui.Label_Add_Emulator_Path->setText( "Path to the emulator directory" );
 	ui.Label_Add_Emulator_Version->setText( "Emulator version" );
 	ui.Button_Add_Emulator_Find->setText( "Start &searching" );
 	ui.Button_Add_Emulator_Manual_Mode->setText( "Show all settings..." );
-	ui.Label_Finish_Text->setText( tr("Congratulations! The Wizard has got all necessary settings for configuring AQEMU. Push \"Finish\" button to save your settings.") );
+	ui.Label_Finish_Text->setText( tr("Congratulations! The Wizard has got all the necessary settings for configuring AQEMU. Push the \"Finish\" button to save your settings.") );
 }
