@@ -1804,9 +1804,13 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		// Get available devices list
 		QString emulDevList = Get_Emulator_Output( path, QStringList() << "-device" << "?" );
 		
-		// Find usb-ehci support
+		// Find usb-ehci support (USB 2.0)
 		rx = QRegExp( ".*usb\\-ehci.*" );
 		if( rx.exactMatch(emulDevList) ) tmp_dev.PSO_Device_USB_EHCI = true;
+		
+		// Find usb-xhci support (USB 3.0)
+		rx = QRegExp( ".*usb\\-xhci.*" );
+		if( rx.exactMatch(emulDevList) ) tmp_dev.PSO_Device_USB_XHCI = true;
 	}
 	
 	// -drive
@@ -2676,13 +2680,15 @@ bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )
 	QStringList all_usb_dirs = dir.entryList( QStringList("*"), QDir::Dirs, QDir::Name );
 	
 	// add only unique usb device folders
-	QRegExp re_usbNum = QRegExp( "usb\\d+" ); // like: usb5
-	QRegExp re_NumNum = QRegExp( "\\d+[-]\\d+" ); // like: 1-2
+	QRegExp re_usbNum = QRegExp( "^usb\\d+$" ); // like: usb5
+	QRegExp re_NumNum = QRegExp( "^\\d+[-]\\d+$" ); // like: 1-2
+	QRegExp re_NumNumNum = QRegExp( "^\\d+[-]\\d+[.]\\d+$" ); // like: 1-2.1
 	
 	foreach( QString cur_dir, all_usb_dirs )
 	{
 		if( re_usbNum.exactMatch(cur_dir) ) usb_dirs << cur_dir;
 		else if( re_NumNum.exactMatch(cur_dir) ) usb_dirs << cur_dir;
+		else if( re_NumNumNum.exactMatch(cur_dir) ) usb_dirs << cur_dir;
 		else continue;
 	}
 	
@@ -2769,27 +2775,39 @@ bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )
 					   "Cannot read serial from /sys/bus/usb/devices/" );
 		}
 		
-		// BusAddr
+		// Bus
 		if( Read_SysFS_File(usb_path + "busnum", data) )
 		{
-			QString busAddr = data;
-			
-			if( Read_SysFS_File(usb_path + "devnum", data) )
-			{
-				busAddr += "." + data;
-				tmp_usb.Set_BusAddr( busAddr );
-			}
-			else
-			{
-				AQError( "bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )",
-						 "Cannot read devnum from /sys/bus/usb/devices/" );
-				continue;
-			}
+			tmp_usb.Set_Bus( data );
 		}
 		else
 		{
-			AQError( "bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )",
-					 "Cannot read busnum from /sys/bus/usb/devices/" );
+			AQWarning( "bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )",
+					   "Cannot read busnum from /sys/bus/usb/devices/" );
+			continue;
+		}
+		
+		// Addr
+		if( Read_SysFS_File(usb_path + "devnum", data) )
+		{
+			tmp_usb.Set_Addr( data );
+		}
+		else
+		{
+			AQWarning( "bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )",
+					   "Cannot read devnum from /sys/bus/usb/devices/" );
+			continue;
+		}
+		
+		// DevPath
+		if( Read_SysFS_File(usb_path + "devpath", data) )
+		{
+			tmp_usb.Set_DevPath( data );
+		}
+		else
+		{
+			AQWarning( "bool System_Info::Scan_USB_Sys( QList<VM_USB> &list )",
+					   "Cannot read devpath from /sys/bus/usb/devices/" );
 			continue;
 		}
 		
@@ -3009,7 +3027,9 @@ bool System_Info::Scan_USB_Proc( QList<VM_USB> &list )
 				if( busAddr_list.count() >= 3 )
 				{
 					QString busStr = (busAddr_list[1][0] == '0') ? QString(busAddr_list[1][1]) : busAddr_list[1];
-					tmp_usb.Set_BusAddr( busStr + ":" + busAddr_list[2] );
+					tmp_usb.Set_Bus( busStr );
+					tmp_usb.Set_Addr( busAddr_list[2] );
+					// FIXME add usb device path also
 					tmp_usb.Set_Speed( busAddr_list[3] );
 				}
 				

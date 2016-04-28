@@ -2749,10 +2749,26 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 			
 			VM_Element.appendChild( Dom_Element );
 			
-			// BusAddr
-			Sec_Element = New_Dom_Document.createElement( "BusAddr" );
+			// Bus
+			Sec_Element = New_Dom_Document.createElement( "Bus" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( USB_Ports[ux].Get_BusAddr() );
+			Dom_Text = New_Dom_Document.createTextNode( USB_Ports[ux].Get_Bus() );
+			Sec_Element.appendChild( Dom_Text );
+			
+			VM_Element.appendChild( Dom_Element );
+			
+			// Addr
+			Sec_Element = New_Dom_Document.createElement( "Addr" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( USB_Ports[ux].Get_Addr() );
+			Sec_Element.appendChild( Dom_Text );
+			
+			VM_Element.appendChild( Dom_Element );
+			
+			// Path
+			Sec_Element = New_Dom_Document.createElement( "Path" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( USB_Ports[ux].Get_DevPath() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			VM_Element.appendChild( Dom_Element );
@@ -4469,9 +4485,30 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				tmp_usb.Set_Product_Name( Second_Element.firstChildElement("Product_Name").text() );
 				tmp_usb.Set_Vendor_ID( Second_Element.firstChildElement("Vendor_ID").text() );
 				tmp_usb.Set_Product_ID( Second_Element.firstChildElement("Product_ID").text() );
-				tmp_usb.Set_BusAddr( Second_Element.firstChildElement("BusAddr").text() );
 				tmp_usb.Set_Serial_Number( Second_Element.firstChildElement("Serial_Number").text() );
 				tmp_usb.Set_Speed( Second_Element.firstChildElement("Speed").text() );
+				
+				// For AQEMU VM files version 0.8.2 and oldest
+				if( ! Second_Element.firstChildElement("BusAddr").text().isEmpty() )
+				{
+					QStringList busAddrList = Second_Element.firstChildElement("BusAddr").text().split( ':', QString::SkipEmptyParts );
+					if( busAddrList.count() != 2 )
+					{
+						AQError( "bool Virtual_Machine::Load_VM( const QString &file_name )",
+								 "Cannot parse obsolete USB Bus.Addr string! Data: " + Second_Element.firstChildElement("BusAddr").text() );
+					}
+					else
+					{
+						tmp_usb.Set_Bus( busAddrList[0] );
+						tmp_usb.Set_Addr( busAddrList[1] );
+					}
+				}
+				else // AQEMU Version > 0.8.2
+				{
+					tmp_usb.Set_Bus( Second_Element.firstChildElement("Bus").text() );
+					tmp_usb.Set_Addr( Second_Element.firstChildElement("Addr").text() );
+					tmp_usb.Set_DevPath( Second_Element.firstChildElement("Path").text() );
+				}
 				
 				// QEMU USB Devices
 				bool usb_k, usb_m, usb_t, usb_wt, usb_b;
@@ -6254,7 +6291,9 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	{
 		if( USB_Ports.count() > 0 )
 		{
-			bool usb_ehci_arg_added = false;
+			bool usb_ehci_arg_added = false; // USB 2.0 controller
+			bool usb_xhci_arg_added = false; // USB 3.0 controller
+			
 			Args << "-usb";
 			
 			if( Build_QEMU_Args_for_Tab_Info == false ) System_Info::Update_Host_USB();
@@ -6295,22 +6334,51 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 						continue;
 					}
 					
-					if( ! Current_Emulator_Devices.PSO_Device )
-						Args << "-usbdevice" << "host:" + current_USB_Device.Get_BusAddr();
+					/*
+							ui.RB_USB_Style_device->isChecked() )
+								Settings.setValue( "USB_Style", "device" );
+							else
+								Settings.setValue( "USB_Style", "usbdevice" );
+							
+							if( ui.RB_USB_ID_BusAddr->isChecked() )
+								Settings.setValue( "USB_ID_Style", "BusAddr" );
+							else if( ui.RB_USB_ID_BusPath->isChecked() )
+								Settings.setValue( "USB_ID_Style", "BusPath" );
+							else if( ui.RB_USB_ID_VendorProduct->isChecked() )
+								Settings.setValue( "USB_ID_Style", "VendorProduct" );
+					 */
+					
+					if( Current_Emulator_Devices.PSO_Device == false ||
+						Settings.value("USB_Style", "device").toString() == "usbdevice" )
+					{
+						if( Settings.value("USB_ID_Style","").toString() == "BusAddr" )
+							Args << "-usbdevice" << QString( "host:%1.%2" ).arg( current_USB_Device.Get_Bus() ).arg( current_USB_Device.Get_Addr() );
+						else if( Settings.value("USB_ID_Style","").toString() == "VendorProduct" )
+							Args << "-usbdevice" << QString( "host:%1:%2" ).arg( current_USB_Device.Get_Vendor_ID() ).arg( current_USB_Device.Get_Product_ID() );
+						else
+							Args << "-usbdevice" << QString( "host:%1.%2" ).arg( current_USB_Device.Get_Bus() ).arg( current_USB_Device.Get_DevPath() );
+					}
 					else
 					{
-						QStringList busAddrList = current_USB_Device.Get_BusAddr().split( '.', QString::SkipEmptyParts );
-						if( busAddrList.count() != 2 )
+						QString usbControllerID = "";
+						
+						// Add USB 3.0 controller if need
+						if( Current_Emulator_Devices.PSO_Device_USB_EHCI &&
+							current_USB_Device.Get_Speed().toInt() == 5000 )
 						{
-							AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-									 "USB busAddrList.count() != 2" );
+							if( ! usb_xhci_arg_added )
+							{
+								// Only needed once
+								Args << "-device" << "nec-usb-xhci,id=xhci";
+								usb_xhci_arg_added = true;
+							}
+							
+							usbControllerID = "xhci.0";
 						}
+						// Add USB 2.0 controller if need
 						else if( Current_Emulator_Devices.PSO_Device_USB_EHCI &&
 								 current_USB_Device.Get_Speed().toInt() >= 480 )
 						{
-							AQDebug( "QStringList Virtual_Machine::Build_QEMU_Args()",
-									 QString( "USB speed >= 480, adding ehci USB device %1:%2").arg(busAddrList[0]).arg(busAddrList[1]) );
-							
 							if( ! usb_ehci_arg_added )
 							{
 								// Only needed once
@@ -6318,14 +6386,38 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 								usb_ehci_arg_added = true;
 							}
 							
-							Args << "-device" << QString( "usb-host,bus=ehci.0,hostbus=%1,hostaddr=%2" ).arg( busAddrList[0] ).arg( busAddrList[1] );
+							usbControllerID = "ehci.0";
 						}
-						else
+						else // USB 1.1
 						{
-							AQDebug( "QStringList Virtual_Machine::Build_QEMU_Args()",
-									 QString( "USB speed < 480, adding ohci USB device %1:%2").arg(busAddrList[0]).arg(busAddrList[1]) );
-							
-							Args << "-device" << QString( "usb-host,hostbus=%1,hostaddr=%2" ).arg( busAddrList[0] ).arg( busAddrList[1] );
+							usbControllerID = "usb.0";
+						}
+						
+						
+						// Add USB devices
+						if( Settings.value("USB_ID_Style","").toString() == "BusAddr" )
+						{
+							Args << "-device"
+								 << QString( "usb-host,bus=%1,hostbus=%2,hostaddr=%3" )
+									.arg( usbControllerID )
+									.arg( current_USB_Device.Get_Bus() )
+									.arg( current_USB_Device.Get_Addr() );
+						}
+						else if( Settings.value("USB_ID_Style","").toString() == "VendorProduct" )
+						{
+							Args << "-device"
+								 << QString( "usb-host,bus=%1,vendorid=%2,productid=%3" )
+									.arg( usbControllerID )
+									.arg( current_USB_Device.Get_Vendor_ID() )
+									.arg( current_USB_Device.Get_Product_ID() );
+						}
+						else // Bus.Path
+						{
+							Args << "-device"
+								 << QString( "usb-host,bus=%1,hostbus=%2,hostport=%3" )
+									.arg( usbControllerID )
+									.arg( current_USB_Device.Get_Bus() )
+									.arg( current_USB_Device.Get_DevPath() );
 						}
 					}
 				}
@@ -7049,7 +7141,7 @@ bool Virtual_Machine::Start()
 		if( ! QFile::exists(bin_path) )
 		{
 			AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
-							 tr(QString("Emulator binary not exists! Check path: %1").arg(bin_path).toLatin1()), false );
+							 tr("Emulator binary not exists! Check path: %1").arg(bin_path), false );
 			Start_Snapshot_Tag = "";
 			return false;
 		}

@@ -229,7 +229,17 @@
         </column>
         <column>
          <property name="text">
-          <string>bus.addr:</string>
+          <string>bus:</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>addr:</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>path:</string>
          </property>
         </column>
        </widget>

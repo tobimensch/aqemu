@@ -195,6 +195,19 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 		}
 	}
 	
+	// Tab USB
+	ui.RB_USB_Style_device->setChecked( Settings.value("USB_Style", "device").toString() == "device" );
+	
+	QString usbID = Settings.value( "USB_ID_Style", "BusPath" ).toString();
+	
+	if( usbID == "BusAdd" )
+		ui.RB_USB_ID_BusAddr->setChecked( true );
+	else if( usbID == "VendorProduct" )
+		ui.RB_USB_ID_VendorProduct->setChecked( true );
+	else
+		ui.RB_USB_ID_BusPath->setChecked( true );
+	
+	// Update emulators list
 	if( Load_Emulators_Info() ) Update_Emulators_Info();
 }
 
@@ -376,7 +389,20 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 	#endif
 	Settings.setValue( "Emulator_Monitor_Hostname", ui.CB_Monitor_Hostname->currentText() );
 	Settings.setValue( "Emulator_Monitor_Port", ui.SB_Monitor_Port->value() );
-
+	
+	// USB	
+	if( ui.RB_USB_Style_device->isChecked() )
+		Settings.setValue( "USB_Style", "device" );
+	else
+		Settings.setValue( "USB_Style", "usbdevice" );
+	
+	if( ui.RB_USB_ID_BusAddr->isChecked() )
+		Settings.setValue( "USB_ID_Style", "BusAddr" );
+	else if( ui.RB_USB_ID_BusPath->isChecked() )
+		Settings.setValue( "USB_ID_Style", "BusPath" );
+	else if( ui.RB_USB_ID_VendorProduct->isChecked() )
+		Settings.setValue( "USB_ID_Style", "VendorProduct" );
+	
 	// All OK?
 	if( Settings.status() != QSettings::NoError )
 		AQError( "void Advanced_Settings_Window::on_Button_OK_clicked()", "QSettings Error!" );

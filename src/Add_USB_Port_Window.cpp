@@ -85,7 +85,7 @@ void Add_USB_Port_Window::Set_Port( const VM_USB &port )
 	ui.S_Manufacturer->setText( tr("Manufacturer: ") + port.Get_Manufacturer_Name() );
 	ui.S_Product->setText( tr("Product: ") + port.Get_Product_Name() );
 	ui.S_Speed->setText( tr("Speed: ") + port.Get_Speed() );
-	ui.S_BusAddr->setText( tr("bus.addr: ") + port.Get_BusAddr() );
+	ui.S_BusAddr->setText( tr("bus.addr.path: %1.%2.%3").arg(port.Get_Bus()).arg(port.Get_Bus()).arg(port.Get_DevPath()) );
 	ui.S_Vendor_ID->setText( tr("Vendor ID: ") + port.Get_Vendor_ID() );
 	ui.S_Product_ID->setText( tr("Product ID: ") + port.Get_Product_ID() );
 }
@@ -127,6 +127,14 @@ void Add_USB_Port_Window::on_Button_Update_Host_USB_clicked()
 		ui.Table_Host_USB->insertRow( ui.Table_Host_USB->rowCount() );
 		QTableWidgetItem *newItem;
 		
+		// Manufacturer
+		if( USB_Host_List[ux].Get_Manufacturer_Name().isEmpty() )
+			newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Vendor_ID() );
+		else
+			newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Manufacturer_Name() );
+		
+		ui.Table_Host_USB->setItem( ui.Table_Host_USB->rowCount()-1, 0, newItem );
+		
 		// Product
 		if( USB_Host_List[ux].Get_Product_Name().isEmpty() )
 			newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Product_ID() );
@@ -135,17 +143,17 @@ void Add_USB_Port_Window::on_Button_Update_Host_USB_clicked()
 		
 		ui.Table_Host_USB->setItem( ui.Table_Host_USB->rowCount()-1, 1, newItem );
 		
-		// busAddr
-		newItem = new QTableWidgetItem( USB_Host_List[ux].Get_BusAddr() );
+		// Bus
+		newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Bus() );
 		ui.Table_Host_USB->setItem( ui.Table_Host_USB->rowCount()-1, 2, newItem );
 		
-		// Manufacturer
-		if( USB_Host_List[ux].Get_Manufacturer_Name().isEmpty() )
-			newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Vendor_ID() );
-		else
-			newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Manufacturer_Name() );
+		// Addr
+		newItem = new QTableWidgetItem( USB_Host_List[ux].Get_Addr() );
+		ui.Table_Host_USB->setItem( ui.Table_Host_USB->rowCount()-1, 3, newItem );
 		
-		ui.Table_Host_USB->setItem( ui.Table_Host_USB->rowCount()-1, 0, newItem );
+		// Path
+		newItem = new QTableWidgetItem( USB_Host_List[ux].Get_DevPath() );
+		ui.Table_Host_USB->setItem( ui.Table_Host_USB->rowCount()-1, 4, newItem );
 	}
 	
 	ui.Table_Host_USB->resizeColumnsToContents();
@@ -187,7 +195,7 @@ void Add_USB_Port_Window::on_Table_Host_USB_currentItemChanged( QTableWidgetItem
 		ui.S_Manufacturer->setText( tr("Manufacturer: ") + Current_Item.Get_Manufacturer_Name() );
 		ui.S_Product->setText( tr("Product: ") + Current_Item.Get_Product_Name() );
 		ui.S_Speed->setText( tr("Speed: ") + Current_Item.Get_Speed() );
-		ui.S_BusAddr->setText( tr("Bus.Address: ") + Current_Item.Get_BusAddr() );
+		ui.S_BusAddr->setText( tr("bus.addr.path: %1.%2.%3").arg(Current_Item.Get_Bus()).arg(Current_Item.Get_Bus()).arg(Current_Item.Get_DevPath()) );
 		ui.S_Vendor_ID->setText( tr("Vendor ID: ") + Current_Item.Get_Vendor_ID() );
 		ui.S_Product_ID->setText( tr("Product ID: ") + Current_Item.Get_Product_ID() );
 	}

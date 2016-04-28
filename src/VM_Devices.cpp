@@ -3849,7 +3849,9 @@ VM_USB::VM_USB()
 	Product_Name = "";
 	Vendor_ID = "";
 	Product_ID = "";
-	BusAddr = "";
+	Bus = "";
+	Addr = "";
+	DevPath = "";
 	Speed = "0";
 	Serial_Number = "";
 	USB_Keyboard = USB_Tablet = USB_WacomTablet = USB_Braille = false;
@@ -3863,7 +3865,9 @@ VM_USB::VM_USB( const VM_USB &u )
 	Product_Name = u.Get_Product_Name();
 	Vendor_ID = u.Get_Vendor_ID();
 	Product_ID = u.Get_Product_ID();
-	BusAddr = u.Get_BusAddr();
+	Bus = u.Get_Bus();
+	Addr = u.Get_Addr();
+	DevPath = u.Get_DevPath();
 	Serial_Number = u.Get_Serial_Number();
 	Speed = u.Get_Speed();
 	u.Get_USB_QEMU_Devices( USB_Keyboard, USB_Mouse, USB_Tablet, USB_WacomTablet, USB_Braille );
@@ -3968,14 +3972,34 @@ void VM_USB::Set_ID_Line( const QString &line )
 	Product_ID = id_str[2];
 }
 
-QString VM_USB::Get_BusAddr() const
+QString VM_USB::Get_Bus() const
 {
-	return BusAddr;
+	return Bus;
 }
 
-void VM_USB::Set_BusAddr( const QString &busAddr )
+void VM_USB::Set_Bus( const QString &bus )
 {
-	BusAddr = busAddr;
+	Bus = bus;
+}
+
+QString VM_USB::Get_Addr() const
+{
+	return Addr;
+}
+
+void VM_USB::Set_Addr( const QString &addr )
+{
+	Addr = addr;
+}
+
+QString VM_USB::Get_DevPath() const
+{
+	return DevPath;
+}
+
+void VM_USB::Set_DevPath( const QString &devPath )
+{
+	DevPath = devPath;
 }
 
 QString VM_USB::Get_Serial_Number() const

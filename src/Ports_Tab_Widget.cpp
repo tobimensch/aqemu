@@ -188,7 +188,7 @@ QString Ports_Tab_Widget::Get_USB_Port_Info( const VM_USB &port )
 	}
 	else
 	{
-		if( port.Get_BusAddr().isEmpty() )
+		if( port.Get_Bus().isEmpty() || port.Get_Addr().isEmpty() || port.Get_DevPath().isEmpty() )
 		{
 			return tr("%1 %2 (Vendor ID: %3 Product ID: %4)").arg( port.Get_Manufacturer_Name() )
 									  .arg( port.Get_Product_Name() )
@@ -197,9 +197,11 @@ QString Ports_Tab_Widget::Get_USB_Port_Info( const VM_USB &port )
 		}
 		else
 		{
-			return tr("%1 %2 (BusAddr: %3)").arg( port.Get_Manufacturer_Name() )
+			return tr("%1 %2 (Bus.Addr.Path: %3.%4.%5)").arg( port.Get_Manufacturer_Name() )
 											.arg( port.Get_Product_Name() )
-											.arg( port.Get_BusAddr() );
+											.arg( port.Get_Bus() )
+											.arg( port.Get_Addr() )
+											.arg( port.Get_DevPath() );
 		}
 	}
 }

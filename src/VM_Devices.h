@@ -237,6 +237,7 @@ class Available_Devices
 		
 		bool PSO_Device;
 		bool PSO_Device_USB_EHCI;
+		bool PSO_Device_USB_XHCI;
 		
 		bool PSO_Drive;
 		bool PSO_Drive_File;
@@ -1015,8 +1016,14 @@ class VM_USB
 		QString Get_ID_Line() const;
 		void Set_ID_Line( const QString &line );
 		
-		QString Get_BusAddr() const;
-		void Set_BusAddr( const QString &busAddr );
+		QString Get_Bus() const;
+		void Set_Bus( const QString &bus );
+		
+		QString Get_Addr() const;
+		void Set_Addr( const QString &addr );
+		
+		QString Get_DevPath() const;
+		void Set_DevPath( const QString &devPath );
 		
 		QString Get_Serial_Number() const;
 		void Set_Serial_Number( const QString &serial );
@@ -1033,7 +1040,9 @@ class VM_USB
 		QString Product_Name;
 		QString Vendor_ID;
 		QString Product_ID;
-		QString BusAddr;
+		QString Bus;
+		QString Addr;
+		QString DevPath;
 		QString Serial_Number;
 		QString Speed;
 		bool USB_Keyboard, USB_Mouse, USB_Tablet, USB_WacomTablet, USB_Braille;
