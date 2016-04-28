@@ -5130,7 +5130,7 @@ void Main_Window::on_actionShow_Emulator_Control_triggered()
 	}
 	else
 	{
-		AQGraphic_Warning( tr("Warning"), tr("This Function Works Only On Running VM!") );
+		AQGraphic_Warning( tr("Warning"), tr("This Feature Works Only With A Running VM!") );
 	}
 }
 
