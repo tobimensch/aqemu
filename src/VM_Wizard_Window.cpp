@@ -65,14 +65,10 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 {
 	ui.Button_Next->setEnabled( true );
 	
-	if( ui.Welcome_Page == ui.Wizard_Pages->currentWidget() )
+	if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
 	{
-	}
-	else if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Welcome_Page );
-		ui.Label_Page->setText( tr("New Virtual Machine Wizard") );
-		ui.Button_Back->setEnabled( false );
+		//ui.Wizard_Pages->setCurrentWidget( ui.Welcome_Page );
+		//ui.Label_Page->setText( tr("New Virtual Machine Wizard") );
 	}
 	else if( ui.Template_Page == ui.Wizard_Pages->currentWidget() )
 	{
@@ -86,6 +82,7 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 			ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
 			ui.Label_Page->setText( tr("Wizard Mode") );
 		}
+		ui.Button_Back->setEnabled( false );
 	}
 	else if( ui.Emulator_Type_Page == ui.Wizard_Pages->currentWidget() )
 	{
@@ -149,13 +146,13 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 
 void VM_Wizard_Window::on_Button_Next_clicked()
 {
-	if( ui.Welcome_Page == ui.Wizard_Pages->currentWidget() )
+	/*if( ui.Welcome_Page == ui.Wizard_Pages->currentWidget() )
 	{
 		ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
 		ui.Button_Back->setEnabled( true );
 		ui.Label_Page->setText( tr("Wizard Mode") );
-	}
-	else if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
+	}*/
+	if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
 	{
 		bool q = ! Get_Default_Emulator( VM::QEMU ).Get_Name().isEmpty(); // FIXME what it?
 		bool k = ! Get_Default_Emulator( VM::KVM ).Get_Name().isEmpty();

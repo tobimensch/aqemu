@@ -4509,7 +4509,6 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
        <normaloff>:/add.png</normaloff>:/add.png</iconset>
      </property>
      <addaction name="actionAdd_New_VM"/>
-     <addaction name="actionShow_New_VM_Wizard"/>
      <addaction name="separator"/>
      <addaction name="actionLoad_VM_From_File"/>
     </widget>
@@ -4568,7 +4567,6 @@ To Disable This Function in Current VM choose &quot;Don't Use Embedded VNC Displ
     <bool>false</bool>
    </attribute>
    <addaction name="actionAdd_New_VM"/>
-   <addaction name="actionShow_New_VM_Wizard"/>
    <addaction name="actionDelete_VM"/>
    <addaction name="actionCreate_HDD_Image"/>
    <addaction name="actionManage_Snapshots"/>

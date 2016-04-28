@@ -4525,6 +4525,9 @@ void Main_Window::on_actionShow_New_VM_Wizard_triggered()
 
 void Main_Window::on_actionAdd_New_VM_triggered()
 {
+    on_actionShow_New_VM_Wizard_triggered();
+
+    /*
 	// Add New VM
 	QString new_vm_path = "";
 	
@@ -4596,7 +4599,7 @@ void Main_Window::on_actionAdd_New_VM_triggered()
 	ui.Machines_List->setCurrentItem( item );
 	
 	Update_VM_Ui();
-	on_Button_Apply_clicked();
+	on_Button_Apply_clicked();*/
 }
 
 void Main_Window::on_actionCreate_HDD_Image_triggered()

@@ -168,56 +168,6 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="Welcome_Page">
-      <layout class="QGridLayout">
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
-        <number>9</number>
-       </property>
-       <property name="spacing">
-        <number>6</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="Label_Welcome_Text">
-         <property name="text">
-          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Nimbus Sans L'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;This wizard will guide you through the steps that are necessary to create a new virtual machine for AQEMU.&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Use the &lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt; button to go the next page of the wizard and the &lt;span style=&quot; font-weight:600;&quot;&gt;Back&lt;/span&gt; button to return to the previous page.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::TextSelectableByMouse</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <spacer name="s3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="Wizard_Mode_Page">
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
@@ -264,7 +214,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Create new virtual machine with most common devices and configuration options.</string>
+            <string>Create new virtua&amp;l machine with most common devices and configuration options.</string>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
@@ -297,7 +247,7 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QRadioButton" name="RB_Custom">
            <property name="text">
-            <string>&amp;Custom</string>
+            <string>C&amp;ustom</string>
            </property>
           </widget>
          </item>
@@ -310,7 +260,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Create new virtual machine with additional configuration options.</string>
+            <string>Create new virtual machine with additional confi&amp;guration options.</string>
            </property>
            <property name="wordWrap">
             <bool>true</bool>
@@ -344,21 +294,21 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QLabel" name="Label_Emulator_Type">
            <property name="text">
-            <string>Select Emulator Type For Using In New Virtual Machine</string>
+            <string>Select Emulator Type To Use In The New Virtual Machine</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QRadioButton" name="RB_Emulator_QEMU">
            <property name="text">
-            <string>QEMU</string>
+            <string>&amp;QEMU</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QRadioButton" name="RB_Emulator_KVM">
            <property name="text">
-            <string>KVM</string>
+            <string>&amp;KVM</string>
            </property>
           </widget>
          </item>
@@ -414,7 +364,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Template</string>
+            <string>&amp;Template</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -439,7 +389,7 @@ p, li { white-space: pre-wrap; }
           </sizepolicy>
          </property>
          <property name="text">
-          <string>OS Type:</string>
+          <string>OS T&amp;ype:</string>
          </property>
          <property name="buddy">
           <cstring>CB_Computer_Type</cstring>
@@ -453,7 +403,7 @@ p, li { white-space: pre-wrap; }
          </property>
          <item>
           <property name="text">
-           <string>No Selected</string>
+           <string>None Selected</string>
           </property>
          </item>
         </widget>
@@ -500,7 +450,7 @@ p, li { white-space: pre-wrap; }
             </sizepolicy>
            </property>
            <property name="text">
-            <string>Generate VM</string>
+            <string>&amp;Generate VM</string>
            </property>
           </widget>
          </item>
@@ -525,7 +475,7 @@ p, li { white-space: pre-wrap; }
           </sizepolicy>
          </property>
          <property name="text">
-          <string>C&amp;omputer Type:</string>
+          <string>Comp&amp;uter Type:</string>
          </property>
          <property name="buddy">
           <cstring>CB_Computer_Type</cstring>
@@ -556,7 +506,7 @@ p, li { white-space: pre-wrap; }
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Release Date:</string>
+          <string>Re&amp;lease Date:</string>
          </property>
          <property name="buddy">
           <cstring>CB_Relese_Date</cstring>
@@ -1141,7 +1091,7 @@ p, li { white-space: pre-wrap; }
        <item row="0" column="0">
         <widget class="QLabel" name="Label_Network_Type">
          <property name="text">
-          <string>Select network type using on your new virtual machine.</string>
+          <string>Select network type to use on your new virtual machine.</string>
          </property>
         </widget>
        </item>
@@ -1174,7 +1124,7 @@ p, li { white-space: pre-wrap; }
        <item row="3" column="0">
         <widget class="QRadioButton" name="RB_No_Network">
          <property name="text">
-          <string>N&amp;o Network (No net cards installed on VM)</string>
+          <string>No Ne&amp;twork (No net cards installed on VM)</string>
          </property>
         </widget>
        </item>
