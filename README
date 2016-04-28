@@ -1,4 +1,4 @@
-AQEMU is a graphical interface to QEMU and KVM emulators.
+AQEMU is a graphical interface to QEMU and KVM virtual machines.
 
 
 AQEMU compiling and running Linux, BSD and Windows!
@@ -13,16 +13,16 @@ AQEMU Minimal Version Dependencies:
 
 !!! ATTENTION READ THIS FIRST !!!
 
-In AQEMU 0.7 added support "Embedded VNC Display".
-This is experimental function, many bugs not fixed!
+In AQEMU 0.7 support for an "Embedded VNC Display" was added.
+This is an experimental feature, with many unfixed bugs!
 
 When you upgrade from version 0.5 or above, simply
 click "Apply" for each VM to keep it in the new version.
 
-Installation is now verifies the existence of previous versions AQEMU
-and remove them before installing (If you installed AQEMU not in /usr/share/aqemu
-or /usr/share/apps/aqemu, you will have to delete a folder with the
-resources last version AQEMU manually!)
+Installation now verifies the existence of previous versions of AQEMU
+and removes them before installing (If you didn't install AQEMU in /usr/share/aqemu
+or /usr/share/apps/aqemu, you will have to delete the folder with the
+resources of the last AQEMU version manually!)
 
 
 INSTALLATION (For Unix):
@@ -34,14 +34,14 @@ INSTALLATION (For Unix):
  3. Configure:
 
     -DCMAKE_INSTALL_PREFIX = Path to installation directory (Default is: /usr/local)
-        Sample `cmake -DCMAKE_INSTALL_PREFIX=/usr/local/' this install AQEMU binary
+        For example, `cmake -DCMAKE_INSTALL_PREFIX=/usr/local/' this install AQEMU binary
         in /usr/local/bin and install data in /usr/local/share/aqemu
 
     -DWITHOUT_EMBEDDED_DISPLAY = on | off (Default is: off)
-        For building without support Embedded VNC Display.
+        To build without support Embedded VNC Display.
 
     -DDEBUG = on | off (Default is: off)
-        For build in debug mode run: `cmake -DDEBUG=on'
+        To build in debug mode run: `cmake -DDEBUG=on'
 
     -DINSTALL_MAN = on | off (Default is: on)
         Install AQEMU man page file.
@@ -54,9 +54,9 @@ INSTALLATION (For Unix):
 
  4. type `make'
 
- 5. Enter root mode and type `make install'
+ 5. type `sudo make install'
 
- 6. Installation complete! For start AQEMU type: `aqemu' in shell.
+ 6. Installation complete! To start AQEMU type: `aqemu' in shell.
 
 INSTALLATION (For Windows):
 
@@ -73,4 +73,11 @@ INSTALLATION (For Windows):
 
  6. Run aqemu.exe
 
-Sorry for bad English.
+Note:
+I'm not the original author of this software, all credits go to him.
+But as it looks like as if he has abandoned this project I've taken
+the freedom to maintain it on my github account in the meantime.
+You can file issues on github.com/tobimensch/aqemu . I'll be happy
+to get pull requests. I'm not promising to fix each and every issue,
+help with that would be very welcome.
+
