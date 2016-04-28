@@ -295,6 +295,8 @@ void Virtual_Machine::Shared_Constructor()
 	Monitor_Port = 6000;
 	this->State = VM::VMS_Power_Off;
 	Emu_Ctl = new Emulator_Control_Window();
+	Removable_Devices_List = "";
+	Update_Removable_Devices_Mode = false;
 	VM_Dom_Document = QDomDocument();
 	VM_XML_File_Path = "";
 	Build_QEMU_Args_for_Script_Mode = false;
@@ -4650,7 +4652,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				else
 					AQError( "bool Virtual_Machine::Load_VM( const QString &file_name )", "SPICE image compression type invalid!" );
 				
-				SPICE.Use_Video_Stream_Compression( Second_Element.firstChildElement( "Use_Video_Stream_Compression" ).text() != "false" );
+				SPICE.Use_Video_Stream_Compression( Second_Element.firstChildElement( "Use_Video_Stream_Compression" ).text() == "true" );
 				
 				SPICE.Use_Renderer( Second_Element.firstChildElement( "Use_Renderer" ).text() == "true" );
 				
@@ -4684,7 +4686,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 						SPICE.Set_Renderer_List( rendererList );
 				}
 				
-				SPICE.Use_Playback_Compression( Second_Element.firstChildElement( "Use_Playback_Compression" ).text() == "false" );
+				SPICE.Use_Playback_Compression( Second_Element.firstChildElement( "Use_Playback_Compression" ).text() == "true" );
 				
 				SPICE.Use_Password( Second_Element.firstChildElement( "Use_Password" ).text() == "true" );
 				
@@ -6252,6 +6254,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	{
 		if( USB_Ports.count() > 0 )
 		{
+			bool usb_ehci_arg_added = false;
 			Args << "-usb";
 			
 			if( Build_QEMU_Args_for_Tab_Info == false ) System_Info::Update_Host_USB();
@@ -6302,8 +6305,26 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 							AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
 									 "USB busAddrList.count() != 2" );
 						}
+						else if( Current_Emulator_Devices.PSO_Device_USB_EHCI &&
+								 current_USB_Device.Get_Speed().toInt() >= 480 )
+						{
+							AQDebug( "QStringList Virtual_Machine::Build_QEMU_Args()",
+									 QString( "USB speed >= 480, adding ehci USB device %1:%2").arg(busAddrList[0]).arg(busAddrList[1]) );
+							
+							if( ! usb_ehci_arg_added )
+							{
+								// Only needed once
+								Args << "-device" << "usb-ehci,id=ehci";
+								usb_ehci_arg_added = true;
+							}
+							
+							Args << "-device" << QString( "usb-host,bus=ehci.0,hostbus=%1,hostaddr=%2" ).arg( busAddrList[0] ).arg( busAddrList[1] );
+						}
 						else
 						{
+							AQDebug( "QStringList Virtual_Machine::Build_QEMU_Args()",
+									 QString( "USB speed < 480, adding ohci USB device %1:%2").arg(busAddrList[0]).arg(busAddrList[1]) );
+							
 							Args << "-device" << QString( "usb-host,hostbus=%1,hostaddr=%2" ).arg( busAddrList[0] ).arg( busAddrList[1] );
 						}
 					}
@@ -7016,10 +7037,19 @@ bool Virtual_Machine::Start()
 			}
 		}
 		
+		// Check path
 		if( bin_path.isEmpty() )
 		{
 			AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
 							 tr("Cannot start emulator! Binary path is empty!"), false );
+			Start_Snapshot_Tag = "";
+			return false;
+		}
+		
+		if( ! QFile::exists(bin_path) )
+		{
+			AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
+							 tr(QString("Emulator binary not exists! Check path: %1").arg(bin_path).toLatin1()), false );
 			Start_Snapshot_Tag = "";
 			return false;
 		}
@@ -7186,6 +7216,19 @@ void Virtual_Machine::Hide_Emu_Ctl_Win()
 {
 	Emu_Ctl->Set_Show_Close_Warning( false );
 	Emu_Ctl->close();
+}
+
+void Virtual_Machine::Update_Removable_Devices_List()
+{
+	Removable_Devices_List.clear();
+	Update_Removable_Devices_Mode = true;
+	
+	Send_Emulator_Command( "info block\n" );
+}
+
+const QString &Virtual_Machine::Get_Removable_Devices_List() const
+{
+	return Removable_Devices_List;
 }
 
 void Virtual_Machine::Show_Error_Log_Window() const
@@ -7975,6 +8018,29 @@ void Virtual_Machine::Set_Shared_Folders_List( const QList<VM_Shared_Folder> &li
 	{
 		Shared_Folders.append( VM_Shared_Folder(list[ix]) );
 	}
+}
+
+const VM_Nativ_Storage_Device &Virtual_Machine::Get_Storage_Device( int index ) const
+{
+	if( index < 0 || index > Storage_Devices.count() )
+	{
+		// FIXME message
+		VM_Nativ_Storage_Device *empty_dev = new VM_Nativ_Storage_Device();
+		return *empty_dev;
+	}
+	
+	return Storage_Devices[ index ];
+}
+
+void Virtual_Machine::Set_Storage_Device( int index, const VM_Nativ_Storage_Device &device )
+{
+	if( index < 0 || index > Storage_Devices.count() )
+	{
+		// FIXME message
+		return;
+	}
+	
+	Storage_Devices[ index ] = device;
 }
 
 const QString &Virtual_Machine::Get_SMB_Directory() const
@@ -8816,8 +8882,23 @@ void Virtual_Machine::Parse_StdOut()
 	
 	emit Clean_Console( cleanOutput );
 	emit Ready_StdOut( cleanOutput );
-	Last_Output.append( convOutput );
-	Output_Parts = Last_Output.split( "(qemu)" );
+	//Last_Output.append( convOutput );
+	//Output_Parts = Last_Output.split( "(qemu)" );
+	
+	// Find devices list?
+	if( Update_Removable_Devices_Mode )
+	{
+		if( cleanOutput.contains("(qemu) ") )
+		{
+			Update_Removable_Devices_Mode = false;
+			Removable_Devices_List += cleanOutput;
+			emit Ready_Removable_Devices_List();
+		}
+		else
+		{
+			Removable_Devices_List += cleanOutput;
+		}
+	}
 }
 
 void Virtual_Machine::Parse_StdErr()
@@ -8827,7 +8908,7 @@ void Virtual_Machine::Parse_StdErr()
 	
 	emit Clean_Console( convOutput );
 	emit Ready_StdErr( convOutput );
-	Last_Output.append( convOutput );
+	//Last_Output.append( convOutput );
 	Show_QEMU_Error( convOutput );
 	
 	/* FIXME

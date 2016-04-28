@@ -53,6 +53,7 @@ Available_Devices::Available_Devices()
 	PSO_SMP_MaxCPUs = false;
 	
 	PSO_Device = false;
+	PSO_Device_USB_EHCI = false;
 	
 	PSO_Drive = false;
 	PSO_Drive_File = false;
@@ -480,6 +481,7 @@ bool Emulator::Load( const QString &path )
 			tmpDev.PSO_SMP_MaxCPUs = (childElement.firstChildElement("SMP_MaxCPUs").text() == "yes" );
 			
 			tmpDev.PSO_Device = (childElement.firstChildElement("Device").text() == "yes" );
+			tmpDev.PSO_Device_USB_EHCI = (childElement.firstChildElement("Device_USB_EHCI").text() == "yes" );
 			
 			tmpDev.PSO_Drive = (childElement.firstChildElement("Drive").text() == "yes" );
 			tmpDev.PSO_Drive_File = (childElement.firstChildElement("Drive_File").text() == "yes" );
@@ -848,6 +850,12 @@ bool Emulator::Save() const
 		deviceElement = domDocument.createElement( "Device" );
 		domElement.appendChild( deviceElement );
 		domText = domDocument.createTextNode( (tmpDev.PSO_Device ? "yes" : "no") );
+		deviceElement.appendChild( domText );
+		
+		// PSO_Device_USB_EHCI
+		deviceElement = domDocument.createElement( "Device_USB_EHCI" );
+		domElement.appendChild( deviceElement );
+		domText = domDocument.createTextNode( (tmpDev.PSO_Device_USB_EHCI ? "yes" : "no") );
 		deviceElement.appendChild( domText );
 		
 		// PSO_Drive
@@ -1979,13 +1987,15 @@ VM_Storage_Device::VM_Storage_Device( bool enabled, const QString &file_name )
 	Enabled = enabled;
 	File_Name = file_name;
 	Nativ_Device = VM_Nativ_Storage_Device();
+	Nativ_Device.Set_File_Path( file_name );
 }
 
-VM_Storage_Device::VM_Storage_Device( bool enabled, const QString &file_name, bool nativ_mode, VM_Nativ_Storage_Device &device )
+VM_Storage_Device::VM_Storage_Device( bool enabled, const QString &file_name, bool nativ_mode, const VM_Nativ_Storage_Device &device )
 {
 	Enabled = enabled;
 	File_Name = file_name;
-	Nativ_Device = device;
+	Nativ_Device = VM_Nativ_Storage_Device( device );
+	Nativ_Device.Set_File_Path( file_name );
 }
 
 bool VM_Storage_Device::operator==( const VM_Storage_Device &device ) const

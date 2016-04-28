@@ -24,6 +24,7 @@
 #define EMULATOR_CONTROL_WINDOW_H
 
 #include <QSettings>
+#include <QMap>
 
 #include "VM.h"
 #include "ui_Emulator_Control_Window.h"
@@ -57,7 +58,14 @@ class Emulator_Control_Window: public QMainWindow
 		void Apply_Full_Size( int w, int h );
 		void QEMU_Quit();
 		void VM_State_Changed( Virtual_Machine *vm, VM::VM_State state );
+		void Get_Removable_Devices_List();
+		void Create_Connect_Menu();
+		void Create_Device_Menu();
+		void Connect_Device();
+		void Open_Device_File();
+		void Eject_Device();
 		
+		void on_actionUpdate_list_triggered();
 		void on_actionSave_Screenshot_triggered();
 		void on_actionSave_Screenshot_As_triggered();
 		void on_actionSave_VM_triggered();
@@ -133,6 +141,8 @@ class Emulator_Control_Window: public QMainWindow
 		QList<QAction*> Recent_Files_CD_Items;
 		QList<QAction*> Recent_Files_FD0_Items;
 		QList<QAction*> Recent_Files_FD1_Items;
+		
+		QMap<QString, QString> Removable_Devies_Map;
 		
 		#ifdef VNC_DISPLAY
 		MachineView *Machine_View;

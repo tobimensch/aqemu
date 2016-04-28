@@ -209,8 +209,15 @@
     <addaction name="actionReinit_VNC"/>
     <addaction name="actionGrab_Mouse"/>
    </widget>
+   <widget class="QMenu" name="menuConnectNew">
+    <property name="title">
+     <string>&amp;Connect</string>
+    </property>
+    <addaction name="actionUpdate_list"/>
+   </widget>
    <addaction name="menuVM"/>
    <addaction name="menuConnect"/>
+   <addaction name="menuConnectNew"/>
    <addaction name="menuSend_Keys"/>
    <addaction name="menuView"/>
    <addaction name="menuHelp"/>

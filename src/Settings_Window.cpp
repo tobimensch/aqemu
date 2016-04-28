@@ -82,6 +82,9 @@ Settings_Window::Settings_Window( QWidget *parent )
 	// Use Device Manager
 	ui.CH_Use_Device_Manager->setChecked( Settings->value("Use_Device_Manager", "no").toString() == "yes" );
 	
+	// Use New Emulator Control Removable Device Menu
+	ui.CH_Use_New_Device_Changer->setChecked( Settings->value("Use_New_Device_Changer", "no").toString() == "yes" );
+	
 	// Find All Language Files (*.qm)
 	QDir data_dir( Settings->value("AQEMU_Data_Folder", "/usr/share/aqemu/").toString() );
 	QFileInfoList lang_files = data_dir.entryInfoList( QStringList("*.qm"), QDir::Files, QDir::Name );
@@ -279,6 +282,10 @@ void Settings_Window::on_Button_OK_clicked()
 	// Use Device Manager
 	if( ui.CH_Use_Device_Manager->isChecked() ) Settings->setValue( "Use_Device_Manager", "yes" );
 	else Settings->setValue( "Use_Device_Manager", "no" );
+	
+	// Use New Emulator Control Removable Device Menu
+	if( ui.CH_Use_New_Device_Changer->isChecked() ) Settings->setValue( "Use_New_Device_Changer", "yes" );
+	else Settings->setValue( "Use_New_Device_Changer", "no" );
 	
 	// Interface Language
 	if( ui.CB_Language->currentIndex() == 0 ) Settings->setValue( "Language", "en" );

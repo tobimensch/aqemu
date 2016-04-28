@@ -90,6 +90,8 @@ class Virtual_Machine: public QObject
 		// Emu_Ctl
 		void Show_Emu_Ctl_Win();
 		void Hide_Emu_Ctl_Win();
+		void Update_Removable_Devices_List();
+		const QString &Get_Removable_Devices_List() const;
 		
 		// Error Log Window
 		void Show_Error_Log_Window() const;
@@ -228,6 +230,9 @@ class Virtual_Machine: public QObject
 		
 		const QList<VM_Nativ_Storage_Device> &Get_Storage_Devices_List() const;
 		void Set_Storage_Devices_List( const QList<VM_Nativ_Storage_Device> &list );
+		 		
+		const VM_Nativ_Storage_Device &Get_Storage_Device( int index ) const;
+		void Set_Storage_Device( int index, const VM_Nativ_Storage_Device &device );
 		
 		const QList<VM_Shared_Folder> &Get_Shared_Folders_List() const;
 		void Set_Shared_Folders_List( const QList<VM_Shared_Folder> &list );
@@ -436,6 +441,8 @@ class Virtual_Machine: public QObject
 		
 		void Clean_Console( const QString &text );
 		
+		void Ready_Removable_Devices_List();
+		
 	private slots:
 		void Parse_StdErr();
 		void Parse_StdOut();
@@ -617,6 +624,8 @@ class Virtual_Machine: public QObject
 		QWidget *Save_VM_Window;
 		Error_Log_Window* QEMU_Error_Win;
 		bool Quit_Before_Save;
+		bool Update_Removable_Devices_Mode;
+		QString Removable_Devices_List;
 		
 		// For Create Templates
 		QString Template_Name;

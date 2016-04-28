@@ -42,6 +42,7 @@
 #include "Emulator_Control_Window.h"
 #include "System_Info.h"
 #include "Snapshots_Window.h"
+#include "VM_Devices.h"
 
 Emulator_Control_Window::Emulator_Control_Window( QWidget *parent )
 	: QMainWindow( parent )
@@ -53,6 +54,16 @@ Emulator_Control_Window::Emulator_Control_Window( QWidget *parent )
 	
 	Show_Close_Warning = true;
 	Mon_Win = new Monitor_Window();
+	
+	connect( ui.menuConnectNew, SIGNAL(aboutToShow()),
+			 this, SLOT(Get_Removable_Devices_List()) );
+	
+	// Use new removable device menu?
+	// FIXME update this settings after settings are changet
+	if( Settings.value("Use_New_Device_Changer", "no").toString() == "yes" )
+		ui.menubar->removeAction( ui.menuConnect->menuAction() );
+	else
+		ui.menubar->removeAction( ui.menuConnectNew->menuAction() );
 	
 	AQDebug( "Emulator_Control_Window::Emulator_Control_Window( QWidget *parent )",
 			 "Created" );
@@ -97,6 +108,413 @@ void Emulator_Control_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_Stat
 		default:
 			this->setWindowTitle( vm->Get_Machine_Name() );
 	}	
+}
+
+void Emulator_Control_Window::Get_Removable_Devices_List()
+{
+	connect( Cur_VM, SIGNAL(Ready_Removable_Devices_List()),
+			 this, SLOT(Create_Connect_Menu()) );
+	
+	Cur_VM->Update_Removable_Devices_List();
+}
+
+void Emulator_Control_Window::Create_Connect_Menu()
+{
+	disconnect( Cur_VM, SIGNAL(Ready_Removable_Devices_List()),
+				this, SLOT(Create_Connect_Menu()) );
+	
+	// Get emulator answer
+	QString list = Cur_VM->Get_Removable_Devices_List();
+	
+	// Parse
+	QStringList devices = list.split( '\n', QString::SkipEmptyParts );
+	ui.menuConnectNew->clear();
+	Removable_Devies_Map.clear();
+	
+	for( int ix = 0; ix < devices.count()-1; ++ix )
+	{
+		QStringList curDev = devices[ ix ].split( ' ', QString::SkipEmptyParts );
+		
+		// Data in curDev look like this:		
+		// ide0-hd0: removable=0 io-status=ok file=/tmp/vl.0x5urG backing_file=/mnt/os/vm/winxp_empty.qcow2 ro=0 drv=qcow2 encrypted=0
+		// ide1-cd0: removable=1 locked=0 tray-open=0 io-status=ok [not inserted]
+		// floppy0: removable=1 locked=0 tray-open=0 [not inserted]
+		// sd0: removable=1 locked=0 tray-open=0 [not inserted]
+		
+		// Data valid?
+		if( curDev.count() < 5 ) continue;
+		
+		// It removable device?
+		if( curDev[1] != "removable=1" ) continue;
+		
+		// Parse name
+		QString devName = "";
+		
+		if( curDev[0].contains("-cd") ) // CD-ROM
+		{
+			// Create human readable id for device
+			QRegExp rx( "^([a-zA-Z]+)(\\d+)\\-([a-zA-Z]+)(\\d+)\\:$" );
+			if( ! rx.exactMatch(curDev[0]) )
+			{
+				AQError( "void Emulator_Control_Window::Create_Connect_Menu()",
+						 "Unable to match regexp! Data: " + curDev[0] );
+				continue;
+			}
+			
+			QStringList nameStrings = rx.capturedTexts();
+			if( nameStrings.count() != 5 )
+			{
+				AQError( "void Emulator_Control_Window::Create_Connect_Menu()",
+						 "Section CD. nameStrings.count() != 5" );
+			}
+			
+			// Create menu item
+			devName = QString( "CD-ROM %1 (On %2%3)" ).arg( nameStrings[4] ).arg( nameStrings[1].toUpper() ).arg( nameStrings[2] );
+			QMenu *tmpMenu = ui.menuConnectNew->addMenu( QIcon(":/cdrom.png"), devName );
+			connect( tmpMenu, SIGNAL(aboutToShow()), this, SLOT(Create_Device_Menu()) );
+		}
+		else if( curDev[0].contains("floppy0") ) // FDA
+		{
+			devName = "Floppy A";
+			QMenu *tmpMenu = ui.menuConnectNew->addMenu( QIcon(":/fdd.png"), devName );
+			connect( tmpMenu, SIGNAL(aboutToShow()), this, SLOT(Create_Device_Menu()) );
+		}
+		else if( curDev[0].contains("floppy1") ) // FDB
+		{
+			devName = "Floppy B";
+			QMenu *tmpMenu = ui.menuConnectNew->addMenu( QIcon(":/fdd.png"), devName );
+			connect( tmpMenu, SIGNAL(aboutToShow()), this, SLOT(Create_Device_Menu()) );
+		}
+		else if( curDev[0].contains("sd") ) // SD Card
+		{
+			// Create human readable id for device
+			QRegExp rx( "^([a-zA-Z]+)(\\d+):$" );
+			if( ! rx.exactMatch(curDev[0]) )
+			{
+				AQError( "void Emulator_Control_Window::Create_Connect_Menu()",
+						 "Unable to match regexp! Data: " + curDev[0] );
+				continue;
+			}
+			
+			QStringList nameStrings = rx.capturedTexts();
+			if( nameStrings.count() != 3 )
+			{
+				AQError( "void Emulator_Control_Window::Create_Connect_Menu()",
+						 "Section SD. nameStrings.count() != 3" );
+			}
+			
+			// Add to menu
+			devName = "SD Card " + nameStrings[ 2 ];
+			QMenu *tmpMenu = ui.menuConnectNew->addMenu( QIcon(":/hdd.png"), devName );
+			connect( tmpMenu, SIGNAL(aboutToShow()), this, SLOT(Create_Device_Menu()) );
+		}
+		else
+		{
+			devName = "Unknown device";
+		}
+		
+		// Add device line to map
+		Removable_Devies_Map[ devName ] = devices[ ix ];
+	}
+	
+	// If usb available for this VM add usb menu
+	if( Cur_VM->Get_USB_Ports().count() > 0 )
+	{
+		ui.menuConnectNew->addAction( QIcon(":/usb.png"), "USB" );
+	}
+}
+
+void Emulator_Control_Window::Create_Device_Menu()
+{
+	// Get sender menu object
+	QMenu *tmpMenu = qobject_cast<QMenu*>( sender() );
+	if( ! tmpMenu )
+	{
+		AQError( "void Emulator_Control_Window::Create_Device_Menu()",
+				 "Menu item is NULL" );
+		return;
+	}
+	
+	// Clear old menu
+	tmpMenu->clear();
+	
+	// Get map value for parse
+	QString value = Removable_Devies_Map[ tmpMenu->title() ];
+	if( value.isEmpty() )
+	{
+		AQError( "void Emulator_Control_Window::Create_Device_Menu()",
+				 "Removable device value is empty" );
+		return;
+	}
+	
+	// Parse line
+	QString internalDevName = QString(value).replace( QRegExp("\\:.*"), "" ); // Get device name
+	
+	// Get device source path
+	QString deviceSourcePath = "";
+	
+	int jumpSize = 5; // 5 is size of 'file='
+	
+	int fileIndex = value.indexOf( "backing_file=" );
+	if( fileIndex > 0 )
+		jumpSize = 13; // 13 is size of 'backing_file='
+	else
+		fileIndex = value.indexOf( "file=" );
+	
+	if( fileIndex > 0 )
+	{
+		fileIndex += jumpSize;
+		
+		// Get path
+		if( fileIndex < value.count() )
+		{
+			for( int ix = fileIndex; ix < value.count(); ++ix )
+			{
+				if( value[ix] == ' ' && value[ix-1] != '\\' ) // End of file name?
+				{
+					deviceSourcePath = value.mid( fileIndex, ix - fileIndex ); // Save file path
+					break;
+				}
+			}
+		}
+	}
+	
+	if( internalDevName.contains("-cd") )
+	{
+		// Add current CDROM image (If exists)
+		if( ! deviceSourcePath.isEmpty() )
+		{
+			QFileInfo tmpInfo( deviceSourcePath );
+			QAction *conCdromAct = tmpMenu->addAction( tr("Current \"") + tmpInfo.fileName() + "\"",
+													   this, SLOT(Connect_Device()) );
+			conCdromAct->setData( internalDevName + "\n" + deviceSourcePath );
+			conCdromAct->setCheckable( true );
+			conCdromAct->setChecked( true );
+			
+			tmpMenu->addSeparator();
+		}
+		
+		// Add host devices
+		QStringList cdList = System_Info::Get_Host_CDROM_List();
+		
+		for( int ix = 0; ix < cdList.count(); ++ix )
+		{
+			if( cdList[ix] != deviceSourcePath )
+			{
+				QAction *conCdromAct = tmpMenu->addAction( tr("Connect \"") + cdList[ix] + "\"",
+														   this, SLOT(Connect_Device()) );
+				conCdromAct->setData( internalDevName + "\n" + cdList[ix] );
+			}
+		}
+		
+		if( ! cdList.isEmpty() ) tmpMenu->addSeparator();
+		
+		// Add recent images/devices list
+		cdList = Get_CD_Recent_Images_List();
+		
+		for( int ix = 0; ix < cdList.count(); ++ix )
+		{
+			if( cdList[ix] != deviceSourcePath )
+			{
+				QFileInfo tmpInfo( cdList[ix] );
+				QAction *conCdromAct = tmpMenu->addAction( tr("Connect \"") + tmpInfo.fileName() + "\"",
+														   this, SLOT(Connect_Device()) );
+				conCdromAct->setData( internalDevName + "\n" + cdList[ix] );
+			}
+		}
+		
+		if( ! cdList.isEmpty() ) tmpMenu->addSeparator();
+		
+		// Add 'Browse' menu item
+		QAction *browseAct = tmpMenu->addAction( QIcon(":/open-file.png"), "Browse...",
+												 this, SLOT(Open_Device_File()) );
+		browseAct->setData( internalDevName );
+		
+		// Add 'Eject' menu item
+		QAction *ejectAct = tmpMenu->addAction( QIcon(":/eject.png"), "Eject",
+												this, SLOT(Eject_Device()) );
+		ejectAct->setData( internalDevName );
+	}
+	else if( internalDevName.contains("floppy") )
+	{
+		// Add current Floppy image (If exists)
+		if( ! deviceSourcePath.isEmpty() )
+		{
+			QFileInfo tmpInfo( deviceSourcePath );
+			QAction *conFddAct = tmpMenu->addAction( tr("Current \"") + tmpInfo.fileName() + "\"",
+													   this, SLOT(Connect_Device()) );
+			conFddAct->setData( internalDevName + "\n" + deviceSourcePath );
+			conFddAct->setCheckable( true );
+			conFddAct->setChecked( true );
+			
+			tmpMenu->addSeparator();
+		}
+		
+		// Add host devices
+		QStringList fddList = System_Info::Get_Host_FDD_List();
+		
+		for( int ix = 0; ix < fddList.count(); ++ix )
+		{
+			if( fddList[ix] != deviceSourcePath )
+			{
+				QAction *conFddAct = tmpMenu->addAction( tr("Connect \"") + fddList[ix] + "\"",
+														   this, SLOT(Connect_Device()) );
+				conFddAct->setData( internalDevName + "\n" + fddList[ix] );
+			}
+		}
+		
+		if( ! fddList.isEmpty() ) tmpMenu->addSeparator();
+		
+		// Add recent images/devices list
+		fddList = Get_FDD_Recent_Images_List();
+		
+		for( int ix = 0; ix < fddList.count(); ++ix )
+		{
+			if( fddList[ix] != deviceSourcePath )
+			{
+				QFileInfo tmpInfo( fddList[ix] );
+				QAction *conFddAct = tmpMenu->addAction( tr("Connect \"") + tmpInfo.fileName() + "\"",
+														   this, SLOT(Connect_Device()) );
+				conFddAct->setData( internalDevName + "\n" + fddList[ix] );
+			}
+		}
+		
+		if( ! fddList.isEmpty() ) tmpMenu->addSeparator();
+		
+		// Add 'Browse' menu item
+		QAction *browseAct = tmpMenu->addAction( QIcon(":/open-file.png"), "Browse...",
+												 this, SLOT(Open_Device_File()) );
+		browseAct->setData( internalDevName );
+		
+		// Add 'Eject' menu item
+		QAction *ejectAct = tmpMenu->addAction( QIcon(":/eject.png"), "Eject",
+												this, SLOT(Eject_Device()) );
+		ejectAct->setData( internalDevName );
+	}
+	else if( internalDevName.contains("sd") )
+	{
+		// Add current Floppy image (If exists)
+		if( ! deviceSourcePath.isEmpty() )
+		{
+			QFileInfo tmpInfo( deviceSourcePath );
+			QAction *conSdAct = tmpMenu->addAction( tr("Current \"") + tmpInfo.fileName() + "\"",
+													   this, SLOT(Connect_Device()) );
+			conSdAct->setData( internalDevName + "\n" + deviceSourcePath );
+			conSdAct->setCheckable( true );
+			conSdAct->setChecked( true );
+			
+			tmpMenu->addSeparator();
+		}
+		
+		// Add 'Browse' menu item
+		QAction *browseAct = tmpMenu->addAction( QIcon(":/open-file.png"), "Browse...",
+												 this, SLOT(Open_Device_File()) );
+		browseAct->setData( internalDevName );
+		
+		// Add 'Eject' menu item
+		QAction *ejectAct = tmpMenu->addAction( QIcon(":/eject.png"), "Eject",
+												this, SLOT(Eject_Device()) );
+		ejectAct->setData( internalDevName );
+	}
+	else
+	{
+		AQError( "void Emulator_Control_Window::Create_Device_Menu()",
+				 "Unknown device type! Data: " + value );
+	}
+}
+
+void Emulator_Control_Window::Connect_Device()
+{
+	QAction *act = qobject_cast<QAction*>( sender() );
+	
+	if( act )
+	{
+		QStringList nameAndPath = act->data().toString().split( '\n', QString::SkipEmptyParts );
+		if( nameAndPath.count() < 2 )
+		{
+			AQError( "void Emulator_Control_Window::Connect_Device()",
+					 "Cannot split data to name and path" );
+			return;
+		}
+		
+		// Change device source
+		//emit Ready_Read_Command( QString("change %1 \"%2\"").arg(nameAndPath[0]).arg(nameAndPath[1]) );
+		Set_Device( nameAndPath[0], nameAndPath[1] );
+		// FIXME Save changet device source path
+	}
+}
+
+void Emulator_Control_Window::Open_Device_File()
+{
+	QAction *act = qobject_cast<QAction*>( sender() );
+	if( ! act ) return;
+	
+	// Get device name
+	QString devName = act->data().toString();
+	QString lastDir = "";
+	QString fileFilter = "";
+	bool cd = false, fd = false;
+	
+	// Determine device type
+	if( devName.contains("-cd") )
+	{
+		lastDir = Cur_VM->Get_CD_ROM().Get_File_Name();
+		fileFilter = tr( "All Files (*);;Images Files (*.iso *.img)" );
+		cd = true;
+		fd = false;
+	}
+	else if( devName.contains("floppy") )
+	{
+		lastDir = Cur_VM->Get_CD_ROM().Get_File_Name();
+		fileFilter = tr( "All Files (*);;Images Files (*.img *.ima)" );
+		cd = false;
+		fd = true;
+	}
+	else
+	{
+		cd = false;
+		fd = false;
+	}
+	
+	QString fileName = QFileDialog::getOpenFileName( this, tr("Open Device or Image File"), Get_Last_Dir_Path(lastDir), fileFilter );
+	
+	if( ! fileName.isEmpty() )
+	{
+		fileName = QDir::toNativeSeparators( fileName );
+
+		//on_actionFD1_Eject_triggered();
+		Set_Device( devName, fileName );
+		
+		// Add to Recent Menu
+		if( cd )
+		{
+			Add_To_Recent_CD_Files( fileName );
+			Update_Recent_CD_ROM_Images_List();
+		}
+		else if( fd )
+		{
+			Add_To_Recent_FDD_Files( fileName );
+			Update_Recent_Floppy_Images_List();
+		}
+	}
+}
+
+void Emulator_Control_Window::Eject_Device()
+{
+	QAction *act = qobject_cast<QAction*>( sender() );
+	
+	if( act )
+	{
+		// Eject
+		emit Ready_Read_Command( QString("eject %1").arg(act->data().toString()) );
+		
+		// FIXME Save changet device source path
+	}
+}
+
+void Emulator_Control_Window::on_actionUpdate_list_triggered()
+{
+	Get_Removable_Devices_List();
 }
 
 void Emulator_Control_Window::closeEvent( QCloseEvent *event )
@@ -1152,11 +1570,7 @@ void Emulator_Control_Window::Set_Device( const QString &dev_name, const QString
 		if( dev_name == "fda" ) new_dev_name = "floppy0";
 		else if( dev_name == "fdb" ) new_dev_name = "floppy1";
 		else if( dev_name == "cdrom" ) new_dev_name = "ide1-cd0";
-		else
-		{
-			AQError( "void Emulator_Control_Window::Set_Device( const QString &dev_name, const QString &path )",
-					 "Cannot Found Device: " + dev_name );
-		}
+		else new_dev_name = dev_name;
 		
 		emit Ready_Read_Command( "change " + new_dev_name + " \"" + path + "\"" );
 	}
@@ -1166,12 +1580,99 @@ void Emulator_Control_Window::Set_Device( const QString &dev_name, const QString
 		emit Ready_Read_Command( "change " + dev_name + " \"" + path + "\"" );
 	}
 	
+	// Save new path
 	if( dev_name == "fda" ) Cur_VM->Set_FD0( VM_Storage_Device(true, path) );
 	else if( dev_name == "fdb" ) Cur_VM->Set_FD1( VM_Storage_Device(true, path) );
 	else if( dev_name == "cdrom" ) Cur_VM->Set_CD_ROM( VM_Storage_Device(true, path) );
 	else
 	{
-		AQError( "void Emulator_Control_Window::Set_Device( const QString &dev_name, const QString &path )",
-				 "Cannot Found Device: " + dev_name );
+		// Find device
+		if( dev_name.contains("-cd") ) // CD-ROM?
+		{
+			if( dev_name == "ide1-cd0" ) // Default CD-ROM drive
+			{
+				Cur_VM->Set_CD_ROM( VM_Storage_Device( true,
+													   path,
+													   Cur_VM->Get_CD_ROM().Get_Nativ_Mode(),
+													   Cur_VM->Get_CD_ROM().Get_Nativ_Device()) );
+			}
+			else
+			{
+				// Find CD-ROM in other storage devices
+				QList<VM_Nativ_Storage_Device> devList = Cur_VM->Get_Storage_Devices_List();
+				
+				int cdromCount = 0;
+				int deviceIndex = -1;
+				
+				for( int ix = 0; ix < devList.count(); ++ix )
+				{
+					if( devList[ix].Get_Media() == VM::DM_CD_ROM )
+					{
+						++cdromCount;
+						deviceIndex = ix;
+					}
+				}
+				
+				// Simple way finded device?
+				if( cdromCount == 1 && deviceIndex != -1 )
+				{
+					devList[ deviceIndex ].Set_File_Path( path );
+					Cur_VM->Set_Storage_Device( deviceIndex, devList[deviceIndex] );
+				}
+				else
+				{
+					// Strong way... FIXME
+				}
+			}
+		}
+		else if( dev_name.contains("floppy") ) // Floppy?
+		{
+			if( dev_name == "floppy0" )
+			{
+				Cur_VM->Set_FD0( VM_Storage_Device( true,
+													path,
+													Cur_VM->Get_FD0().Get_Nativ_Mode(),
+													Cur_VM->Get_FD0().Get_Nativ_Device()) );
+			}
+			else if( dev_name == "floppy1" )
+			{
+				Cur_VM->Set_FD1( VM_Storage_Device( true,
+													path,
+													Cur_VM->Get_FD1().Get_Nativ_Mode(),
+													Cur_VM->Get_FD1().Get_Nativ_Device()) );
+			}
+			else
+			{
+				// Find floppy in storage devices
+				QList<VM_Nativ_Storage_Device> devList = Cur_VM->Get_Storage_Devices_List();
+				
+				int floppyCount = 0;
+				int deviceIndex = -1;
+				
+				for( int ix = 0; ix < devList.count(); ++ix )
+				{
+					if( devList[ix].Get_Interface() == VM::DI_Floppy )
+					{
+						++floppyCount;
+						deviceIndex = ix;
+					}
+				}
+				
+				// Simple way finded device?
+				if( floppyCount == 1 && deviceIndex != -1 )
+				{
+					devList[ deviceIndex ].Set_File_Path( path );
+					Cur_VM->Set_Storage_Device( deviceIndex, devList[deviceIndex] );
+				}
+				else
+				{
+					// Strong way... FIXME
+				}
+			}
+		}
+		else
+		{
+			
+		}
 	}
 }

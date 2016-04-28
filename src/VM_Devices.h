@@ -236,6 +236,7 @@ class Available_Devices
 		bool PSO_SMP_MaxCPUs;
 		
 		bool PSO_Device;
+		bool PSO_Device_USB_EHCI;
 		
 		bool PSO_Drive;
 		bool PSO_Drive_File;
@@ -515,7 +516,7 @@ class VM_Storage_Device
 		VM_Storage_Device();
 		VM_Storage_Device( const VM_Storage_Device &device );
 		VM_Storage_Device( bool enabled, const QString &file_name );
-		VM_Storage_Device( bool enabled, const QString &file_name, bool nativ_mode, VM_Nativ_Storage_Device &device );
+		VM_Storage_Device( bool enabled, const QString &file_name, bool nativ_mode, const VM_Nativ_Storage_Device &device ); // FIXME test const VM_Nativ_Storage_Device &device IN OLD version without const
 		
 		bool operator==( const VM_Storage_Device &device ) const;
 		bool operator!=( const VM_Storage_Device &device ) const;

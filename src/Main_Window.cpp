@@ -221,7 +221,7 @@ void Main_Window::closeEvent( QCloseEvent *event )
 	if( ! Save_Settings() )
 	{
 		AQGraphic_Error( "void Main_Window::closeEvent( QCloseEvent *event )",
-						 tr("Cannot Save Settings!"), NULL );
+						 tr("AQEMU"), tr("Cannot Save Settings!"), false );
 	}
 	else
 	{

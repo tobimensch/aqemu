@@ -261,6 +261,13 @@
        </property>
       </widget>
      </item>
+     <item row="5" column="0" colspan="2">
+      <widget class="QCheckBox" name="CH_Use_New_Device_Changer">
+       <property name="text">
+        <string>Use New Emulator Control Removable Device Menu</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -401,14 +408,16 @@
  </widget>
  <layoutdefault spacing="6" margin="8"/>
  <tabstops>
-  <tabstop>CB_Default_VM_Template</tabstop>
-  <tabstop>Button_Create_Template_from_VM</tabstop>
   <tabstop>Edit_VM_Folder</tabstop>
   <tabstop>TB_VM_Folder</tabstop>
+  <tabstop>CB_Default_VM_Template</tabstop>
+  <tabstop>Button_Create_Template_from_VM</tabstop>
   <tabstop>CB_Language</tabstop>
   <tabstop>CB_Icons_Theme</tabstop>
-  <tabstop>CH_Use_Device_Manager</tabstop>
+  <tabstop>CB_VM_Icons_Size</tabstop>
   <tabstop>CH_Screenshot_for_OS_Logo</tabstop>
+  <tabstop>CH_Use_Device_Manager</tabstop>
+  <tabstop>CH_Use_New_Device_Changer</tabstop>
   <tabstop>RB_Emul_Show_Window</tabstop>
   <tabstop>RB_Emul_Show_VNC</tabstop>
   <tabstop>RB_Emul_Show_In_Main_Window</tabstop>

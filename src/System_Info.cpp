@@ -1797,7 +1797,17 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	
 	// -device
 	rx = QRegExp( ".*-device\\s.*" );
-	if( rx.exactMatch(all_help) ) tmp_dev.PSO_Device = true;
+	if( rx.exactMatch(all_help) )
+	{
+		tmp_dev.PSO_Device = true;
+		
+		// Get available devices list
+		QString emulDevList = Get_Emulator_Output( path, QStringList() << "-device" << "?" );
+		
+		// Find usb-ehci support
+		rx = QRegExp( ".*usb\\-ehci.*" );
+		if( rx.exactMatch(emulDevList) ) tmp_dev.PSO_Device_USB_EHCI = true;
+	}
 	
 	// -drive
 	rx = QRegExp( ".*-drive\\s+(\\[.*\\]).*-.*" );
