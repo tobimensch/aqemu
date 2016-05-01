@@ -44,7 +44,7 @@
 int main( int argc, char *argv[] )
 {
 	// Set QSettings Data
-	QCoreApplication::setOrganizationName( "ANDronSoft" );
+	QCoreApplication::setOrganizationName( "aqemu" );
 	QCoreApplication::setApplicationName( "AQEMU" );
 	#ifdef Q_OS_WIN32
 	QSettings::setDefaultFormat( QSettings::IniFormat );
@@ -134,8 +134,8 @@ int main( int argc, char *argv[] )
 	}
 	#endif
 	
-	// This is Upgrade AQEMU? Find Previous Confing...
-	//FIXME if( QFile::exists(QDir::homePath() + "/.config/ANDronSoft/AQEMU.conf") )
+	// This is Upgrade AQEMU? Find Previous Config...
+	//FIXME if( QFile::exists(QDir::homePath() + "/.config/aqemu/AQEMU.conf") )
 	if( QFile::exists(settings.fileName()) )
 	{
 		QString conf_ver = settings.value( "AQEMU_Config_Version", CURRENT_AQEMU_VERSION ).toString();
@@ -178,8 +178,8 @@ int main( int argc, char *argv[] )
 		else
 		{
 			// Remove Old Config!
-			//FIXME if( QFile::copy(QDir::homePath() + "/.config/ANDronSoft/AQEMU.conf",
-			//	QDir::homePath() + "/.config/ANDronSoft/AQEMU.conf.bak") )
+			//FIXME if( QFile::copy(QDir::homePath() + "/.config/aqemu/AQEMU.conf",
+			//	QDir::homePath() + "/.config/aqemu/AQEMU.conf.bak") )
 			if( QFile::copy(settings.fileName(), settings.fileName() + ".bak") )
 			{
 				AQWarning( "int main( int argc, char *argv[] )",
