@@ -102,7 +102,7 @@ QList<QDomElement> QDomElement::childNodes()
     if ( element )
     {
         QList<QDomElement> list;
-        for (auto el = element->FirstChildElement(); (el = el->NextSiblingElement());)
+        for (auto el = element->FirstChildElement(); el != nullptr; el = el->NextSiblingElement())
         {
             list.append(el);
         }
