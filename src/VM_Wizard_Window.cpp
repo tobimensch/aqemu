@@ -29,6 +29,21 @@
 #include "VM_Wizard_Window.h"
 #include "System_Info.h"
 
+#include <sys/utsname.h>
+#include <stdio.h>
+
+// FIXME this may be Linux only so far
+// if you're porting this to something else
+// this is a place where a lot of ifdefs may be needed
+QString Get_My_System_Architecture()
+{
+    struct utsname name;
+    uname(&name);
+    if ( name.machine != 0 )
+        return QString(name.machine);
+    return QString();
+}
+
 VM_Wizard_Window::VM_Wizard_Window( QWidget *parent )
 	: QDialog(parent)
 {
