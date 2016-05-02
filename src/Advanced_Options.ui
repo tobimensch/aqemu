@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Advanced_Options</class>
+ <widget class="QDialog" name="Advanced_Options">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>679</width>
+    <height>553</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Advanced Options</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <widget class="QGroupBox" name="">
+     <property name="title">
+      <string>Advanced Options</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="CH_RTC_TD_Hack">
+        <property name="text">
+         <string>RTC TD hack (Fixes time drift in windows ACPI HAL)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="CH_No_Shutdown">
+        <property name="text">
+         <string>No shutdown</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="CH_No_Reboot">
+        <property name="toolTip">
+         <string>Exit instead of rebooting</string>
+        </property>
+        <property name="text">
+         <string>No reboot</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="CH_Start_CPU">
+        <property name="text">
+         <string>Start CP&amp;U at startup</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="CH_FDD_Boot">
+        <property name="toolTip">
+         <string>Check Floppy Disk boot signature in VM BIOS</string>
+        </property>
+        <property name="text">
+         <string>Check boot secto&amp;r on FDD</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="CH_ACPI">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Enable ACP&amp;I</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QCheckBox" name="CH_Start_Date">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Start date (Day.Month.Year Hour:Minute:Second)</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QDateTimeEdit" name="DTE_Start_Date">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="date">
+         <date>
+          <year>2009</year>
+          <month>1</month>
+          <day>20</day>
+         </date>
+        </property>
+        <property name="time">
+         <time>
+          <hour>14</hour>
+          <minute>30</minute>
+          <second>0</second>
+         </time>
+        </property>
+        <property name="maximumDate">
+         <date>
+          <year>2100</year>
+          <month>12</month>
+          <day>31</day>
+         </date>
+        </property>
+        <property name="minimumDate">
+         <date>
+          <year>1975</year>
+          <month>1</month>
+          <day>1</day>
+         </date>
+        </property>
+        <property name="displayFormat">
+         <string>dd.MM.yyyy HH:mm:ss</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="CH_Win2K_Hack">
+        <property name="toolTip">
+         <string>Fix Windows 2000 install Bug</string>
+        </property>
+        <property name="text">
+         <string>Windows &amp;2K hack</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Custom QEMU Command Line Arguments</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="CH_Only_User_Args">
+        <property name="text">
+         <string>Use only custom arguments without AQEMU arguments</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="CH_Use_User_Binary">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>Use emulator binary file in &quot;Custom QEMU Command Line Arguments&quot;</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QPlainTextEdit" name="Edit_Additional_Args">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>60</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Advanced_Options</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Advanced_Options</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Only_User_Args</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CH_Use_User_Binary</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>280</x>
+     <y>399</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
