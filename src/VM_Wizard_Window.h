@@ -67,6 +67,8 @@ class VM_Wizard_Window: public QDialog
 		void on_Button_Existing_clicked();
 		
 	private:
+        void applyTemplate();
+
 		QSettings Settings;
 		Ui::VM_Wizard_Window ui;
 		
@@ -77,7 +79,7 @@ class VM_Wizard_Window: public QDialog
 		const Available_Devices* Current_Devices;
 		QMap<QString, Available_Devices> All_Systems;
 		
-		bool Use_Emulator_Type_Page;
+		bool Use_Accelerator_Page;
 };
 
 #endif

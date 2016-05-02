@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>814</width>
+    <width>821</width>
     <height>641</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
    <string>Emulator Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -64,7 +64,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../resources/images.qrc">:/ok.png</pixmap>
+        <pixmap resource="../resources/icons.qrc">:/ok.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -114,100 +114,6 @@
     </layout>
    </item>
    <item>
-    <widget class="QWidget" name="Widget_Emulator_Type" native="true">
-     <layout class="QHBoxLayout" name="horizontalLayout_6">
-      <property name="leftMargin">
-       <number>10</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="Label_Emulator_Type">
-        <property name="text">
-         <string>Emulator type:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>13</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="RB_QEMU">
-        <property name="text">
-         <string>&amp;QEMU</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>13</width>
-          <height>13</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QRadioButton" name="RB_KVM">
-        <property name="text">
-         <string>&amp;KVM</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>7</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="Label_Find_QEMU_KVM">
-        <property name="text">
-         <string>(For adding QEMU-KVM, add them one by one)</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="QLabel" name="Label_Path_to_Dir">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -234,7 +140,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
        </property>
       </widget>
@@ -254,7 +160,7 @@
         <string>&amp;Find Emulators</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/find.png</normaloff>:/find.png</iconset>
        </property>
       </widget>
@@ -325,7 +231,7 @@
        </property>
        <column>
         <property name="text">
-         <string>QEMU/KVM System</string>
+         <string>QEMU System</string>
         </property>
        </column>
        <column>
@@ -356,16 +262,7 @@
    <item>
     <widget class="QWidget" name="widget" native="true">
      <layout class="QGridLayout" name="gridLayout">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
+      <property name="margin">
        <number>0</number>
       </property>
       <item row="0" column="0">
@@ -509,7 +406,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -520,7 +417,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -531,8 +428,6 @@
  </widget>
  <tabstops>
   <tabstop>Edit_Name</tabstop>
-  <tabstop>RB_QEMU</tabstop>
-  <tabstop>RB_KVM</tabstop>
   <tabstop>Edit_Path_to_Dir</tabstop>
   <tabstop>TB_Browse</tabstop>
   <tabstop>Button_Find</tabstop>
@@ -546,8 +441,9 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
+  <include location="../resources/icons.qrc"/>
+  <include location="../resources/icons.qrc"/>
   <include location="../resources/images.qrc"/>
-  <include location="images.qrc"/>
  </resources>
  <connections>
   <connection>

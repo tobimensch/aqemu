@@ -14,7 +14,7 @@
    <string>Adding Port</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/port.png</normaloff>:/port.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -288,7 +288,7 @@
         <string>...</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
        </property>
       </widget>
@@ -375,7 +375,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -386,7 +386,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -419,7 +419,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

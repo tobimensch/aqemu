@@ -72,23 +72,14 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 	}
 	else if( ui.Template_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		if( Use_Emulator_Type_Page )
-		{
-			ui.Wizard_Pages->setCurrentWidget( ui.Emulator_Type_Page );
-			ui.Label_Page->setText( tr("Emulator Type") );
-		}
-		else
-		{
-			ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
-			ui.Label_Page->setText( tr("Wizard Mode") );
-		    ui.Button_Back->setEnabled( false );
-		}
+		ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
+		ui.Label_Page->setText( tr("Wizard Mode") );
+	    ui.Button_Back->setEnabled( false );
 	}
-	else if( ui.Emulator_Type_Page == ui.Wizard_Pages->currentWidget() )
+	else if( ui.Accelerator_Page == ui.Wizard_Pages->currentWidget() )
 	{
 		ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
 		ui.Label_Page->setText( tr("Wizard Mode") );
-		ui.Button_Back->setEnabled( false );
 	}
 	else if( ui.General_Settings_Page == ui.Wizard_Pages->currentWidget() )
 	{
@@ -120,7 +111,7 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 	}
 	else if( ui.Network_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		if( ui.RB_Typical->isChecked() ) // typcal or custom mode
+		if( ui.RB_Typical->isChecked() ) // typical or custom mode
 		{
 			ui.Wizard_Pages->setCurrentWidget( ui.Typical_HDD_Page );
 			ui.Label_Page->setText( tr("Hard Disk Size") );
@@ -145,6 +136,166 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 	}
 }
 
+void VM_Wizard_Window::applyTemplate()
+{
+	// Use Selected Template
+	if( ui.RB_VM_Template->isChecked() )
+	{
+		if( ! New_VM->Load_VM(OS_Templates_List[ui.CB_OS_Type->currentIndex()-1].filePath()) )
+		{
+			AQGraphic_Error( "void VM_Wizard_Window::Create_New_VM()", tr("Error!"),
+							 tr("Cannot Create New VM from Template!") );
+			return;
+		}
+	}
+	
+	// Emulator
+	New_VM->Set_Emulator( Current_Emulator );
+	
+	// Find CPU List For This Template
+	bool devices_found = false;
+	
+	if( ui.RB_Emulator_KVM->isChecked() )
+	{
+        New_VM->Set_Machine_Accelerator(VM::KVM);
+		New_VM->Set_Computer_Type( "qemu-system-x86_64" );
+		
+		if( New_VM->Get_Audio_Cards().Audio_es1370 )
+		{
+			VM::Sound_Cards tmp_audio = New_VM->Get_Audio_Cards();
+			tmp_audio.Audio_es1370 = false;
+			tmp_audio.Audio_AC97 = true;
+			New_VM->Set_Audio_Cards( tmp_audio );
+		}
+		
+		Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
+		devices_found = true;
+	}
+	else
+	{
+		Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
+		if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
+	}
+	
+	// Use Selected Template
+	if( ui.RB_VM_Template->isChecked() )
+	{
+		// Name
+		ui.Edit_VM_Name->setText( New_VM->Get_Machine_Name() );
+		
+		// Memory
+		ui.Memory_Size->setValue( New_VM->Get_Memory_Size() );
+		
+		// HDA
+		double hda_size = New_VM->Get_HDA().Get_Virtual_Size_in_GB();
+		
+		if( hda_size != 0.0 )
+		{
+			ui.SB_HDD_Size->setValue( hda_size );
+		}
+		else
+		{
+			ui.SB_HDD_Size->setValue( 10.0 );
+		}
+		
+		// Network
+		ui.RB_User_Mode_Network->setChecked( New_VM->Get_Use_Network() );
+		
+		// Find CPU List For This Template
+		Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
+		if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
+	}
+	else // Create New VM in Date Mode
+	{
+		// Select Memory Size, and HDD Size
+		switch( ui.CB_Relese_Date->currentIndex() )
+		{
+			case 0:
+				AQError( "void VM_Wizard_Window::Create_New_VM()",
+						 "Relese Date Not Selected!" );
+				ui.Memory_Size->setValue( 512 );
+				break;
+				
+			case 1: // 1985-1990
+				ui.Memory_Size->setValue( 16 );
+				ui.SB_HDD_Size->setValue( 1.0 );
+				break;
+				
+			case 2: // 1990-1995
+				ui.Memory_Size->setValue( 64 );
+				ui.SB_HDD_Size->setValue( 2.0 );
+				break;
+				
+			case 3: // 1995-2000
+				ui.Memory_Size->setValue( 256 );
+				ui.SB_HDD_Size->setValue( 10.0 );
+				break;
+				
+			case 4: // 2000-2005
+				ui.Memory_Size->setValue( 512 );
+				ui.SB_HDD_Size->setValue( 20.0 );
+				break;
+				
+			case 5: // 2005-2010
+				ui.Memory_Size->setValue( 1024 );
+				ui.SB_HDD_Size->setValue( 40.0 );
+				break;
+				
+			default:
+				AQError( "void VM_Wizard_Window::Create_New_VM()",
+						 "Relese Date Default Section!" );
+				ui.Memory_Size->setValue( 512 );
+				break;
+		}
+		
+		// Find CPU List For This Template
+		QString compCaption = ui.CB_Computer_Type->currentText();
+		for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
+		{
+			if( it.value().System.Caption == compCaption )
+			{
+				Current_Devices = &it.value();
+				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
+			}
+		}
+	}
+	
+	if( ! devices_found )
+	{
+		AQGraphic_Error( "void VM_Wizard_Window::on_Button_Next_clicked()", tr("Error!"),
+						tr("Cannot Find Emulator System ID!") );
+	}
+	else
+	{
+		// Add CPU's
+		ui.CB_CPU_Type->clear();
+		for( int cx = 0; cx < Current_Devices->CPU_List.count(); ++cx )
+			ui.CB_CPU_Type->addItem( Current_Devices->CPU_List[cx].Caption );
+	}
+	
+	// Typical or custom mode
+	if( ui.RB_Typical->isChecked() )
+	{
+		ui.Label_Page->setText( tr("Virtual Machine Name") );
+		on_Edit_VM_Name_textEdited( ui.Edit_VM_Name->text() );
+		
+		ui.Label_Caption_CPU_Type->setVisible( false );
+		ui.Line_CPU_Type->setVisible( false );
+		ui.Label_CPU_Type->setVisible( false );
+		ui.CB_CPU_Type->setVisible( false );
+	}
+	else
+	{
+		ui.Label_Page->setText( tr("VM Name and CPU Type") );
+		on_Edit_VM_Name_textEdited( ui.Edit_VM_Name->text() );
+		
+		ui.Label_Caption_CPU_Type->setVisible( true );
+		ui.Line_CPU_Type->setVisible( true );
+		ui.Label_CPU_Type->setVisible( true );
+		ui.CB_CPU_Type->setVisible( true );
+	}
+}
+
 void VM_Wizard_Window::on_Button_Next_clicked()
 {
 	/*if( ui.Welcome_Page == ui.Wizard_Pages->currentWidget() )
@@ -155,69 +306,22 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 	}*/
 	if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		bool q = ! Get_Default_Emulator( VM::QEMU ).Get_Name().isEmpty(); // FIXME what it?
-		bool k = ! Get_Default_Emulator( VM::KVM ).Get_Name().isEmpty();
-		
-		if( q && k )
-		{
-			Use_Emulator_Type_Page = true;
-			ui.Wizard_Pages->setCurrentWidget( ui.Emulator_Type_Page );
-			ui.RB_Emulator_KVM->setChecked( true );
-			ui.Label_Page->setText( tr("Emulator Type") );
-		}
-		else
-		{
-			if( q )
-			{
-				ui.RB_Emulator_QEMU->setChecked( true );
-				Current_Emulator = Get_Default_Emulator( VM::QEMU );
-			}
-			else if( k )
-			{
-				ui.RB_Emulator_KVM->setChecked( true );
-				Current_Emulator = Get_Default_Emulator( VM::KVM );
-			}
-			else
-			{
-				AQGraphic_Warning( tr("Error!"), tr("Please Add One Or More Emulators in Advanced Settings!") );
-				return;
-			}
-			
-			// All Find Systems
-			All_Systems = Current_Emulator.Get_Devices();
-			if( All_Systems.isEmpty() )
-			{
-				AQError( "void VM_Wizard_Window::on_Button_Next_clicked()",
-						 "Cannot get devices!" );
-				return;
-			}
-			
-			// Comp types
-			ui.CB_Computer_Type->clear();
-			ui.CB_Computer_Type->addItem( tr("No Selected") );
-			for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
-				ui.CB_Computer_Type->addItem( it.value().System.Caption );
-			
-			Use_Emulator_Type_Page = false;
-			ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
-			on_RB_VM_Template_toggled( ui.RB_VM_Template->isChecked() );
-			ui.Label_Page->setText( tr("Template For VM") );
-		}
-        
+		/*bool q = ! Get_Default_Emulator( VM::QEMU ).Get_Name().isEmpty(); // FIXME what it?
+		bool k = ! Get_Default_Emulator( VM::KVM ).Get_Name().isEmpty();*/
+
+
+		ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
+		ui.Label_Page->setText( tr("Template For VM") );
+		on_RB_VM_Template_toggled( ui.RB_VM_Template->isChecked() );
+
 		ui.Button_Back->setEnabled( true );
+		// Next tab
+		//ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
+
 	}
-	else if( ui.Emulator_Type_Page == ui.Wizard_Pages->currentWidget() )
+	else if( ui.Accelerator_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		if( ui.RB_Emulator_QEMU->isChecked() )
-			Current_Emulator = Get_Default_Emulator( VM::QEMU );
-		else if( ui.RB_Emulator_KVM->isChecked() )
-			Current_Emulator = Get_Default_Emulator( VM::KVM );
-		else
-		{
-			AQError( "void VM_Wizard_Window::on_Button_Next_clicked()",
-					 "Emulator Type Not Set!" );
-			return;
-		}
+	    Current_Emulator = Get_Default_Emulator(); //tobgle FIXME the accelerator isn't being set
 		
 		// All Find Systems FIXME ^^^
 		All_Systems = Current_Emulator.Get_Devices();
@@ -230,174 +334,23 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 		
 		// Comp types
 		ui.CB_Computer_Type->clear();
-		ui.CB_Computer_Type->addItem( tr("No Selected") );
+		ui.CB_Computer_Type->addItem( tr("None Selected") );
 		for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
 			ui.CB_Computer_Type->addItem( it.value().System.Caption );
-		
-		ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
-		on_RB_VM_Template_toggled( ui.RB_VM_Template->isChecked() );
-		ui.Label_Page->setText( tr("Template For VM") );
+
+        applyTemplate();
+        ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
+
 	}
 	else if( ui.Template_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		// Use Selected Template
-		if( ui.RB_VM_Template->isChecked() )
-		{
-			if( ! New_VM->Load_VM(OS_Templates_List[ui.CB_OS_Type->currentIndex()-1].filePath()) )
-			{
-				AQGraphic_Error( "void VM_Wizard_Window::Create_New_VM()", tr("Error!"),
-								 tr("Cannot Create New VM from Template!") );
-				return;
-			}
-		}
-		
-		// Emulator
-		New_VM->Set_Emulator( Current_Emulator );
-		
-		// Find CPU List For This Template
-		bool devices_found = false;
-		
-		if( ui.RB_Emulator_KVM->isChecked() )
-		{
-			New_VM->Set_Computer_Type( "qemu-kvm" );
-			
-			if( New_VM->Get_Audio_Cards().Audio_es1370 )
-			{
-				VM::Sound_Cards tmp_audio = New_VM->Get_Audio_Cards();
-				tmp_audio.Audio_es1370 = false;
-				tmp_audio.Audio_AC97 = true;
-				New_VM->Set_Audio_Cards( tmp_audio );
-			}
-			
-			Current_Devices = &All_Systems[ "qemu-kvm" ];
-			devices_found = true;
-		}
-		else
-		{
-			Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
-		}
-		
-		// Use Selected Template
-		if( ui.RB_VM_Template->isChecked() )
-		{
-			// Name
-			ui.Edit_VM_Name->setText( New_VM->Get_Machine_Name() );
-			
-			// Memory
-			ui.Memory_Size->setValue( New_VM->Get_Memory_Size() );
-			
-			// HDA
-			double hda_size = New_VM->Get_HDA().Get_Virtual_Size_in_GB();
-			
-			if( hda_size != 0.0 )
-			{
-				ui.SB_HDD_Size->setValue( hda_size );
-			}
-			else
-			{
-				ui.SB_HDD_Size->setValue( 10.0 );
-			}
-			
-			// Network
-			ui.RB_User_Mode_Network->setChecked( New_VM->Get_Use_Network() );
-			
-			// Find CPU List For This Template
-			Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
-		}
-		else // Create New VM in Date Mode
-		{
-			// Select Memory Size, and HDD Size
-			switch( ui.CB_Relese_Date->currentIndex() )
-			{
-				case 0:
-					AQError( "void VM_Wizard_Window::Create_New_VM()",
-							 "Relese Date Not Selected!" );
-					ui.Memory_Size->setValue( 512 );
-					break;
-					
-				case 1: // 1985-1990
-					ui.Memory_Size->setValue( 16 );
-					ui.SB_HDD_Size->setValue( 1.0 );
-					break;
-					
-				case 2: // 1990-1995
-					ui.Memory_Size->setValue( 64 );
-					ui.SB_HDD_Size->setValue( 2.0 );
-					break;
-					
-				case 3: // 1995-2000
-					ui.Memory_Size->setValue( 256 );
-					ui.SB_HDD_Size->setValue( 10.0 );
-					break;
-					
-				case 4: // 2000-2005
-					ui.Memory_Size->setValue( 512 );
-					ui.SB_HDD_Size->setValue( 20.0 );
-					break;
-					
-				case 5: // 2005-2010
-					ui.Memory_Size->setValue( 1024 );
-					ui.SB_HDD_Size->setValue( 40.0 );
-					break;
-					
-				default:
-					AQError( "void VM_Wizard_Window::Create_New_VM()",
-							 "Relese Date Default Section!" );
-					ui.Memory_Size->setValue( 512 );
-					break;
-			}
-			
-			// Find CPU List For This Template
-			QString compCaption = ui.CB_Computer_Type->currentText();
-			for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
-			{
-				if( it.value().System.Caption == compCaption )
-				{
-					Current_Devices = &it.value();
-					if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
-				}
-			}
-		}
-		
-		if( ! devices_found )
-		{
-			AQGraphic_Error( "void VM_Wizard_Window::on_Button_Next_clicked()", tr("Error!"),
-							tr("Cannot Find Emulator System ID!") );
-		}
-		else
-		{
-			// Add CPU's
-			ui.CB_CPU_Type->clear();
-			for( int cx = 0; cx < Current_Devices->CPU_List.count(); ++cx )
-				ui.CB_CPU_Type->addItem( Current_Devices->CPU_List[cx].Caption );
-		}
-		
-		// Typical or custom mode
-		if( ui.RB_Typical->isChecked() )
-		{
-			ui.Label_Page->setText( tr("Virtual Machine Name") );
-			on_Edit_VM_Name_textEdited( ui.Edit_VM_Name->text() );
-			
-			ui.Label_Caption_CPU_Type->setVisible( false );
-			ui.Line_CPU_Type->setVisible( false );
-			ui.Label_CPU_Type->setVisible( false );
-			ui.CB_CPU_Type->setVisible( false );
-		}
-		else
-		{
-			ui.Label_Page->setText( tr("VM Name and CPU Type") );
-			on_Edit_VM_Name_textEdited( ui.Edit_VM_Name->text() );
-			
-			ui.Label_Caption_CPU_Type->setVisible( true );
-			ui.Line_CPU_Type->setVisible( true );
-			ui.Label_CPU_Type->setVisible( true );
-			ui.CB_CPU_Type->setVisible( true );
-		}
+        Use_Accelerator_Page = true;
+		ui.Wizard_Pages->setCurrentWidget( ui.Accelerator_Page );
+		ui.RB_Emulator_KVM->setChecked( true );
+		ui.Label_Page->setText( tr("Accelerator") );
 		
 		// Next tab
-		ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
+		//ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
 	}
 	else if( ui.General_Settings_Page == ui.Wizard_Pages->currentWidget() )
 	{
@@ -542,17 +495,8 @@ bool VM_Wizard_Window::Create_New_VM()
 		// CPU Type
 		if( ui.RB_VM_Template->isChecked() )
 		{
-			// Find QEMU System Name in VM
-			if( ui.RB_Emulator_KVM->isChecked() )
-			{
-				Current_Devices = &All_Systems[ "qemu-kvm" ];
-				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
-			}
-			else // QEMU
-			{
-				Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
-			}
+			Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
+			if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 		}
 		else
 		{
@@ -659,17 +603,17 @@ QString VM_Wizard_Window::Find_OS_Icon( const QString os_name )
 		rex.setPattern( "*linux*" );
 		if( rex.exactMatch(os_name) )
 		{
-			return ":/images/default_linux.png";
+			return ":/default_linux.png";
 		}
 		
 		// Windows
 		rex.setPattern( "*windows*" );
 		if( rex.exactMatch(os_name) )
 		{
-			return ":/images/default_windows.png";
+			return ":/default_windows.png";
 		}
 		
-		return ":/images/other.png";
+		return ":/other.png";
 	}
 }
 

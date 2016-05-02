@@ -34,18 +34,48 @@ class VM
 {
 	public:
 		// Emulator type
-		enum Emulator_Type { QEMU, KVM };
+		enum Machine_Accelerator { KVM, XEN, TCG };
 		
 		// Emulators Version
 		enum Emulator_Version { Obsolete,
-								QEMU_0_9_0, QEMU_0_9_1, QEMU_0_10, QEMU_0_11, QEMU_0_12, QEMU_0_13, QEMU_0_14, QEMU_0_15,
-								QEMU_1_0,
-								KVM_7X, KVM_8X,
-								KVM_0_11, KVM_0_12, KVM_0_13, KVM_0_14, KVM_0_15,
-								KVM_1_0 };
+								QEMU_2_0, QEMU_2_1, QEMU_2_2, QEMU_2_3, QEMU_2_4, QEMU_2_5, QEMU_2_6 };
 		
 		// Virtual Machine State
 		enum VM_State { VMS_Running, VMS_Power_Off, VMS_Pause, VMS_Saved, VMS_In_Error };
+
+        static QString Accel_To_String(Machine_Accelerator accel)
+        {
+            switch(accel)
+            {
+                case KVM:
+                    return "kvm";
+                    break;
+                case XEN:
+                    return "xen";
+                    break;
+                case TCG:
+                    return "tcg";
+                    break;
+                default:
+                    return "";
+            }
+        }
+
+        static Machine_Accelerator String_To_Accel(QString accel)
+        {
+            if (accel.toLower() == "qemu")
+                return VM::TCG;
+            else if (accel.toLower() == "tcg")
+                return VM::TCG;
+            else if (accel.toLower() == "kvm")
+                return VM::KVM;
+            else if (accel.toLower() == "qemu-kvm")
+                return VM::KVM;
+            else if (accel.toLower() == "xen")
+                return VM::XEN;
+            else
+                return VM::KVM; //default //FIXME? is this a good default?
+        }
 		
 		// x86 audio cards ( one or more )
 		class Sound_Cards
@@ -176,7 +206,7 @@ class VM
 								PR_host_port, PR_file, PR_stdio, PR_pipe, PR_udp,
 								PR_tcp, PR_telnet, PR_unix, PR_com, PR_msmouse, PR_mon, PR_braille };
 		
-		// QEMU/KVM Network Modes
+		// QEMU Network Modes
 		enum Network_Mode { Net_Mode_None, Net_Mode_Usermode, Net_Mode_Tuntap,
 							Net_Mode_Tuntapfd, Net_Mode_Tcplisten, Net_Mode_Tcpfd,
 							Net_Mode_Tcpconnect, Net_Mode_Multicast, Net_Mode_Multicastfd,
@@ -210,22 +240,22 @@ class Available_Devices
 		// Constructor for init values
 		Available_Devices();
 		
-		// QEMU/KVM System
+		// QEMU System
 		Device_Map System;
 		
-		// QEMU/KVM CPUs
+		// QEMU CPUs
 		QList<Device_Map> CPU_List;
 		
-		// QEMU/KVM Machines
+		// QEMU Machines
 		QList<Device_Map> Machine_List;
 		
-		// QEMU/KVM Network Cards
+		// QEMU Network Cards
 		QList<Device_Map> Network_Card_List;
 		
-		// QEMU/KVM Audio Cards
+		// QEMU Audio Cards
 		VM::Sound_Cards Audio_Card_List;
 		
-		// QEMU/KVM Video Cards
+		// QEMU Video Cards
 		QList<Device_Map> Video_Card_List;
 		
 		// Platform Specific Options
@@ -346,9 +376,6 @@ class Emulator
 		bool Save() const;
 		QString Get_Emulator_File_Path() const;
 		
-		VM::Emulator_Type Get_Type() const;
-		void Set_Type( VM::Emulator_Type type );
-		
 		const QString &Get_Name() const;
 		void Set_Name( const QString &name );
 		
@@ -377,7 +404,6 @@ class Emulator
 		void Set_Devices( const QMap<QString, Available_Devices> &devices );
 		
 	private:
-		VM::Emulator_Type Type;
 		QString Name;
 		QString Path;
 		bool Default;

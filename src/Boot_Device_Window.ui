@@ -15,7 +15,7 @@
    <string>Boot settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/terminal.png</normaloff>:/terminal.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -61,7 +61,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/up.png</normaloff>:/up.png</iconset>
      </property>
      <property name="iconSize">
@@ -78,7 +78,7 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/down.png</normaloff>:/down.png</iconset>
      </property>
      <property name="iconSize">
@@ -117,7 +117,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -141,7 +141,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -159,7 +159,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

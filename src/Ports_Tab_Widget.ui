@@ -28,7 +28,7 @@
           </sizepolicy>
          </property>
          <property name="text">
-          <string>Add port</string>
+          <string>Add Port</string>
          </property>
         </widget>
        </item>
@@ -45,7 +45,7 @@
           <string>Serial (COM)</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/port.png</normaloff>:/port.png</iconset>
          </property>
          <property name="iconSize">
@@ -68,7 +68,7 @@
           <string>Parallel (LPT)</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/port.png</normaloff>:/port.png</iconset>
          </property>
          <property name="iconSize">
@@ -91,7 +91,7 @@
           <string>USB</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/usb.png</normaloff>:/usb.png</iconset>
          </property>
          <property name="iconSize">
@@ -128,35 +128,9 @@
        <item row="0" column="0" colspan="2">
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLabel" name="LL">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="Line" name="line_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="LR">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text">
-            <string/>
            </property>
           </widget>
          </item>
@@ -168,7 +142,7 @@
           <string>Edit Port</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
          </property>
          <property name="iconSize">
@@ -191,7 +165,7 @@
           <string>Delete Port</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -223,7 +197,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Ports List</string>
+        <string>Port List</string>
        </property>
       </widget>
      </item>
@@ -279,7 +253,7 @@
   <tabstop>Ports_Table</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

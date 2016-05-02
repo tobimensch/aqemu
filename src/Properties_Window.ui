@@ -18,7 +18,7 @@
    <string>Properties</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -52,7 +52,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../resources/images.qrc">
+           <iconset resource="../resources/icons.qrc">
             <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -81,7 +81,7 @@
          <string>Advanced settings</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/images.qrc">
+         <iconset resource="../resources/icons.qrc">
           <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -122,7 +122,7 @@
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="../resources/images.qrc">
+           <iconset resource="../resources/icons.qrc">
             <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -151,7 +151,7 @@
          <string>Advanced settings</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/images.qrc">
+         <iconset resource="../resources/icons.qrc">
           <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -195,7 +195,7 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset resource="../resources/images.qrc">
+           <iconset resource="../resources/icons.qrc">
             <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
           </property>
          </widget>
@@ -208,7 +208,7 @@
          <string>Create &amp;New</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/images.qrc">
+         <iconset resource="../resources/icons.qrc">
           <normaloff>:/add.png</normaloff>:/add.png</iconset>
         </property>
        </widget>
@@ -219,7 +219,7 @@
          <string>&amp;Format Exist</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/images.qrc">
+         <iconset resource="../resources/icons.qrc">
           <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
         </property>
        </widget>
@@ -230,7 +230,7 @@
          <string>Advanced settings</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/images.qrc">
+         <iconset resource="../resources/icons.qrc">
           <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
         </property>
         <property name="toolButtonStyle">
@@ -278,7 +278,7 @@
          <string>Up&amp;date Info</string>
         </property>
         <property name="icon">
-         <iconset resource="../resources/images.qrc">
+         <iconset resource="../resources/icons.qrc">
           <normaloff>:/update.png</normaloff>:/update.png</iconset>
         </property>
        </widget>
@@ -317,7 +317,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -328,7 +328,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -354,7 +354,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

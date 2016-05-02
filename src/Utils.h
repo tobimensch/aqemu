@@ -65,7 +65,7 @@ QString Emulator_Version_To_String( VM::Emulator_Version ver );
 bool Update_Emulators_List();
 const QList<Emulator> &Get_Emulators_List();
 bool Remove_All_Emulators_Files();
-const Emulator &Get_Default_Emulator( VM::Emulator_Type type );
+const Emulator &Get_Default_Emulator( );
 const Emulator &Get_Emulator_By_Name( const QString &name );
 
 int Get_Random( int min, int max );

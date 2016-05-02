@@ -28,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    src/Settings_Widget.h
     src/QDom.h
     src/tinyxml2.h
 	src/About_Window.h
@@ -70,6 +71,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    src/Settings_Widget.cpp
     src/QDom.cpp
     src/tinyxml2.cpp
 	src/About_Window.cpp
@@ -149,9 +151,7 @@ SET( aqemu_ui
 
 SET( aqemu_qrc 
     resources/shared_images.qrc
-    resources/oxygen_icons.qrc
-    resources/images.qrc
-    resources/crystalsvg_icons.qrc
+    resources/icons.qrc
 )
 
 SET( translations 
@@ -284,7 +284,7 @@ MACRO( pack_icons _sources )
 	ENDFOREACH( curFile )
 ENDMACRO( pack_icons )
 
-PACK_ICONS( gui_icons resources/crystalsvg_icons.qrc resources/oxygen_icons.qrc )
+PACK_ICONS( gui_icons resources/shared_images.qrc resources/icons.qrc )
 ADD_CUSTOM_TARGET( icons ALL DEPENDS ${gui_icons} )
 INSTALL( FILES ${gui_icons} DESTINATION share/aqemu )
 

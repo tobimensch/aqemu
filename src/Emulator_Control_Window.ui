@@ -8,14 +8,14 @@
     <x>0</x>
     <y>0</y>
     <width>416</width>
-    <height>46</height>
+    <height>48</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Emulator Control</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/go.png</normaloff>:/go.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -35,7 +35,7 @@
      <x>0</x>
      <y>0</y>
      <width>416</width>
-     <height>30</height>
+     <height>32</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -74,7 +74,7 @@
       <string>Ctrl-Alt-&amp;F#</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/key.png</normaloff>:/key.png</iconset>
      </property>
      <addaction name="actionCtrl_Alt_F1"/>
@@ -105,7 +105,7 @@
       <string>Floppy &amp;B</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
      </property>
      <widget class="QMenu" name="menuFD1_Recent_Files">
@@ -125,7 +125,7 @@
       <string>Floppy &amp;A</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
      </property>
      <widget class="QMenu" name="menuFD0_Recent_Files">
@@ -145,7 +145,7 @@
       <string>&amp;USB</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/usb.png</normaloff>:/usb.png</iconset>
      </property>
      <widget class="QMenu" name="menuUSB_Connect">
@@ -153,7 +153,7 @@
        <string>&amp;Connect</string>
       </property>
       <property name="icon">
-       <iconset resource="../resources/images.qrc">
+       <iconset resource="../resources/icons.qrc">
         <normaloff>:/connect.png</normaloff>:/connect.png</iconset>
       </property>
       <addaction name="actionUSB_Update_Device_List"/>
@@ -164,7 +164,7 @@
        <string>&amp;Disconnect</string>
       </property>
       <property name="icon">
-       <iconset resource="../resources/images.qrc">
+       <iconset resource="../resources/icons.qrc">
         <normaloff>:/disconnect.png</normaloff>:/disconnect.png</iconset>
       </property>
       <addaction name="actionUSB_Disconnect_All_Devices"/>
@@ -179,7 +179,7 @@
       <string>&amp;CD-ROM</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
      </property>
      <widget class="QMenu" name="menuCDROM_Recent_Files">
@@ -213,7 +213,6 @@
     <property name="title">
      <string>&amp;Connect</string>
     </property>
-    <addaction name="actionUpdate_list"/>
    </widget>
    <addaction name="menuVM"/>
    <addaction name="menuConnect"/>
@@ -224,7 +223,7 @@
   </widget>
   <action name="actionSave_Screenshot">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/save.png</normaloff>:/save.png</iconset>
    </property>
    <property name="text">
@@ -233,7 +232,7 @@
   </action>
   <action name="actionSave_VM">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/save.png</normaloff>:/save.png</iconset>
    </property>
    <property name="text">
@@ -242,7 +241,7 @@
   </action>
   <action name="actionLoad_VM">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
    </property>
    <property name="text">
@@ -254,7 +253,7 @@
   </action>
   <action name="actionPause_VM">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/pause.png</normaloff>:/pause.png</iconset>
    </property>
    <property name="text">
@@ -263,7 +262,7 @@
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/exit.png</normaloff>:/exit.png</iconset>
    </property>
    <property name="text">
@@ -272,7 +271,7 @@
   </action>
   <action name="actionSave_VM_State_As">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
    </property>
    <property name="text">
@@ -281,7 +280,7 @@
   </action>
   <action name="actionLoad_VM_State">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
    </property>
    <property name="text">
@@ -290,7 +289,7 @@
   </action>
   <action name="actionReset_VM">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/restart.png</normaloff>:/restart.png</iconset>
    </property>
    <property name="text">
@@ -299,7 +298,7 @@
   </action>
   <action name="actionPower_Off">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/stop.png</normaloff>:/stop.png</iconset>
    </property>
    <property name="text">
@@ -308,7 +307,7 @@
   </action>
   <action name="actionCommit">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/save-all.png</normaloff>:/save-all.png</iconset>
    </property>
    <property name="text">
@@ -317,7 +316,7 @@
   </action>
   <action name="actionCtrl_Alt_Delete">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/key.png</normaloff>:/key.png</iconset>
    </property>
    <property name="text">
@@ -386,7 +385,7 @@
   </action>
   <action name="actionFD0_dev_fd0">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
    </property>
    <property name="text">
@@ -400,7 +399,7 @@
   </action>
   <action name="actionFD0_Other">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
    </property>
    <property name="text">
@@ -409,7 +408,7 @@
   </action>
   <action name="actionFD0_Eject">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/eject.png</normaloff>:/eject.png</iconset>
    </property>
    <property name="text">
@@ -423,7 +422,7 @@
   </action>
   <action name="actionAbout_Emulator_Control">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/about.png</normaloff>:/about.png</iconset>
    </property>
    <property name="text">
@@ -432,7 +431,7 @@
   </action>
   <action name="actionFD1_dev_fd0">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
    </property>
    <property name="text">
@@ -441,7 +440,7 @@
   </action>
   <action name="actionFD1_Other">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
    </property>
    <property name="text">
@@ -450,7 +449,7 @@
   </action>
   <action name="actionFD1_Eject">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/eject.png</normaloff>:/eject.png</iconset>
    </property>
    <property name="text">
@@ -464,7 +463,7 @@
   </action>
   <action name="actionCDROM_dev_cdrom">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
    </property>
    <property name="text">
@@ -473,7 +472,7 @@
   </action>
   <action name="actionCDROM_Other">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
    </property>
    <property name="text">
@@ -482,7 +481,7 @@
   </action>
   <action name="actionCDROM_Eject">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/eject.png</normaloff>:/eject.png</iconset>
    </property>
    <property name="text">
@@ -491,7 +490,7 @@
   </action>
   <action name="actionSave_Screenshot_As">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/save-as.png</normaloff>:/save-as.png</iconset>
    </property>
    <property name="text">
@@ -510,7 +509,7 @@
   </action>
   <action name="actionOther_Keys">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/key.png</normaloff>:/key.png</iconset>
    </property>
    <property name="text">
@@ -519,16 +518,16 @@
   </action>
   <action name="actionQEMU_Monitor">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/terminal.png</normaloff>:/terminal.png</iconset>
    </property>
    <property name="text">
-    <string>QEMU/KVM &amp;Monitor</string>
+    <string>QEMU &amp;Monitor</string>
    </property>
   </action>
   <action name="actionCtrl_Alt_Backspace">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/key.png</normaloff>:/key.png</iconset>
    </property>
    <property name="text">
@@ -572,7 +571,7 @@
   </action>
   <action name="actionManage_Snapshots">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/clock.png</normaloff>:/clock.png</iconset>
    </property>
    <property name="text">
@@ -589,7 +588,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/scale.png</normaloff>:/scale.png</iconset>
    </property>
    <property name="text">
@@ -601,7 +600,7 @@
     <bool>true</bool>
    </property>
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/fullscreen.png</normaloff>:/fullscreen.png</iconset>
    </property>
    <property name="text">
@@ -621,7 +620,7 @@
   </action>
   <action name="actionReinit_VNC">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/bug.png</normaloff>:/bug.png</iconset>
    </property>
    <property name="text">
@@ -640,7 +639,7 @@
   </action>
   <action name="actionClipboard">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/key.png</normaloff>:/key.png</iconset>
    </property>
    <property name="text">
@@ -649,7 +648,7 @@
   </action>
   <action name="actionGrab_Mouse">
    <property name="icon">
-    <iconset resource="../resources/images.qrc">
+    <iconset>
      <normaloff>:/input-mouse.png</normaloff>:/input-mouse.png</iconset>
    </property>
    <property name="text">
@@ -658,7 +657,7 @@
   </action>
  </widget>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

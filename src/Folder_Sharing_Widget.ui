@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>706</width>
+    <width>712</width>
     <height>431</height>
    </rect>
   </property>
@@ -15,16 +15,7 @@
    <string>Folder Sharing Widget</string>
   </property>
   <layout class="QGridLayout">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
-   <property name="bottomMargin">
+   <property name="margin">
     <number>9</number>
    </property>
    <property name="spacing">
@@ -52,16 +43,7 @@
    </item>
    <item row="0" column="4">
     <layout class="QGridLayout">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <property name="spacing">
@@ -79,16 +61,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -100,7 +73,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/view_icon.png</normaloff>:/view_icon.png</iconset>
          </property>
          <property name="iconSize">
@@ -120,7 +93,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
          </property>
          <property name="iconSize">
@@ -140,16 +113,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -164,16 +128,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -185,7 +140,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -212,16 +167,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -236,16 +182,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -260,7 +197,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
          </property>
          <property name="iconSize">
@@ -287,16 +224,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -457,7 +385,7 @@
   <tabstop>Folders_List</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

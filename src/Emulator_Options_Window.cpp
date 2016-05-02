@@ -70,10 +70,7 @@ void Emulator_Options_Window::on_Button_Find_clicked()
 	// Set Type and Bin files
 	QMap<QString, QString> list;
 	
-	if( ui.RB_QEMU->isChecked() )
-		list = System_Info::Find_QEMU_Binary_Files( ui.Edit_Path_to_Dir->text() );
-	else
-		list = System_Info::Find_KVM_Binary_Files( ui.Edit_Path_to_Dir->text() );
+	list = System_Info::Find_QEMU_Binary_Files( ui.Edit_Path_to_Dir->text() );
 	
 	// Clear old bin files
 	ui.Table_Systems->clearContents();
@@ -128,10 +125,6 @@ void Emulator_Options_Window::on_Button_OK_clicked()
 	// Name
 	Current_Emulator.Set_Name( ui.Edit_Name->text() );
 	
-	// Emulator Type
-	if( ui.RB_QEMU->isChecked() ) Current_Emulator.Set_Type( VM::QEMU );
-	else Current_Emulator.Set_Type( VM::KVM );
-	
 	// Path
 	Current_Emulator.Set_Path( ui.Edit_Path_to_Dir->text() );
 	
@@ -176,31 +169,6 @@ void Emulator_Options_Window::Set_Emulator( const Emulator &emul )
 	// Name
 	ui.Edit_Name->setText( Current_Emulator.Get_Name() );
 	
-	// Emulator Type
-	if( Current_Emulator.Get_Type() == VM::QEMU )
-	{
-		ui.RB_QEMU->setChecked( true );
-		ui.RB_KVM->setChecked( false );
-		
-		ui.CB_Version->addItem( tr("QEMU 0.9.0") );
-		ui.CB_Version->addItem( tr("QEMU 0.9.1") );
-		ui.CB_Version->addItem( tr("QEMU 0.10.X") );
-		ui.CB_Version->addItem( tr("QEMU 0.11.X") );
-		ui.CB_Version->addItem( tr("QEMU 0.12.X") );
-		ui.CB_Version->addItem( tr("QEMU 0.13.X") );
-	}
-	else if( Current_Emulator.Get_Type() == VM::KVM )
-	{
-		ui.RB_QEMU->setChecked( false );
-		ui.RB_KVM->setChecked( true );
-		
-		ui.CB_Version->addItem( tr("KVM 7X") );
-		ui.CB_Version->addItem( tr("KVM 8X") );
-		ui.CB_Version->addItem( tr("KVM 0.11.X") );
-		ui.CB_Version->addItem( tr("KVM 0.12.X") );
-		ui.CB_Version->addItem( tr("KVM 0.13.X") );
-	}
-	
 	// Path
 	ui.Edit_Path_to_Dir->setText( Current_Emulator.Get_Path() );
 	
@@ -213,72 +181,8 @@ void Emulator_Options_Window::Set_Emulator( const Emulator &emul )
 	// Force Version
 	switch( Current_Emulator.Get_Version() )
 	{
-		case VM::QEMU_0_9_0:
-			ui.CB_Version->setCurrentIndex( 0 );
-			break;
-			
-		case VM::QEMU_0_9_1:
+		case VM::QEMU_2_0:
 			ui.CB_Version->setCurrentIndex( 1 );
-			break;
-			
-		case VM::QEMU_0_10:
-			ui.CB_Version->setCurrentIndex( 2 );
-			break;
-			
-		case VM::QEMU_0_11:
-			ui.CB_Version->setCurrentIndex( 3 );
-			break;
-			
-		case VM::QEMU_0_12:
-			ui.CB_Version->setCurrentIndex( 4 );
-			break;
-			
-		case VM::QEMU_0_13:
-			ui.CB_Version->setCurrentIndex( 5 );
-			break;
-			
-		case VM::QEMU_0_14:
-			ui.CB_Version->setCurrentIndex( 6 );
-			break;
-			
-		case VM::QEMU_0_15:
-			ui.CB_Version->setCurrentIndex( 7 );
-			break;
-		
-		case VM::QEMU_1_0:
-			ui.CB_Version->setCurrentIndex( 8 );
-			break;
-			
-		case VM::KVM_7X:
-			ui.CB_Version->setCurrentIndex( 0 );
-			break;
-			
-		case VM::KVM_8X:
-			ui.CB_Version->setCurrentIndex( 1 );
-			break;
-			
-		case VM::KVM_0_11:
-			ui.CB_Version->setCurrentIndex( 2 );
-			break;
-			
-		case VM::KVM_0_12:
-			ui.CB_Version->setCurrentIndex( 3 );
-			break;
-			
-		case VM::KVM_0_13:
-			ui.CB_Version->setCurrentIndex( 4 );
-			break;
-			
-		case VM::KVM_0_14:
-			ui.CB_Version->setCurrentIndex( 5 );
-			break;
-			
-		case VM::KVM_0_15:
-			ui.CB_Version->setCurrentIndex( 6 );
-			break;
-			
-		case VM::KVM_1_0:
-			ui.CB_Version->setCurrentIndex( 7 );
 			break;
 			
 		default:
@@ -301,7 +205,7 @@ void Emulator_Options_Window::Set_Emulator( const Emulator &emul )
 		ui.Table_Systems->insertRow( ui.Table_Systems->rowCount() );
 		
 		QTableWidgetItem *newItem;
-		if( ui.RB_QEMU->isChecked() )
+		/*if( ui.RB_QEMU->isChecked() )
 		{
 			newItem = new QTableWidgetItem( iter.key() );
 			ui.Table_Systems->setItem( ui.Table_Systems->rowCount()-1, 0, newItem );
@@ -310,7 +214,7 @@ void Emulator_Options_Window::Set_Emulator( const Emulator &emul )
 		{
 			newItem = new QTableWidgetItem( iter.key() );
 			ui.Table_Systems->setItem( ui.Table_Systems->rowCount()-1, 0, newItem );
-		}
+		}*/
 		
 		newItem = new QTableWidgetItem( iter.value() );
 		ui.Table_Systems->setItem( ui.Table_Systems->rowCount()-1, 1, newItem );
@@ -378,9 +282,10 @@ void Emulator_Options_Window::on_RB_QEMU_toggled( bool checked )
 	Update_Info = true; // Update emulator info
 }
 
+
 void Emulator_Options_Window::on_RB_KVM_toggled( bool checked )
 {
-	// Clear
+	/*// Clear
 	ui.Table_Systems->clearContents();
 	while( ui.Table_Systems->rowCount() > 0 ) ui.Table_Systems->removeRow( 0 );
 	
@@ -395,7 +300,7 @@ void Emulator_Options_Window::on_RB_KVM_toggled( bool checked )
 		ui.Table_Systems->setItem( ui.Table_Systems->rowCount()-1, 0, newItem );
 	}
 	
-	Update_Info = true; // Update emulator info
+	Update_Info = true; // Update emulator info*/ //tobgle //FIXME?!
 }
 
 bool Emulator_Options_Window::Name_Valid( const QString &name )

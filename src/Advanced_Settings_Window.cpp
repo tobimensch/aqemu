@@ -31,11 +31,14 @@
 #include "Utils.h"
 #include "Emulator_Options_Window.h"
 #include "First_Start_Wizard.h"
+#include "Settings_Widget.h"
 
 Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	: QDialog( parent )
 {
 	ui.setupUi( this );
+
+    new Settings_Widget( ui.All_Tabs, QBoxLayout::TopToBottom );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Emulators_Table );
 	hv->setSectionResizeMode( QHeaderView::Fixed );
@@ -86,8 +89,7 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	ui.CH_Machine_Details->setChecked( Settings.value("Info/Machine_Details", "yes").toString() == "yes" );
 	
 	ui.CH_Machine_Name->setChecked( Settings.value("Info/Machine_Name", "no").toString() == "yes" );
-	ui.CH_Emulator_Type->setChecked( Settings.value("Info/Emulator_Type", "yes").toString() == "yes" );
-	ui.CH_Emulator_Version->setChecked( Settings.value("Info/Emulator_Version", "no").toString() == "yes" );
+	ui.CH_Machine_Accelerator->setChecked( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" );
 	ui.CH_Computer_Type->setChecked( Settings.value("Info/Computer_Type", "yes").toString() == "yes" );
 	ui.CH_Machine_Type->setChecked( Settings.value("Info/Machine_Type", "no").toString() == "yes" );
 	ui.CH_Boot_Priority->setChecked( Settings.value("Info/Boot_Priority", "yes").toString() == "yes" );
@@ -137,7 +139,6 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	ui.CH_PFlash->setChecked( Settings.value("Info/PFlash", "no").toString() == "yes" );
 	
 	ui.CH_Linux_Boot->setChecked( Settings.value("Info/Linux_Boot", "no").toString() == "yes" );
-	ui.CH_Acceleration->setChecked( Settings.value("Info/Acceleration", "no").toString() == "yes" );
 	ui.CH_VNC->setChecked( Settings.value("Info/VNC", "no").toString() == "yes" );
 	ui.CH_SPICE->setChecked( Settings.value("Info/SPICE", "no").toString() == "yes" );
 	
@@ -172,7 +173,7 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	// First VNC Port for Embedded Display
 	ui.SB_First_VNC_Port->setValue( Settings.value("First_VNC_Port", "5910").toString().toInt() );
 	
-	// QEMU/KVM Monitor Type
+	// QEMU Monitor Type
 	#ifdef Q_OS_WIN32
 	ui.RB_Monitor_STDIO->setEnabled( false );
 	ui.RB_Monitor_TCP->setChecked( true );
@@ -279,8 +280,7 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 	Settings.setValue( "Info/Machine_Details", ui.CH_Machine_Details->isChecked() ? "yes" : "no" );
 	
 	Settings.setValue( "Info/Machine_Name", ui.CH_Machine_Name->isChecked() ? "no" : "no" );
-	Settings.setValue( "Info/Emulator_Type", ui.CH_Emulator_Type->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Emulator_Version", ui.CH_Emulator_Version->isChecked() ? "yes" : "no" );
+	Settings.setValue( "Info/Machine_Accelerator", ui.CH_Machine_Accelerator->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/Computer_Type", ui.CH_Computer_Type->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/Machine_Type", ui.CH_Machine_Type->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/Boot_Priority", ui.CH_Boot_Priority->isChecked() ? "yes" : "no" );
@@ -330,7 +330,6 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 	Settings.setValue( "Info/PFlash", ui.CH_PFlash->isChecked() ? "yes" : "no" );
 	
 	Settings.setValue( "Info/Linux_Boot", ui.CH_Linux_Boot->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Acceleration", ui.CH_Acceleration->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/VNC", ui.CH_VNC->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/SPICE", ui.CH_SPICE->isChecked() ? "yes" : "no" );
 	
@@ -381,7 +380,7 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 	// First VNC Port for Embedded Display
 	Settings.setValue( "First_VNC_Port", QString::number(ui.SB_First_VNC_Port->value()) );
 	
-	// QEMU/KVM Monitor Type
+	// QEMU Monitor Type
 	#ifdef Q_OS_WIN32
 	Settings.setValue( "Emulator_Monitor_Type", "tcp" );
 	#else
@@ -460,14 +459,14 @@ void Advanced_Settings_Window::on_TB_Add_Emulator_clicked()
 	{
 		Emulator new_emul = emulatorOptionsWin->Get_Emulator();
 		
-		// This Default Emulator?
+		// Is there a default emulator already?
 		bool found = false;
 		for( int ix = 0; ix < Emulators.count(); ix++ )
 		{
-			if( Emulators[ix].Get_Type() == new_emul.Get_Type() &&
-				Emulators[ix].Get_Default() )
+			if( Emulators[ix].Get_Default() )
 			{
 				found = true;
+                break;
 			}
 		}
 		
@@ -488,49 +487,12 @@ void Advanced_Settings_Window::on_TB_Delete_Emulator_clicked()
 	{
 		Emulators.removeAt( cur_index );
 		ui.Emulators_Table->removeRow( cur_index );
-		
-		// Set new default emulator?
-		bool q, k, qd, kd; // q - qemu, k - kvm, d - default
-		q = k = qd = kd = false;
-		
+
 		for( int ex = 0; ex < Emulators.count(); ++ex )
 		{
-			if( Emulators[ex].Get_Type() == VM::QEMU )
-			{
-				q = true;
-				if( Emulators[ex].Get_Default() ) qd = true;
-			}
-			else if( Emulators[ex].Get_Type() == VM::KVM )
-			{
-				k = true;
-				if( Emulators[ex].Get_Default() ) kd = true;
-			}
-		}
-		
-		if( q && qd == false )
-		{
-			for( int ex = 0; ex < Emulators.count(); ++ex )
-			{
-				if( Emulators[ex].Get_Type() == VM::QEMU )
-				{
-					Emulators[ ex ].Set_Default( true );
-					ui.Emulators_Table->item( ex, 3 )->setText( tr("Yes") );
-					break;
-				}
-			}
-		}
-		
-		if( k && kd == false )
-		{
-			for( int ex = 0; ex < Emulators.count(); ++ex )
-			{
-				if( Emulators[ex].Get_Type() == VM::KVM )
-				{
-					Emulators[ ex ].Set_Default( true );
-					ui.Emulators_Table->item( ex, 3 )->setText( tr("Yes") );
-					break;
-				}
-			}
+			Emulators[ ex ].Set_Default( true );
+			ui.Emulators_Table->item( ex, 3 )->setText( tr("Yes") );
+			break;
 		}
 	}
 }
@@ -565,11 +527,7 @@ void Advanced_Settings_Window::on_TB_Use_Default_clicked()
 		
 		for( int ix = 0; ix < Emulators.count(); ix++ )
 		{
-			if( ix != cur_index &&
-				Emulators[cur_index].Get_Type() == Emulators[ix].Get_Type() )
-			{
-				Emulators[ ix ].Set_Default( false );
-			}
+            Emulators[ ix ].Set_Default( false );
 		}
 		
 		Update_Emulators_Info();
@@ -646,34 +604,19 @@ bool Advanced_Settings_Window::Save_Emulators_Info()
 	// FIXME save only if emulators changed
 	
 	// Check defaults emulators
-	bool installed_kvm, installed_qemu, default_kvm, default_qemu;
-	installed_kvm = installed_qemu = default_kvm = default_qemu = false;
+	bool installed_qemu, default_qemu;
+	installed_qemu = default_qemu = false;
 	
 	for( int ix = 0; ix < Emulators.count(); ++ix )
 	{
-		if( Emulators[ix].Get_Type() == VM::QEMU )
-		{
-			installed_qemu = true;
+		installed_qemu = true;
 
-			if( Emulators[ix].Get_Default() ) default_qemu = true;
-		}
-		else if( Emulators[ix].Get_Type() == VM::KVM )
-		{
-			installed_kvm = true;
-			
-			if( Emulators[ix].Get_Default() ) default_kvm = true;
-		}
+		if( Emulators[ix].Get_Default() ) default_qemu = true;
 	}
 	
 	if( installed_qemu && default_qemu == false )
 	{
 		AQGraphic_Warning( tr("Error!"), tr("Default QEMU Emulator isn't selected!") );
-		return false;
-	}
-	
-	if( installed_kvm && default_kvm == false )
-	{
-		AQGraphic_Warning( tr("Error!"), tr("Default KVM Emulator isn't selected!") );
 		return false;
 	}
 	

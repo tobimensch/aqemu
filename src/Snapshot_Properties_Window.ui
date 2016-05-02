@@ -15,7 +15,7 @@
    <string>Snapshot Properties</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -80,16 +80,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -111,7 +102,7 @@
           <string>&amp;OK</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
          </property>
         </widget>
@@ -122,7 +113,7 @@
           <string>&amp;Cancel</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
          </property>
         </widget>
@@ -139,7 +130,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -321,5 +321,7 @@ int main( int argc, char *argv[] )
 	Main_Window Window;
 	Window.show();
 	
+    app.setWindowIcon(QIcon(":/aqemu.png"));
+
 	return app.exec();
 }

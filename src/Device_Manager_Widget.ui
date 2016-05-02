@@ -15,16 +15,7 @@
    <string>Device Manager Widget</string>
   </property>
   <layout class="QGridLayout">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
-   <property name="bottomMargin">
+   <property name="margin">
     <number>9</number>
    </property>
    <property name="spacing">
@@ -52,16 +43,7 @@
    </item>
    <item row="0" column="4">
     <layout class="QGridLayout">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <property name="spacing">
@@ -79,16 +61,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -100,7 +73,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/view_icon.png</normaloff>:/view_icon.png</iconset>
          </property>
          <property name="iconSize">
@@ -120,7 +93,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
          </property>
          <property name="iconSize">
@@ -140,16 +113,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -164,16 +128,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -185,7 +140,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
          </property>
          <property name="iconSize">
@@ -205,7 +160,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="iconSize">
@@ -225,7 +180,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
          </property>
          <property name="iconSize">
@@ -245,7 +200,7 @@
           <string>Quick Format</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
          </property>
          <property name="iconSize">
@@ -272,16 +227,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -296,16 +242,7 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>
@@ -317,7 +254,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
          </property>
          <property name="iconSize">
@@ -337,7 +274,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
          </property>
          <property name="iconSize">
@@ -357,7 +294,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
          </property>
          <property name="iconSize">
@@ -380,7 +317,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/blockdevice.png</normaloff>:/blockdevice.png</iconset>
          </property>
          <property name="iconSize">
@@ -407,16 +344,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -607,7 +535,7 @@
   <tabstop>Devices_List</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

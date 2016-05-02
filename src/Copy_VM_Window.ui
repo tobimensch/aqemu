@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>452</width>
+    <width>453</width>
     <height>173</height>
    </rect>
   </property>
@@ -15,14 +15,14 @@
    <string>Copy VM</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/copy.png</normaloff>:/copy.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="Label_Name">
      <property name="text">
-      <string>&amp;New VM Name:</string>
+      <string>&amp;New VM name:</string>
      </property>
      <property name="buddy">
       <cstring>Edit_New_VM_Name</cstring>
@@ -35,7 +35,7 @@
    <item row="1" column="0" colspan="2">
     <widget class="QCheckBox" name="CH_Copy_Disk_Images">
      <property name="text">
-      <string>Copy Disk Images</string>
+      <string>Copy disk images</string>
      </property>
      <property name="checked">
       <bool>true</bool>
@@ -50,14 +50,14 @@
      <item>
       <widget class="QCheckBox" name="CH_Copy_Floppy">
        <property name="text">
-        <string>Copy Floppy Images</string>
+        <string>Copy floppy images</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QCheckBox" name="CH_Copy_Hard_Drive">
        <property name="text">
-        <string>Copy Hard Drive Images</string>
+        <string>Copy hard drive images</string>
        </property>
        <property name="checked">
         <bool>true</bool>
@@ -87,7 +87,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -98,7 +98,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -116,7 +116,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

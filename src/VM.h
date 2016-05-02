@@ -66,7 +66,7 @@ class Virtual_Machine: public QObject
 		bool Save_VM();
 		bool Save_VM( const QString &file_name );
 		
-		QStringList Build_QEMU_Args(); // build all args for QEMU/KVM
+		QStringList Build_QEMU_Args(); // build all args for QEMU
 		QStringList Build_QEMU_Args_For_Tab_Info();
 		QStringList Build_QEMU_Args_For_Script();
 		
@@ -110,8 +110,8 @@ class Virtual_Machine: public QObject
 		// Screenshot
 		bool Take_Screenshot( const QString &file_name, int width=-1, int height=-1 );
 		
-		VM::Emulator_Type Get_Emulator_Type() const;
-		void Set_Emulator_Type( VM::Emulator_Type type );
+		VM::Machine_Accelerator Get_Machine_Accelerator() const;
+		void Set_Machine_Accelerator( VM::Machine_Accelerator accel );
 		
 		const Emulator &Get_Emulator() const;
 		void Set_Emulator( const Emulator &emul );
@@ -422,9 +422,6 @@ class Virtual_Machine: public QObject
 		int Get_Embedded_Display_Port() const;
 		void Set_Embedded_Display_Port( int port );
 		
-		bool Use_No_Use_Embedded_Display() const;
-		void Use_No_Use_Embedded_Display( bool use );
-		
 		// Window for control qemu/kvm
 		Emulator_Control_Window *Emu_Ctl;
 		
@@ -486,7 +483,7 @@ class Virtual_Machine: public QObject
 		
 		QString UID;
 		
-		VM::Emulator_Type Emulator_Type;
+		VM::Machine_Accelerator Machine_Accelerator;
 		Emulator Current_Emulator;
 		Available_Devices Current_Emulator_Devices;
 		
@@ -615,9 +612,6 @@ class Virtual_Machine: public QObject
 		
 		// VNC Port for Embedded Display
 		int Embedded_Display_Port;
-		
-		// No Use Embedded Display
-		bool No_Use_Embedded_Display;
 		
 		// Additional Windows
 		QWidget *Load_VM_Window;

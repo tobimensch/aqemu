@@ -155,7 +155,6 @@ Available_Devices::Available_Devices()
 
 Emulator::Emulator()
 {
-	Type = VM::QEMU;
 	Name = "";
 	Path = "";
 	Default = false;
@@ -169,7 +168,6 @@ Emulator::Emulator()
 
 Emulator::Emulator( const Emulator &emul )
 {
-	Type = emul.Get_Type();
 	Name = emul.Get_Name();
 	Path = emul.Get_Path();
 	Default = emul.Get_Default();
@@ -183,8 +181,7 @@ Emulator::Emulator( const Emulator &emul )
 
 bool Emulator::operator==( const Emulator &emul ) const
 {
-	if( Type == emul.Get_Type() &&
-		Name == emul.Get_Name() &&
+	if( Name == emul.Get_Name() &&
 		Path == emul.Get_Path() &&
 		Default == emul.Get_Default() &&
 		Check_Version == emul.Get_Check_Version() &&
@@ -260,7 +257,6 @@ bool Emulator::Load( const QString &path )
 	}
 	
 	// Load
-	Type = (childElement.firstChildElement( "Type" ).text() == "QEMU" ? VM::QEMU : VM::KVM );
 	Name = childElement.firstChildElement( "Name" ).text();
 	Default = childElement.firstChildElement( "Default" ).text() == "yes";
 	Path = childElement.firstChildElement( "Path" ).text();
@@ -605,12 +601,6 @@ bool Emulator::Save() const
 	// Save emulator data
 	QDomElement domElement;
 	QDomText domText;
-	
-	// Type
-	domElement = domDocument.createElement( "Type" );
-	emulatorElement.appendChild( domElement );
-	domText = domDocument.createTextNode( (Type == VM::QEMU ? "QEMU" : "KVM") );
-	domElement.appendChild( domText );
 	
 	// Name
 	domElement = domDocument.createElement( "Name" );
@@ -1391,15 +1381,11 @@ QString Emulator::Get_Emulator_File_Path() const
 									 Name + ".emulator" );
 }
 
-VM::Emulator_Type Emulator::Get_Type() const
-{
-	return Type;
-}
-
+/*
 void Emulator::Set_Type( VM::Emulator_Type type )
 {
 	Type = type;
-	/* // FIXME
+	 // FIXME
 	if( Type != type )
 	{
 		// bin names
@@ -1443,8 +1429,8 @@ void Emulator::Set_Type( VM::Emulator_Type type )
 		}
 		
 		Type = type;
-	}*/
-}
+	}
+}*/
 
 const QString &Emulator::Get_Name() const
 {
@@ -1532,56 +1518,12 @@ const QMap<QString, Available_Devices> &Emulator::Get_Devices() const
 	{
 		switch( Version )
 		{
-			case VM::QEMU_0_9_0:
-				return System_Info::Emulator_QEMU_0_9_0;
+			
+			case VM::QEMU_2_0:
+				return System_Info::Emulator_QEMU_2_0;
 				
-			case VM::QEMU_0_9_1:
-				return System_Info::Emulator_QEMU_0_9_1;
-				
-			case VM::QEMU_0_10:
-				return System_Info::Emulator_QEMU_0_10;
-				
-			case VM::QEMU_0_11:
-				return System_Info::Emulator_QEMU_0_11;
-				
-			case VM::QEMU_0_12:
-				return System_Info::Emulator_QEMU_0_12;
-				
-			case VM::QEMU_0_13:
-				return System_Info::Emulator_QEMU_0_13;
-				
-			case VM::QEMU_0_14:
-				return System_Info::Emulator_QEMU_0_14;
-				
-			case VM::QEMU_0_15:
-				return System_Info::Emulator_QEMU_0_15;
-				
-			case VM::QEMU_1_0:
-				return System_Info::Emulator_QEMU_1_0;
-				
-			case VM::KVM_7X:
-				return System_Info::Emulator_KVM_7X;
-				
-			case VM::KVM_8X:
-				return System_Info::Emulator_KVM_8X;
-				
-			case VM::KVM_0_11:
-				return System_Info::Emulator_KVM_0_11;
-				
-			case VM::KVM_0_12:
-				return System_Info::Emulator_KVM_0_12;
-				
-			case VM::KVM_0_13:
-				return System_Info::Emulator_KVM_0_13;
-				
-			case VM::KVM_0_14:
-				return System_Info::Emulator_KVM_0_14;
-				
-			case VM::KVM_0_15:
-				return System_Info::Emulator_KVM_0_15;
-				
-			case VM::KVM_1_0:
-				return System_Info::Emulator_KVM_1_0;
+			/*case VM::KVM_2_0:
+				return System_Info::Emulator_KVM_2_0; */ //tobgle //FIXME?
 				
 			default:
 				AQError( "const QMap<QString, Available_Devices> &Emulator::Get_Devices() const",

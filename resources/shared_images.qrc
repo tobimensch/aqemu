@@ -1,11 +1,14 @@
 <RCC>
     <qresource prefix="/">
-        <file>images/aqemu_logo.png</file>
-        <file>images/default_linux.png</file>
-        <file>images/default_windows.png</file>
-        <file>images/other.png</file>
-        <file>images/pointcursormask.png</file>
-        <file>images/pointcursor.png</file>
-        <file>images/aqemu.png</file>
+        <file alias="aqemu_logo.png">icons/aqemu_logo.png</file>
+        <file alias="default_linux.png">icons/default_linux.png</file>
+        <file alias="default_windows.png">icons/default_windows.png</file>
+        <file alias="other.png">icons/other.png</file>
+        <file alias="pointcursormask.png">icons/pointcursormask.png</file>
+        <file alias="pointcursor.png">icons/pointcursor.png</file>
+        <file alias="aqemu.png">icons/aqemu.png</file>
+        <file alias="vnc.png">icons/vnc.png</file>
+        <file alias="qemu-black-and-orange.png">icons/qemu-black-and-orange.png</file>
+        <file alias="pepper.png">icons/pepper.png</file>
     </qresource>
 </RCC>

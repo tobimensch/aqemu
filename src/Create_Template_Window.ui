@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>382</width>
-    <height>563</height>
+    <width>356</width>
+    <height>395</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,169 +21,134 @@
    <string>Create Template</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QLabel" name="Label_Template_Name">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>New VM template name</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="spacing">
-      <number>0</number>
+    <widget class="QGroupBox" name="">
+     <property name="title">
+      <string>Create Template</string>
      </property>
-     <property name="leftMargin">
-      <number>10</number>
-     </property>
-     <item>
-      <widget class="QLineEdit" name="Edit_Template_Name"/>
-     </item>
-     <item>
-      <spacer name="verticalSpacer">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>100</width>
-         <height>10</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="Label_Files">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Files</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QGridLayout" name="gridLayout_2">
-     <property name="leftMargin">
-      <number>10</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="Label_VM_File">
-       <property name="text">
-        <string>Virtual machine file</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <property name="leftMargin">
-        <number>10</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="Edit_VM_File"/>
-       </item>
-       <item>
-        <widget class="QToolButton" name="TB_VM_File_Browse">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/images.qrc">
-           <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="2" column="0">
-      <widget class="QCheckBox" name="CH_Use_Default_Folder">
-       <property name="text">
-        <string>Use default folder for new template</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <layout class="QGridLayout" name="gridLayout">
-       <property name="leftMargin">
-        <number>10</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="Label_Template_Folder">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Other folder for new template:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLineEdit" name="Edit_Template_Folder">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QToolButton" name="TB_Template_Folder_Browse">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/images.qrc">
-           <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item row="3" column="0">
+         <widget class="QCheckBox" name="CH_Use_Default_Folder">
+          <property name="text">
+           <string>Use default folder for new template</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <layout class="QGridLayout" name="gridLayout">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="Edit_Template_Folder">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QToolButton" name="TB_Template_Folder_Browse">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources/icons.qrc">
+              <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QLabel" name="Label_Template_Folder">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Folder:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <property name="leftMargin">
+           <number>10</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="Label_Template_Name">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Name:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="Label_VM_File">
+            <property name="text">
+             <string>File:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="Edit_VM_File">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QToolButton" name="TB_VM_File_Browse">
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources/icons.qrc">
+              <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" colspan="2">
+           <widget class="QLineEdit" name="Edit_Template_Name"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer_2">
@@ -191,7 +156,7 @@
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
+      <enum>QSizePolicy::Preferred</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -202,75 +167,67 @@
     </spacer>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="Label_Options">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Creating Options</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line_2">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QGroupBox" name="">
+     <property name="title">
+      <string>Options</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="CH_FDD_CD">
+          <property name="text">
+           <string>Save floppy and CD-ROM settings</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="CH_HDD">
+          <property name="text">
+           <string>Save hard disks size and format settings</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="CH_Network">
+          <property name="text">
+           <string>Save network settings</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="CH_Ports">
+          <property name="text">
+           <string>Save ports (USB/Serial/Parallel)</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <property name="leftMargin">
-      <number>10</number>
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <item>
-      <widget class="QCheckBox" name="CH_FDD_CD">
-       <property name="text">
-        <string>Save Floppy and CD-ROM Settings</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="CH_HDD">
-       <property name="text">
-        <string>Save Hard Disks Size or Format Settings</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="CH_Network">
-       <property name="text">
-        <string>Save Network Settings</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="CH_Ports">
-       <property name="text">
-        <string>Save Ports (USB/Serial/Parallel)</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout">
@@ -308,7 +265,7 @@
         <string>C&amp;reate</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -319,7 +276,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -330,8 +287,6 @@
  </widget>
  <tabstops>
   <tabstop>Edit_Template_Name</tabstop>
-  <tabstop>Edit_VM_File</tabstop>
-  <tabstop>TB_VM_File_Browse</tabstop>
   <tabstop>CH_Use_Default_Folder</tabstop>
   <tabstop>Edit_Template_Folder</tabstop>
   <tabstop>TB_Template_Folder_Browse</tabstop>
@@ -343,7 +298,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

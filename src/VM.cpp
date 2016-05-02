@@ -89,8 +89,8 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 	Build_QEMU_Args_for_Tab_Info = false;
 	UID = vm.Get_UID();
 	
-	// Emulator
-	Emulator_Type = vm.Get_Emulator_Type();
+	// Accel
+	Machine_Accelerator = vm.Get_Machine_Accelerator();
 	Current_Emulator = vm.Get_Emulator();
 	
 	QObject::connect( Emu_Ctl, SIGNAL(Ready_Read_Command(QString)),
@@ -255,7 +255,6 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 	this->VNC_x509_Folder_Path = vm.Get_VNC_x509_Folder_Path();
 	this->VNC_x509verify = vm.Use_VNC_x509verify();
 	this->VNC_x509verify_Folder_Path = vm.Get_VNC_x509verify_Folder_Path();
-	this->No_Use_Embedded_Display = vm.Use_No_Use_Embedded_Display();
 	
 	this->Load_VM_Window = new QWidget();
 	this->Save_VM_Window = new QWidget();
@@ -303,8 +302,8 @@ void Virtual_Machine::Shared_Constructor()
 	Build_QEMU_Args_for_Tab_Info = false;
 	UID = "";
 	
-	// Emulator
-	Emulator_Type = VM::QEMU;
+	// Accel
+	Machine_Accelerator = VM::TCG;
 	Current_Emulator = Emulator();
 	Current_Emulator_Devices = Available_Devices();
 	
@@ -326,7 +325,7 @@ void Virtual_Machine::Shared_Constructor()
 	QObject::connect( QEMU_Process, SIGNAL(finished(int, QProcess::ExitStatus)),
 					  this, SLOT(QEMU_Finished(int, QProcess::ExitStatus)) );
 	
-	Icon_Path = ":/images/other.png";
+	Icon_Path = ":/other.png";
 	Screenshot_Path = "";
 	
 	Machine_Name = "NO_NAME";
@@ -454,7 +453,6 @@ void Virtual_Machine::Shared_Constructor()
 	VNC_x509verify_Folder_Path = "";
 	
 	Embedded_Display_Port = -1;
-	No_Use_Embedded_Display = false;
 	
 	Template_Opts = Create_Template_Window::Template_Save_Default;
 	
@@ -472,6 +470,7 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 	if( this->Icon_Path == vm.Get_Icon_Path() &&
 		this->Computer_Type == vm.Get_Computer_Type() &&
 		this->Machine_Name == vm.Get_Machine_Name() &&
+        this->Machine_Accelerator == vm.Get_Machine_Accelerator() &&
 		this->Machine_Type == vm.Get_Machine_Type() &&
 		this->CPU_Type == vm.Get_CPU_Type() &&
 		this->SMP == vm.Get_SMP() &&
@@ -547,8 +546,7 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 		this->VNC_x509 == vm.Use_VNC_x509() &&
 		this->VNC_x509_Folder_Path == vm.Get_VNC_x509_Folder_Path() &&
 		this->VNC_x509verify == vm.Use_VNC_x509verify() &&
-		this->VNC_x509verify_Folder_Path == vm.Get_VNC_x509verify_Folder_Path() &&
-		this->No_Use_Embedded_Display == vm.Use_No_Use_Embedded_Display() )
+		this->VNC_x509verify_Folder_Path == vm.Get_VNC_x509verify_Folder_Path() )
 	{
 		// Boot Order
 		if( Boot_Order_List.count() == vm.Get_Boot_Order_List().count() )
@@ -675,8 +673,8 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	Build_QEMU_Args_for_Tab_Info = false;
 	UID = vm.Get_UID();
 	
-	// Emulator
-	Emulator_Type = vm.Get_Emulator_Type();
+	// Accel
+	Machine_Accelerator = vm.Get_Machine_Accelerator();
 	Current_Emulator = vm.Get_Emulator();
 	
 	QObject::connect( Emu_Ctl, SIGNAL(Ready_Read_Command(QString)),
@@ -703,6 +701,7 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	// General Tab
 	this->Machine_Name = vm.Get_Machine_Name();
 	this->Computer_Type = vm.Get_Computer_Type();
+    this->Machine_Accelerator = vm.Get_Machine_Accelerator();
 	this->Machine_Type = vm.Get_Machine_Type();
 	this->CPU_Type = vm.Get_CPU_Type();
 	this->SMP = vm.Get_SMP();
@@ -837,7 +836,6 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	this->VNC_x509_Folder_Path = vm.Get_VNC_x509_Folder_Path();
 	this->VNC_x509verify = vm.Use_VNC_x509verify();
 	this->VNC_x509verify_Folder_Path = vm.Get_VNC_x509verify_Folder_Path();
-	this->No_Use_Embedded_Display = vm.Use_No_Use_Embedded_Display();
 	
 	this->Load_VM_Window = new QWidget();
 	this->Save_VM_Window = new QWidget();
@@ -957,10 +955,13 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	Dom_Text = New_Dom_Document.createTextNode( Current_Emulator.Get_Name() );
 	Dom_Element.appendChild( Dom_Text );
 	
-	// Emulator Type
-	Dom_Element = New_Dom_Document.createElement( "Emulator_Type" );
+    if ( Machine_Accelerator == VM::KVM )
+        AQDebug("JESUS CHRIST",VM::Accel_To_String(Machine_Accelerator));
+
+	// Emulator Type (legacy name) = now Machine_Accelerator
+	Dom_Element = New_Dom_Document.createElement( "Machine_Accelerator" );
 	VM_Element.appendChild( Dom_Element );
-	Dom_Text = New_Dom_Document.createTextNode( (Current_Emulator.Get_Type() == VM::QEMU ? "QEMU" : "KVM") );
+	Dom_Text = New_Dom_Document.createTextNode( VM::Accel_To_String(Machine_Accelerator) );
 	Dom_Element.appendChild( Dom_Text );
 	
 	// Computer Type
@@ -3428,21 +3429,6 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	Dom_Text = New_Dom_Document.createTextNode( VNC_x509verify_Folder_Path );
 	Dom_Element.appendChild( Dom_Text );
 	
-	// No_Use_Embedded_Display
-	Dom_Element = New_Dom_Document.createElement( "No_Use_Embedded_Display" );
-	VM_Element.appendChild( Dom_Element );
-	
-	if( No_Use_Embedded_Display )
-	{
-		Dom_Text = New_Dom_Document.createTextNode( "true" );
-	}
-	else
-	{
-		Dom_Text = New_Dom_Document.createTextNode( "false" );
-	}
-	
-	Dom_Element.appendChild( Dom_Text );
-	
 	// Create File and Save Data
 	QFile VM_XML_File( file_name );
 	
@@ -3530,7 +3516,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			{
 				AQDebug( "bool Virtual_Machine::Load_VM( const QString &file_name )",
 						 "This is AQEMU VM File Version 0.8!" );
-				load_boot_order_setcton = true; // for QEMU/KVM > 0.11
+				load_boot_order_setcton = true; // for QEMU > 0.11
 			}
 			else if( aqemu_vm_file_version == "0.7.2" )
 			{
@@ -3544,20 +3530,16 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				AQWarning( "bool Virtual_Machine::Load_VM( const QString &file_name )",
 						   "Uses compatible mode for config version 0.5" );
 				
+			    Current_Emulator = Get_Default_Emulator( );
+			    Current_Emulator.Set_Name( "" );
+			    Machine_Accelerator = VM::TCG;
+				
 				// KVM ?
 				if( Child_Element.firstChildElement("Computer_Type").text() == "qemu-kvm" )
 				{
-					Current_Emulator = Get_Default_Emulator( VM::KVM );
-					Current_Emulator.Set_Name( "" );
-					Emulator_Type = VM::KVM;
-				}
-				else
-				{
-					Current_Emulator = Get_Default_Emulator( VM::QEMU );
-					Current_Emulator.Set_Name( "" );
-					Emulator_Type = VM::QEMU;
-				}
-				
+					Machine_Accelerator = VM::KVM;
+			    }
+
 				old_version_storage_devices = true;
 				load_emulator = false;
 			}
@@ -3584,13 +3566,25 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				// Emulator Name
 				QString emul_name = Child_Element.firstChildElement("Emulator_Name").text();
 				
-				// Emulator Type
-				Emulator_Type = (Child_Element.firstChildElement("Emulator_Type").text() == "QEMU") ? VM::QEMU : VM::KVM;
+				// Emulator Type (legacy option) = equals Machine Name
+
+                QString accel = "";
+                if( ! Child_Element.firstChildElement("Machine_Accelerator").text().isEmpty() )
+                {
+                    accel = Child_Element.firstChildElement("Machine_Accelerator").text();
+                }
+                else
+                {
+                    if  ( ! Child_Element.firstChildElement("Emulator_Type").text().isEmpty() )
+                        accel = Child_Element.firstChildElement("Emulator_Type").text();
+                }
+
+                Machine_Accelerator = VM::String_To_Accel(accel);
 				
 				if( emul_name.isEmpty() )
 				{
 					// OK. Use Default Emulator for This Type
-					Current_Emulator = Get_Default_Emulator( Emulator_Type );
+					Current_Emulator = Get_Default_Emulator();
 					Current_Emulator.Set_Name( "" );
 				}
 				else
@@ -3613,6 +3607,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				Set_State( VM::VMS_Power_Off );
 			}
 			
+
 			// Check Emulator
 			AQDebug( "bool Virtual_Machine::Load_VM( const QString &file_name )",
 					 "Emulator Name: " + Current_Emulator.Get_Name() );
@@ -3624,7 +3619,6 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 						 "Cannot Load Emulator!" );
 				
 				Set_State( VM::VMS_In_Error );
-				Current_Emulator.Set_Type( Emulator_Type );
 			}
 			else
 			{
@@ -4760,9 +4754,6 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			// VNC x509verify Folder Path
 			VNC_x509verify_Folder_Path = Child_Element.firstChildElement( "VNC_x509verify_Folder_Path" ).text();
 			
-			// No_Use_Embedded_Display
-			No_Use_Embedded_Display = (Child_Element.firstChildElement("No_Use_Embedded_Display").text() == "true");
-			
 			// Additional Arguments
 			Additional_Args = Child_Element.firstChildElement( "Additional_Args" ).text();
 			
@@ -5364,10 +5355,13 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				break;
 		}
 	}
+
+    // Accelerator
+    Args << "-machine" << "accel="+VM::Accel_To_String( Machine_Accelerator );
 	
 	// KVM Options
-	if( Current_Emulator_Devices.PSO_Enable_KVM && Enable_KVM )
-		Args << "-enable-kvm";
+	//if( Current_Emulator_Devices.PSO_Enable_KVM && Enable_KVM )
+	//	Args << "-enable-kvm";
 	
 	if( Current_Emulator_Devices.PSO_No_KVM_IRQChip && KVM_IRQChip )
 		Args << "-no-kvm-irqchip";
@@ -5679,40 +5673,6 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		{
 			AQWarning( "QStringList Virtual_Machine::Build_QEMU_Args()",
 					   "No boot devices? Use empty boot settings..." );
-		}
-	}
-	else // old QEMU/KVM versions style
-	{
-		VM::Boot_Device bootDev = VM::Boot_None;
-		for( int bx = 0; bx < Boot_Order_List.count(); bx++ )
-		{
-			if( Boot_Order_List[bx].Enabled == true ) bootDev = Boot_Order_List[ bx ].Type;
-		}
-		
-		switch( bootDev )
-		{
-			case VM::Boot_From_FDA:
-			case VM::Boot_From_FDB:
-				Args << "-boot" << "a";
-				break;
-				
-			case VM::Boot_From_CDROM:
-				Args << "-boot" << "d";
-				break;
-				
-			case VM::Boot_From_HDD:
-				Args << "-boot" << "c";
-				break;
-				
-			case VM::Boot_From_Network1:
-			case VM::Boot_From_Network2:
-			case VM::Boot_From_Network3:
-			case VM::Boot_From_Network4:
-				Args << "-boot" << "n";
-				break;
-				
-			default: // Boot type "None"
-				break;
 		}
 	}
 	
@@ -6674,53 +6634,45 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// VNC
 	if( VNC )
 	{
-		if( Current_Emulator.Get_Version() == VM::QEMU_0_9_0 )
-		{
-			Args << "-vnc" << ":" + QString::number( VNC_Display_Number );
-		}
+		Args << "-vnc";
+		
+		QString vnc_args = "";
+		
+		if( VNC_Socket_Mode )
+			vnc_args += "unix:" + VNC_Unix_Socket_Path;
 		else
+			vnc_args += ":" + QString::number( VNC_Display_Number );
+		
+		if( VNC_Password )
+			vnc_args += ",password";
+		
+		if( VNC_TLS )
 		{
-			Args << "-vnc";
+			vnc_args += ",tls";
 			
-			QString vnc_args = "";
-			
-			if( VNC_Socket_Mode )
-				vnc_args += "unix:" + VNC_Unix_Socket_Path;
-			else
-				vnc_args += ":" + QString::number( VNC_Display_Number );
-			
-			if( VNC_Password )
-				vnc_args += ",password";
-			
-			if( VNC_TLS )
+			if( VNC_x509 )
 			{
-				vnc_args += ",tls";
-				
-				if( VNC_x509 )
-				{
-					if( Build_QEMU_Args_for_Script_Mode )
-						vnc_args += QString( ",x509=\"%1\"" ).arg( VNC_x509_Folder_Path );
-					else
-						vnc_args += ",x509=" + VNC_x509_Folder_Path;
-				}
-				
-				if( VNC_x509verify )
-				{
-					if( Build_QEMU_Args_for_Script_Mode )
-						vnc_args += QString( ",x509verify=\"%1\"" ).arg( VNC_x509verify_Folder_Path );
-					else
-						vnc_args += ",x509verify=" + VNC_x509verify_Folder_Path;
-				}
+				if( Build_QEMU_Args_for_Script_Mode )
+					vnc_args += QString( ",x509=\"%1\"" ).arg( VNC_x509_Folder_Path );
+				else
+					vnc_args += ",x509=" + VNC_x509_Folder_Path;
 			}
 			
-			Args << vnc_args;
+			if( VNC_x509verify )
+			{
+				if( Build_QEMU_Args_for_Script_Mode )
+					vnc_args += QString( ",x509verify=\"%1\"" ).arg( VNC_x509verify_Folder_Path );
+				else
+					vnc_args += ",x509verify=" + VNC_x509verify_Folder_Path;
+			}
 		}
+		
+		Args << vnc_args;
 	}
 	else
 	{
 		#ifdef VNC_DISPLAY
-		if( Settings.value("Use_VNC_Display", "no").toString() == "yes" &&
-			No_Use_Embedded_Display == false )
+		if( Settings.value("Use_VNC_Display", "no").toString() == "yes" )
 		{
 			if( Embedded_Display_Port >= 0 )
 			{
@@ -7163,8 +7115,7 @@ bool Virtual_Machine::Start()
 	// VNC Password
 	if( VNC && VNC_Password )
 	{
-		if( Current_Emulator.Get_Version() != VM::QEMU_0_9_0 )
-			Execute_Emu_Ctl_Command( "change vnc password" );
+		Execute_Emu_Ctl_Command( "change vnc password" );
 	}
 	
 	if( Load_Mode )
@@ -7508,14 +7459,14 @@ bool Virtual_Machine::Take_Screenshot( const QString &file_name, int width, int 
 	}
 }
 
-VM::Emulator_Type Virtual_Machine::Get_Emulator_Type() const
+VM::Machine_Accelerator Virtual_Machine::Get_Machine_Accelerator() const
 {
-	return Emulator_Type;
+	return Machine_Accelerator;
 }
 
-void Virtual_Machine::Set_Emulator_Type( VM::Emulator_Type type )
+void Virtual_Machine::Set_Machine_Accelerator( VM::Machine_Accelerator accel )
 {
-	Emulator_Type = type;
+	Machine_Accelerator = accel;
 }
 
 const Emulator &Virtual_Machine::Get_Emulator() const
@@ -7526,7 +7477,6 @@ const Emulator &Virtual_Machine::Get_Emulator() const
 void Virtual_Machine::Set_Emulator( const Emulator &emul )
 {
 	Current_Emulator = emul;
-	Emulator_Type = Current_Emulator.Get_Type();
 	Update_Current_Emulator_Devices();
 }
 
@@ -7537,73 +7487,14 @@ void Virtual_Machine::Update_Current_Emulator_Devices()
 	{
 		switch( Current_Emulator.Get_Version() )
 		{
-			case VM::QEMU_0_9_0:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_9_0[ Computer_Type ];
-				break;
-					
-			case VM::QEMU_0_9_1:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_9_1[ Computer_Type ];
-				break;
-	
-			case VM::QEMU_0_10:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_10[ Computer_Type ];
-				break;
-	
-			case VM::QEMU_0_11:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_11[ Computer_Type ];
-				break;
-	
-			case VM::QEMU_0_12:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_12[ Computer_Type ];
+			case VM::QEMU_2_0:
+				Current_Emulator_Devices = System_Info::Emulator_QEMU_2_0[ Computer_Type ];
 				break;
 				
-			case VM::QEMU_0_13:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_13[ Computer_Type ];
-				break;
-				
-			case VM::QEMU_0_14:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_14[ Computer_Type ];
-				break;
-				
-			case VM::QEMU_0_15:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_0_15[ Computer_Type ];
-				break;
-				
-			case VM::QEMU_1_0:
-				Current_Emulator_Devices = System_Info::Emulator_QEMU_1_0[ Computer_Type ];
-				break;
-	
-			case VM::KVM_7X:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_7X[ Computer_Type ];
-				break;
-	
-			case VM::KVM_8X:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_8X[ Computer_Type ];
-				break;
-	
-			case VM::KVM_0_11:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_0_11[ Computer_Type ];
-				break;
-	
-			case VM::KVM_0_12:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_0_12[ Computer_Type ];
-				break;
-				
-			case VM::KVM_0_13:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_0_13[ Computer_Type ];
-				break;
-				
-			case VM::KVM_0_14:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_0_14[ Computer_Type ];
-				break;
-				
-			case VM::KVM_0_15:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_0_15[ Computer_Type ];
-				break;
-				
-			case VM::KVM_1_0:
-				Current_Emulator_Devices = System_Info::Emulator_KVM_1_0[ Computer_Type ];
-				break;
+            /*
+			case VM::KVM_2_0:
+				Current_Emulator_Devices = System_Info::Emulator_KVM_2_0[ Computer_Type ];
+				break; */ //tobgle //FIXME?
 	
 			default:
 				AQError( "void Update_Current_Emulator_Devices()", "Emulator Version Invalid!" );
@@ -7619,7 +7510,7 @@ void Virtual_Machine::Update_Current_Emulator_Devices()
 	if( Current_Emulator_Devices.System.QEMU_Name.isEmpty() )
 	{
 		AQError( "void Update_Current_Emulator_Devices()",
-				 "Cannot Load Info About This Emulator! AQEMU Don't Work!" );
+				 "Cannot Load Info About This Emulator! AQEMU Doesn't Work!" );
 	}
 }
 
@@ -8946,16 +8837,6 @@ int Virtual_Machine::Get_Embedded_Display_Port() const
 void Virtual_Machine::Set_Embedded_Display_Port( int port )
 {
 	Embedded_Display_Port = port;
-}
-
-bool Virtual_Machine::Use_No_Use_Embedded_Display() const
-{
-	return No_Use_Embedded_Display;
-}
-
-void Virtual_Machine::Use_No_Use_Embedded_Display( bool use )
-{
-	No_Use_Embedded_Display = use;
 }
 
 void Virtual_Machine::Parse_StdOut()

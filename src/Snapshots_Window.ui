@@ -15,7 +15,7 @@
    <string>Manage VM Snapshots</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/clock.png</normaloff>:/clock.png</iconset>
   </property>
   <layout class="QGridLayout">
@@ -139,77 +139,17 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="Button_Properties">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Properties</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../resources/images.qrc">
-       <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>24</width>
-       <height>24</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="Button_Start">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Start</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../resources/images.qrc">
-       <normaloff>:/play.png</normaloff>:/play.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>24</width>
-       <height>24</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="Button_Delete">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Delete</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../resources/images.qrc">
-       <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>24</width>
-       <height>24</height>
-      </size>
-     </property>
+   <item row="0" column="0" rowspan="5">
+    <widget class="QTreeWidget" name="Snapshots_Tree">
+     <column>
+      <property name="text">
+       <string>Snapshot List:</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QPushButton" name="Button_Create">
+    <widget class="QToolButton" name="Button_Create">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -220,7 +160,7 @@
       <string>Create</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/add.png</normaloff>:/add.png</iconset>
      </property>
      <property name="iconSize">
@@ -229,10 +169,39 @@
        <height>24</height>
       </size>
      </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonFollowStyle</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QToolButton" name="Button_Delete">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../resources/icons.qrc">
+       <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonFollowStyle</enum>
+     </property>
     </widget>
    </item>
    <item row="6" column="1">
-    <widget class="QPushButton" name="Button_OK">
+    <widget class="QToolButton" name="Button_OK">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -243,7 +212,7 @@
       <string>OK</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
      </property>
      <property name="iconSize">
@@ -252,13 +221,65 @@
        <height>24</height>
       </size>
      </property>
-     <property name="default">
-      <bool>true</bool>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonFollowStyle</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QToolButton" name="Button_Properties">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Properties</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../resources/icons.qrc">
+       <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonFollowStyle</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QToolButton" name="Button_Start">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../resources/icons.qrc">
+       <normaloff>:/play.png</normaloff>:/play.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonFollowStyle</enum>
      </property>
     </widget>
    </item>
    <item row="4" column="1">
-    <widget class="QPushButton" name="Button_Update">
+    <widget class="QToolButton" name="Button_Update">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -269,7 +290,7 @@
       <string>Update Info</string>
      </property>
      <property name="icon">
-      <iconset resource="../resources/images.qrc">
+      <iconset resource="../resources/icons.qrc">
        <normaloff>:/update.png</normaloff>:/update.png</iconset>
      </property>
      <property name="iconSize">
@@ -278,15 +299,9 @@
        <height>24</height>
       </size>
      </property>
-    </widget>
-   </item>
-   <item row="0" column="0" rowspan="5">
-    <widget class="QTreeWidget" name="Snapshots_Tree">
-     <column>
-      <property name="text">
-       <string>Snapshot List:</string>
-      </property>
-     </column>
+     <property name="toolButtonStyle">
+      <enum>Qt::ToolButtonFollowStyle</enum>
+     </property>
     </widget>
    </item>
   </layout>
@@ -301,25 +316,8 @@
   <tabstop>Button_OK</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>Button_OK</sender>
-   <signal>clicked()</signal>
-   <receiver>Snapshots_Window</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>443</x>
-     <y>281</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>498</x>
-     <y>235</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

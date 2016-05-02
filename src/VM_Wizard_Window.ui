@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>617</width>
+    <width>620</width>
     <height>375</height>
    </rect>
   </property>
@@ -15,20 +15,11 @@
    <string>New Virtual Machine Wizard</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/add.png</normaloff>:/add.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_99">
-   <property name="leftMargin">
-    <number>9</number>
-   </property>
-   <property name="topMargin">
-    <number>9</number>
-   </property>
-   <property name="rightMargin">
-    <number>9</number>
-   </property>
-   <property name="bottomMargin">
+   <property name="margin">
     <number>9</number>
    </property>
    <property name="spacing">
@@ -39,16 +30,7 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
+     <property name="margin">
       <number>0</number>
      </property>
      <item>
@@ -73,7 +55,7 @@
         <string>&amp;Back</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/previous.png</normaloff>:/previous.png</iconset>
        </property>
       </widget>
@@ -84,7 +66,7 @@
         <string>&amp;Next</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/next.png</normaloff>:/next.png</iconset>
        </property>
        <property name="default">
@@ -114,7 +96,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -287,48 +269,6 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="Emulator_Type_Page">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <widget class="QLabel" name="Label_Emulator_Type">
-           <property name="text">
-            <string>Select Emulator Type To Use In The New Virtual Machine</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="RB_Emulator_QEMU">
-           <property name="text">
-            <string>&amp;QEMU</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="RB_Emulator_KVM">
-           <property name="text">
-            <string>&amp;KVM</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>167</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
      <widget class="QWidget" name="Template_Page">
       <layout class="QGridLayout" name="gridLayout_10">
        <item row="0" column="0" colspan="2">
@@ -343,16 +283,7 @@
          <property name="spacing">
           <number>6</number>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
+         <property name="margin">
           <number>0</number>
          </property>
          <item>
@@ -429,16 +360,7 @@
          <property name="spacing">
           <number>6</number>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
+         <property name="margin">
           <number>0</number>
          </property>
          <item>
@@ -489,7 +411,7 @@
          </property>
          <item>
           <property name="text">
-           <string>No Selected</string>
+           <string>None Selected</string>
           </property>
          </item>
         </widget>
@@ -520,7 +442,7 @@
          </property>
          <item>
           <property name="text">
-           <string>No Selected</string>
+           <string>None Selected</string>
           </property>
          </item>
          <item>
@@ -701,6 +623,48 @@
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="Accelerator_Page">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="Label_Machine_Accelerator">
+           <property name="text">
+            <string>Select Accelerator To Use In The New Virtual Machine</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RB_Emulator_QEMU">
+           <property name="text">
+            <string>&amp;QEMU</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="RB_Emulator_KVM">
+           <property name="text">
+            <string>&amp;KVM</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>167</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="Memory_Page">
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
@@ -797,7 +761,7 @@
                 <string>Free memory: 768 MB</string>
                </property>
                <property name="icon">
-                <iconset resource="../resources/images.qrc">
+                <iconset resource="../resources/icons.qrc">
                  <normaloff>:/update.png</normaloff>:/update.png</iconset>
                </property>
                <property name="toolButtonStyle">
@@ -1040,7 +1004,7 @@ p, li { white-space: pre-wrap; }
             <string>N&amp;ew...</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/images.qrc">
+            <iconset resource="../resources/icons.qrc">
              <normaloff>:/add.png</normaloff>:/add.png</iconset>
            </property>
           </widget>
@@ -1051,7 +1015,7 @@ p, li { white-space: pre-wrap; }
             <string>E&amp;xisting...</string>
            </property>
            <property name="icon">
-            <iconset resource="../resources/images.qrc">
+            <iconset resource="../resources/icons.qrc">
              <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
            </property>
           </widget>
@@ -1145,16 +1109,7 @@ p, li { white-space: pre-wrap; }
      </widget>
      <widget class="QWidget" name="Finish_Page">
       <layout class="QGridLayout" name="gridLayout_101">
-       <property name="leftMargin">
-        <number>9</number>
-       </property>
-       <property name="topMargin">
-        <number>9</number>
-       </property>
-       <property name="rightMargin">
-        <number>9</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>9</number>
        </property>
        <property name="spacing">
@@ -1285,7 +1240,7 @@ p, li { white-space: pre-wrap; }
   <tabstop>SB_HDD_Size</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

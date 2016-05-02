@@ -20,6 +20,8 @@
 **
 ****************************************************************************/
 
+#include <QApplication>
+
 #include "SPICE_Settings_Widget.h"
 #include "QListWidgetItem"
 #include "Utils.h"
@@ -28,6 +30,14 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	: QWidget( parent )
 {
 	ui.setupUi( this );
+
+    auto app = dynamic_cast<QApplication*>(QApplication::instance());
+    if ( app != nullptr )
+    {
+        QPalette pal = ui.scrollArea->palette();
+        pal.setColor(QPalette::Window, app->palette("QTabWidget").color(QPalette::Base));
+        ui.scrollArea->setPalette(pal);
+    }
 	
 	// Connect slots
 	connect( ui.CH_Use_SPICE, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
@@ -210,7 +220,7 @@ void SPICE_Settings_Widget::Set_Settings( const VM_SPICE &settings )
 
 void SPICE_Settings_Widget::Set_PSO_GXL( bool use )
 {
-	ui.Label_QXL->setEnabled( use );
+//	ui.Label_QXL->setEnabled( use );
 	ui.Label_Number_of_QXL_Devices->setEnabled( use );
 	ui.SB_QXL_Num->setEnabled( use );
 	ui.Label_RAM_Size->setEnabled( use );

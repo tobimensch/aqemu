@@ -36,7 +36,7 @@ class System_Info
 		static VM::Emulator_Version Get_Emulator_Version( const QString &path = "" );
 		
 		static QMap<QString, QString> Find_QEMU_Binary_Files( const QString &path );
-		static QMap<QString, QString> Find_KVM_Binary_Files( const QString &path );
+		//static QMap<QString, QString> Find_KVM_Binary_Files( const QString &path );
 		static QString Find_IMG( const QStringList &paths );
 		
 		static Available_Devices Get_Emulator_Info( const QString &path, bool *ok,
@@ -55,25 +55,9 @@ class System_Info
 		static QStringList Get_Host_FDD_List();
 		static QStringList Get_Host_CDROM_List();
 		
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_9_0;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_9_1;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_10;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_11;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_12;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_13;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_14;
-		static QMap<QString, Available_Devices> Emulator_QEMU_0_15;
-		static QMap<QString, Available_Devices> Emulator_QEMU_1_0;
-		
-		static QMap<QString, Available_Devices> Emulator_KVM_7X;
-		static QMap<QString, Available_Devices> Emulator_KVM_8X;
-		static QMap<QString, Available_Devices> Emulator_KVM_0_11;
-		static QMap<QString, Available_Devices> Emulator_KVM_0_12;
-		static QMap<QString, Available_Devices> Emulator_KVM_0_13;
-		static QMap<QString, Available_Devices> Emulator_KVM_0_14;
-		static QMap<QString, Available_Devices> Emulator_KVM_0_15;
-		static QMap<QString, Available_Devices> Emulator_KVM_1_0;
-		
+        //removed legacy support for all QEMU versions before 2.0
+		static QMap<QString, Available_Devices> Emulator_QEMU_2_0;
+
 	private:
 		#ifdef Q_OS_LINUX
 		static bool Scan_USB_Sys( QList<VM_USB> &list );

@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>424</width>
+    <width>436</width>
     <height>257</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
    <string>SMP Settings</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/exec.png</normaloff>:/exec.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
@@ -28,8 +28,8 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>If any on the values can be omitted.
-Missing (zero) values will be computed.</string>
+      <string>All of these values can be omitted.
+Missing values (zeroes) get computed automatically.</string>
      </property>
     </widget>
    </item>
@@ -45,7 +45,10 @@ Missing (zero) values will be computed.</string>
      <item row="0" column="0">
       <widget class="QLabel" name="Label_CPUs">
        <property name="text">
-        <string>CP&amp;Us count</string>
+        <string>CP&amp;U count:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="buddy">
         <cstring>SB_SMP</cstring>
@@ -68,7 +71,10 @@ Missing (zero) values will be computed.</string>
      <item row="1" column="0">
       <widget class="QLabel" name="Label_Sockets">
        <property name="text">
-        <string>Soc&amp;kets count</string>
+        <string>Soc&amp;ket count:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="buddy">
         <cstring>SB_Sockets</cstring>
@@ -105,7 +111,10 @@ Missing (zero) values will be computed.</string>
      <item row="0" column="0">
       <widget class="QLabel" name="Label_Cores">
        <property name="text">
-        <string>Cores per socket</string>
+        <string>Cores per socket:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="buddy">
         <cstring>SB_Cores</cstring>
@@ -125,7 +134,10 @@ Missing (zero) values will be computed.</string>
      <item row="1" column="0">
       <widget class="QLabel" name="Lebel_Threads">
        <property name="text">
-        <string>&amp;Threads per core</string>
+        <string>&amp;Threads per core:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="buddy">
         <cstring>SB_Threads</cstring>
@@ -149,7 +161,7 @@ Missing (zero) values will be computed.</string>
      <item>
       <widget class="QLabel" name="Label_MaxCPUs">
        <property name="text">
-        <string>Max &amp;number of hotpluggable CPUs</string>
+        <string>Maximum &amp;number of hotpluggable CPUs:</string>
        </property>
        <property name="buddy">
         <cstring>SB_MaxCPUs</cstring>
@@ -196,7 +208,7 @@ Missing (zero) values will be computed.</string>
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -207,7 +219,7 @@ Missing (zero) values will be computed.</string>
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -226,7 +238,7 @@ Missing (zero) values will be computed.</string>
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections/>
 </ui>

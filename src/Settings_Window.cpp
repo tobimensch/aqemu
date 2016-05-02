@@ -79,9 +79,6 @@ Settings_Window::Settings_Window( QWidget *parent )
 	// Virtual Machines Folder
 	ui.Edit_VM_Folder->setText( QDir::toNativeSeparators(Settings->value("VM_Directory", QDir::homePath() + "/.aqemu/").toString()) );
 	
-	// Use Device Manager
-	ui.CH_Use_Device_Manager->setChecked( Settings->value("Use_Device_Manager", "no").toString() == "yes" );
-	
 	// Use New Emulator Control Removable Device Menu
 	ui.CH_Use_New_Device_Changer->setChecked( Settings->value("Use_New_Device_Changer", "no").toString() == "yes" );
 	
@@ -101,12 +98,6 @@ Settings_Window::Settings_Window( QWidget *parent )
 				ui.CB_Language->setCurrentIndex( dd + 1 ); // First Item 'English'
 			}
 		}
-	}
-	
-	// Icons Theme
-	if( Settings->value("Icon_Theme", "").toString() != "crystalsvg" )
-	{
-		ui.CB_Icons_Theme->setCurrentIndex( 1 );
 	}
 	
 	// VM Icons Size
@@ -150,9 +141,6 @@ Settings_Window::Settings_Window( QWidget *parent )
 	
 	connect( ui.CB_Language, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(CB_Language_currentIndexChanged(int)) );
-	
-	connect( ui.CB_Icons_Theme, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(CB_Icons_Theme_currentIndexChanged(int)) );
 }
 
 Settings_Window::~Settings_Window()
@@ -279,10 +267,6 @@ void Settings_Window::on_Button_OK_clicked()
 		else return;
 	}
 	
-	// Use Device Manager
-	if( ui.CH_Use_Device_Manager->isChecked() ) Settings->setValue( "Use_Device_Manager", "yes" );
-	else Settings->setValue( "Use_Device_Manager", "no" );
-	
 	// Use New Emulator Control Removable Device Menu
 	if( ui.CH_Use_New_Device_Changer->isChecked() ) Settings->setValue( "Use_New_Device_Changer", "yes" );
 	else Settings->setValue( "Use_New_Device_Changer", "no" );
@@ -290,22 +274,6 @@ void Settings_Window::on_Button_OK_clicked()
 	// Interface Language
 	if( ui.CB_Language->currentIndex() == 0 ) Settings->setValue( "Language", "en" );
 	else Settings->setValue( "Language", ui.CB_Language->itemText(ui.CB_Language->currentIndex()) );
-	
-	// Icons Theme
-	switch( ui.CB_Icons_Theme->currentIndex() )
-	{
-		case 0:
-			Settings->setValue( "Icon_Theme", "crystalsvg" );
-			break;
-			
-		case 1:
-			Settings->setValue( "Icon_Theme", "oxygen" );
-			break;
-			
-		default:
-			Settings->setValue( "Icon_Theme", "oxygen" );
-			break;
-	}
 	
 	// VM Icons Size
 	switch( ui.CB_VM_Icons_Size->currentIndex() )

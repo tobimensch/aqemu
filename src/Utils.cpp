@@ -513,23 +513,24 @@ void Check_AQEMU_Permissions()
 
 VM::Emulator_Version String_To_Emulator_Version( const QString &str )
 {
-	if( str == "QEMU 0.9.0" ) return VM::QEMU_0_9_0;
-	else if( str == "QEMU 0.9.1" ) return VM::QEMU_0_9_1;
-	else if( str == "QEMU 0.10.X" ) return VM::QEMU_0_10;
-	else if( str == "QEMU 0.11.X" ) return VM::QEMU_0_11;
-	else if( str == "QEMU 0.12.X" ) return VM::QEMU_0_12;
-	else if( str == "QEMU 0.13.X" ) return VM::QEMU_0_13;
-	else if( str == "QEMU 0.14.X" ) return VM::QEMU_0_14;
-	else if( str == "QEMU 0.15.X" ) return VM::QEMU_0_15;
-	else if( str == "QEMU 1.0" ) return VM::QEMU_1_0;
-	else if( str == "KVM 7X" ) return VM::KVM_7X;
-	else if( str == "KVM 8X" ) return VM::KVM_8X;
-	else if( str == "KVM 0.11.X" ) return VM::KVM_0_11;
-	else if( str == "KVM 0.12.X" ) return VM::KVM_0_12;
-	else if( str == "KVM 0.13.X" ) return VM::KVM_0_13;
-	else if( str == "KVM 0.14.X" ) return VM::KVM_0_14;
-	else if( str == "KVM 0.15.X" ) return VM::KVM_0_15;
-	else if( str == "KVM 1.0" ) return VM::KVM_1_0;
+	if( str == "QEMU 0.9.0" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.9.1" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.10.X" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.11.X" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.12.X" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.13.X" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.14.X" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 0.15.X" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 1.0" ) return VM::QEMU_2_0;
+	else if( str == "QEMU 2.0" ) return VM::QEMU_2_0;
+	else if( str == "KVM 7X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 8X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 0.11.X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 0.12.X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 0.13.X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 0.14.X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 0.15.X" ) return VM::QEMU_2_0;
+	else if( str == "KVM 1.0" ) return VM::QEMU_2_0;
 	else if( str == "Obsolete" ) return VM::Obsolete;
 	else
 	{
@@ -543,56 +544,8 @@ QString Emulator_Version_To_String( VM::Emulator_Version ver )
 {
 	switch( ver )
 	{
-		case VM::QEMU_0_9_0:
-			return "QEMU 0.9.0";
-			
-		case VM::QEMU_0_9_1:
-			return "QEMU 0.9.1";
-			
-		case VM::QEMU_0_10:
-			return "QEMU 0.10.X";
-			
-		case VM::QEMU_0_11:
-			return "QEMU 0.11.X";
-			
-		case VM::QEMU_0_12:
-			return "QEMU 0.12.X";
-			
-		case VM::QEMU_0_13:
-			return "QEMU 0.13.X";
-			
-		case VM::QEMU_0_14:
-			return "QEMU 0.14.X";
-			
-		case VM::QEMU_0_15:
-			return "QEMU 0.15.X";
-			
-		case VM::QEMU_1_0:
-			return "QEMU 1.0";
-			
-		case VM::KVM_7X:
-			return "KVM 7X";
-			
-		case VM::KVM_8X:
-			return "KVM 8X";
-			
-		case VM::KVM_0_11:
-			return "KVM 0.11.X";
-			
-		case VM::KVM_0_12:
-			return "KVM 0.12.X";
-			
-		case VM::KVM_0_13:
-			return "KVM 0.13.X";
-			
-		case VM::KVM_0_14:
-			return "KVM 0.14.X";
-			
-		case VM::KVM_0_15:
-			return "KVM 0.15.X";
-			
-		case VM::KVM_1_0:
-			return "KVM 1.0";
+		case VM::QEMU_2_0:
+			return "QEMU 2.0";
 			
 		case VM::Obsolete:
 			return "Obsolete";
@@ -639,8 +592,7 @@ bool Update_Emulators_List()
 	}
 	
 	// Check default emulators
-	bool qDef = false, kDef = false;
-	bool qInst = false, kInst = false; // Installed?
+	bool qDef = false;
 	
 	// Load emulators
 	for( int ex = 0; ex < emulFiles.count(); ++ex )
@@ -654,33 +606,16 @@ bool Update_Emulators_List()
 			continue;
 		}
 		
-		// Installed?
-		if( tmp.Get_Type() == VM::QEMU ) qInst = true;
-		else if( tmp.Get_Type() == VM::KVM ) kInst = true;
-		
 		// Default?
 		if( tmp.Get_Default() )
 		{
-			if( tmp.Get_Type() == VM::QEMU )
+			if( qDef )
 			{
-				if( qDef )
-				{
-					AQWarning( "bool Update_Emulators_List()",
-							   "Default QEMU emulator already loaded." );
-					tmp.Set_Default( false );
-				}
-				else qDef = true;
+				AQWarning( "bool Update_Emulators_List()",
+						   "Default QEMU emulator already loaded." );
+				tmp.Set_Default( false );
 			}
-			else if( tmp.Get_Type() == VM::KVM )
-			{
-				if( kDef )
-				{
-					AQWarning( "bool Update_Emulators_List()",
-							   "Default KVM emulator already loaded." );
-					tmp.Set_Default( false );
-				}
-				else kDef = true;
-			}
+			else qDef = true;
 		}
 		
 		// Update available options?
@@ -750,27 +685,12 @@ bool Update_Emulators_List()
 	}
 	
 	// Check defaults
-	if( qInst == true && qDef == false )
+	if( qDef == false )
 	{
 		for( int ex = 0; ex < Emulators_List.count(); ++ex )
-		{
-			if( Emulators_List[ex].Get_Type() == VM::QEMU )
-			{
-				Emulators_List[ex].Set_Default( true );
-				break;
-			}
-		}
-	}
-	
-	if( kInst == true && kDef == false )
-	{
-		for( int ex = 0; ex < Emulators_List.count(); ++ex )
-		{
-			if( Emulators_List[ex].Get_Type() == VM::KVM )
-			{
-				Emulators_List[ex].Set_Default( true );
-				break;
-			}
+	    {
+		    Emulators_List[ex].Set_Default( true );
+		    break;
 		}
 	}
 	
@@ -826,21 +746,21 @@ bool Remove_All_Emulators_Files()
 	}
 }
 
-const Emulator &Get_Default_Emulator( VM::Emulator_Type type )
+const Emulator &Get_Default_Emulator()
 {
 	if( Emulators_List.count() <= 0 )
-		AQError( "const Emulator &Get_Default_Emulator( VM::Emulator_Type type )",
+		AQError( "const Emulator &Get_Default_Emulator()",
 				 "Emulator Count == 0" );
 	else
 	{
 		for( int ix = 0; ix < Emulators_List.count(); ix++ )
 		{
-			if( Emulators_List[ix].Get_Type() == type && Emulators_List[ix].Get_Default() )
+			if( Emulators_List[ix].Get_Default() )
 				return Emulators_List[ ix ];
 		}
 	}
 	
-	AQWarning( "const Emulator &Get_Default_Emulator( VM::Emulator_Type type )",
+	AQWarning( "const Emulator &Get_Default_Emulator()",
 			   "Cannot Find!" );
 	return Empty_Emul;
 }

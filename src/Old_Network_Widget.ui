@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>592</width>
+    <width>608</width>
     <height>462</height>
    </rect>
   </property>
@@ -48,13 +48,42 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="Button_Add_Net_Card">
+        <widget class="QToolButton" name="Button_Add_Net_Card">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Add</string>
          </property>
          <property name="icon">
-          <iconset resource="../resources/images.qrc">
+          <iconset resource="../resources/icons.qrc">
            <normaloff>:/add.png</normaloff>:/add.png</iconset>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonFollowStyle</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="Button_Delete_Net_Card">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>&amp;Delete</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../resources/icons.qrc">
+           <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonFollowStyle</enum>
          </property>
         </widget>
        </item>
@@ -70,17 +99,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="Button_Delete_Net_Card">
-         <property name="text">
-          <string>&amp;Delete</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/images.qrc">
-           <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
-         </property>
-        </widget>
        </item>
       </layout>
      </item>
@@ -105,8 +123,17 @@
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
          <widget class="QLabel" name="Label_NetCard_Model">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
-           <string>&amp;Network Card Model:</string>
+           <string>&amp;Network card model:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>CB_Network_Card_Model</cstring>
@@ -123,13 +150,16 @@
         <item row="1" column="0">
          <widget class="QLabel" name="Label_Connection_Mode">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Connection &amp;Mode:</string>
+           <string>Connection &amp;mode:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>CB_Connection_Mode</cstring>
@@ -210,8 +240,17 @@
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
          <widget class="QLabel" name="Label_Host_Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
-           <string>VM Hostname:</string>
+           <string>VM hostname:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>Edit_Hostname</cstring>
@@ -224,13 +263,22 @@
         <item row="1" column="0">
          <widget class="QLabel" name="Label_IP">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
-           <string>&amp;IP Address:</string>
+           <string>&amp;IP address:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>Edit_IP_Address</cstring>
@@ -253,13 +301,16 @@
         <item row="2" column="0">
          <widget class="QLabel" name="Label_MAC">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>&amp;MAC Address:</string>
+           <string>&amp;MAC address:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>Edit_MAC_Address</cstring>
@@ -293,7 +344,7 @@
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../resources/images.qrc">
+             <iconset resource="../resources/icons.qrc">
               <normaloff>:/update.png</normaloff>:/update.png</iconset>
             </property>
            </widget>
@@ -322,8 +373,17 @@
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
          <widget class="QLabel" name="Label_VLAN">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>&amp;VLAN:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>SB_VLAN</cstring>
@@ -349,13 +409,16 @@
         <item row="1" column="0">
          <widget class="QLabel" name="Label_Port">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
           <property name="text">
-           <string>&amp;Port:</string>
+           <string>Por&amp;t:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>SB_Port</cstring>
@@ -392,8 +455,17 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="Label_File_Descriptor">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="text">
            <string>&amp;FD:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>SB_File_Descriptor</cstring>
@@ -439,16 +511,6 @@
       </item>
       <item row="4" column="0" colspan="3">
        <layout class="QGridLayout" name="gridLayout_4">
-        <item row="0" column="0">
-         <widget class="QCheckBox" name="CH_TUN_TAP_Script">
-          <property name="text">
-           <string>&amp;TUN/TAP Script:</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="spacing">
@@ -463,7 +525,7 @@
              <string>...</string>
             </property>
             <property name="icon">
-             <iconset resource="../resources/images.qrc">
+             <iconset resource="../resources/icons.qrc">
               <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
             </property>
            </widget>
@@ -472,8 +534,23 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="Label_If_Name">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>200</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="text">
            <string>In&amp;terface Name:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="buddy">
            <cstring>Edit_Interface_Name</cstring>
@@ -482,6 +559,51 @@
         </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="Edit_Interface_Name"/>
+        </item>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>60</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="CH_TUN_TAP_Script">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&amp;TUN/TAP Script:</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
@@ -493,7 +615,6 @@
  <tabstops>
   <tabstop>Network_Cards_List</tabstop>
   <tabstop>Button_Add_Net_Card</tabstop>
-  <tabstop>Button_Delete_Net_Card</tabstop>
   <tabstop>CB_Network_Card_Model</tabstop>
   <tabstop>CB_Connection_Mode</tabstop>
   <tabstop>Edit_Hostname</tabstop>
@@ -503,46 +624,12 @@
   <tabstop>SB_VLAN</tabstop>
   <tabstop>SB_Port</tabstop>
   <tabstop>SB_File_Descriptor</tabstop>
-  <tabstop>CH_TUN_TAP_Script</tabstop>
   <tabstop>Edit_TUN_TAP_Script</tabstop>
   <tabstop>TB_Browse_TUN_Script</tabstop>
   <tabstop>Edit_Interface_Name</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>CH_TUN_TAP_Script</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Edit_TUN_TAP_Script</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>84</x>
-     <y>308</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>156</x>
-     <y>309</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_TUN_TAP_Script</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>TB_Browse_TUN_Script</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>31</x>
-     <y>313</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>442</x>
-     <y>308</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

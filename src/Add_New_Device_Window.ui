@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>358</width>
+    <width>387</width>
     <height>558</height>
    </rect>
   </property>
@@ -15,7 +15,7 @@
    <string>New Storage Device</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/blockdevice.png</normaloff>:/blockdevice.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -47,7 +47,7 @@
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
        </property>
       </widget>
@@ -294,16 +294,7 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetMaximumSize</enum>
       </property>
-      <property name="leftMargin">
-       <number>6</number>
-      </property>
-      <property name="topMargin">
-       <number>6</number>
-      </property>
-      <property name="rightMargin">
-       <number>6</number>
-      </property>
-      <property name="bottomMargin">
+      <property name="margin">
        <number>6</number>
       </property>
       <property name="spacing">
@@ -327,16 +318,7 @@
       </item>
       <item row="0" column="2">
        <layout class="QGridLayout">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
+        <property name="margin">
          <number>0</number>
         </property>
         <property name="spacing">
@@ -372,16 +354,7 @@
       </item>
       <item row="0" column="0">
        <layout class="QGridLayout">
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
+        <property name="margin">
          <number>0</number>
         </property>
         <property name="spacing">
@@ -442,7 +415,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/apply.png</normaloff>:/apply.png</iconset>
        </property>
       </widget>
@@ -453,7 +426,7 @@
         <string>&amp;Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
        </property>
       </widget>
@@ -492,7 +465,7 @@
   <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

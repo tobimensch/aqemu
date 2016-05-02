@@ -88,17 +88,17 @@ void Select_Icon_Window::on_Button_OK_clicked()
 	// Check values
 	if( ui.RB_Icon_Other->isChecked() )
 	{
-		New_Icon_Path = ":/images/other.png";
+		New_Icon_Path = ":/other.png";
 		accept();
 	}
 	else if( ui.RB_Icon_Windows->isChecked() )
 	{
-		New_Icon_Path = ":/images/default_windows.png";
+		New_Icon_Path = ":/default_windows.png";
 		accept();
 	}
 	else if( ui.RB_Icon_Linux->isChecked() )
 	{
-		New_Icon_Path = ":/images/default_linux.png";
+		New_Icon_Path = ":/default_linux.png";
 		accept();
 	}
 	else if( ui.RB_All_System_Icons->isChecked() )

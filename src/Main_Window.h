@@ -30,6 +30,9 @@
 #include "VM.h"
 #include "Utils.h"
 #include "ui_Main_Window.h"
+#include "ui_Advanced_Options.h"
+#include "ui_KVM_Options.h"
+#include "ui_Architecture_Options.h"
 #include "System_Info.h"
 #include "HDD_Image_Info.h"
 #include "Network_Widget.h"
@@ -96,11 +99,14 @@ class Main_Window: public QMainWindow
 		
 		// General Tab
 		void on_CB_Computer_Type_currentIndexChanged( int index );
-		void on_CB_Emulator_Type_currentIndexChanged( int index );
+		void on_CB_Machine_Accelerator_currentIndexChanged( int index );
 		void on_CB_Emulator_Version_currentIndexChanged( int index );
 		void CB_Boot_Prioritet_currentIndexChanged( int index );
 		void on_TB_Show_Boot_Settings_Window_clicked();
 		void Set_Boot_Order( const QList<VM::Boot_Order> &list );
+		void on_TB_Show_Architecture_Options_Window_clicked();
+		void on_TB_Show_Accelerator_Options_Window_clicked();
+		void on_TB_Show_Advanced_Options_Window_clicked();
 		void on_TB_Show_SMP_Settings_Window_clicked();
 		bool Validate_CPU_Count( const QString &text );
 		void Apply_Emulator( int mode );
@@ -114,56 +120,9 @@ class Main_Window: public QMainWindow
 		void on_TB_Update_Available_RAM_Size_clicked();
 		void Update_RAM_Size_ComboBox( int freeRAM );
 		
-		// HDD's
-		void on_TB_HDA_SetPath_clicked();
-		void on_TB_HDA_Create_HDD_clicked();
-		void on_TB_HDA_Format_HDD_clicked();
-		void on_TB_HDA_Advanced_Settings_clicked();
-		void on_Edit_HDA_Image_Path_textChanged();
-		
-		void on_TB_HDB_SetPath_clicked();
-		void on_TB_HDB_Create_HDD_clicked();
-		void on_TB_HDB_Format_HDD_clicked();
-		void on_TB_HDB_Advanced_Settings_clicked();
-		void on_Edit_HDB_Image_Path_textChanged();
-		
-		void on_TB_HDC_SetPath_clicked();
-		void on_TB_HDC_Create_HDD_clicked();
-		void on_TB_HDC_Format_HDD_clicked();
-		void on_TB_HDC_Advanced_Settings_clicked();
-		void on_Edit_HDC_Image_Path_textChanged();
-		
-		void on_TB_HDD_SetPath_clicked();
-		void on_TB_HDD_Create_HDD_clicked();
-		void on_TB_HDD_Format_HDD_clicked();
-		void on_TB_HDD_Advanced_Settings_clicked();
-		void on_Edit_HDD_Image_Path_textChanged();
-		
 		QStringList Create_Info_HDD_String( const QString &disk_format, const VM::Device_Size &virtual_size,
 											const VM::Device_Size &disk_size, int cluster_size );
 		
-		void Update_HDA_Info( bool ok );
-		void Update_HDB_Info( bool ok );
-		void Update_HDC_Info( bool ok );
-		void Update_HDD_Info( bool ok );
-		
-		void on_GB_HDC_toggled( bool on ); // CD-ROM or HDC...
-		
-		// FD0
-		void on_TB_FD0_SetPath_clicked();
-		void on_TB_FD0_Advanced_Settings_clicked();
-		void on_CB_FD0_Devices_editTextChanged( const QString &text );
-		
-		// FD1
-		void on_TB_FD1_SetPath_clicked();
-		void on_TB_FD1_Advanced_Settings_clicked();
-		void on_CB_FD1_Devices_editTextChanged( const QString &text );
-		
-		// CDROM
-		void on_TB_CDROM_SetPath_clicked();
-		void on_TB_CDROM_Advanced_Settings_clicked();
-		void on_CH_CDROM_toggled( bool on ); // CD-ROM or HDC...
-		void on_CB_CDROM_Devices_editTextChanged( const QString &text );
 		
 		// Network Tab
 		void on_CH_Use_Network_toggled( bool on );
@@ -210,6 +169,7 @@ class Main_Window: public QMainWindow
 		bool Load_Settings();
 		bool Save_Settings();
 		
+        void Change_The_Icon(Virtual_Machine*,QString);
 		void Update_VM_Ui();
 		void Update_VM_Port_Number();
 		void Update_Info_Text( int info_mode = 0 );
@@ -231,6 +191,14 @@ class Main_Window: public QMainWindow
 		QString Copy_VM_Floppy( const QString &vm_name, const QString &fd_name, const VM_Storage_Device &fd );
 		
 		Ui::Main_Window ui;
+		Ui::Advanced_Options ui_ao;
+		Ui::KVM_Options ui_kvm;
+        Ui::Architecture_Options ui_arch;
+
+        QDialog* Advanced_Options;
+        QDialog* Accelerator_Options;
+        QDialog* Architecture_Options;
+
 		QMenu *Icon_Menu; // Context menu for vm icons
 		QMenu *VM_List_Menu; // Context menu for vm list
 		QSettings Settings;

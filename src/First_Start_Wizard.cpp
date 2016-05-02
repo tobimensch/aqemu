@@ -147,7 +147,7 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 	// Remove old files
 	Remove_All_Emulators_Files();
 	
-	// Find emualtors files
+	// Find emulators files
 	// Get environment values
 	QStringList sys_env = QProcess::systemEnvironment();
 	if( sys_env.count() <= 0 )
@@ -279,9 +279,9 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 				if( qemu_version == VM::Obsolete )
 				{
 					AQError( "void First_Start_Wizard::on_Button_Find_clicked()",
-							 "Cannot Get QEMU Version! Using Default: 0.10.0" );
+							 "Cannot Get QEMU Version! Using Default: 2.0" );
 					
-					qemu_version = VM::QEMU_0_10;
+					qemu_version = VM::QEMU_2_0;
 				}
 				
 				// Get emulator info
@@ -332,7 +332,6 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 				}
 				emul.Set_Name( emulName );
 				
-				emul.Set_Type( VM::QEMU );
 				emul.Set_Version( qemu_version );
 				emul.Set_Path( paths[qx] );
 				emul.Set_Devices( devList );
@@ -349,6 +348,7 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 														 arg(Emulator_Version_To_String(qemu_version)) );
 			}
 			
+            /*
 			// Find KVM
 			QList<Emulator> kvmEmulatorsList;
 			
@@ -395,9 +395,9 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 				if( kvm_version == VM::Obsolete )
 				{
 					AQError( "void First_Start_Wizard::on_Button_Find_clicked()",
-							 "Cannot Get KVM Version! Using Default: 8X" );
+							 "Cannot Get KVM Version! Using Default: QEMU_2_0" );
 					
-					kvm_version = VM::KVM_8X;
+					kvm_version = VM::QEMU_2_0;
 				}
 				
 				// Get emulator info
@@ -453,10 +453,10 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 				ui.Edit_Enulators_List->appendPlainText( tr("KVM Found in \"%1\", version: %2").
 														 arg(paths[kx]).
 														 arg(Emulator_Version_To_String(kvm_version)) );
-			}
+			}*/ //tobgle //FIXME?
 			
 			// Set default emulators
-			if( qemuEmulatorsList.count() > 0 || kvmEmulatorsList.count() > 0 )
+			if( qemuEmulatorsList.count() > 0 )
 			{
 				// Enable Edit Emulator Version Manualy Button
 				ui.Button_Edit->setEnabled( true );
@@ -487,6 +487,7 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 					qemuEmulatorsList[ 0 ].Save();
 				}
 				
+                /*
 				// Find and set KVM default emulator
 				if( kvmEmulatorsList.count() > 1 )
 				{
@@ -511,7 +512,7 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 				{
 					kvmEmulatorsList[ 0 ].Set_Default( true );
 					kvmEmulatorsList[ 0 ].Save();
-				}
+				}*/ //tobgle//FIXME?
 			}
 		}
 	}
@@ -618,9 +619,6 @@ void First_Start_Wizard::Load_Settings()
 	#else
 	ui.Edit_VM_Dir->setText( QDir::toNativeSeparators(Settings.value("VM_Directory", QDir::homePath() + "/.aqemu/").toString()) );
 	#endif
-
-	// Use Device Manager
-	ui.CH_Device_Manager->setChecked( Settings.value("Use_Device_Manager", "yes").toString() == "yes" );
 	
 	// Use VNC Embedded Display
 	#ifdef VNC_DISPLAY
@@ -652,12 +650,6 @@ bool First_Start_Wizard::Save_Settings()
 	}
 	
 	Settings.setValue( "VM_Directory", ui.Edit_VM_Dir->text() );
-	
-	// Use Device Manager
-	if( ui.CH_Device_Manager->isChecked() )
-		Settings.setValue( "Use_Device_Manager", "yes" );
-	else
-		Settings.setValue( "Use_Device_Manager", "no" );
 	
 	// Use VNC Embedded Display
 	#ifdef VNC_DISPLAY
@@ -773,9 +765,7 @@ void First_Start_Wizard::retranslateUi()
 	ui.Label_Welcome_Text->setText( tr("Welcome to the AQEMU settings wizard!\nThis wizard will help you to choose options AQEMU needs to work correctly.\nPush the \"Next\" button to go to next page or the \"Back\" button to go to the previous page.") );
 	ui.Label_Select_Language->setText( tr("Here you can choose the interface language") );
 	ui.Label_VM_Dir->setText( tr("Please select the folder for AQEMU virtual machines") );
-	ui.Label_Device_Manager->setText( tr("If the \"Device manager\" mode is active, storage devices (Floppy, CD/DVD, HDD) will be displayed in the virtual machine settings as icons, like in a file manager.") );
-	ui.CH_Device_Manager->setText( tr("Use Device manager") );
-	ui.Label_Embedded_VNC->setText( tr("In this new experimental mode the QEMU/KVM display will be shown inside AQEMU main window. Note that this mode is still unstable. If you want to enable this feature, you must set the \"Include Emdedded VNC Display in Main Window\" checkbox.") );
+	ui.Label_Embedded_VNC->setText( tr("In this new experimental mode the QEMU display will be shown inside AQEMU main window. Note that this mode is still unstable. If you want to enable this feature, you must set the \"Include Emdedded VNC Display in Main Window\" checkbox.") );
 	ui.CH_Embedded_VNC->setText( tr("Include Embedded VNC Display in Main Window") );
 	ui.Label_Find_Emulators->setText( tr("To work correctly AQEMU must know your emulator locations and versions. To search automatically push the \"Search\" button. If the search can't find your emulators, you can reconfigure AQEMU later. You can do it in the \"File->Advanced Settings\" menu.") );
 	ui.Button_Find_Emulators->setText( tr("&Search") );

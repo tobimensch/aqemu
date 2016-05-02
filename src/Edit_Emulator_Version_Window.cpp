@@ -39,16 +39,8 @@ void Edit_Emulator_Version_Window::Load_Emulators()
 	
 	for( int ix = 0; ix < Emulators.count(); ++ix )
 	{
-		if( Emulators[ix].Get_Type() == VM::QEMU )
-		{
-			new QListWidgetItem( tr("%1 (Located in %2)").arg(Emulator_Version_To_String(Emulators[ix].Get_Version())).arg(Emulators[ix].Get_Path()),
+		new QListWidgetItem( tr("%1 (Located in %2)").arg(Emulator_Version_To_String(Emulators[ix].Get_Version())).arg(Emulators[ix].Get_Path()),
 								 ui.List_Emulators );
-		}
-		else if( Emulators[ix].Get_Type() == VM::KVM )
-		{
-			new QListWidgetItem( tr("%1 (Located in %2)").arg(Emulator_Version_To_String(Emulators[ix].Get_Version())).arg(Emulators[ix].Get_Path()),
-								 ui.List_Emulators );
-		}
 	}
 }
 
@@ -75,29 +67,7 @@ void Edit_Emulator_Version_Window::on_List_Emulators_currentRowChanged( int curr
 		currentRow < ui.List_Emulators->count() )
 	{
 		int item_index = -1;
-		
-		// Add Items
-		if( Emulators[currentRow].Get_Type() == VM::QEMU )
-		{
-			ui.CB_Versions->clear();
-			
-			ui.CB_Versions->addItem( tr("QEMU 0.9.0") );
-			ui.CB_Versions->addItem( tr("QEMU 0.9.1") );
-			ui.CB_Versions->addItem( tr("QEMU 0.10.X") );
-			ui.CB_Versions->addItem( tr("QEMU 0.11.X") );
-			ui.CB_Versions->addItem( tr("QEMU 0.12.X") );
-			ui.CB_Versions->addItem( tr("QEMU 0.13.X") );
-		}
-		else if( Emulators[currentRow].Get_Type() == VM::KVM )
-		{
-			ui.CB_Versions->clear();
-			
-			ui.CB_Versions->addItem( tr("KVM 7X") );
-			ui.CB_Versions->addItem( tr("KVM 8X") );
-			ui.CB_Versions->addItem( tr("KVM 0.11.X") );
-			ui.CB_Versions->addItem( tr("KVM 0.12.X") );
-			ui.CB_Versions->addItem( tr("KVM 0.13.X") );
-		}
+
 		
 		item_index = ui.CB_Versions->findText( Emulator_Version_To_String(Emulators[currentRow].Get_Version()) );
 

@@ -7,15 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>624</width>
-    <height>346</height>
+    <width>542</width>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>QEMU Error Log</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="../resources/images.qrc">
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/bug.png</normaloff>:/bug.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -27,86 +27,65 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <item>
-      <widget class="QLabel" name="Label_Show_Mode">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>Error Window Show Mode</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Line" name="line">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="leftMargin">
-      <number>10</number>
+    <widget class="QGroupBox" name="">
+     <property name="title">
+      <string>When To Show This Log</string>
      </property>
-     <item>
-      <widget class="QRadioButton" name="RB_Normal_Mode">
-       <property name="text">
-        <string>&amp;Normal Mode</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="RB_Show_VM_Started">
-       <property name="text">
-        <string>&amp;Do Not Show Until Next VM Started</string>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="RB_Show_AQEMU_Started">
-       <property name="text">
-        <string>Do Not Show &amp;Until Next AQEMU Started</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="RB_No_Show_Forever">
-       <property name="text">
-        <string>Never show it
-(For View Error &amp;Log Select VM-&gt;Show QEMU/KVM Error Log Window)</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="leftMargin">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QRadioButton" name="RB_Normal_Mode">
+          <property name="text">
+           <string>Everytime an error occurs. (&amp;Default)</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_Show_VM_Started">
+          <property name="text">
+           <string>Do &amp;not show until the next VM is started.</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_Show_AQEMU_Started">
+          <property name="text">
+           <string>Do not show &amp;until the next time AQEMU is started.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_No_Show_Forever">
+          <property name="text">
+           <string>Never. &amp;To view manually select
+ &quot;VM-&gt;Show QEMU Error Log Window&quot; in the menu.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="Button_Clear_Log">
        <property name="text">
-        <string>&amp;Clear Errors List</string>
+        <string>&amp;Clear List</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/error.png</normaloff>:/error.png</iconset>
        </property>
       </widget>
@@ -130,7 +109,7 @@
         <string>&amp;OK</string>
        </property>
        <property name="icon">
-        <iconset resource="../resources/images.qrc">
+        <iconset resource="../resources/icons.qrc">
          <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
        </property>
       </widget>
@@ -149,7 +128,7 @@
   <tabstop>Button_Hide</tabstop>
  </tabstops>
  <resources>
-  <include location="../resources/images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>

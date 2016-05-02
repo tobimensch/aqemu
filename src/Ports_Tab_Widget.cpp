@@ -184,7 +184,7 @@ QString Ports_Tab_Widget::Get_USB_Port_Info( const VM_USB &port )
 					 "No QEMU USB Device!" );
 		}
 		
-		return tr( "Virtual QEMU/KVM Device: %1" ).arg(devName);
+		return tr( "Virtual QEMU Device: %1" ).arg(devName);
 	}
 	else
 	{
