@@ -2898,6 +2898,15 @@
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="Tool_Bar_VM_Manage">
+   <property name="windowTitle">
+    <string>Manage Virtual Machines</string>
+   </property>
+   <property name="toolTip">
+    <string/>
+   </property>
+   <property name="accessibleName">
+    <string/>
+   </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
    </property>
@@ -2920,6 +2929,9 @@
    <addaction name="actionShow_QEMU_Arguments"/>
   </widget>
   <widget class="QToolBar" name="Tool_Bar_VM_Control">
+   <property name="windowTitle">
+    <string>Virtual Machine Control</string>
+   </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
    </property>
