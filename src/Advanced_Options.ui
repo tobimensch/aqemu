@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>679</width>
-    <height>553</height>
+    <width>553</width>
+    <height>463</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
-    <widget class="QGroupBox" name="">
+    <widget class="QGroupBox" name="groupBox_options">
      <property name="title">
       <string>Advanced Options</string>
      </property>
@@ -139,7 +139,7 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBox_CLI">
      <property name="title">
       <string>Custom QEMU Command Line Arguments</string>
      </property>
