@@ -1388,7 +1388,7 @@ bool Emulator_Control_Window::Use_VNC()
 void Emulator_Control_Window::on_actionAbout_Emulator_Control_triggered()
 {
 	QMessageBox::information( this, tr("About Emulator Control..."),
-							  tr("Emulator Control is a Tool for Managing QEMU in Runtime.") );
+							  tr("Emulator Control is a Tool for Managing a Virtual Machine at Runtime.") );
 }
 
 bool Emulator_Control_Window::FD0_Available()
