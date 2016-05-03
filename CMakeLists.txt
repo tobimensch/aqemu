@@ -28,9 +28,10 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
-    src/Settings_Widget.h
-    src/QDom.h
-    src/tinyxml2.h
+	src/docopt/docopt.h
+    	src/Settings_Widget.h
+    	src/QDom.h
+    	src/tinyxml2.h
 	src/About_Window.h
 	src/Add_New_Device_Window.h
 	src/Add_Port_Window.h
@@ -47,7 +48,7 @@ SET( aqemu_headers
 	src/Emulator_Control_Window.h
 	src/Error_Log_Window.h
 	src/First_Start_Wizard.h
-    src/Folder_Sharing_Widget.h
+	src/Folder_Sharing_Widget.h
 	src/HDD_Image_Info.h
 	src/Main_Window.h
 	src/Monitor_Window.h
@@ -70,9 +71,10 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
-    src/Settings_Widget.cpp
-    src/QDom.cpp
-    src/tinyxml2.cpp
+	src/docopt/docopt.cpp
+	src/Settings_Widget.cpp
+    	src/QDom.cpp
+    	src/tinyxml2.cpp
 	src/About_Window.cpp
 	src/Add_New_Device_Window.cpp
 	src/Add_Port_Window.cpp
@@ -89,7 +91,7 @@ SET( aqemu_sources
 	src/Emulator_Control_Window.cpp
 	src/Error_Log_Window.cpp
 	src/First_Start_Wizard.cpp
-    src/Folder_Sharing_Widget.cpp
+	src/Folder_Sharing_Widget.cpp
 	src/HDD_Image_Info.cpp
 	src/main.cpp
 	src/Main_Window.cpp
@@ -129,7 +131,7 @@ SET( aqemu_ui
 	src/Emulator_Control_Window.ui
 	src/Error_Log_Window.ui
 	src/First_Start_Wizard.ui
-    src/Folder_Sharing_Widget.ui
+	src/Folder_Sharing_Widget.ui
 	src/Main_Window.ui
 	src/Monitor_Window.ui
 	src/Network_Widget.ui
@@ -151,6 +153,9 @@ SET( aqemu_qrc
     resources/shared_images.qrc
     resources/icons.qrc
 )
+
+SET( aqemu_man_page
+    resources/docs/aqemu.1 )
 
 SET( translations 
      translations/German.ts
@@ -241,8 +246,8 @@ INSTALL( FILES ${os_icons} DESTINATION share/aqemu/os_icons )
 FILE( GLOB os_templates "${CMAKE_CURRENT_SOURCE_DIR}/resources/os_templates/*.*")
 INSTALL( FILES ${os_templates} DESTINATION share/aqemu/os_templates )
 
-#FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/aqemu_links.html" )
-#INSTALL( FILES ${links} DESTINATION share/aqemu )
+FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/resources/docs/links.html" )
+INSTALL( FILES ${links} DESTINATION share/aqemu/docs )
 
 FILE( GLOB pixmaps "${CMAKE_CURRENT_SOURCE_DIR}/menu_data/*.png" )
 INSTALL( FILES ${pixmaps} DESTINATION share/pixmaps )
@@ -312,17 +317,17 @@ IF( INSTALL_MAN )
 		ENDIF( ${COMPRESSOR_BIN} MATCHES COMPRESSOR_BIN-NOTFOUND )
 		
 		# Compress
-		EXECUTE_PROCESS( OUTPUT_FILE aqemu.1.${COMPRESSOR_SUFFIX}
+		EXECUTE_PROCESS( OUTPUT_FILE ${aqemu_man_page}.${COMPRESSOR_SUFFIX}
 						COMMAND "${COMPRESSOR_BIN}" -9
-						INPUT_FILE aqemu.1
+						INPUT_FILE ${aqemu_man_page}
 						WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} )
 		
 		# Install MAN
-		INSTALL( FILES ${CMAKE_SOURCE_DIR}/aqemu.1.${COMPRESSOR_SUFFIX} DESTINATION share/man/man1 )
+		INSTALL( FILES ${CMAKE_SOURCE_DIR}/${aqemu_man_page}.${COMPRESSOR_SUFFIX} DESTINATION share/man/man1 )
 	ELSE( COMPRESSOR_SUFFIX )
 		MESSAGE( STATUS "MAN_PAGE_COMPRESSOR flag not set. Available values: gzip, bzip2, lzma" )
 		MESSAGE( STATUS "Will be installed not compressed MAN pages" )
 		
-		INSTALL( FILES ${CMAKE_SOURCE_DIR}/aqemu.1 DESTINATION share/man/man1 )
+		INSTALL( FILES ${CMAKE_SOURCE_DIR}/${aqemu_man_page} DESTINATION share/man/man1 )
 	ENDIF( COMPRESSOR_SUFFIX )
 ENDIF( INSTALL_MAN )
