@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>853</width>
+    <width>824</width>
     <height>609</height>
    </rect>
   </property>
@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -204,12 +204,16 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
-             <widget class="QGroupBox" name="groupBox">
-              <property name="title">
-               <string>Main Settings</string>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:#2980b9;&quot;&gt;Main Settings&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget" native="true">
+              <layout class="QGridLayout" name="gridLayout_12">
+               <item row="0" column="0">
                 <layout class="QGridLayout" name="gridLayout_7">
                  <item row="0" column="1" colspan="2">
                   <widget class="QLineEdit" name="Edit_Machine_Name">
@@ -428,7 +432,7 @@
                  </item>
                 </layout>
                </item>
-               <item>
+               <item row="0" column="1">
                 <widget class="QWidget" name="Widget_for_General_Tab" native="true">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
@@ -450,7 +454,7 @@
                  </property>
                 </widget>
                </item>
-               <item>
+               <item row="0" column="2">
                 <layout class="QGridLayout" name="gridLayout_8">
                  <property name="sizeConstraint">
                   <enum>QLayout::SetDefaultConstraint</enum>
@@ -811,27 +815,146 @@
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_2">
+             <spacer name="verticalSpacer_11">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>465</width>
-                <height>17</height>
+                <width>20</width>
+                <height>40</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <widget class="QGroupBox" name="GB_Memory">
-              <property name="title">
-               <string>Memory Size</string>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:#2980b9;&quot;&gt;Memory&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="GB_Memory" native="true">
               <layout class="QGridLayout" name="gridLayout_9">
+               <item row="0" column="1" rowspan="2">
+                <spacer name="horizontalSpacer_10">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Fixed</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>5</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="0" column="2">
+                <widget class="QComboBox" name="CB_RAM_Size">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                 <property name="editable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="currentIndex">
+                  <number>3</number>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>32 MB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>64 MB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>128 MB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>256 MB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>512 MB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1 GB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2 GB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3 GB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4 GB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>8 GB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>16 GB</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>32 GB</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="CH_Remove_RAM_Size_Limitation">
+                 <property name="text">
+                  <string>Remove limitation on maximum amount of memory</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2" rowspan="2">
+                <spacer name="verticalSpacer_15">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>54</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
                <item row="0" column="0" rowspan="2">
                 <layout class="QVBoxLayout" name="verticalLayout_11">
                  <item>
@@ -940,148 +1063,31 @@
                  </item>
                 </layout>
                </item>
-               <item row="0" column="1" rowspan="2">
-                <spacer name="horizontalSpacer_10">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeType">
-                  <enum>QSizePolicy::Fixed</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>5</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="0" column="2">
-                <widget class="QComboBox" name="CB_RAM_Size">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                 <property name="editable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="currentIndex">
-                  <number>3</number>
-                 </property>
-                 <item>
-                  <property name="text">
-                   <string>32 MB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>64 MB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>128 MB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>256 MB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>512 MB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>1 GB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>2 GB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>3 GB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>4 GB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>8 GB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>16 GB</string>
-                  </property>
-                 </item>
-                 <item>
-                  <property name="text">
-                   <string>32 GB</string>
-                  </property>
-                 </item>
-                </widget>
-               </item>
-               <item row="1" column="2" rowspan="3">
-                <spacer name="verticalSpacer_15">
-                 <property name="orientation">
-                  <enum>Qt::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>54</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="2" column="0">
-                <widget class="QCheckBox" name="CH_Remove_RAM_Size_Limitation">
-                 <property name="text">
-                  <string>Remove limitation on maximum amount of memory</string>
-                 </property>
-                </widget>
-               </item>
               </layout>
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_6">
+             <spacer name="verticalSpacer_5">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>468</width>
-                <height>1</height>
+                <width>20</width>
+                <height>40</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <widget class="QGroupBox" name="GB_Audio">
-              <property name="title">
-               <string>Audio Cards</string>
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:#2980b9;&quot;&gt;Audio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="GB_Audio" native="true">
               <layout class="QGridLayout" name="gridLayout_21">
                <property name="leftMargin">
                 <number>6</number>
@@ -1229,44 +1235,29 @@
              </widget>
             </item>
             <item>
-             <spacer name="verticalSpacer_7">
+             <spacer name="verticalSpacer_9">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>468</width>
-                <height>1</height>
+                <width>20</width>
+                <height>40</height>
                </size>
               </property>
              </spacer>
             </item>
             <item>
-             <widget class="QGroupBox" name="GB_Options">
-              <property name="title">
-               <string>Options</string>
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:#2980b9;&quot;&gt;Options&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_3">
-               <item>
-                <widget class="QCheckBox" name="CH_Fullscreen">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="toolTip">
-                  <string>Start in full screen</string>
-                 </property>
-                 <property name="text">
-                  <string>&amp;Fullscreen mode</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QWidget" name="GB_Options" native="true">
+              <layout class="QGridLayout" name="gridLayout_13">
+               <item row="0" column="1">
                 <spacer>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
@@ -1279,7 +1270,7 @@
                  </property>
                 </spacer>
                </item>
-               <item>
+               <item row="0" column="2">
                 <widget class="QCheckBox" name="CH_Snapshot">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1292,7 +1283,7 @@
                  </property>
                 </widget>
                </item>
-               <item>
+               <item row="0" column="3">
                 <spacer>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
@@ -1305,7 +1296,7 @@
                  </property>
                 </spacer>
                </item>
-               <item>
+               <item row="0" column="4">
                 <widget class="QCheckBox" name="CH_Local_Time">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1321,15 +1312,37 @@
                  </property>
                 </widget>
                </item>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="CH_Fullscreen">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="toolTip">
+                  <string>Start in full screen</string>
+                 </property>
+                 <property name="text">
+                  <string>&amp;Fullscreen mode</string>
+                 </property>
+                </widget>
+               </item>
               </layout>
              </widget>
             </item>
            </layout>
-           <zorder>groupBox</zorder>
+           <zorder>widget</zorder>
            <zorder>GB_Options</zorder>
            <zorder>GB_Audio</zorder>
            <zorder>GB_Memory</zorder>
-           <zorder>verticalSpacer_2</zorder>
+           <zorder>label</zorder>
+           <zorder>label_2</zorder>
+           <zorder>label_3</zorder>
+           <zorder>label_4</zorder>
+           <zorder>verticalSpacer_11</zorder>
+           <zorder>verticalSpacer_5</zorder>
+           <zorder>verticalSpacer_9</zorder>
           </widget>
           <widget class="QWidget" name="Tab_Media">
            <attribute name="icon">
@@ -2834,7 +2847,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>853</width>
+     <width>824</width>
      <height>27</height>
     </rect>
    </property>
