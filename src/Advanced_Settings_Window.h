@@ -38,6 +38,15 @@ class Advanced_Settings_Window: public QDialog
 		void on_Button_OK_clicked();
 	
 	private slots:
+        /// Old Setttings Window
+		void on_Button_Create_Template_from_VM_clicked();
+		void on_TB_VM_Folder_clicked();
+		void CB_Language_currentIndexChanged( int index );
+		void CB_Icons_Theme_currentIndexChanged( int index );
+		void VNC_Warning( bool state );
+		void Load_Templates();
+        ///
+		
 		void on_TB_Browse_Before_clicked();
 		void on_TB_Browse_After_clicked();
 		void on_TB_Log_File_clicked();

@@ -2835,7 +2835,7 @@
      <x>0</x>
      <y>0</y>
      <width>970</width>
-     <height>32</height>
+     <height>27</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVM">
@@ -2887,7 +2887,6 @@
     <addaction name="actionCreate_HDD_Image"/>
     <addaction name="actionConvert_HDD_Image"/>
     <addaction name="separator"/>
-    <addaction name="actionShow_Settings_Window"/>
     <addaction name="actionShow_Advanced_Settings_Window"/>
     <addaction name="separator"/>
     <addaction name="actionShow_First_Run_Wizard"/>
@@ -3192,7 +3191,7 @@
      <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Advanced Settings</string>
+    <string>&amp;Configure</string>
    </property>
   </action>
   <action name="actionShow_First_Run_Wizard">
