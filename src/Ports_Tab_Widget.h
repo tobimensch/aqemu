@@ -26,6 +26,8 @@
 #include "VM_Devices.h"
 #include "ui_Ports_Tab_Widget.h"
 
+class Device_Manager_Widget;
+
 class Ports_Tab_Widget: public QWidget
 {
 	Q_OBJECT
@@ -43,6 +45,8 @@ class Ports_Tab_Widget: public QWidget
 		void Set_USB_Ports( const QList<VM_USB> &list );
 		
 		void Clear_Old_Ports();
+
+        void syncLayout(Device_Manager_Widget*);
 		
 	private:
 		QString Get_Port_Info( const VM_Port &port );

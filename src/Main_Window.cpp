@@ -161,6 +161,13 @@ Main_Window::Main_Window( QWidget *parent )
     auto Media_Settings_Widget = new Settings_Widget( ui.TabWidget_Media, QBoxLayout::LeftToRight, true );
     Media_Settings_Widget->setIconSize(QSize(32,32));
 	
+
+    //// code to sync sizes of widgets in Device Manager, Folder Sharing and Ports Tab Widget
+    Folder_Sharing->syncLayout(Dev_Manager);
+    Ports_Tab->syncLayout(Dev_Manager);
+    ////
+
+
 	// This For Network Redirections Table
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
 	hv->setSectionResizeMode( QHeaderView::Fixed );

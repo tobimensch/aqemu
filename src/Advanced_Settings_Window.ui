@@ -61,7 +61,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="All_Tabs">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="Tab_General">
       <attribute name="title">
@@ -820,33 +820,10 @@
              <number>10</number>
             </property>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <layout class="QVBoxLayout" name="verticalLayout_7">
               <property name="leftMargin">
                <number>10</number>
               </property>
-              <item>
-               <widget class="QCheckBox" name="CH_Log_Save_in_File">
-                <property name="text">
-                 <string>Save in file</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                 <enum>QSizePolicy::Fixed</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>10</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
               <item>
                <widget class="QCheckBox" name="CH_Log_Print_in_STDIO">
                 <property name="text">
@@ -855,47 +832,35 @@
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
+               <widget class="QCheckBox" name="CH_Log_Save_in_File">
+                <property name="text">
+                 <string>Save in file</string>
                 </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>198</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
+               </widget>
               </item>
              </layout>
             </item>
             <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <widget class="Line" name="line_13">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_22">
               <property name="leftMargin">
                <number>10</number>
               </property>
               <item>
-               <widget class="QCheckBox" name="CH_Log_Debug">
+               <widget class="QCheckBox" name="CH_Log_Error">
                 <property name="text">
-                 <string>Debug messages</string>
+                 <string>Error messages</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
                 </property>
                </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>13</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
               </item>
               <item>
                <widget class="QCheckBox" name="CH_Log_Warning">
@@ -908,22 +873,9 @@
                </widget>
               </item>
               <item>
-               <spacer name="horizontalSpacer_11">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>18</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QCheckBox" name="CH_Log_Error">
+               <widget class="QCheckBox" name="CH_Log_Debug">
                 <property name="text">
-                 <string>Error messages</string>
+                 <string>Debug messages</string>
                 </property>
                 <property name="checked">
                  <bool>true</bool>
@@ -931,6 +883,13 @@
                </widget>
               </item>
              </layout>
+            </item>
+            <item>
+             <widget class="Line" name="line_14">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+             </widget>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_13">

@@ -31,6 +31,7 @@
 #include "Utils.h"
 #include "Create_HDD_Image_Window.h"
 #include "System_Info.h"
+#include "Device_Manager_Widget.h"
 
 Folder_Sharing_Widget::Folder_Sharing_Widget( QWidget *parent )
 	: QWidget( parent )
@@ -47,6 +48,21 @@ Folder_Sharing_Widget::Folder_Sharing_Widget( QWidget *parent )
 	ui.Folders_List->setViewMode( QListView::ListMode );
 
     connect(this,SIGNAL(Folder_Changed()),this,SLOT(Update_Icons()));
+}
+
+void Folder_Sharing_Widget::syncLayout(Device_Manager_Widget* dm)
+{
+    int w = dm->ui.add_layout_widget->sizeHint().width();
+    ui.add_layout_widget->setMinimumWidth(w);
+    ui.add_layout_widget->setMaximumWidth(w);
+
+    w = dm->ui.manage_layout_widget->sizeHint().width();
+    ui.manage_layout_widget->setMinimumWidth(w);
+    ui.manage_layout_widget->setMaximumWidth(w);
+
+    w = dm->ui.view_layout_widget->sizeHint().width();
+    ui.view_layout_widget->setMinimumWidth(w);
+    ui.view_layout_widget->setMaximumWidth(w);
 }
 
 Folder_Sharing_Widget::~Folder_Sharing_Widget()

@@ -28,6 +28,8 @@
 //#include "Properties_Window.h"
 #include "ui_Folder_Sharing_Widget.h"
 
+class Device_Manager_Widget;
+
 class Folder_Sharing_Widget: public QWidget
 {
 	Q_OBJECT
@@ -40,6 +42,8 @@ class Folder_Sharing_Widget: public QWidget
 		void Set_Enabled( bool on );
 		
 		QList<VM_Shared_Folder> Shared_Folders;
+
+        void syncLayout(Device_Manager_Widget*);
 		
 	public slots:
 		void Update_Enabled_Actions();

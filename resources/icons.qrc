@@ -58,5 +58,9 @@
     <file
     alias="preferences-desktop-display.png">icons/oxygen/preferences-desktop-display.png</file>
             <file alias="input-mouse.png">icons/oxygen/input-mouse.png</file>
+            <file alias="com_port.png">icons/oxygen/com_port.png</file>
+	    <file alias="lpt_port.png">icons/oxygen/lpt_port.png</file>
+	    <file alias="serial-port.png">icons/serial-port.png</file>
+	    <file alias="parallel-port.png">icons/parallel-port.png</file>
   </qresource>
 </RCC>

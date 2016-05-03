@@ -32,6 +32,7 @@
 #include "Ports_Tab_Widget.h"
 #include "Add_Port_Window.h"
 #include "Add_USB_Port_Window.h"
+#include "Device_Manager_Widget.h"
 
 Ports_Tab_Widget::Ports_Tab_Widget( QWidget *parent )
 	: QWidget( parent )
@@ -48,6 +49,22 @@ Ports_Tab_Widget::Ports_Tab_Widget( QWidget *parent )
 	hv->setStretchLastSection( true );
 	hv->setSectionResizeMode( QHeaderView::ResizeToContents );
 	ui.Ports_Table->setHorizontalHeader( hv );
+}
+
+void Ports_Tab_Widget::syncLayout(Device_Manager_Widget* dm)
+{
+    int w = dm->ui.add_layout_widget->sizeHint().width();
+    ui.add_layout_widget->setMinimumWidth(w);
+    ui.add_layout_widget->setMaximumWidth(w);
+
+    w = dm->ui.manage_layout_widget->sizeHint().width();
+    ui.manage_layout_widget->setMinimumWidth(w);
+    ui.manage_layout_widget->setMaximumWidth(w);
+
+    /*
+    w = dm->ui.view_layout_widget->sizeHint().width();
+    ui.view_layout_widget->setMinimumWidth(w);
+    ui.view_layout_widget->setMaximumWidth(w);*/
 }
 
 QList<VM_Port> Ports_Tab_Widget::Get_Serial_Ports() const

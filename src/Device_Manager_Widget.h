@@ -31,6 +31,9 @@
 
 class Device_Manager_Widget: public QWidget
 {
+    friend class Folder_Sharing_Widget;
+    friend class Ports_Tab_Widget;
+
 	Q_OBJECT
 	
 	public:
