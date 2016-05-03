@@ -51,10 +51,30 @@
       <property name="spacing">
        <number>5</number>
       </property>
-      <item row="0" column="0" rowspan="3">
+      <item row="1" column="1">
+       <widget class="QToolButton" name="Button_Delete">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>&amp;Delete</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../resources/icons.qrc">
+          <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" rowspan="4">
        <widget class="QListWidget" name="Items_List">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -62,7 +82,7 @@
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>100</height>
+          <height>135</height>
          </size>
         </property>
         <property name="editTriggers">
@@ -80,9 +100,9 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="Button_Add">
+       <widget class="QToolButton" name="Button_Add">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -94,9 +114,12 @@
          <iconset resource="../resources/icons.qrc">
           <normaloff>:/add.png</normaloff>:/add.png</iconset>
         </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextUnderIcon</enum>
+        </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <spacer name="verticalSpacer_2">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -104,27 +127,10 @@
         <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
-          <height>13</height>
+          <height>1</height>
          </size>
         </property>
        </spacer>
-      </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="Button_Delete">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>&amp;Delete</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../resources/icons.qrc">
-          <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>
@@ -152,8 +158,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>348</width>
-        <height>1394</height>
+        <width>347</width>
+        <height>1325</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -1175,7 +1181,6 @@
  <tabstops>
   <tabstop>Items_List</tabstop>
   <tabstop>Button_Add</tabstop>
-  <tabstop>Button_Delete</tabstop>
   <tabstop>TB_Generate_New_MAC</tabstop>
   <tabstop>CB_Network_Type</tabstop>
   <tabstop>TB_Help</tabstop>

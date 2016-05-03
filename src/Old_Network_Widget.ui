@@ -63,7 +63,7 @@
            <normaloff>:/add.png</normaloff>:/add.png</iconset>
          </property>
          <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonFollowStyle</enum>
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
          </property>
         </widget>
        </item>
@@ -83,7 +83,7 @@
            <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
          </property>
          <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonFollowStyle</enum>
+          <enum>Qt::ToolButtonTextUnderIcon</enum>
          </property>
         </widget>
        </item>

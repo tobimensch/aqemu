@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -1673,7 +1673,7 @@
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="Tab_VNC">
                <attribute name="icon">
@@ -2390,7 +2390,13 @@
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="Button_Add_Redirections">
+                    <widget class="QToolButton" name="Button_Add_Redirections">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
                      <property name="text">
                       <string>A&amp;dd Item</string>
                      </property>
@@ -2398,10 +2404,13 @@
                       <iconset resource="../resources/icons.qrc">
                        <normaloff>:/add.png</normaloff>:/add.png</iconset>
                      </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonTextUnderIcon</enum>
+                     </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="Button_Delete_Redirections">
+                    <widget class="QToolButton" name="Button_Delete_Redirections">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2415,10 +2424,13 @@
                       <iconset resource="../resources/icons.qrc">
                        <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
                      </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonTextUnderIcon</enum>
+                     </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="Button_Clear_Redirections">
+                    <widget class="QToolButton" name="Button_Clear_Redirections">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -2431,6 +2443,9 @@
                      <property name="icon">
                       <iconset resource="../resources/icons.qrc">
                        <normaloff>:/error.png</normaloff>:/error.png</iconset>
+                     </property>
+                     <property name="toolButtonStyle">
+                      <enum>Qt::ToolButtonTextUnderIcon</enum>
                      </property>
                     </widget>
                    </item>
