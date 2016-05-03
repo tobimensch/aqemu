@@ -108,7 +108,7 @@ Main_Window::Main_Window( QWidget *parent )
 	
 	// SPICE
 	SPICE_Widget = new SPICE_Settings_Widget();
-	ui.TabWidget_Display->insertTab( 1, SPICE_Widget, QIcon(":/pepper.png"), tr("SPICE Remote Desktop") );
+	ui.TabWidget_Display->insertTab( 1, SPICE_Widget, QIcon(":/pepper.png"), tr("SPICE Remote") );
 
     auto Display_Settings_Widget = new Settings_Widget( ui.TabWidget_Display, QBoxLayout::LeftToRight, true );
     Display_Settings_Widget->setIconSize(QSize(32,32));

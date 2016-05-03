@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -464,7 +464,7 @@
                     </sizepolicy>
                    </property>
                    <property name="text">
-                    <string>B&amp;oot order:</string>
+                    <string>&amp;Boot order:</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -1639,7 +1639,7 @@
           <widget class="QWidget" name="Tab_Display">
            <attribute name="icon">
             <iconset resource="../resources/icons.qrc">
-             <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
+             <normaloff>:/preferences-desktop-display.png</normaloff>:/preferences-desktop-display.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Display</string>
@@ -1668,7 +1668,7 @@
                  <normaloff>:/vnc.png</normaloff>:/vnc.png</iconset>
                </attribute>
                <attribute name="title">
-                <string>VNC Remote Desktop</string>
+                <string>VNC Remote</string>
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_18">
                 <item>
@@ -2150,7 +2150,7 @@
           <widget class="QWidget" name="Tab_Network">
            <attribute name="icon">
             <iconset resource="../resources/icons.qrc">
-             <normaloff>:/connect.png</normaloff>:/connect.png</iconset>
+             <normaloff>:/preferences-system-network.png</normaloff>:/preferences-system-network.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Network</string>
@@ -2232,7 +2232,7 @@
                   <item>
                    <widget class="QRadioButton" name="RB_Network_Mode_Old">
                     <property name="text">
-                     <string>Basic</string>
+                     <string>&amp;Basic</string>
                     </property>
                     <property name="checked">
                      <bool>true</bool>
