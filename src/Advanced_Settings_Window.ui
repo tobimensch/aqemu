@@ -61,7 +61,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="All_Tabs">
      <property name="currentIndex">
-      <number>5</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Tab_General">
       <attribute name="title">
@@ -171,7 +171,7 @@
             </property>
             <property name="icon">
              <iconset resource="../resources/icons.qrc">
-              <normaloff>:/update.png</normaloff>:/update.png</iconset>
+              <normaloff>:/system-search.png</normaloff>:/system-search.png</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -1717,7 +1717,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>449</width>
+            <width>639</width>
             <height>734</height>
            </rect>
           </property>

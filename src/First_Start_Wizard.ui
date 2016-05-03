@@ -39,7 +39,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="All_Pages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>4</number>
      </property>
      <widget class="QWidget" name="Welcome_Page">
       <layout class="QGridLayout" name="gridLayout_5">
@@ -269,7 +269,7 @@
          </property>
          <property name="icon">
           <iconset resource="../resources/icons.qrc">
-           <normaloff>:/find.png</normaloff>:/find.png</iconset>
+           <normaloff>:/system-search.png</normaloff>:/system-search.png</iconset>
          </property>
         </widget>
        </item>
@@ -467,7 +467,7 @@
              </property>
              <property name="icon">
               <iconset resource="../resources/icons.qrc">
-               <normaloff>:/find.png</normaloff>:/find.png</iconset>
+               <normaloff>:/system-search.png</normaloff>:/system-search.png</iconset>
              </property>
             </widget>
            </item>
