@@ -57,7 +57,6 @@ SET( aqemu_headers
 	src/Properties_Window.h
 	src/Emulator_Options_Window.h
 	src/Select_Icon_Window.h
-	src/Settings_Window.h
 	src/SMP_Settings_Window.h
 	src/Snapshot_Properties_Window.h
 	src/Snapshots_Window.h
@@ -101,7 +100,6 @@ SET( aqemu_sources
 	src/Properties_Window.cpp
 	src/Emulator_Options_Window.cpp
 	src/Select_Icon_Window.cpp
-	src/Settings_Window.cpp
 	src/SMP_Settings_Window.cpp
 	src/Snapshot_Properties_Window.cpp
 	src/Snapshots_Window.cpp

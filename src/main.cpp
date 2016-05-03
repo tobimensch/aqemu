@@ -36,7 +36,6 @@
 
 #include "Utils.h"
 #include "Main_Window.h"
-#include "Settings_Window.h"
 #include "First_Start_Wizard.h"
 
 #define CURRENT_AQEMU_VERSION "0.8.1"

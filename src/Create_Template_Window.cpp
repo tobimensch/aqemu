@@ -27,7 +27,6 @@
 
 #include "VM.h"
 #include "Utils.h"
-#include "Settings_Window.h"
 
 Create_Template_Window::Create_Template_Window( QWidget *parent )
 	: QDialog( parent )

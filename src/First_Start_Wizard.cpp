@@ -30,7 +30,6 @@
 #include "First_Start_Wizard.h"
 #include "Utils.h"
 #include "System_Info.h"
-#include "Settings_Window.h"
 #include "Advanced_Settings_Window.h"
 #include "Edit_Emulator_Version_Window.h"
 #include "Emulator_Options_Window.h"
@@ -96,10 +95,6 @@ void First_Start_Wizard::on_Button_Next_clicked()
 	{
 		if( Save_Settings() )
 		{
-			Settings_Window *sw = new Settings_Window();
-			sw->on_Button_OK_clicked();
-			delete sw;
-			
 			Advanced_Settings_Window *asw = new Advanced_Settings_Window();
 			asw->on_Button_OK_clicked();
 			delete asw;

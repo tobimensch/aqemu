@@ -25,7 +25,6 @@
 #include <QFileDialog>
 
 #include "Utils.h"
-#include "Settings_Window.h"
 #include "VM_Wizard_Window.h"
 #include "System_Info.h"
 

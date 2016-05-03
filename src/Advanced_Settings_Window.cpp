@@ -32,8 +32,8 @@
 #include "Utils.h"
 #include "Emulator_Options_Window.h"
 #include "First_Start_Wizard.h"
-#include "Settings_Widget.h"
 #include "Create_Template_Window.h"
+#include "Settings_Widget.h"
 
 Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	: QDialog( parent )

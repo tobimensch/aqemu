@@ -1,7 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2008-2010 Andrey Rijov <ANDron142@yandex.ru>
-** Copyright (C) 2016 Tobias Gläßer (Qt5 port)
+** Copyright (C) 2016 Tobias Gläßer
 **
 ** This file is part of AQEMU.
 **
@@ -36,7 +36,6 @@
 #include "Device_Manager_Widget.h"
 #include "Folder_Sharing_Widget.h"
 #include "Select_Icon_Window.h"
-#include "Settings_Window.h"
 #include "About_Window.h"
 #include "Create_HDD_Image_Window.h"
 #include "Convert_HDD_Image_Window.h"
@@ -4469,67 +4468,6 @@ void Main_Window::on_actionConvert_HDD_Image_triggered()
 	delete Convert_HDD_Win;
 }
 
-void Main_Window::on_actionShow_Settings_Window_triggered()
-{
-	Settings_Window *Settings_Win = new Settings_Window( this );
-	
-	if( Settings_Win->exec() == QDialog::Accepted )
-	{
-		Save_Settings();
-		
-		if( QDir::toNativeSeparators(Settings.value("VM_Directory", "~").toString()) != VM_Folder )
-		{
-			// Apply Settings
-			Load_Settings();
-			
-			// Clear old vm's
-			VM_List.clear();
-			ui.Machines_List->clear();
-			
-			// Load new vm's
-			Load_Virtual_Machines();
-			
-			delete Settings_Win;
-			return;
-		}
-		else
-		{
-			// Apply Settings
-			Load_Settings();
-		}
-		
-		// Update Icons
-		for( int ix = 0; ix < VM_List.count(); ++ix )
-		{
-			Virtual_Machine *tmp_vm = Get_VM_By_UID( ui.Machines_List->item(ix)->data(256).toString() );
-			
-			if( tmp_vm == NULL )
-			{
-				AQError( "void Main_Window::on_actionShow_Settings_Window_triggered()",
-						 "tmp_vm == NULL" );
-				continue;
-			}
-			
-			if( tmp_vm->Get_State() == VM::VMS_Saved &&
-				Settings.value("Use_Screenshot_for_OS_Logo", "yes").toString() == "yes" )
-			{
-				ui.Machines_List->item(ix)->setIcon( QIcon(tmp_vm->Get_Screenshot_Path()) );
-				ui.Machines_List->item(ix)->setData( 128, tmp_vm->Get_Screenshot_Path() );
-			}
-			else
-			{
-				ui.Machines_List->item(ix)->setIcon( QIcon(tmp_vm->Get_Icon_Path()) );
-				ui.Machines_List->item(ix)->setData( 128, tmp_vm->Get_Icon_Path() );
-			}
-		}
-		
-		ui.Button_Apply->setEnabled( false );
-		ui.Button_Cancel->setEnabled( false );
-	}
-	
-	delete Settings_Win;
-}
-
 void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 {
 	Advanced_Settings_Window *ad_set = new Advanced_Settings_Window();
@@ -4600,6 +4538,62 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 			// Update text in tab Info
 			Update_Info_Text();
 		}
+
+        // Old/Merged Settings Window
+		bool apply_enabled = ui.Button_Apply->isEnabled();
+		bool cancel_enabled = ui.Button_Cancel->isEnabled();
+
+		if( QDir::toNativeSeparators(Settings.value("VM_Directory", "~").toString()) != VM_Folder )
+		{
+			// Apply Settings
+			Load_Settings();
+			
+			// Clear old vm's
+			VM_List.clear();
+			ui.Machines_List->clear();
+			
+			// Load new vm's
+			Load_Virtual_Machines();
+			
+			delete ad_set;
+			return;
+		}
+		else
+		{
+			// Apply Settings
+			Load_Settings();
+		}
+		
+		// Update Icons
+		for( int ix = 0; ix < VM_List.count(); ++ix )
+		{
+			Virtual_Machine *tmp_vm = Get_VM_By_UID( ui.Machines_List->item(ix)->data(256).toString() );
+			
+			if( tmp_vm == NULL )
+			{
+				AQError( "void Main_Window::on_actionShow_Settings_Window_triggered()",
+						 "tmp_vm == NULL" );
+				continue;
+			}
+			
+			if( tmp_vm->Get_State() == VM::VMS_Saved &&
+				Settings.value("Use_Screenshot_for_OS_Logo", "yes").toString() == "yes" )
+			{
+				ui.Machines_List->item(ix)->setIcon( QIcon(tmp_vm->Get_Screenshot_Path()) );
+				ui.Machines_List->item(ix)->setData( 128, tmp_vm->Get_Screenshot_Path() );
+			}
+			else
+			{
+				ui.Machines_List->item(ix)->setIcon( QIcon(tmp_vm->Get_Icon_Path()) );
+				ui.Machines_List->item(ix)->setData( 128, tmp_vm->Get_Icon_Path() );
+			}
+		}
+		
+        // Adapted from old/merged Settings Window code, but this is/was a hack,
+        // so the code above should at some time be rewritten to make the next
+        // two lines obsolete
+		ui.Button_Apply->setEnabled( apply_enabled );
+		ui.Button_Cancel->setEnabled( cancel_enabled );
 	}
 	
 	delete ad_set;
@@ -5645,8 +5639,6 @@ void Main_Window::on_Tabs_currentChanged( int index )
 
 void Main_Window::on_Button_Apply_clicked()
 {
-    AQDebug("void Main_Window::on_Button_Apply_clicked()","`````````````````````````````");
-
 	Virtual_Machine *tmp_vm = new Virtual_Machine();
 	Virtual_Machine *cur_vm = Get_Current_VM();
 	

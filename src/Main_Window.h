@@ -74,7 +74,6 @@ class Main_Window: public QMainWindow
 		void on_actionAdd_New_VM_triggered();
 		void on_actionCreate_HDD_Image_triggered();
 		void on_actionConvert_HDD_Image_triggered();
-		void on_actionShow_Settings_Window_triggered();
 		void on_actionShow_Advanced_Settings_Window_triggered();
 		void on_actionShow_First_Run_Wizard_triggered();
 		void on_actionPower_On_triggered();
