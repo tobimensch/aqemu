@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>588</width>
+    <width>589</width>
     <height>273</height>
    </rect>
   </property>
@@ -615,5 +615,166 @@
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>TB_Add_CDROM</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAdd_CD_ROM</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Add_Device</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAdd_Device</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>196</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Format_HDD</sender>
+   <signal>clicked()</signal>
+   <receiver>actionFormat_HDD</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>492</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Delete_Device</sender>
+   <signal>clicked()</signal>
+   <receiver>actionDelete</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>317</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>317</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_List_Mode</sender>
+   <signal>clicked()</signal>
+   <receiver>actionList_Mode</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>546</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Icon_Mode</sender>
+   <signal>clicked()</signal>
+   <receiver>actionIcon_Mode</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>492</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>492</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Quick_Format</sender>
+   <signal>clicked()</signal>
+   <receiver>actionQuick_Format</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>425</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Edit_Device</sender>
+   <signal>clicked()</signal>
+   <receiver>actionProperties</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Add_HDD</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAdd_HDD</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>142</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Add_Floppy</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAdd_Floppy</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

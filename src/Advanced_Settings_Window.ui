@@ -2131,7 +2131,7 @@
                 <widget class="QRadioButton" name="RB_USB_Style_device">
                  <property name="text">
                   <string>-device (New style)
-Recommend for &amp;QEMU/KVM version 0.15 or higher.
+Recommend for QEMU/KVM version &amp;0.15 or higher.
 Supports USB 2.0 and USB 3.0 controllers emulation.</string>
                  </property>
                  <property name="checked">
@@ -2516,6 +2516,54 @@ There may be problems with devices connected via a hub.</string>
     <hint type="destinationlabel">
      <x>485</x>
      <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Screenshot_Folder</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Edit_Screenshot_Folder</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>189</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Screenshot_Folder</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>TB_Screenshot_Folder</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>562</x>
+     <y>189</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Screenshot_Folder</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Label_Folder_Path</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>128</x>
+     <y>189</y>
     </hint>
    </hints>
   </connection>

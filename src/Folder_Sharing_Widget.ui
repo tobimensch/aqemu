@@ -491,5 +491,70 @@
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>TB_Add_Folder</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAdd_Folder</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>34</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Remove_Folder</sender>
+   <signal>clicked()</signal>
+   <receiver>actionRemove</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>233</x>
+     <y>55</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_List_Mode</sender>
+   <signal>clicked()</signal>
+   <receiver>actionList_Mode</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Icon_Mode</sender>
+   <signal>clicked()</signal>
+   <receiver>actionIcon_Mode</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>433</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
