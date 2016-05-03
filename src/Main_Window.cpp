@@ -3517,29 +3517,29 @@ void Main_Window::Set_Widgets_State( bool enabled )
 	ui.Tab_General->setEnabled( enabled );
 	//ui.Tab_HDD->setEnabled( enabled );
 	//ui.Tab_Removable_Disks->setEnabled( enabled );
+
+    // Media
 	Dev_Manager->Set_Enabled( enabled );
 	Folder_Sharing->Set_Enabled( enabled );
 	Ports_Tab->setEnabled( enabled );
+	ui.Tab_Optional_Images->setEnabled( enabled );
+	ui.Tab_Boot_Linux->setEnabled( enabled );
 	
 	// Tab network
 	ui.Widget_Use_Network->setEnabled( enabled );
 	Old_Network_Settings_Widget->Set_Enabled( enabled );
 	New_Network_Settings_Widget->Set_Enabled( enabled );
 	
-	// Network redirections
-	ui.Redirection_Widget->setEnabled( enabled );
-	ui.Widget_Network_Other->setEnabled( enabled );
-	ui.Widget_Redirection_Buttons->setEnabled( enabled );
-	ui.Widget_Redirection_CheckBox->setEnabled( enabled );
+	    // Network redirections
+	    ui.Redirection_Widget->setEnabled( enabled );
+	    ui.Widget_Network_Other->setEnabled( enabled );
+	    ui.Widget_Redirection_Buttons->setEnabled( enabled );
+	    ui.Widget_Redirection_CheckBox->setEnabled( enabled );
 	
-	// Tab advanced
-	ui.Tab_Emulator_Window_Options->setEnabled( enabled );
-	ui.Tab_Display->setEnabled( enabled );
-	
-	// Tab other
+    // Tab Display
 	ui.Tab_VNC->setEnabled( enabled );
-	ui.Tab_Optional_Images->setEnabled( enabled );
-	ui.Tab_Boot_Linux->setEnabled( enabled );
+    SPICE_Widget->setEnabled( enabled );
+	ui.Tab_Emulator_Window_Options->setEnabled( enabled );
 }
 
 void Main_Window::VM_Changed()
