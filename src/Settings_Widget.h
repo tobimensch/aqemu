@@ -31,6 +31,7 @@ class QTabWidget;
 class QStackedWidget;
 class QBoxLayout;
 class QSize;
+class QSplitter;
 
 class My_List_Widget : public QListWidget
 {
@@ -55,6 +56,7 @@ class Settings_Widget : public QWidget
     private:
         My_List_Widget* list;
         QStackedWidget* stack;
+        QSplitter* splitter;
 };
 
 #endif

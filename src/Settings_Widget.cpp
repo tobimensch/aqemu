@@ -60,6 +60,7 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
 {
     QBoxLayout *l = nullptr;
 
+    splitter = nullptr;
     stack = new QStackedWidget(this);
     list = new My_List_Widget(this);
 
@@ -113,7 +114,7 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
             pal.setColor(QPalette::Button, QColor(0,0,0) /*app->palette("QWidget").color(QPalette::Dark)* /);
             border->setPalette(pal);
         }*/
-        auto splitter = new QSplitter(this);
+        splitter = new QSplitter(this);
         splitter->setOrientation(Qt::Vertical);
         splitter->addWidget(list);
         splitter->addWidget(stack);
@@ -186,5 +187,7 @@ Settings_Widget::~Settings_Widget()
 {
     delete list;
     delete stack;
+
+    delete splitter;
 }
 
