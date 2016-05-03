@@ -146,7 +146,6 @@ Main_Window::Main_Window( QWidget *parent )
 	VM_List_Menu = new QMenu( ui.Machines_List );
 	
 	VM_List_Menu->addAction( ui.actionAdd_New_VM );
-	VM_List_Menu->addAction( ui.actionShow_New_VM_Wizard );
 	VM_List_Menu->addAction( ui.actionLoad_VM_From_File );
 	VM_List_Menu->addAction( ui.actionCreate_HDD_Image );
 	
