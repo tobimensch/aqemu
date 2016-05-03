@@ -34,15 +34,50 @@
 #include <unistd.h>
 #include <sys/types.h>
 #endif
+#include <iostream>
 
 #include "Utils.h"
 #include "Main_Window.h"
 #include "First_Start_Wizard.h"
 
-#define CURRENT_AQEMU_VERSION "0.8.1"
+#include "docopt/docopt.h"
+
+#define CURRENT_AQEMU_VERSION "0.9.1"
+
+static const char USAGE[] =
+R"(Usage: aqemu
+
+Frontend for qemu.
+
+  Options:
+      -h --help     Show this screen.
+      --version     Show version.
+)";
+/* mockup
+
+      aqemu start <VIRTUAL_MACHINE>
+      aqemu pause <VIRTUAL_MACHINE>
+      aqemu stop  <VIRTUAL_MACHINE>
+      aqemu (-h | --help)
+      aqemu --version
+
+*/
+
 
 int main( int argc, char *argv[] )
 {
+    QString version = QString("aqemu ") + CURRENT_AQEMU_VERSION;
+    std::map<std::string, docopt::value> args
+        = docopt::docopt(USAGE,
+                         { argv + 1, argv + argc },
+                         true,               // show help if requested
+                          qPrintable( version ) );  // version string
+
+    /*for(auto const& arg : args) {
+        std::cout << arg.first <<  arg.second << std::endl;
+    }*/
+
+
 	// Set QSettings Data
 	QCoreApplication::setOrganizationName( "aqemu" );
 	QCoreApplication::setApplicationName( "AQEMU" );

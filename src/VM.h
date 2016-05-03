@@ -39,6 +39,8 @@ class Emulator_Control_Window;
 // Vitrual Machine
 class Virtual_Machine: public QObject
 {
+    friend class MachineView;
+
 	Q_OBJECT
 	
 	public:

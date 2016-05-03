@@ -57,5 +57,6 @@
     <file alias="video-display.png">icons/oxygen/video-display.png</file>
     <file
     alias="preferences-desktop-display.png">icons/oxygen/preferences-desktop-display.png</file>
+            <file alias="input-mouse.png">icons/oxygen/input-mouse.png</file>
   </qresource>
 </RCC>

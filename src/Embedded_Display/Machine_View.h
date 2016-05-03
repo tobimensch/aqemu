@@ -35,6 +35,8 @@
 #include <QShortcut>
 #include <QPalette>
 
+#include "VM.h"
+
 /**
 	@author Ben Klopfenstein <benklop@gmail.com>
 	@author Andrey Rijov <ANDron142@yandex.ru>
@@ -44,7 +46,7 @@ class MachineView : public QScrollArea
 	Q_OBJECT
 	
 	public:
-		MachineView( QWidget *parent = 0 );
+		MachineView( QWidget *parent = 0, Virtual_Machine* = 0);
 		
 		void Set_VNC_URL( const QString &host, int port );
 		void Set_Scaling( bool s );
@@ -53,11 +55,16 @@ class MachineView : public QScrollArea
 		void showSplash( bool show );
 		void captureAllKeys( bool enabled );
 		void sendKey( QKeyEvent *event );
+		void captureAllMouseEvents();
 		
 	protected:
 		bool event( QEvent *event );
 		
 	public slots:
+		void on_MouseEnteredFromTheLeft();
+		void on_MouseEnteredFromTheRight();
+		void on_MouseEnteredFromTheTop();
+		void on_MouseEnteredFromTheBottom();
 		void newViewSize( int w, int h );
 		void fullscreen( bool enable );
 		void initView();
@@ -74,9 +81,11 @@ class MachineView : public QScrollArea
 	private:
 		void resizeEvent( QResizeEvent *event );
 		void resizeView( int widgetWidth, int widgetHeight );
+		void connectView();
 		
 		bool VNC_Connected;
-		
+
+        Virtual_Machine* Cur_VM;		
 		VncView *View;
 		int VNC_Port;
 		QString VNC_Host;

@@ -118,6 +118,7 @@ class Emulator_Control_Window: public QMainWindow
 		void on_actionCtrl_Alt_F11_triggered();
 		void on_actionCtrl_Alt_F12_triggered();
 		void on_actionClipboard_triggered();
+		void on_actionGrab_Mouse_triggered();
 		
 		#ifdef VNC_DISPLAY
 		void on_actionDisplay_Scaling_triggered();

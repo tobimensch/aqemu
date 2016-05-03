@@ -23,6 +23,8 @@
 
 #include "vncview.h"
 
+#include <iostream>
+
 #ifdef QTONLY
     #include <QMessageBox>
     #include <QInputDialog>
@@ -492,8 +494,46 @@ bool VncView::event(QEvent *event)
     }
 }
 
+
+#include <iostream>
+
+void VncView::enterEvent( QEvent* event )
+{
+    auto enter = static_cast<QEnterEvent*>(event);
+
+    int x = enter->globalX();
+    int y = enter->globalY();
+    int mx = enter->x();
+    int my = enter->y();
+
+    int th = 70; //treshold
+
+    if ( mx < th )
+    {
+        //Entered from the left
+        emit MouseEnteredFromTheLeft();
+    }
+    else if ( mx > ( m_frame.width() - th ) )
+    {
+        //Entered from the right
+        emit MouseEnteredFromTheRight();
+    }
+
+    if ( my < th )
+    {
+        //Entered from the top
+        emit MouseEnteredFromTheTop();
+    }
+    else if ( my > ( m_frame.height() - th ) )
+    {
+        //Entered from the bottom
+        emit MouseEnteredFromTheBottom();
+    }
+}
+
 void VncView::mouseEventHandler(QMouseEvent *e)
 {
+
     if (e->type() != QEvent::MouseMove) {
         if ((e->type() == QEvent::MouseButtonPress) ||
                 (e->type() == QEvent::MouseButtonDblClick)) {

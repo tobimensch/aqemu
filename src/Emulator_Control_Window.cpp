@@ -681,7 +681,7 @@ void Emulator_Control_Window::Init()
 		if( ! Machine_View )
 			delete Machine_View;
 		
-		Machine_View = new MachineView( this );
+		Machine_View = new MachineView( this , Cur_VM );
 		
 		QVBoxLayout *vnc_layout = new QVBoxLayout( centralWidget() );
 		Machine_View->setLayout( vnc_layout );
@@ -1261,6 +1261,12 @@ void Emulator_Control_Window::on_actionClipboard_triggered()
 		    emit Ready_Read_Command( QString("sendkey ") + convert_char(text.at(i)) );
         }
     }
+}
+
+
+void Emulator_Control_Window::on_actionGrab_Mouse_triggered()
+{
+    Machine_View->captureAllMouseEvents();
 }
 
 void Emulator_Control_Window::on_actionCtrl_Alt_Backspace_triggered()

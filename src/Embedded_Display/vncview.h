@@ -70,6 +70,7 @@ public slots:
     void scaleResize(int w, int h);
 
 protected:
+    void enterEvent( QEvent* event);
     void paintEvent(QPaintEvent *event);
     bool event(QEvent *event);
     void resizeEvent(QResizeEvent *event);
@@ -107,6 +108,13 @@ private slots:
     void outputErrorMessage(const QString &message);
     void clipboardSelectionChanged();
     void clipboardDataChanged();
+
+signals:
+	void MouseEnteredFromTheLeft();
+	void MouseEnteredFromTheRight();
+	void MouseEnteredFromTheTop();
+	void MouseEnteredFromTheBottom();
+	
 };
 
 #endif

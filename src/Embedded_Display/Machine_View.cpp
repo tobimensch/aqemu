@@ -33,10 +33,12 @@
 
 #include "Utils.h"
 #include "Machine_View.h"
+#include "VM.h"
 
-MachineView::MachineView( QWidget *parent ) : QScrollArea( parent )
+MachineView::MachineView( QWidget *parent, Virtual_Machine* cur_vm ) : QScrollArea( parent )
 {
 	View = new VncView( this );
+    Cur_VM = cur_vm;
 	splashShown = true;
 	fullscreenEnabled = false;
 	showSplash( true );
@@ -47,6 +49,26 @@ MachineView::MachineView( QWidget *parent ) : QScrollArea( parent )
 	Init_Count = 0;
 	VNC_Width = 0;
 	VNC_Height = 0;
+}
+
+void MachineView::on_MouseEnteredFromTheLeft()
+{
+    Cur_VM->Send_Emulator_Command("mouse_move -1000 0\n");
+}
+
+void MachineView::on_MouseEnteredFromTheRight()
+{
+    Cur_VM->Send_Emulator_Command("mouse_move 1000 0\n");
+}
+
+void MachineView::on_MouseEnteredFromTheTop()
+{
+    Cur_VM->Send_Emulator_Command("mouse_move 0 -1000\n");
+}
+
+void MachineView::on_MouseEnteredFromTheBottom()
+{
+    Cur_VM->Send_Emulator_Command("mouse_move 0 1000\n");
 }
 
 void MachineView::Set_VNC_URL( const QString &host, int port )
@@ -107,7 +129,16 @@ void MachineView::initView()
 	View = new VncView( this, url );
 	View->start();
 	showSplash( false );
+
+    connectView();
 	
+	// This for auto reinit VNC
+	QTimer::singleShot( 1000, this, SLOT(Check_Connection()) );
+}
+
+
+void MachineView::connectView()
+{
 	connect( View, SIGNAL(connected()),
 			 this, SIGNAL(Connected()) );
 	
@@ -117,8 +148,11 @@ void MachineView::initView()
 	connect( View, SIGNAL(framebufferSizeChanged(int, int)),
 			 this, SLOT(newViewSize(int, int)) );
 	
-	// This for auto reinit VNC
-	QTimer::singleShot( 1000, this, SLOT(Check_Connection()) );
+
+    connect(View,SIGNAL(MouseEnteredFromTheLeft()),this,SLOT(on_MouseEnteredFromTheLeft()));
+    connect(View,SIGNAL(MouseEnteredFromTheRight()),this,SLOT(on_MouseEnteredFromTheRight()));
+    connect(View,SIGNAL(MouseEnteredFromTheTop()),this,SLOT(on_MouseEnteredFromTheTop()));
+    connect(View,SIGNAL(MouseEnteredFromTheBottom()),this,SLOT(on_MouseEnteredFromTheBottom()));
 }
 
 void MachineView::Check_Connection()
@@ -172,14 +206,7 @@ void MachineView::reinitVNC()
 		View->start();
 		showSplash( false );
 		
-		connect( View, SIGNAL(connected()),
-				 this, SIGNAL(Connected()) );
-		
-		connect( View, SIGNAL(connected()),
-				 this, SLOT(VNC_Connected_OK()) );
-		
-		connect( View, SIGNAL(framebufferSizeChanged(int, int)),
-				 this, SLOT(newViewSize(int, int)) );
+		connectView();
 	}
 	else
 	{
@@ -256,6 +283,12 @@ void MachineView::fullscreen( bool enable )
 void MachineView::captureAllKeys( bool enabled )
 {
 	View->setGrabAllKeys( enabled );
+}
+
+
+void MachineView::captureAllMouseEvents()
+{
+	View->grabMouse();
 }
 
 void MachineView::sendKey( QKeyEvent *event )

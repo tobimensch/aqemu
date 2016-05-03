@@ -50,10 +50,10 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	// Thanks HTML Text
 	ui.Edit_Thanks_To_Text->setHtml( tr(
 	"<b>Developers:</b>\n"
-	"<br>Andrey Rijov (aka RDron) - Author\n"
+	"<br>Andrey Rijov (aka RDron) - Original Author (Up until version 0.8.2)\n"
+	"<br>Tobias Gläßer - Maintainer/Developer (Version 0.9.0 and up)\n"
 	
 	"<br><br><b>Contributors:</b>\n"
-	"<br>Tobias Gläßer - Qt5 port\n"
 	"<br>Eli Carter - Sound card support patches\n"
 	"<br>Max Brazhnikov - FreeBSD Port\n"
 	"<br>Boris Savelev - ALTLinux Package\n"
@@ -84,13 +84,12 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	"<br>Ben Klopfenstein (benklop@gmail.com)\n"
 	
 	"<br><br><b>Icons:</b>\n"
-	"<br>Crystal SVG - Icon Theme From Everaldo.com Design Studio\n"
 	"<br>Oxygen - Icon Theme From Oxygen Team\n") );
 	
 	// Load Links
 	QSettings settings;
 	QFileInfo logFileDir( settings.fileName() );
-	linksFilePath = QDir::toNativeSeparators( logFileDir.absolutePath() + "/aqemu_links.html" );
+	linksFilePath = QDir::toNativeSeparators( logFileDir.absolutePath() + "/links.html" );
 	
 	Show_Links_File();
 }
@@ -135,9 +134,9 @@ void About_Window::Show_Links_File()
 	{
 		show_url = linksFilePath;
 	}
-	else if( QFile::exists(QDir::toNativeSeparators(settings.value("AQEMU_Data_Folder", "").toString() + "/aqemu_links.html")) )
+	else if( QFile::exists(QDir::toNativeSeparators(settings.value("AQEMU_Data_Folder", "").toString() + "/docs/links.html")) )
 	{
-		show_url = QDir::toNativeSeparators( settings.value("AQEMU_Data_Folder", "").toString() + "/aqemu_links.html" );
+		show_url = QDir::toNativeSeparators( settings.value("AQEMU_Data_Folder", "").toString() + "/docs/links.html" );
 	}
 	else
 	{
@@ -151,7 +150,7 @@ void About_Window::Show_Links_File()
 	if( ! links_file.open(QIODevice::ReadOnly | QIODevice::Text) )
 	{
 		AQError( "void About_Window::Show_Links_File()",
-				 "Cannot Open \"aqemu_links.html\" File!" );
+				 "Cannot Open \"docs/links.html\" File!" );
 		return;
 	}
 	else

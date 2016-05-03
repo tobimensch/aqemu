@@ -31,6 +31,8 @@
 #endif
 
 #include <QBitmap>
+#include <QEvent>
+#include <QEnterEvent>
 
 RemoteView::RemoteView(QWidget *parent)
         : QWidget(parent),
