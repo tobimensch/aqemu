@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author>Andrey Rijov</author>
+ <author>Andrey Rijov, 2016 Tobias Gläßer</author>
  <class>Advanced_Settings_Window</class>
  <widget class="QDialog" name="Advanced_Settings_Window">
   <property name="geometry">
