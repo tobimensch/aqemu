@@ -54,5 +54,8 @@
 	<file alias="audio-card.png">icons/oxygen/audio-card.png</file>
 	<file alias="preferences-system-network-sharing.png">icons/oxygen/preferences-system-network-sharing.png</file>
     <file alias="preferences-system-network.png">icons/oxygen/preferences-system-network.png</file>
+    <file alias="video-display.png">icons/oxygen/video-display.png</file>
+    <file
+    alias="preferences-desktop-display.png">icons/oxygen/preferences-desktop-display.png</file>
   </qresource>
 </RCC>
