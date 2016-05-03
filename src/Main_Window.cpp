@@ -153,7 +153,13 @@ Main_Window::Main_Window( QWidget *parent )
 	
 	Dev_Manager = new Device_Manager_Widget();
 	Folder_Sharing = new Folder_Sharing_Widget();
-	ui.TabWidget_Media->insertTab( 0, Folder_Sharing, QIcon(":/open-folder.png"), tr("Folder Sharing") );	
+	ui.TabWidget_Media->insertTab( 0, Folder_Sharing, QIcon(":/open-folder.png"), tr("Folder Sharing") );
+
+	ui.TabWidget_Media->insertTab( 0, Dev_Manager, QIcon(":/hdd.png"), tr("Device Manager") );
+    ui.TabWidget_Media->setCurrentWidget(Dev_Manager);
+
+    auto Media_Settings_Widget = new Settings_Widget( ui.TabWidget_Media, QBoxLayout::LeftToRight, true );
+    Media_Settings_Widget->setIconSize(QSize(32,32));
 	
 	// This For Network Redirections Table
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
@@ -1109,14 +1115,6 @@ bool Main_Window::Load_Settings()
 			
 			if( ui.Tabs->indexOf(ui.Tab_Removable_Disks) != -1 ) // delete
 				ui.Tabs->removeTab( ui.Tabs->indexOf(ui.Tab_Removable_Disks) );*/
-			
-			if( ui.TabWidget_Media->indexOf(Dev_Manager) == -1 ) // add
-            {
-				ui.TabWidget_Media->insertTab( 0, Dev_Manager, QIcon(":/hdd.png"), tr("Device Manager") );
-                ui.TabWidget_Media->setCurrentWidget(Dev_Manager);
-                auto Media_Settings_Widget = new Settings_Widget( ui.TabWidget_Media, QBoxLayout::LeftToRight, true );
-                Media_Settings_Widget->setIconSize(QSize(32,32));
-            }
 			
 			if( ui.Machines_List->count() > 0 ) Update_VM_Ui();
 		/*}
