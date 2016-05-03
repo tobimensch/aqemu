@@ -1847,7 +1847,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 	
 	// Machine State
 	if( Settings.value("Info/Machine_Details", "yes").toString() == "yes" )
-	{
+    {
 		cursor.insertText( tr("Machine Details"), bold_format );
 		cursor.insertBlock();
 		
@@ -1891,6 +1891,19 @@ void Main_Window::Update_Info_Text( int info_mode )
 		cell_cursor.insertText( state_text, format );
 		table->insertRows( table->rows(), 1 );
 	}
+    else
+    {
+		// this code is mainly here to prevent a segfault
+        // it's a temporary hack, since all of the code in this method
+        // should really be refactored/rewritten.
+		
+		table = cursor.insertTable( 1, 3, table_format );
+		frame = cursor.currentFrame();
+		
+		frame_format = frame->frameFormat();
+		frame_format.setBorder( 0 );
+		frame->setFrameFormat( frame_format );
+    }
 	
 	// General Tab
 	if( Settings.value("Info/Machine_Name", "no").toString() == "yes" ||
