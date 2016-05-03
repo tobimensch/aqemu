@@ -150,7 +150,7 @@ Main_Window::Main_Window( QWidget *parent )
 	VM_List_Menu->addAction( ui.actionCreate_HDD_Image );
 	
 	Ports_Tab = new Ports_Tab_Widget();
-	ui.Tabs->insertTab( 4, Ports_Tab, QIcon(":/usb.png"), tr("Ports") );
+	ui.TabWidget_Media->insertTab( 0, Ports_Tab, QIcon(":/usb.png"), tr("Computer Ports") );
 	
 	Dev_Manager = new Device_Manager_Widget();
 	Folder_Sharing = new Folder_Sharing_Widget();
