@@ -3605,6 +3605,7 @@ void Main_Window::Update_Emulator_Control( Virtual_Machine *cur_vm )
 				}
 
 				layout->addWidget( ui.VM_Information_Text );
+                layout->setContentsMargins(0,0,0,0);
 				ui.Tab_Info->setLayout( layout );
 			}
 		}

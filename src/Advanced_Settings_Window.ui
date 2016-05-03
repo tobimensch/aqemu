@@ -167,7 +167,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Find All Emulators</string>
+             <string>Find QEMU</string>
             </property>
             <property name="icon">
              <iconset resource="../resources/icons.qrc">
@@ -271,7 +271,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Use As Default</string>
+             <string>Set Default</string>
             </property>
             <property name="icon">
              <iconset resource="../resources/icons.qrc">
