@@ -1397,8 +1397,14 @@ VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const
 			break;
 	}
 	
-	// Model
-	card.Set_Card_Model( Card_Models_QEMU_Name[ui.CB_model->currentIndex()] );
+    if ( ui.CB_model->currentIndex() != -1 )
+    {
+        if ( Card_Models_QEMU_Name.count() - 1 >= ui.CB_model->currentIndex() )
+        {
+	        // Model
+	        card.Set_Card_Model( Card_Models_QEMU_Name[ui.CB_model->currentIndex()] );
+        }
+    }
 	
 	// MAC
 	card.Use_MAC_Address( ui.CH_macaddr->isChecked() );
