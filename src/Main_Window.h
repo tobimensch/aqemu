@@ -163,13 +163,15 @@ class Main_Window: public QMainWindow
 		const QMap<QString, Available_Devices> Get_Devices_Info( bool *ok ) const;
 		Available_Devices Get_Current_Machine_Devices( bool *ok ) const;
 		
-		bool Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm );
+		bool Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm, bool show_user_errors = true );
 		
 		bool Load_Settings();
 		bool Save_Settings();
+
+        void Discard_Changes(QDialog*);
 		
         void Change_The_Icon(Virtual_Machine*,QString);
-		void Update_VM_Ui();
+		void Update_VM_Ui( bool update_info_tab = true );
 		void Update_VM_Port_Number();
 		void Update_Info_Text( int info_mode = 0 );
 		void Update_Disabled_Controls();

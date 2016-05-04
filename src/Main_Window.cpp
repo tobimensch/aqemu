@@ -694,11 +694,12 @@ Available_Devices Main_Window::Get_Current_Machine_Devices( bool *ok ) const
 	return Available_Devices();
 }
 
-bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm )
+bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm, bool show_user_errors )
 {
 	if( old_vm == NULL )
 	{
-		AQError( "bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm )",
+        if ( show_user_errors )
+    		AQError( "bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm )",
 				 "old_vm == NULL" );
 		return false;
 	}
@@ -712,7 +713,8 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// Machine Name
 	if( ui.Edit_Machine_Name->text().isEmpty() )
 	{
-		AQGraphic_Warning( tr("Error!"), tr("VM Name is Empty!") );
+        if ( show_user_errors )
+    		AQGraphic_Warning( tr("Error!"), tr("VM Name is Empty!") );
 		return false;
 	}
 	else
@@ -760,7 +762,10 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	tmp_vm->Set_Emulator( tmp_emul );
 	
 	// Video
-	tmp_vm->Set_Video_Card( curComp.Video_Card_List[ui.CB_Video_Card->currentIndex()].QEMU_Name );
+    if ( ui.CB_Video_Card->currentIndex() != -1 )
+    {
+    	tmp_vm->Set_Video_Card( curComp.Video_Card_List[ui.CB_Video_Card->currentIndex()].QEMU_Name );
+    }
 	
 	// CPU Count
 	if( ! Validate_CPU_Count(ui.CB_CPU_Count->currentText()) ) return false;
@@ -901,7 +906,8 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// Redirections List
 	if( ui.CH_Redirections->isChecked() && ui.Redirections_List->rowCount() < 1 )
 	{
-		AQGraphic_Warning( tr("Error!"), tr("Redirection List is Empty! Please Disable Redirections!") );
+        if ( show_user_errors )
+    		AQGraphic_Warning( tr("Error!"), tr("Redirection List is Empty! Please Disable Redirections!") );
 		return false;
 	}
 	
@@ -1024,7 +1030,8 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 			break;
 			
 		default:
-			AQError( "bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, QListWidgetItem *item )",
+            if ( show_user_errors )
+    			AQError( "bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, QListWidgetItem *item )",
 					 "Initial Graphical Mode: Default Section!" );
 			tmp_mode.Set_Depth( 24 );
 			break;
@@ -1295,7 +1302,7 @@ bool Main_Window::Save_Virtual_Machines()
 	return true;
 }
 
-void Main_Window::Update_VM_Ui()
+void Main_Window::Update_VM_Ui(bool update_info_tab)
 {
 	AQDebug( "void Main_Window::Update_VM_Ui()", "Begin" );
 	
@@ -1737,7 +1744,8 @@ void Main_Window::Update_VM_Ui()
 	// x509 Folder
 	ui.Edit_x509verify_Folder->setText( tmp_vm->Get_VNC_x509verify_Folder_Path() );
 
-	Update_Info_Text();
+    if ( update_info_tab )
+    	Update_Info_Text();
 	//Update_Disabled_Controls(); // FIXME
 	
 	// For VM Changes Signals
@@ -3381,10 +3389,6 @@ void Main_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_State s )
 
 void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)
 {
-    AQDebug("void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)", "Try to change icon");
-    AQDebug("void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)", _icon);
-
-
     //find QListWidgetItem in ui.Machines_List matching the vm
     QString name = vm->Get_Machine_Name();
     int i = 0;
@@ -5567,17 +5571,41 @@ void Main_Window::on_TB_Show_Boot_Settings_Window_clicked()
 
 void Main_Window::on_TB_Show_Accelerator_Options_Window_clicked()
 {
-    Accelerator_Options->exec();
+    Discard_Changes ( Accelerator_Options );
 }
 
 void Main_Window::on_TB_Show_Architecture_Options_Window_clicked()
 {
-    Architecture_Options->exec();
+    Discard_Changes ( Architecture_Options );
+}
+
+void Main_Window::Discard_Changes(QDialog* dialog)
+{
+    auto old_vm = Get_Current_VM();
+    Virtual_Machine old_vm_copy(*old_vm);
+    Virtual_Machine tmp_vm;
+    bool ok = Create_VM_From_Ui(&tmp_vm, old_vm, false);
+    bool a = ui.Button_Apply->isEnabled();
+    bool c = ui.Button_Cancel->isEnabled();
+
+    if ( dialog->exec() == QDialog::Accepted )
+        return;
+
+    if ( ok )
+    {
+        *old_vm = tmp_vm;
+        Update_VM_Ui(false);
+
+        *old_vm = old_vm_copy;
+
+	    ui.Button_Apply->setEnabled( a );
+	    ui.Button_Cancel->setEnabled( c );
+    }
 }
 
 void Main_Window::on_TB_Show_Advanced_Options_Window_clicked()
 {
-    Advanced_Options->exec();
+    Discard_Changes ( Advanced_Options );
 }
 
 void Main_Window::on_TB_Show_SMP_Settings_Window_clicked()
