@@ -90,7 +90,7 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	
 	ui.CH_Machine_Details->setChecked( Settings.value("Info/Machine_Details", "yes").toString() == "yes" );
 	
-	ui.CH_Machine_Name->setChecked( Settings.value("Info/Machine_Name", "no").toString() == "yes" );
+	ui.CH_Machine_Name->setChecked( Settings.value("Info/Machine_Name", "yes").toString() == "yes" );
 	ui.CH_Machine_Accelerator->setChecked( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" );
 	ui.CH_Computer_Type->setChecked( Settings.value("Info/Computer_Type", "yes").toString() == "yes" );
 	ui.CH_Machine_Type->setChecked( Settings.value("Info/Machine_Type", "no").toString() == "yes" );
@@ -488,7 +488,7 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 	
 	Settings.setValue( "Info/Machine_Details", ui.CH_Machine_Details->isChecked() ? "yes" : "no" );
 	
-	Settings.setValue( "Info/Machine_Name", ui.CH_Machine_Name->isChecked() ? "no" : "no" );
+	Settings.setValue( "Info/Machine_Name", ui.CH_Machine_Name->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/Machine_Accelerator", ui.CH_Machine_Accelerator->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/Computer_Type", ui.CH_Computer_Type->isChecked() ? "yes" : "no" );
 	Settings.setValue( "Info/Machine_Type", ui.CH_Machine_Type->isChecked() ? "yes" : "no" );

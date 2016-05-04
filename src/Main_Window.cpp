@@ -1860,7 +1860,8 @@ void Main_Window::Update_Info_Text( int info_mode )
 	// Machine State
 	if( Settings.value("Info/Machine_Details", "yes").toString() == "yes" )
     {
-		cursor.insertText( tr("Machine Details"), bold_format );
+
+		cursor.insertText( tr("Machine"), bold_format );
 		cursor.insertBlock();
 		
 		table = cursor.insertTable( 1, 3, table_format );
@@ -1869,10 +1870,22 @@ void Main_Window::Update_Info_Text( int info_mode )
 		frame_format = frame->frameFormat();
 		frame_format.setBorder( 0 );
 		frame->setFrameFormat( frame_format );
+
+		if( Settings.value("Info/Machine_Name", "yes").toString() == "yes" )
+		{
+			cell = table->cellAt( table->rows()-1, 1 );
+			cell_cursor = cell.firstCursorPosition();
+			cell_cursor.insertText( tr("Name:"), format );
+			
+			cell = table->cellAt( table->rows()-1, 2 );
+			cell_cursor = cell.firstCursorPosition();
+			cell_cursor.insertText( ui.Edit_Machine_Name->text(), format );
+			table->insertRows( table->rows(), 1 );
+		}
 		
 		cell = table->cellAt( table->rows()-1, 1 );
 		cell_cursor = cell.firstCursorPosition();
-		cell_cursor.insertText( tr("Machine State:"), format );
+		cell_cursor.insertText( tr("State:"), format );
 		
 		QString state_text = "";
 		switch( tmp_vm->Get_State() )
@@ -1918,8 +1931,7 @@ void Main_Window::Update_Info_Text( int info_mode )
     }
 	
 	// General Tab
-	if( Settings.value("Info/Machine_Name", "no").toString() == "yes" ||
-		Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" ||
+	if( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" ||
 		Settings.value("Info/Emulator_Version", "no").toString() == "yes" ||
 		Settings.value("Info/Computer_Type", "yes").toString() == "yes" ||
 		Settings.value("Info/Machine_Type", "no").toString() == "yes" ||
@@ -1943,18 +1955,6 @@ void Main_Window::Update_Info_Text( int info_mode )
 		frame = cursor.currentFrame();
 		frame->setFrameFormat( frame_format );
 		
-		if( Settings.value("Info/Machine_Name", "no").toString() == "yes" )
-		{
-			cell = table->cellAt( table->rows()-1, 1 );
-			cell_cursor = cell.firstCursorPosition();
-			cell_cursor.insertText( tr("Machine Name:"), format );
-			
-			cell = table->cellAt( table->rows()-1, 2 );
-			cell_cursor = cell.firstCursorPosition();
-			cell_cursor.insertText( ui.Edit_Machine_Name->text(), format );
-			table->insertRows( table->rows(), 1 );
-		}
-		
 		if( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" )
 		{
 			cell = table->cellAt( table->rows()-1, 1 );
@@ -1971,7 +1971,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 		{
 			cell = table->cellAt( table->rows()-1, 1 );
 			cell_cursor = cell.firstCursorPosition();
-			cell_cursor.insertText( tr("Computer Type:"), format );
+			cell_cursor.insertText( tr("Architecture:"), format );
 			
 			cell = table->cellAt( table->rows()-1, 2 );
 			cell_cursor = cell.firstCursorPosition();
