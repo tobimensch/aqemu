@@ -167,6 +167,8 @@ Main_Window::Main_Window( QWidget *parent )
     Ports_Tab->syncLayout(Dev_Manager);
     ////
 
+    auto Network_Settings_Widget = new Settings_Widget( ui.Network_Cards_Tabs, QBoxLayout::LeftToRight, true );
+    Network_Settings_Widget->setIconSize(QSize(32,32));
 
 	// This For Network Redirections Table
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
@@ -5724,15 +5726,15 @@ void Main_Window::on_CH_Use_Network_toggled( bool on )
 
 void Main_Window::on_RB_Network_Mode_New_toggled( bool on )
 {
-	while( ui.Network_Cards_Tabs->count() > 1 )
-		ui.Network_Cards_Tabs->removeTab( 0 );
+	while( ui.Stack_Network_Basic_And_Native->count() > 0 )
+		ui.Stack_Network_Basic_And_Native->removeWidget( ui.Stack_Network_Basic_And_Native->widget(0) );
 	
 	if( on )
-		ui.Network_Cards_Tabs->insertTab( 0, New_Network_Settings_Widget, QIcon(":/preferences-system-network-sharing.png"), tr("Network Settings") );
+		ui.Stack_Network_Basic_And_Native->insertWidget( 0, New_Network_Settings_Widget );
 	else
-		ui.Network_Cards_Tabs->insertTab( 0, Old_Network_Settings_Widget, QIcon(":/audio-card.png"), tr("Network Cards") );
+		ui.Stack_Network_Basic_And_Native->insertWidget( 0, Old_Network_Settings_Widget );
 	
-	ui.Network_Cards_Tabs->setCurrentIndex( 0 );
+	ui.Stack_Network_Basic_And_Native->setCurrentIndex( 0 );
 }
 
 void Main_Window::on_Redirections_List_cellClicked ( int row, int column )

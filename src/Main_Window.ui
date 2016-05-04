@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>824</width>
-    <height>609</height>
+    <width>896</width>
+    <height>579</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -2182,121 +2182,22 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_20">
             <item row="0" column="0">
-             <widget class="QWidget" name="Widget_Use_Network" native="true">
-              <layout class="QHBoxLayout" name="horizontalLayout_5">
-               <property name="leftMargin">
-                <number>0</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>0</number>
-               </property>
-               <item>
-                <widget class="QCheckBox" name="CH_Use_Network">
-                 <property name="text">
-                  <string>Use &amp;network</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer_22">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>132</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item>
-                <widget class="QWidget" name="Widget_Network_Mode" native="true">
-                 <layout class="QHBoxLayout" name="horizontalLayout_4">
-                  <property name="leftMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="topMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="rightMargin">
-                   <number>0</number>
-                  </property>
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="Label_Network_Settings_Type">
-                    <property name="text">
-                     <string>Network settings GUI type:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_23">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                     <enum>QSizePolicy::Fixed</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>13</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="RB_Network_Mode_Old">
-                    <property name="text">
-                     <string>&amp;Basic</string>
-                    </property>
-                    <property name="checked">
-                     <bool>true</bool>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QRadioButton" name="RB_Network_Mode_New">
-                    <property name="text">
-                     <string>&amp;Native</string>
-                    </property>
-                    <property name="checked">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item row="2" column="0">
              <widget class="QTabWidget" name="Network_Cards_Tabs">
               <property name="currentIndex">
                <number>0</number>
               </property>
-              <widget class="QWidget" name="Tab_Network_Settings">
+              <widget class="QWidget" name="Tab_Network_Basic_Native">
                <attribute name="icon">
                 <iconset resource="../resources/icons.qrc">
-                 <normaloff>:/preferences-system-network.png</normaloff>:/preferences-system-network.png</iconset>
+                 <normaloff>:/audio-card.png</normaloff>:/audio-card.png</iconset>
                </attribute>
                <attribute name="title">
-                <string>Additional Settings</string>
+                <string>Network</string>
                </attribute>
-               <layout class="QGridLayout" name="gridLayout_16">
-                <item row="0" column="0" colspan="2">
-                 <widget class="QWidget" name="Widget_Redirection_CheckBox" native="true">
-                  <layout class="QHBoxLayout" name="horizontalLayout_15">
+               <layout class="QGridLayout" name="gridLayout_14">
+                <item row="0" column="0">
+                 <widget class="QWidget" name="Widget_Use_Network" native="true">
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
                    <property name="leftMargin">
                     <number>0</number>
                    </property>
@@ -2310,29 +2211,120 @@
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QCheckBox" name="CH_Redirections">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
+                    <widget class="QCheckBox" name="CH_Use_Network">
                      <property name="text">
-                      <string>&amp;Redirections</string>
+                      <string>Use &amp;network</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="Line" name="line_11">
+                    <spacer name="horizontalSpacer_22">
                      <property name="orientation">
                       <enum>Qt::Horizontal</enum>
                      </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>200</width>
+                       <height>17</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="Widget_Network_Mode" native="true">
+                     <layout class="QHBoxLayout" name="horizontalLayout_4">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="Label_Network_Settings_Type">
+                        <property name="text">
+                         <string>Network settings GUI type:</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_23">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Fixed</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>13</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QRadioButton" name="RB_Network_Mode_Old">
+                        <property name="text">
+                         <string>&amp;Basic</string>
+                        </property>
+                        <property name="checked">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QRadioButton" name="RB_Network_Mode_New">
+                        <property name="text">
+                         <string>&amp;Native</string>
+                        </property>
+                        <property name="checked">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
                  </widget>
                 </item>
                 <item row="1" column="0">
+                 <widget class="Line" name="line_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QStackedWidget" name="Stack_Network_Basic_And_Native">
+                  <widget class="QWidget" name="page"/>
+                  <widget class="QWidget" name="page_2"/>
+                 </widget>
+                </item>
+               </layout>
+               <zorder>CH_Use_Network</zorder>
+               <zorder>horizontalSpacer_22</zorder>
+               <zorder>Label_Network_Settings_Type</zorder>
+               <zorder>Widget_Use_Network</zorder>
+               <zorder>line_4</zorder>
+               <zorder>Stack_Network_Basic_And_Native</zorder>
+              </widget>
+              <widget class="QWidget" name="Tab_Network_Settings">
+               <attribute name="icon">
+                <iconset resource="../resources/icons.qrc">
+                 <normaloff>:/preferences-system-network-sharing.png</normaloff>:/preferences-system-network-sharing.png</iconset>
+               </attribute>
+               <attribute name="title">
+                <string>Redirections</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_16">
+                <item row="3" column="0">
                  <widget class="QTableWidget" name="Redirections_List">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -2386,7 +2378,7 @@
                   </column>
                  </widget>
                 </item>
-                <item row="1" column="1">
+                <item row="3" column="1">
                  <widget class="QWidget" name="Widget_Redirection_Buttons" native="true">
                   <layout class="QVBoxLayout" name="verticalLayout_6">
                    <property name="leftMargin">
@@ -2477,7 +2469,7 @@
                   </layout>
                  </widget>
                 </item>
-                <item row="2" column="0" colspan="2">
+                <item row="4" column="0" colspan="2">
                  <widget class="QWidget" name="Redirection_Widget" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -2674,7 +2666,7 @@
                   </layout>
                  </widget>
                 </item>
-                <item row="4" column="0" colspan="2">
+                <item row="6" column="0" colspan="2">
                  <widget class="QWidget" name="Widget_Network_Other" native="true">
                   <layout class="QVBoxLayout" name="verticalLayout_19">
                    <property name="leftMargin">
@@ -2689,90 +2681,10 @@
                    <property name="bottomMargin">
                     <number>0</number>
                    </property>
-                   <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout">
-                     <item>
-                      <widget class="QLabel" name="Label_Other_Network_Options">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="text">
-                        <string>Other Network Settings</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="Line" name="line_5">
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>20</height>
-                        </size>
-                       </property>
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
-                   <item>
-                    <layout class="QGridLayout" name="gridLayout_3">
-                     <property name="leftMargin">
-                      <number>10</number>
-                     </property>
-                     <item row="0" column="0">
-                      <widget class="QLabel" name="Label_TFTP">
-                       <property name="text">
-                        <string>TFTP server prefi&amp;x:</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                       </property>
-                       <property name="buddy">
-                        <cstring>Edit_TFTP_Prefix</cstring>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="0" column="1">
-                      <widget class="QLineEdit" name="Edit_TFTP_Prefix"/>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="QLabel" name="Label_SMB_Folder">
-                       <property name="text">
-                        <string>Allow &amp;SMB access to:</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                       </property>
-                       <property name="buddy">
-                        <cstring>Edit_SMB_Folder</cstring>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="QLineEdit" name="Edit_SMB_Folder"/>
-                     </item>
-                     <item row="1" column="2">
-                      <widget class="QToolButton" name="TB_Browse_SMB">
-                       <property name="text">
-                        <string>...</string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="../resources/icons.qrc">
-                         <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
-                       </property>
-                      </widget>
-                     </item>
-                    </layout>
-                   </item>
                   </layout>
                  </widget>
                 </item>
-                <item row="3" column="0">
+                <item row="5" column="0">
                  <spacer name="verticalSpacer_17">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -2788,15 +2700,120 @@
                   </property>
                  </spacer>
                 </item>
+                <item row="0" column="0">
+                 <widget class="QWidget" name="Widget_Redirection_CheckBox" native="true">
+                  <layout class="QHBoxLayout" name="horizontalLayout_15">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="2">
+                 <widget class="Line" name="line_11">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QCheckBox" name="CH_Redirections">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Enable &amp;Redirections</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="Line" name="line_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
+              <widget class="QWidget" name="Tab_Network_TFTP_SAMBA">
+               <attribute name="icon">
+                <iconset resource="../resources/icons.qrc">
+                 <normaloff>:/connect.png</normaloff>:/connect.png</iconset>
+               </attribute>
+               <attribute name="title">
+                <string>TFTP/SAMBA</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_15">
+                <item row="0" column="0">
+                 <layout class="QGridLayout" name="gridLayout_3">
+                  <property name="leftMargin">
+                   <number>10</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="Label_TFTP">
+                    <property name="text">
+                     <string>TFTP server prefi&amp;x:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="buddy">
+                     <cstring>Edit_TFTP_Prefix</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QLineEdit" name="Edit_TFTP_Prefix"/>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="Label_SMB_Folder">
+                    <property name="text">
+                     <string>Allow &amp;SMB access to:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    </property>
+                    <property name="buddy">
+                     <cstring>Edit_SMB_Folder</cstring>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QLineEdit" name="Edit_SMB_Folder"/>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QToolButton" name="TB_Browse_SMB">
+                    <property name="text">
+                     <string>...</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resources/icons.qrc">
+                      <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="0">
+                 <spacer name="verticalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>118</width>
+                    <height>513</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -2874,7 +2891,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>824</width>
+     <width>896</width>
      <height>27</height>
     </rect>
    </property>
@@ -3308,9 +3325,6 @@
   <tabstop>SB_Redir_Port</tabstop>
   <tabstop>Edit_Guest_IP</tabstop>
   <tabstop>SB_Guest_Port</tabstop>
-  <tabstop>Edit_TFTP_Prefix</tabstop>
-  <tabstop>Edit_SMB_Folder</tabstop>
-  <tabstop>TB_Browse_SMB</tabstop>
   <tabstop>CH_No_Frame</tabstop>
   <tabstop>CH_Alt_Grab</tabstop>
   <tabstop>CH_No_Quit</tabstop>
@@ -3385,70 +3399,6 @@
     <hint type="destinationlabel">
      <x>598</x>
      <y>392</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Redirections</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Redirection_Widget</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>344</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>598</x>
-     <y>527</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Use_Network</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Widget_Network_Mode</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>335</x>
-     <y>129</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>745</x>
-     <y>129</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Redirections</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Widget_Redirection_Buttons</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>344</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>847</x>
-     <y>352</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Redirections</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Redirections_List</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>344</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>535</x>
-     <y>352</y>
     </hint>
    </hints>
   </connection>
@@ -3721,6 +3671,70 @@
     <hint type="destinationlabel">
      <x>892</x>
      <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Redirections</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Redirection_Widget</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>598</x>
+     <y>527</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Use_Network</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Widget_Network_Mode</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>335</x>
+     <y>129</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>745</x>
+     <y>129</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Redirections</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Widget_Redirection_Buttons</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>847</x>
+     <y>352</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Redirections</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Redirections_List</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>344</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>535</x>
+     <y>352</y>
     </hint>
    </hints>
   </connection>
