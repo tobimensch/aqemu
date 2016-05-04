@@ -3565,8 +3565,23 @@ void Main_Window::Set_Widgets_State( bool enabled )
 
 void Main_Window::VM_Changed()
 {
-	ui.Button_Apply->setEnabled( true );
-	ui.Button_Cancel->setEnabled( true );
+    // check if there's really a change compared
+    // to the current VM /(and saved VM file)
+    auto old_vm = Get_Current_VM();
+
+    if ( old_vm != nullptr )
+    {
+        auto tmp_vm = new Virtual_Machine();    
+
+        Create_VM_From_Ui(tmp_vm,old_vm,false);
+
+        bool test = ( *old_vm != *tmp_vm );
+
+	    ui.Button_Apply->setEnabled( test );
+	    ui.Button_Cancel->setEnabled( test );
+
+        delete tmp_vm;
+    }
 }
 
 // FIXME This code be rewrited in future. Delete and create new tabs/layouts not optimal way
