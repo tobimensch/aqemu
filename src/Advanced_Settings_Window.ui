@@ -12,7 +12,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Advanced Settings</string>
+   <string>AQEMU Settings</string>
   </property>
   <property name="windowIcon">
    <iconset resource="../resources/icons.qrc">
@@ -1745,7 +1745,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>639</width>
+            <width>449</width>
             <height>734</height>
            </rect>
           </property>
