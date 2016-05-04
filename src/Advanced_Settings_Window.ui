@@ -7,9 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>695</width>
-    <height>692</height>
+    <width>673</width>
+    <height>745</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>AQEMU Settings</string>
@@ -35,24 +41,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -61,7 +52,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="All_Tabs">
      <property name="currentIndex">
-      <number>5</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="Tab_General">
       <attribute name="icon">
@@ -72,87 +63,6 @@
        <string>Emulator</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0" colspan="2">
-        <widget class="QLabel" name="Label_Installed_Emulators">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;QEMU needs to be available on the system: &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ed1f1f;&quot;&gt;Required!&lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#000000;&quot;&gt;)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" colspan="2">
-        <widget class="Line" name="line_11">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" rowspan="2">
-        <widget class="QTableWidget" name="Emulators_Table">
-         <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
-         </property>
-         <property name="verticalScrollMode">
-          <enum>QAbstractItemView::ScrollPerPixel</enum>
-         </property>
-         <property name="horizontalScrollMode">
-          <enum>QAbstractItemView::ScrollPerPixel</enum>
-         </property>
-         <attribute name="horizontalHeaderCascadingSectionResizes">
-          <bool>true</bool>
-         </attribute>
-         <attribute name="horizontalHeaderDefaultSectionSize">
-          <number>130</number>
-         </attribute>
-         <attribute name="horizontalHeaderStretchLastSection">
-          <bool>true</bool>
-         </attribute>
-         <attribute name="verticalHeaderVisible">
-          <bool>false</bool>
-         </attribute>
-         <column>
-          <property name="text">
-           <string>Name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Version</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Path</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Default</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>226</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="2" column="1">
         <widget class="QWidget" name="widget" native="true">
          <property name="sizePolicy">
@@ -295,6 +205,80 @@
          </layout>
         </widget>
        </item>
+       <item row="2" column="0" rowspan="2">
+        <widget class="QTableWidget" name="Emulators_Table">
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="verticalScrollMode">
+          <enum>QAbstractItemView::ScrollPerPixel</enum>
+         </property>
+         <property name="horizontalScrollMode">
+          <enum>QAbstractItemView::ScrollPerPixel</enum>
+         </property>
+         <attribute name="horizontalHeaderCascadingSectionResizes">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>130</number>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <column>
+          <property name="text">
+           <string>Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Version</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Path</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Default</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>226</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="6" column="0" colspan="2" alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="Label_Installed_Emulators">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;QEMU needs to be installed [&lt;/span&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#ed1f1f;&quot;&gt;Required&lt;/span&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
@@ -312,81 +296,92 @@
           <string>Basic Settings</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
-          <property name="leftMargin">
-           <number>10</number>
-          </property>
           <item row="0" column="0">
-           <widget class="QLabel" name="Label_VM_Folder">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+           <layout class="QGridLayout" name="gridLayout_6" columnstretch="1,2,0">
+            <property name="leftMargin">
+             <number>10</number>
             </property>
-            <property name="text">
-             <string>AQEMU VM folder:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="Edit_VM_Folder"/>
-          </item>
-          <item row="0" column="2">
-           <widget class="QToolButton" name="TB_VM_Folder">
-            <property name="text">
-             <string>...</string>
-            </property>
-            <property name="icon">
-             <iconset resource="../resources/icons.qrc">
-              <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="Label_Default_VM_Template">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>&amp;Default VM template:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-            <property name="buddy">
-             <cstring>CB_Default_VM_Template</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QComboBox" name="CB_Default_VM_Template">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QToolButton" name="Button_Create_Template_from_VM">
-            <property name="toolTip">
-             <string>Create Template</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../resources/icons.qrc">
-              <normaloff>:/add.png</normaloff>:/add.png</iconset>
-            </property>
-           </widget>
+            <item row="0" column="0">
+             <widget class="QLabel" name="Label_VM_Folder">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>AQEMU VM folder:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="CB_Default_VM_Template">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLabel" name="Label_Default_VM_Template">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>&amp;Default VM template:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="buddy">
+               <cstring>CB_Default_VM_Template</cstring>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLineEdit" name="Edit_VM_Folder">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QToolButton" name="TB_VM_Folder">
+              <property name="text">
+               <string>...</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources/icons.qrc">
+                <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QToolButton" name="Button_Create_Template_from_VM">
+              <property name="toolTip">
+               <string>Create Template</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="../resources/icons.qrc">
+                <normaloff>:/add.png</normaloff>:/add.png</iconset>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -398,14 +393,14 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <layout class="QGridLayout" name="gridLayout_10">
+           <layout class="QGridLayout" name="gridLayout_10" rowstretch="1,2,0,0,0,0" columnstretch="1,2,0,0">
             <property name="leftMargin">
              <number>10</number>
             </property>
             <item row="0" column="0">
              <widget class="QLabel" name="Label_Language">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -418,114 +413,120 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="Label_VM_Icons_Size">
-              <property name="text">
-               <string>VM icon size:</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="CB_VM_Icons_Size">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="currentIndex">
-               <number>4</number>
-              </property>
-              <item>
-               <property name="text">
-                <string>16x16</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>24x24</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>32x32</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>48x48</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>64x64</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QComboBox" name="CB_Language">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <item>
-               <property name="text">
-                <string>English</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <spacer name="horizontalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="4" column="1" colspan="2">
-             <widget class="QCheckBox" name="CH_Screenshot_for_OS_Logo">
-              <property name="text">
-               <string>Use screenshot for OS icon in save mode</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1" rowspan="2" colspan="2">
+            <item row="4" column="1" rowspan="2" colspan="2">
              <widget class="QCheckBox" name="CH_Use_New_Device_Changer">
               <property name="text">
                <string>New removable device menu</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
-             <spacer name="horizontalSpacer_6">
+            <item row="3" column="1" colspan="2">
+             <widget class="QCheckBox" name="CH_Screenshot_for_OS_Logo">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>Use screenshot as VM icon</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1" colspan="2">
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QComboBox" name="CB_Language">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>English</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="Label_VM_Icons_Size">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>VM icon size:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="CB_VM_Icons_Size">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="currentIndex">
+                 <number>4</number>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>16x16</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>24x24</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>32x32</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>48x48</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>64x64</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item row="0" column="3">
+             <spacer name="horizontalSpacer_4">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::MinimumExpanding</enum>
+              </property>
               <property name="sizeHint" stdset="0">
                <size>
-                <width>40</width>
-                <height>20</height>
+                <width>24</width>
+                <height>24</height>
                </size>
               </property>
              </spacer>
             </item>
-            <item row="7" column="2">
-             <spacer name="horizontalSpacer_7">
+            <item row="2" column="1">
+             <spacer name="horizontalSpacer_5">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -545,49 +546,94 @@
        <item>
         <widget class="QGroupBox" name="groupBox_5">
          <property name="title">
-          <string>Virtual Machine User Interface</string>
+          <string>VM User Interface</string>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_3">
+           <layout class="QGridLayout" name="gridLayout_11" rowstretch="1,0,0,0,0" columnstretch="1,2,0">
             <property name="leftMargin">
              <number>10</number>
             </property>
-            <item>
-             <widget class="QRadioButton" name="RB_Emul_Show_Window">
+            <item row="1" column="1">
+             <widget class="QRadioButton" name="RB_Emul_Show_VNC">
               <property name="text">
-               <string>Show in separa&amp;te windows</string>
+               <string>Embedded in VM window</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QRadioButton" name="RB_Emul_No_Show">
+              <property name="text">
+               <string>&amp;None</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QRadioButton" name="RB_Emul_Show_Window">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>1</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>In separa&amp;te windows</string>
               </property>
               <property name="checked">
                <bool>true</bool>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QRadioButton" name="RB_Emul_Show_VNC">
-              <property name="text">
-               <string>Show in window with embedded displa&amp;y</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="RB_Emul_Show_In_Main_Window">
-              <property name="text">
-               <string>Show in A&amp;QEMU main window</string>
-              </property>
-             </widget>
-            </item>
-            <item>
+            <item row="3" column="1">
              <widget class="QRadioButton" name="RB_Emul_Show_VNC_In_Main_Window">
               <property name="text">
-               <string>Show in AQEM&amp;U main window with embedded display</string>
+               <string>In AQEM&amp;U main window
+with embedded display</string>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QRadioButton" name="RB_Emul_No_Show">
+            <item row="0" column="0">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Minimum</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="0" column="2">
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="2" column="1">
+             <widget class="QRadioButton" name="RB_Emul_Show_In_Main_Window">
               <property name="text">
-               <string>&amp;None</string>
+               <string>In A&amp;QEMU main window</string>
               </property>
              </widget>
             </item>
@@ -908,11 +954,20 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_13">
+             <spacer name="verticalSpacer_2">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Vertical</enum>
               </property>
-             </widget>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>8</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_22">
@@ -952,11 +1007,20 @@
              </layout>
             </item>
             <item>
-             <widget class="Line" name="line_14">
+             <spacer name="verticalSpacer_6">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Vertical</enum>
               </property>
-             </widget>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>8</height>
+               </size>
+              </property>
+             </spacer>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_13">
@@ -1131,19 +1195,6 @@
         </widget>
        </item>
        <item>
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>48</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
         <spacer name="verticalSpacer_5">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -1155,24 +1206,6 @@
           </size>
          </property>
         </spacer>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="Line" name="line_27">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_16">
-         <property name="leftMargin">
-          <number>10</number>
-         </property>
-        </layout>
        </item>
       </layout>
      </widget>
@@ -1258,12 +1291,18 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
-             <layout class="QGridLayout" name="gridLayout_3">
+             <layout class="QGridLayout" name="gridLayout_3" columnstretch="3,4,0">
               <property name="leftMargin">
                <number>10</number>
               </property>
               <item row="0" column="0">
                <widget class="QLabel" name="Label_Before_Start">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="text">
                  <string>E&amp;xecute before starting QEMU:</string>
                 </property>
@@ -1276,7 +1315,14 @@
                </widget>
               </item>
               <item row="0" column="1">
-               <widget class="QLineEdit" name="Edit_Before_Start_Command"/>
+               <widget class="QLineEdit" name="Edit_Before_Start_Command">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+               </widget>
               </item>
               <item row="0" column="2">
                <widget class="QToolButton" name="TB_Browse_Before">
@@ -1291,6 +1337,12 @@
               </item>
               <item row="1" column="0">
                <widget class="QLabel" name="Label_After_Stop">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
                 <property name="text">
                  <string>Execute after stopping &amp;QEMU:</string>
                 </property>
@@ -1332,100 +1384,11 @@
            </property>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <layout class="QGridLayout" name="gridLayout_8">
+             <layout class="QGridLayout" name="gridLayout_8" rowstretch="0,0,0,0" columnstretch="3,4,0">
               <property name="leftMargin">
                <number>10</number>
               </property>
-              <item row="0" column="0">
-               <widget class="QLabel" name="Label_Recent_CD_Count">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Recent CD-ROM images count:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QSpinBox" name="SB_Recent_CD_Count">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimum">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <number>10</number>
-                </property>
-                <property name="value">
-                 <number>5</number>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="Label_Recent_FDD_Count">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>Recent flopp&amp;y images count:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-                <property name="buddy">
-                 <cstring>SB_Recent_FDD_Count</cstring>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QSpinBox" name="SB_Recent_FDD_Count">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimum">
-                 <number>1</number>
-                </property>
-                <property name="maximum">
-                 <number>10</number>
-                </property>
-                <property name="value">
-                 <number>5</number>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="Label_First_VNC_Port">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="text">
-                 <string>First VNC port for embedded display:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="1">
+              <item row="0" column="1" alignment="Qt::AlignLeft">
                <widget class="QSpinBox" name="SB_First_VNC_Port">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
@@ -1444,54 +1407,7 @@
                 </property>
                </widget>
               </item>
-              <item row="0" column="2">
-               <spacer name="horizontalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item row="3" column="0">
-               <widget class="QLabel" name="label">
-                <property name="text">
-                 <string>qemu-img path:</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="1" colspan="2">
-               <layout class="QHBoxLayout" name="horizontalLayout_24">
-                <property name="spacing">
-                 <number>4</number>
-                </property>
-                <property name="leftMargin">
-                 <number>10</number>
-                </property>
-                <item>
-                 <widget class="QLineEdit" name="Edit_QEMU_IMG_Path"/>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="TB_QEMU_IMG_Browse">
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="../resources/icons.qrc">
-                    <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item row="4" column="1">
+              <item row="2" column="1">
                <widget class="QCheckBox" name="CH_Audio_Default">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -1504,7 +1420,33 @@
                 </property>
                </widget>
               </item>
-              <item row="5" column="1">
+              <item row="1" column="0">
+               <widget class="QLabel" name="label">
+                <property name="text">
+                 <string>qemu-img path:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="Label_First_VNC_Port">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>First embedded VNC port:</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_2">
                 <item>
                  <widget class="QLabel" name="Label_Host_Sound_System">
@@ -1577,6 +1519,46 @@
                  </widget>
                 </item>
                </layout>
+              </item>
+              <item row="0" column="2">
+               <spacer name="horizontalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Fixed</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>24</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_24">
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QLineEdit" name="Edit_QEMU_IMG_Path"/>
+                </item>
+               </layout>
+              </item>
+              <item row="1" column="2">
+               <widget class="QToolButton" name="TB_QEMU_IMG_Browse">
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="../resources/icons.qrc">
+                  <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -1706,36 +1688,16 @@
        <string>Info Tab</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_9">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="CH_Show_Tab_Info">
+       <item row="1" column="0">
+        <widget class="QScrollArea" name="QEMU_Args_Widget">
          <property name="enabled">
           <bool>true</bool>
          </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
          </property>
-         <property name="text">
-          <string>Enable info tab</string>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="Line" name="line_15">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QScrollArea" name="QEMU_Args_Widget">
-         <property name="enabled">
-          <bool>false</bool>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
          </property>
          <property name="widgetResizable">
           <bool>true</bool>
@@ -1745,8 +1707,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>449</width>
-            <height>734</height>
+            <width>612</width>
+            <height>1003</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
@@ -2145,7 +2107,7 @@
            <item row="0" column="2">
             <widget class="QCheckBox" name="CH_Show_QEMU_Args">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -2161,7 +2123,7 @@
            <item row="3" column="0">
             <widget class="QCheckBox" name="CH_Show_Screenshot_in_Save_Mode">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -2176,13 +2138,6 @@
            </item>
           </layout>
          </widget>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="Line" name="line_16">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
         </widget>
        </item>
       </layout>
@@ -2310,10 +2265,15 @@ There may be problems with devices connected via a hub.</string>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="8"/>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>All_Tabs</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
   <tabstop>CH_Log_Save_in_File</tabstop>
   <tabstop>CH_Log_Print_in_STDIO</tabstop>
   <tabstop>CH_Log_Debug</tabstop>
@@ -2325,7 +2285,6 @@ There may be problems with devices connected via a hub.</string>
   <tabstop>TB_Browse_Before</tabstop>
   <tabstop>Edit_After_Stop_Command</tabstop>
   <tabstop>TB_Browse_After</tabstop>
-  <tabstop>SB_Recent_CD_Count</tabstop>
   <tabstop>SB_First_VNC_Port</tabstop>
   <tabstop>CH_No_Quit</tabstop>
   <tabstop>CH_Portrait</tabstop>
@@ -2343,7 +2302,6 @@ There may be problems with devices connected via a hub.</string>
   <tabstop>CH_Serial_Port</tabstop>
   <tabstop>CH_Linux_Boot</tabstop>
   <tabstop>CH_ROM_File</tabstop>
-  <tabstop>CH_Show_Tab_Info</tabstop>
   <tabstop>CH_Machine_Details</tabstop>
   <tabstop>CH_Machine_Name</tabstop>
   <tabstop>CH_Parallel_Port</tabstop>
@@ -2363,70 +2321,6 @@ There may be problems with devices connected via a hub.</string>
   <include location="../resources/shared_images.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
-   <receiver>Advanced_Settings_Window</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>557</x>
-     <y>486</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>512</x>
-     <y>496</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Show_Tab_Info</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>CH_Show_QEMU_Args</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>40</x>
-     <y>56</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>61</x>
-     <y>105</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Show_Tab_Info</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>CH_Show_Screenshot_in_Save_Mode</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>37</x>
-     <y>51</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>31</x>
-     <y>72</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>CH_Show_Tab_Info</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>QEMU_Args_Widget</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>107</x>
-     <y>54</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>145</x>
-     <y>207</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>RB_Monitor_TCP</sender>
    <signal>toggled(bool)</signal>
@@ -2648,6 +2542,38 @@ There may be problems with devices connected via a hub.</string>
     <hint type="destinationlabel">
      <x>128</x>
      <y>189</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Advanced_Settings_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>516</x>
+     <y>757</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>392</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Advanced_Settings_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>516</x>
+     <y>757</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>392</y>
     </hint>
    </hints>
   </connection>

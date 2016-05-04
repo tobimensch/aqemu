@@ -92,6 +92,8 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	linksFilePath = QDir::toNativeSeparators( logFileDir.absolutePath() + "/links.html" );
 	
 	Show_Links_File();
+
+    ui.Tabs->setCurrentIndex(0);
 }
 
 void About_Window::on_Button_Update_Links_clicked()

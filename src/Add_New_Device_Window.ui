@@ -294,7 +294,16 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetMaximumSize</enum>
       </property>
-      <property name="margin">
+      <property name="leftMargin">
+       <number>6</number>
+      </property>
+      <property name="topMargin">
+       <number>6</number>
+      </property>
+      <property name="rightMargin">
+       <number>6</number>
+      </property>
+      <property name="bottomMargin">
        <number>6</number>
       </property>
       <property name="spacing">
@@ -318,7 +327,16 @@
       </item>
       <item row="0" column="2">
        <layout class="QGridLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <property name="spacing">
@@ -354,7 +372,16 @@
       </item>
       <item row="0" column="0">
        <layout class="QGridLayout">
-        <property name="margin">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
          <number>0</number>
         </property>
         <property name="spacing">
@@ -410,24 +437,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/apply.png</normaloff>:/apply.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -435,6 +447,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>CH_File</tabstop>
   <tabstop>Edit_File_Path</tabstop>
@@ -461,29 +480,11 @@
   <tabstop>Edit_Secs</tabstop>
   <tabstop>Edit_Heads</tabstop>
   <tabstop>Edit_Trans</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
-   <receiver>Add_New_Device_Window</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>304</x>
-     <y>401</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>314</x>
-     <y>331</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>CH_Interface</sender>
    <signal>toggled(bool)</signal>
@@ -657,6 +658,38 @@
     <hint type="destinationlabel">
      <x>167</x>
      <y>257</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Add_New_Device_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>182</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>331</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Add_New_Device_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>529</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>193</x>
+     <y>278</y>
     </hint>
    </hints>
   </connection>

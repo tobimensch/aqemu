@@ -295,7 +295,7 @@ void Add_New_Device_Window::Set_Emulator_Devices( const Available_Devices &devic
 
 void Add_New_Device_Window::Set_Enabled( bool enabled )
 {
-	ui.Button_OK->setEnabled( enabled );
+	ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled( enabled );
 }
 
 void Add_New_Device_Window::on_CB_Interface_currentIndexChanged( const QString &text )

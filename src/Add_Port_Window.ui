@@ -370,24 +370,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -395,6 +380,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>RB_Default</tabstop>
   <tabstop>RB_vc</tabstop>
@@ -415,42 +407,40 @@
   <tabstop>RB_braille</tabstop>
   <tabstop>Edit_Args</tabstop>
   <tabstop>TB_Browse</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
-   <receiver>Add_Port_Window</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>430</x>
-     <y>343</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>440</x>
-     <y>300</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Button_OK</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>Add_Port_Window</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>345</x>
-     <y>343</y>
+     <x>167</x>
+     <y>455</y>
     </hint>
     <hint type="destinationlabel">
-     <x>253</x>
-     <y>353</y>
+     <x>231</x>
+     <y>241</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Add_Port_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>167</x>
+     <y>455</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>231</x>
+     <y>241</y>
     </hint>
    </hints>
   </connection>

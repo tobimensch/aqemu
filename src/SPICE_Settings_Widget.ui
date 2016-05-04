@@ -36,8 +36,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>653</width>
-        <height>779</height>
+        <width>648</width>
+        <height>774</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -226,15 +226,15 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="Edit_SPICE_Port">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
+                <widget class="QSpinBox" name="Edit_SPICE_Port">
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
-                 <property name="maxLength">
-                  <number>5</number>
+                 <property name="minimum">
+                  <number>1</number>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
                  </property>
                 </widget>
                </item>
@@ -259,18 +259,12 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLineEdit" name="Edit_SPICE_SPort">
-                 <property name="enabled">
-                  <bool>false</bool>
+                <widget class="QSpinBox" name="Edit_SPICE_SPort">
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="maxLength">
-                  <number>5</number>
+                 <property name="maximum">
+                  <number>10000</number>
                  </property>
                 </widget>
                </item>
@@ -586,9 +580,7 @@
   <tabstop>CH_Use_SPICE</tabstop>
   <tabstop>SB_QXL_Num</tabstop>
   <tabstop>CB_RAM_Size</tabstop>
-  <tabstop>Edit_SPICE_Port</tabstop>
   <tabstop>CH_SPICE_SPort</tabstop>
-  <tabstop>Edit_SPICE_SPort</tabstop>
   <tabstop>CH_SPICE_Host</tabstop>
   <tabstop>Edit_SPICE_Host</tabstop>
   <tabstop>CH_Use_Image_Compression</tabstop>
@@ -605,22 +597,6 @@
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>CH_SPICE_SPort</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>Edit_SPICE_SPort</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>165</x>
-     <y>152</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>247</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>CH_SPICE_Host</sender>
    <signal>toggled(bool)</signal>
@@ -714,6 +690,22 @@
     <hint type="destinationlabel">
      <x>29</x>
      <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_SPICE_SPort</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>Edit_SPICE_SPort</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>316</x>
+     <y>201</y>
     </hint>
    </hints>
   </connection>

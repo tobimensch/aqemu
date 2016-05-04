@@ -166,9 +166,9 @@ void SPICE_Settings_Widget::Set_Settings( const VM_SPICE &settings )
 	ui.SB_QXL_Num->setValue( settings.Get_GXL_Devices_Count() );
 	ui.CB_RAM_Size->setEditText( QString::number(settings.Get_RAM_Size()) );
 	
-	ui.Edit_SPICE_Port->setText( QString::number(settings.Get_Port()) );
+	ui.Edit_SPICE_Port->setValue ( settings.Get_Port() );
 	ui.CH_SPICE_SPort->setChecked( settings.Use_SPort() );
-	ui.Edit_SPICE_SPort->setText( QString::number(settings.Get_SPort()) );
+	ui.Edit_SPICE_SPort->setValue( settings.Get_SPort() );
 	ui.CH_SPICE_Host->setChecked( settings.Use_Hostname() );
 	ui.Edit_SPICE_Host->setText( settings.Get_Hostname() );
 	

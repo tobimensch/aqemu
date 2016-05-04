@@ -27,7 +27,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QGroupBox" name="">
+    <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>When To Show This Log</string>
      </property>
@@ -104,13 +104,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_Hide">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -118,6 +114,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>Edit_Log</tabstop>
   <tabstop>RB_Normal_Mode</tabstop>
@@ -125,7 +128,6 @@
   <tabstop>RB_Show_AQEMU_Started</tabstop>
   <tabstop>RB_No_Show_Forever</tabstop>
   <tabstop>Button_Clear_Log</tabstop>
-  <tabstop>Button_Hide</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
@@ -144,6 +146,38 @@
     <hint type="destinationlabel">
      <x>228</x>
      <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Error_Log_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>349</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>205</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Error_Log_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>349</x>
+     <y>383</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>270</x>
+     <y>205</y>
     </hint>
    </hints>
   </connection>

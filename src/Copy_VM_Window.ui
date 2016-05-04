@@ -82,24 +82,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -107,13 +92,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>Edit_New_VM_Name</tabstop>
   <tabstop>CH_Copy_Disk_Images</tabstop>
   <tabstop>CH_Copy_Floppy</tabstop>
   <tabstop>CH_Copy_Hard_Drive</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
@@ -152,18 +142,34 @@
    </hints>
   </connection>
   <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>Copy_VM_Window</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>267</x>
-     <y>123</y>
+     <x>335</x>
+     <y>144</y>
     </hint>
     <hint type="destinationlabel">
-     <x>290</x>
-     <y>115</y>
+     <x>226</x>
+     <y>86</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Copy_VM_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>335</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>226</x>
+     <y>86</y>
     </hint>
    </hints>
   </connection>

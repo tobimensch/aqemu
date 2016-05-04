@@ -80,7 +80,16 @@
        <property name="spacing">
         <number>6</number>
        </property>
-       <property name="margin">
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -97,24 +106,9 @@
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="Button_OK">
-         <property name="text">
-          <string>&amp;OK</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/icons.qrc">
-           <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="Button_Cancel">
-         <property name="text">
-          <string>&amp;Cancel</string>
-         </property>
-         <property name="icon">
-          <iconset resource="../resources/icons.qrc">
-           <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+        <widget class="Dialog_Button_Box" name="buttonBox">
+         <property name="standardButtons">
+          <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
          </property>
         </widget>
        </item>
@@ -124,28 +118,49 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>Edit_Name</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Snapshot_Properties_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>181</x>
+     <y>234</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>141</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>Snapshot_Properties_Window</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>298</x>
-     <y>129</y>
+     <x>181</x>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
-     <x>135</x>
-     <y>139</y>
+     <x>141</x>
+     <y>131</y>
     </hint>
    </hints>
   </connection>

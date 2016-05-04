@@ -82,7 +82,7 @@
     </widget>
    </item>
    <item row="2" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="buttonBox">
+    <widget class="Dialog_Button_Box" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -93,6 +93,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>

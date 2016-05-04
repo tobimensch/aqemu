@@ -15,12 +15,12 @@
    <string>Change Icon</string>
   </property>
   <property name="windowIcon">
-   <iconset>
+   <iconset resource="../resources/icons.qrc">
     <normaloff>:/icon.png</normaloff>:/icon.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <widget class="QGroupBox" name="">
+    <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Select an Icon for this Virtual Machine</string>
      </property>
@@ -36,7 +36,7 @@
         <item>
          <widget class="QRadioButton" name="RB_Icon_Linux">
           <property name="text">
-           <string>Default &amp;Linux icon</string>
+           <string>Default Linu&amp;x icon</string>
           </property>
           <property name="icon">
            <iconset resource="../resources/shared_images.qrc">
@@ -234,12 +234,16 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="Button_Browse">
+           <widget class="QToolButton" name="Button_Browse">
             <property name="enabled">
              <bool>false</bool>
             </property>
             <property name="text">
              <string>&amp;Browse...</string>
+            </property>
+            <property name="icon">
+             <iconset resource="../resources/icons.qrc">
+              <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
             </property>
            </widget>
           </item>
@@ -277,17 +281,6 @@
      <property name="spacing">
       <number>6</number>
      </property>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
       <spacer>
        <property name="orientation">
@@ -301,14 +294,10 @@
        </property>
       </spacer>
      </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset>
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+     <item row="0" column="1">
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -316,36 +305,25 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>RB_Icon_Other</tabstop>
   <tabstop>All_Icons_List</tabstop>
   <tabstop>RB_User_Icons</tabstop>
   <tabstop>Edit_Other_Icon_Path</tabstop>
   <tabstop>Button_Browse</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/shared_images.qrc"/>
-  <include location="../resources/shared_images.qrc"/>
+  <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
-  <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
-   <receiver>Select_Icon_Window</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>488</x>
-     <y>481</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>219</x>
-     <y>214</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>RB_All_System_Icons</sender>
    <signal>toggled(bool)</signal>
@@ -395,18 +373,50 @@
    </hints>
   </connection>
   <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Select_Icon_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>243</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Select_Icon_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>361</x>
+     <y>411</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>243</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>RB_User_Icons</sender>
    <signal>toggled(bool)</signal>
    <receiver>Button_Browse</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>367</y>
+     <x>104</x>
+     <y>301</y>
     </hint>
     <hint type="destinationlabel">
-     <x>457</x>
-     <y>419</y>
+     <x>449</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>

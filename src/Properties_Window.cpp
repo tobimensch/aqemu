@@ -163,7 +163,7 @@ void Properties_Window::Set_HDD( const VM_HDD &hd, const QString &name )
 
 void Properties_Window::Set_Enabled( bool enabled )
 {
-	ui.Button_OK->setEnabled( enabled );
+	ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled( enabled );
 }
 
 void Properties_Window::Set_Current_Machine_Devices( const Available_Devices *dev )

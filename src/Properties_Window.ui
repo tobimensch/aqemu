@@ -312,24 +312,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -337,6 +322,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>CB_FD_Devices</tabstop>
   <tabstop>TB_FD_Advanced_Settings</tabstop>
@@ -350,26 +342,40 @@
   <tabstop>Button_HDD_Format</tabstop>
   <tabstop>TB_HDD_Advanced_Settings</tabstop>
   <tabstop>Button_Update_Info</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Properties_Window</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>396</x>
+     <y>531</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>267</x>
+     <y>279</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>Properties_Window</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>384</x>
-     <y>429</y>
+     <x>396</x>
+     <y>531</y>
     </hint>
     <hint type="destinationlabel">
-     <x>407</x>
-     <y>402</y>
+     <x>267</x>
+     <y>279</y>
     </hint>
    </hints>
   </connection>

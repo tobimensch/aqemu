@@ -475,24 +475,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
       </widget>
      </item>
@@ -500,6 +485,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>RB_QEMU_USB</tabstop>
   <tabstop>RB_QEMU_Mouse</tabstop>
@@ -512,42 +504,40 @@
   <tabstop>RB_Show_All</tabstop>
   <tabstop>RB_Show_Not_Used_Runtime</tabstop>
   <tabstop>Button_Update_Host_USB</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
-   <receiver>Add_USB_Port_Window</receiver>
-   <slot>reject()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>466</x>
-     <y>381</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>496</x>
-     <y>328</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>Button_OK</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>Add_USB_Port_Window</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>364</x>
-     <y>386</y>
+     <x>389</x>
+     <y>467</y>
     </hint>
     <hint type="destinationlabel">
-     <x>273</x>
-     <y>377</y>
+     <x>244</x>
+     <y>247</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Add_USB_Port_Window</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>389</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>244</x>
+     <y>247</y>
     </hint>
    </hints>
   </connection>

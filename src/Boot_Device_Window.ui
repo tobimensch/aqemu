@@ -112,37 +112,12 @@
    <item row="4" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="Button_OK">
-       <property name="text">
-        <string>&amp;OK</string>
+      <widget class="Dialog_Button_Box" name="buttonBox">
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
        </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>28</width>
-         <height>26</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="Button_Cancel">
-       <property name="text">
-        <string>&amp;Cancel</string>
-       </property>
-       <property name="icon">
-        <iconset resource="../resources/icons.qrc">
-         <normaloff>:/cancel.png</normaloff>:/cancel.png</iconset>
+       <property name="centerButtons">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -150,47 +125,52 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Dialog_Button_Box</class>
+   <extends>QDialogButtonBox</extends>
+   <header>Dialog_Button_Box.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>Boot_Devices_List</tabstop>
   <tabstop>TB_Up</tabstop>
   <tabstop>TB_Down</tabstop>
   <tabstop>CH_Boot_Menu</tabstop>
-  <tabstop>Button_OK</tabstop>
-  <tabstop>Button_Cancel</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
  </resources>
  <connections>
   <connection>
-   <sender>Button_Cancel</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
    <receiver>Boot_Device_Window</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>189</x>
-     <y>150</y>
+     <x>141</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
-     <x>243</x>
-     <y>132</y>
+     <x>155</x>
+     <y>123</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>Button_OK</sender>
-   <signal>clicked()</signal>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
    <receiver>Boot_Device_Window</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>67</x>
-     <y>142</y>
+     <x>141</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
-     <x>220</x>
-     <y>141</y>
+     <x>155</x>
+     <y>123</y>
     </hint>
    </hints>
   </connection>

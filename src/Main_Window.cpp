@@ -918,9 +918,19 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	for( int rx = 0; rx < ui.Redirections_List->rowCount(); rx++ )
 	{
 		VM_Redirection tmp_redir;
-		
+
+        auto item = ui.Redirections_List->item(rx, 0);
+
+        if ( item == nullptr )
+            continue;
+
 		if( ui.Redirections_List->item(rx, 0)->text() == "TCP" ) tmp_redir.Set_Protocol( "TCP" );
 		else tmp_redir.Set_Protocol( "UDP" );
+
+        if ( ui.Redirections_List->item(rx, 1) == nullptr ||
+             ui.Redirections_List->item(rx, 2) == nullptr ||
+             ui.Redirections_List->item(rx, 3) == nullptr )
+            continue;
 		
 		tmp_redir.Set_Host_Port( ui.Redirections_List->item(rx, 1)->text().toInt() );
 		tmp_redir.Set_Guest_IP( ui.Redirections_List->item(rx, 2)->text() );
