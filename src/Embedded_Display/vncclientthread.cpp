@@ -26,6 +26,8 @@
 #include <QMutexLocker>
 #include <QTimer>
 
+#include "Utils.h"
+
 static QString outputErrorMessageString; // FIXME test it (static?)
 
 rfbBool VncClientThread::newclient(rfbClient *cl)
@@ -249,6 +251,7 @@ void VncClientThread::run()
     QMutexLocker locker(&mutex);
 
     while (!m_stopped) { // try to connect as long as the server allows
+
         m_passwordError = false;
 
         rfbClientLog = outputHandler;
@@ -285,6 +288,7 @@ void VncClientThread::run()
 
     // Main VNC event loop
     while (!m_stopped) {
+
         const int i = WaitForMessage(cl, 500);
         if (i < 0)
             break;

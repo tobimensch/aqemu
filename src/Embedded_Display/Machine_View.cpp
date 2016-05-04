@@ -118,6 +118,16 @@ void MachineView::resizeView( int widgetWidth, int widgetHeight )
 
 void MachineView::initView()
 {
+    AQDebug("void MachineView::initView()","void MachineView::initView()");
+    if ( Cur_VM != nullptr)
+    {
+        auto state = Cur_VM->Get_State();
+        if ( state != VM::VMS_Running && state != VM::VMS_Pause )
+        {
+            return;
+        }
+    }
+
 	showSplash( true );
 	delete View;
 	
@@ -132,7 +142,7 @@ void MachineView::initView()
 
     connectView();
 	
-	// This for auto reinit VNC
+	// This is for auto reiniting VNC
 	QTimer::singleShot( 1000, this, SLOT(Check_Connection()) );
 }
 

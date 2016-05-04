@@ -8973,22 +8973,26 @@ void Virtual_Machine::QEMU_Finished( int exitCode, QProcess::ExitStatus exitStat
 	Start_Snapshot_Tag = "";
 	Set_State( VM::VMS_Power_Off );
 	
-	if( (exitCode != 0) || (exitStatus == QProcess::CrashExit) )
+    if (exitStatus == QProcess::CrashExit)
 	{
-		AQError( "QEMU Crashed!", QEMU_Process->readAll() );
+		AQError( "QEMU Crashed!", "QEMU Crashed!" );
 	}
+    else if ( (exitCode != 0) ) 
+    {
+		AQError( "QEMU return value != 0", QEMU_Process->readAll() );
+    }
 	else
 	{
 		AQDebug( "void Virtual_Machine::QEMU_Finished( int exitCode, QProcess::ExitStatus exitStatus )",
 				 "QEMU Closed" );
 	}
-	
-	// Add VM USB devices to used USB list
-	if( USB_Ports.count() > 0 )
-	{
-		foreach( VM_USB usb_dev, USB_Ports ) System_Info::Delete_From_Used_USB_List( usb_dev );
-	}
-	
+
+    // Add VM USB devices to used USB list
+    if( USB_Ports.count() > 0 )
+    {
+	    foreach( VM_USB usb_dev, USB_Ports ) System_Info::Delete_From_Used_USB_List( usb_dev );
+    }
+
 	if( ! Settings.value("Run_After_QEMU", "").toString().isEmpty() )
 	{
 		QProcess *after_proc = new QProcess();
