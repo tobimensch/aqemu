@@ -3418,18 +3418,19 @@ void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)
     QIcon icon = ui.Machines_List->currentItem()->icon();
     auto pix = new QPixmap(icon.pixmap(QSize(s,s)));
 
-    QPainter painter(pix);
+    auto painter = new QPainter(pix);
     QPixmap pix2(QIcon(_icon).pixmap(QSize(s,s)));
 
     QRect rect(s/2,s/2,s/2,s/2);
 
-    painter.drawPixmap(rect,pix2);
+    painter->drawPixmap(rect,pix2);
 
     QIcon icon2(*pix);
     
     vm_item->setIcon(icon2);
 
-    //delete pix; //FIXME //cannot destroy paint device?!
+    delete painter;
+    delete pix;
 }
 
 void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
