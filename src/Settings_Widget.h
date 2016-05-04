@@ -26,6 +26,8 @@
 #include <QWidget>
 #include <QListWidget>
 #include <QWheelEvent>
+#include <QList>
+#include <QMap>
 
 class QTabWidget;
 class QStackedWidget;
@@ -52,11 +54,16 @@ class Settings_Widget : public QWidget
         Settings_Widget(QTabWidget*, QBoxLayout::Direction dir, bool erase_margins = false);
         ~Settings_Widget();
         void setIconSize(QSize);
+        void addToGroup(QString);
+        static void syncGroupIconSizes(QString);
 
     private:
         My_List_Widget* list;
         QStackedWidget* stack;
         QSplitter* splitter;
+
+        QString my_Group;
+        static QMap<QString,QList<Settings_Widget*>> groups;
 };
 
 #endif

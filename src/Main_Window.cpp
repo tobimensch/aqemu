@@ -111,6 +111,7 @@ Main_Window::Main_Window( QWidget *parent )
 
     auto Display_Settings_Widget = new Settings_Widget( ui.TabWidget_Display, QBoxLayout::LeftToRight, true );
     Display_Settings_Widget->setIconSize(QSize(32,32));
+    Display_Settings_Widget->addToGroup("Main");
 	
 	// Update Emulators Information
 	System_Info::Update_VM_Computers_List();
@@ -160,6 +161,7 @@ Main_Window::Main_Window( QWidget *parent )
 
     auto Media_Settings_Widget = new Settings_Widget( ui.TabWidget_Media, QBoxLayout::LeftToRight, true );
     Media_Settings_Widget->setIconSize(QSize(32,32));
+    Media_Settings_Widget->addToGroup("Main");
 	
 
     //// code to sync sizes of widgets in Device Manager, Folder Sharing and Ports Tab Widget
@@ -169,6 +171,7 @@ Main_Window::Main_Window( QWidget *parent )
 
     auto Network_Settings_Widget = new Settings_Widget( ui.Network_Cards_Tabs, QBoxLayout::LeftToRight, true );
     Network_Settings_Widget->setIconSize(QSize(32,32));
+    Network_Settings_Widget->addToGroup("Main");
 
 	// This For Network Redirections Table
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Redirections_List );
@@ -226,6 +229,10 @@ Main_Window::Main_Window( QWidget *parent )
 			AQDebug( "Main_Window::Main_Window( QWidget *parent )", "All OK Loading Complete!" );
 		}
 	}
+
+
+    Settings_Widget::syncGroupIconSizes("Main");
+
 }
 
 void Main_Window::closeEvent( QCloseEvent *event )
@@ -3063,6 +3070,10 @@ void Main_Window::Update_Info_Text( int info_mode )
 		cell_cursor = cell.firstCursorPosition();
 		cell_cursor.insertText( Get_QEMU_Args().replace(" -"," \\\n-"), format );
 	}
+
+    // Move the cursor to the top
+    ui.VM_Information_Text->moveCursor(QTextCursor::Start);
+    ui.VM_Information_Text->ensureCursorVisible();
 }
 
 void Main_Window::Update_Disabled_Controls()

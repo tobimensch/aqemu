@@ -29,6 +29,7 @@
 #include <QSplitter>
 
 #include "Settings_Widget.h"
+#include "Utils.h"
 
 #include <iostream>
 
@@ -176,6 +177,90 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
     {
     }
 
+}
+
+QMap<QString,QList<Settings_Widget*>> Settings_Widget::groups = QMap<QString,QList<Settings_Widget*>>();
+
+void Settings_Widget::addToGroup(QString g)
+{
+    if(g.isEmpty())
+        return;
+
+    my_Group = g;
+
+    groups[g].append(this);
+}
+
+void Settings_Widget::syncGroupIconSizes(QString g)
+{
+    QList<Settings_Widget*> list = groups[g];
+
+    QList<int> max_width;
+
+    int max_list_height = 0;
+
+    //first find max_width for each index
+    for( int i = 0; i < list.count(); i++ )
+    {
+        auto sw = list.at(i);
+
+        for ( int j = 0; j < sw->list->count(); j++ )
+        {
+            int w = sw->list->item(j)->sizeHint().width();
+
+            int list_h = sw->list->minimumSizeHint().height();
+
+            if ( list_h > 0 )
+            {
+                if ( max_list_height == 0 )
+                    max_list_height = list_h;
+                else if ( max_list_height > list_h )
+                    max_list_height = list_h;
+            }
+
+            if ( w == -1 ) // which will always be the case :-(
+            {
+                QString t = sw->list->item(j)->text();
+                QLabel l(t);
+
+                w = l.sizeHint().width() + 20;
+            }
+
+            
+            if ( max_width.count() < j + 1 )
+            {
+                //index number not in list
+                max_width.append( w);
+            }
+            else
+            {
+                //index number is in list
+                if ( w > max_width.at(j) )
+                    max_width.replace(j, w);
+            }
+            
+        }
+    }
+
+    //then apply max_width to all
+    for( int i = 0; i < list.count(); i++ )
+    {
+        auto sw = list.at(i);
+
+        for ( int j = 0; j < sw->list->count(); j++ )
+        {
+            int h = sw->list->item(j)->sizeHint().height();
+            sw->list->item(j)->setSizeHint(QSize(max_width.at(j),58));
+        }
+
+        if ( max_list_height > 0 )
+        {
+            sw->list->setMinimumHeight(max_list_height);
+            sw->list->setMaximumHeight(max_list_height);
+        }
+    }
+
+    
 }
 
 void Settings_Widget::setIconSize(QSize s)
