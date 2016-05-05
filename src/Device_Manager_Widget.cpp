@@ -547,7 +547,7 @@ void Device_Manager_Widget::on_Devices_List_itemDoubleClicked( QListWidgetItem *
 	on_actionProperties_triggered();
 }
 
-void Device_Manager_Widget::Add_Floppy(VM_Storage_Device dev, int num)
+void Device_Manager_Widget::Add_Floppy(VM_Storage_Device& dev, int num)
 {
 	dev = pw->Get_Floppy();
 	
@@ -628,7 +628,7 @@ void Device_Manager_Widget::on_actionAdd_CD_ROM_triggered()
 }
 
 
-void Device_Manager_Widget::Add_HDD(VM_HDD dev,QString letter)
+void Device_Manager_Widget::Add_HDD(VM_HDD& dev,QString letter)
 {
 	    dev = pw->Get_HDD();
 
