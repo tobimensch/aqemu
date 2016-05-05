@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>643</width>
-    <height>572</height>
+    <width>671</width>
+    <height>400</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="All_Pages">
      <property name="currentIndex">
-      <number>4</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="Welcome_Page">
       <layout class="QGridLayout" name="gridLayout_5">
@@ -163,70 +163,6 @@
               <size>
                <width>20</width>
                <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item>
-            <widget class="QCheckBox" name="CH_Embedded_VNC">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="Line" name="line_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_3">
-           <property name="leftMargin">
-            <number>10</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="Label_Embedded_VNC">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>23</height>
               </size>
              </property>
             </spacer>
@@ -395,66 +331,6 @@
           <string/>
          </property>
         </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_7">
-         <property name="leftMargin">
-          <number>10</number>
-         </property>
-         <item>
-          <widget class="QComboBox" name="CB_Add_Emulator_Version">
-           <property name="currentIndex">
-            <number>5</number>
-           </property>
-           <item>
-            <property name="text">
-             <string>QEMU 0.9.0</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>QEMU 0.9.1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>QEMU 0.10.X</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>QEMU 0.11.X</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>QEMU 0.12.X</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>QEMU 0.13.X</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Fixed</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>10</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_8">

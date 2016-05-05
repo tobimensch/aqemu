@@ -45,6 +45,8 @@ First_Start_Wizard::First_Start_Wizard( QWidget *parent )
 	
 	retranslateUi();
 	Load_Settings();
+
+    ui.All_Pages->setCurrentIndex(1);
 }
 
 bool First_Start_Wizard::Find_Emulators()
@@ -106,6 +108,9 @@ void First_Start_Wizard::on_Button_Next_clicked()
 	
 	Next_Move = true;
 	ui.All_Pages->setCurrentIndex( ui.All_Pages->currentIndex() +1 );
+
+    if ( ui.All_Pages->currentIndex() == 3 ) //FIXME: skipping this page but it could maybe be removed
+    	ui.All_Pages->setCurrentIndex( ui.All_Pages->currentIndex() + 1 );
 	
 	if( ui.All_Pages->currentWidget() == ui.Find_Emulators_Page )
 	{
@@ -616,12 +621,6 @@ void First_Start_Wizard::Load_Settings()
 	ui.Edit_VM_Dir->setText( QDir::toNativeSeparators(Settings.value("VM_Directory", QDir::homePath() + "/.aqemu/").toString()) );
 	#endif
 	
-	// Use VNC Embedded Display
-	#ifdef VNC_DISPLAY
-	ui.Label_Embedded_VNC->setEnabled( true );
-	ui.CH_Embedded_VNC->setEnabled( true );
-	ui.CH_Embedded_VNC->setChecked( Settings.value("Use_VNC_Display", "no").toString() == "yes" );
-	#endif
 }
 
 bool First_Start_Wizard::Save_Settings()
@@ -646,14 +645,6 @@ bool First_Start_Wizard::Save_Settings()
 	}
 	
 	Settings.setValue( "VM_Directory", ui.Edit_VM_Dir->text() );
-	
-	// Use VNC Embedded Display
-	#ifdef VNC_DISPLAY
-	if( ui.CH_Embedded_VNC->isChecked() )
-		Settings.setValue( "Use_VNC_Display", "yes" );
-	else
-		Settings.setValue( "Use_VNC_Display", "no" );
-	#endif
 	
 	// Interface Language
 	if( ui.CB_Language->currentIndex() == 0 )
@@ -747,8 +738,8 @@ void First_Start_Wizard::retranslateUi()
 	
 	Header_Captions.clear();
 	Header_Captions << tr( "Welcome" );
-	Header_Captions << tr( "General Settings" );
-	Header_Captions << tr( "Find Emulators" );
+	Header_Captions << tr( "VM Folder" );
+	Header_Captions << tr( "Find QEMU" );
 	Header_Captions << tr( "Setup Emulator" );
 	Header_Captions << tr( "Finished" );
 	
@@ -758,12 +749,10 @@ void First_Start_Wizard::retranslateUi()
 	ui.Button_Next->setText( tr("&Next") );
 	ui.Button_Cancel->setText( tr("&Cancel") );
 	
-	ui.Label_Welcome_Text->setText( tr("Welcome to the AQEMU settings wizard!\nThis wizard will help you to choose options AQEMU needs to work correctly.\nPush the \"Next\" button to go to next page or the \"Back\" button to go to the previous page.") );
+	ui.Label_Welcome_Text->setText( tr("Welcome to the AQEMU settings wizard!\nThis wizard will help you to choose options AQEMU needs to work correctly. Click on \"Next\" to go to next page or the \"Back\" button to go to the previous page.") );
 	ui.Label_Select_Language->setText( tr("Here you can choose the interface language") );
-	ui.Label_VM_Dir->setText( tr("Please select the folder for AQEMU virtual machines") );
-	ui.Label_Embedded_VNC->setText( tr("In this new experimental mode the QEMU display will be shown inside AQEMU main window. Note that this mode is still unstable. If you want to enable this feature, you must set the \"Include Emdedded VNC Display in Main Window\" checkbox.") );
-	ui.CH_Embedded_VNC->setText( tr("Include Embedded VNC Display in Main Window") );
-	ui.Label_Find_Emulators->setText( tr("To work correctly AQEMU must know your emulator locations and versions. To search automatically push the \"Search\" button. If the search can't find your emulators, you can reconfigure AQEMU later. You can do it in the \"File->Advanced Settings\" menu.") );
+	ui.Label_VM_Dir->setText( tr("Please set the folder for virtual machine configurations:") );
+	ui.Label_Find_Emulators->setText( tr("To work correctly AQEMU must find QEMU. To search automatically click on \"Search\". If the search can't find QEMU, you can reconfigure AQEMU later. You can do it in the \"File->Settings\" dialog.") );
 	ui.Button_Find_Emulators->setText( tr("&Search") );
 	ui.Button_Skip_Find->setText( tr("S&kip Search") );
 	ui.Button_Edit->setText( tr("Set &Versions Manualy") );
@@ -772,5 +761,5 @@ void First_Start_Wizard::retranslateUi()
 	ui.Label_Add_Emulator_Version->setText( "Emulator version" );
 	ui.Button_Add_Emulator_Find->setText( "Start &searching" );
 	ui.Button_Add_Emulator_Manual_Mode->setText( "Show all settings..." );
-	ui.Label_Finish_Text->setText( tr("Congratulations! The Wizard has got all the necessary settings for configuring AQEMU. Push the \"Finish\" button to save your settings.") );
+	ui.Label_Finish_Text->setText( tr("Congratulations! You can now configure and use virtual machines. Click on \"Finish\" to save these settings.") );
 }
