@@ -298,10 +298,7 @@ int main( int argc, char *argv[] )
 	// Load Images
 	QString iconsThemeFile = "";
 	
-	if( settings.value("Icon_Theme", "").toString() == "crystalsvg" )
-		iconsThemeFile = QDir::toNativeSeparators( settings.value("AQEMU_Data_Folder", "").toString() + "/crystalsvg_icons.rcc" );
-	else
-		iconsThemeFile = QDir::toNativeSeparators( settings.value("AQEMU_Data_Folder", "").toString() + "/oxygen_icons.rcc" );
+	iconsThemeFile = QDir::toNativeSeparators( settings.value("AQEMU_Data_Folder", "").toString() + "/icons.rcc" );
 		
 	if( ! QResource::registerResource(iconsThemeFile) )
 	{
