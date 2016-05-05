@@ -955,9 +955,6 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	Dom_Text = New_Dom_Document.createTextNode( Current_Emulator.Get_Name() );
 	Dom_Element.appendChild( Dom_Text );
 	
-    if ( Machine_Accelerator == VM::KVM )
-        AQDebug("JESUS CHRIST",VM::Accel_To_String(Machine_Accelerator));
-
 	// Emulator Type (legacy name) = now Machine_Accelerator
 	Dom_Element = New_Dom_Document.createElement( "Machine_Accelerator" );
 	VM_Element.appendChild( Dom_Element );
