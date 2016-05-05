@@ -319,6 +319,8 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	
 	connect( ui.CB_Language, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(CB_Language_currentIndexChanged(int)) );
+
+    connect( this, SIGNAL(accepted()), this, SLOT(on_accepted()));
 }
 
 void Advanced_Settings_Window::Load_Templates()
@@ -419,6 +421,11 @@ void Advanced_Settings_Window::VNC_Warning( bool state )
 			Settings.setValue( "Show_VNC_Warning", "no" );
 		}
 	}
+}
+
+void Advanced_Settings_Window::on_accepted()
+{
+    on_Button_OK_clicked();
 }
 
 void Advanced_Settings_Window::on_Button_OK_clicked()
@@ -614,8 +621,6 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 	// All OK?
 	if( Settings.status() != QSettings::NoError )
 		AQError( "void Advanced_Settings_Window::on_Button_OK_clicked()", "QSettings Error!" );
-	
-	if( Save_Emulators_Info() ) accept();
 
 	QDir dir; // For Check on valid
 	Settings.setValue( "Default_VM_Template", ui.CB_Default_VM_Template->currentText() );
@@ -738,8 +743,6 @@ void Advanced_Settings_Window::on_Button_OK_clicked()
 		Settings.setValue( "Use_VNC_Display", "no" );
 		Settings.setValue( "Include_Emulator_Control", "no" );
 	}
-	
-	accept();
 }
 
 void Advanced_Settings_Window::on_TB_Browse_Before_clicked()
