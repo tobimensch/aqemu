@@ -84,6 +84,9 @@ class Device_Manager_Widget: public QWidget
 		void Update_HDD( bool ok );
 		
 	private:
+        void Add_Floppy(VM_Storage_Device,int);
+        void Add_HDD(VM_HDD,QString);
+
 		bool Enabled;
 		
 		Add_New_Device_Window *Device_Window;

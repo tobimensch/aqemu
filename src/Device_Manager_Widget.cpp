@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2008-2010 Andrey Rijov <ANDron142@yandex.ru>
+** Copyirght (C) 2016 Tobias Gläßer
 **
 ** This file is part of AQEMU.
 **
@@ -546,6 +547,23 @@ void Device_Manager_Widget::on_Devices_List_itemDoubleClicked( QListWidgetItem *
 	on_actionProperties_triggered();
 }
 
+void Device_Manager_Widget::Add_Floppy(VM_Storage_Device dev, int num)
+{
+	dev = pw->Get_Floppy();
+	
+	QString dev_name = dev.Get_File_Name();
+
+    if ( ! QFileInfo(dev_name).exists() )
+        return;
+			
+	QListWidgetItem *fdit = new QListWidgetItem( QIcon(":/fdd.png"),
+												 tr("Floppy") + " " + QString::number(num) + " (" + dev_name + ")" );
+	fdit->setData( 512, "fd" + QString::number(num) );
+	ui.Devices_List->addItem( fdit );
+	
+	emit Device_Changed();
+}
+
 void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 {
 	if( ! Floppy1.Get_Enabled() )
@@ -555,17 +573,7 @@ void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 		
 		if( pw->exec() == QDialog::Accepted )
 		{
-			Floppy1 = pw->Get_Floppy();
-			
-			QString dev_name = Floppy1.Get_File_Name();
-			
-			QListWidgetItem *fdit = new QListWidgetItem( QIcon(":/fdd.png"),
-														 tr("Floppy 1") + " (" + dev_name + ")" );
-			fdit->setData( 512, "fd1" );
-			
-			ui.Devices_List->addItem( fdit );
-			
-			emit Device_Changed();
+            Add_Floppy(Floppy1,1);
 		}
 	}
 	else if( ! Floppy2.Get_Enabled() )
@@ -575,17 +583,7 @@ void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 		
 		if( pw->exec() == QDialog::Accepted )
 		{
-			Floppy2 = pw->Get_Floppy();
-			
-			QString dev_name = Floppy2.Get_File_Name();
-			
-			QListWidgetItem *fdit = new QListWidgetItem( QIcon(":/fdd.png"),
-														 tr("Floppy 2") + " (" + dev_name + ")" );
-			fdit->setData( 512, "fd2" );
-			
-			ui.Devices_List->addItem( fdit );
-			
-			emit Device_Changed();
+			Add_Floppy(Floppy2,2);
 		}
 	}
 	else
@@ -609,6 +607,9 @@ void Device_Manager_Widget::on_actionAdd_CD_ROM_triggered()
 			CD_ROM.Set_Enabled( true );
 			
 			QString dev_name = CD_ROM.Get_File_Name();
+
+            if ( ! QFileInfo(dev_name).exists() )
+                return;
 			
 			QListWidgetItem *cdit = new QListWidgetItem( QIcon(":/cdrom.png"),
 														 tr("CD-ROM") + " (" + dev_name + ")" , ui.Devices_List );
@@ -626,6 +627,24 @@ void Device_Manager_Widget::on_actionAdd_CD_ROM_triggered()
 	}
 }
 
+
+void Device_Manager_Widget::Add_HDD(VM_HDD dev,QString letter)
+{
+	    dev = pw->Get_HDD();
+
+        QString dev_name = dev.Get_File_Name();
+
+        if ( ! QFileInfo(dev_name).exists() )
+            return;
+	
+	    QListWidgetItem *hdit = new QListWidgetItem( QIcon(":/hdd.png"),
+												     tr("HD") + letter.toUpper() + " (" + dev_name + ")", ui.Devices_List );
+	    hdit->setData( 512, "hd"+letter.toLower() );
+	    ui.Devices_List->addItem( hdit );
+	
+	    emit Device_Changed();
+}
+
 void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 {
 	if( ! HDA.Get_Enabled() )
@@ -636,15 +655,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 		
 		if( pw->exec() == QDialog::Accepted )
 		{
-			HDA = pw->Get_HDD();
-			
-			QListWidgetItem *hdit = new QListWidgetItem( QIcon(":/hdd.png"),
-														 tr("HDA") + " (" + HDA.Get_File_Name() + ")", ui.Devices_List );
-			hdit->setData( 512, "hda" );
-			
-			ui.Devices_List->addItem( hdit );
-			
-			emit Device_Changed();
+			Add_HDD(HDA,"A");
 		}
 	}
 	else if( ! HDB.Get_Enabled() )
@@ -655,15 +666,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 		
 		if( pw->exec() == QDialog::Accepted )
 		{
-			HDB = pw->Get_HDD();
-			
-			QListWidgetItem *hdit = new QListWidgetItem( QIcon(":/hdd.png"),
-														 tr("HDB") + " (" + HDB.Get_File_Name() + ")", ui.Devices_List );
-			hdit->setData( 512, "hdb" );
-			
-			ui.Devices_List->addItem( hdit );
-			
-			emit Device_Changed();
+			Add_HDD(HDB,"B");
 		}
 	}
 	else if( HDC.Get_Enabled() == false && CD_ROM.Get_Enabled() == false )
@@ -674,15 +677,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 		
 		if( pw->exec() == QDialog::Accepted )
 		{
-			HDC = pw->Get_HDD();
-			
-			QListWidgetItem *hdit = new QListWidgetItem( QIcon(":/hdd.png"),
-														 tr("HDC") + " (" + HDC.Get_File_Name() + ")", ui.Devices_List );
-			hdit->setData( 512, "hdc" );
-		
-			ui.Devices_List->addItem( hdit );
-			
-			emit Device_Changed();
+			Add_HDD(HDC,"C");
 		}
 	}
 	else if( ! HDD.Get_Enabled() )
@@ -693,15 +688,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 		
 		if( pw->exec() == QDialog::Accepted )
 		{
-			HDD = pw->Get_HDD();
-			
-			QListWidgetItem *hdit = new QListWidgetItem( QIcon(":/hdd.png"),
-														 tr("HDD") + " (" + HDD.Get_File_Name() + ")", ui.Devices_List );
-			hdit->setData( 512, "hdd" );
-			
-			ui.Devices_List->addItem( hdit );
-			
-			emit Device_Changed();
+			Add_HDD(HDD,"D");
 		}
 	}
 	else
