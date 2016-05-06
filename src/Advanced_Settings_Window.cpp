@@ -998,7 +998,7 @@ void Advanced_Settings_Window::Update_Emulators_Info()
 
 void Advanced_Settings_Window::on_TB_Screenshot_Folder_clicked()
 {
-	QString folder = QFileDialog::getExistingDirectory( this, tr("Choose screenshot folder"),
+	QString folder = QFileDialog::getExistingDirectory( this, tr("Choose Screenshot Folder"),
 														Settings.value("Screenshot_Folder_Path", "~").toString() );
 	
 	if( ! folder.isEmpty() )
