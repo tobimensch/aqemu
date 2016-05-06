@@ -6068,18 +6068,18 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	if( ! TFTP_Prefix.isEmpty() )
 	{
 		if( Build_QEMU_Args_for_Script_Mode )
-			Args << "-tftp" << "\"" + TFTP_Prefix + "\"";
+			Args << "-net" << "user,tftp=" + QString("\"") + TFTP_Prefix + "\"";
 		else
-			Args << "-tftp" << TFTP_Prefix;
+			Args << "-net" << "user,tftp=" + TFTP_Prefix;
 	}
 	
 	// SMB Dir
 	if( ! SMB_Directory.isEmpty() )
 	{
 		if( Build_QEMU_Args_for_Script_Mode )
-			Args << "-smb" << "\"" + SMB_Directory + "\"";
+			Args << "-net" << "user,smb=" + QString("\"") + SMB_Directory + "\"";
 		else
-			Args << "-smb" << SMB_Directory;
+			Args << "-net" << "user,smb=" + SMB_Directory;
 	}
 	
 	// Ports Tabs
@@ -6877,7 +6877,7 @@ QStringList Virtual_Machine::Build_Shared_Folder_Args( VM_Shared_Folder folder, 
 
     virtfs << "security_model=none";
 
-    virtfs << "mount_tag=shared_folder_"+QString::number(id);
+    virtfs << "mount_tag=shared"+QString::number(id);
 
     opt << virtfs.join(",");
 
@@ -6992,50 +6992,6 @@ bool Virtual_Machine::Start()
 			}
 		}
 	}
-	else if( Current_Emulator_Devices.PSO_Kernel_KQEMU ) // Check KQEMU
-	{
-		// KQEMU Module
-		if( KQEMU_Mode != VM::KQEMU_Disabled &&
-			KQEMU_Mode != VM::KQEMU_Default )
-		{
-			// Check kqemu module loaded
-			QProcess lsmod;
-			
-			lsmod.start( "lsmod" );
-			
-			if( ! lsmod.waitForFinished(1000) )
-			{
-				AQError( "bool Virtual_Machine::Start()", "lsmod not finished!" );
-			}
-			else
-			{
-				QString all_mod = lsmod.readAll();
-				
-				if( all_mod.isEmpty() )
-				{
-					AQError( "bool Virtual_Machine::Start()", "all_mod is empty!" );
-				}
-				else
-				{
-					QRegExp kqmod_rex = QRegExp( "*kqemu*" );
-					kqmod_rex.setPatternSyntax( QRegExp::Wildcard );
-					
-					if( ! kqmod_rex.exactMatch(all_mod) )
-					{
-						AQGraphic_Warning( tr("Error!"),
-										   tr("KQEMU Kernel Module Not Loaded!\n"
-											  "This Module Provides Acceleration for QEMU.\n"
-											  "For Loading KQEMU Module Type:\n"
-											  "\"modprobe kqemu\"\n"
-											  "in root mode\n"
-											  "Or Disable Acceleration in \"Other->Hardware Virtualization\" tab.") );
-						Start_Snapshot_Tag = "";
-						return false;
-					}
-				}
-			}
-		}
-	}
 	
 	// QEMU Audio Environment
 	if( Settings.value("QEMU_AUDIO/Use_Default_Driver", "yes").toString() == "no" )
@@ -7070,8 +7026,7 @@ bool Virtual_Machine::Start()
 		for( QMap<QString, QString>::const_iterator iter = bin_list.constBegin(); iter != bin_list.constEnd(); iter++ )
 		{
 			if( iter.key() == find_name ||
-				(find_name == "qemu-system-x86" && iter.key() == "qemu") ||
-				(find_name == "qemu-kvm" && iter.key() == "kvm") ) // FIXME 
+				(find_name == "qemu-system-x86" && iter.key() == "qemu")) // FIXME 
 			{
 				bin_path = iter.value();
 				break;

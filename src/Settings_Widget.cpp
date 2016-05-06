@@ -95,6 +95,7 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
         list->setFlow( QListView::LeftToRight );
         list->setViewMode( QListView::IconMode );
         list->setMovement( QListView::Static );
+        list->setWrapping( false );
 
         stack->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Expanding );
     }
@@ -169,6 +170,7 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
             border->setPalette(pal);
         }*/
         list->setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
+        list->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
         list->setSpacing(5);
         list->setMinimumHeight(list->sizeHintForRow(0)+15);
         list->setMaximumHeight(list->sizeHintForRow(0)+15);

@@ -1333,22 +1333,11 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 		return;
 	}
 
-    
-	AQDebug( "void Main_Window::Update_VM_Ui() VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator())", VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator()) );
-	AQDebug( "void Main_Window::Update_VM_Ui() ui.CB_Machine_Accelerator->count()", QString::number(ui.CB_Machine_Accelerator->count()) );
-	
-
     int found = false;
-
 	for( int ix = 0; ix < ui.CB_Machine_Accelerator->count(); ix++ )
 	{
-            AQDebug("iter", QString::number(ix));
-        	AQDebug( "void Main_Window::Update_VM_Ui() VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator())", ui.CB_Machine_Accelerator->itemText(ix));
-	
 		if( ui.CB_Machine_Accelerator->itemText(ix).toLower() == VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator()).toLower() )
 		{
-        	AQDebug( "==", ui.CB_Machine_Accelerator->itemText(ix).toLower() );
-        	AQDebug( "==",  VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator()).toLower() );
 			ui.CB_Machine_Accelerator->setCurrentIndex( ix );
             found = true;
 			break;
@@ -1495,54 +1484,12 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	ui.CH_Local_Time->setChecked( tmp_vm->Use_Local_Time() );
 	ui_ao.CH_Win2K_Hack->setChecked( tmp_vm->Use_Win2K_Hack() );
 	
-	// Use Device Manager Mode
-	//if( Settings.value("Use_Device_Manager", "").toString() == "yes" )
-	//{
-		Dev_Manager->Set_VM( *tmp_vm ); // FIXME Use it pointer
-	//}
-	/* TODO: legacy code ready for removal
-    else
-	{
-		// Floppy 0
-		ui.CH_Floppy0->setChecked( tmp_vm->Get_FD0().Get_Enabled() );
-		ui.CB_FD0_Devices->lineEdit()->setText( tmp_vm->Get_FD0().Get_File_Name() );
-		Nativ_FD0 = tmp_vm->Get_FD0().Get_Nativ_Device();
-		
-		// Floppy 1
-		ui.CH_Floppy1->setChecked( tmp_vm->Get_FD1().Get_Enabled() );
-		ui.CB_FD1_Devices->lineEdit()->setText( tmp_vm->Get_FD1().Get_File_Name() );
-		Nativ_FD1 = tmp_vm->Get_FD1().Get_Nativ_Device();
-		
-		// CD-ROM
-		ui.CH_CDROM->setChecked( tmp_vm->Get_CD_ROM().Get_Enabled() );
-		ui.CB_CDROM_Devices->lineEdit()->setText( tmp_vm->Get_CD_ROM().Get_File_Name() );
-		Nativ_CD_ROM = tmp_vm->Get_CD_ROM().Get_Nativ_Device();
-		
-		// HDD's
-		ui.GB_HDA->setChecked( tmp_vm->Get_HDA().Get_Enabled() );
-		ui.Edit_HDA_Image_Path->setText( tmp_vm->Get_HDA().Get_File_Name() );
-		HDA_Info->Update_Disk_Info( tmp_vm->Get_HDA().Get_File_Name() );
-		Nativ_HDA = tmp_vm->Get_HDA().Get_Nativ_Device();
-		
-		ui.GB_HDB->setChecked( tmp_vm->Get_HDB().Get_Enabled() );
-		ui.Edit_HDB_Image_Path->setText( tmp_vm->Get_HDB().Get_File_Name() );
-		HDB_Info->Update_Disk_Info( tmp_vm->Get_HDB().Get_File_Name() );
-		Nativ_HDB = tmp_vm->Get_HDB().Get_Nativ_Device();
-		
-		ui.GB_HDC->setChecked( tmp_vm->Get_HDC().Get_Enabled() );
-		ui.Edit_HDC_Image_Path->setText( tmp_vm->Get_HDC().Get_File_Name() );
-		HDC_Info->Update_Disk_Info( tmp_vm->Get_HDC().Get_File_Name() );
-		Nativ_HDC = tmp_vm->Get_HDC().Get_Nativ_Device();
-		
-		ui.GB_HDD->setChecked( tmp_vm->Get_HDD().Get_Enabled() );
-		ui.Edit_HDD_Image_Path->setText( tmp_vm->Get_HDD().Get_File_Name() );
-		HDD_Info->Update_Disk_Info( tmp_vm->Get_HDD().Get_File_Name() );
-		Nativ_HDD = tmp_vm->Get_HDD().Get_Nativ_Device();
-	}*/
+
+    Dev_Manager->Set_VM( *tmp_vm ); // FIXME Use pointer
 
     // Shared Folders
 
-	Folder_Sharing->Set_VM( *tmp_vm ); // FIXME Use it pointer
+	Folder_Sharing->Set_VM( *tmp_vm ); // FIXME Use pointer
 	
 	// Network tab. Redirections
 	
@@ -1740,8 +1687,10 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	ui.Edit_x509verify_Folder->setText( tmp_vm->Get_VNC_x509verify_Folder_Path() );
 
     if ( update_info_tab )
+    {
     	Update_Info_Text();
-	//Update_Disabled_Controls(); // FIXME
+    }
+	Update_Disabled_Controls(); // FIXME
 	
 	// For VM Changes Signals
 	ui.Button_Apply->setEnabled( false );
@@ -3272,11 +3221,13 @@ void Main_Window::Update_Disabled_Controls()
 	{
 		ui.Label_TFTP->setEnabled( true );
 		ui.Edit_TFTP_Prefix->setEnabled( true );
+		ui.TB_Browse_TFTP->setEnabled( true );
 	}
 	else
 	{
 		ui.Label_TFTP->setEnabled( false );
 		ui.Edit_TFTP_Prefix->setEnabled( false );
+		ui.TB_Browse_TFTP->setEnabled( false );
 	}
 	
 	if( curComp.PSO_SMB )
@@ -5859,6 +5810,17 @@ void Main_Window::on_TB_Browse_SMB_clicked()
 	if( ! SMB_Dir.isEmpty() )
 		ui.Edit_SMB_Folder->setText( QDir::toNativeSeparators(SMB_Dir) );
 }
+
+void Main_Window::on_TB_Browse_TFTP_clicked()
+{
+	QString TFTP_Dir = QFileDialog::getExistingDirectory( this, tr("Select TFTP Directory"),
+														 Get_Last_Dir_Path(ui.Edit_TFTP_Prefix->text()),
+														 QFileDialog::ShowDirsOnly );
+	
+	if( ! TFTP_Dir.isEmpty() )
+		ui.Edit_TFTP_Prefix->setText( QDir::toNativeSeparators(TFTP_Dir) );
+}
+
 
 void Main_Window::adv_on_CH_Start_Date_toggled( bool on )
 {

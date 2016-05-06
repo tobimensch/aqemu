@@ -50,6 +50,20 @@ Folder_Sharing_Widget::Folder_Sharing_Widget( QWidget *parent )
     connect(this,SIGNAL(Folder_Changed()),this,SLOT(Update_Icons()));
 }
 
+void Folder_Sharing_Widget::on_actionAdd_Samba_Folder_triggered()
+{
+    QString message = tr(R"(To set up a shared SAMBA folder these settings need to be made:
+
+<> A SAMBA server (smbd) must be installed on the host
+<> Network support must be enabled
+<> The network must be set to 'user mode stack'/'user' mode
+<> Set the shared folder in Network -> TFTP/SAMBA
+<> Access the folder in the guest at \\10.0.2.4\qemu
+)");
+
+    QMessageBox::information( this, tr("How To Setup a Shared SAMBA Folder"), message );
+}
+
 void Folder_Sharing_Widget::syncLayout(Device_Manager_Widget* dm)
 {
     int w = dm->ui.add_layout_widget->sizeHint().width();
@@ -95,6 +109,7 @@ void Folder_Sharing_Widget::Set_Enabled( bool on )
 	
 	ui.Label_Add_Folders->setEnabled( on );
 	ui.TB_Add_Folder->setEnabled( on );
+    ui.TB_Add_Samba_Folder->setEnabled( on );
 	
 	ui.Label_Manage_Folders->setEnabled( on );
 	//ui.TB_Edit_Folder->setEnabled( on );
@@ -127,7 +142,7 @@ void Folder_Sharing_Widget::Update_Enabled_Actions()
 				{
 					found = true;
 					
-					ui.Label_Connected_To->setText( "mkdir /tmp/shared"+QString::number(fx)+"\nmount -t 9p -o trans=virtio shared_folder_"+QString::number(fx)+" /tmp/shared"+QString::number(fx)+" -oversion=9p2000.L,posixacl,cache=loose" );
+					ui.Label_Connected_To->setText( "# "+tr("The 9p filesystem module must be available on the guest")+"\nmkdir /tmp/shared"+QString::number(fx)+"; mount -t 9p -o trans=virtio shared"+QString::number(fx)+" /tmp/shared"+QString::number(fx)+" \\\n                          -o version=9p2000.L,posixacl,cache=mmap" );
 					
 					//ui.TB_Edit_Folder->setEnabled( true );
 					ui.actionProperties->setEnabled( true );

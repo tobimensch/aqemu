@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -2185,7 +2185,7 @@
             <item row="0" column="0">
              <widget class="QTabWidget" name="Network_Cards_Tabs">
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="Tab_Network_Basic_Native">
                <attribute name="icon">
@@ -2214,7 +2214,7 @@
                    <item>
                     <widget class="QCheckBox" name="CH_Use_Network">
                      <property name="text">
-                      <string>Use &amp;network</string>
+                      <string>Enable &amp;network</string>
                      </property>
                     </widget>
                    </item>
@@ -2249,7 +2249,7 @@
                       <item>
                        <widget class="QLabel" name="Label_Network_Settings_Type">
                         <property name="text">
-                         <string>Network settings GUI type:</string>
+                         <string>Network GUI type:</string>
                         </property>
                        </widget>
                       </item>
@@ -2797,7 +2797,7 @@
                   <item row="0" column="0">
                    <widget class="QLabel" name="Label_TFTP">
                     <property name="text">
-                     <string>TFTP server prefi&amp;x:</string>
+                     <string>TFTP directory:</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2837,9 +2837,20 @@
                     </property>
                    </widget>
                   </item>
+                  <item row="0" column="2">
+                   <widget class="QToolButton" name="TB_Browse_TFTP">
+                    <property name="text">
+                     <string>...</string>
+                    </property>
+                    <property name="icon">
+                     <iconset resource="../resources/icons.qrc">
+                      <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+                    </property>
+                   </widget>
+                  </item>
                  </layout>
                 </item>
-                <item row="1" column="0">
+                <item row="3" column="0">
                  <spacer name="verticalSpacer_2">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -2851,6 +2862,20 @@
                    </size>
                   </property>
                  </spacer>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string/>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_6">
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;To set up a shared SAMBA folder or TFTP these settings need to be made:&lt;br/&gt;&lt;/p&gt;&lt;ul style=&quot;margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;&quot;&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;For SAMBA: A samba server (smbd) must be installed on the host&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Network support must be enabled&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;The network must be set to 'user mode stack'/'user' mode&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Set the shared folder in Network -&amp;gt; TFTP/SAMBA&lt;/li&gt;&lt;li style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Access the folder in the guest at \\10.0.2.4\qemu&lt;/li&gt;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>

@@ -28,6 +28,7 @@
 #include <QDir>
 #include <QTextStream>
 
+#include "Utils.h"
 #include "System_Info.h"
 
 System_Info::System_Info()
@@ -1353,10 +1354,6 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	rx = QRegExp( ".*-win2k-hack\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_Win2K_Hack = true;
 	
-	//  FIXME
-	//rx = QRegExp( ".*\\s.*" );
-	//if( rx.exactMatch(all_help) ) tmp_dev.PSO_Kernel_KQEMU = true;
-	
 	// -no-acpi
 	rx = QRegExp( ".*-no-acpi\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_No_ACPI = true;
@@ -1420,9 +1417,23 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	// -bootp
 	rx = QRegExp( ".*-bootp\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_Bootp = true;
-	
-	// -net nic
+
+	// -netdev
 	QString net_str = "";
+	rx = QRegExp( ".*(-netdev\\s+.*)-net.*" );
+	if( rx.exactMatch(all_help) )
+	{
+		QStringList rx_list = rx.capturedTexts();
+        
+        /*for ( int i = 0; i < rx_list.count(); i++)
+        {
+            AQDebug(rx_list.at(i),"----------------------------------------------------------------------------");
+        }*/
+
+		if( rx_list.count() > 1 ) net_str += rx_list[ 1 ];
+	}
+
+	// -net nic
 	rx = QRegExp( ".*(-net\\s+nic.*)-net.*" );
 	if( rx.exactMatch(all_help) )
 	{
@@ -1526,8 +1537,10 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		
 		// smb
 		rx = QRegExp( ".*smb=.*" );
-		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_smb = true;
-		
+		if( rx.exactMatch(net_str) ) {
+                tmp_dev.PSO_Net_smb = true;
+        }
+
 		// hostfwd
 		rx = QRegExp( ".*hostfwd=.*" );
 		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_hostfwd = true;
@@ -1636,11 +1649,23 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	// -tftp
 	rx = QRegExp( ".*-tftp\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_TFTP = true;
-	
+
+    if ( tmp_dev.PSO_Net_tftp == true )
+    {  //hack, all this code should probably be rewritten or removed
+       //but in the meantime this hopefully makes things work
+       tmp_dev.PSO_TFTP = true;
+    }
+
 	// -smb
 	rx = QRegExp( ".*-smb\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_SMB = true;
-	
+
+    if ( tmp_dev.PSO_Net_smb == true )
+    {  //hack, all this code should probably be rewritten or removed
+       //but in the meantime this hopefully makes things work
+       tmp_dev.PSO_SMB = true;
+    }
+
 	// -std-vga
 	rx = QRegExp( ".*-std-vga\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_Std_VGA = true;

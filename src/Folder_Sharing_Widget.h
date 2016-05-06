@@ -57,7 +57,8 @@ class Folder_Sharing_Widget: public QWidget
 		void on_Folders_List_customContextMenuRequested( const QPoint &pos );
 		void on_Folders_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous );
 		void on_Folders_List_itemDoubleClicked( QListWidgetItem *item );
-		
+
+		void on_actionAdd_Samba_Folder_triggered();
 		void on_actionAdd_Folder_triggered();
 		void on_actionProperties_triggered();
 		void on_actionRemove_triggered();

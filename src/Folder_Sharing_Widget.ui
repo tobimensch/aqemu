@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>614</width>
+    <width>719</width>
     <height>432</height>
    </rect>
   </property>
@@ -139,12 +139,18 @@
         </font>
        </property>
        <property name="text">
-        <string>How to mount the shared folder on the guest (&amp;9p fs support is required on the guest):</string>
+        <string>How to mount on the guest:</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QLabel" name="Label_Connected_To">
+       <property name="font">
+        <font>
+         <family>Monospace</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -200,7 +206,7 @@
         <item>
          <widget class="QToolButton" name="TB_Add_Folder">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="toolTip">
            <string>Add to shared folders list</string>
@@ -211,6 +217,26 @@
           <property name="icon">
            <iconset resource="../resources/icons.qrc">
             <normaloff>:/open-folder.png</normaloff>:/open-folder.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="TB_Add_Samba_Folder">
+          <property name="toolTip">
+           <string>Share folder using samba (for Windows guests)</string>
+          </property>
+          <property name="text">
+           <string>...</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../resources/shared_images.qrc">
+            <normaloff>:/samba.png</normaloff>:/samba.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -466,19 +492,19 @@
     <string>Quick Format</string>
    </property>
   </action>
-  <action name="actionAdd_Folder2">
+  <action name="actionAdd_Samba_Folder">
    <property name="icon">
     <iconset>
      <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
    </property>
    <property name="text">
-    <string>Add Folder</string>
+    <string>Add Samba Folder</string>
    </property>
    <property name="iconText">
     <string>Add Folder</string>
    </property>
    <property name="toolTip">
-    <string>Add Folder</string>
+    <string>Add Samba Folder</string>
    </property>
   </action>
  </widget>
@@ -490,6 +516,7 @@
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
+  <include location="../resources/shared_images.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -553,6 +580,22 @@
     <hint type="destinationlabel">
      <x>-1</x>
      <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>TB_Add_Samba_Folder</sender>
+   <signal>clicked()</signal>
+   <receiver>actionAdd_Samba_Folder</receiver>
+   <slot>trigger()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>59</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>215</y>
     </hint>
    </hints>
   </connection>

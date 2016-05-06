@@ -133,7 +133,8 @@ class Main_Window: public QMainWindow
 		void on_Button_Clear_Redirections_clicked();
 		
 		void on_TB_Browse_SMB_clicked();
-		
+		void on_TB_Browse_TFTP_clicked();
+
 		// Advanced
 		void adv_on_CH_Start_Date_toggled( bool on );
 		

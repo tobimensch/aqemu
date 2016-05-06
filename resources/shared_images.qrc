@@ -10,5 +10,6 @@
         <file alias="vnc.png">icons/vnc.png</file>
         <file alias="qemu-black-and-orange.png">icons/qemu-black-and-orange.png</file>
         <file alias="pepper.png">icons/pepper.png</file>
+        <file alias="samba.png">icons/samba.png</file>
     </qresource>
 </RCC>
