@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -255,6 +255,9 @@
                    </property>
                    <property name="maxLength">
                     <number>256</number>
+                   </property>
+                   <property name="placeholderText">
+                    <string>The Machine</string>
                    </property>
                   </widget>
                  </item>
@@ -1372,7 +1375,7 @@
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="Tab_Boot_Linux">
                <attribute name="icon">
@@ -1392,7 +1395,7 @@
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;You can use a given Linux or Multiboot kernel without installing it in the disk image. It can be useful for easier testing of various kernels.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Source: &lt;/span&gt;&lt;a href=&quot;http://wiki.qemu.org/download/qemu-sdoc.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;wiki.qemu.org/download/qemu-sdoc.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;You can use a given Linux or Multiboot kernel&lt;br&gt;without installing it in the disk image.&lt;br&gt;It can be useful for easier testing of various kernels.&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Source: &lt;/span&gt;&lt;a href=&quot;http://wiki.qemu.org/download/qemu-sdoc.html&quot;&gt;&lt;span style=&quot; font-size:9pt; text-decoration: underline; color:#0000ff;&quot;&gt;wiki.qemu.org/download/qemu-sdoc.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
@@ -1438,6 +1441,9 @@
                      <property name="enabled">
                       <bool>true</bool>
                      </property>
+                     <property name="placeholderText">
+                      <string>/boot/initramfs-linux.img</string>
+                     </property>
                     </widget>
                    </item>
                    <item row="0" column="0">
@@ -1460,6 +1466,9 @@
                     <widget class="QLineEdit" name="Edit_Linux_bzImage_Path">
                      <property name="enabled">
                       <bool>true</bool>
+                     </property>
+                     <property name="placeholderText">
+                      <string>/boot/vmlinuz-linux</string>
                      </property>
                     </widget>
                    </item>
@@ -1718,7 +1727,7 @@
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="Tab_VNC">
                <attribute name="icon">
@@ -2217,7 +2226,7 @@
             <item row="0" column="0">
              <widget class="QTabWidget" name="Network_Cards_Tabs">
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="Tab_Network_Basic_Native">
                <attribute name="icon">
@@ -2790,7 +2799,7 @@
                    </sizepolicy>
                   </property>
                   <property name="text">
-                   <string>Enable &amp;Redirections</string>
+                   <string>Enable &amp;redirections</string>
                   </property>
                  </widget>
                 </item>
@@ -2829,7 +2838,7 @@
                   <item row="0" column="0">
                    <widget class="QLabel" name="Label_TFTP">
                     <property name="text">
-                     <string>TFTP directory:</string>
+                     <string>TFTP folder:</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -2840,7 +2849,14 @@
                    </widget>
                   </item>
                   <item row="0" column="1">
-                   <widget class="QLineEdit" name="Edit_TFTP_Prefix"/>
+                   <widget class="QLineEdit" name="Edit_TFTP_Prefix">
+                    <property name="text">
+                     <string/>
+                    </property>
+                    <property name="placeholderText">
+                     <string>/path/to/tftp/folder</string>
+                    </property>
+                   </widget>
                   </item>
                   <item row="1" column="0">
                    <widget class="QLabel" name="Label_SMB_Folder">
@@ -2856,7 +2872,11 @@
                    </widget>
                   </item>
                   <item row="1" column="1">
-                   <widget class="QLineEdit" name="Edit_SMB_Folder"/>
+                   <widget class="QLineEdit" name="Edit_SMB_Folder">
+                    <property name="placeholderText">
+                     <string>/path/to/shared/folder</string>
+                    </property>
+                   </widget>
                   </item>
                   <item row="1" column="2">
                    <widget class="QToolButton" name="TB_Browse_SMB">
