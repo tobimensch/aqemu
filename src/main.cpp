@@ -45,13 +45,16 @@
 #define CURRENT_AQEMU_VERSION "0.9.1"
 
 static const char USAGE[] =
-R"(Usage: aqemu
+R"(Usage: aqemu [options]
 
 Frontend for qemu.
 
   Options:
-      -h --help     Show this screen.
-      --version     Show version.
+      -h --help          Show this screen.
+      --version          Show version.
+
+  Qt Options:
+      --style THEME      Set theme/style.
 )";
 /* mockup
 

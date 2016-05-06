@@ -78,11 +78,11 @@ void VM_Wizard_Window::on_KVM_toggled(bool toggled)
 {
     if ( toggled )
     {
-        ui.toolBox_accelInfo->setCurrentIndex(0);
+        ui.toolBox_accelInfo->setCurrentIndex(1);
     }
     else
     {
-        ui.toolBox_accelInfo->setCurrentIndex(1);
+        ui.toolBox_accelInfo->setCurrentIndex(0);
     }
 }
 
