@@ -1200,7 +1200,7 @@ QString convert_char(QString s)
     if ( s == "," )
         return "comma";
     if ( s == "\\" )
-        return "kp_divide";
+        return "backslash";
     if ( s == " " )
         return "spc";
     if ( s == "!" )
