@@ -1214,7 +1214,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	Sec_Element = New_Dom_Document.createElement( "Audio_cs4231a" );
 	Dom_Element.appendChild( Sec_Element );
 	
-	if( Audio_Card.Audio_AC97 )
+	if( Audio_Card.Audio_cs4231a )
 		Dom_Text = New_Dom_Document.createTextNode( "true" );
 	else
 		Dom_Text = New_Dom_Document.createTextNode( "false" );
