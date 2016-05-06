@@ -1,14 +1,14 @@
-AQEMU is a graphical interface to QEMU and KVM virtual machines.
+AQEMU is a graphical frontend for QEMU based virtual machines.
 
 
 AQEMU compiling and running Linux, BSD and Windows!
-(Windows support in developing process)
+(Windows support in development stage)
 
 AQEMU Minimal Version Dependencies:
  * Qt >= 5.X
- * CMake >= 2.6
- * QEMU >= 0.9.0 or KVM or QEMU-KVM
- * GCC >= 4.X (MinGW in Windows)
+ * CMake >= 3.1.0
+ * QEMU >= 2.0.0 (using a recent version recommended)
+ * GCC >= 4.8.1 (MinGW in Windows)
 
 
 !!! ATTENTION READ THIS FIRST !!!
@@ -63,6 +63,6 @@ I'm not the original author of this software, all credits go to him.
 But as it looks like as if he has abandoned this project I've taken
 the freedom to maintain it on my github account in the meantime.
 You can file issues on github.com/tobimensch/aqemu . I'll be happy
-to get pull requests. I'm not promising to fix each and every issue,
-help with that would be very welcome.
+to receive pull requests. I'm not promising to fix each and every issue,
+help with that (and further development) would be very welcome.
 

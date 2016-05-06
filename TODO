@@ -1,15 +1,19 @@
-* New Embedded Display
+# This TODO list was originally created by Andrej Rijov.
+# It looks like those would still be nice to have.
+
+* New embedded display
 
 * Ability to minimize to tray.
 
 * Update Emulator Control
 
-* Easy USB Disconnect Support
+* Easy USB disconnect support
 
 * Ability save emulator window position and size
 
-* Tool Tips For All Options
+* Tool tips for all options
 
-* Complete GUI For Manage QEMU Sound System
+* Complete GUI for managing QEMU sound system
 
-* Complete Windows Port
+* Complete windows port
+
