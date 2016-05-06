@@ -27,10 +27,13 @@ Error_Log_Window::Error_Log_Window( QWidget *parent )
 	: QDialog( parent )
 {
 	ui.setupUi( this );
+
+    last_error_is_deprecated_option = false;
 	
 	Errors_Count = 0;
 	
 	if( Settings.value("No_Show_Error_Log_Forever", "no") == "yes" ) ui.RB_No_Show_Forever->setChecked( true );
+    else if ( Settings.value("Error_Log_User_Mode","yes") == "yes" ) ui.RB_User_Normal_Mode->setChecked( true );
 	else if( ! Get_Show_Error_Window() ) ui.RB_Show_AQEMU_Started->setChecked( true );
 
 }
@@ -42,6 +45,8 @@ void Error_Log_Window::Add_to_Log( const QString& err_str )
 	Errors_Count++;
 	
 	ui.Edit_Log->append( "<b> " + tr("Error #") + QString::number(Errors_Count) + "</b><br>" + err_str + "<br>" );
+
+    last_error_is_deprecated_option = err_str.contains("option is deprecated");
 }
 
 bool Error_Log_Window::No_Show_Before_AQEMU_Restart() const
@@ -58,12 +63,26 @@ bool Error_Log_Window::No_Show_Before_VM_Restart() const
 	else return false;
 }
 
+bool Error_Log_Window::No_Show_Deprecated_Options_Error() const
+{
+	if( ui.RB_Normal_Mode->isChecked() )
+    { 
+        //the "Normal_Mode" which should really be called "Developer Mode"
+        //is the only mode in which we want to see deprecated options errors
+        return false;
+	}
+    return last_error_is_deprecated_option;
+}
+
 void Error_Log_Window::done(int r)
 {
     if ( r == QDialog::Accepted )
     {
 	    if( ui.RB_No_Show_Forever->isChecked() ) Settings.setValue( "No_Show_Error_Log_Forever", "yes" );
 	    else Settings.setValue( "No_Show_Error_Log_Forever", "no" );
+
+	    if( ui.RB_User_Normal_Mode->isChecked() ) Settings.setValue( "Error_Log_User_Mode", "yes" );
+	    else Settings.setValue( "Error_Log_User_Mode", "no" );
 	
 	    No_Show_Before_AQEMU_Restart();
     }

@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>542</width>
-    <height>412</height>
+    <height>438</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -40,10 +40,20 @@
         <item>
          <widget class="QRadioButton" name="RB_Normal_Mode">
           <property name="text">
-           <string>Everytime an error occurs. (&amp;Default)</string>
+           <string>Everytime an error occurs or an option is &amp;deprecated.</string>
           </property>
           <property name="checked">
            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="RB_User_Normal_Mode">
+          <property name="text">
+           <string>Everytime an error occurs. (Defau&amp;lt)</string>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -123,7 +133,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>Edit_Log</tabstop>
-  <tabstop>RB_Normal_Mode</tabstop>
   <tabstop>RB_Show_VM_Started</tabstop>
   <tabstop>RB_Show_AQEMU_Started</tabstop>
   <tabstop>RB_No_Show_Forever</tabstop>

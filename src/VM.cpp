@@ -7283,10 +7283,11 @@ void Virtual_Machine::Show_QEMU_Error( const QString &err_str )
 	
 	if( Settings.value( "No_Show_Error_Log_Forever", "no" ).toString() == "yes" ||
 		QEMU_Error_Win->No_Show_Before_AQEMU_Restart() == true ||
-		QEMU_Error_Win->No_Show_Before_VM_Restart() == true )
+		QEMU_Error_Win->No_Show_Before_VM_Restart() == true ||
+        QEMU_Error_Win->No_Show_Deprecated_Options_Error() == true )
 	{
 		AQDebug( "void Virtual_Machine::Show_QEMU_Error( const QString &err_str )",
-				 "Error Log Window Not Show" );
+				 "Error Log Window Not Shown" );
 		return;
 	}
 	else
