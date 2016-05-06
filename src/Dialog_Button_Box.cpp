@@ -42,7 +42,7 @@ Dialog_Button_Box::~Dialog_Button_Box()
 {
 }
 
-void Dialog_Button_Box::paintEvent(QPaintEvent* e)
+void Dialog_Button_Box::showEvent(QShowEvent* e)
 {
     init();
 

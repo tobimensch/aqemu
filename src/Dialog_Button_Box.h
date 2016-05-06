@@ -47,7 +47,7 @@ class Dialog_Button_Box : public QDialogButtonBox
 
     private:
         void init();
-        void paintEvent(QPaintEvent*);
+        void showEvent(QShowEvent*);
 };
 
 #endif
