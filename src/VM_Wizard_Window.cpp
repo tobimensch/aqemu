@@ -49,6 +49,7 @@ VM_Wizard_Window::VM_Wizard_Window( QWidget *parent )
 {
 	ui.setupUi( this );
 	ui.Label_Page->setBackgroundRole( QPalette::Base );
+    ui.Wizard_Pages->setCurrentIndex(0);
 	
 	New_VM = new Virtual_Machine();
 	
@@ -69,6 +70,20 @@ VM_Wizard_Window::VM_Wizard_Window( QWidget *parent )
 		AQWarning( "void VM_Wizard_Window::on_Button_Next_clicked()",
 				   "No VM Templates Found!" );
 	}
+
+    connect(ui.RB_Emulator_KVM, SIGNAL(toggled(bool)),this, SLOT(on_KVM_toggled(bool)));
+}
+
+void VM_Wizard_Window::on_KVM_toggled(bool toggled)
+{
+    if ( toggled )
+    {
+        ui.toolBox_accelInfo->setCurrentIndex(0);
+    }
+    else
+    {
+        ui.toolBox_accelInfo->setCurrentIndex(1);
+    }
 }
 
 void VM_Wizard_Window::Set_VM_List( QList<Virtual_Machine*> *list )
