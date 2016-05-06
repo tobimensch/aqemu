@@ -40,8 +40,7 @@ class SMP_Settings_Window: public QDialog
 		void Set_SMP_Count( int count );
 	
 	private slots:
-		void on_Button_OK_clicked();
-		void on_Button_Cancel_clicked();
+		void done(int);
 	
 	private:
 		Ui::SMP_Settings_Window ui;

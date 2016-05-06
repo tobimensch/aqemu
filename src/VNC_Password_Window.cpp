@@ -34,19 +34,22 @@ QString VNC_Password_Window::Get_Password() const
 	return ui.Edit_Password->text();
 }
 
-void VNC_Password_Window::on_Button_OK_clicked()
+void VNC_Password_Window::done(int r)
 {
-	if( ui.Edit_Password->text().isEmpty() )
-	{
-		AQGraphic_Warning( tr("Warning"), tr("Password is Empty!") );
-		return;
-	}
+    if ( r == QDialog::Accepted )
+    {
+	    if( ui.Edit_Password->text().isEmpty() )
+	    {
+		    AQGraphic_Warning( tr("Warning"), tr("Password is Empty!") );
+		    return;
+	    }
 	
-	if( ui.Edit_Password->text() != ui.Edit_Confirm_Password->text() )
-	{
-		AQGraphic_Warning( tr("Warning"), tr("Password Not Confirmed!") );
-		return;
-	}
-	
-	accept();
+	    if( ui.Edit_Password->text() != ui.Edit_Confirm_Password->text() )
+	    {
+		    AQGraphic_Warning( tr("Warning"), tr("Password Not Confirmed!") );
+		    return;
+	    }
+    }
+    QDialog::done(r);	
 }
+

@@ -99,7 +99,7 @@ void First_Start_Wizard::on_Button_Next_clicked()
 		if( Save_Settings() )
 		{
 			Advanced_Settings_Window *asw = new Advanced_Settings_Window();
-			asw->on_Button_OK_clicked();
+			asw->done(QDialog::Accepted);
 			delete asw;
 			
 			accept();

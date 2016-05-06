@@ -74,19 +74,23 @@ void SMP_Settings_Window::Set_SMP_Count( int count )
 	ui.SB_MaxCPUs->setValue( 0 );
 }
 
-void SMP_Settings_Window::on_Button_OK_clicked()
+void SMP_Settings_Window::done(int r)
 {
-	// FIXME Calculate Max CPU Count
-	accept();
+    if ( QDialog::Accepted == r )
+    {	// FIXME Calculate Max CPU Count
+        QDialog::done(r);
+        return;
+    }
+    else //cancel
+    {
+	    ui.SB_SMP->setValue( Backup_SMP.SMP_Count );
+	    ui.SB_Cores->setValue( Backup_SMP.SMP_Cores );
+	    ui.SB_Threads->setValue( Backup_SMP.SMP_Threads );
+	    ui.SB_Sockets->setValue( Backup_SMP.SMP_Sockets );
+	    ui.SB_MaxCPUs->setValue( Backup_SMP.SMP_MaxCPUs );
+	
+	    QDialog::done(r);
+    }
 }
 
-void SMP_Settings_Window::on_Button_Cancel_clicked()
-{
-	ui.SB_SMP->setValue( Backup_SMP.SMP_Count );
-	ui.SB_Cores->setValue( Backup_SMP.SMP_Cores );
-	ui.SB_Threads->setValue( Backup_SMP.SMP_Threads );
-	ui.SB_Sockets->setValue( Backup_SMP.SMP_Sockets );
-	ui.SB_MaxCPUs->setValue( Backup_SMP.SMP_MaxCPUs );
-	
-	reject();
-}
+

@@ -34,7 +34,7 @@ class VNC_Password_Window: public QDialog
 		QString Get_Password() const;
 		
 	private slots:
-		void on_Button_OK_clicked();
+		void done(int);
 	
 	private:
 		Ui::VNC_Password_Window ui;

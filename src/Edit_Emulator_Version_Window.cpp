@@ -44,18 +44,20 @@ void Edit_Emulator_Version_Window::Load_Emulators()
 	}
 }
 
-void Edit_Emulator_Version_Window::on_Button_OK_clicked()
+void Edit_Emulator_Version_Window::done(int r)
 {
-	// FIXME Optimize save only changet
+    if ( QDialog::Accepted == r )
+    {
+	    // FIXME Optimize: save only changes
 	
-	// Delete old emulators
-	Remove_All_Emulators_Files();
+	    // Delete old emulators
+	    Remove_All_Emulators_Files();
 	
-	// Save New Emulators
-	for( int ix = 0; ix < Emulators.count(); ++ix )
-		Emulators[ ix ].Save();
-	
-	accept();
+	    // Save New Emulators
+	    for( int ix = 0; ix < Emulators.count(); ++ix )
+		    Emulators[ ix ].Save();
+    }
+    QDialog::done(r);
 }
 
 void Edit_Emulator_Version_Window::on_List_Emulators_currentRowChanged( int currentRow )

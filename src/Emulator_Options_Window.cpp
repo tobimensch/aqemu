@@ -107,54 +107,56 @@ void Emulator_Options_Window::on_TB_Browse_clicked()
 		ui.Edit_Path_to_Dir->setText( QDir::toNativeSeparators(dir) );
 }
 
-void Emulator_Options_Window::on_Button_OK_clicked()
+void Emulator_Options_Window::done(int r)
 {
-	// Find all Emulators Names
-	if( ui.Edit_Name->text().isEmpty() )
-	{
-		AQGraphic_Warning( tr("Error!"), tr("Enulator Name is Empty!") );
-		return;
-	}
+    if ( r == QDialog::Accepted )
+    {
+	    // Find all Emulators Names
+	    if( ui.Edit_Name->text().isEmpty() )
+	    {
+		    AQGraphic_Warning( tr("Error!"), tr("Enulator Name is Empty!") );
+		    return;
+	    }
 
-	if( ! Name_Valid(ui.Edit_Name->text()) )
-	{
-		AQGraphic_Warning( tr("Error!"), tr("This emulator name is already used!") );
-		return;
-	}
+	    if( ! Name_Valid(ui.Edit_Name->text()) )
+	    {
+		    AQGraphic_Warning( tr("Error!"), tr("This emulator name is already used!") );
+		    return;
+	    }
 	
-	// Name
-	Current_Emulator.Set_Name( ui.Edit_Name->text() );
+	    // Name
+	    Current_Emulator.Set_Name( ui.Edit_Name->text() );
 	
-	// Path
-	Current_Emulator.Set_Path( ui.Edit_Path_to_Dir->text() );
+	    // Path
+	    Current_Emulator.Set_Path( ui.Edit_Path_to_Dir->text() );
 	
-	// Save Binary List
-	QMap<QString, QString> bin_files;
-	for( int ix = 0; ix < ui.Table_Systems->rowCount(); ix++ )
-	{
-		bin_files[ ui.Table_Systems->item(ix, 0)->text() ] = ui.Table_Systems->item(ix, 1)->text();
-	}
-	Current_Emulator.Set_Binary_Files( bin_files );
+	    // Save Binary List
+	    QMap<QString, QString> bin_files;
+	    for( int ix = 0; ix < ui.Table_Systems->rowCount(); ix++ )
+	    {
+		    bin_files[ ui.Table_Systems->item(ix, 0)->text() ] = ui.Table_Systems->item(ix, 1)->text();
+	    }
+	    Current_Emulator.Set_Binary_Files( bin_files );
 	
-	// Check version
-	if( ui.RB_Check_Version->isChecked() ) Current_Emulator.Set_Check_Version( true );
-	else Current_Emulator.Set_Check_Version( false );
+	    // Check version
+	    if( ui.RB_Check_Version->isChecked() ) Current_Emulator.Set_Check_Version( true );
+	    else Current_Emulator.Set_Check_Version( false );
 	
-	// Check available options
-	if( ui.RB_Check_Options->isChecked() ) Current_Emulator.Set_Check_Available_Options( true );
-	else Current_Emulator.Set_Check_Available_Options( false );
+	    // Check available options
+	    if( ui.RB_Check_Options->isChecked() ) Current_Emulator.Set_Check_Available_Options( true );
+	    else Current_Emulator.Set_Check_Available_Options( false );
 	
-	// Force version
-	if( ui.RB_Force_Version->isChecked() ) Current_Emulator.Set_Force_Version( true );
-	else Current_Emulator.Set_Force_Version( false );
+	    // Force version
+	    if( ui.RB_Force_Version->isChecked() ) Current_Emulator.Set_Force_Version( true );
+	    else Current_Emulator.Set_Force_Version( false );
 	
-	// Version
-	Current_Emulator.Set_Version( String_To_Emulator_Version(ui.CB_Version->currentText()) );
+	    // Version
+	    Current_Emulator.Set_Version( String_To_Emulator_Version(ui.CB_Version->currentText()) );
 	
-	// Update emulator?
-	Update_Emulator();
-	
-	accept();
+	    // Update emulator?
+	    Update_Emulator();
+    }
+    QDialog::done(r);
 }
 
 Emulator Emulator_Options_Window::Get_Emulator() const

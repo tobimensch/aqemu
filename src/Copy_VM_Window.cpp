@@ -56,18 +56,21 @@ void Copy_VM_Window::Add_VM_Machine_Name( const QString &name )
 	All_Machine_Names << name;
 }
 
-void Copy_VM_Window::on_Button_OK_clicked()
+void Copy_VM_Window::done(int r)
 {
-	for( int ix = 0; ix < All_Machine_Names.count(); ++ix )
-	{
-		if( All_Machine_Names[ix] == ui.Edit_New_VM_Name->text() )
-		{
-			AQGraphic_Warning( tr("Error!"),
-							   tr("This VM Name Is Already Used!") );
-			return;
-		}
-	}
+    if ( r == QDialog::Accepted )
+    {
+	    for( int ix = 0; ix < All_Machine_Names.count(); ++ix )
+	    {
+		    if( All_Machine_Names[ix] == ui.Edit_New_VM_Name->text() )
+		    {
+			    AQGraphic_Warning( tr("Error!"),
+							       tr("This VM Name Is Already Used!") );
+			    return;
+		    }
+	    }
 	
-	// OK, New Name Unuque
-	accept();
+	    // OK, New Name Unuque
+    }
+    QDialog::done(r);
 }

@@ -40,7 +40,7 @@ class Emulator_Options_Window: public QDialog
 		void Set_All_Emulators_Names( const QStringList &allNames );
 		
 	private slots:
-		void on_Button_OK_clicked();
+		void done(int);
 		void on_Edit_Name_textChanged();
 		void on_Edit_Path_to_Dir_textChanged();
 		void on_Button_Find_clicked();

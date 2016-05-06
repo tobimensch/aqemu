@@ -45,7 +45,7 @@ class Add_New_Device_Window: public QDialog
 	private slots:
 		void on_CB_Interface_currentIndexChanged( const QString &text );
 		void on_TB_File_Path_Browse_clicked();
-		void on_Button_OK_clicked();
+		void done(int);
 	
 	private:
 		VM_Nativ_Storage_Device Device;

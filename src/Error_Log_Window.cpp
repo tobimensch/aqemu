@@ -32,6 +32,7 @@ Error_Log_Window::Error_Log_Window( QWidget *parent )
 	
 	if( Settings.value("No_Show_Error_Log_Forever", "no") == "yes" ) ui.RB_No_Show_Forever->setChecked( true );
 	else if( ! Get_Show_Error_Window() ) ui.RB_Show_AQEMU_Started->setChecked( true );
+
 }
 
 void Error_Log_Window::Add_to_Log( const QString& err_str )
@@ -57,12 +58,14 @@ bool Error_Log_Window::No_Show_Before_VM_Restart() const
 	else return false;
 }
 
-void Error_Log_Window::on_Button_Hide_clicked()
+void Error_Log_Window::done(int r)
 {
-	if( ui.RB_No_Show_Forever->isChecked() ) Settings.setValue( "No_Show_Error_Log_Forever", "yes" );
-	else Settings.setValue( "No_Show_Error_Log_Forever", "no" );
+    if ( r == QDialog::Accepted )
+    {
+	    if( ui.RB_No_Show_Forever->isChecked() ) Settings.setValue( "No_Show_Error_Log_Forever", "yes" );
+	    else Settings.setValue( "No_Show_Error_Log_Forever", "no" );
 	
-	No_Show_Before_AQEMU_Restart();
-	
-	accept();
+	    No_Show_Before_AQEMU_Restart();
+    }
+    QDialog::done(r);
 }

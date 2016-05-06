@@ -348,145 +348,147 @@ void Add_New_Device_Window::on_TB_File_Path_Browse_clicked()
 		ui.Edit_File_Path->setText( QDir::toNativeSeparators(file_name) );
 }
 
-void Add_New_Device_Window::on_Button_OK_clicked()
+void Add_New_Device_Window::done(int r)
 {
-	// Interface
-	switch( ui.CB_Interface->currentIndex() )
-	{
-		case 0:
-			Device.Set_Interface( VM::DI_IDE );
-			break;
+    if ( r == QDialog::Accepted )
+    {
+	    // Interface
+	    switch( ui.CB_Interface->currentIndex() )
+	    {
+		    case 0:
+			    Device.Set_Interface( VM::DI_IDE );
+			    break;
 			
-		case 1:
-			Device.Set_Interface( VM::DI_SCSI );
-			break;
+		    case 1:
+			    Device.Set_Interface( VM::DI_SCSI );
+			    break;
 			
-		case 2:
-			Device.Set_Interface( VM::DI_SD );
-			break;
+		    case 2:
+			    Device.Set_Interface( VM::DI_SD );
+			    break;
 			
-		case 3:
-			Device.Set_Interface( VM::DI_MTD );
-			break;
+		    case 3:
+			    Device.Set_Interface( VM::DI_MTD );
+			    break;
 			
-		case 4:
-			Device.Set_Interface( VM::DI_Floppy );
-			break;
+		    case 4:
+			    Device.Set_Interface( VM::DI_Floppy );
+			    break;
 			
-		case 5:
-			Device.Set_Interface( VM::DI_PFlash );
-			break;
+		    case 5:
+			    Device.Set_Interface( VM::DI_PFlash );
+			    break;
 			
-		case 6:
-			Device.Set_Interface( VM::DI_Virtio );
-			break;
+		    case 6:
+			    Device.Set_Interface( VM::DI_Virtio );
+			    break;
 			
-		default:
-			AQError( "void Add_New_Device_Window::on_Button_OK_clicked()",
-					 "Invalid Interface Index! Use IDE" );
-			Device.Set_Interface( VM::DI_IDE );
-			break;
+		    default:
+			    AQError( "void Add_New_Device_Window::done(int)",
+					     "Invalid Interface Index! Use IDE" );
+			    Device.Set_Interface( VM::DI_IDE );
+			    break;
+	    }
+	
+	    Device.Use_Interface( ui.CH_Interface->isChecked() );
+	
+	    // Media
+	    switch( ui.CB_Media->currentIndex() )
+	    {
+		    case 0:
+			    Device.Set_Media( VM::DM_Disk );
+			    break;
+			
+		    case 1:
+			    Device.Set_Media( VM::DM_CD_ROM );
+			    break;
+			
+		    default:
+			    AQError( "void Add_New_Device_Window::done(int)",
+					     "Invalid Media Index! Use Disk" );
+			    Device.Set_Media( VM::DM_Disk );
+			    break;
+	    }
+	
+	    Device.Use_Media( ui.CH_Media->isChecked() );
+	
+	    // File Path
+	    if( ui.CH_File->isChecked() )
+	    {
+		    if( ! QFile::exists(ui.Edit_File_Path->text()) )
+		    {
+			    AQGraphic_Warning( tr("Error!"), tr("File does not exist!") );
+			    return;
+		    }
+	    }
+	
+	    Device.Use_File_Path( ui.CH_File->isChecked() );
+	    Device.Set_File_Path( ui.Edit_File_Path->text() );
+	
+	    // Index
+	    Device.Use_Index( ui.CH_Index->isChecked() );
+	    Device.Set_Index( ui.SB_Index->value() );
+	
+	    // Bus, Unit
+	    Device.Use_Bus_Unit( ui.CH_Bus_Unit->isChecked() );
+	    Device.Set_Bus( ui.SB_Bus->value() );
+	    Device.Set_Unit( ui.SB_Unit->value() );
+	
+	    // Snapshot
+	    Device.Use_Snapshot( ui.CH_Snapshot->isChecked() );
+	    Device.Set_Snapshot( (ui.CB_Snapshot->currentIndex() == 0) ? true : false );
+	
+	    // Cache
+	    Device.Use_Cache( ui.CH_Cache->isChecked() );
+	    Device.Set_Cache( ui.CB_Cache->currentText() );
+	
+	    // AIO
+	    Device.Use_AIO( ui.CH_AIO->isChecked() );
+	    Device.Set_AIO( ui.CB_AIO->currentText() );
+	
+	    // Boot
+	    Device.Use_Boot( ui.CH_Boot->isChecked() );
+	    Device.Set_Boot( (ui.CB_Boot->currentIndex() == 0) ? true : false );
+	
+	    // hdachs
+	    if( ui.GB_hdachs_Settings->isChecked() )
+	    {
+		    bool ok;
+		
+		    qulonglong cyls = ui.Edit_Cyls->text().toULongLong( &ok, 10 );
+		    if( ! ok )
+		    {
+			    AQGraphic_Warning( tr("Warning!"), tr("\"Cyls\" value is incorrect!") );
+			    return;
+		    }
+		
+		    qulonglong heads = ui.Edit_Heads->text().toULongLong( &ok, 10 );
+		    if( ! ok )
+		    {
+			    AQGraphic_Warning( tr("Warning!"), tr("\"Heads\" value is incorrect!") );
+			    return;
+		    }
+		
+		    qulonglong secs = ui.Edit_Secs->text().toULongLong( &ok, 10) ;
+		    if( ! ok )
+		    {
+			    AQGraphic_Warning( tr("Warning!"), tr("\"Secs\" value is incorrect!") );
+			    return;
+		    }
+		
+		    qulonglong trans = ui.Edit_Trans->text().toULongLong( &ok, 10 );
+		    if( ! ok )
+		    {
+			    AQGraphic_Warning( tr("Warning!"), tr("\"Trans\" value is incorrect!") );
+			    return;
+		    }
+		
+		    Device.Use_hdachs( ui.GB_hdachs_Settings->isChecked() );
+		    Device.Set_Cyls( cyls );
+		    Device.Set_Heads( heads );
+		    Device.Set_Secs( secs );
+		    Device.Set_Trans( trans );
+	    }
 	}
-	
-	Device.Use_Interface( ui.CH_Interface->isChecked() );
-	
-	// Media
-	switch( ui.CB_Media->currentIndex() )
-	{
-		case 0:
-			Device.Set_Media( VM::DM_Disk );
-			break;
-			
-		case 1:
-			Device.Set_Media( VM::DM_CD_ROM );
-			break;
-			
-		default:
-			AQError( "void Add_New_Device_Window::on_Button_OK_clicked()",
-					 "Invalid Media Index! Use Disk" );
-			Device.Set_Media( VM::DM_Disk );
-			break;
-	}
-	
-	Device.Use_Media( ui.CH_Media->isChecked() );
-	
-	// File Path
-	if( ui.CH_File->isChecked() )
-	{
-		if( ! QFile::exists(ui.Edit_File_Path->text()) )
-		{
-			AQGraphic_Warning( tr("Error!"), tr("File does not exist!") );
-			return;
-		}
-	}
-	
-	Device.Use_File_Path( ui.CH_File->isChecked() );
-	Device.Set_File_Path( ui.Edit_File_Path->text() );
-	
-	// Index
-	Device.Use_Index( ui.CH_Index->isChecked() );
-	Device.Set_Index( ui.SB_Index->value() );
-	
-	// Bus, Unit
-	Device.Use_Bus_Unit( ui.CH_Bus_Unit->isChecked() );
-	Device.Set_Bus( ui.SB_Bus->value() );
-	Device.Set_Unit( ui.SB_Unit->value() );
-	
-	// Snapshot
-	Device.Use_Snapshot( ui.CH_Snapshot->isChecked() );
-	Device.Set_Snapshot( (ui.CB_Snapshot->currentIndex() == 0) ? true : false );
-	
-	// Cache
-	Device.Use_Cache( ui.CH_Cache->isChecked() );
-	Device.Set_Cache( ui.CB_Cache->currentText() );
-	
-	// AIO
-	Device.Use_AIO( ui.CH_AIO->isChecked() );
-	Device.Set_AIO( ui.CB_AIO->currentText() );
-	
-	// Boot
-	Device.Use_Boot( ui.CH_Boot->isChecked() );
-	Device.Set_Boot( (ui.CB_Boot->currentIndex() == 0) ? true : false );
-	
-	// hdachs
-	if( ui.GB_hdachs_Settings->isChecked() )
-	{
-		bool ok;
-		
-		qulonglong cyls = ui.Edit_Cyls->text().toULongLong( &ok, 10 );
-		if( ! ok )
-		{
-			AQGraphic_Warning( tr("Warning!"), tr("\"Cyls\" value is incorrect!") );
-			return;
-		}
-		
-		qulonglong heads = ui.Edit_Heads->text().toULongLong( &ok, 10 );
-		if( ! ok )
-		{
-			AQGraphic_Warning( tr("Warning!"), tr("\"Heads\" value is incorrect!") );
-			return;
-		}
-		
-		qulonglong secs = ui.Edit_Secs->text().toULongLong( &ok, 10) ;
-		if( ! ok )
-		{
-			AQGraphic_Warning( tr("Warning!"), tr("\"Secs\" value is incorrect!") );
-			return;
-		}
-		
-		qulonglong trans = ui.Edit_Trans->text().toULongLong( &ok, 10 );
-		if( ! ok )
-		{
-			AQGraphic_Warning( tr("Warning!"), tr("\"Trans\" value is incorrect!") );
-			return;
-		}
-		
-		Device.Use_hdachs( ui.GB_hdachs_Settings->isChecked() );
-		Device.Set_Cyls( cyls );
-		Device.Set_Heads( heads );
-		Device.Set_Secs( secs );
-		Device.Set_Trans( trans );
-	}
-	
-	accept();
+	QDialog::done(r);
 }

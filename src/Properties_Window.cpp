@@ -171,44 +171,58 @@ void Properties_Window::Set_Current_Machine_Devices( const Available_Devices *de
 	Current_Machine_Devices = dev;
 }
 
-void Properties_Window::on_Button_OK_clicked()
+void Properties_Window::done(int r)
 {
-	if( ui.GB_Floppy->isEnabled() )
-	{
-		if( ! QFile::exists(ui.CB_FD_Devices->lineEdit()->text()) )
-		{
-			AQGraphic_Warning( tr("Warning"), tr("Image file doesn't exist!") );
-		}
-		else
-		{
-			Add_To_Recent_FDD_Files( ui.CB_FD_Devices->lineEdit()->text() );
-			accept();
-		}
-	}
-	else if( ui.GB_CDROM->isEnabled() )
-	{
-		if( ! QFile::exists(ui.CB_CDROM_Devices->lineEdit()->text()) )
-		{
-			AQGraphic_Warning( tr("Warning"), tr("Image file doesn't exist!") );
-		}
-		else
-		{
-			Add_To_Recent_CD_Files( ui.CB_CDROM_Devices->lineEdit()->text() );
-			accept();
-		}
-	}
-	else if( ui.GB_HDD->isEnabled() )
-	{
-		if( ! QFile::exists(ui.Edit_HDD_Image_Path->text()) )
-			AQGraphic_Warning( tr("Warning"), tr("Image file doesn't exist!") );
-		else
-			accept();
-	}
-	else
-	{
-		AQError( "void Properties_Window::on_Button_OK_clicked()",
-				 "Default Section!" );
-	}
+    if ( r == QDialog::Accepted )
+    {
+	    if( ui.GB_Floppy->isEnabled() )
+	    {
+		    if( ! QFile::exists(ui.CB_FD_Devices->lineEdit()->text()) )
+		    {
+			    AQGraphic_Warning( tr("Warning"), tr("Image file doesn't exist!") );
+                return;
+		    }
+		    else
+		    {
+			    Add_To_Recent_FDD_Files( ui.CB_FD_Devices->lineEdit()->text() );
+			    QDialog::done(r);
+                return;
+		    }
+	    }
+	    else if( ui.GB_CDROM->isEnabled() )
+	    {
+		    if( ! QFile::exists(ui.CB_CDROM_Devices->lineEdit()->text()) )
+		    {
+			    AQGraphic_Warning( tr("Warning"), tr("Image file doesn't exist!") );
+                return;
+		    }
+		    else
+		    {
+			    Add_To_Recent_CD_Files( ui.CB_CDROM_Devices->lineEdit()->text() );
+			    QDialog::done(r);
+                return;
+		    }
+	    }
+	    else if( ui.GB_HDD->isEnabled() )
+	    {
+		    if( ! QFile::exists(ui.Edit_HDD_Image_Path->text()) )
+            {
+			    AQGraphic_Warning( tr("Warning"), tr("Image file doesn't exist!") );
+                return;
+            }
+		    else
+            {
+			    QDialog::done(r);
+            }
+	    }
+	    else
+	    {
+		    AQError( "void Properties_Window::done(int)",
+				     "Default Section!" );
+            return;
+	    }
+    }
+    QDialog::done(r);
 }
 
 void Properties_Window::on_Button_Update_Info_clicked()

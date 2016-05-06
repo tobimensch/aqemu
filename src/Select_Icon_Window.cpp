@@ -83,44 +83,56 @@ QString Select_Icon_Window::Get_New_Icon_Path() const
 	return New_Icon_Path;
 }
 
-void Select_Icon_Window::on_Button_OK_clicked()
+void Select_Icon_Window::done(int r)
 {
-	// Check values
-	if( ui.RB_Icon_Other->isChecked() )
-	{
-		New_Icon_Path = ":/other.png";
-		accept();
-	}
-	else if( ui.RB_Icon_Windows->isChecked() )
-	{
-		New_Icon_Path = ":/default_windows.png";
-		accept();
-	}
-	else if( ui.RB_Icon_Linux->isChecked() )
-	{
-		New_Icon_Path = ":/default_linux.png";
-		accept();
-	}
-	else if( ui.RB_All_System_Icons->isChecked() )
-	{
-		if( ui.All_Icons_List->currentItem() != NULL )
-		{
-			New_Icon_Path = ui.All_Icons_List->currentItem()->data( 128 ).toString();
-			accept();
-		}
-	}
-	else if( ui.RB_User_Icons->isChecked() )
-	{
-		if( QFile::exists(ui.Edit_Other_Icon_Path->text()) )
-		{
-			New_Icon_Path = ui.Edit_Other_Icon_Path->text();
-			accept();
-		}
-		else
-		{
-			AQGraphic_Warning( tr("Error!"), tr("Icon file doesn't exist!") );
-		}
-	}
+    if ( r == QDialog::Accepted )
+    {
+	    // Check values
+	    if( ui.RB_Icon_Other->isChecked() )
+	    {
+		    New_Icon_Path = ":/other.png";
+		    QDialog::done(r);
+            return;
+	    }
+	    else if( ui.RB_Icon_Windows->isChecked() )
+	    {
+		    New_Icon_Path = ":/default_windows.png";
+		    QDialog::done(r);
+            return;
+	    }
+	    else if( ui.RB_Icon_Linux->isChecked() )
+	    {
+		    New_Icon_Path = ":/default_linux.png";
+		    QDialog::done(r);
+            return;
+	    }
+	    else if( ui.RB_All_System_Icons->isChecked() )
+	    {
+		    if( ui.All_Icons_List->currentItem() != NULL )
+		    {
+			    New_Icon_Path = ui.All_Icons_List->currentItem()->data( 128 ).toString();
+			    QDialog::done(r);
+                return;
+		    }
+			AQGraphic_Warning( tr("Error!"), tr("No icon selected!") );
+            return;
+	    }
+	    else if( ui.RB_User_Icons->isChecked() )
+	    {
+		    if( QFile::exists(ui.Edit_Other_Icon_Path->text()) )
+		    {
+			    New_Icon_Path = ui.Edit_Other_Icon_Path->text();
+			    QDialog::done(r);
+                return;
+		    }
+		    else
+		    {
+			    AQGraphic_Warning( tr("Error!"), tr("Icon file doesn't exist!") );
+                return;
+		    }
+	    }
+    }
+    QDialog::done(r);
 }
 
 void Select_Icon_Window::on_Button_Browse_clicked()
@@ -134,7 +146,7 @@ void Select_Icon_Window::on_Button_Browse_clicked()
 
 	if( ! QFile::exists(iconPath) )
 	{
-		AQError( "void Select_Icon_Window::on_Button_Browse_clicked()",
+		AQError( "void Select_Icon_Window::done(int)",
 				 "File No Exists!" );
 	}
 	else
@@ -145,5 +157,5 @@ void Select_Icon_Window::on_Button_Browse_clicked()
 
 void Select_Icon_Window::on_All_Icons_List_itemDoubleClicked( QListWidgetItem *item )
 {
-	on_Button_OK_clicked();
+	emit accepted();
 }

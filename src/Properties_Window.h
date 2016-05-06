@@ -47,7 +47,7 @@ class Properties_Window: public QDialog
 		void Set_Current_Machine_Devices( const Available_Devices *dev );
 		
 	private slots:
-		void on_Button_OK_clicked();
+		void done(int);
 		
 		void on_Button_Update_Info_clicked();
 		

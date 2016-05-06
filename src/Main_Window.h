@@ -99,7 +99,6 @@ class Main_Window: public QMainWindow
 		// General Tab
 		void on_CB_Computer_Type_currentIndexChanged( int index );
 		void on_CB_Machine_Accelerator_currentIndexChanged( int index );
-		void on_CB_Emulator_Version_currentIndexChanged( int index );
 		void CB_Boot_Prioritet_currentIndexChanged( int index );
 		void on_TB_Show_Boot_Settings_Window_clicked();
 		void Set_Boot_Order( const QList<VM::Boot_Order> &list );
@@ -136,7 +135,7 @@ class Main_Window: public QMainWindow
 		void on_TB_Browse_SMB_clicked();
 		
 		// Advanced
-		void on_CH_Start_Date_toggled( bool on );
+		void adv_on_CH_Start_Date_toggled( bool on );
 		
 		// Other Tab
 		void on_TB_VNC_Unix_Socket_Browse_clicked();

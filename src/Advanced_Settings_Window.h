@@ -36,9 +36,8 @@ class Advanced_Settings_Window: public QDialog
 		Advanced_Settings_Window( QWidget *parent = 0 );
 	
 	public slots:
-		void on_accepted();
-		void on_Button_OK_clicked();
-	
+		void done(int);
+
 	private slots:
         /// Old Setttings Window
 		void on_Button_Create_Template_from_VM_clicked();

@@ -49,12 +49,16 @@ void Snapshot_Properties_Window::Set_Snapshot_Description( const QString &desc )
 	ui.Edit_Description->setPlainText( desc );
 }
 
-void Snapshot_Properties_Window::on_Button_OK_clicked()
+void Snapshot_Properties_Window::done(int r)
 {
-	if( ui.Edit_Name->text().isEmpty() )
-	{
-		AQGraphic_Warning( tr("Warning"), tr("Snapshot name is empty!") );
-		return;
-	}
-	else accept();
+    if ( r == QDialog::Accepted )
+    {
+	    if( ui.Edit_Name->text().isEmpty() )
+	    {
+		    AQGraphic_Warning( tr("Warning"), tr("Snapshot name is empty!") );
+		    return;
+	    }
+    }
+    QDialog::done(r);
 }
+

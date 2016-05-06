@@ -40,7 +40,7 @@ class Copy_VM_Window: public QDialog
 		void Add_VM_Machine_Name( const QString &name );
 	
 	private slots:
-		void on_Button_OK_clicked();
+		void done(int);
 	
 	private:
 		Ui::Copy_VM_Window ui;

@@ -68,6 +68,9 @@ Main_Window::Main_Window( QWidget *parent )
 
 	ui.setupUi( this );
 	ui_ao.setupUi( Advanced_Options );
+
+    connect(ui_ao.CH_Start_Date,SIGNAL(toggled(bool)),this,SLOT(adv_on_CH_Start_Date_toggled(bool)));
+
 	ui_kvm.setupUi( Accelerator_Options );
 	ui_arch.setupUi( Architecture_Options );
 
@@ -80,24 +83,6 @@ Main_Window::Main_Window( QWidget *parent )
 	
 	// This for Tab Info Backgroud Color
 	Update_Info_Text( 1 );
-	
-	// Disk Object
-	HDA_Info = new HDD_Image_Info();
-	HDB_Info = new HDD_Image_Info();
-	HDC_Info = new HDD_Image_Info();
-	HDD_Info = new HDD_Image_Info();
-	
-	connect( HDA_Info, SIGNAL(Completed(bool)),
-			 this, SLOT(Update_HDA_Info(bool)) );
-	
-	connect( HDB_Info, SIGNAL(Completed(bool)),
-			 this, SLOT(Update_HDB_Info(bool)) );
-	
-	connect( HDC_Info, SIGNAL(Completed(bool)),
-			 this, SLOT(Update_HDC_Info(bool)) );
-	
-	connect( HDD_Info, SIGNAL(Completed(bool)),
-			 this, SLOT(Update_HDD_Info(bool)) );
 	
 	Nativ_Device_Window = new Add_New_Device_Window();
 	
@@ -5298,11 +5283,6 @@ void Main_Window::on_CB_Computer_Type_currentIndexChanged( int index )
 	Apply_Emulator( 3 );
 }
 
-void Main_Window::on_CB_Emulator_Version_currentIndexChanged( int index )
-{
-	Apply_Emulator( 2 );
-}
-
 void Main_Window::on_CB_Machine_Accelerator_currentIndexChanged( int index )
 {
 	Apply_Emulator( 1 );
@@ -5880,7 +5860,7 @@ void Main_Window::on_TB_Browse_SMB_clicked()
 		ui.Edit_SMB_Folder->setText( QDir::toNativeSeparators(SMB_Dir) );
 }
 
-void Main_Window::on_CH_Start_Date_toggled( bool on )
+void Main_Window::adv_on_CH_Start_Date_toggled( bool on )
 {
 	if( on ) ui.CH_Local_Time->setChecked( false );
 }

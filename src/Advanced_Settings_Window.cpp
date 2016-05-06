@@ -319,8 +319,6 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	
 	connect( ui.CB_Language, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(CB_Language_currentIndexChanged(int)) );
-
-    connect( this, SIGNAL(accepted()), this, SLOT(on_accepted()));
 }
 
 void Advanced_Settings_Window::Load_Templates()
@@ -423,326 +421,325 @@ void Advanced_Settings_Window::VNC_Warning( bool state )
 	}
 }
 
-void Advanced_Settings_Window::on_accepted()
+void Advanced_Settings_Window::done(int r)
 {
-    on_Button_OK_clicked();
-}
+    if ( r == QDialog::Accepted )
+    {
+	    // Execute Before Start QEMU
+	    Settings.setValue( "Run_Before_QEMU", ui.Edit_Before_Start_Command->text() );
+	
+	    // Execute After Stop QEMU
+	    Settings.setValue( "Run_After_QEMU", ui.Edit_After_Stop_Command->text() );
+	
+	    // Use Shared Folder For All Screenshots
+	    if( ui.CH_Screenshot_Folder->isChecked() )
+	    {
+		    Settings.setValue( "Use_Screenshots_Folder", "yes" );
+		
+		    QDir dir; // For Check on valid
+		
+		    // Screenshots Shared Folder Path
+		    if( dir.exists(ui.Edit_Screenshot_Folder->text()) )
+		    {
+			    Settings.setValue( "Screenshot_Folder_Path", ui.Edit_Screenshot_Folder->text() );
+		    }
+		    else
+		    {
+			    AQGraphic_Warning( tr("Invalid Value!"), tr("Shared screenshot folder doesn't exist!") );
+			    return;
+		    }
+	    }
+	    else
+	    {
+		    Settings.setValue( "Use_Screenshots_Folder", "no" );
+		
+		    // Screenshots Shared Folder Path
+		    Settings.setValue( "Screenshot_Folder_Path", ui.Edit_Screenshot_Folder->text() );
+	    }
+	
+	    // Screenshot save format
+	    if( ui.RB_Format_PNG->isChecked() ) Settings.setValue( "Screenshot_Save_Format", "PNG" );
+	    else if( ui.RB_Format_Jpeg->isChecked() ) Settings.setValue( "Screenshot_Save_Format", "JPEG" );
+	    else Settings.setValue( "Screenshot_Save_Format", "PPM" );
+	
+	    // Jpeg Quality
+	    Settings.setValue( "Jpeg_Quality", QString::number(ui.HS_Jpeg_Quality->value()) );
+	
+	    // Additional CDROM
+	    int old_count = Settings.value( "Additional_CDROM_Devices/Count", "0" ).toString().toInt();
+	
+	    if( old_count > ui.CDROM_List->count() )
+	    {
+		    // Delete Old Items
+		    for( int dx = ui.CDROM_List->count()-1; dx < old_count; dx++ )
+		    {
+			    Settings.remove( "Additional_CDROM_Devices/Device" + QString::number(dx) );
+		    }
+	    }
+	
+	    Settings.setValue( "Additional_CDROM_Devices/Count", QString::number(ui.CDROM_List->count()) );
+	
+	    for( int ix = 0; ix < ui.CDROM_List->count(); ix++ )
+	    {
+		    Settings.setValue( "Additional_CDROM_Devices/Device" + QString::number(ix), ui.CDROM_List->item(ix)->text() );
+	    }
+	
+    //	Settings.setValue( "Info/Show_Tab_Info", ui.CH_Show_Tab_Info->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Show_QEMU_Args", ui.CH_Show_QEMU_Args->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Show_Screenshot_in_Save_Mode", ui.CH_Show_Screenshot_in_Save_Mode->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Machine_Details", ui.CH_Machine_Details->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Machine_Name", ui.CH_Machine_Name->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Machine_Accelerator", ui.CH_Machine_Accelerator->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Computer_Type", ui.CH_Computer_Type->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Machine_Type", ui.CH_Machine_Type->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Boot_Priority", ui.CH_Boot_Priority->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/CPU_Type", ui.CH_CPU_Type->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Number_of_CPU", ui.CH_Number_of_CPU->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Video_Card", ui.CH_Video_Card->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Keyboard_Layout", ui.CH_Keyboard_Layout->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Memory_Size", ui.CH_Memory_Size->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Use_Sound", ui.CH_Use_Sound->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Fullscreen", ui.CH_Fullscreen->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Snapshot", ui.CH_Snapshot->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Localtime", ui.CH_Localtime->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Show_FDD", ui.CH_Show_FDD->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Show_CD", ui.CH_Show_CD->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Show_HDD", ui.CH_Show_HDD->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Network_Cards", ui.CH_Network_Cards->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Redirections", ui.CH_Redirections->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Serial_Port", ui.CH_Serial_Port->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Parallel_Port", ui.CH_Parallel_Port->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/USB_Port", ui.CH_USB_Port->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Win2K_Hack", ui.CH_Win2K_Hack->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/RTC_TD_Hack", ui.CH_RTC_TD_Hack->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/No_Shutdown",  ui.CH_No_Shutdown->isChecked()? "yes" : "no" );
+	    Settings.setValue( "Info/No_Reboot", ui.CH_No_Reboot->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Start_CPU", ui.CH_Start_CPU->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Check_Boot_on_FDD", ui.CH_Check_Boot_on_FDD->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/ACPI", ui.CH_ACPI->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Start_Date", ui.CH_Start_Date->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/No_Frame", ui.CH_No_Frame->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Alt_Grab", ui.CH_Alt_Grab->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/No_Quit", ui.CH_No_Quit->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Portrait", ui.CH_Portrait->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Curses", ui.CH_Curses->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Show_Cursor", ui.CH_Show_Cursor->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/Init_Graphical_Mode", ui.CH_Init_Graphical_Mode->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/ROM_File", ui.CH_ROM_File->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/MTDBlock", ui.CH_MTDBlock->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/SD_Image", ui.CH_SD_Image->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/PFlash", ui.CH_PFlash->isChecked() ? "yes" : "no" );
+	
+	    Settings.setValue( "Info/Linux_Boot", ui.CH_Linux_Boot->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/VNC", ui.CH_VNC->isChecked() ? "yes" : "no" );
+	    Settings.setValue( "Info/SPICE", ui.CH_SPICE->isChecked() ? "yes" : "no" );
+	
+	    // MAC Address Generation Mode
+	    if( ui.RB_MAC_Random->isChecked() ) Settings.setValue( "MAC_Generation_Mode", "Random" );
+	    else if( ui.RB_MAC_QEMU->isChecked() ) Settings.setValue( "MAC_Generation_Mode", "QEMU_Segment" );
+	    else if( ui.RB_MAC_Valid->isChecked() ) Settings.setValue( "MAC_Generation_Mode", "Model" );
+	
+	    // Save to Log File
+	    if( ui.CH_Log_Save_in_File->isChecked() ) Settings.setValue( "Log/Save_In_File", "yes" );
+	    else Settings.setValue( "Log/Save_In_File", "no" );
+	
+	    // Print In StdOut
+	    if( ui.CH_Log_Print_in_STDIO->isChecked() ) Settings.setValue( "Log/Print_In_STDOUT", "yes" );
+	    else Settings.setValue( "Log/Print_In_STDOUT", "no" );
+	
+	    // Log File Path
+	    Settings.setValue( "Log/Log_Path", ui.Edit_Log_Path->text() );
+	
+	    // Save to AQEMU Log
+	    if( ui.CH_Log_Debug->isChecked() ) Settings.setValue( "Log/Save_Debug", "yes" );
+	    else Settings.setValue( "Log/Save_Debug", "no" );
+	
+	    if( ui.CH_Log_Warning->isChecked() ) Settings.setValue( "Log/Save_Warning", "yes" );
+	    else Settings.setValue( "Log/Save_Warning", "no" );
+	
+	    if( ui.CH_Log_Error->isChecked() ) Settings.setValue( "Log/Save_Error", "yes" );
+	    else Settings.setValue( "Log/Save_Error", "no" );
+	
+	    // QEMU-IMG Path
+	    Settings.setValue( "QEMU-IMG_Path", ui.Edit_QEMU_IMG_Path->text() );
+	
+	    // QEMU_AUDIO
+	    if( ui.CH_Audio_Default->isChecked() )
+		    Settings.setValue( "QEMU_AUDIO/Use_Default_Driver", "no" );
+	    else
+		    Settings.setValue( "QEMU_AUDIO/Use_Default_Driver", "yes" );
+	
+	    // QEMU_AUDIO_DRV
+	    Settings.setValue( "QEMU_AUDIO/QEMU_AUDIO_DRV", ui.CB_Host_Sound_System->currentText() );
+	
+	    // Recent CD Count
+    //	Settings.setValue( "CD_ROM_Exits_Images/Max", QString::number(ui.SB_Recent_CD_Count->value()) );
+	
+	    // Recent FDD Count
+    //	Settings.setValue( "Floppy_Exits_Images/Max", QString::number(ui.SB_Recent_FDD_Count->value()) );
+	
+	    // First VNC Port for Embedded Display
+	    Settings.setValue( "First_VNC_Port", QString::number(ui.SB_First_VNC_Port->value()) );
+	
+	    // QEMU Monitor Type
+	    #ifdef Q_OS_WIN32
+	    Settings.setValue( "Emulator_Monitor_Type", "tcp" );
+	    #else
+	    Settings.setValue( "Emulator_Monitor_Type", ui.RB_Monitor_TCP->isChecked() ? "tcp" : "stdio" );
+	    #endif
+	    Settings.setValue( "Emulator_Monitor_Hostname", ui.CB_Monitor_Hostname->currentText() );
+	    Settings.setValue( "Emulator_Monitor_Port", ui.SB_Monitor_Port->value() );
+	
+	    // USB	
+	    if( ui.RB_USB_Style_device->isChecked() )
+		    Settings.setValue( "USB_Style", "device" );
+	    else
+		    Settings.setValue( "USB_Style", "usbdevice" );
+	
+	    if( ui.RB_USB_ID_BusAddr->isChecked() )
+		    Settings.setValue( "USB_ID_Style", "BusAddr" );
+	    else if( ui.RB_USB_ID_BusPath->isChecked() )
+		    Settings.setValue( "USB_ID_Style", "BusPath" );
+	    else if( ui.RB_USB_ID_VendorProduct->isChecked() )
+		    Settings.setValue( "USB_ID_Style", "VendorProduct" );
+	
+	    // All OK?
+	    if( Settings.status() != QSettings::NoError )
+		    AQError( "void Advanced_Settings_Window::done(int)", "QSettings Error!" );
 
-void Advanced_Settings_Window::on_Button_OK_clicked()
-{
-	// Execute Before Start QEMU
-	Settings.setValue( "Run_Before_QEMU", ui.Edit_Before_Start_Command->text() );
-	
-	// Execute After Stop QEMU
-	Settings.setValue( "Run_After_QEMU", ui.Edit_After_Stop_Command->text() );
-	
-	// Use Shared Folder For All Screenshots
-	if( ui.CH_Screenshot_Folder->isChecked() )
-	{
-		Settings.setValue( "Use_Screenshots_Folder", "yes" );
-		
-		QDir dir; // For Check on valid
-		
-		// Screenshots Shared Folder Path
-		if( dir.exists(ui.Edit_Screenshot_Folder->text()) )
-		{
-			Settings.setValue( "Screenshot_Folder_Path", ui.Edit_Screenshot_Folder->text() );
-		}
-		else
-		{
-			AQGraphic_Warning( tr("Invalid Value!"), tr("Shared screenshot folder doesn't exist!") );
-			return;
-		}
-	}
-	else
-	{
-		Settings.setValue( "Use_Screenshots_Folder", "no" );
-		
-		// Screenshots Shared Folder Path
-		Settings.setValue( "Screenshot_Folder_Path", ui.Edit_Screenshot_Folder->text() );
-	}
-	
-	// Screenshot save format
-	if( ui.RB_Format_PNG->isChecked() ) Settings.setValue( "Screenshot_Save_Format", "PNG" );
-	else if( ui.RB_Format_Jpeg->isChecked() ) Settings.setValue( "Screenshot_Save_Format", "JPEG" );
-	else Settings.setValue( "Screenshot_Save_Format", "PPM" );
-	
-	// Jpeg Quality
-	Settings.setValue( "Jpeg_Quality", QString::number(ui.HS_Jpeg_Quality->value()) );
-	
-	// Additional CDROM
-	int old_count = Settings.value( "Additional_CDROM_Devices/Count", "0" ).toString().toInt();
-	
-	if( old_count > ui.CDROM_List->count() )
-	{
-		// Delete Old Items
-		for( int dx = ui.CDROM_List->count()-1; dx < old_count; dx++ )
-		{
-			Settings.remove( "Additional_CDROM_Devices/Device" + QString::number(dx) );
-		}
-	}
-	
-	Settings.setValue( "Additional_CDROM_Devices/Count", QString::number(ui.CDROM_List->count()) );
-	
-	for( int ix = 0; ix < ui.CDROM_List->count(); ix++ )
-	{
-		Settings.setValue( "Additional_CDROM_Devices/Device" + QString::number(ix), ui.CDROM_List->item(ix)->text() );
-	}
-	
-//	Settings.setValue( "Info/Show_Tab_Info", ui.CH_Show_Tab_Info->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Show_QEMU_Args", ui.CH_Show_QEMU_Args->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Show_Screenshot_in_Save_Mode", ui.CH_Show_Screenshot_in_Save_Mode->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Machine_Details", ui.CH_Machine_Details->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Machine_Name", ui.CH_Machine_Name->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Machine_Accelerator", ui.CH_Machine_Accelerator->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Computer_Type", ui.CH_Computer_Type->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Machine_Type", ui.CH_Machine_Type->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Boot_Priority", ui.CH_Boot_Priority->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/CPU_Type", ui.CH_CPU_Type->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Number_of_CPU", ui.CH_Number_of_CPU->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Video_Card", ui.CH_Video_Card->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Keyboard_Layout", ui.CH_Keyboard_Layout->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Memory_Size", ui.CH_Memory_Size->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Use_Sound", ui.CH_Use_Sound->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Fullscreen", ui.CH_Fullscreen->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Snapshot", ui.CH_Snapshot->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Localtime", ui.CH_Localtime->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Show_FDD", ui.CH_Show_FDD->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Show_CD", ui.CH_Show_CD->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Show_HDD", ui.CH_Show_HDD->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Network_Cards", ui.CH_Network_Cards->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Redirections", ui.CH_Redirections->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Serial_Port", ui.CH_Serial_Port->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Parallel_Port", ui.CH_Parallel_Port->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/USB_Port", ui.CH_USB_Port->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Win2K_Hack", ui.CH_Win2K_Hack->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/RTC_TD_Hack", ui.CH_RTC_TD_Hack->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/No_Shutdown",  ui.CH_No_Shutdown->isChecked()? "yes" : "no" );
-	Settings.setValue( "Info/No_Reboot", ui.CH_No_Reboot->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Start_CPU", ui.CH_Start_CPU->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Check_Boot_on_FDD", ui.CH_Check_Boot_on_FDD->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/ACPI", ui.CH_ACPI->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Start_Date", ui.CH_Start_Date->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/No_Frame", ui.CH_No_Frame->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Alt_Grab", ui.CH_Alt_Grab->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/No_Quit", ui.CH_No_Quit->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Portrait", ui.CH_Portrait->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Curses", ui.CH_Curses->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Show_Cursor", ui.CH_Show_Cursor->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/Init_Graphical_Mode", ui.CH_Init_Graphical_Mode->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/ROM_File", ui.CH_ROM_File->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/MTDBlock", ui.CH_MTDBlock->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/SD_Image", ui.CH_SD_Image->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/PFlash", ui.CH_PFlash->isChecked() ? "yes" : "no" );
-	
-	Settings.setValue( "Info/Linux_Boot", ui.CH_Linux_Boot->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/VNC", ui.CH_VNC->isChecked() ? "yes" : "no" );
-	Settings.setValue( "Info/SPICE", ui.CH_SPICE->isChecked() ? "yes" : "no" );
-	
-	// MAC Address Generation Mode
-	if( ui.RB_MAC_Random->isChecked() ) Settings.setValue( "MAC_Generation_Mode", "Random" );
-	else if( ui.RB_MAC_QEMU->isChecked() ) Settings.setValue( "MAC_Generation_Mode", "QEMU_Segment" );
-	else if( ui.RB_MAC_Valid->isChecked() ) Settings.setValue( "MAC_Generation_Mode", "Model" );
-	
-	// Save to Log File
-	if( ui.CH_Log_Save_in_File->isChecked() ) Settings.setValue( "Log/Save_In_File", "yes" );
-	else Settings.setValue( "Log/Save_In_File", "no" );
-	
-	// Print In StdOut
-	if( ui.CH_Log_Print_in_STDIO->isChecked() ) Settings.setValue( "Log/Print_In_STDOUT", "yes" );
-	else Settings.setValue( "Log/Print_In_STDOUT", "no" );
-	
-	// Log File Path
-	Settings.setValue( "Log/Log_Path", ui.Edit_Log_Path->text() );
-	
-	// Save to AQEMU Log
-	if( ui.CH_Log_Debug->isChecked() ) Settings.setValue( "Log/Save_Debug", "yes" );
-	else Settings.setValue( "Log/Save_Debug", "no" );
-	
-	if( ui.CH_Log_Warning->isChecked() ) Settings.setValue( "Log/Save_Warning", "yes" );
-	else Settings.setValue( "Log/Save_Warning", "no" );
-	
-	if( ui.CH_Log_Error->isChecked() ) Settings.setValue( "Log/Save_Error", "yes" );
-	else Settings.setValue( "Log/Save_Error", "no" );
-	
-	// QEMU-IMG Path
-	Settings.setValue( "QEMU-IMG_Path", ui.Edit_QEMU_IMG_Path->text() );
-	
-	// QEMU_AUDIO
-	if( ui.CH_Audio_Default->isChecked() )
-		Settings.setValue( "QEMU_AUDIO/Use_Default_Driver", "no" );
-	else
-		Settings.setValue( "QEMU_AUDIO/Use_Default_Driver", "yes" );
-	
-	// QEMU_AUDIO_DRV
-	Settings.setValue( "QEMU_AUDIO/QEMU_AUDIO_DRV", ui.CB_Host_Sound_System->currentText() );
-	
-	// Recent CD Count
-//	Settings.setValue( "CD_ROM_Exits_Images/Max", QString::number(ui.SB_Recent_CD_Count->value()) );
-	
-	// Recent FDD Count
-//	Settings.setValue( "Floppy_Exits_Images/Max", QString::number(ui.SB_Recent_FDD_Count->value()) );
-	
-	// First VNC Port for Embedded Display
-	Settings.setValue( "First_VNC_Port", QString::number(ui.SB_First_VNC_Port->value()) );
-	
-	// QEMU Monitor Type
-	#ifdef Q_OS_WIN32
-	Settings.setValue( "Emulator_Monitor_Type", "tcp" );
-	#else
-	Settings.setValue( "Emulator_Monitor_Type", ui.RB_Monitor_TCP->isChecked() ? "tcp" : "stdio" );
-	#endif
-	Settings.setValue( "Emulator_Monitor_Hostname", ui.CB_Monitor_Hostname->currentText() );
-	Settings.setValue( "Emulator_Monitor_Port", ui.SB_Monitor_Port->value() );
-	
-	// USB	
-	if( ui.RB_USB_Style_device->isChecked() )
-		Settings.setValue( "USB_Style", "device" );
-	else
-		Settings.setValue( "USB_Style", "usbdevice" );
-	
-	if( ui.RB_USB_ID_BusAddr->isChecked() )
-		Settings.setValue( "USB_ID_Style", "BusAddr" );
-	else if( ui.RB_USB_ID_BusPath->isChecked() )
-		Settings.setValue( "USB_ID_Style", "BusPath" );
-	else if( ui.RB_USB_ID_VendorProduct->isChecked() )
-		Settings.setValue( "USB_ID_Style", "VendorProduct" );
-	
-	// All OK?
-	if( Settings.status() != QSettings::NoError )
-		AQError( "void Advanced_Settings_Window::on_Button_OK_clicked()", "QSettings Error!" );
+	    QDir dir; // For Check on valid
+	    Settings.setValue( "Default_VM_Template", ui.CB_Default_VM_Template->currentText() );
+	    ui.Edit_VM_Folder->setText( QDir::toNativeSeparators(ui.Edit_VM_Folder->text()) );
 
-	QDir dir; // For Check on valid
-	Settings.setValue( "Default_VM_Template", ui.CB_Default_VM_Template->currentText() );
-	ui.Edit_VM_Folder->setText( QDir::toNativeSeparators(ui.Edit_VM_Folder->text()) );
-
-	// VM Folder
-	if( ! (ui.Edit_VM_Folder->text().endsWith("/") || ui.Edit_VM_Folder->text().endsWith("\\")) )
-		ui.Edit_VM_Folder->setText( ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/") );
+	    // VM Folder
+	    if( ! (ui.Edit_VM_Folder->text().endsWith("/") || ui.Edit_VM_Folder->text().endsWith("\\")) )
+		    ui.Edit_VM_Folder->setText( ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/") );
 	
-	if( dir.exists(ui.Edit_VM_Folder->text()) )
-	{
-		if( ! dir.exists(ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/os_templates/")) )
-			dir.mkdir( ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/os_templates/") );
+	    if( dir.exists(ui.Edit_VM_Folder->text()) )
+	    {
+		    if( ! dir.exists(ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/os_templates/")) )
+			    dir.mkdir( ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/os_templates/") );
 		
-		Settings.setValue( "VM_Directory", ui.Edit_VM_Folder->text() );
-	}
-	else
-	{
-		int mes_res = QMessageBox::question( this, tr("Invalid Value!"),
-											 tr("AQEMU VM folder doesn't exist! Do you want to create it?"),
-											 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes );
+		    Settings.setValue( "VM_Directory", ui.Edit_VM_Folder->text() );
+	    }
+	    else
+	    {
+		    int mes_res = QMessageBox::question( this, tr("Invalid Value!"),
+											     tr("AQEMU VM folder doesn't exist! Do you want to create it?"),
+											     QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes );
 		
-		if( mes_res == QMessageBox::Yes )
-		{
-			if( ! (dir.mkdir(ui.Edit_VM_Folder->text()) &&
-				   dir.mkdir(ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/os_templates/"))) )
-			{
-				AQGraphic_Warning( tr("Error!"), tr("Cannot Create New Folder!") );
-				return;
-			}
-			else Settings.setValue( "VM_Directory", ui.Edit_VM_Folder->text() );
-		}
-		else return;
-	}
+		    if( mes_res == QMessageBox::Yes )
+		    {
+			    if( ! (dir.mkdir(ui.Edit_VM_Folder->text()) &&
+				       dir.mkdir(ui.Edit_VM_Folder->text() + QDir::toNativeSeparators("/os_templates/"))) )
+			    {
+				    AQGraphic_Warning( tr("Error!"), tr("Cannot Create New Folder!") );
+				    return;
+			    }
+			    else Settings.setValue( "VM_Directory", ui.Edit_VM_Folder->text() );
+		    }
+		    else return;
+	    }
 	
-	// Use New Emulator Control Removable Device Menu
-	if( ui.CH_Use_New_Device_Changer->isChecked() ) Settings.setValue( "Use_New_Device_Changer", "yes" );
-	else Settings.setValue( "Use_New_Device_Changer", "no" );
+	    // Use New Emulator Control Removable Device Menu
+	    if( ui.CH_Use_New_Device_Changer->isChecked() ) Settings.setValue( "Use_New_Device_Changer", "yes" );
+	    else Settings.setValue( "Use_New_Device_Changer", "no" );
 	
-	// Interface Language
-	if( ui.CB_Language->currentIndex() == 0 ) Settings.setValue( "Language", "en" );
-	else Settings.setValue( "Language", ui.CB_Language->itemText(ui.CB_Language->currentIndex()) );
+	    // Interface Language
+	    if( ui.CB_Language->currentIndex() == 0 ) Settings.setValue( "Language", "en" );
+	    else Settings.setValue( "Language", ui.CB_Language->itemText(ui.CB_Language->currentIndex()) );
 	
-	// VM Icons Size
-	switch( ui.CB_VM_Icons_Size->currentIndex() )
-	{
-		case 0:
-			Settings.setValue( "VM_Icons_Size", 16 );
-			break;
+	    // VM Icons Size
+	    switch( ui.CB_VM_Icons_Size->currentIndex() )
+	    {
+		    case 0:
+			    Settings.setValue( "VM_Icons_Size", 16 );
+			    break;
 			
-		case 1:
-			Settings.setValue( "VM_Icons_Size", 24 );
-			break;
+		    case 1:
+			    Settings.setValue( "VM_Icons_Size", 24 );
+			    break;
 		
-		case 2:
-			Settings.setValue( "VM_Icons_Size", 32 );
-			break;
+		    case 2:
+			    Settings.setValue( "VM_Icons_Size", 32 );
+			    break;
 			
-		case 3:
-			Settings.setValue( "VM_Icons_Size", 48 );
-			break;
+		    case 3:
+			    Settings.setValue( "VM_Icons_Size", 48 );
+			    break;
 			
-		case 4:
-			Settings.setValue( "VM_Icons_Size", 64 );
-			break;
+		    case 4:
+			    Settings.setValue( "VM_Icons_Size", 64 );
+			    break;
 			
-		default:
-			Settings.setValue( "VM_Icons_Size", 48 );
-			break;
-	}
-	/*
-	// USB Support
-	if( ui.CH_Use_USB->isChecked() ) Settings.setValue( "Use_USB", "yes" );
-	else Settings.setValue( "Use_USB", "no" );
-	*/
-	// Screenshot for OS Logo
-	if( ui.CH_Screenshot_for_OS_Logo->isChecked() ) Settings.setValue( "Use_Screenshot_for_OS_Logo", "yes" );
-	else Settings.setValue( "Use_Screenshot_for_OS_Logo", "no" );
-	/*
-	// 64x64 Icons
-	if( ui.CH_64_Icons->isChecked() ) Settings.setValue( "64x64_Icons", "yes" );
-	else Settings.setValue( "64x64_Icons", "no" );*/
+		    default:
+			    Settings.setValue( "VM_Icons_Size", 48 );
+			    break;
+	    }
+	    /*
+	    // USB Support
+	    if( ui.CH_Use_USB->isChecked() ) Settings.setValue( "Use_USB", "yes" );
+	    else Settings.setValue( "Use_USB", "no" );
+	    */
+	    // Screenshot for OS Logo
+	    if( ui.CH_Screenshot_for_OS_Logo->isChecked() ) Settings.setValue( "Use_Screenshot_for_OS_Logo", "yes" );
+	    else Settings.setValue( "Use_Screenshot_for_OS_Logo", "no" );
+	    /*
+	    // 64x64 Icons
+	    if( ui.CH_64_Icons->isChecked() ) Settings.setValue( "64x64_Icons", "yes" );
+	    else Settings.setValue( "64x64_Icons", "no" );*/
 	
-	Settings.sync();
+	    Settings.sync();
 	
-	if( Settings.status() != QSettings::NoError )
-	{
-		AQError( "void Settings_Window::on_Button_Box_clicked( QAbstractButton* button )",
-				 "QSettings Error!" );
-	}
+	    if( Settings.status() != QSettings::NoError )
+	    {
+		    AQError( "void Settings_Window::on_Button_Box_clicked( QAbstractButton* button )",
+				     "QSettings Error!" );
+	    }
 	
-	// Emulator Control
-	if( ui.RB_Emul_Show_Window->isChecked() )
-	{
-		Settings.setValue( "Show_Emulator_Control_Window", "yes" );
-		Settings.setValue( "Use_VNC_Display", "no" );
-		Settings.setValue( "Include_Emulator_Control", "no" );
-	}
-	else if( ui.RB_Emul_Show_VNC->isChecked() )
-	{
-		Settings.setValue( "Show_Emulator_Control_Window", "yes" );
-		Settings.setValue( "Use_VNC_Display", "yes" );
-		Settings.setValue( "Include_Emulator_Control", "no" );
-	}
-	else if( ui.RB_Emul_Show_In_Main_Window->isChecked() )
-	{
-		Settings.setValue( "Show_Emulator_Control_Window", "yes" );
-		Settings.setValue( "Use_VNC_Display", "no" );
-		Settings.setValue( "Include_Emulator_Control", "yes" );
-	}
-	else if( ui.RB_Emul_Show_VNC_In_Main_Window->isChecked() )
-	{
-		Settings.setValue( "Show_Emulator_Control_Window", "yes" );
-		Settings.setValue( "Use_VNC_Display", "yes" );
-		Settings.setValue( "Include_Emulator_Control", "yes" );
-	}
-	else if( ui.RB_Emul_No_Show->isChecked() )
-	{
-		Settings.setValue( "Show_Emulator_Control_Window", "no" );
-		Settings.setValue( "Use_VNC_Display", "no" );
-		Settings.setValue( "Include_Emulator_Control", "no" );
-	}
+	    // Emulator Control
+	    if( ui.RB_Emul_Show_Window->isChecked() )
+	    {
+		    Settings.setValue( "Show_Emulator_Control_Window", "yes" );
+		    Settings.setValue( "Use_VNC_Display", "no" );
+		    Settings.setValue( "Include_Emulator_Control", "no" );
+	    }
+	    else if( ui.RB_Emul_Show_VNC->isChecked() )
+	    {
+		    Settings.setValue( "Show_Emulator_Control_Window", "yes" );
+		    Settings.setValue( "Use_VNC_Display", "yes" );
+		    Settings.setValue( "Include_Emulator_Control", "no" );
+	    }
+	    else if( ui.RB_Emul_Show_In_Main_Window->isChecked() )
+	    {
+		    Settings.setValue( "Show_Emulator_Control_Window", "yes" );
+		    Settings.setValue( "Use_VNC_Display", "no" );
+		    Settings.setValue( "Include_Emulator_Control", "yes" );
+	    }
+	    else if( ui.RB_Emul_Show_VNC_In_Main_Window->isChecked() )
+	    {
+		    Settings.setValue( "Show_Emulator_Control_Window", "yes" );
+		    Settings.setValue( "Use_VNC_Display", "yes" );
+		    Settings.setValue( "Include_Emulator_Control", "yes" );
+	    }
+	    else if( ui.RB_Emul_No_Show->isChecked() )
+	    {
+		    Settings.setValue( "Show_Emulator_Control_Window", "no" );
+		    Settings.setValue( "Use_VNC_Display", "no" );
+		    Settings.setValue( "Include_Emulator_Control", "no" );
+	    }
+    }
+    QDialog::done(r);
 }
 
 void Advanced_Settings_Window::on_TB_Browse_Before_clicked()

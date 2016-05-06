@@ -37,7 +37,7 @@ public:
 	QString Get_New_Icon_Path() const;
 
 private slots:
-	void on_Button_OK_clicked();
+	void done(int);
 	void on_Button_Browse_clicked();	
 	void on_All_Icons_List_itemDoubleClicked( QListWidgetItem *item );
 

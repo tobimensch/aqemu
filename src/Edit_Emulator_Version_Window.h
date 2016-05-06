@@ -36,7 +36,7 @@ class Edit_Emulator_Version_Window: public QDialog
 		void Load_Emulators();
 	
 	private slots:
-		void on_Button_OK_clicked();
+		void done(int);
 		void on_List_Emulators_currentRowChanged( int currentRow );
 		void CB_Versions_currentIndexChanged( const QString &text );
 		

@@ -39,7 +39,7 @@ class Snapshot_Properties_Window: public QDialog
 		void Set_Snapshot_Description( const QString &desc );
 	
 	private slots:
-		void on_Button_OK_clicked();
+		void done(int);
 	
 	private:
 		Ui::Snapshot_Properties_Window ui;

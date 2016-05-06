@@ -45,9 +45,9 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	connect( ui.SB_QXL_Num, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
 	connect( ui.CB_RAM_Size, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changed()) );
 	
-	connect( ui.Edit_SPICE_Port, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
+	connect( ui.Edit_SPICE_Port, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
 	connect( ui.CH_SPICE_SPort, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
-	connect( ui.Edit_SPICE_SPort, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
+	connect( ui.Edit_SPICE_SPort, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
 	connect( ui.CH_SPICE_Host, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
 	connect( ui.Edit_SPICE_Host, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
 	
@@ -90,7 +90,7 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 		return spiceSettings;
 	}
 	
-	val = ui.Edit_SPICE_Port->text().toUInt( &ok );
+	val = ui.Edit_SPICE_Port->value();
 	if( ok ) spiceSettings.Set_Port( val );
 	else
 	{
@@ -102,7 +102,7 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 	
 	spiceSettings.Use_SPort( ui.CH_SPICE_SPort->isChecked() );
 	
-	val = ui.Edit_SPICE_SPort->text().toUInt( &ok );
+	val = ui.Edit_SPICE_SPort->value();
 	if( ok ) spiceSettings.Set_SPort( val );
 	else
 	{

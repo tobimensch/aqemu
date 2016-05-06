@@ -38,7 +38,7 @@ class Error_Log_Window: public QDialog
 		bool No_Show_Before_VM_Restart() const;
 		
 	private slots:
-		void on_Button_Hide_clicked();
+		void done(int);
 		
 	private:
 		Ui::Error_Log_Window ui;
