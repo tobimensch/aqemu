@@ -4348,10 +4348,11 @@ void Main_Window::on_actionShow_New_VM_Wizard_triggered()
 		QListWidgetItem *item = new QListWidgetItem( vm->Get_Machine_Name(), ui.Machines_List );
 		item->setIcon( QIcon(vm->Get_Icon_Path()) );
 		item->setData( 256, vm->Get_UID() );
-
-		Update_VM_Ui();
 		
 		ui.Machines_List->setCurrentItem( item );
+
+		Update_VM_Ui();
+
 		on_Button_Apply_clicked();
 	}
 	
