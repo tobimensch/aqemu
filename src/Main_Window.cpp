@@ -4213,9 +4213,8 @@ void Main_Window::on_actionChange_Icon_triggered()
 
 void Main_Window::on_actionAbout_AQEMU_triggered()
 {
-	About_Window *about_win = new About_Window( this );
-	about_win->exec();
-	delete about_win;
+	About_Window about_win( this );
+	about_win.exec();
 }
 
 void Main_Window::on_actionAbout_Qt_triggered()
@@ -4291,9 +4290,9 @@ void Main_Window::on_actionDelete_VM_And_Files_triggered()
 		return;
 	}
 	
-	Delete_VM_Files_Window *del_win = new Delete_VM_Files_Window( cur_vm );
+	Delete_VM_Files_Window del_win( cur_vm );
 	
-	if( del_win->exec() == QDialog::Accepted )
+	if( del_win.exec() == QDialog::Accepted )
 	{
 		// Delete VM
 		QString uid = ui.Machines_List->currentItem()->data( 256 ).toString();
@@ -4321,8 +4320,6 @@ void Main_Window::on_actionDelete_VM_And_Files_triggered()
 			Update_Info_Text( 1 );
 		}
 	}
-	
-	delete del_win;
 }
 
 void Main_Window::on_actionExit_triggered()
@@ -4332,13 +4329,13 @@ void Main_Window::on_actionExit_triggered()
 
 void Main_Window::on_actionShow_New_VM_Wizard_triggered()
 {
-	VM_Wizard_Window *Wizard_Win = new VM_Wizard_Window();
+	VM_Wizard_Window Wizard_Win;
 	
-	Wizard_Win->Set_VM_List( &VM_List );
+	Wizard_Win.Set_VM_List( &VM_List );
 	
-	if( Wizard_Win->exec() == QDialog::Accepted )
+	if( Wizard_Win.exec() == QDialog::Accepted )
 	{
-		Virtual_Machine *vm = Wizard_Win->New_VM;
+		Virtual_Machine *vm = Wizard_Win.New_VM;
 		vm->Set_UID( QUuid::createUuid().toString() ); // Create UID
 		VM_List << vm;
 		
@@ -4355,8 +4352,6 @@ void Main_Window::on_actionShow_New_VM_Wizard_triggered()
 
 		on_Button_Apply_clicked();
 	}
-	
-	delete Wizard_Win;
 }
 
 void Main_Window::on_actionAdd_New_VM_triggered()
@@ -4440,25 +4435,23 @@ void Main_Window::on_actionAdd_New_VM_triggered()
 
 void Main_Window::on_actionCreate_HDD_Image_triggered()
 {
-	Create_HDD_Image_Window *Create_HDD_Win = new Create_HDD_Image_Window( this );
+	Create_HDD_Image_Window Create_HDD_Win( this );
 	
-	Create_HDD_Win->exec();
-	delete Create_HDD_Win;
+	Create_HDD_Win.exec();
 }
 
 void Main_Window::on_actionConvert_HDD_Image_triggered()
 {
-	Convert_HDD_Image_Window *Convert_HDD_Win = new Convert_HDD_Image_Window( this );
+	Convert_HDD_Image_Window Convert_HDD_Win( this );
 	
-	Convert_HDD_Win->exec();
-	delete Convert_HDD_Win;
+	Convert_HDD_Win.exec();
 }
 
 void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 {
-	Advanced_Settings_Window *ad_set = new Advanced_Settings_Window();
+	Advanced_Settings_Window ad_set;
 	
-	if( ad_set->exec() == QDialog::Accepted )
+	if( ad_set.exec() == QDialog::Accepted )
 	{
 		Save_Settings();
 		
@@ -4541,7 +4534,6 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 			// Load new vm's
 			Load_Virtual_Machines();
 			
-			delete ad_set;
 			return;
 		}
 		else
@@ -4581,15 +4573,13 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 		ui.Button_Apply->setEnabled( apply_enabled );
 		ui.Button_Cancel->setEnabled( cancel_enabled );
 	}
-	
-	delete ad_set;
 }
 
 void Main_Window::on_actionShow_First_Run_Wizard_triggered()
 {
-	First_Start_Wizard *first_start_win = new First_Start_Wizard( NULL );
+	First_Start_Wizard first_start_win( NULL );
 	
-	if( first_start_win->exec() == QDialog::Accepted )
+	if( first_start_win.exec() == QDialog::Accepted )
 	{
 		// Update Emulator List
 		if( Update_Emulators_List() )
@@ -4610,8 +4600,6 @@ void Main_Window::on_actionShow_First_Run_Wizard_triggered()
 			Load_Virtual_Machines();
 		}
 	}
-	
-	delete first_start_win;
 }
 
 void Main_Window::on_actionPower_On_triggered()
@@ -4671,12 +4659,10 @@ void Main_Window::on_actionPower_On_triggered()
 		// VNC Password
 		if( cur_vm->Use_VNC_Password() )
 		{
-			VNC_Password_Window *vnc_pas_win = new VNC_Password_Window();
+			VNC_Password_Window vnc_pas_win;
 			
-			if( vnc_pas_win->exec() == QDialog::Accepted )
-				cur_vm->Set_VNC_Password( vnc_pas_win->Get_Password() );
-			
-			delete vnc_pas_win;
+			if( vnc_pas_win.exec() == QDialog::Accepted )
+				cur_vm->Set_VNC_Password( vnc_pas_win.Get_Password() );
 		}
 	}
 	else
@@ -4917,7 +4903,7 @@ void Main_Window::on_actionCopy_triggered()
 
 void Main_Window::on_actionSave_As_Template_triggered()
 {
-	Create_Template_Window *templ_win = new Create_Template_Window();
+	Create_Template_Window templ_win;
 	Virtual_Machine *cur_vm = Get_Current_VM();
 	
 	if( cur_vm == NULL )
@@ -4928,12 +4914,10 @@ void Main_Window::on_actionSave_As_Template_triggered()
 	}
 	
 	if( VM_List.count() > 0 )
-		templ_win->Set_VM_Path( cur_vm->Get_VM_XML_File_Path() );
+		templ_win.Set_VM_Path( cur_vm->Get_VM_XML_File_Path() );
 	
-	if( templ_win->exec() == QDialog::Accepted )
+	if( templ_win.exec() == QDialog::Accepted )
 		QMessageBox::information( this, tr("Information"), tr("New Template Created!") );
-	
-	delete templ_win;
 }
 
 void Main_Window::on_actionShow_Emulator_Control_triggered()
@@ -4985,11 +4969,9 @@ void Main_Window::on_actionManage_Snapshots_triggered()
 		return;
 	}
 	
-	Snapshots_Window *snapshot_win = new Snapshots_Window( this );
-	snapshot_win->Set_VM( cur_vm );
-	snapshot_win->exec();
-	
-	delete snapshot_win;
+	Snapshots_Window snapshot_win( this );
+	snapshot_win.Set_VM( cur_vm );
+	snapshot_win.exec();
 }
 
 void Main_Window::on_actionShow_QEMU_Arguments_triggered()
@@ -5511,20 +5493,18 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 
 void Main_Window::on_TB_Show_Boot_Settings_Window_clicked()
 {
-	Boot_Device_Window *boot_win = new Boot_Device_Window();
-	boot_win->setData( Boot_Order_List );
-	boot_win->setUseBootMenu( Show_Boot_Menu );
+	Boot_Device_Window boot_win;
+	boot_win.setData( Boot_Order_List );
+	boot_win.setUseBootMenu( Show_Boot_Menu );
 	
-	if( boot_win->exec() == QDialog::Accepted )
+	if( boot_win.exec() == QDialog::Accepted )
 	{
-		Boot_Order_List = boot_win->data();
-		Show_Boot_Menu = boot_win->useBootMenu();
+		Boot_Order_List = boot_win.data();
+		Show_Boot_Menu = boot_win.useBootMenu();
 		
 		// Apply data to UI
 		Set_Boot_Order( Boot_Order_List );
 	}
-	
-	delete boot_win;
 }
 
 void Main_Window::on_TB_Show_Accelerator_Options_Window_clicked()
