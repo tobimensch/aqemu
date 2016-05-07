@@ -207,11 +207,10 @@
     <addaction name="actionDisplay_Scaling"/>
     <addaction name="actionFullscreen_Mode"/>
     <addaction name="actionReinit_VNC"/>
-    <addaction name="actionGrab_Mouse"/>
    </widget>
    <widget class="QMenu" name="menuConnectNew">
     <property name="title">
-     <string>&amp;Connect</string>
+     <string>Co&amp;nnect</string>
     </property>
    </widget>
    <addaction name="menuVM"/>
@@ -648,7 +647,7 @@
   </action>
   <action name="actionGrab_Mouse">
    <property name="icon">
-    <iconset>
+    <iconset resource="../resources/icons.qrc">
      <normaloff>:/input-mouse.png</normaloff>:/input-mouse.png</iconset>
    </property>
    <property name="text">

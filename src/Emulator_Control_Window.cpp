@@ -1266,7 +1266,8 @@ void Emulator_Control_Window::on_actionClipboard_triggered()
 
 void Emulator_Control_Window::on_actionGrab_Mouse_triggered()
 {
-    Machine_View->captureAllMouseEvents();
+    //FIXME: NOT IMPLEMENTED //DIDN'T MAKE THE CUT FOR 0.9.1
+    //Machine_View->captureAllMouseEvents();
 }
 
 void Emulator_Control_Window::on_actionCtrl_Alt_Backspace_triggered()
