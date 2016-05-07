@@ -568,7 +568,7 @@ void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 {
 	if( ! Floppy1.Get_Enabled() )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Floppy( Floppy1, tr("Floppy 1") );
 		
 		if( pw->exec() == QDialog::Accepted )
@@ -578,7 +578,7 @@ void Device_Manager_Widget::on_actionAdd_Floppy_triggered()
 	}
 	else if( ! Floppy2.Get_Enabled() )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Floppy( Floppy2, tr("Floppy 2") );
 		
 		if( pw->exec() == QDialog::Accepted )
@@ -597,7 +597,7 @@ void Device_Manager_Widget::on_actionAdd_CD_ROM_triggered()
 {
 	if( ! CD_ROM.Get_Enabled() )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Current_Machine_Devices( Current_Machine_Devices );
 		pw->Set_CD_ROM( CD_ROM, tr("CD/DVD-ROM") );
 		
@@ -649,7 +649,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 {
 	if( ! HDA.Get_Enabled() )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Current_Machine_Devices( Current_Machine_Devices );
 		pw->Set_HDD( HDA, tr("HDA (First Master)") );
 		
@@ -660,7 +660,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 	}
 	else if( ! HDB.Get_Enabled() )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Current_Machine_Devices( Current_Machine_Devices );
 		pw->Set_HDD( HDB, tr("HDB (First Slave)") );
 		
@@ -671,7 +671,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 	}
 	else if( HDC.Get_Enabled() == false && CD_ROM.Get_Enabled() == false )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Current_Machine_Devices( Current_Machine_Devices );
 		pw->Set_HDD( HDC, tr("HDC (Second Master)") );
 		
@@ -682,7 +682,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 	}
 	else if( ! HDD.Get_Enabled() )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Current_Machine_Devices( Current_Machine_Devices );
 		pw->Set_HDD( HDD, tr("HDD (Second Slave)") );
 		
@@ -723,7 +723,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 {
 	if( ui.Devices_List->currentItem()->data(512).toString() == "fd1" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_Floppy( Floppy1, tr("Floppy 1") );
 		
@@ -746,7 +746,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else if( ui.Devices_List->currentItem()->data(512).toString() == "fd2" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_Floppy( Floppy2, tr("Floppy 2") );
 		
@@ -769,7 +769,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else if( ui.Devices_List->currentItem()->data(512).toString() == "cd" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_CD_ROM( CD_ROM, tr("CD/DVD-ROM") );
 		
@@ -792,7 +792,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else if( ui.Devices_List->currentItem()->data(512).toString() == "hda" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_HDD( HDA, tr("HDA (First Master)") );
 		
@@ -815,7 +815,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else if( ui.Devices_List->currentItem()->data(512).toString() == "hdb" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_HDD( HDB, tr("HDB (First Slave)") );
 		
@@ -838,7 +838,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else if( ui.Devices_List->currentItem()->data(512).toString() == "hdc" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_HDD( HDC, tr("HDC (Second Master)") );
 		
@@ -861,7 +861,7 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 	}
 	else if( ui.Devices_List->currentItem()->data(512).toString() == "hdd" )
 	{
-		pw = new Properties_Window();
+		pw = new Properties_Window(this);
 		pw->Set_Enabled( Enabled );
 		pw->Set_HDD( HDD, tr("HDD (Second Slave)") );
 		
