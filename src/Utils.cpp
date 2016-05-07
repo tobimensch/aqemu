@@ -802,25 +802,25 @@ void Load_Recent_Images_List()
 	QSettings settings;
 	
 	// CD
-	int max_cd = settings.value( "CD_ROM_Exits_Images/Max", "5" ).toString().toInt();
+	int max_cd = settings.value( "CD_ROM_Existing_Images/Max", "5" ).toString().toInt();
 	
 	Recent_CD_Images.clear();
 	
 	for( int ix = 0; ix < max_cd; ++ix )
 	{
-		QString tmp = settings.value( "CD_ROM_Exits_Images/item" + QString::number(ix), "" ).toString();
+		QString tmp = settings.value( "CD_ROM_Existing_Images/item" + QString::number(ix), "" ).toString();
 		
 		if( ! tmp.isEmpty() ) Recent_CD_Images << tmp;
 	}
 	
 	// FDD
-	int max_fdd = settings.value( "Floppy_Exits_Images/Max", "5" ).toString().toInt();
+	int max_fdd = settings.value( "Floppy_Existing_Images/Max", "5" ).toString().toInt();
 	
 	Recent_FDD_Images.clear();
 	
 	for( int ix = 0; ix < max_fdd; ++ix )
 	{
-		QString tmp = settings.value( "Floppy_Exits_Images/item" + QString::number(ix), "" ).toString();
+		QString tmp = settings.value( "Floppy_Existing_Images/item" + QString::number(ix), "" ).toString();
 		
 		if( ! tmp.isEmpty() ) Recent_FDD_Images << tmp;
 	}
@@ -834,7 +834,7 @@ const QStringList &Get_CD_Recent_Images_List()
 void Add_To_Recent_CD_Files( const QString &path )
 {
 	QSettings settings;
-	int max = settings.value( "CD_ROM_Exits_Images/Max", "5" ).toString().toInt();
+	int max = settings.value( "CD_ROM_Existing_Images/Max", "5" ).toString().toInt();
 	
 	// This Unique Path?
 	for( int fx = 0; fx < Recent_CD_Images.count() && fx < max; ++fx )
@@ -860,7 +860,7 @@ void Add_To_Recent_CD_Files( const QString &path )
 	if( Recent_CD_Images.count() < max )
 	{
 		Recent_CD_Images << path;
-		settings.setValue( "CD_ROM_Exits_Images/item" + QString::number(Recent_CD_Images.count()-1), path );
+		settings.setValue( "CD_ROM_Existing_Images/item" + QString::number(Recent_CD_Images.count()-1), path );
 	}
 	else
 	{
@@ -875,7 +875,7 @@ void Add_To_Recent_CD_Files( const QString &path )
 		// Save Items
 		for( int ix = 0; ix < Recent_CD_Images.count(); ix++ )
 		{
-			settings.setValue( "CD_ROM_Exits_Images/item" + QString::number(ix), Recent_CD_Images[ix] );
+			settings.setValue( "CD_ROM_Existing_Images/item" + QString::number(ix), Recent_CD_Images[ix] );
 		}
 	}
 }
@@ -888,7 +888,7 @@ const QStringList &Get_FDD_Recent_Images_List()
 void Add_To_Recent_FDD_Files( const QString &path )
 {
 	QSettings settings;
-	int max = settings.value( "Floppy_Exits_Images/Max", "5" ).toString().toInt();
+	int max = settings.value( "Floppy_Existing_Images/Max", "5" ).toString().toInt();
 	
 	// This Unique Path?
 	for( int fx = 0; fx < Recent_FDD_Images.count() && fx < max; ++fx )
@@ -914,7 +914,7 @@ void Add_To_Recent_FDD_Files( const QString &path )
 	if( Recent_FDD_Images.count() < max )
 	{
 		Recent_FDD_Images << path;
-		settings.setValue( "Floppy_Exits_Images/item" + QString::number(Recent_FDD_Images.count()-1), path );
+		settings.setValue( "Floppy_Existing_Images/item" + QString::number(Recent_FDD_Images.count()-1), path );
 	}
 	else
 	{
@@ -929,7 +929,7 @@ void Add_To_Recent_FDD_Files( const QString &path )
 		// Save Items
 		for( int ix = 0; ix < Recent_FDD_Images.count(); ix++ )
 		{
-			settings.setValue( "Floppy_Exits_Images/item" + QString::number(ix), Recent_FDD_Images[ix] );
+			settings.setValue( "Floppy_Existing_Images/item" + QString::number(ix), Recent_FDD_Images[ix] );
 		}
 	}
 }

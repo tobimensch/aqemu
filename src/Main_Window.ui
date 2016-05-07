@@ -131,12 +131,12 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
             <iconset resource="../resources/icons.qrc">
-             <normaloff>:/about.png</normaloff>:/about.png</iconset>
+             <normaloff>:/icons/oxygen/help-about.png</normaloff>:/icons/oxygen/help-about.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Info</string>
@@ -1363,7 +1363,7 @@
           <widget class="QWidget" name="Tab_Media">
            <attribute name="icon">
             <iconset resource="../resources/icons.qrc">
-             <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
+             <normaloff>:/icons/oxygen/drive-optical.png</normaloff>:/icons/oxygen/drive-optical.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Media</string>

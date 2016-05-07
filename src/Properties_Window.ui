@@ -45,6 +45,12 @@
         </item>
         <item>
          <widget class="QToolButton" name="TB_FD_Image_Browse">
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="toolTip">
            <string>Browse</string>
           </property>
@@ -56,7 +62,7 @@
             <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
           </property>
           <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
+           <enum>Qt::ToolButtonIconOnly</enum>
           </property>
          </widget>
         </item>
@@ -76,16 +82,13 @@
        </spacer>
       </item>
       <item row="1" column="1">
-       <widget class="QToolButton" name="TB_FD_Advanced_Settings">
+       <widget class="QPushButton" name="TB_FD_Advanced_Settings">
         <property name="text">
-         <string>Advanced settings</string>
+         <string>Advanced</string>
         </property>
         <property name="icon">
          <iconset resource="../resources/icons.qrc">
           <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -126,7 +129,7 @@
             <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
           </property>
           <property name="toolButtonStyle">
-           <enum>Qt::ToolButtonTextBesideIcon</enum>
+           <enum>Qt::ToolButtonIconOnly</enum>
           </property>
          </widget>
         </item>
@@ -146,16 +149,13 @@
        </spacer>
       </item>
       <item row="1" column="1">
-       <widget class="QToolButton" name="TB_CDROM_Advanced_Settings">
+       <widget class="QPushButton" name="TB_CDROM_Advanced_Settings">
         <property name="text">
-         <string>Advanced settings</string>
+         <string>Advanced</string>
         </property>
         <property name="icon">
          <iconset resource="../resources/icons.qrc">
           <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>
@@ -205,7 +205,7 @@
       <item row="2" column="0">
        <widget class="QPushButton" name="Button_HDD_New">
         <property name="text">
-         <string>Create &amp;New</string>
+         <string>&amp;Create</string>
         </property>
         <property name="icon">
          <iconset resource="../resources/icons.qrc">
@@ -216,7 +216,7 @@
       <item row="2" column="1">
        <widget class="QPushButton" name="Button_HDD_Format">
         <property name="text">
-         <string>&amp;Format Exist</string>
+         <string>&amp;Format</string>
         </property>
         <property name="icon">
          <iconset resource="../resources/icons.qrc">
@@ -225,16 +225,19 @@
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QToolButton" name="TB_HDD_Advanced_Settings">
+       <widget class="QPushButton" name="TB_HDD_Advanced_Settings">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="text">
-         <string>Advanced settings</string>
+         <string>Advanced</string>
         </property>
         <property name="icon">
          <iconset resource="../resources/icons.qrc">
           <normaloff>:/configure.png</normaloff>:/configure.png</iconset>
-        </property>
-        <property name="toolButtonStyle">
-         <enum>Qt::ToolButtonTextBesideIcon</enum>
         </property>
        </widget>
       </item>

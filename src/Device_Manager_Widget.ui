@@ -499,8 +499,8 @@
   </layout>
   <action name="actionAdd_Floppy">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/3floppy_unmount.png</normaloff>:/images/3floppy_unmount.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/fdd.png</normaloff>:/fdd.png</iconset>
    </property>
    <property name="text">
     <string>Add Floppy</string>
@@ -508,8 +508,8 @@
   </action>
   <action name="actionAdd_CD_ROM">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/cdrom_unmount.png</normaloff>:/images/cdrom_unmount.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/cdrom.png</normaloff>:/cdrom.png</iconset>
    </property>
    <property name="text">
     <string>Add CD/DVD-ROM</string>
@@ -517,8 +517,8 @@
   </action>
   <action name="actionAdd_HDD">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/hdd_unmount.png</normaloff>:/images/hdd_unmount.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
    </property>
    <property name="text">
     <string>Add HDD</string>
@@ -526,8 +526,8 @@
   </action>
   <action name="actionFormat_HDD">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/wizard.png</normaloff>:/images/wizard.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
    </property>
    <property name="text">
     <string>Format HDD</string>
@@ -535,8 +535,8 @@
   </action>
   <action name="actionProperties">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/edit.png</normaloff>:/images/edit.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/edit.png</normaloff>:/edit.png</iconset>
    </property>
    <property name="text">
     <string>Properties</string>
@@ -550,8 +550,8 @@
   </action>
   <action name="actionDelete">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/button_cancel.png</normaloff>:/images/button_cancel.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
    </property>
    <property name="text">
     <string>Delete</string>
@@ -559,8 +559,8 @@
   </action>
   <action name="actionList_Mode">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/view_detailed.png</normaloff>:/images/view_detailed.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/view_detailed.png</normaloff>:/view_detailed.png</iconset>
    </property>
    <property name="text">
     <string>List Mode</string>
@@ -568,8 +568,8 @@
   </action>
   <action name="actionIcon_Mode">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/view_icon.png</normaloff>:/images/view_icon.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/view_icon.png</normaloff>:/view_icon.png</iconset>
    </property>
    <property name="text">
     <string>Icon Mode</string>
@@ -577,8 +577,8 @@
   </action>
   <action name="actionQuick_Format">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/reload.png</normaloff>:/images/reload.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/eraser.png</normaloff>:/eraser.png</iconset>
    </property>
    <property name="text">
     <string>Quick Format</string>
@@ -586,8 +586,8 @@
   </action>
   <action name="actionAdd_Device">
    <property name="icon">
-    <iconset>
-     <normaloff>:/images/add.png</normaloff>:/images/add.png</iconset>
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/blockdevice.png</normaloff>:/blockdevice.png</iconset>
    </property>
    <property name="text">
     <string>Add Device</string>
@@ -659,8 +659,8 @@
      <y>55</y>
     </hint>
     <hint type="destinationlabel">
-     <x>492</x>
-     <y>55</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -675,8 +675,8 @@
      <y>55</y>
     </hint>
     <hint type="destinationlabel">
-     <x>317</x>
-     <y>55</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
@@ -707,8 +707,8 @@
      <y>55</y>
     </hint>
     <hint type="destinationlabel">
-     <x>492</x>
-     <y>55</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>

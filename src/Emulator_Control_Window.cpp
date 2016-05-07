@@ -617,7 +617,7 @@ void Emulator_Control_Window::Init()
 	Show_Close_Warning = true;
 	
 	// Create Recent Menu Items
-	int max = Settings.value( "CD_ROM_Exits_Images/Max", "5" ).toString().toInt();
+	int max = Settings.value( "CD_ROM_Existing_Images/Max", "5" ).toString().toInt();
 	
 	for( int ix = 0; ix < max; ++ix )
 	{
@@ -635,7 +635,7 @@ void Emulator_Control_Window::Init()
 	Update_Recent_CD_ROM_Images_List();
 	
 	// Floppy
-	max = Settings.value( "Floppy_Exits_Images/Max", "5" ).toString().toInt();
+	max = Settings.value( "Floppy_Existing_Images/Max", "5" ).toString().toInt();
 	
 	for( int ix = 0; ix < max; ++ix )
 	{
@@ -1454,7 +1454,7 @@ void Emulator_Control_Window::Update_Recent_CD_ROM_Images_List()
 	}
 	
 	// Add New
-	int max = Settings.value( "CD_ROM_Exits_Images/Max", "5" ).toString().toInt();
+	int max = Settings.value( "CD_ROM_Existing_Images/Max", "5" ).toString().toInt();
 	
 	while( max > Recent_Files_CD_Items.count() )
 	{
@@ -1499,7 +1499,7 @@ void Emulator_Control_Window::Update_Recent_Floppy_Images_List()
 	}
 	
 	// Add New
-	int max = Settings.value( "CD_ROM_Exits_Images/Max", "5" ).toString().toInt();
+	int max = Settings.value( "CD_ROM_Existing_Images/Max", "5" ).toString().toInt();
 	
 	while( max > Recent_Files_FD0_Items.count() )
 	{

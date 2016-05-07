@@ -166,12 +166,6 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	// QEMU-IMG Path
 	ui.Edit_QEMU_IMG_Path->setText( Settings.value("QEMU-IMG_Path", "qemu-img").toString() );
 	
-	// Recent CD Count
-//	ui.SB_Recent_CD_Count->setValue( Settings.value("CD_ROM_Exits_Images/Max", "5").toString().toInt() );
-	
-	// Recent FDD Count
-//	ui.SB_Recent_FDD_Count->setValue( Settings.value("Floppy_Exits_Images/Max", "5").toString().toInt() );
-	
 	// First VNC Port for Embedded Display
 	ui.SB_First_VNC_Port->setValue( Settings.value("First_VNC_Port", "5910").toString().toInt() );
 	
@@ -581,12 +575,6 @@ void Advanced_Settings_Window::done(int r)
 	
 	    // QEMU_AUDIO_DRV
 	    Settings.setValue( "QEMU_AUDIO/QEMU_AUDIO_DRV", ui.CB_Host_Sound_System->currentText() );
-	
-	    // Recent CD Count
-    //	Settings.setValue( "CD_ROM_Exits_Images/Max", QString::number(ui.SB_Recent_CD_Count->value()) );
-	
-	    // Recent FDD Count
-    //	Settings.setValue( "Floppy_Exits_Images/Max", QString::number(ui.SB_Recent_FDD_Count->value()) );
 	
 	    // First VNC Port for Embedded Display
 	    Settings.setValue( "First_VNC_Port", QString::number(ui.SB_First_VNC_Port->value()) );
