@@ -509,7 +509,7 @@
                   </widget>
                  </item>
                  <item row="1" column="0">
-                  <widget class="QLabel" name="Label_Boot_Prioritet">
+                  <widget class="QLabel" name="Label_Boot_Priority">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -526,12 +526,12 @@
                     <set>Qt::LinksAccessibleByMouse</set>
                    </property>
                    <property name="buddy">
-                    <cstring>CB_Boot_Prioritet</cstring>
+                    <cstring>CB_Boot_Priority</cstring>
                    </property>
                   </widget>
                  </item>
                  <item row="1" column="1">
-                  <widget class="QComboBox" name="CB_Boot_Prioritet">
+                  <widget class="QComboBox" name="CB_Boot_Priority">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                      <horstretch>0</horstretch>

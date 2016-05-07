@@ -166,7 +166,7 @@ class VM
 				}
 		};
 		
-		// Boot Prioritet
+		// Boot Priority
 		enum Boot_Device { Boot_From_FDA, Boot_From_FDB, Boot_From_CDROM, Boot_From_HDD,
 						   Boot_From_Network1, Boot_From_Network2,
 						   Boot_From_Network3, Boot_From_Network4, Boot_None };

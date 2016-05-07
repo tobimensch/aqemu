@@ -99,7 +99,7 @@ class Main_Window: public QMainWindow
 		// General Tab
 		void on_CB_Computer_Type_currentIndexChanged( int index );
 		void on_CB_Machine_Accelerator_currentIndexChanged( int index );
-		void CB_Boot_Prioritet_currentIndexChanged( int index );
+		void CB_Boot_Priority_currentIndexChanged( int index );
 		void on_TB_Show_Boot_Settings_Window_clicked();
 		void Set_Boot_Order( const QList<VM::Boot_Order> &list );
 		void on_TB_Show_Architecture_Options_Window_clicked();

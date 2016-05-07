@@ -303,11 +303,11 @@ void Main_Window::Connect_Signals()
 	connect( ui.CB_Machine_Type, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(VM_Changed()) );*/
 	
-	connect( ui.CB_Boot_Prioritet, SIGNAL(currentIndexChanged(int)),
+	connect( ui.CB_Boot_Priority, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(VM_Changed()) );
 	
-	connect( ui.CB_Boot_Prioritet, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(CB_Boot_Prioritet_currentIndexChanged(int)) );
+	connect( ui.CB_Boot_Priority, SIGNAL(currentIndexChanged(int)),
+			 this, SLOT(CB_Boot_Priority_currentIndexChanged(int)) );
 	
 	connect( ui.CB_Video_Card, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(VM_Changed()) );
@@ -763,7 +763,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	else
 		tmp_vm->Set_Keyboard_Layout( ui.CB_Keyboard_Layout->currentText() );
 	
-	// Boot Prioritet
+	// Boot Priority
 	tmp_vm->Set_Boot_Order_List( Boot_Order_List );
 	tmp_vm->Set_Show_Boot_Menu( Show_Boot_Menu );
 	
@@ -1951,7 +1951,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 			
 			cell = table->cellAt( table->rows()-1, 2 );
 			cell_cursor = cell.firstCursorPosition();
-			cell_cursor.insertText( ui.CB_Boot_Prioritet->currentText(), format );
+			cell_cursor.insertText( ui.CB_Boot_Priority->currentText(), format );
 			table->insertRows( table->rows(), 1 );
 		}
 		
@@ -5356,14 +5356,14 @@ void Main_Window::Apply_Emulator( int mode )
 	running = false;
 }
 
-void Main_Window::CB_Boot_Prioritet_currentIndexChanged( int index )
+void Main_Window::CB_Boot_Priority_currentIndexChanged( int index )
 {
 	// Clear old string
-	if( ui.CB_Boot_Prioritet->count() >= 5 ) ui.CB_Boot_Prioritet->removeItem( 5 );
+	if( ui.CB_Boot_Priority->count() >= 5 ) ui.CB_Boot_Priority->removeItem( 5 );
 	
 	VM::Boot_Device bootDev;
 	
-	switch( ui.CB_Boot_Prioritet->currentIndex() )
+	switch( ui.CB_Boot_Priority->currentIndex() )
 	{
 		case 0:
 			bootDev = VM::Boot_From_FDA;
@@ -5386,7 +5386,7 @@ void Main_Window::CB_Boot_Prioritet_currentIndexChanged( int index )
 			break;
 			
 		default:
-			AQWarning( "void Main_Window::on_CB_Boot_Prioritet_currentIndexChanged( int index )",
+			AQWarning( "void Main_Window::on_CB_Boot_Priority_currentIndexChanged( int index )",
 					   "Use Default Boot Device: CD-ROM" );
 			bootDev = VM::Boot_From_CDROM;
 			break;
@@ -5397,12 +5397,14 @@ void Main_Window::CB_Boot_Prioritet_currentIndexChanged( int index )
 		if( Boot_Order_List[bx].Type == bootDev ) Boot_Order_List[ bx ].Enabled = true;
 		else Boot_Order_List[ bx ].Enabled = false;
 	}
+
+    VM_Changed();
 }
 
 void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 {
-	disconnect( ui.CB_Boot_Prioritet, SIGNAL(currentIndexChanged(int)),
-				this, SLOT(CB_Boot_Prioritet_currentIndexChanged(int)) );
+	disconnect( ui.CB_Boot_Priority, SIGNAL(currentIndexChanged(int)),
+				this, SLOT(CB_Boot_Priority_currentIndexChanged(int)) );
 	
 	QStringList bootStr;
 	
@@ -5453,20 +5455,20 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 	}
 	
 	// Clear old string
-	if( ui.CB_Boot_Prioritet->count() >= 5 ) ui.CB_Boot_Prioritet->removeItem( 5 );
+	if( ui.CB_Boot_Priority->count() >= 5 ) ui.CB_Boot_Priority->removeItem( 5 );
 	
 	// Select boot device
 	if( bootStr.count() < 1 ) // None
 	{
-		ui.CB_Boot_Prioritet->setCurrentIndex( 4 );
+		ui.CB_Boot_Priority->setCurrentIndex( 4 );
 	}
 	else if( bootStr.count() == 1 ) // One
 	{
-		if( bootStr[0] == "FDA" || bootStr[0] == "FDB" ) ui.CB_Boot_Prioritet->setCurrentIndex( 0 );
-		else if( bootStr[0] == "CDROM" ) ui.CB_Boot_Prioritet->setCurrentIndex( 2 );
-		else if( bootStr[0] == "HDD" ) ui.CB_Boot_Prioritet->setCurrentIndex( 1 );
+		if( bootStr[0] == "FDA" || bootStr[0] == "FDB" ) ui.CB_Boot_Priority->setCurrentIndex( 0 );
+		else if( bootStr[0] == "CDROM" ) ui.CB_Boot_Priority->setCurrentIndex( 2 );
+		else if( bootStr[0] == "HDD" ) ui.CB_Boot_Priority->setCurrentIndex( 1 );
 		else if( bootStr[0] == "Net1" || bootStr[0] == "Net2" ||
-				 bootStr[0] == "Net3" || bootStr[0] == "Net4" ) ui.CB_Boot_Prioritet->setCurrentIndex( 3 );
+				 bootStr[0] == "Net3" || bootStr[0] == "Net4" ) ui.CB_Boot_Priority->setCurrentIndex( 3 );
 		else
 		{
 			AQError( "void Main_Window::Set_Boot_Order( QList<VM::Boot_Order> &list )",
@@ -5483,12 +5485,12 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 			if( (ix + 1) < bootStr.count() ) itemText += "/";
 		}
 		
-		ui.CB_Boot_Prioritet->addItem( itemText );
-		ui.CB_Boot_Prioritet->setCurrentIndex( ui.CB_Boot_Prioritet->count() - 1 );
+		ui.CB_Boot_Priority->addItem( itemText );
+		ui.CB_Boot_Priority->setCurrentIndex( ui.CB_Boot_Priority->count() - 1 );
 	}
 	
-	connect( ui.CB_Boot_Prioritet, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(CB_Boot_Prioritet_currentIndexChanged(int)) );
+	connect( ui.CB_Boot_Priority, SIGNAL(currentIndexChanged(int)),
+			 this, SLOT(CB_Boot_Priority_currentIndexChanged(int)) );
 }
 
 void Main_Window::on_TB_Show_Boot_Settings_Window_clicked()
