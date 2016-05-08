@@ -1344,21 +1344,24 @@ void Emulator_Control_Window::on_actionDisplay_Scaling_triggered()
 
 void Emulator_Control_Window::on_actionFullscreen_Mode_triggered()
 {
-	if( Settings.value("Show_Fullscreen_Warning", "yes").toString() == "yes" )
-	{
-		int ret = QMessageBox::question( this, tr("Fullscreen mode"),
-										 tr("To enable window mode press Ctrl-Alt-F\nDo you want to show this message again?"),
-										 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes );
-		
-		if( ret == QMessageBox::No )
-			Settings.setValue( "Show_Fullscreen_Warning", "no" );
-	}
-	
 	if( ! Fullscreen_Menu_Added )
 	{
 		Machine_View->addAction( ui.actionFullscreen_Mode );
 		Fullscreen_Menu_Added = true;
 	}
+
+    if ( ui.actionFullscreen_Mode->isChecked() )
+    {
+	    if( Settings.value("Show_Fullscreen_Warning", "yes").toString() == "yes" )
+	    {
+		    int ret = QMessageBox::question( this, tr("Fullscreen mode"),
+										     tr("To return from fullscreen to windowed mode press Ctrl-Alt-F\nShow this message again?"),
+										     QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes );
+		
+		    if( ret == QMessageBox::No )
+			    Settings.setValue( "Show_Fullscreen_Warning", "no" );
+	    }
+    }
 	
 	setMaximumSize( 4096, 2048 );
 	Machine_View->Set_Scaling( ui.actionFullscreen_Mode->isChecked() );
