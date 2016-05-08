@@ -79,4 +79,10 @@ void Add_To_Recent_FDD_Files( const QString &path );
 bool Get_Show_Error_Window();
 void Set_Show_Error_Window( bool show );
 
+class QWidget;
+class QCheckBox;
+
+void Checkbox_Dependend_Set_Enabled(QList<QWidget*>& children_to_enable, QCheckBox* checkbox, bool enabled);
+
 #endif
+

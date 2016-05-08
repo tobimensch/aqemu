@@ -51,6 +51,7 @@
 #include "Boot_Device_Window.h"
 #include "SMP_Settings_Window.h"
 #include "Settings_Widget.h"
+#include "Utils.h"
 
 // This is static emulator devices data
 QMap<QString, Available_Devices> System_Info::Emulator_QEMU_2_0;
@@ -3463,6 +3464,8 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 
 void Main_Window::Set_Widgets_State( bool enabled )
 {
+    QList<QWidget*> list;
+
 	// Tabs
 	ui.Tab_General->setEnabled( enabled );
 	//ui.Tab_HDD->setEnabled( enabled );
@@ -3480,15 +3483,15 @@ void Main_Window::Set_Widgets_State( bool enabled )
 	Old_Network_Settings_Widget->Set_Enabled( enabled );
 	New_Network_Settings_Widget->Set_Enabled( enabled );
 	
-	    // Network redirections
-	    ui.Redirection_Widget->setEnabled( enabled );
-	    ui.Widget_Network_Other->setEnabled( enabled );
-	    ui.Widget_Redirection_Buttons->setEnabled( enabled );
-	    ui.Widget_Redirection_CheckBox->setEnabled( enabled );
+    // Network redirections
+    list.clear(); list << ui.Redirection_Widget << ui.Widget_Redirection_Buttons;
+	Checkbox_Dependend_Set_Enabled( list, ui.CH_Redirections, enabled );
 	
     // Tab Display
-	ui.Tab_VNC->setEnabled( enabled );
-    SPICE_Widget->setEnabled( enabled );
+    list.clear(); list << ui.VNC_General << ui.VNC_Security;
+	Checkbox_Dependend_Set_Enabled( list, ui.CH_Activate_VNC, enabled );
+
+    SPICE_Widget->My_Set_Enabled( enabled );
 	ui.Tab_Emulator_Window_Options->setEnabled( enabled );
 }
 
@@ -5681,9 +5684,9 @@ void Main_Window::on_CH_Use_Network_toggled( bool on )
 	New_Network_Settings_Widget->Set_Enabled( on );
 	
 	ui.Redirection_Widget->setEnabled( on );
-	ui.Widget_Network_Other->setEnabled( on );
+	ui.Redirections_List->setEnabled( on );
 	ui.Widget_Redirection_Buttons->setEnabled( on );
-	ui.Widget_Redirection_CheckBox->setEnabled( on );
+	ui.CH_Redirections->setEnabled( on );
 }
 
 void Main_Window::on_RB_Network_Mode_New_toggled( bool on )

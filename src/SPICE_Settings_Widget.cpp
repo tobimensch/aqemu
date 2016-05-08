@@ -68,6 +68,13 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	connect( ui.Edit_Password, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
 }
 
+void SPICE_Settings_Widget::My_Set_Enabled(bool enabled)
+{
+    QList<QWidget*> list;
+    list << ui.Network_Widget << ui.Media_Widget << ui.Security_Widget;
+    Checkbox_Dependend_Set_Enabled(list, ui.CH_Use_SPICE,enabled);
+}
+
 const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) const
 {
 	static VM_SPICE spiceSettings;

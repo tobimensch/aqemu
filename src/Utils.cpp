@@ -945,3 +945,18 @@ void Set_Show_Error_Window( bool show )
 {
 	Show_Error_Window = show;
 }
+
+#include <QCheckBox>
+
+void Checkbox_Dependend_Set_Enabled(QList<QWidget*>& children_to_enable, QCheckBox* checkbox, bool enabled)
+{
+    checkbox->setEnabled(enabled);
+
+    if ( ! checkbox->isChecked() )
+        enabled = false;
+
+    for( int i = 0; i < children_to_enable.count(); i++)
+        children_to_enable[i]->setEnabled(enabled);
+}
+
+
