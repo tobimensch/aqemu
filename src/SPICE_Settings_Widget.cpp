@@ -41,9 +41,12 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	
 	// Connect slots
 	connect( ui.CH_Use_SPICE, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
-	
-	connect( ui.SB_QXL_Num, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
-	connect( ui.CB_RAM_Size, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changed()) );
+
+    //TODO: DEPRECATED OPTION / IF THERE'S NO ALTERNATIVE => REMOVE THE CODE
+	//connect( ui.SB_QXL_Num, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
+
+    //TODO: DEPRECATED OPTION / IF THERE'S NO ALTERNATIVE => REMOVE THE CODE
+	//connect( ui.CB_RAM_Size, SIGNAL(currentIndexChanged(int)), this, SIGNAL(State_Changed()) );
 	
 	connect( ui.Edit_SPICE_Port, SIGNAL(valueChanged(int)), this, SIGNAL(State_Changed()) );
 	connect( ui.CH_SPICE_SPort, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
@@ -76,11 +79,15 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
         settingsValidated = true;
         return spiceSettings;
     }
-	
-	spiceSettings.Set_GXL_Devices_Count( ui.SB_QXL_Num->value() );
+	 
+    //TODO: DEPRECATED OPTION / IF THERE'S NO ALTERNATIVE => REMOVE THE CODE
+	//spiceSettings.Set_GXL_Devices_Count( ui.SB_QXL_Num->value() );
 	
 	bool ok = false;
-	unsigned int val = ui.CB_RAM_Size->currentText().toUInt( &ok );
+    unsigned int val = 0;
+
+    //TODO: DEPRECATED OPTION / IF THERE'S NO ALTERNATIVE => REMOVE THE CODE
+	/*unsigned int val = ui.CB_RAM_Size->currentText().toUInt( &ok );
 	if( ok ) spiceSettings.Set_RAM_Size( val );
 	else
 	{
@@ -88,29 +95,29 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 						   tr("SPICE RAM size incorrect!") );
 		settingsValidated = false;
 		return spiceSettings;
-	}
+	}*/
 	
 	val = ui.Edit_SPICE_Port->value();
-	if( ok ) spiceSettings.Set_Port( val );
+	/*if( val > 0 ) spiceSettings.Set_Port( val ); //TODO: seperate validation and / get settings
 	else
 	{
 		AQGraphic_Warning( tr("Error"),
 						   tr("SPICE port number incorrect!") );
 		settingsValidated = false;
 		return spiceSettings;
-	}
+	}*/
 	
 	spiceSettings.Use_SPort( ui.CH_SPICE_SPort->isChecked() );
 	
 	val = ui.Edit_SPICE_SPort->value();
-	if( ok ) spiceSettings.Set_SPort( val );
+	/*if( val > 0 ) spiceSettings.Set_SPort( val ); //TODO: seperate validation and / get settings
 	else
 	{
 		AQGraphic_Warning( tr("Error"),
 						   tr("SPICE SPort number incorrect!") );
 		settingsValidated = false;
 		return spiceSettings;
-	}
+	}*/
 	
 	spiceSettings.Use_Hostname( ui.CH_SPICE_Host->isChecked() );
 	
@@ -162,9 +169,11 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 void SPICE_Settings_Widget::Set_Settings( const VM_SPICE &settings )
 {
 	ui.CH_Use_SPICE->setChecked( settings.Use_SPICE() );
-	
-	ui.SB_QXL_Num->setValue( settings.Get_GXL_Devices_Count() );
-	ui.CB_RAM_Size->setEditText( QString::number(settings.Get_RAM_Size()) );
+
+
+    //TODO: DEPRECATED OPTION / IF THERE'S NO ALTERNATIVE => REMOVE THE CODE
+	//ui.SB_QXL_Num->setValue( settings.Get_GXL_Devices_Count() );
+	//ui.CB_RAM_Size->setEditText( QString::number(settings.Get_RAM_Size()) );
 	
 	ui.Edit_SPICE_Port->setValue ( settings.Get_Port() );
 	ui.CH_SPICE_SPort->setChecked( settings.Use_SPort() );
@@ -221,10 +230,10 @@ void SPICE_Settings_Widget::Set_Settings( const VM_SPICE &settings )
 void SPICE_Settings_Widget::Set_PSO_GXL( bool use )
 {
 //	ui.Label_QXL->setEnabled( use );
-	ui.Label_Number_of_QXL_Devices->setEnabled( use );
-	ui.SB_QXL_Num->setEnabled( use );
-	ui.Label_RAM_Size->setEnabled( use );
-	ui.CB_RAM_Size->setEnabled( use );
+//	ui.Label_Number_of_QXL_Devices->setEnabled( use );
+//	ui.SB_QXL_Num->setEnabled( use );
+//	ui.Label_RAM_Size->setEnabled( use );
+//	ui.CB_RAM_Size->setEnabled( use );
 }
 
 void SPICE_Settings_Widget::on_TB_Up_clicked()
