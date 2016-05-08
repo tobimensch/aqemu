@@ -47,6 +47,12 @@ void Error_Log_Window::Add_to_Log( const QString& err_str )
 	ui.Edit_Log->append( "<b> " + tr("Error #") + QString::number(Errors_Count) + "</b><br>" + err_str + "<br>" );
 
     last_error_is_deprecated_option = err_str.contains("option is deprecated");
+
+    //deprecated options shouldn't block an actual error from being shown
+    if ( err_str.contains("invalid") || err_str.contains("could not") )
+    {
+        last_error_is_deprecated_option = false;
+    }
 }
 
 bool Error_Log_Window::No_Show_Before_AQEMU_Restart() const
