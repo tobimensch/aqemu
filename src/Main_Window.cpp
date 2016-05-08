@@ -1709,6 +1709,8 @@ void Main_Window::Update_VM_Port_Number()
 
 void Main_Window::Update_Info_Text( int info_mode )
 {
+    #define INFO_TEXT_INDENT 25
+
 	Virtual_Machine *tmp_vm = Get_Current_VM();
 	
 	if( tmp_vm == NULL && info_mode == 0 )
@@ -1722,7 +1724,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 	
 	if( info_mode != 0 )
 	{
-		// This for Tab Info Backgroud Color
+		// This is for the Tab Info background color
 		QPalette qpal;
 		ui.VM_Information_Text->setHtml( "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head>"
 										 "<body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">"
@@ -1742,7 +1744,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 		table_format.setCellSpacing( 0 );
 		
 		QVector<QTextLength> constraints;
-		constraints << QTextLength( QTextLength::FixedLength, 10 ) << QTextLength( QTextLength::FixedLength, 220 );
+		constraints << QTextLength( QTextLength::FixedLength, INFO_TEXT_INDENT ) << QTextLength( QTextLength::FixedLength, 220 );
 		table_format.setColumnWidthConstraints(constraints);
 		
 		if( info_mode == 1 ) cursor.insertText( tr("You must create a new virtual machine"), bold_format );
@@ -1754,7 +1756,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 		return;
 	}
 	
-	// This for Tab Info Backgroud Color
+	// This is for the Tab Info background color
 	QPalette qpal;
 	ui.VM_Information_Text->setHtml( "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head>"
 									 "<body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">"
@@ -1797,7 +1799,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 	table_format.setCellSpacing( 0 );
 	
 	QVector<QTextLength> constraints;
-	constraints << QTextLength( QTextLength::FixedLength, 10 )
+	constraints << QTextLength( QTextLength::FixedLength, INFO_TEXT_INDENT )
 				<< QTextLength( QTextLength::FixedLength, 220 )
 				<< QTextLength( QTextLength::VariableLength, 250 );
 	table_format.setColumnWidthConstraints(constraints);
@@ -2093,7 +2095,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 			 tmp_vm->Get_Storage_Devices_List().count() > 0)) )
 	{
 		cursor.setPosition( topFrame->lastPosition() );
-		cursor.insertText( tr("Storage Devices"), bold_format );
+		cursor.insertText( tr("Devices"), bold_format );
 		cursor.insertBlock();
 		
 		table = cursor.insertTable( 1, 3, table_format );
@@ -2102,10 +2104,6 @@ void Main_Window::Update_Info_Text( int info_mode )
 		frame->setFrameFormat( frame_format );
 		
 		if( true /*Settings.value("Use_Device_Manager", "no").toString() == "yes"*/ )
-		{
-			// FIXME
-		}
-		else
 		{
 			QFileInfo fi;
 			
@@ -3006,7 +3004,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 		table_format2.setCellSpacing( 0 );
 		
 		QVector<QTextLength> constraints2;
-		constraints2 << QTextLength( QTextLength::FixedLength, 10 )
+		constraints2 << QTextLength( QTextLength::FixedLength, INFO_TEXT_INDENT )
 					 << QTextLength( QTextLength::VariableLength, 500 )
 					 << QTextLength( QTextLength::FixedLength, 10 );
 		table_format2.setColumnWidthConstraints( constraints2 );
