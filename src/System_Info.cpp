@@ -1358,8 +1358,8 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	rx = QRegExp( ".*-no-acpi\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_No_ACPI = true;
 	
-	// -rtc-td-hack
-	rx = QRegExp( ".*-rtc-td-hack\\s.*" );
+	// (old option -rtc-td-hack) -rtc *,drift=slew
+	rx = QRegExp( ".*-rtc\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_RTC_TD_Hack = true;
 	
 	// -mtdblock
@@ -1406,8 +1406,8 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	rx = QRegExp( ".*-no-shutdown\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_No_Shutdown = true;
 	
-	// -startdate
-	rx = QRegExp( ".*-startdate\\s.*" );
+	// (old -startdate option) -rtc base=date
+	rx = QRegExp( ".*-rtc\\s.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_Startdate = true;
 	
 	// -show-cursor

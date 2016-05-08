@@ -5394,10 +5394,6 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	if( Current_Emulator_Devices.PSO_No_ACPI &&
 		ACPI == false ) Args << "-no-acpi";
 	
-	// Localtime
-	if( Local_Time )
-		Args << "-localtime";
-	
 	// Snapshot
 	if( Snapshot_Mode )
 		Args << "-snapshot";
@@ -5409,10 +5405,6 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// Exit instead of rebooting
 	if( No_Reboot )
 		Args << "-no-reboot";
-	
-	// QEMU 0.10.0 Options
-	if( Current_Emulator_Devices.PSO_RTC_TD_Hack && RTC_TD_Hack )
-		Args << "-rtc-td-hack";
 	
 	if( Current_Emulator_Devices.PSO_Show_Cursor && Show_Cursor )
 		Args << "-show-cursor";
@@ -6443,9 +6435,21 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	}
 	
 	// Start Date
-	if( Start_Date )
-		Args << "-startdate" << Start_DateTime.toString( "yyyy-MM-ddTHH:mm:ss" ); // QEMU Format
-	
+	// Localtime
+    QStringList rtc_list;
+
+    rtc_list << "-rtc";
+	if ( Local_Time )
+		rtc_list << "base=localtime";
+	else if ( Start_Date )
+		rtc_list << "base=" + Start_DateTime.toString( "yyyy-MM-ddTHH:mm:ss" ); // QEMU Format
+    else
+        rtc_list << "base=utc";
+	if( Current_Emulator_Devices.PSO_RTC_TD_Hack && RTC_TD_Hack )
+	    rtc_list.last() += ",driftfix=slew";
+
+    Args << rtc_list;
+
 	// QEMU 0.9.1 Options
 	// on-board Flash memory image
 	if( Current_Emulator_Devices.PSO_MTDBlock && MTDBlock )
