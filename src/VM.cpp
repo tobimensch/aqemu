@@ -6033,26 +6033,32 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		if( Use_Redirections )
 		{
 			QString redir_str = "";
-			
+			Args << "-net";
+
+            QStringList hostfwds;
+
 			for( int rx = 0; rx < Get_Network_Redirections_Count(); rx++ )
 			{
-				Args << "-redir";
-				redir_str = "";
+				redir_str = "hostfwd=";
 				
 				if( Get_Network_Redirection(rx).Get_Protocol() == "TCP" )
 					redir_str += "tcp:";
 				else if( Get_Network_Redirection(rx).Get_Protocol() == "UDP" )
 					redir_str += "udp:";
 				else
-					AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-							 "Redirection Protocol Invalid!" );
+					redir_str += ":"; //qemu uses TCP by default
+
+
+                //FIXME/TODO: host_address doesn't get taken into account
 				
-				redir_str += QString::number( Get_Network_Redirection(rx).Get_Host_Port() ) + ":";
+				redir_str += ":" + QString::number( Get_Network_Redirection(rx).Get_Host_Port() ) + "-";
 				redir_str += Get_Network_Redirection(rx).Get_Guest_IP() + ":";
 				redir_str += QString::number( Get_Network_Redirection(rx).Get_Guest_Port() );
 				
-				Args << redir_str;
+				hostfwds << redir_str;
 			}
+
+            Args << "user," + hostfwds.join(",");
 		}
 	}
 	
