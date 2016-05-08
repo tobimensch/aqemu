@@ -1691,7 +1691,14 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
     	Update_Info_Text();
     }
 	Update_Disabled_Controls(); // FIXME
-	
+
+    /* TODO: POST 0.9.1
+    QString info_text = tr("Machine:") + " " + tmp_vm->Get_Machine_Name();
+    info_text += " " + tr("State:") + " " + tmp_vm->Get_State_Text();
+
+    ui.Label_Machine_Info->setText(info_text);
+    */
+
 	// For VM Changes Signals
 	ui.Button_Apply->setEnabled( false );
 	ui.Button_Cancel->setEnabled( false );
@@ -1841,30 +1848,8 @@ void Main_Window::Update_Info_Text( int info_mode )
 		cell_cursor = cell.firstCursorPosition();
 		cell_cursor.insertText( tr("State:"), format );
 		
-		QString state_text = "";
-		switch( tmp_vm->Get_State() )
-		{
-			case VM::VMS_Running:
-				state_text = tr("Running");
-				break;
-				
-			case VM::VMS_Power_Off:
-				state_text = tr("Power Off");
-				break;
-				
-			case VM::VMS_Pause:
-				state_text = tr("Pause");
-				break;
-				
-			case VM::VMS_Saved:
-				state_text = tr("Saved");
-				break;
-				
-			default:
-				state_text = tr("Error!");
-				break;
-		}
-		
+		QString state_text = tmp_vm->Get_State_Text();
+
 		cell = table->cellAt( table->rows()-1, 2 );
 		cell_cursor = cell.firstCursorPosition();
 		cell_cursor.insertText( state_text, format );

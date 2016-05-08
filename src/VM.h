@@ -123,6 +123,7 @@ class Virtual_Machine: public QObject
 		
 		QString Get_Current_Emulator_Binary_Path( const QString &names ) const;
 		
+        QString Get_State_Text() const;
 		VM::VM_State Get_State() const;
 		void Set_State( VM::VM_State s, bool real_poewer_off = false );
 		

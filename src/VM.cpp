@@ -7511,6 +7511,27 @@ VM::VM_State Virtual_Machine::Get_State() const
 	return State;
 }
 
+QString Virtual_Machine::Get_State_Text() const
+{
+    switch (State)
+	{
+		case VM::VMS_Running:
+			return tr("Running");
+			
+		case VM::VMS_Power_Off:
+			return tr("Power Off");
+			
+		case VM::VMS_Pause:
+			return tr("Pause");
+			
+		case VM::VMS_Saved:
+			return tr("Saved");
+			
+		default:
+			return tr("Error!");
+	}	
+}
+
 void Virtual_Machine::Set_State( VM::VM_State s, bool real_poewer_off )
 {
 	if( State == VM::VMS_Saved && s == VM::VMS_Power_Off )
