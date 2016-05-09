@@ -3004,7 +3004,7 @@ void Main_Window::Update_Info_Text( int info_mode )
 
 		cell = table2->cellAt( table2->rows()-1, 1 );
 		cell_cursor = cell.firstCursorPosition();
-		cell_cursor.insertText( Get_QEMU_Args().replace(" -"," \\\n-"), format );
+		cell_cursor.insertText( Get_QEMU_Args().replace(" -"," \\\n    -"), format );
 	}
 
     // Move the cursor to the top
@@ -4962,7 +4962,7 @@ void Main_Window::on_actionManage_Snapshots_triggered()
 
 void Main_Window::on_actionShow_QEMU_Arguments_triggered()
 {
-	if( VM_List.count() > 0 ) QMessageBox::information( this, tr("QEMU Arguments:"), Get_QEMU_Args().replace(" -"," \\\n-") );
+	if( VM_List.count() > 0 ) QMessageBox::information( this, tr("QEMU Arguments:"), Get_QEMU_Args().replace(" -"," \\\n    -") );
 	else QMessageBox::information( this, tr("QEMU Arguments:"), tr("No VM Found!") );
 }
 
