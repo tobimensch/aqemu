@@ -30,14 +30,6 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	: QWidget( parent )
 {
 	ui.setupUi( this );
-
-    auto app = dynamic_cast<QApplication*>(QApplication::instance());
-    if ( app != nullptr )
-    {
-        QPalette pal = ui.scrollArea->palette();
-        pal.setColor(QPalette::Window, app->palette("QTabWidget").color(QPalette::Base));
-        ui.scrollArea->setPalette(pal);
-    }
 	
 	// Connect slots
 	connect( ui.CH_Use_SPICE, SIGNAL(clicked()), this, SIGNAL(State_Changed()) );
@@ -66,6 +58,19 @@ SPICE_Settings_Widget::SPICE_Settings_Widget( QWidget *parent )
 	
 	connect( ui.RB_No_Password, SIGNAL(toggled(bool)), this, SIGNAL(State_Changed()) );
 	connect( ui.Edit_Password, SIGNAL(textChanged(const QString &)), this, SIGNAL(State_Changed()) );
+
+
+    ui.scrollArea->setStyleSheet(R"(
+QWidget#scrollArea
+    {
+        background: transparent;
+    }
+QWidget#scrollAreaWidgetContents
+    {
+        background: transparent;
+    }
+)");
+    
 }
 
 void SPICE_Settings_Widget::My_Set_Enabled(bool enabled)

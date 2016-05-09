@@ -31,7 +31,7 @@ class SPICE_Settings_Widget: public QWidget
 	Q_OBJECT
 	
 	public:
-		SPICE_Settings_Widget( QWidget *parent = 0 );
+		SPICE_Settings_Widget( QWidget *parent );
 		
 		const VM_SPICE &Get_Settings( bool &settingsValidated ) const;
 		void Set_Settings( const VM_SPICE &settings );

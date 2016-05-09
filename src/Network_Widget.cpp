@@ -33,6 +33,17 @@ Network_Widget::Network_Widget( QWidget *parent ) : QWidget( parent )
 	on_CB_Network_Type_currentIndexChanged( 0 );
 	
 	Connect_Slots();
+
+    ui.Scroll_Area->setStyleSheet(R"(
+QWidget#Scroll_Area
+    {
+        background: transparent;
+    }
+QWidget#scrollAreaWidgetContents
+    {
+        background: transparent;
+    }
+)");
 }
 
 bool Network_Widget::Get_Network_Cards( QList<VM_Net_Card_Nativ> &cards )

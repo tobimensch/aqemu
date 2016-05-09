@@ -92,13 +92,13 @@ Main_Window::Main_Window( QWidget *parent )
 	Old_Network_Settings_Widget = new Old_Network_Widget();
 	
 	// SPICE
-	SPICE_Widget = new SPICE_Settings_Widget();
+	SPICE_Widget = new SPICE_Settings_Widget(this);
 	ui.TabWidget_Display->insertTab( 1, SPICE_Widget, QIcon(":/pepper.png"), tr("SPICE Remote") );
 
     auto Display_Settings_Widget = new Settings_Widget( ui.TabWidget_Display, QBoxLayout::LeftToRight, true );
     Display_Settings_Widget->setIconSize(QSize(32,32));
     Display_Settings_Widget->addToGroup("Main");
-	
+
 	// Update Emulators Information
 	System_Info::Update_VM_Computers_List();
 	
