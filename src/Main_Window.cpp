@@ -1290,7 +1290,9 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	// Machine Name
 	ui.Edit_Machine_Name->setText( tmp_vm->Get_Machine_Name() );
 	
-	Show_State( tmp_vm, tmp_vm->Get_State() );
+	Show_State_Current( tmp_vm );
+    Show_State_VM( tmp_vm);
+
 	if( tmp_vm->Get_State() == VM::VMS_In_Error )
 	{
 		AQError( "void Main_Window::Update_VM_Ui()",
@@ -3280,8 +3282,9 @@ void Main_Window::VM_State_Changed( Virtual_Machine *vm, VM::VM_State s )
 	if( *vm == *cur_vm )
 	{
 		Update_Info_Text();
-		Show_State( cur_vm, cur_vm->Get_State() );
+		Show_State_Current( cur_vm );
 	}
+    Show_State_VM( vm );
 	
 	vm->Save_VM(); // Save New State
 }
@@ -3314,7 +3317,7 @@ void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)
 
     int s = Settings.value("VM_Icons_Size", "48").toInt();
 
-    QIcon icon = ui.Machines_List->currentItem()->icon();
+    QIcon icon = QIcon(vm->Get_Icon_Path());
     auto pix = new QPixmap(icon.pixmap(QSize(s,s)));
 
     auto painter = new QPainter(pix);
@@ -3332,7 +3335,7 @@ void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)
     delete pix;
 }
 
-void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
+void Main_Window::Show_State_Current( Virtual_Machine *vm)
 {
 	if( vm == NULL )
 	{
@@ -3341,7 +3344,7 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 		return;
 	}
 	
-	if( s == VM::VMS_Saved && Settings.value("Use_Screenshot_for_OS_Logo", "yes").toString() == "yes" )
+	if( vm->Get_State() == VM::VMS_Saved && Settings.value("Use_Screenshot_for_OS_Logo", "yes").toString() == "yes" )
 	{
 		ui.Machines_List->currentItem()->setIcon( QIcon(vm->Get_Screenshot_Path()) );
 		ui.Machines_List->currentItem()->setData( 128, vm->Get_Screenshot_Path() );
@@ -3352,7 +3355,7 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 		ui.Machines_List->currentItem()->setData( 128, vm->Get_Icon_Path() );
 	}
 	
-	switch( s )
+	switch( vm->Get_State() )
 	{
 		case VM::VMS_Running:
 			ui.actionPower_On->setEnabled( false );
@@ -3361,8 +3364,6 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 			ui.actionPause->setChecked( false );
 			ui.actionPower_Off->setEnabled( true );
 			ui.actionReset->setEnabled( true );
-
-            Change_The_Icon(vm, ":/play.png");
 			
 			Set_Widgets_State( false );
 			break;
@@ -3375,8 +3376,6 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 			ui.actionPower_Off->setEnabled( false );
 			ui.actionReset->setEnabled( false );
 
-            Change_The_Icon(vm, ":/stop.png");
-
 			Set_Widgets_State( true );
 			break;
 			
@@ -3388,8 +3387,6 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 			ui.actionPower_Off->setEnabled( true );
 			ui.actionReset->setEnabled( true );
 
-            Change_The_Icon(vm, ":/pause.png");
-			
 			Set_Widgets_State( false );
 			break;
 			
@@ -3400,8 +3397,6 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 			ui.actionPause->setChecked( false );
 			ui.actionPower_Off->setEnabled( true );
 			ui.actionReset->setEnabled( true );
-			
-            Change_The_Icon(vm, ":/save.png");
 
 			Set_Widgets_State( false );
 			break;
@@ -3413,9 +3408,6 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 			ui.actionPause->setChecked( false );
 			ui.actionPower_Off->setEnabled( false );
 			ui.actionReset->setEnabled( false );
-			
-            Change_The_Icon(vm, ":/error.png");
-
 			Set_Widgets_State( false );
 			
 			Update_Info_Text( 2 );
@@ -3428,6 +3420,44 @@ void Main_Window::Show_State( Virtual_Machine *vm, VM::VM_State s )
 	ui.Button_Apply->setEnabled( false );
 	ui.Button_Cancel->setEnabled( false );
 	
+	Update_Emulator_Control( vm );
+}
+
+void Main_Window::Show_State_VM( Virtual_Machine *vm )
+{
+	if( vm == NULL )
+	{
+		AQError( "void Main_Window::Show_State_VM( Virtual_Machine *vm )",
+				 "vm == NULL" );
+		return;
+	}
+	
+	switch( vm->Get_State() )
+	{
+		case VM::VMS_Running:
+            Change_The_Icon(vm, ":/play.png");
+			break;
+			
+		case VM::VMS_Power_Off:
+            Change_The_Icon(vm, ":/stop.png");
+			break;
+			
+		case VM::VMS_Pause:
+            Change_The_Icon(vm, ":/pause.png");
+			break;
+			
+		case VM::VMS_Saved:
+            Change_The_Icon(vm, ":/save.png");
+			break;
+			
+		case VM::VMS_In_Error:
+            Change_The_Icon(vm, ":/error.png");
+			break;
+			
+		default:
+			break;
+	}
+
 	Update_Emulator_Control( vm );
 }
 

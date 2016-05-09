@@ -58,7 +58,8 @@ class Main_Window: public QMainWindow
 		void on_Machines_List_customContextMenuRequested( const QPoint &pos );
 		void on_Machines_List_itemDoubleClicked( QListWidgetItem *item );
 		void VM_State_Changed( Virtual_Machine *vm, VM::VM_State s );
-		void Show_State( Virtual_Machine *vm, VM::VM_State s );
+		void Show_State_VM( Virtual_Machine *vm );
+		void Show_State_Current( Virtual_Machine *vmvm );
 		void Set_Widgets_State( bool enabled );
 		void VM_Changed();
 		void Update_Emulator_Control( Virtual_Machine *cur_vm );
