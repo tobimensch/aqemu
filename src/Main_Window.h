@@ -169,6 +169,7 @@ class Main_Window: public QMainWindow
 		
 		bool Load_Settings();
 		bool Save_Settings();
+        bool Save_Or_Discard(bool forced = false);
 
         void Discard_Changes(QDialog*);
 		

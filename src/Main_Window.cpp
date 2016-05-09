@@ -628,6 +628,8 @@ void Main_Window::Connect_Signals()
 	connect( Folder_Sharing, SIGNAL(Folder_Changed()),
 	         this, SLOT(VM_Changed()) );
 
+	connect( Dev_Manager, SIGNAL(Device_Changed()),
+			 this, SLOT(VM_Changed()) );
 
     connect( ui.SB_VNC_Display, SIGNAL(valueChanged(int)), this, SLOT(on_SB_VNC_Display_changed(int)));
     connect( ui.SB_VNC_Display_Port, SIGNAL(valueChanged(int)), this, SLOT(on_SB_VNC_Display_Port_changed(int)));
@@ -1136,61 +1138,8 @@ bool Main_Window::Load_Settings()
 	
 	if( Settings.status() == QSettings::NoError )
 	{
-		// Apply Settings...
-		//if( Settings.value( "Use_Device_Manager", "yes" ).toString() == "yes" )
-		//{
-			connect( Dev_Manager, SIGNAL(Device_Changed()),
-			         this, SLOT(VM_Changed()) );
 			
-			/*
-            //TODO: legacy code ready for removal
-            if( ui.Tabs->indexOf(ui.Tab_HDD) != -1 ) // delete
-				ui.Tabs->removeTab( ui.Tabs->indexOf(ui.Tab_HDD) );
-			
-			if( ui.Tabs->indexOf(ui.Tab_Removable_Disks) != -1 ) // delete
-				ui.Tabs->removeTab( ui.Tabs->indexOf(ui.Tab_Removable_Disks) );*/
-			
-			if( ui.Machines_List->count() > 0 ) Update_VM_Ui();
-		/*}
-		else
-		{
-			disconnect( Dev_Manager, SIGNAL(Device_Changed()),
-			            this, SLOT(VM_Changed()) );
-			
-			if( ui.Tabs->indexOf(Dev_Manager) != -1 ) // delete
-				ui.Tabs->removeTab( ui.Tabs->indexOf(Dev_Manager) );
-			
-			if( ui.Tabs->indexOf(ui.Tab_HDD) == -1 ) // add
-				ui.Tabs->insertTab( 2, ui.Tab_HDD, tr("HDD") );
-			
-			if( ui.Tabs->indexOf(ui.Tab_Removable_Disks) == -1 ) // add
-				ui.Tabs->insertTab( 3, ui.Tab_Removable_Disks, tr("CD/DVD/Floppy") );
-			
-			// update devices list for floppy and cdrom
-			QStringList fd_list = System_Info::Get_Host_FDD_List();
-			
-			ui.CB_FD0_Devices->clear();
-			ui.CB_FD1_Devices->clear();
-			
-			if( fd_list.count() < 1 )
-			{
-				AQDebug( "bool Main_Window::Load_Settings()",
-						 "Cannot Find Host Floppy Devices!" );
-			}
-			else
-			{
-				for( int d = 0; d < fd_list.count(); ++d )
-				{
-					ui.CB_FD0_Devices->addItem( fd_list[d] );
-					ui.CB_FD1_Devices->addItem( fd_list[d] );
-				}
-			}
-			
-			Update_Recent_Floppy_Images_List();
-			Update_Recent_CD_ROM_Images_List();
-			
-			if( ui.Machines_List->count() > 0 ) Update_VM_Ui();
-		}*/
+		//	if( ui.Machines_List->count() > 0 ) Update_VM_Ui();
 		
 		return true;
 	}
@@ -4480,6 +4429,8 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 		QList<Emulator> tmpEmulatorsList = Get_Emulators_List();
 		if( tmpEmulatorsList != All_Emulators_List )
 		{
+            Save_Or_Discard(true);
+
 			// Update Emulators Information
 			All_Emulators_List = Get_Emulators_List();
 			
@@ -4530,6 +4481,8 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 
 		if( QDir::toNativeSeparators(Settings.value("VM_Directory", "~").toString()) != VM_Folder )
 		{
+            Save_Or_Discard(true);
+
 			// Apply Settings
 			Load_Settings();
 			
@@ -4583,7 +4536,10 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 
 void Main_Window::on_actionShow_First_Run_Wizard_triggered()
 {
-	First_Start_Wizard first_start_win( NULL );
+    if ( ! Save_Or_Discard() )
+        return;
+
+	First_Start_Wizard first_start_win( this );
 	
 	if( first_start_win.exec() == QDialog::Accepted )
 	{
@@ -4608,33 +4564,45 @@ void Main_Window::on_actionShow_First_Run_Wizard_triggered()
 	}
 }
 
-void Main_Window::on_actionPower_On_triggered()
+// return false on error or when the user cancels
+bool Main_Window::Save_Or_Discard(bool forced)
 {
 	Virtual_Machine *tmp_vm = new Virtual_Machine();
 	Virtual_Machine *cur_vm = Get_Current_VM();
-	
+
 	if( cur_vm == NULL )
 	{
-		AQError( "void Main_Window::on_action_Power_On_triggered()",
+		AQError( "void Main_Window::Save_Or_Discard()",
 				 "cur_vm == NULL" );
-		return;
+		return false;
 	}
-	
+
 	if( Create_VM_From_Ui(tmp_vm, cur_vm) == false )
 	{
-		AQError( "void Main_Window::on_action_Power_On_triggered()",
+		AQError( "void Main_Window::Save_Or_Discard()",
 				 "Cannot Create VM From Ui!" );
-		return;
+		return false;
 	}
 	else
 	{
+        //something must have been changed
 		if( *tmp_vm != *cur_vm )
 		{
-			int mes_res = QMessageBox::question( this, tr("Warning!"), tr("VM was changed. Save changes?"),
-												 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes );
+            QMessageBox msgBox;
+            msgBox.setWindowTitle(tr("The VM was modified"));
+            msgBox.setText(tr("The VM")+" "+cur_vm->Get_Machine_Name()+" "+("was modified."));
+            msgBox.setInformativeText(tr("Do you want to save your changes?"));
+            if ( forced )
+                msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+            else
+                msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
 
-            AQDebug("VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator())",VM::Accel_To_String(tmp_vm->Get_Machine_Accelerator()));
-            AQDebug("VM::Accel_To_String(cur_vm->Get_Machine_Accelerator())",VM::Accel_To_String(cur_vm->Get_Machine_Accelerator()));
+            if ( forced )
+                msgBox.setDefaultButton(QMessageBox::Yes);
+            else
+                msgBox.setDefaultButton(QMessageBox::Cancel);
+
+			int mes_res = msgBox.exec();
 
 			if( mes_res == QMessageBox::Yes )
 			{
@@ -4649,15 +4617,27 @@ void Main_Window::on_actionPower_On_triggered()
 				connect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 						 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 			}
-			else
+			else if ( mes_res == QMessageBox::No )
 			{
 				// discard changes
 				Update_VM_Ui();
-				return;
 			}
+            else
+            {
+                return false;
+            }
 		}
 	}
+    return true;
+}
+
+void Main_Window::on_actionPower_On_triggered()
+{
+	if ( ! Save_Or_Discard() )
+        return;
 	
+	Virtual_Machine *cur_vm = Get_Current_VM();
+
 	if( ! Boot_Is_Correct(cur_vm) ) return;
 	
 	if( cur_vm->Start() )
