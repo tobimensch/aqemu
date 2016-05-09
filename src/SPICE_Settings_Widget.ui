@@ -53,8 +53,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>629</width>
-        <height>720</height>
+        <width>687</width>
+        <height>707</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -112,7 +112,7 @@
                 <item>
                  <widget class="QLabel" name="Label_SPICE_Port">
                   <property name="text">
-                   <string>Port</string>
+                   <string>Port:</string>
                   </property>
                  </widget>
                 </item>
@@ -142,15 +142,18 @@
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item alignment="Qt::AlignRight">
                  <widget class="QCheckBox" name="CH_SPICE_SPort">
                   <property name="text">
-                   <string>SPort</string>
+                   <string>Secure port:</string>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item alignment="Qt::AlignLeft">
                  <widget class="QSpinBox" name="Edit_SPICE_SPort">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
                   <property name="alignment">
                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
@@ -172,10 +175,10 @@
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item alignment="Qt::AlignRight">
                  <widget class="QCheckBox" name="CH_SPICE_Host">
                   <property name="text">
-                   <string>Host</string>
+                   <string>Host:</string>
                   </property>
                  </widget>
                 </item>

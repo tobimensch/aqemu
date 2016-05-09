@@ -33,7 +33,7 @@ class SPICE_Settings_Widget: public QWidget
 	public:
 		SPICE_Settings_Widget( QWidget *parent );
 		
-		const VM_SPICE &Get_Settings( bool &settingsValidated ) const;
+		const VM_SPICE &Get_Settings( bool &settingsValidated );
 		void Set_Settings( const VM_SPICE &settings );
 		
 		void Set_PSO_GXL( bool use );
@@ -50,6 +50,8 @@ class SPICE_Settings_Widget: public QWidget
 		void Show_Renderer_List( const QList<VM::SPICE_Renderer> &list );
 		
 		Ui::SPICE_Settings_Widget ui;
+
+        VM_SPICE spiceSettings;
 };
 
 #endif

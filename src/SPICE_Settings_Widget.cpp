@@ -80,9 +80,9 @@ void SPICE_Settings_Widget::My_Set_Enabled(bool enabled)
     Checkbox_Dependend_Set_Enabled(list, ui.CH_Use_SPICE,enabled);
 }
 
-const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) const
+const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated )
 {
-	static VM_SPICE spiceSettings;
+	spiceSettings = VM_SPICE();
 	
 	spiceSettings.Use_SPICE( ui.CH_Use_SPICE->isChecked() );
 
@@ -110,6 +110,8 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 	}*/
 	
 	val = ui.Edit_SPICE_Port->value();
+
+	spiceSettings.Set_Port( val );
 	/*if( val > 0 ) spiceSettings.Set_Port( val ); //TODO: seperate validation and / get settings
 	else
 	{
@@ -122,6 +124,7 @@ const VM_SPICE &SPICE_Settings_Widget::Get_Settings( bool &settingsValidated ) c
 	spiceSettings.Use_SPort( ui.CH_SPICE_SPort->isChecked() );
 	
 	val = ui.Edit_SPICE_SPort->value();
+	spiceSettings.Set_SPort( val );
 	/*if( val > 0 ) spiceSettings.Set_SPort( val ); //TODO: seperate validation and / get settings
 	else
 	{
