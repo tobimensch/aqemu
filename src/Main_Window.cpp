@@ -2622,7 +2622,12 @@ void Main_Window::Update_Info_Text( int info_mode )
 			
 			cell = table->cellAt( table->rows()-1, 2 );
 			cell_cursor = cell.firstCursorPosition();
-			cell_cursor.insertText( ui.SB_VNC_Display->text() , format );
+
+            if ( tmp_vm->Use_VNC() )
+    			cell_cursor.insertText( QString::number( ui.SB_VNC_Display->value() + 5900 ) , format );
+            else
+                cell_cursor.insertText( QString::number( Settings.value("First_VNC_Port", "5910").toInt() + tmp_vm->Get_Embedded_Display_Port() ) , format );
+
 			table->insertRows( table->rows(), 1 );
 		}
 		
