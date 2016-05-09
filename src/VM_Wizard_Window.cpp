@@ -108,13 +108,13 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 	}
 	else if( ui.Accelerator_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
-		ui.Label_Page->setText( tr("Wizard Mode") );
+		ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
+		ui.Label_Page->setText( tr("VM Hardware Template") );
 	}
 	else if( ui.General_Settings_Page == ui.Wizard_Pages->currentWidget() )
 	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
-		ui.Label_Page->setText( tr("VM Hardware Template") );
+		ui.Wizard_Pages->setCurrentWidget( ui.Accelerator_Page );
+		ui.Label_Page->setText( tr("Accelerator") );
 	}
 	else if( ui.Memory_Page == ui.Wizard_Pages->currentWidget() )
 	{
