@@ -691,7 +691,11 @@ void Emulator_Control_Window::Init()
 		connect( Machine_View, SIGNAL(Full_Size(int,int)),
 				 this, SLOT(Apply_Full_Size(int,int)) );
 		
-		Machine_View->Set_VNC_URL( "localhost", Cur_VM->Get_Embedded_Display_Port() +
+        if ( Cur_VM->Use_VNC() )
+	    	Machine_View->Set_VNC_URL( "localhost", Cur_VM->Get_VNC_Display_Number() +
+				5900 );
+        else
+    		Machine_View->Set_VNC_URL( "localhost", Cur_VM->Get_Embedded_Display_Port() +
 				(Settings.value("First_VNC_Port", "5910").toString().toInt()) );
 	}
 	#else
@@ -1381,9 +1385,8 @@ void Emulator_Control_Window::Connect_VNC()
 
 bool Emulator_Control_Window::Use_VNC()
 {
-	if( Settings.value("Use_VNC_Display", "no").toString() == "yes" &&
-		Cur_VM->Use_VNC() == false &&
-		Cur_VM->Get_Video_Card() != "none" )
+	if( Settings.value("Use_VNC_Display", "no").toString() == "yes" && Cur_VM->Get_VNC_Socket_Mode() == false &&
+		Cur_VM->Get_Video_Card() != "none" ) //TODO: Should also work seemlessly if VNC is set to use a socket
 	{
 		return true;
 	}

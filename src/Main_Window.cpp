@@ -627,6 +627,21 @@ void Main_Window::Connect_Signals()
 
 	connect( Folder_Sharing, SIGNAL(Folder_Changed()),
 	         this, SLOT(VM_Changed()) );
+
+
+    connect( ui.SB_VNC_Display, SIGNAL(valueChanged(int)), this, SLOT(on_SB_VNC_Display_changed(int)));
+    connect( ui.SB_VNC_Display_Port, SIGNAL(valueChanged(int)), this, SLOT(on_SB_VNC_Display_Port_changed(int)));
+
+}
+
+void Main_Window::on_SB_VNC_Display_changed(int num)
+{
+    ui.SB_VNC_Display_Port->setValue(5900+num);
+}
+
+void Main_Window::on_SB_VNC_Display_Port_changed(int port)
+{
+    ui.SB_VNC_Display->setValue(port-5900);
 }
 
 const QMap<QString, Available_Devices> Main_Window::Get_Devices_Info( bool *ok ) const

@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -1733,7 +1733,7 @@
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="Tab_VNC">
                <attribute name="icon">
@@ -1944,8 +1944,17 @@
                      <layout class="QGridLayout" name="gridLayout_2">
                       <item row="0" column="1">
                        <widget class="QSpinBox" name="SB_VNC_Display">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
                         <property name="toolTip">
                          <string>For Connection Use Port 5900 + VNC Display Number</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                         </property>
                         <property name="minimum">
                          <number>1</number>
@@ -1958,31 +1967,56 @@
                         </property>
                        </widget>
                       </item>
-                      <item row="2" column="1">
-                       <widget class="QLineEdit" name="Edit_VNC_Unix_Socket">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                       </widget>
-                      </item>
                       <item row="2" column="0">
                        <widget class="QRadioButton" name="RB_VNC_Unix_Socket">
                         <property name="text">
-                         <string>UNI&amp;X domain socket</string>
+                         <string>UNI&amp;X domain socket:</string>
                         </property>
                        </widget>
                       </item>
                       <item row="0" column="0">
                        <widget class="QRadioButton" name="RB_VNC_Display_Number">
                         <property name="text">
-                         <string>VNC display n&amp;umber</string>
+                         <string>VNC display n&amp;umber:</string>
                         </property>
                         <property name="checked">
                          <bool>true</bool>
                         </property>
                        </widget>
                       </item>
-                      <item row="2" column="2">
+                      <item row="0" column="3">
+                       <widget class="QSpinBox" name="SB_VNC_Display_Port">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimum">
+                         <number>5900</number>
+                        </property>
+                        <property name="maximum">
+                         <number>10000</number>
+                        </property>
+                        <property name="value">
+                         <number>5900</number>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="2" alignment="Qt::AlignRight">
+                       <widget class="QLabel" name="label_8">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text">
+                         <string>Port:</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="4">
                        <widget class="QToolButton" name="TB_VNC_Unix_Socket_Browse">
                         <property name="enabled">
                          <bool>false</bool>
@@ -1993,6 +2027,13 @@
                         <property name="icon">
                          <iconset resource="../resources/icons.qrc">
                           <normaloff>:/open-file.png</normaloff>:/open-file.png</iconset>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1" colspan="3">
+                       <widget class="QLineEdit" name="Edit_VNC_Unix_Socket">
+                        <property name="enabled">
+                         <bool>false</bool>
                         </property>
                        </widget>
                       </item>
