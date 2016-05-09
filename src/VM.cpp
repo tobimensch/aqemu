@@ -5434,7 +5434,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-							QString("Image \"%1\" Not Exists!").arg(FD0.Get_File_Name()) );
+							QString("Image \"%1\" doesn't exists!").arg(FD0.Get_File_Name()) );
 			}
 		}
 	}
@@ -5458,7 +5458,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-							QString("Image \"%1\" Not Exists!").arg(FD1.Get_File_Name()) );
+							QString("Image \"%1\" doesn't exist!").arg(FD1.Get_File_Name()) );
 			}
 		}
 	}
@@ -5482,7 +5482,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-							QString("Image \"%1\" Not Exists!").arg(CD_ROM.Get_File_Name()) );
+							QString("Image \"%1\" doesn't exist!").arg(CD_ROM.Get_File_Name()) );
 			}
 		}
 	}
@@ -5506,7 +5506,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-						 QString("Image \"%1\" Not Exists!").arg(HDA.Get_File_Name()) );
+						 QString("Image \"%1\" doesn't exist!").arg(HDA.Get_File_Name()) );
 			}
 		}
 	}
@@ -5530,7 +5530,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-						 QString("Image \"%1\" Not Exists!").arg(HDB.Get_File_Name()) );
+						 QString("Image \"%1\" doesn't exist!").arg(HDB.Get_File_Name()) );
 			}
 		}
 	}
@@ -5554,7 +5554,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-						 QString("Image \"%1\" Not Exists!").arg(HDC.Get_File_Name()) );
+						 QString("Image \"%1\" doesn't exist!").arg(HDC.Get_File_Name()) );
 			}
 		}
 	}
@@ -5578,7 +5578,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
-						 QString("Image \"%1\" Not Exists!").arg(HDD.Get_File_Name()) );
+						 QString("Image \"%1\" doesn't exist!").arg(HDD.Get_File_Name()) );
 			}
 		}
 	}
