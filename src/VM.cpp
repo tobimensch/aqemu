@@ -76,15 +76,14 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 {
 	AQDebug( "Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )", "Begin" );
 	
-	this->QEMU_Process = new QProcess();
+	QEMU_Process = new QProcess();
 	Monitor_Socket = new QTcpSocket( this );
 	Use_Monitor_TCP = false;
 	Monitor_Hostname = "localhost";
 	Monitor_Port = 6000;
-	this->State = vm.Get_State();
-	this->Emu_Ctl = new Emulator_Control_Window();
-	this->VM_Dom_Document = QDomDocument();
-	this->VM_XML_File_Path = vm.Get_VM_XML_File_Path();
+	State = vm.Get_State();
+	Emu_Ctl = new Emulator_Control_Window();
+	VM_XML_File_Path = vm.Get_VM_XML_File_Path();
 	Build_QEMU_Args_for_Script_Mode = false;
 	Build_QEMU_Args_for_Tab_Info = false;
 	UID = vm.Get_UID();
@@ -296,7 +295,6 @@ void Virtual_Machine::Shared_Constructor()
 	Emu_Ctl = new Emulator_Control_Window();
 	Removable_Devices_List = "";
 	Update_Removable_Devices_Mode = false;
-	VM_Dom_Document = QDomDocument();
 	VM_XML_File_Path = "";
 	Build_QEMU_Args_for_Script_Mode = false;
 	Build_QEMU_Args_for_Tab_Info = false;
@@ -660,15 +658,15 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 {
 	AQDebug( "Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )", "Begin" );
 	
-	this->QEMU_Process = new QProcess();
+	QEMU_Process = new QProcess();
 	Monitor_Socket = new QTcpSocket( this );
 	Use_Monitor_TCP = false;
 	Monitor_Hostname = "localhost";
 	Monitor_Port = 6000;
-	this->Emu_Ctl = new Emulator_Control_Window();
-	this->VM_Dom_Document = QDomDocument();
-	this->VM_XML_File_Path = vm.Get_VM_XML_File_Path();
-	this->State = vm.Get_State();
+    delete Emu_Ctl;
+	Emu_Ctl = new Emulator_Control_Window();
+	VM_XML_File_Path = vm.Get_VM_XML_File_Path();
+	State = vm.Get_State();
 	Build_QEMU_Args_for_Script_Mode = false;
 	Build_QEMU_Args_for_Tab_Info = false;
 	UID = vm.Get_UID();
@@ -3452,6 +3450,9 @@ bool Virtual_Machine::Create_Template( const QString &vm_path, const QString &te
 
 bool Virtual_Machine::Load_VM( const QString &file_name )
 {
+
+    TXML2QDOM::QDomDocument VM_Dom_Document; // vm xml file
+
 	VM_XML_File_Path = file_name;
 	
 	QFile VM_File( file_name );

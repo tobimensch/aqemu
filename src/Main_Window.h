@@ -52,6 +52,7 @@ class Main_Window: public QMainWindow
 	
 	public:
 		Main_Window( QWidget *parent = 0 );
+        ~Main_Window();
 		
 	private slots:
 		void on_Machines_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous );
@@ -203,6 +204,10 @@ class Main_Window: public QMainWindow
         QDialog* Advanced_Options;
         QDialog* Accelerator_Options;
         QDialog* Architecture_Options;
+
+        Settings_Widget* Display_Settings_Widget;
+        Settings_Widget* Media_Settings_Widget;
+        Settings_Widget* Network_Settings_Widget;
 
 		QMenu *Icon_Menu; // Context menu for vm icons
 		QMenu *VM_List_Menu; // Context menu for vm list

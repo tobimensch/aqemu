@@ -31,6 +31,8 @@
 #include <QValidator>
 #include <QPainter>
 
+#include <memory>
+
 #include "Main_Window.h"
 #include "Delete_VM_Files_Window.h"
 #include "Device_Manager_Widget.h"
@@ -95,7 +97,7 @@ Main_Window::Main_Window( QWidget *parent )
 	SPICE_Widget = new SPICE_Settings_Widget(this);
 	ui.TabWidget_Display->insertTab( 1, SPICE_Widget, QIcon(":/pepper.png"), tr("SPICE Remote") );
 
-    auto Display_Settings_Widget = new Settings_Widget( ui.TabWidget_Display, QBoxLayout::LeftToRight, true );
+    Display_Settings_Widget = new Settings_Widget( ui.TabWidget_Display, QBoxLayout::LeftToRight, true );
     Display_Settings_Widget->setIconSize(QSize(32,32));
     Display_Settings_Widget->addToGroup("Main");
 
@@ -145,7 +147,7 @@ Main_Window::Main_Window( QWidget *parent )
 	ui.TabWidget_Media->insertTab( 0, Dev_Manager, QIcon(":/hdd.png"), tr("Device Manager") );
     ui.TabWidget_Media->setCurrentWidget(Dev_Manager);
 
-    auto Media_Settings_Widget = new Settings_Widget( ui.TabWidget_Media, QBoxLayout::LeftToRight, true );
+    Media_Settings_Widget = new Settings_Widget( ui.TabWidget_Media, QBoxLayout::LeftToRight, true );
     Media_Settings_Widget->setIconSize(QSize(32,32));
     Media_Settings_Widget->addToGroup("Main");
 	
@@ -155,7 +157,7 @@ Main_Window::Main_Window( QWidget *parent )
     Ports_Tab->syncLayout(Dev_Manager);
     ////
 
-    auto Network_Settings_Widget = new Settings_Widget( ui.Network_Cards_Tabs, QBoxLayout::LeftToRight, true );
+    Network_Settings_Widget = new Settings_Widget( ui.Network_Cards_Tabs, QBoxLayout::LeftToRight, true );
     Network_Settings_Widget->setIconSize(QSize(32,32));
     Network_Settings_Widget->addToGroup("Main");
 
@@ -219,6 +221,24 @@ Main_Window::Main_Window( QWidget *parent )
 
     Settings_Widget::syncGroupIconSizes("Main");
 
+}
+
+Main_Window::~Main_Window()
+{
+    delete Advanced_Options;
+    delete Accelerator_Options;
+    delete Architecture_Options;
+    delete Nativ_Device_Window;
+    delete New_Network_Settings_Widget;
+    delete Old_Network_Settings_Widget;
+    delete SPICE_Widget;
+    delete Display_Settings_Widget;
+    delete Icon_Menu;
+    delete VM_List_Menu;
+    delete Ports_Tab;
+    delete Dev_Manager;
+    delete Folder_Sharing;
+    delete Media_Settings_Widget;
 }
 
 void Main_Window::closeEvent( QCloseEvent *event )
@@ -3600,7 +3620,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 	
 	if( ui.Machines_List->row(previous) < 0 ) return;
 	
-	Virtual_Machine *tmp_vm = new Virtual_Machine();
+	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
 	Virtual_Machine *old_vm = Get_VM_By_UID( previous->data(256).toString() );
 	
 	if( old_vm == NULL )
@@ -3610,7 +3630,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 		return;
 	}
 	
-	if( Create_VM_From_Ui(tmp_vm, old_vm) == false &&
+	if( Create_VM_From_Ui(tmp_vm.get(), old_vm) == false &&
 		old_vm->Get_State() != VM::VMS_In_Error )
 	{
 		AQError( "void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem* current, QListWidgetItem* previous )",
@@ -3654,7 +3674,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 	}
 	
 	// if previous machine settings were changed
-	if( *old_vm != *tmp_vm &&
+	if( *old_vm != *tmp_vm.get() &&
 		old_vm->Get_State() != VM::VMS_In_Error && ui.Button_Apply->isEnabled() )
 	{
 		int mes_res = QMessageBox::question( this, tr("Warning!"), tr("Current VM was changed. Save all changes?"),
@@ -3665,7 +3685,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 			disconnect( old_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 						this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 			
-			*old_vm = *tmp_vm;
+			*old_vm = *tmp_vm.get();
 			
 			connect( old_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 					 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
@@ -4169,15 +4189,15 @@ void Main_Window::on_actionChange_Icon_triggered()
 		return;
 	}
 	
-	Select_Icon_Window *icon_win = new Select_Icon_Window( this );
-	icon_win->Set_Previous_Icon_Path( cur_vm->Get_Icon_Path() );
+	Select_Icon_Window icon_win( this );
+	icon_win.Set_Previous_Icon_Path( cur_vm->Get_Icon_Path() );
 	
-	if( QDialog::Accepted == icon_win->exec() )
+	if( QDialog::Accepted == icon_win.exec() )
 	{
-		if( ! icon_win->Get_New_Icon_Path().isEmpty() )
+		if( ! icon_win.Get_New_Icon_Path().isEmpty() )
 		{
-			ui.Machines_List->currentItem()->setIcon( QIcon(icon_win->Get_New_Icon_Path()) );
-			ui.Machines_List->currentItem()->setData( 128, icon_win->Get_New_Icon_Path() );
+			ui.Machines_List->currentItem()->setIcon( QIcon(icon_win.Get_New_Icon_Path()) );
+			ui.Machines_List->currentItem()->setData( 128, icon_win.Get_New_Icon_Path() );
 		}
 		
 		Virtual_Machine *cur_vm = Get_Current_VM();
@@ -4189,11 +4209,9 @@ void Main_Window::on_actionChange_Icon_triggered()
 			return;
 		}
 		
-		cur_vm->Set_Icon_Path( icon_win->Get_New_Icon_Path() );
+		cur_vm->Set_Icon_Path( icon_win.Get_New_Icon_Path() );
 		cur_vm->Save_VM();
 	}
-	
-	delete icon_win;
 }
 
 void Main_Window::on_actionAbout_AQEMU_triggered()
@@ -4342,80 +4360,6 @@ void Main_Window::on_actionShow_New_VM_Wizard_triggered()
 void Main_Window::on_actionAdd_New_VM_triggered()
 {
     on_actionShow_New_VM_Wizard_triggered();
-
-    /*
-	// Add New VM
-	QString new_vm_path = "";
-	
-	bool ok;
-	QString new_vm_name = QInputDialog::getText( this, tr("VM Name"), tr("New Virtual Machine Name:"), QLineEdit::Normal, "", &ok );
-	
-	if( ! ok ) return;
-	
-	if( ! new_vm_name.isEmpty() )
-	{
-		// Unique Name?
-		for( int nx = 0; nx < VM_List.count(); ++nx )
-		{
-			if( VM_List[nx]->Get_Machine_Name() == new_vm_name )
-			{
-				AQGraphic_Warning( "Warning", "This Name is Not Unique! Please Enter Unique VM Name!" );
-				return;
-			}
-		}
-		
-		// Create new vm file name
-		new_vm_path = Get_Complete_VM_File_Path( new_vm_name );
-	}
-	else
-	{
-		AQGraphic_Error( "void Main_Window::on_actionCreate_triggered()", tr("Error!"),
-						 tr("Your New VM Name is Empty! VM isn't Created!"), false );
-		return;
-	}
-	
-	Virtual_Machine *new_vm = new Virtual_Machine();
-	
-	// load default template
-	if( QFile::exists( QDir::toNativeSeparators(Settings.value("VM_Directory", "").toString() +
-		"/os_templates/" + Settings.value("Default_VM_Template", "Linux 2.6").toString() + ".aqvmt")) )
-	{
-		new_vm->Load_VM( QDir::toNativeSeparators(Settings.value("VM_Directory", "").toString() +
-			"/os_templates/" + Settings.value("Default_VM_Template", "Linux 2.6").toString() + ".aqvmt") );
-	}
-	else if( QFile::exists( QDir::toNativeSeparators(Settings.value("AQEMU_Data_Folder", "").toString() +
-			 "/os_templates/" + Settings.value("Default_VM_Template", "Linux 2.6").toString() + ".aqvmt")) )
-	{
-		new_vm->Load_VM( QDir::toNativeSeparators(Settings.value("AQEMU_Data_Folder", "").toString() +
-			"/os_templates/" + Settings.value("Default_VM_Template", "Linux 2.6").toString() + ".aqvmt") );
-	}
-	else
-	{
-		AQError( "void Main_Window::on_actionCreate_triggered()", "Cannot Locate VM Templates!" );
-	}
-	
-	new_vm->Set_Machine_Name( new_vm_name );
-	new_vm->Set_VM_XML_File_Path( new_vm_path );
-	
-	// In this mode do not create hard drives
-	new_vm->Set_HDA( VM_HDD(false, "") );
-	
-	new_vm->Save_VM();
-	new_vm->Set_UID( QUuid::createUuid().toString() ); // Create UID
-	
-	VM_List << new_vm;
-	
-	QObject::connect( new_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
-			 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
-	
-	QListWidgetItem *item = new QListWidgetItem( new_vm->Get_Machine_Name(), ui.Machines_List );
-	item->setData( 256, new_vm->Get_UID() );
-	item->setIcon( QIcon(new_vm->Get_Icon_Path()) );
-	
-	ui.Machines_List->setCurrentItem( item );
-	
-	Update_VM_Ui();
-	on_Button_Apply_clicked();*/
 }
 
 void Main_Window::on_actionCreate_HDD_Image_triggered()
@@ -4597,7 +4541,7 @@ void Main_Window::on_actionShow_First_Run_Wizard_triggered()
 // return false on error or when the user cancels
 bool Main_Window::Save_Or_Discard(bool forced)
 {
-	Virtual_Machine *tmp_vm = new Virtual_Machine();
+	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
 	Virtual_Machine *cur_vm = Get_Current_VM();
 
 	if( cur_vm == NULL )
@@ -4607,7 +4551,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 		return false;
 	}
 
-	if( Create_VM_From_Ui(tmp_vm, cur_vm) == false )
+	if( Create_VM_From_Ui(tmp_vm.get(), cur_vm) == false )
 	{
 		AQError( "void Main_Window::Save_Or_Discard()",
 				 "Cannot Create VM From Ui!" );
@@ -4616,7 +4560,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 	else
 	{
         //something must have been changed
-		if( *tmp_vm != *cur_vm )
+		if( *tmp_vm.get() != *cur_vm )
 		{
             QMessageBox msgBox;
             msgBox.setWindowTitle(tr("The VM was modified"));
@@ -4639,7 +4583,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 				disconnect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 							this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 				
-				*cur_vm = *tmp_vm;
+				*cur_vm = *tmp_vm.get();
 
 				cur_vm->Save_VM();
 				Update_VM_Ui();
@@ -4831,15 +4775,15 @@ void Main_Window::on_actionLoad_VM_From_File_triggered()
 
 void Main_Window::on_actionCopy_triggered()
 {
-	Copy_VM_Window *copy_win = new Copy_VM_Window();
+	Copy_VM_Window copy_win;
 	
 	// Create Machine Name List
 	for( int ix = 0; ix < VM_List.count(); ++ix )
 	{
-		copy_win->Add_VM_Machine_Name( VM_List[ix]->Get_Machine_Name() );
+		copy_win.Add_VM_Machine_Name( VM_List[ix]->Get_Machine_Name() );
 	}
 	
-	if( copy_win->exec() == QDialog::Accepted )
+	if( copy_win.exec() == QDialog::Accepted )
 	{
 		// Copy VM Object
 		Virtual_Machine *new_vm = Get_Current_VM();
@@ -4851,14 +4795,14 @@ void Main_Window::on_actionCopy_triggered()
 			return;
 		}
 		
-		new_vm->Set_Machine_Name( copy_win->Get_New_VM_Name() );
-		new_vm->Set_VM_XML_File_Path( Get_Complete_VM_File_Path(copy_win->Get_New_VM_Name()) );
+		new_vm->Set_Machine_Name( copy_win.Get_New_VM_Name() );
+		new_vm->Set_VM_XML_File_Path( Get_Complete_VM_File_Path(copy_win.Get_New_VM_Name()) );
 		
 		// Copy Disk Images
-		if( copy_win->Get_Copy_Disk_Images() )
+		if( copy_win.Get_Copy_Disk_Images() )
 		{
 			// Copy Floppy Images
-			if( copy_win->Get_Copy_Floppy() )
+			if( copy_win.Get_Copy_Floppy() )
 			{
 				if( new_vm->Get_FD0().Get_Enabled() )
 				{
@@ -4872,7 +4816,7 @@ void Main_Window::on_actionCopy_triggered()
 			}
 			
 			// Copy Hard Drive Images
-			if( copy_win->Get_Copy_Hard_Drive() )
+			if( copy_win.Get_Copy_Hard_Drive() )
 			{
 				if( new_vm->Get_HDA().Get_Enabled() )
 				{
@@ -5642,7 +5586,7 @@ void Main_Window::on_Tabs_currentChanged( int index )
 
 void Main_Window::on_Button_Apply_clicked()
 {
-	Virtual_Machine *tmp_vm = new Virtual_Machine();
+	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
 	Virtual_Machine *cur_vm = Get_Current_VM();
 	
 	if( cur_vm == NULL )
@@ -5652,11 +5596,11 @@ void Main_Window::on_Button_Apply_clicked()
 		return;
 	}
 	
-	if( Create_VM_From_Ui(tmp_vm, cur_vm) == false ) return;
+	if( Create_VM_From_Ui(tmp_vm.get(), cur_vm) == false ) return;
 	
 	QString old_path = "";
 	
-	if( cur_vm->Get_Machine_Name() != tmp_vm->Get_Machine_Name() )
+	if( cur_vm->Get_Machine_Name() != tmp_vm.get()->Get_Machine_Name() )
 	{
 		old_path = cur_vm->Get_VM_XML_File_Path();
 	}
@@ -5665,7 +5609,7 @@ void Main_Window::on_Button_Apply_clicked()
 	disconnect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 				this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 	
-	*cur_vm = *tmp_vm;
+	*cur_vm = *tmp_vm.get();
 	
 	connect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 			 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );

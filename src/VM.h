@@ -476,7 +476,6 @@ class Virtual_Machine: public QObject
 
 		VM::VM_State State; // Saved, Running, etc...
 		VM::VM_State Old_State;
-		TXML2QDOM::QDomDocument VM_Dom_Document; // vm xml file
 		QString VM_XML_File_Path; // for load and save
 		QString Start_Snapshot_Tag;
 		bool Load_Mode;
