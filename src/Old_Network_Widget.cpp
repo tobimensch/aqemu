@@ -88,12 +88,12 @@ void Old_Network_Widget::Set_Network_Cards( const QList<VM_Net_Card> &cards )
 		}
 		
 		Check_Network_Card = true;
-		ui.Net_Card_Options->setEnabled( true );
+		ui.Widget_All_Options->setEnabled( true );
 		ui.Network_Cards_List->setCurrentRow( 0 );
 	}
 	else
 	{
-		ui.Net_Card_Options->setEnabled( false );
+		ui.Widget_All_Options->setEnabled( false );
 	}
 }
 
@@ -114,9 +114,7 @@ void Old_Network_Widget::Set_Enabled( bool on )
 	ui.Label_Cards_List->setEnabled( on );
 	ui.Button_Add_Net_Card->setEnabled( on );
 	ui.Button_Delete_Net_Card->setEnabled( on );
-	ui.Net_Card_Options->setEnabled( on );
-
-    on_hide_Show_Disabled_Enabled_Options();
+    ui.Widget_All_Options->setEnabled( on );
 }
 
 void Old_Network_Widget::Connect_Slots()
@@ -225,7 +223,7 @@ void Old_Network_Widget::on_Button_Add_Net_Card_clicked()
 		
 		ui.Network_Cards_List->setCurrentRow( ui.Network_Cards_List->count()-1 );
 		
-		ui.Net_Card_Options->setEnabled( true );
+		ui.Widget_All_Options->setEnabled( true );
 		ui.Button_Delete_Net_Card->setEnabled( true );
 		
 		if( ui.Network_Cards_List->count() == 8 )
@@ -259,7 +257,7 @@ void Old_Network_Widget::on_Button_Delete_Net_Card_clicked()
 		if( ui.Network_Cards_List->count() == 0 )
 		{
 			ui.Button_Delete_Net_Card->setEnabled( false );
-			ui.Net_Card_Options->setEnabled( false );
+			ui.Widget_All_Options->setEnabled( false );
 		}
 		else
 		{
