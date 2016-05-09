@@ -45,6 +45,8 @@ Old_Network_Widget::Old_Network_Widget( QWidget *parent ) : QWidget( parent )
 	
 	// Connecting Slots
 	Connect_Slots();
+
+    on_CB_Connection_Mode_currentIndexChanged(-1); //to hide widgets
 }
 
 bool Old_Network_Widget::Get_Network_Cards( QList<VM_Net_Card> &cards )
@@ -113,6 +115,8 @@ void Old_Network_Widget::Set_Enabled( bool on )
 	ui.Button_Add_Net_Card->setEnabled( on );
 	ui.Button_Delete_Net_Card->setEnabled( on );
 	ui.Net_Card_Options->setEnabled( on );
+
+    on_hide_Show_Disabled_Enabled_Options();
 }
 
 void Old_Network_Widget::Connect_Slots()
@@ -278,27 +282,26 @@ void Old_Network_Widget::on_CB_Network_Card_Model_currentIndexChanged( int index
 		ui.Network_Cards_List->currentRow() < 0 ||
 		ui.CB_Network_Card_Model->count() <= 0 )
 	{
+
 		return;
 	}
-	
+
 	Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Card_Model( Card_Models_QEMU_Name[index] );
 }
 
 void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 {
-	if( index < 0 ||
+    bool set_net_mode = ( ! ( index < 0 ||
 		Network_Cards.count() <= 0 ||
 		Card_Models_QEMU_Name.count() <= 0 ||
 		ui.Network_Cards_List->currentRow() < 0 ||
-		ui.CB_Network_Card_Model->count() <= 0 )
-	{
-		return;
-	}
+		ui.CB_Network_Card_Model->count() <= 0 ) );
 	
 	switch( index )
 	{
 		case 0: // user mode
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Usermode );
+            if (set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Usermode );
 			
 			ui.Label_IP->setEnabled( false );
 			ui.Edit_IP_Address->setEnabled( false );
@@ -321,7 +324,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 1: // open TUN/TAP
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tuntap );
+            if (set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tuntap );
 			
 			ui.Label_IP->setEnabled( false );
 			ui.Edit_IP_Address->setEnabled( false );
@@ -344,7 +348,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 2: // already open TUN/TAP
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tuntapfd );
+            if (set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tuntapfd );
 			
 			ui.Label_IP->setEnabled( false );
 			ui.Edit_IP_Address->setEnabled( false );
@@ -367,7 +372,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 3: // open listening TCP socket
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tcplisten );
+            if (set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tcplisten );
 			
 			ui.Label_IP->setEnabled( true );
 			ui.Edit_IP_Address->setEnabled( true );
@@ -390,7 +396,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 4: // already open TCP socket
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tcpfd );
+            if (set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tcpfd );
 			
 			ui.Label_IP->setEnabled( false );
 			ui.Edit_IP_Address->setEnabled( false );
@@ -413,7 +420,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 5: // connect to listening TCP socket
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tcpconnect );
+            if(set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Tcpconnect );
 			
 			ui.Label_IP->setEnabled( true );
 			ui.Edit_IP_Address->setEnabled( true );
@@ -436,7 +444,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 6: // create shared VLAN via UDP multicast socket
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Multicast );
+            if(set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Multicast );
 			
 			ui.Label_IP->setEnabled( true );
 			ui.Edit_IP_Address->setEnabled( true );
@@ -459,7 +468,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		case 7: // use already open UDP multicast socket
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Multicastfd );
+            if(set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_Multicastfd );
 			
 			ui.Label_IP->setEnabled( false );
 			ui.Edit_IP_Address->setEnabled( false );
@@ -482,7 +492,8 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 			
 		default: // no connection
-			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_None );
+            if (set_net_mode)
+    			Network_Cards[ ui.Network_Cards_List->currentRow() ].Set_Net_Mode( VM::Net_Mode_None );
 			
 			ui.Label_IP->setEnabled( false );
 			ui.Edit_IP_Address->setEnabled( false );
@@ -504,6 +515,22 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			ui.SB_File_Descriptor->setEnabled( false );
 			break;
 	}
+
+    on_hide_Show_Disabled_Enabled_Options();
+}
+
+
+void Old_Network_Widget::on_hide_Show_Disabled_Enabled_Options()
+{
+    auto list = ui.Widget_All_Options->findChildren<QWidget*>();
+
+    for ( int i = 0; i < list.count(); i++ )
+    {
+        if ( list.at(i)->isEnabled() )
+            list[i]->show();
+        else
+            list[i]->hide();
+    }
 }
 
 void Old_Network_Widget::on_Edit_Hostname_textChanged()
