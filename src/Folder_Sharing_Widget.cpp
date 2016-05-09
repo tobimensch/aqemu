@@ -58,7 +58,9 @@ void Folder_Sharing_Widget::on_actionAdd_Samba_Folder_triggered()
 <> Network support must be enabled
 <> The network must be set to 'user mode stack'/'user' mode
 <> Set the shared folder in Network -> TFTP/SAMBA
-<> Access the folder in the guest at \\10.0.2.4\qemu
+<> Access the folder in the guest at:
+     \\10.0.2.4\qemu (Windows)
+     mount -t cifs //10.0.2.4/qemu /mnt/path/ (Linux)
 )");
 
     QMessageBox::information( this, tr("How To Setup a Shared SAMBA Folder"), message );
