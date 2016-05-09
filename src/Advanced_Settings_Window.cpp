@@ -40,7 +40,7 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 {
 	ui.setupUi( this );
 
-    new Settings_Widget( ui.All_Tabs, QBoxLayout::TopToBottom );
+    auto sw = new Settings_Widget( ui.All_Tabs, QBoxLayout::TopToBottom, true, false );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Emulators_Table );
 	hv->setSectionResizeMode( QHeaderView::Fixed );

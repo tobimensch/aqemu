@@ -51,7 +51,7 @@ class Settings_Widget : public QWidget
     Q_OBJECT
 
     public:
-        Settings_Widget(QTabWidget*, QBoxLayout::Direction dir, bool erase_margins = false);
+        Settings_Widget(QTabWidget*, QBoxLayout::Direction dir, bool erase_margins = false, bool erase_parent_margins = true);
         ~Settings_Widget();
         void setIconSize(QSize);
         void addToGroup(QString);

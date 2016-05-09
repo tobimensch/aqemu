@@ -57,7 +57,7 @@ void My_List_Widget::wheelEvent(QWheelEvent* e)
     }
 }
                 
-Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction dir, bool erase_margins)
+Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction dir, bool erase_margins, bool erase_parent_margins)
 {
     QBoxLayout *l = nullptr;
 
@@ -100,34 +100,17 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
         stack->setSizePolicy( QSizePolicy::MinimumExpanding, QSizePolicy::Expanding );
     }
 
+    splitter = new QSplitter(this);
 
     if ( dir != QBoxLayout::TopToBottom )
-    {
-        /*auto border = new QLabel(this);
-        l->addWidget(border);
-        border->setMinimumHeight(10);
-        border->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-        border->setText("test");
-
-        auto app = dynamic_cast<QApplication*>(QApplication::instance());
-        if ( app != nullptr )
-        {
-            QPalette pal = border->palette();
-            pal.setColor(QPalette::Button, QColor(0,0,0) /*app->palette("QWidget").color(QPalette::Dark)* /);
-            border->setPalette(pal);
-        }*/
-        splitter = new QSplitter(this);
         splitter->setOrientation(Qt::Vertical);
-        splitter->addWidget(list);
-        splitter->addWidget(stack);
-
-        l->addWidget(splitter);
-    }
     else
-    {
-        l->addWidget(list);
-        l->addWidget(stack);
-    }
+        splitter->setOrientation(Qt::Horizontal);
+
+    splitter->addWidget(list);
+    splitter->addWidget(stack);
+
+    l->addWidget(splitter);
 
     if ( erase_margins ) 
         l->setContentsMargins(0,0,0,0);
@@ -150,7 +133,7 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
 
     tab_widget->parentWidget()->layout()->replaceWidget( tab_widget, this );
 
-    if ( erase_margins )
+    if ( erase_margins && erase_parent_margins )
         tab_widget->parentWidget()->layout()->setContentsMargins(0,0,0,0);
     
 
@@ -177,6 +160,8 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
     }
     else
     {
+        if ( erase_margins )
+            stack->setContentsMargins(0,0,0,0);
     }
 
 }
