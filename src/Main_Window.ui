@@ -27,7 +27,7 @@
      <number>6</number>
     </property>
     <property name="topMargin">
-     <number>6</number>
+     <number>0</number>
     </property>
     <property name="rightMargin">
      <number>6</number>
@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -1733,7 +1733,7 @@
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="Tab_VNC">
                <attribute name="icon">
@@ -2160,6 +2160,9 @@
                      <property name="text">
                       <string>&amp;Depth:</string>
                      </property>
+                     <property name="buddy">
+                      <cstring>CB_InitGM_Depth</cstring>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -2239,7 +2242,7 @@
             <item row="0" column="0">
              <widget class="QTabWidget" name="Network_Cards_Tabs">
               <property name="currentIndex">
-               <number>1</number>
+               <number>2</number>
               </property>
               <widget class="QWidget" name="Tab_Network_Basic_Native">
                <attribute name="icon">
@@ -2446,7 +2449,7 @@
                     </layout>
                    </item>
                    <item row="1" column="0" colspan="2">
-                    <widget class="QWidget" name="" native="true">
+                    <widget class="QWidget" name="widget" native="true">
                      <layout class="QHBoxLayout" name="Widget_Redirection_Protocol">
                       <property name="spacing">
                        <number>6</number>
@@ -2504,7 +2507,7 @@
                     </widget>
                    </item>
                    <item row="2" column="0" colspan="2">
-                    <widget class="QWidget" name="" native="true">
+                    <widget class="QWidget" name="widget" native="true">
                      <layout class="QHBoxLayout" name="Widget_Redirection_Net">
                       <property name="spacing">
                        <number>6</number>
