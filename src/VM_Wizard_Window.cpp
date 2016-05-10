@@ -877,14 +877,12 @@ void VM_Wizard_Window::on_Edit_VM_Name_textEdited( const QString &text )
 
 void VM_Wizard_Window::on_Button_New_HDD_clicked()
 {
-	Create_HDD_Image_Window *Create_HDD_Win = new Create_HDD_Image_Window( this );
+	Create_HDD_Image_Window Create_HDD_Win( this );
 	
-	Create_HDD_Win->Set_Image_Size( ui.SB_HDD_Size->value() ); // Set Initial HDA Size
+	Create_HDD_Win.Set_Image_Size( ui.SB_HDD_Size->value() ); // Set Initial HDA Size
 	
-	if( Create_HDD_Win->exec() == QDialog::Accepted )
-		ui.Edit_HDA_File_Name->setText( Create_HDD_Win->Get_Image_File_Name() );
-	
-	delete Create_HDD_Win;
+	if( Create_HDD_Win.exec() == QDialog::Accepted )
+		ui.Edit_HDA_File_Name->setText( Create_HDD_Win.Get_Image_File_Name() );
 }
 
 void VM_Wizard_Window::on_Button_Existing_clicked()
