@@ -514,11 +514,11 @@ void Old_Network_Widget::on_CB_Connection_Mode_currentIndexChanged( int index )
 			break;
 	}
 
-    on_hide_Show_Disabled_Enabled_Options();
+    hide_Show_Disabled_Enabled_Options();
 }
 
 
-void Old_Network_Widget::on_hide_Show_Disabled_Enabled_Options()
+void Old_Network_Widget::hide_Show_Disabled_Enabled_Options()
 {
     auto list = ui.Widget_All_Options->findChildren<QWidget*>();
 

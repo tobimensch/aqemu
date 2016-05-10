@@ -651,17 +651,17 @@ void Main_Window::Connect_Signals()
 	connect( Dev_Manager, SIGNAL(Device_Changed()),
 			 this, SLOT(VM_Changed()) );
 
-    connect( ui.SB_VNC_Display, SIGNAL(valueChanged(int)), this, SLOT(on_SB_VNC_Display_changed(int)));
-    connect( ui.SB_VNC_Display_Port, SIGNAL(valueChanged(int)), this, SLOT(on_SB_VNC_Display_Port_changed(int)));
+    connect( ui.SB_VNC_Display, SIGNAL(valueChanged(int)), this, SLOT(SB_VNC_Display_changed(int)));
+    connect( ui.SB_VNC_Display_Port, SIGNAL(valueChanged(int)), this, SLOT(SB_VNC_Display_Port_changed(int)));
 
 }
 
-void Main_Window::on_SB_VNC_Display_changed(int num)
+void Main_Window::SB_VNC_Display_changed(int num)
 {
     ui.SB_VNC_Display_Port->setValue(5900+num);
 }
 
-void Main_Window::on_SB_VNC_Display_Port_changed(int port)
+void Main_Window::SB_VNC_Display_Port_changed(int port)
 {
     ui.SB_VNC_Display->setValue(port-5900);
 }

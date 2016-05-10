@@ -65,8 +65,9 @@ class Main_Window: public QMainWindow
 		void VM_Changed();
 		void Update_Emulator_Control( Virtual_Machine *cur_vm );
 		
-        void on_SB_VNC_Display_changed(int);
-        void on_SB_VNC_Display_Port_changed(int);
+        void SB_VNC_Display_changed(int);
+        void SB_VNC_Display_Port_changed(int);
+
 		// Actions
 		void on_actionChange_Icon_triggered();
 		void on_actionAbout_AQEMU_triggered();

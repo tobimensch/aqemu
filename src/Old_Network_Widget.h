@@ -44,7 +44,6 @@ class Old_Network_Widget: public QWidget
 		void Connect_Slots();
 		void Disconnect_Slots();
 
-		void on_hide_Show_Disabled_Enabled_Options();
 		void on_Network_Cards_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous );
 		void on_Button_Add_Net_Card_clicked();
 		void on_Button_Delete_Net_Card_clicked();
@@ -69,6 +68,8 @@ class Old_Network_Widget: public QWidget
 		void Changed();
 		
 	private:
+		void hide_Show_Disabled_Enabled_Options();
+
 		Ui::Old_Network_Widget ui;
 		QList<VM_Net_Card> Network_Cards;
 		bool Check_Network_Card;
