@@ -5398,7 +5398,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
     props << "accel="+VM::Accel_To_String( Machine_Accelerator );
 
 	if( Current_Emulator_Devices.PSO_KVM_Shadow_Memory && KVM_Shadow_Memory )
-		props << "kvm_shadow_mem=" + QString::number( KVM_Shadow_Memory_Size );
+		props << "kvm_shadow_mem=" + QString::number( KVM_Shadow_Memory_Size * 1024 );
 
     Args << props.join(",");
 	
