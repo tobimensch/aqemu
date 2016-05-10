@@ -67,7 +67,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="All_Tabs">
      <property name="currentIndex">
-      <number>0</number>
+      <number>6</number>
      </property>
      <widget class="QWidget" name="Tab_General">
       <attribute name="icon">
@@ -1661,7 +1661,7 @@ with embedded display</string>
      <widget class="QWidget" name="Tab_Tab_info">
       <attribute name="icon">
        <iconset resource="../resources/icons.qrc">
-        <normaloff>:/icons/oxygen/help-about.png</normaloff>:/icons/oxygen/help-about.png</iconset>
+        <normaloff>:/help-about.png</normaloff>:/help-about.png</iconset>
       </attribute>
       <attribute name="title">
        <string>Info Tab</string>

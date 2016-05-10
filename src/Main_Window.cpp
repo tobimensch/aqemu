@@ -559,11 +559,11 @@ void Main_Window::Connect_Signals()
 	
 	// Hardware Virtualization Tab
 	
-	connect( ui_kvm.CH_No_KVM_IRQChip, SIGNAL(clicked()),
-			 this, SLOT(VM_Changed()) );
+	/*connect( ui_kvm.CH_No_KVM_IRQChip, SIGNAL(clicked()),
+			 this, SLOT(VM_Changed()) );*/ //FIXME: use new non-kvm option
 	
-	connect( ui_kvm.CH_No_KVM_Pit, SIGNAL(clicked()),
-			 this, SLOT(VM_Changed()) );
+	/*connect( ui_kvm.CH_No_KVM_Pit, SIGNAL(clicked()),
+			 this, SLOT(VM_Changed()) );*/ //possibly remove
 	
 	connect( ui_kvm.CH_KVM_Shadow_Memory, SIGNAL(clicked()),
 			 this, SLOT(VM_Changed()) );
@@ -1021,7 +1021,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// Use_User_Emulator_Binary
 	tmp_vm->Set_Use_User_Emulator_Binary( ui_ao.CH_Use_User_Binary->isChecked() );
 	
-	// Disable KVM kernel mode PIC/IOAPIC/LAPIC
+	/*// Disable KVM kernel mode PIC/IOAPIC/LAPIC
 	tmp_vm->Use_KVM_IRQChip( ui_kvm.CH_No_KVM_IRQChip->isChecked() );
 	
 	// Disable KVM kernel mode PIT
@@ -1031,7 +1031,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	tmp_vm->Use_KVM_No_Pit_Reinjection( ui_kvm.CH_KVM_No_Pit_Reinjection->isChecked() );
 	
 	// KVM_Nesting
-	tmp_vm->Use_KVM_Nesting( ui_kvm.CH_KVM_Nesting->isChecked() );
+	tmp_vm->Use_KVM_Nesting( ui_kvm.CH_KVM_Nesting->isChecked() );*/ //FIXME: deprecated stuff //are there replacements?
 	
 	// KVM Shadow Memory
 	tmp_vm->Use_KVM_Shadow_Memory( ui_kvm.CH_KVM_Shadow_Memory->isChecked() );
@@ -1624,7 +1624,7 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	ui.CH_PFlash->setChecked( tmp_vm->Use_PFlash_File() );
 	ui.Edit_PFlash_File->setText( tmp_vm->Get_PFlash_File() );
 	
-	// Disable KVM kernel mode PIC/IOAPIC/LAPIC
+	/*// Disable KVM kernel mode PIC/IOAPIC/LAPIC
 	ui_kvm.CH_No_KVM_IRQChip->setChecked( tmp_vm->Use_KVM_IRQChip() );
 	
 	// Disable KVM kernel mode PIT
@@ -1634,7 +1634,7 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	ui_kvm.CH_KVM_No_Pit_Reinjection->setChecked( tmp_vm->Use_KVM_No_Pit_Reinjection() );
 	
 	// KVM_Nesting
-	ui_kvm.CH_KVM_Nesting->setChecked( tmp_vm->Use_KVM_Nesting() );
+	ui_kvm.CH_KVM_Nesting->setChecked( tmp_vm->Use_KVM_Nesting() );*/ //FIXME: deprecated //alternatives?
 	
 	// KVM Shadow Memory
 	ui_kvm.CH_KVM_Shadow_Memory->setChecked( tmp_vm->Use_KVM_Shadow_Memory() );
@@ -3162,7 +3162,7 @@ void Main_Window::Update_Disabled_Controls()
 	//if( curComp.PSO_No_KVM ) ui.CH_No_KVM->setEnabled( true );
 	//else ui.CH_No_KVM->setEnabled( false );
 	
-	if( curComp.PSO_No_KVM_IRQChip ) ui_kvm.CH_No_KVM_IRQChip->setEnabled( true );
+	/*if( curComp.PSO_No_KVM_IRQChip ) ui_kvm.CH_No_KVM_IRQChip->setEnabled( true ); //FIXME: deprecated //alternatives?
 	else ui_kvm.CH_No_KVM_IRQChip->setEnabled( false );
 	
 	if( curComp.PSO_No_KVM_Pit ) ui_kvm.CH_No_KVM_Pit->setEnabled( true );
@@ -3172,7 +3172,7 @@ void Main_Window::Update_Disabled_Controls()
 	else ui_kvm.CH_KVM_No_Pit_Reinjection->setEnabled( false );
 	
 	if( curComp.PSO_Enable_Nesting ) ui_kvm.CH_KVM_Nesting->setEnabled( true );
-	else ui_kvm.CH_KVM_Nesting->setEnabled( false );
+	else ui_kvm.CH_KVM_Nesting->setEnabled( false );*/
 	
 	if( curComp.PSO_KVM_Shadow_Memory )
 	{
@@ -5183,6 +5183,11 @@ void Main_Window::on_CB_Computer_Type_currentIndexChanged( int index )
 
 void Main_Window::on_CB_Machine_Accelerator_currentIndexChanged( int index )
 {
+    if (ui.CB_Machine_Accelerator->currentText() == "KVM" )
+        ui.TB_Show_Accelerator_Options_Window->setEnabled(true);
+    else                
+        ui.TB_Show_Accelerator_Options_Window->setEnabled(false);
+
 	Apply_Emulator( 1 );
 }
 

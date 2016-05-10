@@ -65,7 +65,7 @@ class Emulator_Control_Window: public QMainWindow
 		void Open_Device_File();
 		void Eject_Device();
 		
-		void on_actionUpdate_list_triggered();
+		//void on_actionUpdate_list_triggered(); //FIXME
 		void on_actionSave_Screenshot_triggered();
 		void on_actionSave_Screenshot_As_triggered();
 		void on_actionSave_VM_triggered();

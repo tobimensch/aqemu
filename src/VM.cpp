@@ -5392,7 +5392,15 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	}
 
     // Accelerator
-    Args << "-machine" << "accel="+VM::Accel_To_String( Machine_Accelerator );
+    Args << "-machine";
+
+    QStringList props;
+    props << "accel="+VM::Accel_To_String( Machine_Accelerator );
+
+	if( Current_Emulator_Devices.PSO_KVM_Shadow_Memory && KVM_Shadow_Memory )
+		props << "kvm_shadow_mem=" + QString::number( KVM_Shadow_Memory_Size );
+
+    Args << props.join(",");
 	
 	// KVM Options
 	//if( Current_Emulator_Devices.PSO_Enable_KVM && Enable_KVM )
@@ -5403,9 +5411,6 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	
 	if( Current_Emulator_Devices.PSO_No_KVM_Pit && No_KVM_Pit )
 		Args << "-no-kvm-pit";
-	
-	if( Current_Emulator_Devices.PSO_KVM_Shadow_Memory && KVM_Shadow_Memory )
-		Args << "-kvm-shadow-memory" << QString::number( KVM_Shadow_Memory_Size );
 	
 	if( Current_Emulator_Devices.PSO_No_KVM_Pit_Reinjection && KVM_No_Pit_Reinjection )
 		Args << "-no-kvm-pit-reinjection";

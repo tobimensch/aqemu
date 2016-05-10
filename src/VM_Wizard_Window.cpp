@@ -467,7 +467,7 @@ bool VM_Wizard_Window::Create_New_VM()
 	if( icon_path.isEmpty() )
 	{
 		AQWarning( "void VM_Wizard_Window::Create_New_VM()", "Icon for new VM not Found!" );
-		New_VM->Set_Icon_Path( "other.png" );
+		New_VM->Set_Icon_Path( ":/other.png" );
 	}
 	else
 	{

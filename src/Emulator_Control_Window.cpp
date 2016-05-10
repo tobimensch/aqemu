@@ -512,10 +512,11 @@ void Emulator_Control_Window::Eject_Device()
 	}
 }
 
+/* //FIXME
 void Emulator_Control_Window::on_actionUpdate_list_triggered()
 {
 	Get_Removable_Devices_List();
-}
+}*/
 
 void Emulator_Control_Window::closeEvent( QCloseEvent *event )
 {

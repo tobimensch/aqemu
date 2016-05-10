@@ -1643,7 +1643,7 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_Enable_Nesting = true;
 	
 	// -kvm-shadow-memory
-	rx = QRegExp( ".*-kvm-shadow-memory\\s.*" );
+	rx = QRegExp( ".*kvm_shadow_mem=.*" );
 	if( rx.exactMatch(all_help) ) tmp_dev.PSO_KVM_Shadow_Memory = true;
 	
 	// -tftp

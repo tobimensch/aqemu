@@ -131,12 +131,12 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>3</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
             <iconset resource="../resources/icons.qrc">
-             <normaloff>:/icons/oxygen/help-about.png</normaloff>:/icons/oxygen/help-about.png</iconset>
+             <normaloff>:/help-about.png</normaloff>:/help-about.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Info</string>
@@ -1313,6 +1313,9 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="toolTip">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&amp;quot;Write to temporary files instead of disk image files.&lt;/p&gt;&lt;p&gt;In this case, the raw disk image you use is not written back.&lt;/p&gt;&lt;p&gt;You can however force the write back by pressing C-a s.&amp;quot; Source: man qemu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
                  <property name="text">
                   <string>Snapshot &amp;mode</string>
                  </property>
@@ -1369,7 +1372,7 @@
           <widget class="QWidget" name="Tab_Media">
            <attribute name="icon">
             <iconset resource="../resources/icons.qrc">
-             <normaloff>:/icons/oxygen/drive-optical.png</normaloff>:/icons/oxygen/drive-optical.png</iconset>
+             <normaloff>:/drive-optical.png</normaloff>:/drive-optical.png</iconset>
            </attribute>
            <attribute name="title">
             <string>Media</string>

@@ -1,18 +1,19 @@
 <RCC>
   <qresource prefix="/">
+    <file alias="dialog-close.png">icons/oxygen/dialog-close.png</file>
     <file alias="preferences-other.png">icons/oxygen/preferences-other.png</file>
     <file alias="windows-actions.png">icons/oxygen/preferences-system-windows-actions.png</file>
     <file alias="camera-photo.png">icons/oxygen/camera-photo.png</file>
     <file alias="utilities-system-monitoring.png">icons/oxygen/utilities-system-monitor.png</file>
     <file alias="about.png">icons/oxygen/about.png</file>
-    <file>icons/oxygen/help-about.png</file>
+    <file alias="help-about.png">icons/oxygen/help-about.png</file>
     <file alias="add.png">icons/oxygen/add.png</file>
     <file alias="blockdevice.png">icons/oxygen/blockdevice.png</file>
     <file alias="bug.png">icons/oxygen/bug.png</file>
     <file alias="cancel.png">icons/oxygen/cancel.png</file>
     <file alias="cdrom.png">icons/oxygen/cdrom.png</file>
     <file alias="edit.png">icons/oxygen/edit.png</file>
-    <file>icons/oxygen/drive-optical.png</file>
+    <file alias="drive-optical.png">icons/oxygen/drive-optical.png</file>
     <file alias="eject.png">icons/oxygen/eject.png</file>
     <file alias="eraser.png">icons/oxygen/eraser.png</file>
     <file alias="open-file.png">icons/oxygen/open-file.png</file>
