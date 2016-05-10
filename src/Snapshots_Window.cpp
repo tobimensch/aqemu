@@ -81,11 +81,11 @@ void Snapshots_Window::on_Snapshots_Tree_itemSelectionChanged()
 
 void Snapshots_Window::on_Button_Create_clicked()
 {
-	Snapshot_Properties_Window *prop_win = new Snapshot_Properties_Window( this );
+	Snapshot_Properties_Window prop_win( this );
 	
-	if( prop_win->exec() == QDialog::Accepted )
+	if( prop_win.exec() == QDialog::Accepted )
 	{
-		QString tag = Get_FS_Compatible_VM_Name( prop_win->Get_Snapshot_Name() );
+		QString tag = Get_FS_Compatible_VM_Name( prop_win.Get_Snapshot_Name() );
 		
 		bool next = true;
 		
@@ -117,16 +117,10 @@ void Snapshots_Window::on_Button_Create_clicked()
 			}
 		}
 		
-		Current_VM->Add_Snapshot( tag, prop_win->Get_Snapshot_Name(), prop_win->Get_Snapshot_Description() );
+		Current_VM->Add_Snapshot( tag, prop_win.Get_Snapshot_Name(), prop_win.Get_Snapshot_Description() );
 		Current_VM->Save_VM_State( tag, false );
 		
-		delete prop_win;
-		
 		accept();
-	}
-	else
-	{
-		delete prop_win;
 	}
 }
 

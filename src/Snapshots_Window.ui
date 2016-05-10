@@ -8,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>475</width>
-    <height>312</height>
+    <height>362</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,7 +34,36 @@
    <property name="spacing">
     <number>6</number>
    </property>
-   <item row="5" column="0" rowspan="2">
+   <item row="7" column="1">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="Label_Snapshots_Info">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" rowspan="5">
+    <widget class="QTreeWidget" name="Snapshots_Tree">
+     <column>
+      <property name="text">
+       <string>Snapshot List:</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="7" column="0" rowspan="2">
     <widget class="QFrame" name="Info_Frame">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -64,27 +93,14 @@
       <property name="spacing">
        <number>6</number>
       </property>
-      <item row="2" column="0" colspan="2">
+      <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="Label_Description">
         <property name="text">
          <string>Description:</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="Label_Size">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string>Size:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
+      <item row="2" column="1">
        <widget class="QLabel" name="Label_VM_Clock">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -97,7 +113,20 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
+      <item row="2" column="0">
+       <widget class="QLabel" name="Label_Size">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Size:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
        <widget class="QLabel" name="Label_ID">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -110,7 +139,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <widget class="QLabel" name="Label_Date">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
@@ -126,29 +155,7 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="1">
-    <spacer>
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="0" rowspan="5">
-    <widget class="QTreeWidget" name="Snapshots_Tree">
-     <column>
-      <property name="text">
-       <string>Snapshot List:</string>
-      </property>
-     </column>
-    </widget>
-   </item>
-   <item row="0" column="1">
+   <item row="1" column="1">
     <widget class="QToolButton" name="Button_Create">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -174,7 +181,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
+   <item row="2" column="1">
     <widget class="QToolButton" name="Button_Delete">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -200,8 +207,8 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QToolButton" name="Button_OK">
+   <item row="8" column="1">
+    <widget class="QToolButton" name="Button_Close">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -209,11 +216,11 @@
       </sizepolicy>
      </property>
      <property name="text">
-      <string>OK</string>
+      <string>Close</string>
      </property>
      <property name="icon">
       <iconset resource="../resources/icons.qrc">
-       <normaloff>:/ok.png</normaloff>:/ok.png</iconset>
+       <normaloff>:/dialog-close.png</normaloff>:/dialog-close.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -226,7 +233,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
+   <item row="4" column="1">
     <widget class="QToolButton" name="Button_Properties">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -252,7 +259,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="1">
+   <item row="3" column="1">
     <widget class="QToolButton" name="Button_Start">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -278,7 +285,7 @@
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
+   <item row="5" column="1">
     <widget class="QToolButton" name="Button_Update">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -304,6 +311,19 @@
      </property>
     </widget>
    </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="frameShape">
+      <enum>QFrame::WinPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;Note: This feature is supported on QCOW2 images only&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <tabstops>
@@ -313,11 +333,27 @@
   <tabstop>Button_Start</tabstop>
   <tabstop>Button_Properties</tabstop>
   <tabstop>Button_Update</tabstop>
-  <tabstop>Button_OK</tabstop>
+  <tabstop>Button_Close</tabstop>
  </tabstops>
  <resources>
   <include location="../resources/icons.qrc"/>
-  <include location="../resources/icons.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>Button_Close</sender>
+   <signal>clicked()</signal>
+   <receiver>Snapshots_Window</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>398</x>
+     <y>287</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
