@@ -927,7 +927,16 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	// Icon Path
 	Dom_Element = New_Dom_Document.createElement( "Icon_Path" );
 	VM_Element.appendChild( Dom_Element );
-	Dom_Text = New_Dom_Document.createTextNode( Icon_Path );
+
+    QSettings settings;
+    QString data_folder = settings.value("AQEMU_Data_Folder", "").toString();
+    if ( ! data_folder.isEmpty() )
+    {
+        if ( Icon_Path.startsWith( data_folder ) ) //save relative path if possible
+            Dom_Text = New_Dom_Document.createTextNode( Icon_Path.replace(data_folder, "") );
+        else    
+    	    Dom_Text = New_Dom_Document.createTextNode( Icon_Path );
+    }
 	Dom_Element.appendChild( Dom_Text );
 	
 	// Screenshot Path
@@ -3611,7 +3620,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					 "Emulator Name: " + Current_Emulator.Get_Name() );
 			
 			// Emulator Found?
-			if( Current_Emulator.Get_Name().isEmpty() && (Current_Emulator.Get_Version() == VM::Obsolete) )
+			/*if( Current_Emulator.Get_Name().isEmpty() && (Current_Emulator.Get_Version() == VM::Obsolete) )
 			{
 				AQError( "bool Virtual_Machine::Load_VM( const QString &file_name )",
 						 "Cannot Load Emulator!" );
@@ -3619,13 +3628,44 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				Set_State( VM::VMS_In_Error );
 			}
 			else
-			{
+			{*/
 				Update_Current_Emulator_Devices();
-			}
+			/*}*/
 			
 			// Icon Path
 			Icon_Path = Child_Element.firstChildElement("Icon_Path").text();
-			
+            if ( Icon_Path.startsWith(":/images/") ) //for compatibility with old .aqemu files
+			{
+                Icon_Path.replace(":/images/",":/");
+            }
+
+            if ( ! Icon_Path.startsWith(":/") )
+            {
+
+                //correct absolute paths saved by old versions
+		        QStringList dataDirs;
+		        dataDirs << "/usr/share/aqemu/"
+				         << "/usr/share/apps/aqemu/"
+				         << "/usr/local/share/aqemu/";
+
+                QSettings settings;    
+                bool abs_found = false;
+                for ( int i = 0; i < dataDirs.count(); i++ )
+                {
+                    if ( Icon_Path.startsWith(dataDirs.at(i)) )
+                    {
+                        Icon_Path.replace(dataDirs.at(i),settings.value( "AQEMU_Data_Folder","").toString());
+                        abs_found = true;
+                        break;
+                    }
+                }
+
+                if ( ! abs_found )
+                {
+                    Icon_Path = settings.value( "AQEMU_Data_Folder","").toString() + Icon_Path;
+                }
+            }
+
 			// Screenshot Path
 			Screenshot_Path = Child_Element.firstChildElement("Screenshot_Path").text();
 			
