@@ -172,7 +172,7 @@ int main( int argc, char *argv[] )
 	}
 	#endif
 	
-	// This is Upgrade AQEMU? Find Previous Config...
+	// This is an Upgrade of AQEMU? Find Previous Config...
 	//FIXME if( QFile::exists(QDir::homePath() + "/.config/aqemu/AQEMU.conf") )
 	if( QFile::exists(settings.fileName()) )
 	{
@@ -233,7 +233,7 @@ int main( int argc, char *argv[] )
 	}
 	else
 	{
-		// Config File Not Found. This First Install
+		// Config File Not Found. This is the First Install
 		settings.setValue( "AQEMU_Config_Version", CURRENT_AQEMU_VERSION );
 	}
 	
