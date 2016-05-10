@@ -203,6 +203,8 @@ void VM_Wizard_Window::applyTemplate()
 	}
 	else
 	{
+        New_VM->Set_Machine_Accelerator(VM::TCG);
+
 		Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
 		if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 	}
