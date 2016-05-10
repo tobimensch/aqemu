@@ -3588,22 +3588,19 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 
                 Machine_Accelerator = VM::String_To_Accel(accel);
 				
-				if( emul_name.isEmpty() )
-				{
-					// OK. Use Default Emulator for This Type
-					Current_Emulator = Get_Default_Emulator();
-					Current_Emulator.Set_Name( "" );
-				}
-				else
-				{
-					Current_Emulator = Get_Emulator_By_Name( emul_name );
-				}
+    			Current_Emulator = Get_Default_Emulator();
+				Current_Emulator.Set_Name( "" );
 			}
 			
 			// Computer Type
 			Computer_Type = Child_Element.firstChildElement("Computer_Type").text();
-			if( Computer_Type == "qemu-system-x86" ) Computer_Type = "qemu"; // Old AQEMU use qemu-system-x86
-			
+			if( Computer_Type == "qemu-system-x86" ) Computer_Type = "qemu-system-x86_64";
+			if( Computer_Type == "qemu-kvm" )
+            {
+                Computer_Type = "qemu-system-x86_64";            
+		        Machine_Accelerator = VM::KVM;
+			}
+
 			// VM State
 			if( Child_Element.firstChildElement("VM_State").text() == "Saved" )
 			{
