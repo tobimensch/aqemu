@@ -933,7 +933,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
     if ( ! data_folder.isEmpty() )
     {
         if ( Icon_Path.startsWith( data_folder ) ) //save relative path if possible
-            Dom_Text = New_Dom_Document.createTextNode( Icon_Path.replace(data_folder, "") );
+            Dom_Text = New_Dom_Document.createTextNode( QString(Icon_Path).replace(data_folder, "") );
         else    
     	    Dom_Text = New_Dom_Document.createTextNode( Icon_Path );
     }
