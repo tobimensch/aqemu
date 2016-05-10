@@ -294,7 +294,7 @@ void VM_Wizard_Window::applyTemplate()
 	
 	if( ! devices_found )
 	{
-		AQGraphic_Error( "void VM_Wizard_Window::on_Button_Next_clicked()", tr("Error!"),
+		AQGraphic_Error( "void VM_Wizard_Window::applyTemplate()", tr("Error!"),
 						tr("Cannot Find Emulator System ID!") );
 	}
 	else
@@ -368,7 +368,9 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 		ui.CB_Computer_Type->clear();
 		ui.CB_Computer_Type->addItem( tr("None Selected") );
 		for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
+        {
 			ui.CB_Computer_Type->addItem( it.value().System.Caption );
+        }
 
         applyTemplate();
         ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
