@@ -4252,7 +4252,11 @@ void Main_Window::on_actionDelete_VM_triggered()
 			
 			for( int ix = 0; ix < VM_List.count(); ix++ )
 			{
-				if( uid == VM_List[ix]->Get_UID() ) VM_List.removeAt( ix );
+				if( uid == VM_List[ix]->Get_UID() )
+                {
+                    delete VM_List[ix];
+                    VM_List.removeAt(ix);
+                }
 			}
 		}
 		else
