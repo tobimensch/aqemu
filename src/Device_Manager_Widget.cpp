@@ -65,8 +65,13 @@ Device_Manager_Widget::Device_Manager_Widget( QWidget *parent )
 
 Device_Manager_Widget::~Device_Manager_Widget()
 {
-	if( pw != NULL ) delete pw;
-	if( Context_Menu != NULL ) delete Context_Menu;
+	delete pw;
+	delete Context_Menu;
+
+    delete HDA_Info;
+    delete HDB_Info;
+    delete HDC_Info;
+    delete HDD_Info;
 }
 
 void Device_Manager_Widget::Set_VM( const Virtual_Machine &vm )
@@ -700,17 +705,17 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 
 void Device_Manager_Widget::on_actionAdd_Device_triggered()
 {
-	Device_Window = new Add_New_Device_Window();
+	Add_New_Device_Window Device_Window;
 	VM_Nativ_Storage_Device tmp_dev;
-	Device_Window->Set_Emulator_Devices( *Current_Machine_Devices );
-	Device_Window->Set_Device( tmp_dev );
+	Device_Window.Set_Emulator_Devices( *Current_Machine_Devices );
+	Device_Window.Set_Device( tmp_dev );
 	
-	if( Device_Window->exec() == QDialog::Accepted )
+	if( Device_Window.exec() == QDialog::Accepted )
 	{
-		Storage_Devices << Device_Window->Get_Device();
+		Storage_Devices << Device_Window.Get_Device();
 		
 		QListWidgetItem *devit = new QListWidgetItem( QIcon(":blockdevice.png"),
-													  Device_Window->Get_Device().Get_QEMU_Device_Name(), ui.Devices_List );
+													  Device_Window.Get_Device().Get_QEMU_Device_Name(), ui.Devices_List );
 		devit->setData( 512, "device" + QString::number(Storage_Devices.count() - 1) );
 		
 		ui.Devices_List->addItem( devit );
@@ -892,20 +897,20 @@ void Device_Manager_Widget::on_actionProperties_triggered()
 			{
 				found = true;
 				
-				Device_Window = new Add_New_Device_Window();
-				Device_Window->Set_Enabled( Enabled );
-				Device_Window->Set_Device( Storage_Devices[fx] );
+				Add_New_Device_Window Device_Window ;
+				Device_Window.Set_Enabled( Enabled );
+				Device_Window.Set_Device( Storage_Devices[fx] );
 				
 				if( ! Current_Machine_Devices )
 					AQError( "void Device_Manager_Widget::on_actionProperties_triggered()",
 							 "Current_Machine_Devices == NULL" );
-				Device_Window->Set_Emulator_Devices( *Current_Machine_Devices );
+				Device_Window.Set_Emulator_Devices( *Current_Machine_Devices );
 				
-				if( Device_Window->exec() == QDialog::Accepted )
+				if( Device_Window.exec() == QDialog::Accepted )
 				{
-					if( Storage_Devices[fx] != Device_Window->Get_Device() )
+					if( Storage_Devices[fx] != Device_Window.Get_Device() )
 					{
-						Storage_Devices[fx] = Device_Window->Get_Device();
+						Storage_Devices[fx] = Device_Window.Get_Device();
 						
 						emit Device_Changed();
 					}

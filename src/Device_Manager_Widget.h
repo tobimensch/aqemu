@@ -89,7 +89,6 @@ class Device_Manager_Widget: public QWidget
 
 		bool Enabled;
 		
-		Add_New_Device_Window *Device_Window;
 		Properties_Window *pw;
 		Ui::Device_Manager_Widget ui;
 		QMenu *Context_Menu;

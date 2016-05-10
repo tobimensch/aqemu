@@ -255,9 +255,9 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 	this->VNC_x509verify = vm.Use_VNC_x509verify();
 	this->VNC_x509verify_Folder_Path = vm.Get_VNC_x509verify_Folder_Path();
 	
-	this->Load_VM_Window = new QWidget();
-	this->Save_VM_Window = new QWidget();
-	this->QEMU_Error_Win = new Error_Log_Window();
+	this->Load_VM_Window = nullptr;
+	this->Save_VM_Window = nullptr;
+	this->QEMU_Error_Win = nullptr;
 	this->Load_Mode = false;
 	this->Quit_Before_Save = false;
 	
@@ -279,9 +279,9 @@ Virtual_Machine::~Virtual_Machine()
 	Network_Redirections.clear();
 	USB_Ports.clear();
 	
-	if( Load_VM_Window != NULL ) delete Load_VM_Window;
-	if( Save_VM_Window != NULL ) delete Save_VM_Window;
-	if( QEMU_Error_Win != NULL ) delete QEMU_Error_Win;
+	delete Load_VM_Window;
+	delete Save_VM_Window;
+	delete QEMU_Error_Win;
 }
 
 void Virtual_Machine::Shared_Constructor()
@@ -454,9 +454,9 @@ void Virtual_Machine::Shared_Constructor()
 	
 	Template_Opts = Create_Template_Window::Template_Save_Default;
 	
-	Load_VM_Window = new QWidget();
-	Save_VM_Window = new QWidget();
-	QEMU_Error_Win = new Error_Log_Window();
+	Load_VM_Window = nullptr;
+	Save_VM_Window = nullptr;
+	QEMU_Error_Win = nullptr;
 	Load_Mode = false;
 	Quit_Before_Save = false;
 }
@@ -835,8 +835,8 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	this->VNC_x509verify = vm.Use_VNC_x509verify();
 	this->VNC_x509verify_Folder_Path = vm.Get_VNC_x509verify_Folder_Path();
 	
-	this->Load_VM_Window = new QWidget();
-	this->Save_VM_Window = new QWidget();
+	this->Load_VM_Window = nullptr;
+	this->Save_VM_Window = nullptr;
 	this->Load_Mode = false;
 	
 	Update_Current_Emulator_Devices();
@@ -6934,8 +6934,9 @@ QStringList Virtual_Machine::Build_Shared_Folder_Args( VM_Shared_Folder folder, 
 
 bool Virtual_Machine::Start()
 {
+    delete QEMU_Error_Win;
 	QEMU_Error_Win = new Error_Log_Window();
-	
+
 	// Check KVM
 	if( (Current_Emulator_Devices.PSO_KVM || Current_Emulator_Devices.PSO_Enable_KVM ) &&
 		Settings.value("Disable_KVM_Module_Check", "no").toString() != "yes" )
@@ -7274,14 +7275,20 @@ const QString &Virtual_Machine::Get_Removable_Devices_List() const
 	return Removable_Devices_List;
 }
 
-void Virtual_Machine::Show_Error_Log_Window() const
+void Virtual_Machine::Show_Error_Log_Window()
 {
+    if ( ! QEMU_Error_Win )
+        QEMU_Error_Win = new Error_Log_Window();
+        
 	QEMU_Error_Win->setWindowTitle( tr("QEMU Error Log") + " (" + Machine_Name + ")" );
 	QEMU_Error_Win->show();
 }
 
 void Virtual_Machine::Show_QEMU_Error( const QString &err_str )
 {
+    if ( ! QEMU_Error_Win )
+        QEMU_Error_Win = new Error_Log_Window();
+
 	QEMU_Error_Win->Add_to_Log( err_str );
 	
 	if( Settings.value( "No_Show_Error_Log_Forever", "no" ).toString() == "yes" ||
@@ -7301,7 +7308,10 @@ void Virtual_Machine::Show_QEMU_Error( const QString &err_str )
 
 void Virtual_Machine::Hide_QEMU_Error_Log()
 {
-	QEMU_Error_Win->close();
+    if ( QEMU_Error_Win )
+    {
+    	QEMU_Error_Win->close();
+    }
 }
 
 void Virtual_Machine::Show_VM_Load_Window()
@@ -7333,7 +7343,11 @@ void Virtual_Machine::Hide_VM_Load_Window()
 		//emit Loading_Complete();
 	}
 	
-	Load_VM_Window->close();
+    if ( Load_VM_Window )
+    {
+    	Load_VM_Window->close();
+        delete Load_VM_Window;
+    }
 }
 
 void Virtual_Machine::Show_VM_Save_Window()
@@ -7359,7 +7373,11 @@ void Virtual_Machine::Show_VM_Save_Window()
 
 void Virtual_Machine::Hide_VM_Save_Window()
 {
-	Save_VM_Window->close();
+    if ( Save_VM_Window )
+    {
+    	Save_VM_Window->close();
+        delete Save_VM_Window;
+    }
 }
 
 bool Virtual_Machine::Take_Screenshot( const QString &file_name, int width, int height )

@@ -96,7 +96,7 @@ class Virtual_Machine: public QObject
 		const QString &Get_Removable_Devices_List() const;
 		
 		// Error Log Window
-		void Show_Error_Log_Window() const;
+		void Show_Error_Log_Window();
 		
 		// QEMU Log
 		void Show_QEMU_Error( const QString &err_str );
