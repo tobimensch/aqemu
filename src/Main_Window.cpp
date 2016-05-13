@@ -719,6 +719,10 @@ Available_Devices Main_Window::Get_Current_Machine_Devices( bool *ok ) const
 
 bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm, bool show_user_errors )
 {
+    std::unique_ptr<Disable_User_Graphic_Warning> dugw;
+    if ( show_user_errors == false )
+        dugw.reset(new Disable_User_Graphic_Warning());
+
 	if( old_vm == NULL )
 	{
         if ( show_user_errors )
