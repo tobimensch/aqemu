@@ -82,13 +82,6 @@
       <number>0</number>
      </property>
      <item>
-      <widget class="QLabel" name="Label_Folders_List">
-       <property name="text">
-        <string>Folder list:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QListWidget" name="Folders_List">
        <property name="contextMenuPolicy">
         <enum>Qt::CustomContextMenu</enum>
@@ -594,8 +587,8 @@
      <y>59</y>
     </hint>
     <hint type="destinationlabel">
-     <x>359</x>
-     <y>215</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>

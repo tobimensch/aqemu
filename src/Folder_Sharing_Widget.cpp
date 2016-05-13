@@ -121,7 +121,7 @@ void Folder_Sharing_Widget::Set_Enabled( bool on )
 	ui.TB_Icon_Mode->setEnabled( on );
 	ui.TB_List_Mode->setEnabled( on );
 	
-	ui.Label_Folders_List->setEnabled( on );
+	//ui.Label_Folders_List->setEnabled( on );
 	ui.Label_Information->setEnabled( on );
 	ui.Label_Connected_To->setEnabled( true );
 }

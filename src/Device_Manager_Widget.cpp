@@ -135,7 +135,7 @@ void Device_Manager_Widget::Set_Enabled( bool on )
 	ui.TB_Icon_Mode->setEnabled( on );
 	ui.TB_List_Mode->setEnabled( on );
 	
-	ui.Label_Devices_List->setEnabled( on );
+	//ui.Label_Devices_List->setEnabled( on );
 	ui.Label_Information->setEnabled( on );
 	ui.Label_Connected_To->setEnabled( on );
 }
