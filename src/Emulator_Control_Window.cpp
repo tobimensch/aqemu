@@ -64,9 +64,6 @@ Emulator_Control_Window::Emulator_Control_Window( QWidget *parent )
 		ui.menubar->removeAction( ui.menuConnect->menuAction() );
 	else
 		ui.menubar->removeAction( ui.menuConnectNew->menuAction() );
-	
-	AQDebug( "Emulator_Control_Window::Emulator_Control_Window( QWidget *parent )",
-			 "Created" );
 }
 
 void Emulator_Control_Window::Apply_Full_Size( int w, int h )
