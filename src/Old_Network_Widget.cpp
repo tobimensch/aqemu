@@ -529,6 +529,10 @@ void Old_Network_Widget::hide_Show_Disabled_Enabled_Options()
         else
             list[i]->hide();
     }
+
+    // prevent QComboboxes from popping up
+    ui.CB_Network_Card_Model->hidePopup();
+    ui.CB_Connection_Mode->hidePopup();
 }
 
 void Old_Network_Widget::on_Edit_Hostname_textChanged()
