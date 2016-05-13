@@ -54,28 +54,18 @@ using namespace TinyXML2QDomWrapper;
 
 Virtual_Machine::Virtual_Machine()
 {
-	// Default Machine
-	AQDebug( "Virtual_Machine::Virtual_Machine()", "Begin" );
-	
+    // Default Machine
 	Shared_Constructor();
-	
-	AQDebug( "Virtual_Machine::Virtual_Machine()", "End" );
 }
 
 Virtual_Machine::Virtual_Machine( const QString &name )
 {
-	AQDebug( "Virtual_Machine::Virtual_Machine( const QString &name )", "Begin" );
-	
 	Shared_Constructor();
-	Machine_Name = name;
-	
-	AQDebug( "Virtual_Machine::Virtual_Machine( const QString &name )", "End" );
+    Machine_Name = name;
 }
 
 Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 {
-	AQDebug( "Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )", "Begin" );
-	
 	QEMU_Process = new QProcess();
 	Monitor_Socket = new QTcpSocket( this );
 	Use_Monitor_TCP = false;
@@ -262,8 +252,6 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 	this->Quit_Before_Save = false;
 	
 	Update_Current_Emulator_Devices(); // FIXME
-	
-	AQDebug( "Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )", "End" );
 }
 
 Virtual_Machine::~Virtual_Machine()
@@ -463,8 +451,6 @@ void Virtual_Machine::Shared_Constructor()
 
 bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 {
-	AQDebug( "bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const", "Begin" );
-	
 	if( this->Icon_Path == vm.Get_Icon_Path() &&
 		this->Computer_Type == vm.Get_Computer_Type() &&
 		this->Machine_Name == vm.Get_Machine_Name() &&
@@ -638,13 +624,11 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 			}
 		}
 		else return false;
-		
-		AQDebug( "bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const", "End" );
+
 		return true;
 	}
 	else
-	{
-		AQDebug( "bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const", "End" );
+    {
 		return false;
 	}
 }
@@ -656,8 +640,6 @@ bool Virtual_Machine::operator!=( const Virtual_Machine &v1 ) const
 
 Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 {
-	AQDebug( "Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )", "Begin" );
-	
 	QEMU_Process = new QProcess();
 	Monitor_Socket = new QTcpSocket( this );
 	Use_Monitor_TCP = false;
@@ -839,9 +821,7 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	this->Save_VM_Window = nullptr;
 	this->Load_Mode = false;
 	
-	Update_Current_Emulator_Devices();
-	
-	AQDebug( "Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )", "End" );
+    Update_Current_Emulator_Devices();
 	
 	return *this;
 }

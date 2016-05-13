@@ -64,12 +64,10 @@ static QStringList Recent_FDD_Images;
 Disable_User_Graphic_Warning::Disable_User_Graphic_Warning()
 {
     Show_User_Graphic_Warning = false;
-    AQError("Disable_User_Graphic_Warning::Disable_User_Graphic_Warning()","SET IT FALSE");
 }
 Disable_User_Graphic_Warning::~Disable_User_Graphic_Warning()
 {
     Show_User_Graphic_Warning = true;
-    AQError("Disable_User_Graphic_Warning::Disable_User_Graphic_Warning()","SET IT TRUE");
 }
 
 void AQDebugStdCout(const QString& s)
@@ -776,7 +774,9 @@ const Emulator &Get_Default_Emulator()
 		for( int ix = 0; ix < Emulators_List.count(); ix++ )
 		{
 			if( Emulators_List[ix].Get_Default() )
+		    {
 				return Emulators_List[ ix ];
+		    }
 		}
 	}
 	
