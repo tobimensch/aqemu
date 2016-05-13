@@ -324,12 +324,12 @@ bool QDomDocument::setContent(QFile* file, bool b, QString* s, int* i, int* i2)
             const char* err_str =  document->GetErrorStr1();
             if ( err_str != NULL )
                 s->fromLatin1(err_str);
-            else
-                s = new QString(err_str);
 
             //can't really implement line/col of err, since TinyXML2 doesn't seem to support that
-            *i = -1;
-            *i2 = -1;
+            if ( i )
+                *i = -1;
+            if ( i2 )
+                *i2 = -1;
 
             return false;
         }
