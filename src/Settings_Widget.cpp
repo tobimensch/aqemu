@@ -139,19 +139,6 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
 
     if ( dir != QBoxLayout::TopToBottom )
     {
-        /*auto border = new QLabel(this);
-        l->addWidget(border);
-        border->setMinimumHeight(10);
-        border->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-        border->setText("test");
-
-        auto app = dynamic_cast<QApplication*>(QApplication::instance());
-        if ( app != nullptr )
-        {
-            QPalette pal = border->palette();
-            pal.setColor(QPalette::Button, QColor(0,0,0) /*app->palette("QWidget").color(QPalette::Dark)* /);
-            border->setPalette(pal);
-        }*/
         list->setVerticalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
         list->setHorizontalScrollBarPolicy (Qt::ScrollBarAlwaysOff);
         list->setSpacing(5);
@@ -236,7 +223,7 @@ void Settings_Widget::syncGroupIconSizes(QString g)
 
         for ( int j = 0; j < sw->list->count(); j++ )
         {
-            int h = sw->list->item(j)->sizeHint().height();
+            //int h = sw->list->item(j)->sizeHint().height();
             sw->list->item(j)->setSizeHint(QSize(max_width.at(j),58));
         }
 
