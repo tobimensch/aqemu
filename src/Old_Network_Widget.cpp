@@ -35,8 +35,8 @@ Old_Network_Widget::Old_Network_Widget( QWidget *parent ) : QWidget( parent )
 	
 	// IP Address
 	QRegExp rx( "^([1-9]|[1-9][\\d]|[1][\\d][\\d]|2[0-4][\\d]|25[0-5])(\\.([0-9]|[1-9][\\d]|[1][\\d][\\d]|2[0-4][\\d]|25[0-5])){3}$" );
-	QValidator *validator = new QRegExpValidator( rx, this );
-	ui.Edit_IP_Address->setValidator( validator );
+    QValidator *validator = new QRegExpValidator( rx, this );
+    //ui.Edit_IP_Address->setValidator( validator );
 	
 	// MAC Address
 	rx = QRegExp( "^[\\da-fA-F]{2}(\\:[\\da-fA-F]{2}){5}$" );
@@ -111,7 +111,7 @@ void Old_Network_Widget::Set_Network_Card_Models( const QList<Device_Map> &model
 
 void Old_Network_Widget::Set_Enabled( bool on )
 {
-	ui.Label_Cards_List->setEnabled( on );
+	//ui.Label_Cards_List->setEnabled( on );
 	ui.Button_Add_Net_Card->setEnabled( on );
 	ui.Button_Delete_Net_Card->setEnabled( on );
     ui.Widget_All_Options->setEnabled( on );

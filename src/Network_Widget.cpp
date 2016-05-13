@@ -234,7 +234,7 @@ void Network_Widget::Set_Devices( const Available_Devices &devices )
 
 void Network_Widget::Set_Enabled( bool on )
 {
-	ui.Label_Items_List->setEnabled( on );
+	//ui.Label_Items_List->setEnabled( on );
 	ui.Button_Add->setEnabled( on );
 	ui.Button_Delete->setEnabled( on );
 	ui.General_Widget->setEnabled( on );

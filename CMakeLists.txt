@@ -28,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    src/IP_Edit.h
     src/Dialog_Button_Box.h
 	src/docopt/docopt.h
     	src/Settings_Widget.h
@@ -72,6 +73,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    src/IP_Edit.cpp
     src/Dialog_Button_Box.cpp
 	src/docopt/docopt.cpp
 	src/Settings_Widget.cpp

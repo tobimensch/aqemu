@@ -15,13 +15,6 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QLabel" name="Label_Items_List">
-     <property name="text">
-      <string>Items List:</string>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QFrame" name="frame">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -159,7 +152,7 @@
         <x>0</x>
         <y>0</y>
         <width>347</width>
-        <height>1325</height>
+        <height>1579</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -174,6 +167,9 @@
        </property>
        <item>
         <widget class="QWidget" name="General_Widget" native="true">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <layout class="QGridLayout" name="gridLayout">
           <property name="leftMargin">
            <number>0</number>
@@ -250,7 +246,7 @@
           <item row="1" column="1">
            <widget class="QComboBox" name="CB_model">
             <property name="enabled">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
