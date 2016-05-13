@@ -349,119 +349,12 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 														 arg(Emulator_Version_To_String(qemu_version)) );
 			}
 			
-            /*
-			// Find KVM
-			QList<Emulator> kvmEmulatorsList;
-			
-			for( int kx = 0; kx < paths.count(); ++kx )
-			{
-				QMap<QString, QString> kvm_list = System_Info::Find_KVM_Binary_Files( paths[kx] );
-				
-				// Found emulators files in this dir?				
-				bool kvmBinFilesFound = false;
-				for( QMap<QString, QString>::const_iterator it = kvm_list.constBegin(); it != kvm_list.constEnd(); ++it )
-				{
-					if( ! it.value().isEmpty() )
-					{
-						kvmBinFilesFound = true;
-						break;
-					}
-				}
-				
-				if( ! kvmBinFilesFound )
-				{
-					AQDebug( "void First_Start_Wizard::on_Button_Find_clicked()",
-							 "In " + paths[kx] + " KVM Not Found" );
-					continue;
-				}
-				
-				// Bin files found. Work...
-				AQDebug( "void First_Start_Wizard::on_Button_Find_clicked()",
-						 "KVM Found. Path: " + paths[kx] );
-				
-				// Check Version
-				VM::Emulator_Version kvm_version = VM::Obsolete;
-				
-				QMap<QString, QString>::const_iterator iter = kvm_list.constBegin();
-				while( iter != kvm_list.constEnd() )
-				{
-					if( QFile::exists(iter.value()) )
-						kvm_version = System_Info::Get_Emulator_Version( iter.value() );
-					
-					if( kvm_version != VM::Obsolete ) break;
-					
-					++iter;
-				}
-				
-				if( kvm_version == VM::Obsolete )
-				{
-					AQError( "void First_Start_Wizard::on_Button_Find_clicked()",
-							 "Cannot Get KVM Version! Using Default: QEMU_2_0" );
-					
-					kvm_version = VM::QEMU_2_0;
-				}
-				
-				// Get emulator info
-				QMap<QString, Available_Devices> devList;
-				
-				iter = kvm_list.constBegin();
-				while( iter != kvm_list.constEnd() )
-				{
-					if( ! iter.value().isEmpty() )
-					{
-						bool ok = false;
-						Available_Devices tmpDev = System_Info::Get_Emulator_Info( iter.value(), &ok, kvm_version, iter.key() );
-						
-						if( ok )
-							devList[ iter.key() ] = tmpDev;
-						else
-							AQGraphic_Warning( tr("Error!"), tr("Cannot get emulator info! For file: %1").arg(iter.value()) );
-					}
-					
-					++iter;
-				}
-				
-				// Create new emulator
-				Emulator emul;
-				
-				// Emulator name
-				QString emulName = Emulator_Version_To_String( kvm_version );
-				int emulDublicateNameCount = 1;
-				for( int ix = 0; ix < qemuEmulatorsList.count(); ++ix )
-				{
-					if( emulName == qemuEmulatorsList[ix].Get_Name() )
-					{
-						++emulDublicateNameCount;
-						emulName = QString("%1 #%2").arg( Emulator_Version_To_String(kvm_version) )
-													.arg( emulDublicateNameCount );
-						ix = 0;
-					}
-				}
-				emul.Set_Name( emulName );
-				
-				emul.Set_Type( VM::KVM );
-				emul.Set_Version( kvm_version );
-				emul.Set_Path( paths[kx] );
-				emul.Set_Devices( devList );
-				emul.Set_Binary_Files( kvm_list );
-				emul.Set_Check_Version( false );
-				emul.Set_Check_Available_Options( false );
-				emul.Set_Force_Version( false );
-				
-				kvmEmulatorsList << emul;
-				
-				// Add Text
-				ui.Edit_Enulators_List->appendPlainText( tr("KVM Found in \"%1\", version: %2").
-														 arg(paths[kx]).
-														 arg(Emulator_Version_To_String(kvm_version)) );
-			}*/ //tobgle //FIXME?
-			
 			// Set default emulators
 			if( qemuEmulatorsList.count() > 0 )
 			{
 				// Enable Edit Emulator Version Manualy Button
 				ui.Button_Edit->setEnabled( true );
-				
+
 				// Find and set QEMU default emulator
 				if( qemuEmulatorsList.count() > 1 )
 				{
@@ -475,9 +368,9 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 							maxVerIndex = ix;
 						}
 					}
-					
+
 					qemuEmulatorsList[ maxVerIndex ].Set_Default( true );
-					
+
 					// Save emulators
 					for( int ix = 0; ix < qemuEmulatorsList.count(); ++ix )
 						qemuEmulatorsList[ ix ].Save();
@@ -487,33 +380,6 @@ void First_Start_Wizard::on_Button_Find_Emulators_clicked()
 					qemuEmulatorsList[ 0 ].Set_Default( true );
 					qemuEmulatorsList[ 0 ].Save();
 				}
-				
-                /*
-				// Find and set KVM default emulator
-				if( kvmEmulatorsList.count() > 1 )
-				{
-					VM::Emulator_Version maxVer = VM::Obsolete;
-					int maxVerIndex = 0;
-					for( int ix = 0; ix < kvmEmulatorsList.count(); ++ix )
-					{
-						if( kvmEmulatorsList[ix].Get_Version() > maxVer )
-						{
-							maxVer = kvmEmulatorsList[ix].Get_Version();
-							maxVerIndex = ix;
-						}
-					}
-					
-					kvmEmulatorsList[ maxVerIndex ].Set_Default( true );
-					
-					// Save emulators
-					for( int ix = 0; ix < kvmEmulatorsList.count(); ++ix )
-						kvmEmulatorsList[ ix ].Save();
-				}
-				else if( kvmEmulatorsList.count() > 0 )
-				{
-					kvmEmulatorsList[ 0 ].Set_Default( true );
-					kvmEmulatorsList[ 0 ].Save();
-				}*/ //tobgle//FIXME?
 			}
 		}
 	}
@@ -527,13 +393,13 @@ void First_Start_Wizard::on_Button_Skip_Find_clicked()
 void First_Start_Wizard::on_Button_Edit_clicked()
 {
 	Edit_Emulator_Version_Window *edit_win = new Edit_Emulator_Version_Window();
-	
+
 	if( edit_win->exec() == QDialog::Accepted )
 	{
 		// Update Emulators Info Text
 		ui.Edit_Enulators_List->setPlainText( tr("Emulator Version Modified By User") );
 	}
-	
+
 	delete edit_win;
 }
 
@@ -586,10 +452,10 @@ void First_Start_Wizard::on_All_Pages_currentChanged( int index )
 		ui.Button_Back->setEnabled( true );
 		ui.Button_Next->setText( tr("&Next") );
 	}
-	
+
 	// Set Header Text
 	ui.Label_Caption->setText( Header_Captions[ui.All_Pages->currentIndex()] );
-	
+
 	// Pages Actions
 	if( ui.All_Pages->currentWidget() == ui.General_Settings_Page && Next_Move )
 		retranslateUi();
