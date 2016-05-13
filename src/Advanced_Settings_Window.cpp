@@ -159,7 +159,7 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	ui.Edit_Log_Path->setText( Settings.value("Log/Log_Path", Settings.value("VM_Directory", "").toString() + "aqemu.log").toString() );
 	
 	// Save to AQEMU Log
-	ui.CH_Log_Debug->setChecked( Settings.value("Log/Save_Debug", "yes").toString() == "yes" );
+	ui.CH_Log_Debug->setChecked( Settings.value("Log/Save_Debug", "no").toString() == "yes" );
 	ui.CH_Log_Warning->setChecked( Settings.value("Log/Save_Warning", "yes").toString() == "yes" );
 	ui.CH_Log_Error->setChecked( Settings.value("Log/Save_Error", "yes").toString() == "yes" );
 	

@@ -140,7 +140,7 @@ int main( int argc, char *argv[] )
 						settings.value("Log/Save_Error", "yes").toString() == "yes" );
 	#else
 	AQUse_Debug_Output( settings.value("Log/Print_In_STDOUT", "yes").toString() == "yes",
-						settings.value("Log/Save_Debug", "yes").toString() == "yes",
+						settings.value("Log/Save_Debug", "no").toString() == "yes",
 						settings.value("Log/Save_Warning", "yes").toString() == "yes",
 						settings.value("Log/Save_Error", "yes").toString() == "yes" );
 	#endif

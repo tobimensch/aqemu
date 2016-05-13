@@ -1052,8 +1052,8 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 bool Main_Window::Load_Settings()
 {
 	// Main Window Size
-	resize( Settings.value("General_Window_Width", "670").toInt(),
-			Settings.value("General_Window_Height", "625").toInt() );
+	resize( Settings.value("General_Window_Width", "885").toInt(),
+			Settings.value("General_Window_Height", "544").toInt() );
 	
 	// Main Window Position
 	move( Settings.value("General_Window_Position", QPoint(300, 300)).toPoint() );
@@ -4301,7 +4301,7 @@ void Main_Window::on_actionShow_Advanced_Settings_Window_triggered()
 		
 		// Log Filter
 		AQUse_Debug_Output( Settings.value("Log/Print_In_STDOUT", "yes").toString() == "yes",
-							Settings.value("Log/Save_Debug","yes").toString() == "yes",
+							Settings.value("Log/Save_Debug","no").toString() == "yes",
 							Settings.value("Log/Save_Warning","yes").toString() == "yes",
 							Settings.value("Log/Save_Error","yes").toString() == "yes" );
 		
