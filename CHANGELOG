@@ -1,4 +1,24 @@
-2016-04-22 Tobias Gläßer (Version 0.9.1)
+2016-05-13 Tobias Gläßer (Version 0.9.1)
+
+    * Embedded VNC client now can make use of the user defined VNC port number
+
+    * Error Log Window doesn't get shown for messages about deprecated options by default anymore
+
+    * The VM state is now getting reflected in the VM icon (Running, Paused, ...)
+
+    * Removed code to support qemu qemu-kvm fork, because it has been merged into qemu
+
+    * Many small UI improvements
+
+    * All new VMs are now created with the wizard, which generally gives better results
+
+    * Put all application wide settings in a single dialog
+
+    * Exchanged some deprecated qemu command line options with their new equivalents
+
+    * Fixed various bugs
+
+    * Reorganized/Restructured the main UI for more clarity
 
 	* Fixed bug that led to VMs not being terminated when closing the application
 
