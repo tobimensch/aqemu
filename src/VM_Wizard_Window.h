@@ -70,6 +70,8 @@ class VM_Wizard_Window: public QDialog
 		
 	private:
         void applyTemplate();
+        void By_Year();
+        void Typical_Or_Custom();
 
 		QSettings Settings;
 		Ui::VM_Wizard_Window ui;

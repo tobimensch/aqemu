@@ -39,9 +39,7 @@ QString Get_My_System_Architecture()
 {
     struct utsname name;
     uname(&name);
-    if ( name.machine != 0 )
-        return QString(name.machine);
-    return QString();
+    return QString(name.machine);
 }
 
 VM_Wizard_Window::VM_Wizard_Window( QWidget *parent )
@@ -60,9 +58,7 @@ VM_Wizard_Window::VM_Wizard_Window( QWidget *parent )
 		for( int ix = 0; ix < ui.CB_OS_Type->count(); ++ix )
 		{
 			if( ui.CB_OS_Type->itemText(ix) == Settings.value("Default_VM_Template", "Linux 2.6").toString() )
-			{
 				ui.CB_OS_Type->setCurrentIndex( ix );
-			}
 		}
 	}
 	else
@@ -77,13 +73,9 @@ VM_Wizard_Window::VM_Wizard_Window( QWidget *parent )
 void VM_Wizard_Window::on_KVM_toggled(bool toggled)
 {
     if ( toggled )
-    {
         ui.toolBox_accelInfo->setCurrentIndex(1);
-    }
     else
-    {
         ui.toolBox_accelInfo->setCurrentIndex(0);
-    }
 }
 
 void VM_Wizard_Window::Set_VM_List( QList<Virtual_Machine*> *list )
@@ -166,6 +158,110 @@ void VM_Wizard_Window::on_Button_Back_clicked()
 	}
 }
 
+void VM_Wizard_Window::on_Button_Next_clicked()
+{
+	if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
+		ui.Label_Page->setText( tr("Template For VM") );
+		on_RB_VM_Template_toggled( ui.RB_VM_Template->isChecked() );
+
+        Current_Emulator = Get_Default_Emulator();
+
+        // All Find Systems FIXME ^^^
+        All_Systems = Current_Emulator.Get_Devices();
+        if( All_Systems.isEmpty() )
+        {
+            AQError( "void VM_Wizard_Window::on_Button_Next_clicked()",
+                     "Cannot get devices!" );
+            return;
+        }
+
+        // Comp types
+        ui.CB_Computer_Type->clear();
+        ui.CB_Computer_Type->addItem( tr("None Selected") );
+        for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
+        {
+            ui.CB_Computer_Type->addItem( it.value().System.Caption );
+        }
+
+        ui.Button_Next->setEnabled( true );
+		ui.Button_Back->setEnabled( true );
+	}
+	else if( ui.Accelerator_Page == ui.Wizard_Pages->currentWidget() )
+	{
+        applyTemplate();
+        ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
+
+	}
+	else if( ui.Template_Page == ui.Wizard_Pages->currentWidget() )
+	{
+        Use_Accelerator_Page = true;
+		ui.Wizard_Pages->setCurrentWidget( ui.Accelerator_Page );
+
+        //FIXME: arch shouldn't be hardcoded
+        if ( ui.RB_Generate_VM->isChecked() && ui.CB_Computer_Type->currentText() != "IBM PC 64Bit")
+            ui.RB_Emulator_QEMU->setChecked( true );
+        else
+            ui.RB_Emulator_KVM->setChecked( true );
+
+		ui.Label_Page->setText( tr("Accelerator") );
+	}
+	else if( ui.General_Settings_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		for( int vx = 0; vx < VM_List->count(); ++vx )
+		{
+			if( VM_List->at(vx)->Get_Machine_Name() == ui.Edit_VM_Name->text() )
+			{
+				AQGraphic_Warning( tr("Warning"), tr("This VM Name Does Already Exist!") );
+				return;
+			}
+		}
+
+		if( ui.RB_Typical->isChecked() )
+		{
+			ui.Wizard_Pages->setCurrentWidget( ui.Typical_HDD_Page );
+			ui.Label_Page->setText( tr("Hard Disk Size") );
+		}
+		else
+		{
+			ui.Wizard_Pages->setCurrentWidget( ui.Memory_Page );
+			ui.Label_Page->setText( tr("Memory") );
+		}
+	}
+	else if( ui.Memory_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		on_CH_Remove_RAM_Size_Limitation_stateChanged( Qt::Unchecked ); // update max available RAM size
+		ui.Wizard_Pages->setCurrentWidget( ui.Custom_HDD_Page );
+		ui.Label_Page->setText( tr("Virtual Hard Disk") );
+	}
+	else if( ui.Typical_HDD_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		ui.Wizard_Pages->setCurrentWidget( ui.Network_Page );
+		ui.Label_Page->setText( tr("Network") );
+	}
+	else if( ui.Custom_HDD_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		ui.Wizard_Pages->setCurrentWidget( ui.Network_Page );
+		ui.Label_Page->setText( tr("Network") );
+	}
+	else if( ui.Network_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		ui.Wizard_Pages->setCurrentWidget( ui.Finish_Page );
+		ui.Button_Next->setText( tr("&Finish") );
+		ui.Label_Page->setText( tr("Finish!") );
+	}
+	else if( ui.Finish_Page == ui.Wizard_Pages->currentWidget() )
+	{
+		if( Create_New_VM() ) accept();
+	}
+	else
+	{
+		AQError( "void VM_Wizard_Window::on_Button_Next_clicked()",
+				 "Default Section!" );
+	}
+}
+
 void VM_Wizard_Window::applyTemplate()
 {
 	// Use Selected Template
@@ -204,9 +300,10 @@ void VM_Wizard_Window::applyTemplate()
 	else
 	{
         New_VM->Set_Machine_Accelerator(VM::TCG);
+		New_VM->Set_Computer_Type( "qemu-system-x86_64" );
 
 		Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
-		if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
+		/*if( ! Current_Devices->System.QEMU_Name.isEmpty() )*/ devices_found = true;
 	}
 	
 	// Use Selected Template
@@ -222,64 +319,21 @@ void VM_Wizard_Window::applyTemplate()
 		double hda_size = New_VM->Get_HDA().Get_Virtual_Size_in_GB();
 		
 		if( hda_size != 0.0 )
-		{
 			ui.SB_HDD_Size->setValue( hda_size );
-		}
 		else
-		{
 			ui.SB_HDD_Size->setValue( 10.0 );
-		}
 		
 		// Network
 		ui.RB_User_Mode_Network->setChecked( New_VM->Get_Use_Network() );
-		
+
 		// Find CPU List For This Template
 		Current_Devices = &All_Systems[ New_VM->Get_Computer_Type() ];
 		if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 	}
 	else // Create New VM in Date Mode
 	{
-		// Select Memory Size, and HDD Size
-		switch( ui.CB_Relese_Date->currentIndex() )
-		{
-			case 0:
-				AQError( "void VM_Wizard_Window::Create_New_VM()",
-						 "Relese Date Not Selected!" );
-				ui.Memory_Size->setValue( 512 );
-				break;
-				
-			case 1: // 1985-1990
-				ui.Memory_Size->setValue( 16 );
-				ui.SB_HDD_Size->setValue( 1.0 );
-				break;
-				
-			case 2: // 1990-1995
-				ui.Memory_Size->setValue( 64 );
-				ui.SB_HDD_Size->setValue( 2.0 );
-				break;
-				
-			case 3: // 1995-2000
-				ui.Memory_Size->setValue( 256 );
-				ui.SB_HDD_Size->setValue( 10.0 );
-				break;
-				
-			case 4: // 2000-2005
-				ui.Memory_Size->setValue( 512 );
-				ui.SB_HDD_Size->setValue( 20.0 );
-				break;
-				
-			case 5: // 2005-2010
-				ui.Memory_Size->setValue( 1024 );
-				ui.SB_HDD_Size->setValue( 40.0 );
-				break;
-				
-			default:
-				AQError( "void VM_Wizard_Window::Create_New_VM()",
-						 "Relese Date Default Section!" );
-				ui.Memory_Size->setValue( 512 );
-				break;
-		}
-		
+        By_Year();
+
 		// Find CPU List For This Template
 		QString compCaption = ui.CB_Computer_Type->currentText();
 		for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
@@ -287,11 +341,11 @@ void VM_Wizard_Window::applyTemplate()
 			if( it.value().System.Caption == compCaption )
 			{
 				Current_Devices = &it.value();
-				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
+				/*if( ! Current_Devices->System.QEMU_Name.isEmpty() )*/ devices_found = true;
 			}
 		}
 	}
-	
+
 	if( ! devices_found )
 	{
 		AQGraphic_Error( "void VM_Wizard_Window::applyTemplate()", tr("Error!"),
@@ -304,13 +358,19 @@ void VM_Wizard_Window::applyTemplate()
 		for( int cx = 0; cx < Current_Devices->CPU_List.count(); ++cx )
 			ui.CB_CPU_Type->addItem( Current_Devices->CPU_List[cx].Caption );
 	}
-	
+
 	// Typical or custom mode
+    Typical_Or_Custom();
+}
+
+
+void VM_Wizard_Window::Typical_Or_Custom()
+{
 	if( ui.RB_Typical->isChecked() )
 	{
 		ui.Label_Page->setText( tr("Virtual Machine Name") );
 		on_Edit_VM_Name_textEdited( ui.Edit_VM_Name->text() );
-		
+
 		ui.Label_Caption_CPU_Type->setVisible( false );
 		ui.Line_CPU_Type->setVisible( false );
 		ui.Label_CPU_Type->setVisible( false );
@@ -320,7 +380,7 @@ void VM_Wizard_Window::applyTemplate()
 	{
 		ui.Label_Page->setText( tr("VM Name and CPU Type") );
 		on_Edit_VM_Name_textEdited( ui.Edit_VM_Name->text() );
-		
+
 		ui.Label_Caption_CPU_Type->setVisible( true );
 		ui.Line_CPU_Type->setVisible( true );
 		ui.Label_CPU_Type->setVisible( true );
@@ -328,123 +388,54 @@ void VM_Wizard_Window::applyTemplate()
 	}
 }
 
-void VM_Wizard_Window::on_Button_Next_clicked()
+void VM_Wizard_Window::By_Year()
 {
-	/*if( ui.Welcome_Page == ui.Wizard_Pages->currentWidget() )
+	// Select Memory Size, and HDD Size
+	switch( ui.CB_Relese_Date->currentIndex() )
 	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Wizard_Mode_Page );
-		ui.Button_Back->setEnabled( true );
-		ui.Label_Page->setText( tr("Wizard Mode") );
-	}*/
-	if( ui.Wizard_Mode_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		/*bool q = ! Get_Default_Emulator( VM::QEMU ).Get_Name().isEmpty(); // FIXME what it?
-		bool k = ! Get_Default_Emulator( VM::KVM ).Get_Name().isEmpty();*/
+		case 0:
+			AQError( "void VM_Wizard_Window::Create_New_VM()",
+					 "Relese Date Not Selected!" );
+			ui.Memory_Size->setValue( 512 );
+			break;
 
+		case 1: // 1985-1990
+			ui.Memory_Size->setValue( 16 );
+			ui.SB_HDD_Size->setValue( 1.0 );
+			break;
 
-		ui.Wizard_Pages->setCurrentWidget( ui.Template_Page );
-		ui.Label_Page->setText( tr("Template For VM") );
-		on_RB_VM_Template_toggled( ui.RB_VM_Template->isChecked() );
+		case 2: // 1990-1995
+			ui.Memory_Size->setValue( 64 );
+			ui.SB_HDD_Size->setValue( 2.0 );
+			break;
 
-		ui.Button_Back->setEnabled( true );
-		// Next tab
-		//ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
+		case 3: // 1995-2000
+			ui.Memory_Size->setValue( 256 );
+			ui.SB_HDD_Size->setValue( 10.0 );
+			break;
 
-	}
-	else if( ui.Accelerator_Page == ui.Wizard_Pages->currentWidget() )
-	{
-	    Current_Emulator = Get_Default_Emulator(); //tobgle FIXME the accelerator isn't being set
-		
-		// All Find Systems FIXME ^^^
-		All_Systems = Current_Emulator.Get_Devices();
-		if( All_Systems.isEmpty() )
-		{
-			AQError( "void VM_Wizard_Window::on_Button_Next_clicked()",
-					 "Cannot get devices!" );
-			return;
-		}
-		
-		// Comp types
-		ui.CB_Computer_Type->clear();
-		ui.CB_Computer_Type->addItem( tr("None Selected") );
-		for( QMap<QString, Available_Devices>::const_iterator it = All_Systems.constBegin(); it != All_Systems.constEnd(); it++ )
-        {
-			ui.CB_Computer_Type->addItem( it.value().System.Caption );
-        }
+		case 4: // 2000-2005
+			ui.Memory_Size->setValue( 512 );
+			ui.SB_HDD_Size->setValue( 20.0 );
+			break;
 
-        applyTemplate();
-        ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
+		case 5: // 2005-2010
+			ui.Memory_Size->setValue( 1024 );
+			ui.SB_HDD_Size->setValue( 40.0 );
+			break;
 
-	}
-	else if( ui.Template_Page == ui.Wizard_Pages->currentWidget() )
-	{
-        Use_Accelerator_Page = true;
-		ui.Wizard_Pages->setCurrentWidget( ui.Accelerator_Page );
-		ui.RB_Emulator_KVM->setChecked( true );
-		ui.Label_Page->setText( tr("Accelerator") );
-		
-		// Next tab
-		//ui.Wizard_Pages->setCurrentWidget( ui.General_Settings_Page );
-	}
-	else if( ui.General_Settings_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		for( int vx = 0; vx < VM_List->count(); ++vx )
-		{
-			if( VM_List->at(vx)->Get_Machine_Name() == ui.Edit_VM_Name->text() )
-			{
-				AQGraphic_Warning( tr("Warning"), tr("This VM Name Does Already Exist!") );
-				return;
-			}
-		}
-		
-		if( ui.RB_Typical->isChecked() )
-		{
-			ui.Wizard_Pages->setCurrentWidget( ui.Typical_HDD_Page );
-			ui.Label_Page->setText( tr("Hard Disk Size") );
-		}
-		else
-		{
-			ui.Wizard_Pages->setCurrentWidget( ui.Memory_Page );
-			ui.Label_Page->setText( tr("Memory") );
-		}
-	}
-	else if( ui.Memory_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		on_CH_Remove_RAM_Size_Limitation_stateChanged( Qt::Unchecked ); // It for update max avairable RAM size
-		ui.Wizard_Pages->setCurrentWidget( ui.Custom_HDD_Page );
-		ui.Label_Page->setText( tr("Virtual Hard Disk") );
-	}
-	else if( ui.Typical_HDD_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Network_Page );
-		ui.Label_Page->setText( tr("Network") );
-	}
-	else if( ui.Custom_HDD_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Network_Page );
-		ui.Label_Page->setText( tr("Network") );
-	}
-	else if( ui.Network_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		ui.Wizard_Pages->setCurrentWidget( ui.Finish_Page );
-		ui.Button_Next->setText( tr("&Finish") );
-		ui.Label_Page->setText( tr("Finish!") );
-	}
-	else if( ui.Finish_Page == ui.Wizard_Pages->currentWidget() )
-	{
-		if( Create_New_VM() ) accept();
-	}
-	else
-	{
-		AQError( "void VM_Wizard_Window::on_Button_Next_clicked()",
-				 "Default Section!" );
+		default:
+			AQError( "void VM_Wizard_Window::Create_New_VM()",
+					 "Relese Date Default Section!" );
+			ui.Memory_Size->setValue( 512 );
+			break;
 	}
 }
 
 bool VM_Wizard_Window::Load_OS_Templates()
 {
 	QList<QString> tmp_list = Get_Templates_List();
-	
+
 	for( int ax = 0; ax < tmp_list.count(); ++ax )
 	{
 		OS_Templates_List.append( QFileInfo(tmp_list[ax]) );
@@ -454,7 +445,7 @@ bool VM_Wizard_Window::Load_OS_Templates()
 	{
 		ui.CB_OS_Type->addItem( OS_Templates_List[ix].completeBaseName() );
 	}
-	
+
 	 // no items found
 	if( ui.CB_OS_Type->count() < 2 ) return false;
 	else return true;
@@ -473,22 +464,22 @@ bool VM_Wizard_Window::Create_New_VM()
 	{
 		New_VM->Set_Icon_Path( icon_path );
 	}
-	
+
 	// Name
 	New_VM->Set_Machine_Name( ui.Edit_VM_Name->text() );
-	
+
 	// Create path valid string
 	QString VM_File_Name = Get_FS_Compatible_VM_Name( ui.Edit_VM_Name->text() );
-	
+
 	// Set Computer Type?
 	if( ui.RB_Generate_VM->isChecked() )
 	{
 		New_VM->Set_Computer_Type( Current_Devices->System.QEMU_Name );
 	}
-	
+
 	// RAM
 	New_VM->Set_Memory_Size( ui.Memory_Size->value() );
-	
+
 	// Wizard Mode
 	if( ui.RB_Typical->isChecked() )
 	{
@@ -496,13 +487,13 @@ bool VM_Wizard_Window::Create_New_VM()
 		VM::Device_Size hd_size;
 		hd_size.Size = ui.SB_HDD_Size->value();
 		hd_size.Suffix = VM::Size_Suf_Gb;
-		
+
 		QString hd_path = Settings.value( "VM_Directory", "~" ).toString() + VM_File_Name;
-		
+
 		Create_New_HDD_Image( hd_path + "_HDA.img", hd_size );
-		
+
 		New_VM->Set_HDA( VM_HDD(true, hd_path + "_HDA.img") );
-		
+
 		// Other HDD's
 		if( New_VM->Get_HDB().Get_Enabled() )
 		{
@@ -537,7 +528,7 @@ bool VM_Wizard_Window::Create_New_VM()
 			// Find QEMU System Name in CB_Computer_Type
 			if( ui.RB_Emulator_KVM->isChecked() )
 			{
-				Current_Devices = &All_Systems[ "qemu-kvm" ];
+				Current_Devices = &All_Systems[ "qemu-system-x86_64" ];
 				if( ! Current_Devices->System.QEMU_Name.isEmpty() ) devices_found = true;
 			}
 			else // QEMU
@@ -611,44 +602,38 @@ QString VM_Wizard_Window::Find_OS_Icon( const QString os_name )
 				 "os_name is Empty!" );
 		return "";
 	}
-	else
+
+	// Find all os icons
+	QDir icons_dir( QDir::toNativeSeparators(Settings.value("AQEMU_Data_Folder","").toString() + "/os_icons/") );
+	QFileInfoList all_os_icons = icons_dir.entryInfoList( QStringList("*.png"), QDir::Files, QDir::Unsorted );
+
+	QRegExp rex;
+	rex.setPatternSyntax( QRegExp::Wildcard );
+	rex.setCaseSensitivity( Qt::CaseInsensitive );
+
+	for( int i = 0; i < all_os_icons.count(); i++ )
 	{
-		// Find all os icons
-		QDir icons_dir( QDir::toNativeSeparators(Settings.value("AQEMU_Data_Folder","").toString() + "/os_icons/") );
-		QFileInfoList all_os_icons = icons_dir.entryInfoList( QStringList("*.png"), QDir::Files, QDir::Unsorted );
-		
-		QRegExp rex;
-		rex.setPatternSyntax( QRegExp::Wildcard );
-		rex.setCaseSensitivity( Qt::CaseInsensitive );
-		
-		for( int i = 0; i < all_os_icons.count(); i++ )
-		{
-			rex.setPattern( "*" + all_os_icons[i].baseName() + "*" );
-			
-			if( rex.exactMatch(os_name) )
-			{
-				return all_os_icons[ i ].absoluteFilePath();
-			}
-		}
-		
-		// select os family...
-		
-		// Linux
-		rex.setPattern( "*linux*" );
+		rex.setPattern( "*" + all_os_icons[i].baseName() + "*" );
+
 		if( rex.exactMatch(os_name) )
 		{
-			return ":/default_linux.png";
+			return all_os_icons[ i ].absoluteFilePath();
 		}
-		
-		// Windows
-		rex.setPattern( "*windows*" );
-		if( rex.exactMatch(os_name) )
-		{
-			return ":/default_windows.png";
-		}
-		
-		return ":/other.png";
 	}
+
+	// select os family...
+
+	// Linux
+	rex.setPattern( "*linux*" );
+	if( rex.exactMatch(os_name) )
+		return ":/default_linux.png";
+
+	// Windows
+	rex.setPattern( "*windows*" );
+	if( rex.exactMatch(os_name) )
+		return ":/default_windows.png";
+
+	return ":/other.png";
 }
 
 void VM_Wizard_Window::on_RB_VM_Template_toggled( bool on )
@@ -656,13 +641,9 @@ void VM_Wizard_Window::on_RB_VM_Template_toggled( bool on )
 	if( on )
 	{
 		if( ui.CB_OS_Type->currentIndex() == 0 )
-		{
 			ui.Button_Next->setEnabled( false );
-		}
 		else
-		{
 			ui.Button_Next->setEnabled( true );
-		}
 	}
 }
 
@@ -672,26 +653,18 @@ void VM_Wizard_Window::on_RB_Generate_VM_toggled( bool on )
 	{
 		if( ui.CB_Computer_Type->currentIndex() == 0 ||
 		  	ui.CB_Relese_Date->currentIndex() == 0 )
-		{
 			ui.Button_Next->setEnabled( false );
-		}
 		else
-		{
 			ui.Button_Next->setEnabled( true );
-		}
 	}
 }
 
 void VM_Wizard_Window::on_CB_OS_Type_currentIndexChanged( int index )
 {
 	if( index == 0 )
-	{
 		ui.Button_Next->setEnabled( false );
-	}
 	else
-	{
 		ui.Button_Next->setEnabled( true );
-	}
 }
 
 void VM_Wizard_Window::on_CB_Computer_Type_currentIndexChanged( int index )
@@ -703,9 +676,7 @@ void VM_Wizard_Window::on_CB_Computer_Type_currentIndexChanged( int index )
 	else
 	{
 		if( ui.CB_Relese_Date->currentIndex() != 0 )
-		{
 			ui.Button_Next->setEnabled( true );
-		}
 	}
 }
 
@@ -718,9 +689,7 @@ void VM_Wizard_Window::on_CB_Relese_Date_currentIndexChanged( int index )
 	else
 	{
 		if( ui.CB_Computer_Type->currentIndex() != 0 )
-		{
 			ui.Button_Next->setEnabled( true );
-		}
 	}
 }
 
@@ -728,15 +697,18 @@ void VM_Wizard_Window::on_Memory_Size_valueChanged( int value )
 {
 	int cursorPos = ui.CB_RAM_Size->lineEdit()->cursorPosition();
 	
-	if( value % 1024 == 0 ) ui.CB_RAM_Size->setEditText( QString("%1 GB").arg(value / 1024) );
-	else ui.CB_RAM_Size->setEditText( QString("%1 MB").arg(value) );
+	if( value % 1024 == 0 )
+	    ui.CB_RAM_Size->setEditText( QString("%1 GB").arg(value / 1024) );
+	else
+	    ui.CB_RAM_Size->setEditText( QString("%1 MB").arg(value) );
 	
 	ui.CB_RAM_Size->lineEdit()->setCursorPosition( cursorPos );
 }
 
 void VM_Wizard_Window::on_CB_RAM_Size_editTextChanged( const QString &text )
 {
-	if( text.isEmpty() ) return;
+	if( text.isEmpty() )
+	    return;
 	
 	QRegExp rx( "\\s*([\\d]+)\\s*(MB|GB|M|G|)\\s*" ); // like: 512MB or 512
 	if( ! rx.exactMatch(text.toUpper()) )
