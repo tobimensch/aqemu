@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>970</width>
+    <width>982</width>
     <height>669</height>
    </rect>
   </property>
@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -2286,7 +2286,7 @@
             <item row="0" column="0">
              <widget class="QTabWidget" name="Network_Cards_Tabs">
               <property name="currentIndex">
-               <number>2</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="Tab_Network_Basic_Native">
                <attribute name="icon">
@@ -2479,7 +2479,7 @@
                         </sizepolicy>
                        </property>
                        <property name="text">
-                        <string>Redirect Item Settings</string>
+                        <string>Item Settings</string>
                        </property>
                       </widget>
                      </item>
@@ -2520,7 +2520,7 @@
                       <item>
                        <widget class="QRadioButton" name="RB_TCP">
                         <property name="text">
-                         <string>&amp;TCP</string>
+                         <string>T&amp;CP</string>
                         </property>
                         <property name="checked">
                          <bool>true</bool>
@@ -2571,14 +2571,14 @@
                       <item>
                        <widget class="QLabel" name="Label_Port1">
                         <property name="text">
-                         <string>&amp;Host port</string>
+                         <string>&amp;Host port:</string>
                         </property>
                         <property name="buddy">
                          <cstring>SB_Redir_Port</cstring>
                         </property>
                        </widget>
                       </item>
-                      <item>
+                      <item alignment="Qt::AlignLeft">
                        <widget class="QSpinBox" name="SB_Redir_Port">
                         <property name="minimum">
                          <number>1</number>
@@ -2591,17 +2591,17 @@
                         </property>
                        </widget>
                       </item>
-                      <item>
+                      <item alignment="Qt::AlignRight">
                        <widget class="QLabel" name="Label_To_Guest_IP">
                         <property name="text">
-                         <string>To &amp;guest IP</string>
+                         <string>To &amp;guest IP:</string>
                         </property>
                         <property name="buddy">
                          <cstring>Edit_Guest_IP</cstring>
                         </property>
                        </widget>
                       </item>
-                      <item>
+                      <item alignment="Qt::AlignLeft">
                        <widget class="QLineEdit" name="Edit_Guest_IP">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -2617,17 +2617,17 @@
                         </property>
                        </widget>
                       </item>
-                      <item>
+                      <item alignment="Qt::AlignRight">
                        <widget class="QLabel" name="Label_Port2">
                         <property name="text">
-                         <string>Guest por&amp;t</string>
+                         <string>Guest por&amp;t:</string>
                         </property>
                         <property name="buddy">
                          <cstring>SB_Guest_Port</cstring>
                         </property>
                        </widget>
                       </item>
-                      <item>
+                      <item alignment="Qt::AlignLeft">
                        <widget class="QSpinBox" name="SB_Guest_Port">
                         <property name="minimum">
                          <number>1</number>
@@ -3062,7 +3062,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>970</width>
+     <width>982</width>
      <height>32</height>
     </rect>
    </property>

@@ -55,7 +55,8 @@ class Main_Window: public QMainWindow
         ~Main_Window();
 		
 	private slots:
-		void on_Machines_List_currentItemChanged( QListWidgetItem *current, QListWidgetItem *previous );
+		void on_Machines_List_currentItemChanged( QListWidgetItem *current,
+							  QListWidgetItem *previous );
 		void on_Machines_List_customContextMenuRequested( const QPoint &pos );
 		void on_Machines_List_itemDoubleClicked( QListWidgetItem *item );
 		void VM_State_Changed( Virtual_Machine *vm, VM::VM_State s );
@@ -123,10 +124,11 @@ class Main_Window: public QMainWindow
 		void on_TB_Update_Available_RAM_Size_clicked();
 		void Update_RAM_Size_ComboBox( int freeRAM );
 		
-		QStringList Create_Info_HDD_String( const QString &disk_format, const VM::Device_Size &virtual_size,
-											const VM::Device_Size &disk_size, int cluster_size );
-		
-		
+		QStringList Create_Info_HDD_String( const QString &disk_format,
+						   const VM::Device_Size &virtual_size,
+						   const VM::Device_Size &disk_size,
+						    int cluster_size );
+
 		// Network Tab
 		void on_CH_Use_Network_toggled( bool on );
 		void on_RB_Network_Mode_New_toggled( bool on );
@@ -175,7 +177,8 @@ class Main_Window: public QMainWindow
         bool Save_Or_Discard(bool forced = false);
 
         void Discard_Changes(QDialog*);
-		
+
+		void setStateActionsEnabled(bool enabled);
         void Change_The_Icon(Virtual_Machine*,QString);
 		void Update_VM_Ui( bool update_info_tab = true );
 		void Update_VM_Port_Number();
@@ -183,6 +186,10 @@ class Main_Window: public QMainWindow
 		void Update_Disabled_Controls();
 		void Update_Recent_CD_ROM_Images_List();
 		void Update_Recent_Floppy_Images_List();
+        void Computer_Type_Changed();
+        void Update_Machine_Accelerators();
+        void Update_Accelerator_Options();
+        void Update_Computer_Types();
 		
 		QString Get_Storage_Device_Info_String( const QString &path );
 		
@@ -205,7 +212,6 @@ class Main_Window: public QMainWindow
         QDialog* Advanced_Options;
         QDialog* Accelerator_Options;
         QDialog* Architecture_Options;
-
         Settings_Widget* Display_Settings_Widget;
         Settings_Widget* Media_Settings_Widget;
         Settings_Widget* Network_Settings_Widget;

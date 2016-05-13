@@ -30,6 +30,7 @@
 #include <QHeaderView>
 #include <QValidator>
 #include <QPainter>
+#include <QStandardItem>
 
 #include <memory>
 
@@ -244,49 +245,49 @@ Main_Window::~Main_Window()
 void Main_Window::closeEvent( QCloseEvent *event )
 {
 	if( ! Save_Settings() )
-	{
 		AQGraphic_Error( "void Main_Window::closeEvent( QCloseEvent *event )",
-						 tr("AQEMU"), tr("Cannot Save Settings!"), false );
-	}
-	else
+						 tr("AQEMU"), tr("Could not save main window settings!"), false );
+
+	// Find running VM
+	for( int vx = 0; vx < VM_List.count(); ++vx )
 	{
-		// Find Run VM
-		for( int vx = 0; vx < VM_List.count(); ++vx )
+		if( VM_List[vx]->Get_State() == VM::VMS_Running ||
+			VM_List[vx]->Get_State() == VM::VMS_Pause )
 		{
-			if( VM_List[vx]->Get_State() == VM::VMS_Running ||
-				VM_List[vx]->Get_State() == VM::VMS_Pause )
+			int mes_res = QMessageBox::question( this, tr("Close AQEMU?"),
+												 tr("One or more VMs are running!\nTerminate all running VMs and close AQEMU?"),
+												 QMessageBox::Yes | QMessageBox::No, QMessageBox::No );
+
+			if( mes_res != QMessageBox::Yes )
 			{
-				int mes_res = QMessageBox::question( this, tr("Close AQEMU?"),
-													 tr("One or More VM is Running!\nTerminate All Running VM and Close AQEMU?"),
-													 QMessageBox::Yes | QMessageBox::No, QMessageBox::No );
-				
-				if( mes_res != QMessageBox::Yes )
-				{
-					event->ignore();
-					return;
-				}
-				
-				break;
+				event->ignore();
+				return;
 			}
+
+			break;
 		}
-		
-		// Close All Emu_Ctl and QEMU_Error_Log Windows
-		for( int ex = 0; ex < VM_List.count(); ++ex )
-		{
-			VM_List[ ex ]->Hide_Emu_Ctl_Win();
-			VM_List[ ex ]->Hide_QEMU_Error_Log();
-			VM_List[ ex ]->Stop();
-		}
-		
-		event->accept();
 	}
+
+	// Close All Emu_Ctl and QEMU_Error_Log Windows
+	for( int ex = 0; ex < VM_List.count(); ++ex )
+	{
+		VM_List[ ex ]->Hide_Emu_Ctl_Win();
+		VM_List[ ex ]->Hide_QEMU_Error_Log();
+		VM_List[ ex ]->Stop();
+	}
+
+    if ( ! Save_Or_Discard() )
+        event->ignore();
+    else
+        event->accept();
 }
 
 Virtual_Machine *Main_Window::Get_VM_By_UID( const QString &uid )
 {
 	for( int ix = 0; ix < VM_List.count(); ix++ )
 	{
-		if( VM_List[ix]->Get_UID() == uid ) return VM_List[ ix ];
+		if( VM_List[ix]->Get_UID() == uid )
+            return VM_List[ ix ];
 	}
 	
 	// VM Not Found!
@@ -297,7 +298,8 @@ Virtual_Machine *Main_Window::Get_VM_By_UID( const QString &uid )
 
 Virtual_Machine *Main_Window::Get_Current_VM()
 {
-	if( ui.Machines_List->currentRow() < 0 ) return NULL;
+	if( ui.Machines_List->currentRow() < 0 )
+        return NULL;
 	
 	return Get_VM_By_UID( ui.Machines_List->currentItem()->data(256).toString() );
 }
@@ -310,19 +312,15 @@ void Main_Window::Connect_Signals()
 	
 	connect( ui.CB_Computer_Type, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(VM_Changed()) );
-	
-    //
-    /* tobgle //FIXME extra cpu settings
-	connect( ui.CB_CPU_Type, SIGNAL(currentIndexChanged(int)),
+
+    connect( ui_arch.CB_CPU_Type, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(VM_Changed()) );
-    */
 	
 	connect( ui.CB_CPU_Count, SIGNAL(editTextChanged(const QString &)),
 			 this, SLOT(VM_Changed()) );
 
-    /* tobgle //FIXME extra cpu settings	
-	connect( ui.CB_Machine_Type, SIGNAL(currentIndexChanged(int)),
-			 this, SLOT(VM_Changed()) );*/
+    connect( ui_arch.CB_Machine_Type, SIGNAL(currentIndexChanged(int)),
+             this, SLOT(VM_Changed()) );
 	
 	connect( ui.CB_Boot_Priority, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(VM_Changed()) );
@@ -387,102 +385,54 @@ void Main_Window::Connect_Signals()
 	connect( ui_ao.CH_No_Shutdown, SIGNAL(clicked()),
 			 this, SLOT(VM_Changed()) );
 	
-/*
-    //TODO: legacy code ready for removal
-	// Hard Drives 
-	connect( ui.GB_HDA, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.Edit_HDA_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.GB_HDB, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.Edit_HDB_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.GB_HDC, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.Edit_HDC_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.GB_HDD, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.Edit_HDD_Image_Path, SIGNAL(textChanged(const QString &)),
-	        this, SLOT(VM_Changed()) );
-	
-	// CD-ROM
-	connect( ui.CH_CDROM, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.CB_CDROM_Devices, SIGNAL(currentIndexChanged(int)),
-	        this, SLOT(VM_Changed()) );
-	
-	// FDD 1
-	connect( ui.CH_Floppy0, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.CB_FD0_Devices, SIGNAL(currentIndexChanged(int)),
-	        this, SLOT(VM_Changed()) );
-	
-	// FDD 2
-	connect( ui.CH_Floppy1, SIGNAL(toggled(bool)),
-	        this, SLOT(VM_Changed()) );
-	
-	connect( ui.CB_FD1_Devices, SIGNAL(currentIndexChanged(int)),
-	        this, SLOT(VM_Changed()) );*/
-	
 	// Network Tab
 	connect( ui.CH_Use_Network, SIGNAL(clicked()),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.RB_Network_Mode_Old, SIGNAL(toggled(bool)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.RB_Network_Mode_New, SIGNAL(toggled(bool)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( New_Network_Settings_Widget, SIGNAL(Changed()),
 			 this, SLOT(VM_Changed()) );
 
 	connect( Old_Network_Settings_Widget, SIGNAL(Changed()),
 			 this, SLOT(VM_Changed()) );
-	
+
 	// Ports
 	connect( Ports_Tab, SIGNAL(Settings_Changed()),
 			 this, SLOT(VM_Changed()) );
-	
+
 	// Additional Network Settings
 	connect( ui.CH_Redirections, SIGNAL(toggled(bool)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.Redirections_List, SIGNAL(itemChanged(QTableWidgetItem*)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.RB_TCP, SIGNAL(toggled(bool)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.RB_UDP, SIGNAL(toggled(bool)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.SB_Redir_Port, SIGNAL(valueChanged(int)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.Edit_Guest_IP, SIGNAL(textChanged(const QString &)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.SB_Guest_Port, SIGNAL(valueChanged(int)),
 			 this, SLOT(VM_Changed()) );
-	
+
 	connect( ui.RB_TCP, SIGNAL(toggled(bool)),
 			 this, SLOT(Update_Current_Redirection_Item()) );
-	
+
 	connect( ui.RB_UDP, SIGNAL(toggled(bool)),
 			 this, SLOT(Update_Current_Redirection_Item()) );
-	
+
 	connect( ui.SB_Redir_Port, SIGNAL(valueChanged(int)),
 			 this, SLOT(Update_Current_Redirection_Item()) );
 	
@@ -704,11 +654,20 @@ Available_Devices Main_Window::Get_Current_Machine_Devices( bool *ok ) const
 	for( QMap<QString, Available_Devices>::const_iterator ix = allDevList.constBegin(); ix != allDevList.constEnd(); ++ix )
 	{
 		if( ui.CB_Computer_Type->currentText() == ix.value().System.Caption )
-		{
+        {
 			*ok = true;
 			return ix.value();
 		}
-	}
+    }
+
+    for( QMap<QString, Available_Devices>::const_iterator ix = allDevList.constBegin(); ix != allDevList.constEnd(); ++ix )
+    {
+        if( ui.CB_Computer_Type->currentText() == ix.value().System.Caption )
+        {
+            *ok = true;
+            return ix.value();
+        }
+    }
 	
 	// Not found
 	AQError( "Available_Devices Main_Window::Get_Current_Machine_Devices( bool *ok ) const",
@@ -728,7 +687,8 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
         if ( show_user_errors )
     		AQError( "bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *old_vm )",
 				 "old_vm == NULL" );
-		return false;
+
+        return false;
 	}
 	
 	// Save file name
@@ -742,7 +702,8 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	{
         if ( show_user_errors )
     		AQGraphic_Warning( tr("Error!"), tr("VM Name is Empty!") );
-		return false;
+
+        return false;
 	}
 	else
 	{
@@ -770,7 +731,11 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// Get devices
 	bool curMachineOk = false;
 	Available_Devices curComp = Get_Current_Machine_Devices( &curMachineOk );
-	if( ! curMachineOk ) return false;
+	if( ! curMachineOk )
+    {
+        return false;
+    }
+
     // Machine Accelerator
     tmp_vm->Set_Machine_Accelerator( VM::String_To_Accel( ui.CB_Machine_Accelerator->currentText() ) );
 	
@@ -779,7 +744,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	
 	// Machine Type
 	tmp_vm->Set_Machine_Type( curComp.Machine_List[ui_arch.CB_Machine_Type->currentIndex()].QEMU_Name );
-	
+
 	// CPU Type
 	tmp_vm->Set_CPU_Type( curComp.CPU_List[ui_arch.CB_CPU_Type->currentIndex()].QEMU_Name );
 	
@@ -795,7 +760,10 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
     }
 	
 	// CPU Count
-	if( ! Validate_CPU_Count(ui.CB_CPU_Count->currentText()) ) return false;
+    if( ! Validate_CPU_Count(ui.CB_CPU_Count->currentText()) )
+    {
+        return false;
+    }
 	tmp_vm->Set_SMP_CPU_Count( ui.CB_CPU_Count->currentText().toInt() );
 	tmp_vm->Set_SMP( SMP_Settings.Get_Values() );
 	
@@ -812,124 +780,55 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// Audio
 	VM::Sound_Cards snd_card;
 	
-	if( ui.CH_sb16->isChecked() ) snd_card.Audio_sb16 = true;
-	else snd_card.Audio_sb16 = false;
-	
-	if( ui.CH_es1370->isChecked() ) snd_card.Audio_es1370 = true;
-	else snd_card.Audio_es1370 = false;
-	
-	if( ui.CH_Adlib->isChecked() ) snd_card.Audio_Adlib = true;
-	else snd_card.Audio_Adlib = false;
-	
-	if( ui.CH_PCSPK->isChecked() ) snd_card.Audio_PC_Speaker = true;
-	else snd_card.Audio_PC_Speaker = false;
-	
-	if( ui.CH_GUS->isChecked() ) snd_card.Audio_GUS = true;
-	else snd_card.Audio_GUS = false;
-	
-	if( ui.CH_AC97->isChecked() ) snd_card.Audio_AC97 = true;
-	else snd_card.Audio_AC97 = false;
-	
-	if( ui.CH_HDA->isChecked() ) snd_card.Audio_HDA = true;
-	else snd_card.Audio_HDA = false;
-	
-	if( ui.CH_cs4231a->isChecked() ) snd_card.Audio_cs4231a = true;
-	else snd_card.Audio_cs4231a = false;
-	
+	snd_card.Audio_sb16 = ui.CH_sb16->isChecked();
+	snd_card.Audio_es1370 = ui.CH_es1370->isChecked();
+	snd_card.Audio_Adlib = ui.CH_Adlib->isChecked();
+	snd_card.Audio_PC_Speaker = ui.CH_PCSPK->isChecked();
+	snd_card.Audio_GUS = ui.CH_GUS->isChecked();
+	snd_card.Audio_AC97 = ui.CH_AC97->isChecked();
+	snd_card.Audio_HDA = ui.CH_HDA->isChecked();
+	snd_card.Audio_cs4231a = ui.CH_cs4231a->isChecked();
+
 	tmp_vm->Set_Audio_Cards( snd_card );
-	
+
 	// Memory
 	tmp_vm->Set_Memory_Size( ui.Memory_Size->value() );
-	
+
 	// Check free ram
 	tmp_vm->Set_Remove_RAM_Size_Limitation( ui.CH_Remove_RAM_Size_Limitation->isChecked() );
-	
+
 	// Options
 	tmp_vm->Use_Fullscreen_Mode( ui.CH_Fullscreen->isChecked() );
 	tmp_vm->Use_Win2K_Hack( ui_ao.CH_Win2K_Hack->isChecked() );
 	tmp_vm->Use_Local_Time( ui.CH_Local_Time->isChecked() );
-	
+
 	tmp_vm->Use_Check_FDD_Boot_Sector( ui_ao.CH_FDD_Boot->isChecked() );
 	tmp_vm->Use_ACPI( ui_ao.CH_ACPI->isChecked() );
 	tmp_vm->Use_Snapshot_Mode( ui.CH_Snapshot->isChecked() );
 	tmp_vm->Use_Start_CPU( ui_ao.CH_Start_CPU->isChecked() );
 	tmp_vm->Use_No_Reboot( ui_ao.CH_No_Reboot->isChecked() );
 	tmp_vm->Use_No_Shutdown( ui_ao.CH_No_Shutdown->isChecked() );
-	
-	// Use Device Manager Mode
-	//if( Settings.value("Use_Device_Manager", "no").toString() == "yes" )
-	//{
-		tmp_vm->Set_FD0( Dev_Manager->Floppy1 );
-		tmp_vm->Set_FD1( Dev_Manager->Floppy2 );
-		tmp_vm->Set_CD_ROM( Dev_Manager->CD_ROM );
-		
-		tmp_vm->Set_HDA( Dev_Manager->HDA );
-		tmp_vm->Set_HDB( Dev_Manager->HDB );
-		tmp_vm->Set_HDC( Dev_Manager->HDC );
-		tmp_vm->Set_HDD( Dev_Manager->HDD );
-		
-		tmp_vm->Set_Storage_Devices_List( Dev_Manager->Storage_Devices );
-	/*}
-	else
-	{
-        //TODO: legacy code ready for removal
-		// Floppy 1
-		VM_Storage_Device tmp_fd;
-		
-		tmp_fd.Set_Enabled( ui.CH_Floppy0->isChecked() );
-		tmp_fd.Set_File_Name( ui.CB_FD0_Devices->currentText() );
-		tmp_fd.Set_Nativ_Device( Nativ_FD0 );
-		tmp_vm->Set_FD0( tmp_fd );
-		
-		// Floppy 2
-		tmp_fd.Set_Enabled( ui.CH_Floppy1->isChecked() );
-		tmp_fd.Set_File_Name( ui.CB_FD1_Devices->currentText() );
-		tmp_fd.Set_Nativ_Device( Nativ_FD1 );
-		tmp_vm->Set_FD1( tmp_fd );
-		
-		// CD-ROM
-		VM_Storage_Device tmp_cd;
-		
-		tmp_cd.Set_Enabled( ui.CH_CDROM->isChecked() );
-		tmp_cd.Set_File_Name( ui.CB_CDROM_Devices->currentText() );
-		tmp_cd.Set_Nativ_Device( Nativ_CD_ROM );
-		tmp_vm->Set_CD_ROM( tmp_cd );
-		
-		// Hard Disks
-		VM_HDD tmp_hd;
-		
-		tmp_hd.Set_Enabled( ui.GB_HDA->isChecked() );
-		tmp_hd.Set_File_Name( ui.Edit_HDA_Image_Path->text() );
-		tmp_hd.Set_Nativ_Device( Nativ_HDA );
-		tmp_vm->Set_HDA( tmp_hd );
-		
-		tmp_hd.Set_Enabled( ui.GB_HDB->isChecked() );
-		tmp_hd.Set_File_Name( ui.Edit_HDB_Image_Path->text() );
-		tmp_hd.Set_Nativ_Device( Nativ_HDB );
-		tmp_vm->Set_HDB( tmp_hd );
-		
-		tmp_hd.Set_Enabled( ui.GB_HDC->isChecked() );
-		tmp_hd.Set_File_Name( ui.Edit_HDC_Image_Path->text() );
-		tmp_hd.Set_Nativ_Device( Nativ_HDC );
-		tmp_vm->Set_HDC( tmp_hd );
-		
-		tmp_hd.Set_Enabled( ui.GB_HDD->isChecked() );
-		tmp_hd.Set_File_Name( ui.Edit_HDD_Image_Path->text() );
-		tmp_hd.Set_Nativ_Device( Nativ_HDD );
-		tmp_vm->Set_HDD( tmp_hd );
-        
-	}*/
 
+	tmp_vm->Set_FD0( Dev_Manager->Floppy1 );
+	tmp_vm->Set_FD1( Dev_Manager->Floppy2 );
+	tmp_vm->Set_CD_ROM( Dev_Manager->CD_ROM );
+
+	tmp_vm->Set_HDA( Dev_Manager->HDA );
+	tmp_vm->Set_HDB( Dev_Manager->HDB );
+	tmp_vm->Set_HDC( Dev_Manager->HDC );
+	tmp_vm->Set_HDD( Dev_Manager->HDD );
+
+	tmp_vm->Set_Storage_Devices_List( Dev_Manager->Storage_Devices );
 
     // Shared Folders
 	tmp_vm->Set_Shared_Folders_List( Folder_Sharing->Shared_Folders );
-	
+
 	// Network Tab
 	tmp_vm->Set_Use_Network( ui.CH_Use_Network->isChecked() );
-	
+
 	// Use Nativ Network
 	tmp_vm->Use_Nativ_Network( ui.RB_Network_Mode_New->isChecked() );
-	
+
 	// Redirections List
 	if( ui.CH_Redirections->isChecked() && ui.Redirections_List->rowCount() < 1 )
 	{
@@ -937,10 +836,10 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
     		AQGraphic_Warning( tr("Error!"), tr("Redirection List is Empty! Please Disable Redirections!") );
 		return false;
 	}
-	
+
 	// Redirections
 	tmp_vm->Set_Use_Redirections( ui.CH_Redirections->isChecked() );
-	
+
 	// Redirections List
 	for( int rx = 0; rx < ui.Redirections_List->rowCount(); rx++ )
 	{
@@ -951,54 +850,62 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
         if ( item == nullptr )
             continue;
 
-		if( ui.Redirections_List->item(rx, 0)->text() == "TCP" ) tmp_redir.Set_Protocol( "TCP" );
-		else tmp_redir.Set_Protocol( "UDP" );
+        if( ui.Redirections_List->item(rx, 0)->text() == "TCP" )
+            tmp_redir.Set_Protocol( "TCP" );
+        else
+            tmp_redir.Set_Protocol( "UDP" );
 
         if ( ui.Redirections_List->item(rx, 1) == nullptr ||
              ui.Redirections_List->item(rx, 2) == nullptr ||
              ui.Redirections_List->item(rx, 3) == nullptr )
             continue;
-		
+
 		tmp_redir.Set_Host_Port( ui.Redirections_List->item(rx, 1)->text().toInt() );
 		tmp_redir.Set_Guest_IP( ui.Redirections_List->item(rx, 2)->text() );
 		tmp_redir.Set_Guest_Port( ui.Redirections_List->item(rx, 3)->text().toInt() );
-		
+
 		tmp_vm->Add_Network_Redirection( tmp_redir );
 	}
-	
+
 	// TFTP
 	tmp_vm->Set_TFTP_Prefix( ui.Edit_TFTP_Prefix->text() );
-	
+
 	// SMB Dir
 	tmp_vm->Set_SMB_Directory( ui.Edit_SMB_Folder->text() );
-	
+
 	// Network Cards
 	QList<VM_Net_Card> tmp_net_cards;
-	if( Old_Network_Settings_Widget->Get_Network_Cards(tmp_net_cards) )
+    if( Old_Network_Settings_Widget->Get_Network_Cards(tmp_net_cards) )
 	{
 		tmp_vm->Set_Network_Cards( tmp_net_cards );
 	}
-	else return false;
-	
+    else
+    {
+        return false;
+    }
+
 	// Nativ
 	QList<VM_Net_Card_Nativ> tmp_net_cards_nativ;
 	if( New_Network_Settings_Widget->Get_Network_Cards(tmp_net_cards_nativ) )
 	{
 		tmp_vm->Set_Network_Cards_Nativ( tmp_net_cards_nativ );
 	}
-	else return false;
-	
+    else
+    {
+        return false;
+    }
+
 	// Port page
 	tmp_vm->Set_Serial_Ports( Ports_Tab->Get_Serial_Ports() );
 	tmp_vm->Set_Parallel_Ports( Ports_Tab->Get_Parallel_Ports() );
 	tmp_vm->Set_USB_Ports( Ports_Tab->Get_USB_Ports() );
-	
+
 	// Other Page
 	tmp_vm->Set_Use_Linux_Boot( ui.CH_Use_Linux_Boot->isChecked() );
 	tmp_vm->Set_bzImage_Path( ui.Edit_Linux_bzImage_Path->text() );
 	tmp_vm->Set_Initrd_Path( ui.Edit_Linux_Initrd_Path->text() );
 	tmp_vm->Set_Kernel_ComLine( ui.Edit_Linux_Command_Line->text() );
-	
+
 	// Optional Images
 	// ROM File
 	tmp_vm->Set_Use_ROM_File( ui.CH_ROM_File->isChecked() );
@@ -1104,7 +1011,10 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// SPICE
 	bool spiceSettingsOK = false;
 	tmp_vm->Set_SPICE( SPICE_Widget->Get_Settings( spiceSettingsOK ) );
-	if( ! spiceSettingsOK ) return false;
+    if( ! spiceSettingsOK )
+    {
+        return false;
+    }
 	
 	// VNC
 	tmp_vm->Use_VNC( ui.CH_Activate_VNC->isChecked() );
@@ -1135,7 +1045,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	
 	// x509 Folder
 	tmp_vm->Set_VNC_x509verify_Folder_Path( ui.Edit_x509verify_Folder->text() );
-	
+
 	return true;
 }
 
@@ -1199,8 +1109,6 @@ bool Main_Window::Save_Settings()
 
 bool Main_Window::Load_Virtual_Machines()
 {
-	AQDebug( "bool Main_Window::Load_Virtual_Machines()", "Begin" );
-	
 	QDir vm_dir( QDir::toNativeSeparators(Settings.value("VM_Directory", "~").toString()) );
 	QFileInfoList fil = vm_dir.entryInfoList( QStringList("*.aqemu"), QDir::Files, QDir::Name );
 	
@@ -1276,8 +1184,7 @@ bool Main_Window::Load_Virtual_Machines()
 	}
 	
 	Update_VM_Ui();
-	
-	AQDebug( "bool Main_Window::Load_Virtual_Machines()", "End" );
+
 	return true;
 }
 
@@ -1288,8 +1195,6 @@ bool Main_Window::Save_Virtual_Machines()
 
 void Main_Window::Update_VM_Ui(bool update_info_tab)
 {
-	AQDebug( "void Main_Window::Update_VM_Ui()", "Begin" );
-	
 	Update_VM_Port_Number();
 	
 	if( ui.Machines_List->currentRow() < 0 )
@@ -1356,10 +1261,10 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 				 "cur_comp not valid!" );
 		return;
 	}
-	
-	// Computer Type 
+
+	// Computer Type
 	int compTypeIndex = ui.CB_Computer_Type->findText( curComp.System.Caption );
-	
+
 	if( compTypeIndex != -1 )
 		ui.CB_Computer_Type->setCurrentIndex( compTypeIndex );
 	else
@@ -1692,9 +1597,7 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 
 	// For VM Changes Signals
 	ui.Button_Apply->setEnabled( false );
-	ui.Button_Cancel->setEnabled( false );
-	
-	AQDebug( "void Main_Window::Update_VM_Ui()", "End" );
+    ui.Button_Cancel->setEnabled( false );
 }
 
 void Main_Window::Update_VM_Port_Number()
@@ -3359,6 +3262,15 @@ void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)
     delete pix;
 }
 
+void Main_Window::setStateActionsEnabled(bool enabled)
+{
+	ui.actionPower_On->setEnabled( enabled );
+	ui.actionSave->setEnabled( enabled );
+	ui.actionPause->setEnabled( enabled );
+	ui.actionPower_Off->setEnabled( enabled );
+	ui.actionReset->setEnabled( enabled );
+}
+
 void Main_Window::Show_State_Current( Virtual_Machine *vm)
 {
 	if( vm == NULL )
@@ -3382,34 +3294,25 @@ void Main_Window::Show_State_Current( Virtual_Machine *vm)
 	switch( vm->Get_State() )
 	{
 		case VM::VMS_Running:
+		    setStateActionsEnabled( true );
 			ui.actionPower_On->setEnabled( false );
-			ui.actionSave->setEnabled( true );
-			ui.actionPause->setEnabled( true );
 			ui.actionPause->setChecked( false );
-			ui.actionPower_Off->setEnabled( true );
-			ui.actionReset->setEnabled( true );
 			
 			Set_Widgets_State( false );
 			break;
 			
 		case VM::VMS_Power_Off:
+		    setStateActionsEnabled( false );
 			ui.actionPower_On->setEnabled( true );
-			ui.actionSave->setEnabled( false );
-			ui.actionPause->setEnabled( false );
 			ui.actionPause->setChecked( false );
-			ui.actionPower_Off->setEnabled( false );
-			ui.actionReset->setEnabled( false );
 
 			Set_Widgets_State( true );
 			break;
 			
 		case VM::VMS_Pause:
+		    setStateActionsEnabled( true );
 			ui.actionPower_On->setEnabled( false );
-			ui.actionSave->setEnabled( true );
-			ui.actionPause->setEnabled( true );
 			ui.actionPause->setChecked( true );
-			ui.actionPower_Off->setEnabled( true );
-			ui.actionReset->setEnabled( true );
 
 			Set_Widgets_State( false );
 			break;
@@ -3426,12 +3329,8 @@ void Main_Window::Show_State_Current( Virtual_Machine *vm)
 			break;
 			
 		case VM::VMS_In_Error:
-			ui.actionPower_On->setEnabled( false );
-			ui.actionSave->setEnabled( false );
-			ui.actionPause->setEnabled( false );
+		    setStateActionsEnabled( false );
 			ui.actionPause->setChecked( false );
-			ui.actionPower_Off->setEnabled( false );
-			ui.actionReset->setEnabled( false );
 			Set_Widgets_State( false );
 			
 			Update_Info_Text( 2 );
@@ -3539,7 +3438,7 @@ void Main_Window::VM_Changed()
     }
 }
 
-// FIXME This code be rewrited in future. Delete and create new tabs/layouts not optimal way
+// FIXME This will be rewritten in the future. Deleting and creating new tabs/layouts is not done optimally
 void Main_Window::Update_Emulator_Control( Virtual_Machine *cur_vm )
 {
 	if( cur_vm == NULL )
@@ -4220,8 +4119,7 @@ void Main_Window::on_actionChange_Icon_triggered()
 
 void Main_Window::on_actionAbout_AQEMU_triggered()
 {
-	About_Window about_win( this );
-	about_win.exec();
+	About_Window( this ).exec();
 }
 
 void Main_Window::on_actionAbout_Qt_triggered()
@@ -5182,17 +5080,162 @@ QStringList Main_Window::Create_Info_HDD_String( const QString &disk_format, con
 
 void Main_Window::on_CB_Computer_Type_currentIndexChanged( int index )
 {
-	Apply_Emulator( 3 );
+	Computer_Type_Changed();
 }
 
 void Main_Window::on_CB_Machine_Accelerator_currentIndexChanged( int index )
 {
+	Apply_Emulator( 1 );
+}
+
+
+void Main_Window::Computer_Type_Changed()
+{
+	bool devOk = false;
+	Available_Devices curComp;
+	int comp_index = 0;
+
+	comp_index = ui.CB_Computer_Type->currentIndex();
+
+	if( comp_index < 0 )
+	{
+        AQDebug("index below 00000","asdf");
+	    return;
+	}
+
+	QStringList cl;
+
+    ui_arch.CB_CPU_Type->blockSignals(true);
+    ui_arch.CB_Machine_Type->blockSignals(true);
+    ui.CB_Video_Card->blockSignals(true);
+
+	// CPU
+	ui_arch.CB_CPU_Type->clear();
+
+	cl = QStringList();
+
+	curComp = Get_Current_Machine_Devices( &devOk );
+	if( ! devOk )
+	    return;
+
+	for( int mx = 0; mx < curComp.CPU_List.count(); ++mx )
+		cl << curComp.CPU_List[mx].Caption;
+
+	ui_arch.CB_CPU_Type->addItems( cl );
+
+	// Machine
+	ui_arch.CB_Machine_Type->clear();
+
+	cl = QStringList();
+
+	for( int mx = 0; mx < curComp.Machine_List.count(); ++mx )
+		cl << curComp.Machine_List[mx].Caption;
+
+	ui_arch.CB_Machine_Type->addItems( cl );
+
+	// Video
+	ui.CB_Video_Card->clear();
+
+	cl = QStringList();
+
+	for( int vx = 0; vx < curComp.Video_Card_List.count(); ++vx )
+		cl << curComp.Video_Card_List[vx].Caption;
+
+	ui.CB_Video_Card->addItems( cl );
+
+	// Use Nativ Network Cards FIXME set emulator PSO to net card widget
+	if( ui.RB_Network_Mode_New->isChecked() )
+		New_Network_Settings_Widget->Set_Network_Card_Models( curComp.Network_Card_List );
+	else
+		Old_Network_Settings_Widget->Set_Network_Card_Models( curComp.Network_Card_List );
+
+	// Audio
+	ui.CH_sb16->setEnabled( curComp.Audio_Card_List.Audio_sb16 );
+	ui.CH_es1370->setEnabled( curComp.Audio_Card_List.Audio_es1370 );
+	ui.CH_Adlib->setEnabled( curComp.Audio_Card_List.Audio_Adlib );
+	ui.CH_AC97->setEnabled( curComp.Audio_Card_List.Audio_AC97 );
+	ui.CH_GUS->setEnabled( curComp.Audio_Card_List.Audio_GUS );
+	ui.CH_PCSPK->setEnabled( curComp.Audio_Card_List.Audio_PC_Speaker );
+	ui.CH_HDA->setEnabled( curComp.Audio_Card_List.Audio_HDA );
+	ui.CH_cs4231a->setEnabled( curComp.Audio_Card_List.Audio_cs4231a );
+
+    ui_arch.CB_CPU_Type->blockSignals(false);
+    ui_arch.CB_Machine_Type->blockSignals(false);
+    ui.CB_Video_Card->blockSignals(false);
+
+	// Other Options
+	Update_Disabled_Controls();
+}
+
+void Main_Window::Update_Machine_Accelerators()
+{
+    ui.CB_Machine_Accelerator->blockSignals(true);
+	ui.CB_Machine_Accelerator->clear();
+    ui.CB_Machine_Accelerator->addItem( tr("TCG") );
+	ui.CB_Machine_Accelerator->addItem( tr("KVM") );
+	ui.CB_Machine_Accelerator->addItem( tr("XEN") );
+    ui.CB_Machine_Accelerator->blockSignals(false);
+}
+
+void Main_Window::Update_Accelerator_Options()
+{
     if (ui.CB_Machine_Accelerator->currentText() == "KVM" )
         ui.TB_Show_Accelerator_Options_Window->setEnabled(true);
-    else                
+    else
         ui.TB_Show_Accelerator_Options_Window->setEnabled(false);
+}
 
-	Apply_Emulator( 1 );
+void Main_Window::Update_Computer_Types()
+{
+	QMap<QString, Available_Devices> current_devices;
+	bool devOk = false;
+
+	current_devices = Get_Devices_Info( &devOk );
+	if( ! devOk )
+	    return;
+
+    QString text = ui.CB_Computer_Type->currentText();
+
+    ui.CB_Computer_Type->blockSignals(true);
+
+	ui.CB_Computer_Type->clear();
+
+	for( QMap<QString, Available_Devices>::const_iterator i = current_devices.constBegin(); i != current_devices.constEnd(); i++ )
+    {
+		ui.CB_Computer_Type->addItem( i->System.Caption );
+    }
+    ui.CB_Computer_Type->setCurrentText(text);
+
+    bool only_native = false;
+    if (ui.CB_Machine_Accelerator->currentText() == "KVM" ||
+        ui.CB_Machine_Accelerator->currentText() == "XEN" )
+    {
+        only_native = true;
+    }
+
+    auto model = qobject_cast<QStandardItemModel*>(ui.CB_Computer_Type->model());
+
+    for ( int i = 0; i < model->rowCount(); i++)
+    {
+        auto item = model->item(i);
+
+        if ( item->text() == "IBM PC 64Bit" ) //FIXME: shouldn't be hardcoded
+        {
+            if (only_native)
+                ui.CB_Computer_Type->setCurrentText(item->text());
+            continue;
+        }
+
+        item->setFlags(only_native ? item->flags() & ~(Qt::ItemIsSelectable|Qt::ItemIsEnabled)
+                                         : (Qt::ItemIsSelectable|Qt::ItemIsEnabled));
+        // visually disable by greying out - works only if combobox has been
+        // painted already and palette returns the wanted color
+        item->setData(only_native ? ui.CB_Computer_Type->palette().color(QPalette::Disabled, QPalette::Text)
+                          : QVariant(), // clear item data in order to use default color
+                      Qt::TextColorRole);
+    }
+
+    ui.CB_Computer_Type->blockSignals(false);
 }
 
 void Main_Window::Apply_Emulator( int mode )
@@ -5200,171 +5243,75 @@ void Main_Window::Apply_Emulator( int mode )
 	// FIXME
 	//static bool firstRun = true;
 	static bool running = false;
-	
-	if( GUI_User_Mode == false ) return;
+
+	if( GUI_User_Mode == false )
+	    return;
 	//if( running == true && firstRun == false ) return;
-	
+
 	//firstRun = false;
-	if( running == true ) return;
+	if( running == true )
+	    return;
 	running = true;
-	
-	// Variables for switch
-	int comp_index;
-	QStringList cl;
-	bool q = false, k = false;
-	QMap<QString, Available_Devices> current_devices;
-	Available_Devices curComp;
-	bool devOk = false;
-	
+
 	switch( mode )
 	{
 		case 0:
 			// Machine Accelerators
-			/*for( int ix = 0; ix < All_Emulators_List.count(); ix++ )
-			{
-				if( All_Emulators_List[ix].Get_Type() == VM::QEMU ) q = true;
-				else if( All_Emulators_List[ix].Get_Type() == VM::KVM ) k = true;
-				else AQWarning( "void Main_Window::Apply_Emulator( int mode )", "Incorrect Emulator Type!" );
-			}
-			*/
-
-			ui.CB_Machine_Accelerator->clear();
-		    ui.CB_Machine_Accelerator->addItem( tr("TCG") );
-			ui.CB_Machine_Accelerator->addItem( tr("KVM") );
-			ui.CB_Machine_Accelerator->addItem( tr("XEN") );
-			
+			Update_Machine_Accelerators();
 		case 1:
-            //obsolete (was used for Emulater Version in AQEMU < 0.9.1)
-            if ( Get_Current_VM() != nullptr )
-                Get_Current_VM()->Set_Machine_Accelerator(VM::String_To_Accel(ui.CB_Machine_Accelerator->currentText()));
-            
+            Update_Accelerator_Options();
 		case 2:
 			// Computer Type
-			ui.CB_Computer_Type->clear();
-			
-			current_devices = Get_Devices_Info( &devOk );
-			if( ! devOk ) return;
-			
-			for( QMap<QString, Available_Devices>::const_iterator i = current_devices.constBegin(); i != current_devices.constEnd(); i++ )
-				ui.CB_Computer_Type->addItem( i->System.Caption );
-			
+		    Update_Computer_Types();
 		case 3:
-			comp_index = ui.CB_Computer_Type->currentIndex();
-			
-			if( comp_index < 0 ) return;
-			
-			// CPU
-			ui_arch.CB_CPU_Type->clear();
-			
-			cl = QStringList();
-			
-			curComp = Get_Current_Machine_Devices( &devOk );
-			if( ! devOk ) return;
-			
-			for( int mx = 0; mx < curComp.CPU_List.count(); ++mx )
-				cl << curComp.CPU_List[mx].Caption;
-			
-			ui_arch.CB_CPU_Type->addItems( cl );
-			
-			// Machine
-			ui_arch.CB_Machine_Type->clear();
-			
-			cl = QStringList();
-			
-			for( int mx = 0; mx < curComp.Machine_List.count(); ++mx )
-				cl << curComp.Machine_List[mx].Caption;
-			
-			ui_arch.CB_Machine_Type->addItems( cl );
-			
-			// Video
-			ui.CB_Video_Card->clear();
-			
-			cl = QStringList();
-			
-			for( int vx = 0; vx < curComp.Video_Card_List.count(); ++vx )
-				cl << curComp.Video_Card_List[vx].Caption;
-			
-			ui.CB_Video_Card->addItems( cl );
-			
-			// Use Nativ Network Cards FIXME set emulator PSO to net card widget
-			if( ui.RB_Network_Mode_New->isChecked() )
-				New_Network_Settings_Widget->Set_Network_Card_Models( curComp.Network_Card_List );
-			else
-				Old_Network_Settings_Widget->Set_Network_Card_Models( curComp.Network_Card_List );
-			
-			// Audio
-			if( curComp.Audio_Card_List.Audio_sb16 ) ui.CH_sb16->setEnabled( true );
-			else ui.CH_sb16->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_es1370 ) ui.CH_es1370->setEnabled( true );
-			else ui.CH_es1370->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_Adlib ) ui.CH_Adlib->setEnabled( true );
-			else ui.CH_Adlib->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_AC97 ) ui.CH_AC97->setEnabled( true );
-			else ui.CH_AC97->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_GUS ) ui.CH_GUS->setEnabled( true );
-			else ui.CH_GUS->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_PC_Speaker ) ui.CH_PCSPK->setEnabled( true );
-			else ui.CH_PCSPK->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_HDA ) ui.CH_HDA->setEnabled( true );
-			else ui.CH_HDA->setEnabled( false );
-			
-			if( curComp.Audio_Card_List.Audio_cs4231a ) ui.CH_cs4231a->setEnabled( true );
-			else ui.CH_cs4231a->setEnabled( false );
-			
-			// Other Options
-			Update_Disabled_Controls();
-			break;
-			
+            Computer_Type_Changed();
+            break;
+
 		default:
 			AQWarning( "void Main_Window::Apply_Emulator( int mode )", "Default Section!" );
 			break;
 	}
-	
-	running = false;
+
+	VM_Changed();
+    running = false;
 }
 
 void Main_Window::CB_Boot_Priority_currentIndexChanged( int index )
 {
 	// Clear old string
 	if( ui.CB_Boot_Priority->count() >= 5 ) ui.CB_Boot_Priority->removeItem( 5 );
-	
+
 	VM::Boot_Device bootDev;
-	
+
 	switch( ui.CB_Boot_Priority->currentIndex() )
 	{
 		case 0:
 			bootDev = VM::Boot_From_FDA;
 			break;
-			
+
 		case 1:
 			bootDev = VM::Boot_From_HDD;
 			break;
-			
+
 		case 2:
 			bootDev = VM::Boot_From_CDROM;
 			break;
-			
+
 		case 3:
 			bootDev = VM::Boot_From_Network1;
 			break;
-			
+
 		case 4:
 			bootDev = VM::Boot_None;
 			break;
-			
+
 		default:
 			AQWarning( "void Main_Window::on_CB_Boot_Priority_currentIndexChanged( int index )",
 					   "Use Default Boot Device: CD-ROM" );
 			bootDev = VM::Boot_From_CDROM;
 			break;
 	}
-	
+
 	for( int bx = 0; bx < Boot_Order_List.count(); bx++ )
 	{
 		if( Boot_Order_List[bx].Type == bootDev ) Boot_Order_List[ bx ].Enabled = true;
@@ -5378,9 +5325,9 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 {
 	disconnect( ui.CB_Boot_Priority, SIGNAL(currentIndexChanged(int)),
 				this, SLOT(CB_Boot_Priority_currentIndexChanged(int)) );
-	
+
 	QStringList bootStr;
-	
+
 	for( int ix = 0; ix < list.count(); ix++ )
 	{
 		if( list[ix].Enabled )
@@ -5390,35 +5337,35 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 				case VM::Boot_From_FDA:
 					bootStr << "FDA";
 					break;
-					
+
 				case VM::Boot_From_FDB:
 					bootStr << "FDB";
 					break;
-					
+
 				case VM::Boot_From_CDROM:
 					bootStr << "CDROM";
 					break;
-					
+
 				case VM::Boot_From_HDD:
 					bootStr << "HDD";
 					break;
-					
+
 				case VM::Boot_From_Network1:
 					bootStr << "Net1";
 					break;
-					
+
 				case VM::Boot_From_Network2:
 					bootStr << "Net2";
 					break;
-					
+
 				case VM::Boot_From_Network3:
 					bootStr << "Net3";
 					break;
-					
+
 				case VM::Boot_From_Network4:
 					bootStr << "Net4";
 					break;
-					
+
 				default:
 					AQWarning( "void Main_Window::Set_Boot_Order( QList<VM::Boot_Order> &list )",
 							   "Incorrect boot device type!" );
@@ -5426,10 +5373,10 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 			}
 		}
 	}
-	
+
 	// Clear old string
 	if( ui.CB_Boot_Priority->count() >= 5 ) ui.CB_Boot_Priority->removeItem( 5 );
-	
+
 	// Select boot device
 	if( bootStr.count() < 1 ) // None
 	{
@@ -5451,7 +5398,7 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 	else // More (Boot order list)
 	{
 		QString itemText = "";
-		
+
 		for( int ix = 0; ix < bootStr.count(); ix++ )
 		{
 			itemText += bootStr[ ix ];
