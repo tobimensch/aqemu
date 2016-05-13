@@ -28,6 +28,13 @@
 
 #include "VM_Devices.h"
 
+class Disable_User_Graphic_Warning
+{
+    public:
+        Disable_User_Graphic_Warning();
+        ~Disable_User_Graphic_Warning();
+};
+
 void AQDebug( const QString &sender, const QString &mes );
 void AQWarning( const QString &sender, const QString &mes );
 void AQError( const QString &sender, const QString &mes );

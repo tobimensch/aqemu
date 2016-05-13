@@ -56,8 +56,21 @@ static bool Stdout_Debug;
 static bool Stdout_Warning;
 static bool Stdout_Error;
 
+static bool Show_User_Graphic_Warning = true;
+
 static QStringList Recent_CD_Images;
 static QStringList Recent_FDD_Images;
+
+Disable_User_Graphic_Warning::Disable_User_Graphic_Warning()
+{
+    Show_User_Graphic_Warning = false;
+    AQError("Disable_User_Graphic_Warning::Disable_User_Graphic_Warning()","SET IT FALSE");
+}
+Disable_User_Graphic_Warning::~Disable_User_Graphic_Warning()
+{
+    Show_User_Graphic_Warning = true;
+    AQError("Disable_User_Graphic_Warning::Disable_User_Graphic_Warning()","SET IT TRUE");
+}
 
 void AQDebugStdCout(const QString& s)
 {
@@ -130,11 +143,17 @@ void AQError( const QString &sender, const QString &mes )
 
 void AQGraphic_Warning( const QString &caption, const QString &mes )
 {
+    if ( Show_User_Graphic_Warning == false )
+        return;
+
 	QMessageBox::warning( NULL, caption, mes, QMessageBox::Ok );
 }
 
 void AQGraphic_Warning( const QString &sender, const QString &caption, const QString &mes, bool fatal )
 {
+    if ( Show_User_Graphic_Warning == false )
+        return;
+
 	if( fatal )
 	{
 		QMessageBox::warning( NULL, caption,
