@@ -44,7 +44,7 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	"<br>Tobias Gläßer - Maintainer/Developer (Version 0.9.0 and up)\n"
 
 	"<br><br><b>Contributors:</b>\n"
-	"<br>Georg Schlisio - Archlinux "
+    "<br>Georg Schlisio - Arch Linux Packaging and Testing\n"
 	"<br>Eli Carter - Sound card support patches\n"
 	"<br>Max Brazhnikov - FreeBSD Port\n"
 	"<br>Boris Savelev - ALTLinux Package\n"
