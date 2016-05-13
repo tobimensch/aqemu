@@ -35,26 +35,13 @@ class About_Window: public QDialog
 		About_Window( QWidget *parent = 0 );
 		
 	private slots:
-		void on_Button_Update_Links_clicked();
 		void Show_Links_File();
-		void Cancel_Download();
-		void HTTP_Request_Finished( int requestId, bool error );
-
-        /* //TODO: Qt5 port
-		void Read_Response_Header( const QHttpResponseHeader& responseHeader );
-		*/
 
 	private:
 		Ui::About_Window ui;
-		
+
 		QString linksFilePath;
-		
-        //TODO: Qt5 port
-        /*
-		QHttp *HTTP;
-		QFile *File;
-		int HTTP_Get_Id;
-		bool HTTP_Request_Aborted;*/
+
 };
 
 #endif

@@ -36,24 +36,15 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	
 	// Minimum Size
 	resize( width(), minimumSizeHint().height() );
-	
-    /* //TODO: Qt5 port
-	HTTP = new QHttp( this );
-	
-	connect( HTTP, SIGNAL(requestFinished(int, bool)),
-			 this, SLOT(HTTP_Request_Finished(int, bool)) );
-	
-	connect( HTTP, SIGNAL(responseHeaderReceived(const QHttpResponseHeader&)),
-			 this, SLOT(Read_Response_Header(const QHttpResponseHeader&)) );
-    */	
 
 	// Thanks HTML Text
 	ui.Edit_Thanks_To_Text->setHtml( tr(
 	"<b>Developers:</b>\n"
 	"<br>Andrey Rijov (aka RDron) - Original Author (Up until version 0.8.2)\n"
 	"<br>Tobias Gläßer - Maintainer/Developer (Version 0.9.0 and up)\n"
-	
+
 	"<br><br><b>Contributors:</b>\n"
+	"<br>Georg Schlisio - Archlinux "
 	"<br>Eli Carter - Sound card support patches\n"
 	"<br>Max Brazhnikov - FreeBSD Port\n"
 	"<br>Boris Savelev - ALTLinux Package\n"
@@ -96,42 +87,11 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
     ui.Tabs->setCurrentIndex(0);
 }
 
-void About_Window::on_Button_Update_Links_clicked()
-{
-    //TODO: Qt5 port
-    /*
-	QUrl url( "http://aqemu.sourceforge.net/aqemu_links.html" );
-	
-	//if( QFile::exists(linksFilePath) ) QFile::remove( linksFilePath );
-	
-	File = new QFile( linksFilePath );
-	if( ! File->open(QIODevice::WriteOnly) )
-	{
-		AQGraphic_Warning( tr("Error!"),
-						   tr("Unable to save the file %1: %2.").arg(linksFilePath).arg(File->errorString()) );
-		
-		delete File;
-		File = 0;
-		return;
-	}
-	
-	QHttp::ConnectionMode mode = QHttp::ConnectionModeHttp;
-	HTTP->setHost( url.host(), mode, url.port() == -1 ? 0 : url.port() );
-	
-	HTTP_Request_Aborted = false;
-	QByteArray path = QUrl::toPercentEncoding( url.path(), "!$&'()*+,;=:@/" );
-	if( path.isEmpty() ) path = "/";
-	HTTP_Get_Id = HTTP->get( path, File );
-	
-	ui.Button_Update_Links->setEnabled( false );
-    */
-}
-
 void About_Window::Show_Links_File()
 {
 	QSettings settings;
 	QString show_url;
-	
+
 	if( QFile::exists(linksFilePath) )
 	{
 		show_url = linksFilePath;
@@ -146,9 +106,9 @@ void About_Window::Show_Links_File()
 						   tr("Cannot Find AQEMU Links File!") );
 		return;
 	}
-	
+
 	QFile links_file( show_url );
-	
+
 	if( ! links_file.open(QIODevice::ReadOnly | QIODevice::Text) )
 	{
 		AQError( "void About_Window::Show_Links_File()",
@@ -162,71 +122,4 @@ void About_Window::Show_Links_File()
 		ui.Links_View->setHtml( all );
 	}
 }
-
-void About_Window::Cancel_Download()
-{
-    //TODO: Qt5 port
-    /*
-	HTTP_Request_Aborted = true;
-	HTTP->abort();
-	ui.Button_Update_Links->setEnabled( true );
-    */
-}
-
-void About_Window::HTTP_Request_Finished( int requestId, bool error )
-{
-    //TODO: Qt5 port
-    /*
-	if( requestId != HTTP_Get_Id ) return;
-	
-	if( HTTP_Request_Aborted )
-	{
-		if( File )
-		{
-			File->close();
-			File->remove();
-			delete File;
-			File = 0;
-		}
-		return;
-	}
-	
-	File->close();
-	
-	if( error )
-	{
-		File->remove();
-		AQGraphic_Warning( tr("Error!"),
-						   tr("Download failed: %1.").arg(HTTP->errorString()) );
-	}
-	
-	ui.Button_Update_Links->setEnabled( true );
-	delete File;
-	File = 0;
-	
-	if( ! error ) Show_Links_File();
-    */
-}
-
-    //TODO: Qt5 port
-    /*
-void About_Window::Read_Response_Header( const QHttpResponseHeader &responseHeader )
-{
-	switch( responseHeader.statusCode() )
-	{
-		case 200: // OK
-		case 301: // Moved Permanently
-		case 302: // Found
-		case 303: // See Other
-		case 307: // Temporary Redirect
-		break;
-		
-		default:
-			AQGraphic_Warning( tr("Error!"),
-							   tr("Download failed: %1.").arg(responseHeader.reasonPhrase()) );
-			HTTP_Request_Aborted = true;
-			HTTP->abort();
-	}
-}
-*/
 
