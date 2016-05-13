@@ -216,6 +216,14 @@ void Settings_Widget::syncGroupIconSizes(QString g)
         }
     }
 
+    //minimum total list width
+    int min_total_list_width = 15;
+    for ( int j = 0; j < max_width.count(); j++ )
+    {
+        //int h = sw->list->item(j)->sizeHint().height();
+        min_total_list_width += max_width.at(j) +5;
+    }
+
     //then apply max_width to all
     for( int i = 0; i < list.count(); i++ )
     {
@@ -232,6 +240,8 @@ void Settings_Widget::syncGroupIconSizes(QString g)
             sw->list->setMinimumHeight(max_list_height);
             sw->list->setMaximumHeight(max_list_height);
         }
+        sw->list->setMinimumWidth(min_total_list_width);
+        sw->stack->setMinimumWidth(min_total_list_width);
     }
 
     
