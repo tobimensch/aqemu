@@ -28,12 +28,15 @@
 #include "VM_Devices.h"
 #include "ui_Advanced_Settings_Window.h"
 
+class Settings_Widget;
+
 class Advanced_Settings_Window: public QDialog
 {
 	Q_OBJECT
 	
 	public:
 		Advanced_Settings_Window( QWidget *parent = 0 );
+        ~Advanced_Settings_Window();
 	
 	public slots:
 		void done(int);
@@ -73,6 +76,7 @@ class Advanced_Settings_Window: public QDialog
 	private:
 		Ui::Advanced_Settings_Window ui;
 		QSettings Settings;
+        Settings_Widget* settings_widget;
 		
 		QList<Emulator> Emulators;
 };

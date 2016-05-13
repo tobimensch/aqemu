@@ -40,7 +40,7 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 {
 	ui.setupUi( this );
 
-    auto sw = new Settings_Widget( ui.All_Tabs, QBoxLayout::TopToBottom, true, false );
+    settings_widget = new Settings_Widget( ui.All_Tabs, QBoxLayout::TopToBottom, true, false );
 	
 	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Emulators_Table );
 	hv->setSectionResizeMode( QHeaderView::Fixed );
@@ -313,6 +313,11 @@ Advanced_Settings_Window::Advanced_Settings_Window( QWidget *parent )
 	
 	connect( ui.CB_Language, SIGNAL(currentIndexChanged(int)),
 			 this, SLOT(CB_Language_currentIndexChanged(int)) );
+}
+
+Advanced_Settings_Window::~Advanced_Settings_Window()
+{
+    delete settings_widget;
 }
 
 void Advanced_Settings_Window::Load_Templates()
