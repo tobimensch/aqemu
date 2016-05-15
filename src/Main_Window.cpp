@@ -4447,6 +4447,9 @@ void Main_Window::on_actionShow_First_Run_Wizard_triggered()
 // return false on error or when the user cancels
 bool Main_Window::Save_Or_Discard(bool forced)
 {
+    if( ui.Machines_List->count() == 0 )
+        return true;
+
 	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
 	Virtual_Machine *cur_vm = Get_Current_VM();
 
@@ -4502,7 +4505,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 				// discard changes
 				Update_VM_Ui();
 			}
-            else
+            else //cancel
             {
                 return false;
             }
