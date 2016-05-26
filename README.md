@@ -1,3 +1,5 @@
+![ScreenShot](https://i.imgur.com/PkvFUEk.png)
+
 Current stable release: https://github.com/tobimensch/aqemu/releases/tag/v0.9.1
 See the CHANGELOG for details.
 
