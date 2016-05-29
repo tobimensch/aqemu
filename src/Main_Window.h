@@ -53,6 +53,9 @@ class Main_Window: public QMainWindow
 	public:
 		Main_Window( QWidget *parent = 0 );
         ~Main_Window();
+
+    public slots:
+        void VM_State_Changed(const QString& vm, int state);
 		
 	private slots:
 		void on_Machines_List_currentItemChanged( QListWidgetItem *current,
@@ -164,6 +167,7 @@ class Main_Window: public QMainWindow
 	private:
 		Virtual_Machine *Get_VM_By_UID( const QString &uid );
 		Virtual_Machine *Get_Current_VM();
+        void init_dbus();
 		
 		void Connect_Signals();
 		
@@ -253,7 +257,7 @@ class Main_Window: public QMainWindow
 		Network_Widget *New_Network_Settings_Widget;
 		Old_Network_Widget *Old_Network_Settings_Widget;
 		
-		SPICE_Settings_Widget* SPICE_Widget;
+        SPICE_Settings_Widget* SPICE_Widget;
 };
 
 #endif

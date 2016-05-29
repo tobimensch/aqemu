@@ -43,6 +43,7 @@
 #include "System_Info.h"
 #include "Snapshots_Window.h"
 #include "VM_Devices.h"
+#include "Service.h"
 
 Emulator_Control_Window::Emulator_Control_Window( QWidget *parent )
 	: QMainWindow( parent )
@@ -541,7 +542,7 @@ void Emulator_Control_Window::closeEvent( QCloseEvent *event )
 		
 		if( ret == QMessageBox::Yes )
 		{
-			Cur_VM->Stop();
+            AQEMU_Service::get().call("stop",Cur_VM);
 			
 			Mon_Win->hide();
 			event->accept();
@@ -748,7 +749,7 @@ void Emulator_Control_Window::on_actionSave_Screenshot_As_triggered()
 
 void Emulator_Control_Window::on_actionSave_VM_triggered()
 {
-	Cur_VM->Save_VM_State();
+    AQEMU_Service::get().call("save",Cur_VM);
 }
 
 void Emulator_Control_Window::on_actionManage_Snapshots_triggered()
@@ -766,7 +767,7 @@ void Emulator_Control_Window::on_actionCommit_triggered()
 
 void Emulator_Control_Window::on_actionPause_VM_triggered()
 {
-	Cur_VM->Pause();
+    AQEMU_Service::get().call("pause",Cur_VM);
 }
 
 void Emulator_Control_Window::on_actionPower_Off_triggered()
@@ -778,7 +779,7 @@ void Emulator_Control_Window::on_actionPower_Off_triggered()
 		return;
 	}
 	
-	Cur_VM->Stop();
+    AQEMU_Service::get().call("stop",Cur_VM);
 }
 
 void Emulator_Control_Window::on_actionReset_VM_triggered()
@@ -789,8 +790,8 @@ void Emulator_Control_Window::on_actionReset_VM_triggered()
 	{
 		return;
 	}
-	
-	Cur_VM->Reset();
+
+    AQEMU_Service::get().call("reset",Cur_VM);
 }
 
 void Emulator_Control_Window::on_actionQEMU_Monitor_triggered()

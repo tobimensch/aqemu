@@ -31,6 +31,7 @@
 #include <QValidator>
 #include <QPainter>
 #include <QStandardItem>
+#include <QtDBus>
 
 #include <memory>
 
@@ -55,6 +56,7 @@
 #include "SMP_Settings_Window.h"
 #include "Settings_Widget.h"
 #include "Utils.h"
+#include "Service.h"
 
 // This is static emulator devices data
 QMap<QString, Available_Devices> System_Info::Emulator_QEMU_2_0;
@@ -184,6 +186,8 @@ Main_Window::Main_Window( QWidget *parent )
 	
 	// Singals for watch VM Changes
 	Connect_Signals();
+
+    init_dbus();
 	
 	// Loading AQEMU Settings
 	if( ! Load_Settings() )
@@ -221,7 +225,27 @@ Main_Window::Main_Window( QWidget *parent )
 
 
     Settings_Widget::syncGroupIconSizes("Main");
+}
 
+void Main_Window::init_dbus()
+{
+    //dbus listening stuff
+
+    if (!QDBusConnection::sessionBus().isConnected()) {
+        fprintf(stderr, "Cannot connect to the D-Bus session bus.\n"
+                "To start it, run:\n"
+                "\teval `dbus-launch --auto-syntax`\n");
+    }
+
+    if (!QDBusConnection::sessionBus().registerService("org.aqemu.main_window")) {
+        fprintf(stderr, "%s\n",
+                qPrintable(QDBusConnection::sessionBus().lastError().message()));
+    }
+
+    AQError("void Main_Window::init_dbus()", "registered");
+
+    QDBusConnection::sessionBus().unregisterObject("/main_window", QDBusConnection::UnregisterTree);
+    QDBusConnection::sessionBus().registerObject("/main_window", this, QDBusConnection::ExportAllSlots);
 }
 
 Main_Window::~Main_Window()
@@ -240,6 +264,23 @@ Main_Window::~Main_Window()
     delete Dev_Manager;
     delete Folder_Sharing;
     delete Media_Settings_Widget;
+
+    QDBusConnection::sessionBus().unregisterService("org.aqemu.main_window");
+}
+
+void Main_Window::VM_State_Changed(const QString &vm, int state)
+{
+    AQError("void Main_Window::VM_State_Changed(const QString &vm, int state)","state changed");
+
+    for ( int i = 0; i < VM_List.count(); i++ )
+    {
+        if ( QFileInfo(vm) == QFileInfo(VM_List.at(i)->Get_VM_XML_File_Path()) )
+        {
+            VM_List.at(i)->Set_State( static_cast<VM::VM_State>(state) ); //FIXME
+            AQError("void Main_Window::VM_State_Changed(const QString &vm, int state)",VM_List.at(i)->Get_State_Text());
+            break;
+        }
+    }
 }
 
 void Main_Window::closeEvent( QCloseEvent *event )
@@ -248,7 +289,7 @@ void Main_Window::closeEvent( QCloseEvent *event )
 		AQGraphic_Error( "void Main_Window::closeEvent( QCloseEvent *event )",
 						 tr("AQEMU"), tr("Could not save main window settings!"), false );
 
-	// Find running VM
+    /*// Find running VM
 	for( int vx = 0; vx < VM_List.count(); ++vx )
 	{
 		if( VM_List[vx]->Get_State() == VM::VMS_Running ||
@@ -274,7 +315,7 @@ void Main_Window::closeEvent( QCloseEvent *event )
 		VM_List[ ex ]->Hide_Emu_Ctl_Win();
 		VM_List[ ex ]->Hide_QEMU_Error_Log();
 		VM_List[ ex ]->Stop();
-	}
+    }*/
 
     if ( ! Save_Or_Discard() )
         event->ignore();
@@ -1157,6 +1198,8 @@ bool Main_Window::Load_Virtual_Machines()
 			
 			// Append new VM
 			VM_List << new_vm;
+
+            AQEMU_Service::get().call("status",fil[ix].filePath());
 		}
 		
 		++real_index;
@@ -3966,7 +4009,7 @@ bool Main_Window::Boot_Is_Correct( Virtual_Machine *tmp_vm )
 		}
 	}
 	
-	// VNC Sertificates
+    // VNC Certificates
 	if( tmp_vm->Use_VNC() && tmp_vm->Use_VNC_TLS() )
 	{
 		if( tmp_vm->Use_VNC_x509() )
@@ -4519,25 +4562,12 @@ void Main_Window::on_actionPower_On_triggered()
 	if ( ! Save_Or_Discard() )
         return;
 	
-	Virtual_Machine *cur_vm = Get_Current_VM();
+    Virtual_Machine *cur_vm = Get_Current_VM();
 
 	if( ! Boot_Is_Correct(cur_vm) ) return;
 	
-	if( cur_vm->Start() )
-	{
-		// VNC Password
-		if( cur_vm->Use_VNC_Password() )
-		{
-			VNC_Password_Window vnc_pas_win;
-			
-			if( vnc_pas_win.exec() == QDialog::Accepted )
-				cur_vm->Set_VNC_Password( vnc_pas_win.Get_Password() );
-		}
-	}
-	else
-	{
-		AQError( "void Main_Window::on_action_Power_On_triggered()", "Cannot Start VM!" );
-	}
+    if( ! AQEMU_Service::get().call( "start" , cur_vm ) )
+        AQError( "void Main_Window::on_action_Power_On_triggered()", "Cannot Start VM!" );
 }
 
 void Main_Window::on_actionSave_triggered()
@@ -4576,7 +4606,7 @@ void Main_Window::on_actionSave_triggered()
 		cur_vm->Take_Screenshot( img_path );
 	}
 	
-	cur_vm->Save_VM_State();
+    AQEMU_Service::get().call( "stop" , cur_vm );
 }
 
 void Main_Window::on_actionPower_Off_triggered()
@@ -4597,8 +4627,8 @@ void Main_Window::on_actionPower_Off_triggered()
 	{
 		return;
 	}
-	
-	cur_vm->Stop();
+
+    AQEMU_Service::get().call( "stop" , cur_vm );
 }
 
 void Main_Window::on_actionPause_triggered()
@@ -4613,8 +4643,8 @@ void Main_Window::on_actionPause_triggered()
 				 "cur_vm == NULL" );
 		return;
 	}
-	
-	cur_vm->Pause();
+
+    AQEMU_Service::get().call( "pause" , cur_vm );
 }
 
 void Main_Window::on_actionReset_triggered()
@@ -4636,8 +4666,8 @@ void Main_Window::on_actionReset_triggered()
 	{
 		return;
 	}
-	
-	cur_vm->Reset();
+
+    AQEMU_Service::get().call( "reset" , cur_vm );
 }
 
 void Main_Window::on_actionLoad_VM_From_File_triggered()
@@ -5243,7 +5273,7 @@ void Main_Window::Update_Computer_Types()
 
 void Main_Window::Apply_Emulator( int mode )
 {
-	// FIXME
+    // FIXME
 	//static bool firstRun = true;
 	static bool running = false;
 

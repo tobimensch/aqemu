@@ -34,15 +34,27 @@
 #include "Create_Template_Window.h"
 #include "QDom.h"
 
+class AQEMU_Service;
 class Emulator_Control_Window;
 
 // Vitrual Machine
 class Virtual_Machine: public QObject
 {
-    friend class MachineView;
+    friend class AQEMU_Service;
 
 	Q_OBJECT
-	
+
+    // the following methods are private to give
+    // AQEMU_Service exclusive access
+    private:
+        bool Start();
+        void Pause(); // qemu command stop
+        void Stop();  // shutdown
+        void Reset();
+        void Save_VM_State(); // Save default snapshot
+        void Save_VM_State( const QString &tag, bool quit );
+        void Load_VM_State( const QString &tag );
+
 	public:
 		// Constructors...
 		Virtual_Machine();
@@ -74,15 +86,7 @@ class Virtual_Machine: public QObject
 		
 		QStringList Build_Nativ_Device_Args( VM_Nativ_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode );
 		QStringList Build_Shared_Folder_Args( VM_Shared_Folder folder, int id, bool Build_QEMU_Args_for_Script_Mode );
-		
-		bool Start();
-		void Pause(); // qemu command stop
-		void Stop();  // shutdown
-		void Reset();
-		
-		void Save_VM_State(); // Save default snapshot
-		void Save_VM_State( const QString &tag, bool quit );
-		void Load_VM_State( const QString &tag );
+
 		bool Start_Snapshot( const QString &tag );
 		void Delete_Snapshot( const QString &tag );
 		
@@ -467,6 +471,8 @@ class Virtual_Machine: public QObject
 		void Save_VM_Shared_Folder( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
 										   const VM_Shared_Folder &device ) const;
 	private:
+        bool Start_impl();
+
 		QProcess *QEMU_Process;
 
 		QTcpSocket *Monitor_Socket; // Used for "-monitor tcp" connection type

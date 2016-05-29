@@ -27,6 +27,7 @@
 #include "Snapshots_Window.h"
 #include "Snapshot_Properties_Window.h"
 #include "HDD_Image_Info.h"
+#include "Service.h"
 
 Snapshots_Window::Snapshots_Window( QWidget *parent )
 	: QDialog( parent )
@@ -117,8 +118,8 @@ void Snapshots_Window::on_Button_Create_clicked()
 			}
 		}
 		
-		Current_VM->Add_Snapshot( tag, prop_win.Get_Snapshot_Name(), prop_win.Get_Snapshot_Description() );
-		Current_VM->Save_VM_State( tag, false );
+        //Current_VM->Add_Snapshot( tag, prop_win.Get_Snapshot_Name(), prop_win.Get_Snapshot_Description() );
+        //Current_VM->Save_VM_State( tag, false ); //TODO
 		
 		accept();
 	}
@@ -181,7 +182,7 @@ void Snapshots_Window::on_Button_Start_clicked()
 		
 		if( ret == QMessageBox::Yes )
 		{
-			Current_VM->Load_VM_State( ui.Snapshots_Tree->currentItem()->text(0) );
+            //TODO //Current_VM->Load_VM_State( ui.Snapshots_Tree->currentItem()->text(0) );
 			accept();
 		}
 	}

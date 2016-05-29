@@ -28,10 +28,10 @@
 #include <QWheelEvent>
 #include <QList>
 #include <QMap>
+#include <QBoxLayout>
 
 class QTabWidget;
 class QStackedWidget;
-class QBoxLayout;
 class QSize;
 class QSplitter;
 

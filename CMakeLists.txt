@@ -28,6 +28,9 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    src/Service.h
+    src/Run_Guard.h
+    src/QEMU_Docopt.h
     src/IP_Edit.h
     src/Dialog_Button_Box.h
 	src/docopt/docopt.h
@@ -73,6 +76,9 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    src/Service.cpp
+    src/Run_Guard.cpp
+    src/QEMU_Docopt.cpp
     src/IP_Edit.cpp
     src/Dialog_Button_Box.cpp
 	src/docopt/docopt.cpp
@@ -185,6 +191,7 @@ FIND_PACKAGE( Qt5Widgets )
 FIND_PACKAGE( Qt5Network )
 FIND_PACKAGE( Qt5Test )
 FIND_PACKAGE( Qt5PrintSupport )
+FIND_PACKAGE( Qt5DBus )
 
 # Embedded VNC display
 IF( NOT WITHOUT_EMBEDDED_DISPLAY )
@@ -232,6 +239,7 @@ TARGET_LINK_LIBRARIES( aqemu
     Qt5::Network
     Qt5::Test
     Qt5::PrintSupport
+    Qt5::DBus
 )
 
 # Embedded VNC display

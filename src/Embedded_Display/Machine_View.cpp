@@ -34,6 +34,7 @@
 #include "Utils.h"
 #include "Machine_View.h"
 #include "VM.h"
+#include "Service.h"
 
 MachineView::MachineView( QWidget *parent, Virtual_Machine* cur_vm ) : QScrollArea( parent )
 {
@@ -53,22 +54,23 @@ MachineView::MachineView( QWidget *parent, Virtual_Machine* cur_vm ) : QScrollAr
 
 void MachineView::on_MouseEnteredFromTheLeft()
 {
-    Cur_VM->Send_Emulator_Command("mouse_move -1000 0\n");
+    AQEMU_Service::get().call("command",Cur_VM,"mouse_move -1000 0\n");
 }
+
 
 void MachineView::on_MouseEnteredFromTheRight()
 {
-    Cur_VM->Send_Emulator_Command("mouse_move 1000 0\n");
+    AQEMU_Service::get().call("command",Cur_VM,"mouse_move 1000 0\n");
 }
 
 void MachineView::on_MouseEnteredFromTheTop()
 {
-    Cur_VM->Send_Emulator_Command("mouse_move 0 -1000\n");
+    AQEMU_Service::get().call("command",Cur_VM,"mouse_move 0 -1000\n");
 }
 
 void MachineView::on_MouseEnteredFromTheBottom()
 {
-    Cur_VM->Send_Emulator_Command("mouse_move 0 1000\n");
+    AQEMU_Service::get().call("command",Cur_VM,"mouse_move 0 1000\n");
 }
 
 void MachineView::Set_VNC_URL( const QString &host, int port )

@@ -47,6 +47,7 @@
 #include "Utils.h"
 #include "Emulator_Control_Window.h"
 #include "System_Info.h"
+#include "VNC_Password_Window.h"
 
 using namespace TinyXML2QDomWrapper;
 
@@ -6917,224 +6918,243 @@ QStringList Virtual_Machine::Build_Shared_Folder_Args( VM_Shared_Folder folder, 
     return opt;
 }
 
+bool Virtual_Machine::Start_impl()
+{
+
+    delete QEMU_Error_Win;
+    QEMU_Error_Win = new Error_Log_Window();
+
+    // Check KVM
+    if( (Current_Emulator_Devices.PSO_KVM || Current_Emulator_Devices.PSO_Enable_KVM ) &&
+        Settings.value("Disable_KVM_Module_Check", "no").toString() != "yes" )
+    {
+        QProcess lsmod;
+
+        lsmod.start( "lsmod" );
+
+        if( ! lsmod.waitForFinished(1000) )
+        {
+            AQError( "bool Virtual_Machine::Start()", "lsmod not finished!" );
+        }
+        else
+        {
+            QString all_mod = lsmod.readAll();
+
+            if( all_mod.isEmpty() )
+            {
+                AQError( "bool Virtual_Machine::Start()", "all_mod is empty!" );
+            }
+            else
+            {
+                bool kvm_ok = false;
+
+                // Version Using -
+                QRegExp kvm_intel_mod = QRegExp( "*kvm-intel*" );
+                kvm_intel_mod.setPatternSyntax( QRegExp::Wildcard );
+
+                QRegExp kvm_amd_mod = QRegExp( "*kvm-amd*" );
+                kvm_amd_mod.setPatternSyntax( QRegExp::Wildcard );
+
+                if( kvm_intel_mod.exactMatch(all_mod) ) kvm_ok = true;
+                else if( kvm_amd_mod.exactMatch(all_mod) ) kvm_ok = true;
+
+                // Version Using _
+                kvm_intel_mod = QRegExp( "*kvm_intel*" );
+                kvm_intel_mod.setPatternSyntax( QRegExp::Wildcard );
+
+                kvm_amd_mod = QRegExp( "*kvm_amd*" );
+                kvm_amd_mod.setPatternSyntax( QRegExp::Wildcard );
+
+                if( kvm_intel_mod.exactMatch(all_mod) ) kvm_ok = true;
+                else if( kvm_amd_mod.exactMatch(all_mod) ) kvm_ok = true;
+
+                if( ! kvm_ok )
+                {
+                    // Module not found... KVM compiled into kernel?
+                    QProcess zcat;
+
+                    zcat.start( "zcat", QStringList("/proc/config.gz") );
+
+                    if( ! zcat.waitForFinished(1000) )
+                    {
+                        AQError( "bool Virtual_Machine::Start()", "zcat not finished!" );
+                    }
+                    else
+                    {
+                        QString all_config = zcat.readAll();
+
+                        if( all_config.isEmpty() )
+                        {
+                            AQError( "bool Virtual_Machine::Start()", "all_config is empty!" );
+                        }
+                        else
+                        {
+                            QRegExp kvm_intel_conf = QRegExp( "*CONFIG_KVM_INTEL=y*" );
+                            kvm_intel_conf.setPatternSyntax( QRegExp::Wildcard );
+                            if( kvm_intel_conf.exactMatch(all_config) ) kvm_ok = true;
+                            else
+                            {
+                                QRegExp kvm_amd_conf = QRegExp( "*CONFIG_KVM_AMD=y*" );
+                                kvm_amd_conf.setPatternSyntax( QRegExp::Wildcard );
+                                if( kvm_amd_conf.exactMatch(all_config) ) kvm_ok = true;
+                            }
+                        }
+                    }
+                }
+
+                if( ! kvm_ok )
+                {
+                    int retVal = QMessageBox::question( NULL, tr("Error!"),
+                                           tr("KVM Kernel Module Not Loaded!\n"
+                                           "To load this Module, Enter in Terminal with root privileges: \"modprobe kvm-intel\". "
+                                           "Or If Use AMD Processor: \"modprobe kvm-amd\".\nIgnore This Error?"),
+                                           QMessageBox::Yes | QMessageBox::No | QMessageBox::YesToAll,
+                                           QMessageBox::No );
+
+                    if( retVal == QMessageBox::No )
+                    {
+                        Start_Snapshot_Tag = "";
+                        return false;
+                    }
+                    else if( retVal == QMessageBox::YesToAll )
+                    {
+                        Settings.setValue( "Disable_KVM_Module_Check", "yes" );
+                    }
+                }
+                else
+                {
+                    AQDebug( "bool Virtual_Machine::Start()", "OK. KVM Kernel Module Loaded" );
+                }
+            }
+        }
+    }
+
+    // QEMU Audio Environment
+    if( Settings.value("QEMU_AUDIO/Use_Default_Driver", "yes").toString() == "no" )
+    {
+        QStringList tmp_env = QProcess::systemEnvironment();
+        tmp_env << "QEMU_AUDIO_DRV=" + Settings.value("QEMU_AUDIO/QEMU_AUDIO_DRV", "alsa").toString();
+        QEMU_Process->setEnvironment( tmp_env );
+    }
+
+    // User Args Only
+    if( Use_User_Emulator_Binary && Only_User_Args )
+    {
+        QStringList tmp_list = this->Build_QEMU_Args();
+
+        if( tmp_list.count() < 1 )
+        {
+            AQError( "bool Virtual_Machine::Start()", "Cannot Start! Args is Empty!" );
+        }
+        else
+        {
+            QString bin_name = tmp_list.takeAt( 0 );
+            QEMU_Process->start( bin_name, tmp_list );
+        }
+    }
+    else
+    {
+        // Get bin path
+        QMap<QString, QString> bin_list = Current_Emulator.Get_Binary_Files();
+        QString find_name = Current_Emulator_Devices.System.QEMU_Name;
+        QString bin_path = "";
+
+        for( QMap<QString, QString>::const_iterator iter = bin_list.constBegin(); iter != bin_list.constEnd(); iter++ )
+        {
+            if( iter.key() == find_name ||
+                (find_name == "qemu-system-x86" && iter.key() == "qemu")) // FIXME
+            {
+                bin_path = iter.value();
+                break;
+            }
+        }
+
+        // Check path
+        if( bin_path.isEmpty() )
+        {
+            AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
+                             tr("Cannot start emulator! Binary path is empty!"), false );
+            Start_Snapshot_Tag = "";
+            return false;
+        }
+
+        if( ! QFile::exists(bin_path) )
+        {
+            AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
+                             tr("Emulator binary not exists! Check path: %1").arg(bin_path), false );
+            Start_Snapshot_Tag = "";
+            return false;
+        }
+
+        // Add VM USB devices to used USB list
+        if( USB_Ports.count() > 0 )
+        {
+            foreach( VM_USB usb_dev, USB_Ports )
+                System_Info::Add_To_Used_USB_List( usb_dev );
+        }
+
+        QEMU_Process->start( bin_path, this->Build_QEMU_Args() );
+    }
+
+    // Do NOT Start CPU
+    if( ! Start_CPU )
+        Set_State( VM::VMS_Pause );
+
+    // VNC Password
+    if( VNC && VNC_Password )
+    {
+        Execute_Emu_Ctl_Command( "change vnc password" );
+    }
+
+    if( Load_Mode )
+    {
+        connect( this, SIGNAL(Ready_StdOut(const QString&)),
+                 this, SLOT(Started_Booting(const QString&)) );
+
+        Send_Emulator_Command( "info vnc\n" );
+    }
+
+    // Init Emulator Control Window
+    if( Emu_Ctl->First_Start == false )
+    {
+        delete Emu_Ctl;
+
+        Emu_Ctl = new Emulator_Control_Window();
+
+        QObject::connect( Emu_Ctl, SIGNAL(Ready_Read_Command(QString)),
+                          this, SLOT(Execute_Emu_Ctl_Command(QString)) );
+    }
+
+    Emu_Ctl->Use_Minimal_Size( true );
+    Emu_Ctl->Set_Current_VM( this );
+    Emu_Ctl->Init();
+
+    // Show vm loading window?
+    if( Start_Snapshot_Tag.isEmpty() == false ||
+        State == VM::VMS_Saved )
+    {
+        Show_VM_Load_Window();
+    }
+
+    return true;
+}
+
 bool Virtual_Machine::Start()
 {
-    delete QEMU_Error_Win;
-	QEMU_Error_Win = new Error_Log_Window();
+    if ( Start_impl() )
+    {
+        // VNC Password
+        if( Use_VNC_Password() )
+        {
+            VNC_Password_Window vnc_pas_win;
 
-	// Check KVM
-	if( (Current_Emulator_Devices.PSO_KVM || Current_Emulator_Devices.PSO_Enable_KVM ) &&
-		Settings.value("Disable_KVM_Module_Check", "no").toString() != "yes" )
-	{
-		QProcess lsmod;
-		
-		lsmod.start( "lsmod" );
-		
-		if( ! lsmod.waitForFinished(1000) )
-		{
-			AQError( "bool Virtual_Machine::Start()", "lsmod not finished!" );
-		}
-		else
-		{
-			QString all_mod = lsmod.readAll();
-			
-			if( all_mod.isEmpty() )
-			{
-				AQError( "bool Virtual_Machine::Start()", "all_mod is empty!" );
-			}
-			else
-			{
-				bool kvm_ok = false;
-				
-				// Version Using -
-				QRegExp kvm_intel_mod = QRegExp( "*kvm-intel*" );
-				kvm_intel_mod.setPatternSyntax( QRegExp::Wildcard );
-				
-				QRegExp kvm_amd_mod = QRegExp( "*kvm-amd*" );
-				kvm_amd_mod.setPatternSyntax( QRegExp::Wildcard );
-				
-				if( kvm_intel_mod.exactMatch(all_mod) ) kvm_ok = true;
-				else if( kvm_amd_mod.exactMatch(all_mod) ) kvm_ok = true;
-				
-				// Version Using _
-				kvm_intel_mod = QRegExp( "*kvm_intel*" );
-				kvm_intel_mod.setPatternSyntax( QRegExp::Wildcard );
-				
-				kvm_amd_mod = QRegExp( "*kvm_amd*" );
-				kvm_amd_mod.setPatternSyntax( QRegExp::Wildcard );
-				
-				if( kvm_intel_mod.exactMatch(all_mod) ) kvm_ok = true;
-				else if( kvm_amd_mod.exactMatch(all_mod) ) kvm_ok = true;
-				
-				if( ! kvm_ok )
-				{
-					// Module not found... KVM compiled into kernel?
-					QProcess zcat;
-					
-					zcat.start( "zcat", QStringList("/proc/config.gz") );
-					
-					if( ! zcat.waitForFinished(1000) )
-					{
-						AQError( "bool Virtual_Machine::Start()", "zcat not finished!" );
-					}
-					else
-					{
-						QString all_config = zcat.readAll();
-						
-						if( all_config.isEmpty() )
-						{
-							AQError( "bool Virtual_Machine::Start()", "all_config is empty!" );
-						}
-						else
-						{
-							QRegExp kvm_intel_conf = QRegExp( "*CONFIG_KVM_INTEL=y*" );
-							kvm_intel_conf.setPatternSyntax( QRegExp::Wildcard );
-							if( kvm_intel_conf.exactMatch(all_config) ) kvm_ok = true;
-							else
-							{
-								QRegExp kvm_amd_conf = QRegExp( "*CONFIG_KVM_AMD=y*" );
-								kvm_amd_conf.setPatternSyntax( QRegExp::Wildcard );
-								if( kvm_amd_conf.exactMatch(all_config) ) kvm_ok = true;
-							}
-						}
-					}
-				}
-				
-				if( ! kvm_ok )
-				{
-					int retVal = QMessageBox::question( NULL, tr("Error!"),
-										   tr("KVM Kernel Module Not Loaded!\n"
-										   "To load this Module, Enter in Terminal with root privileges: \"modprobe kvm-intel\". "
-										   "Or If Use AMD Processor: \"modprobe kvm-amd\".\nIgnore This Error?"),
-										   QMessageBox::Yes | QMessageBox::No | QMessageBox::YesToAll,
-	 									   QMessageBox::No );
-					
-					if( retVal == QMessageBox::No )
-					{
-						Start_Snapshot_Tag = "";
-						return false;
-					}
-					else if( retVal == QMessageBox::YesToAll )
-					{
-						Settings.setValue( "Disable_KVM_Module_Check", "yes" );
-					}
-				}
-				else
-				{
-					AQDebug( "bool Virtual_Machine::Start()", "OK. KVM Kernel Module Loaded" );
-				}
-			}
-		}
-	}
-	
-	// QEMU Audio Environment
-	if( Settings.value("QEMU_AUDIO/Use_Default_Driver", "yes").toString() == "no" )
-	{
-		QStringList tmp_env = QProcess::systemEnvironment();
-		tmp_env << "QEMU_AUDIO_DRV=" + Settings.value("QEMU_AUDIO/QEMU_AUDIO_DRV", "alsa").toString();
-		QEMU_Process->setEnvironment( tmp_env );
-	}
-	
-	// User Args Only
-	if( Use_User_Emulator_Binary && Only_User_Args )
-	{
-		QStringList tmp_list = this->Build_QEMU_Args();
-		
-		if( tmp_list.count() < 1 )
-		{
-			AQError( "bool Virtual_Machine::Start()", "Cannot Start! Args is Empty!" );
-		}
-		else
-		{
-			QString bin_name = tmp_list.takeAt( 0 );
-			QEMU_Process->start( bin_name, tmp_list );
-		}
-	}
-	else
-	{
-		// Get bin path
-		QMap<QString, QString> bin_list = Current_Emulator.Get_Binary_Files();
-		QString find_name = Current_Emulator_Devices.System.QEMU_Name;
-		QString bin_path = "";
-		
-		for( QMap<QString, QString>::const_iterator iter = bin_list.constBegin(); iter != bin_list.constEnd(); iter++ )
-		{
-			if( iter.key() == find_name ||
-				(find_name == "qemu-system-x86" && iter.key() == "qemu")) // FIXME 
-			{
-				bin_path = iter.value();
-				break;
-			}
-		}
-		
-		// Check path
-		if( bin_path.isEmpty() )
-		{
-			AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
-							 tr("Cannot start emulator! Binary path is empty!"), false );
-			Start_Snapshot_Tag = "";
-			return false;
-		}
-		
-		if( ! QFile::exists(bin_path) )
-		{
-			AQGraphic_Error( "bool Virtual_Machine::Start()", tr("Error!"),
-							 tr("Emulator binary not exists! Check path: %1").arg(bin_path), false );
-			Start_Snapshot_Tag = "";
-			return false;
-		}
-		
-		// Add VM USB devices to used USB list
-		if( USB_Ports.count() > 0 )
-		{
-			foreach( VM_USB usb_dev, USB_Ports )
-				System_Info::Add_To_Used_USB_List( usb_dev );
-		}
-		
-		QEMU_Process->start( bin_path, this->Build_QEMU_Args() );
-	}
-	
-	// Do NOT Start CPU
-	if( ! Start_CPU )
-		Set_State( VM::VMS_Pause );
-	
-	// VNC Password
-	if( VNC && VNC_Password )
-	{
-		Execute_Emu_Ctl_Command( "change vnc password" );
-	}
-	
-	if( Load_Mode )
-	{
-		connect( this, SIGNAL(Ready_StdOut(const QString&)),
-				 this, SLOT(Started_Booting(const QString&)) );
-		
-		Send_Emulator_Command( "info vnc\n" );
-	}
-	
-	// Init Emulator Control Window
-	if( Emu_Ctl->First_Start == false )
-	{
-		delete Emu_Ctl;
-		
-		Emu_Ctl = new Emulator_Control_Window();
-		
-		QObject::connect( Emu_Ctl, SIGNAL(Ready_Read_Command(QString)),
-						  this, SLOT(Execute_Emu_Ctl_Command(QString)) );
-	}
-	
-	Emu_Ctl->Use_Minimal_Size( true );
-	Emu_Ctl->Set_Current_VM( this );
-	Emu_Ctl->Init();
-	
-	// Show vm loading window?
-	if( Start_Snapshot_Tag.isEmpty() == false ||
-		State == VM::VMS_Saved )
-	{
-		Show_VM_Load_Window();
-	}
-	
-	return true;
+            if( vnc_pas_win.exec() == QDialog::Accepted )
+                Set_VNC_Password( vnc_pas_win.Get_Password() );
+        }
+        return true;
+    }
+
+    return false;
 }
 
 void Virtual_Machine::Pause()
