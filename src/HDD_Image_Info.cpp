@@ -50,7 +50,7 @@ void HDD_Image_Info::Update_Disk_Info( const QString &path )
 	if( QFile::exists(Info.Image_File_Name) == false )
 	{
 		AQWarning( "void QEMU_IMG_Thread::run()",
-				   "Image \"" + Info.Image_File_Name + "\" not exists!" );
+                   "Image \"" + Info.Image_File_Name + "\" does not exist!" );
 		Clear_Info();
 		return;
 	}
@@ -87,6 +87,8 @@ void HDD_Image_Info::Clear_Info()
 
 void HDD_Image_Info::Parse_Info( int exitCode, QProcess::ExitStatus exitStatus )
 {
+
+
 	QByteArray info_str_ba = QEMU_IMG_Proc->readAll();
 	QString info_str = QString( info_str_ba ); // Create QString
 	if( info_str.isEmpty() )
@@ -99,13 +101,15 @@ void HDD_Image_Info::Parse_Info( int exitCode, QProcess::ExitStatus exitStatus )
 	QRegExp RegInfo = QRegExp( ".*image:[\\s]+([^\n\r]+).*file format:[\\s]+([\\w\\d]+).*virtual size:[\\s]+([\\d]+[.]*[\\d]*[KMG]+).*disk size:[\\s]+([\\d]+[.]*[\\d]*[KMG]+).*cluster_size:[\\s]+([\\d]+).*" );
 	
 	bool cluster = true;
-	
-	if( ! RegInfo.exactMatch(info_str) )
+		if( ! RegInfo.exactMatch(info_str) )
 	{
 		AQWarning( "void QEMU_IMG_Thread::Parse_Info( int exitCode, QProcess::ExitStatus exitStatus )",
 				   "QRegExp With Cluster Size Not Matched!" );
 		
-		RegInfo = QRegExp( ".*image:[\\s]+(.+).+file format:[\\s]+([\\w\\d]+).*virtual size:[\\s]+([\\d]+[.]*[\\d]*[KMG]+).*disk size:[\\s]+([\\d]+[.]*[\\d]*[KMG]+).*" );
+        RegInfo = QRegExp( QString(".*image:[\\s]+([^\n\r]+).*")+
+                           QString("file format:[\\s]+([\\w\\d]+).*")+
+                           QString("virtual size:[\\s]+([\\d]+[.]*[\\d]*[KMG]+).*")+
+                           QString("disk size:[\\s]+([\\d]+[.]*[\\d]*[KMG]*).*") );
 		
 		if( ! RegInfo.exactMatch(info_str) )
 		{
