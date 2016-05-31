@@ -213,6 +213,7 @@ void Properties_Window::done(int r)
 		    else
             {
 			    QDialog::done(r);
+                return;
             }
 	    }
 	    else
