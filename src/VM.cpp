@@ -7291,6 +7291,9 @@ void Virtual_Machine::Show_Error_Log_Window()
 
 void Virtual_Machine::Show_QEMU_Error( const QString &err_str )
 {
+    if ( err_str.simplified().isEmpty() )
+        return;
+
     if ( ! QEMU_Error_Win )
         QEMU_Error_Win = new Error_Log_Window();
 
@@ -8901,7 +8904,7 @@ void Virtual_Machine::Parse_StdOut()
     QRegularExpression re("Option .* not supported", QRegularExpression::CaseInsensitiveOption);
     if ( re.match(convOutput).hasMatch() )
     {
-        QEMU_Error_Win->Add_to_Log(convOutput);
+        Show_QEMU_Error( convOutput );
     }
 
 	QStringList splitOutput = convOutput.split( "[K" );
@@ -9035,8 +9038,8 @@ void Virtual_Machine::QEMU_Finished( int exitCode, QProcess::ExitStatus exitStat
     {
         QString error = QEMU_Process->readAll();
         AQError( "QEMU return value != 0", error );
-        QEMU_Error_Win->Add_to_Log(error);
-        QEMU_Error_Win->exec();
+
+        Show_QEMU_Error( error );
     }
 	else
 	{
