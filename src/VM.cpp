@@ -8895,6 +8895,15 @@ void Virtual_Machine::Parse_StdOut()
 	#endif
 		convOutput = Monitor_Socket->readAll();
 
+    // For whatever reason qemu doesn't write all errors to stderr,
+    // which means we unfortunately need to filter output to stdout
+    // for errors. This is extremely bad design by qemu.
+    QRegularExpression re("Option .* not supported", QRegularExpression::CaseInsensitiveOption);
+    if ( re.match(convOutput).hasMatch() )
+    {
+        QEMU_Error_Win->Add_to_Log(convOutput);
+    }
+
 	QStringList splitOutput = convOutput.split( "[K" );
 	QString cleanOutput = splitOutput.last().remove( QRegExp("\[[KD].") );
 	
@@ -9024,7 +9033,10 @@ void Virtual_Machine::QEMU_Finished( int exitCode, QProcess::ExitStatus exitStat
 	}
     else if ( (exitCode != 0) ) 
     {
-		AQError( "QEMU return value != 0", QEMU_Process->readAll() );
+        QString error = QEMU_Process->readAll();
+        AQError( "QEMU return value != 0", error );
+        QEMU_Error_Win->Add_to_Log(error);
+        QEMU_Error_Win->exec();
     }
 	else
 	{
