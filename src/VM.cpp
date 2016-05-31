@@ -7646,7 +7646,7 @@ int Virtual_Machine::Get_Memory_Size() const
 
 void Virtual_Machine::Set_Memory_Size( int megs )
 {
-	if( megs > 0 && megs <= 6144 ) Memory_Size = megs;
+    if( megs > 0 ) Memory_Size = megs;
 	else
 	{
 		AQError( "void Virtual_Machine::Set_Memory_Size( int megs )",
