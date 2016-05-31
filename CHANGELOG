@@ -10,7 +10,7 @@
 
 	* Removed artificial 6GB limit on VM memory size
 
-	* Show "Option ... not supported" errors wrongly sento to stdout by qemu
+	* Show "Option ... not supported" errors that are wrongly sent to stdout by qemu
 
 2016-05-13 Tobias Gläßer (Version 0.9.1)
 	
