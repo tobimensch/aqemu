@@ -1,4 +1,6 @@
 # meson.build is a fast and furious build system
+# minimum meson version required for best results: 0.32.0
+
 project('aqemu', 'cpp', default_options : ['cpp_std=c++11', 'warning_level=3'])
 
 qt5 = import('qt5')
@@ -151,20 +153,18 @@ aqemu_ui =         ['src/About_Window.ui',
                     'src/VNC_Password_Window.ui']
 
 prep = qt5.preprocess(
-  moc_headers : aqemu_headers, # These need to be fed through the moc tool before use. 
-  ui_files : aqemu_ui,     # XML files that need to be compiled with the uic tol.
-  qresources : aqemu_resources,       # Resource file for rcc compiler.
-  include_directories : incdir
-)
+                    moc_headers : aqemu_headers,
+                    ui_files : aqemu_ui,
+                    qresources : aqemu_resources,
+                    include_directories : incdir)
 
 q5exe = executable('aqemu',
-  sources : [aqemu_sources, # Sources that don't need preprocessing.
-  prep],
-  dependencies : [qt5dep,vncclient], include_directories : incdir, install : true)
+                    sources : [aqemu_sources, prep],
+                    dependencies : [qt5dep, vncclient],
+                    include_directories : incdir, install : true)
 
 install_man('resources/docs/aqemu.1')
 
-# FIXME: can't reinstall multiple times, ninja complains about files already existing
 install_subdir('resources/os_icons/', install_dir : 'share/aqemu')
 install_subdir('resources/os_templates/', install_dir : 'share/aqemu')
 install_subdir('resources/docs/', install_dir : 'share/aqemu')
@@ -184,15 +184,6 @@ install_data('menu_data/aqemu.desktop', install_dir : 'share/applications')
 # OPTION(['UPDATE_TRANSLATIONS', 'Update source translation files (WARNING: make clean will delete the source .ts files!)'])
 # SET(['translations', 'translations/German.ts', 'transtations/Russian.ts', 'translations/Ukrainian.ts', 'translations/French.ts', 'translations/English.ts'])
 # SET(['files_to_translate', files_to_translate, aqemu_headers, aqemu_sources, aqemu_ui])
-# Find includes in corresponding build directories
-# Embedded VNC display
-# IF(['NOT', 'WITHOUT_EMBEDDED_DISPLAY'])
-# FIND_PACKAGE(['LibVNCServer', 'REQUIRED'])
-# SET(['aqemu_headers', aqemu_headers, )
-# SET([])
-# ADD_DEFINITIONS(['-DVNC_DISPLAY', '-DQTONLY'])
-# ENDIF(['NOT', 'WITHOUT_EMBEDDED_DISPLAY'])
-# TODO: port from Qt4 to Qt5
 # For translation
 #IF( UPDATE_TRANSLATIONS )
 #	QT5_CREATE_TRANSLATION( qm_files ${CMAKE_CURRENT_SOURCE_DIR} ${files_to_translate} ${translations} )
@@ -200,16 +191,7 @@ install_data('menu_data/aqemu.desktop', install_dir : 'share/applications')
 #	QT5_ADD_TRANSLATION( qm_files ${translations} )
 #ENDIF( UPDATE_TRANSLATIONS )
 # ADD_CUSTOM_TARGET(['translations_target', 'DEPENDS', qm_files])
-# IF(['COMMAND', 'CMAKE_POLICY'])
-# CMAKE_POLICY(['SET', 'CMP0003', 'NEW'])
-# ENDIF(['COMMAND', 'CMAKE_POLICY'])
 # ADD_EXECUTABLE(['aqemu', aqemu_sources, ui_headers, moc_srcs, qm_files, aqemu_qrc])
-# target_include_directories(['aqemu', 'PUBLIC', 'src/'])
-# TARGET_LINK_LIBRARIES(['aqemu', 'Qt5::Widgets', 'Qt5::Network', 'Qt5::Test', 'Qt5::PrintSupport', 'Qt5::DBus'])
-# Embedded VNC display
-# IF(['NOT', 'WITHOUT_EMBEDDED_DISPLAY'])
-# TARGET_LINK_LIBRARIES(['aqemu', LIBVNCCLIENT_LIBRARIES])
-# ENDIF(['NOT', 'WITHOUT_EMBEDDED_DISPLAY'])
 # Install files
 # INSTALL(['FILES', qm_files, 'DESTINATION', 'share/aqemu'])
 # Create docs .bz2 files
@@ -218,12 +200,6 @@ install_data('menu_data/aqemu.desktop', install_dir : 'share/applications')
 # GET_FILENAME_COMPONENT(['_in', curFile, 'ABSOLUTE'])
 # GET_FILENAME_COMPONENT(['_basename', curFile, 'NAME_WE'])
 # SET(['_out', CMAKE_CURRENT_SOURCE_DIR, '/${_basename}.bz2'])
-# ADD_CUSTOM_COMMAND(['OUTPUT', _out, 'COMMAND', 'bzip2', 'ARGS', '-zkf9', _in, 'DEPENDS', _in])
-# SET([_sources, '${${_sources}}', _out])
-# ENDFOREACH('curFile')
-# ENDMACRO('create_docs')
-# CREATE_DOCS(['docs_bz2', 'AUTHORS', 'CHANGELOG', 'README', 'TODO'])
-# ADD_CUSTOM_TARGET(['docs', 'ALL', 'DEPENDS', docs_bz2])
 # INSTALL(['FILES', docs_bz2, 'DESTINATION', 'share/doc/aqemu'])
 # Build RCC files (GUI icons)
 # MACRO(['pack_icons', '_sources'])
