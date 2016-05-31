@@ -42,7 +42,7 @@
 
 #include "docopt/docopt.h"
 
-#define CURRENT_AQEMU_VERSION "0.9.1"
+#define CURRENT_AQEMU_VERSION "0.9.2"
 
 static const char USAGE[] =
 R"(Usage: aqemu [options]
