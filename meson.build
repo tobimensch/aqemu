@@ -169,6 +169,11 @@ install_subdir('resources/os_icons/', install_dir : 'share/aqemu')
 install_subdir('resources/os_templates/', install_dir : 'share/aqemu')
 install_subdir('resources/docs/', install_dir : 'share/aqemu')
 
+install_data('TODO', install_dir : 'share/doc/aqemu')
+install_data('CHANGELOG', install_dir : 'share/doc/aqemu')
+install_data('AUTHORS', install_dir : 'share/doc/aqemu')
+install_data('README', install_dir : 'share/doc/aqemu')
+
 install_data('menu_data/aqemu.png', install_dir : 'share/pixmaps')
 install_data('menu_data/aqemu.desktop', install_dir : 'share/applications')
 
