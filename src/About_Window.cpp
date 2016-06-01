@@ -83,6 +83,8 @@ About_Window::About_Window( QWidget *parent ): QDialog( parent )
 	linksFilePath = QDir::toNativeSeparators( logFileDir.absolutePath() + "/links.html" );
 	
 	Show_Links_File();
+    
+    ui.About_Text->setText(ui.About_Text->text().replace("$VERSION_DATE_DO_NOT_TRANSLATE",QString(CURRENT_AQEMU_VERSION)+" ("+QString(CURRENT_AQEMU_RELEASE_DATE)+")"));
 
     ui.Tabs->setCurrentIndex(0);
 }

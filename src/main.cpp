@@ -47,9 +47,6 @@
 #include "main.h"
 #include "Service.h"
 
-#define CURRENT_AQEMU_VERSION "0.9.2"
-#define CURRENT_AQEMU_RELEASE_DATE "UNKNOWN"
-
 const char USAGE[] =
 R"(Usage: aqemu [options]
        aqemu start   ( <AQEMU_FILE> | <VM_Name> )
