@@ -2,7 +2,10 @@
 <component type="desktop">
   <id>aqemu.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
-  <summary>a GUI for virtual machines using QEMU as the backend</summary>
+  <name>AQEMU</name>
+  <project_license>GPL-2.0</project_license>
+  <developer_name>Tobias Gläßer &amp; Andrey Rijov</developer_name>
+  <summary>A GUI for virtual machines using QEMU as the backend</summary>
   <description>
     <p>AQEMU is a GUI for virtual machines using QEMU as the backend. Support for the KVM accelerator on Linux is provided. The application has a user-friendly interface and allows to set a large number of options.</p>
   </description>
@@ -10,6 +13,9 @@
   <!--<url type="faq"></url>
   <url type="donation"></url>-->
   <url type="help">https://github.com/tobimensch/aqemu/issues/</url>
+  <url type="bugtracker">https://github.com/tobimensch/aqemu/issues/</url>
+  <!--
+  <url type="donation"></url>-->
   <screenshots>
     <screenshot type="default">
       <image>http://i.imgur.com/PkvFUEk.png</image>
