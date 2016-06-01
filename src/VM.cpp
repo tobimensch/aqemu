@@ -7186,6 +7186,14 @@ void Virtual_Machine::Stop()
 		Send_Emulator_Command( "quit\n" );
 }
 
+void Virtual_Machine::Shutdown()
+{
+    /*if( State == VM::VMS_Saved )
+        Set_State( VM::VMS_Power_Off, true );
+    else*/
+    Send_Emulator_Command( "system_powerdown\n" );
+}
+
 void Virtual_Machine::Reset()
 {
 	if( State == VM::VMS_Saved )

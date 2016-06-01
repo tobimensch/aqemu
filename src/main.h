@@ -31,9 +31,12 @@
 class Virtual_Machine;
 class Run_Guard;
 class Main_Window;
+class AQEMU_Service;
 
 class AQEMU_Main : public QObject
 {
+    friend AQEMU_Service;
+
     Q_OBJECT
 
     public:

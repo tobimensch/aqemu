@@ -49,7 +49,8 @@ class Virtual_Machine: public QObject
     private:
         bool Start();
         void Pause(); // qemu command stop
-        void Stop();  // shutdown
+        void Stop();  // qemu command quit
+        void Shutdown();  // qemu command system_powerdown
         void Reset();
         void Save_VM_State(); // Save default snapshot
         void Save_VM_State( const QString &tag, bool quit );

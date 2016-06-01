@@ -46,8 +46,10 @@
 AQEMU_Service::AQEMU_Service()
 {
     service = nullptr;
+    main = nullptr;
     called_dbus = false;
     main_window = false;
+    successful_init = false;
 }
 
 AQEMU_Service::~AQEMU_Service()
@@ -58,6 +60,11 @@ AQEMU_Service::~AQEMU_Service()
 void AQEMU_Service::setMainWindow( bool b )
 {
     main_window = b;
+}
+
+void AQEMU_Service::setMain( AQEMU_Main* m )
+{
+    main = m;
 }
 
 void AQEMU_Service::vm_state_changed(Virtual_Machine *vm, VM::VM_State s)
@@ -83,7 +90,7 @@ void AQEMU_Service::vm_state_changed(Virtual_Machine *vm, VM::VM_State s)
         return;
     }
 
-    QDBusInterface iface("org.aqemu.main_window", "/main_window", "", QDBusConnection::sessionBus());
+    QDBusInterface iface("org.aqemu.main_window", "/_window", "", QDBusConnection::sessionBus());
     if (iface.isValid()) {
         /*QDBusReply<QString> reply =*/ iface.call(QDBus::NoBlock, "VM_State_Changed", vm->Get_VM_XML_File_Path(), s );
         /*if (reply.isValid()) {
@@ -111,7 +118,18 @@ bool AQEMU_Service::call(const QString& command, const QList<QVariant>& params, 
         return false;
 
     called_dbus = true;
-    init_service();
+
+    if ( init_service() )
+    {
+        if ( main )
+        {
+            int ret = main->load_settings();
+            if ( ret != 0 )
+                return false;
+        }
+
+        successful_init = true;
+    }
 
     if (!QDBusConnection::sessionBus().isConnected()) {
         fprintf(stderr, "Cannot connect to the D-Bus session bus.\n"
@@ -209,10 +227,11 @@ QString AQEMU_Service::start(const QString& s)
 
         connect(vm,SIGNAL(State_Changed( Virtual_Machine*, VM::VM_State)),this,SLOT(vm_state_changed(Virtual_Machine*, VM::VM_State)));
 
+        AQError("QString AQEMU_Service::start(const QString& s)",s);
         return QString("VM \"%1\" got started.").arg(s);
     }
 
-    return QString("VM \"%1\" could not be started.");
+    return QString("VM \"%1\" could not be started.").arg(s);
 }
 
 QString AQEMU_Service::stop(const QString& s)
@@ -229,6 +248,19 @@ QString AQEMU_Service::stop(const QString& s)
     return QString("VM \"%1\" could not be stopped.").arg(s);
 }
 
+QString AQEMU_Service::shutdown(const QString& s)
+{
+    for ( int i = 0; i < machines.count(); i++ )
+    {
+        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
+        {
+            machines.at(i)->Shutdown();
+            return QString("shutting down VM \"%1\".").arg(s);
+        }
+    }
+
+    return QString("VM \"%1\" could not be shut down.").arg(s);
+}
 
 QString AQEMU_Service::reset(const QString& s)
 {

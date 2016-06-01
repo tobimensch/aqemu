@@ -49,16 +49,17 @@
 
 const char USAGE[] =
 R"(Usage: aqemu [options]
-       aqemu start   ( <AQEMU_FILE> | <VM_Name> )
-       aqemu stop    ( <AQEMU_FILE> | <VM_Name> )
-       aqemu pause   ( <AQEMU_FILE> | <VM_Name> )
-       aqemu reset   ( <AQEMU_FILE> | <VM_Name> )
-       aqemu save    ( <AQEMU_FILE> | <VM_Name> ) [ <Tag> ]
-       aqemu load    ( <AQEMU_FILE> | <VM_Name> ) [ <Tag> ]
-       aqemu monitor ( <AQEMU_FILE> | <VM_Name> )
-       aqemu error   ( <AQEMU_FILE> | <VM_Name> )
-       aqemu control ( <AQEMU_FILE> | <VM_Name> )
-       aqemu status  ( <AQEMU_FILE> | <VM_Name> )
+       aqemu start     ( <AQEMU_FILE> | <VM_Name> )
+       aqemu stop      ( <AQEMU_FILE> | <VM_Name> )
+       aqemu shutdown  ( <AQEMU_FILE> | <VM_Name> )
+       aqemu pause     ( <AQEMU_FILE> | <VM_Name> )
+       aqemu reset     ( <AQEMU_FILE> | <VM_Name> )
+       aqemu save      ( <AQEMU_FILE> | <VM_Name> ) [ <Tag> ]
+       aqemu load      ( <AQEMU_FILE> | <VM_Name> ) [ <Tag> ]
+       aqemu monitor   ( <AQEMU_FILE> | <VM_Name> )
+       aqemu error     ( <AQEMU_FILE> | <VM_Name> )
+       aqemu control   ( <AQEMU_FILE> | <VM_Name> )
+       aqemu status    ( <AQEMU_FILE> | <VM_Name> )
 
 Frontend for qemu.
 
@@ -83,15 +84,6 @@ or the name of the VM to specify on which VM to operate.
     aqemu start "Obscure OS""
     aqemu stop "$HOME/.aqemu/Obscure OS.aqemu"
 )";
-/* mockup
-
-      aqemu start <VIRTUAL_MACHINE>
-      aqemu pause <VIRTUAL_MACHINE>
-      aqemu stop  <VIRTUAL_MACHINE>
-      aqemu (-h | --help)
-      aqemu --version
-
-*/
 
 AQEMU_Main::AQEMU_Main()
 {
@@ -128,11 +120,14 @@ int AQEMU_Main::main(int argc, char *argv[])
         AQEMU_FILE = QString::fromStdString(args.at("<AQEMU_FILE>").asString());
 
     AQEMU_Service& service = AQEMU_Service::get();
+    service.setMain(this);
 
     if ( args.at("start").asBool() )
         service.call("start",AQEMU_FILE,false);
     else if ( args.at("stop").asBool() )
         service.call("stop",AQEMU_FILE,false);
+    else if ( args.at("shutdown").asBool() )
+        service.call("shutdown",AQEMU_FILE,false);
     else if ( args.at("reset").asBool() )
         service.call("reset",AQEMU_FILE,false);
     else if ( args.at("pause").asBool() )
@@ -152,12 +147,13 @@ int AQEMU_Main::main(int argc, char *argv[])
         {
             exit(0);
         }
-        else // became the service
+        else if ( service.successfulInit() ) // became the service
         {
-            int ret = load_settings();
-            if ( ret != 0 )
-                return ret;
             return application->exec();
+        }
+        else //something went wrong while initializing service
+        {
+            return 1;
         }
     }
 

@@ -31,6 +31,7 @@
 #include "VM.h"
 
 class Run_Guard;
+class AQEMU_Main;
 
 #define SERVICE_NAME "org.aqemu.service"
 
@@ -53,6 +54,10 @@ class AQEMU_Service : public QObject
         {
             return called_dbus;
         }
+        bool successfulInit()
+        {
+            return successful_init;
+        }
         bool isExternal()
         {
             return ( service == 0 );
@@ -63,6 +68,7 @@ class AQEMU_Service : public QObject
         bool call(const QString& command,Virtual_Machine* vm, bool noblock=true);
         bool call(const QString &command, Virtual_Machine *vm, const QString &param2, bool noblock);
         void setMainWindow( bool );
+        void setMain( AQEMU_Main* );
 
  private:
         AQEMU_Service();
@@ -71,6 +77,7 @@ class AQEMU_Service : public QObject
     public slots:
         QString start(const QString& vm);
         QString stop(const QString& vm);
+        QString shutdown(const QString& vm);
         QString pause(const QString& vm);
         QString reset(const QString& vm);
         QString save(const QString& vm);
@@ -86,11 +93,13 @@ class AQEMU_Service : public QObject
         bool init_service();
 
         Run_Guard* service;
+        AQEMU_Main* main;
 
         QList<Virtual_Machine*> machines;
         bool called_dbus;
 
         bool main_window;
+        bool successful_init;
 };
 
 #endif
