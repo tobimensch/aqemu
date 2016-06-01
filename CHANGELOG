@@ -1,3 +1,17 @@
+2016-05-31 Tobias Gläßer (Version 0.9.2)
+ 
+	* Fixed bug that prevented AQEMU from closing when no VM was created yet
+
+	* Added frugalware icon
+
+	* Fixed aqemu icon name to match .desktop file
+
+	* Fixed incorrect information for raw images
+
+	* Removed artificial 6GB limit on VM memory size
+
+	* Show "Option ... not supported" errors that are wrongly sent to stdout by qemu
+
 2016-05-13 Tobias Gläßer (Version 0.9.1)
 	
 	* 0.8.2 AQEMU settings and files get loaded correctly (If you want to go back to 0.8.2, make a backup)
