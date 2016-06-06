@@ -180,39 +180,3 @@ install_data('resources/menu_data/aqemu.appdata.xml', install_dir : 'share/appda
 
 # TODO: qt5 translations
 
-# OPTION(['DEBUG', 'Build with debug information'])
-# OPTION(['WITHOUT_EMBEDDED_DISPLAY', 'Build without support Embedded VNC Display'])
-# OPTION(['UPDATE_TRANSLATIONS', 'Update source translation files (WARNING: make clean will delete the source .ts files!)'])
-# SET(['translations', 'translations/German.ts', 'transtations/Russian.ts', 'translations/Ukrainian.ts', 'translations/French.ts', 'translations/English.ts'])
-# SET(['files_to_translate', files_to_translate, aqemu_headers, aqemu_sources, aqemu_ui])
-# For translation
-#IF( UPDATE_TRANSLATIONS )
-#	QT5_CREATE_TRANSLATION( qm_files ${CMAKE_CURRENT_SOURCE_DIR} ${files_to_translate} ${translations} )
-#ELSE( UPDATE_TRANSLATIONS )
-#	QT5_ADD_TRANSLATION( qm_files ${translations} )
-#ENDIF( UPDATE_TRANSLATIONS )
-# ADD_CUSTOM_TARGET(['translations_target', 'DEPENDS', qm_files])
-# ADD_EXECUTABLE(['aqemu', aqemu_sources, ui_headers, moc_srcs, qm_files, aqemu_qrc])
-# Install files
-# INSTALL(['FILES', qm_files, 'DESTINATION', 'share/aqemu'])
-# Create docs .bz2 files
-# MACRO(['create_docs', '_sources'])
-# FOREACH(['curFile', ARGN])
-# GET_FILENAME_COMPONENT(['_in', curFile, 'ABSOLUTE'])
-# GET_FILENAME_COMPONENT(['_basename', curFile, 'NAME_WE'])
-# SET(['_out', CMAKE_CURRENT_SOURCE_DIR, '/${_basename}.bz2'])
-# INSTALL(['FILES', docs_bz2, 'DESTINATION', 'share/doc/aqemu'])
-# Build RCC files (GUI icons)
-# MACRO(['pack_icons', '_sources'])
-# FOREACH(['curFile', ARGN])
-# GET_FILENAME_COMPONENT(['_in', curFile, 'ABSOLUTE'])
-# GET_FILENAME_COMPONENT(['_basename', curFile, 'NAME_WE'])
-# SET(['_out', CMAKE_CURRENT_SOURCE_DIR, '/${_basename}.rcc'])
-# ADD_CUSTOM_COMMAND(['OUTPUT', _out, 'COMMAND', 'rcc', 'ARGS', _in, '-binary', '-o', _out, 'DEPENDS', _in])
-# SET([_sources, '${${_sources}}', _out])
-# ENDFOREACH('curFile')
-# ENDMACRO('pack_icons')
-# PACK_ICONS(['gui_icons', 'resources/shared_images.qrc', 'resources/icons.qrc'])
-# ADD_CUSTOM_TARGET(['icons', 'ALL', 'DEPENDS', gui_icons])
-# INSTALL(['FILES', gui_icons, 'DESTINATION', 'share/aqemu'])
-
