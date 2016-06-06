@@ -288,24 +288,6 @@ CREATE_DOCS( docs_bz2 AUTHORS CHANGELOG README TODO )
 ADD_CUSTOM_TARGET( docs ALL DEPENDS ${docs_bz2} )
 INSTALL( FILES ${docs_bz2} DESTINATION share/doc/aqemu )
 
-# Build RCC files (GUI icons)
-MACRO( pack_icons _sources )
-	FOREACH( curFile ${ARGN} )
-		GET_FILENAME_COMPONENT( _in ${curFile} ABSOLUTE )
-		GET_FILENAME_COMPONENT( _basename ${curFile} NAME_WE )
-		
-		SET( _out ${CMAKE_CURRENT_SOURCE_DIR}/${_basename}.rcc )
-		
-		ADD_CUSTOM_COMMAND( OUTPUT ${_out} COMMAND rcc ARGS ${_in} -binary -o ${_out} DEPENDS ${_in} )
-		
-		SET( ${_sources} ${${_sources}} ${_out} )
-	ENDFOREACH( curFile )
-ENDMACRO( pack_icons )
-
-PACK_ICONS( gui_icons resources/shared_images.qrc resources/icons.qrc )
-ADD_CUSTOM_TARGET( icons ALL DEPENDS ${gui_icons} )
-INSTALL( FILES ${gui_icons} DESTINATION share/aqemu )
-
 # Compress and install MAN page file
 IF( NOT MAN_PAGE_COMPRESSOR )
 	MESSAGE( STATUS "MAN page will be installed is not packed." )

@@ -258,7 +258,7 @@ void AQEMU_Main::first_start_wizard()
 void AQEMU_Main::register_qresource()
 {
     // Load Images
-    QString iconsThemeFile = "";
+    /*QString iconsThemeFile = "";
 
     iconsThemeFile = QDir::toNativeSeparators( settings->value("AQEMU_Data_Folder", "").toString() + "/icons.rcc" );
 
@@ -266,7 +266,7 @@ void AQEMU_Main::register_qresource()
     {
         AQGraphic_Error( "int main( int argc, char *argv[] )", QObject::tr("Error!"),
                          QObject::tr("Cannot Load AQEMU Icon Theme!\nFile \"%1\" Not Found!").arg(iconsThemeFile), false );
-    }
+    }*/
 }
 
 void AQEMU_Main::init_qsettings()
@@ -377,8 +377,7 @@ int AQEMU_Main::find_data_folders()
             QDir dataDir( dataDirs[dx] );
 
             if( dataDir.exists("./os_icons") &&
-                dataDir.exists("./os_templates") &&
-                dataDir.entryList(QStringList("*.rcc"), QDir::Files).isEmpty() == false )
+                dataDir.exists("./os_templates") )
             {
                 settings->setValue( "AQEMU_Data_Folder", dataDirs[dx] );
                 break;
