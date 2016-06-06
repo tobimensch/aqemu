@@ -174,9 +174,9 @@ install_data('CHANGELOG', install_dir : 'share/doc/aqemu')
 install_data('AUTHORS', install_dir : 'share/doc/aqemu')
 install_data('README', install_dir : 'share/doc/aqemu')
 
-install_data('menu_data/aqemu.png', install_dir : 'share/pixmaps')
-install_data('menu_data/aqemu.desktop', install_dir : 'share/applications')
-install_data('menu_data/aqemu.appdata.xml', install_dir : 'share/appdata')
+install_data('resources/menu_data/aqemu.png', install_dir : 'share/pixmaps')
+install_data('resources/menu_data/aqemu.desktop', install_dir : 'share/applications')
+install_data('resources/menu_data/aqemu.appdata.xml', install_dir : 'share/appdata')
 
 # TODO: qt5 translations
 

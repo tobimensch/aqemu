@@ -261,13 +261,13 @@ INSTALL( FILES ${os_templates} DESTINATION share/aqemu/os_templates )
 FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/resources/docs/links.html" )
 INSTALL( FILES ${links} DESTINATION share/aqemu/docs )
 
-FILE( GLOB pixmaps "${CMAKE_CURRENT_SOURCE_DIR}/menu_data/*.png" )
+FILE( GLOB pixmaps "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/*.png" )
 INSTALL( FILES ${pixmaps} DESTINATION share/pixmaps )
 
-FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/menu_data/aqemu.desktop" )
+FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu.desktop" )
 INSTALL( FILES ${app_menu} DESTINATION share/applications )
 
-FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/menu_data/aqemu.appdata.xml" )
+FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu.appdata.xml" )
 INSTALL( FILES ${app_menu} DESTINATION share/appdata )
 
 # Create docs .bz2 files
