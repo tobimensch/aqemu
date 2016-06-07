@@ -96,7 +96,7 @@ void AQEMU_Service::vm_state_changed(Virtual_Machine *vm, VM::VM_State s)
         return;
     }
 
-    QDBusInterface iface("org.aqemu.main_window", "/_window", "", QDBusConnection::sessionBus());
+    QDBusInterface iface("org.aqemu.main_window", "/main_window", "", QDBusConnection::sessionBus());
     if (iface.isValid()) {
         /*QDBusReply<QString> reply =*/ iface.call(QDBus::NoBlock, "VM_State_Changed", vm->Get_VM_XML_File_Path(), s );
         /*if (reply.isValid()) {
