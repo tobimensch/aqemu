@@ -28,6 +28,7 @@
 #include <QDir>
 #include <QFile>
 #include <QtDBus>
+#include <QSettings>
 
 #ifdef Q_OS_LINUX
 #include <unistd.h>
@@ -218,8 +219,25 @@ bool AQEMU_Service::init_service()
 
 QString AQEMU_Service::start(const QString& s)
 {
+    QSettings settings;
+    QString vm_dir = QDir::toNativeSeparators(settings.value("VM_Directory", QDir::homePath() + "/.aqemu/").toString());
+    QString vm_file = vm_dir+s+".aqemu";
+
+    bool success = false;
+
     auto vm = new Virtual_Machine;
-    vm->Load_VM(s);
+    if (QFileInfo(s).exists())
+        success = vm->Load_VM(s);
+
+    if ( !success )
+    {
+        AQError("QString AQEMU_Service::start(const QString& s)",vm_file);
+
+        if(QFileInfo(vm_file).exists())
+            vm->Load_VM(vm_file);
+        else
+            return QString("VM \"%1\" could not be started. No such VM found.").arg(s);
+    }
 
     if ( vm->Start() )
     {
@@ -234,15 +252,26 @@ QString AQEMU_Service::start(const QString& s)
     return QString("VM \"%1\" could not be started.").arg(s);
 }
 
-QString AQEMU_Service::stop(const QString& s)
+Virtual_Machine* AQEMU_Service::getMachine(const QString& s)
 {
     for ( int i = 0; i < machines.count(); i++ )
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
+        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) ||
+             machines.at(i)->Get_Machine_Name() == s )
         {
-            machines.at(i)->Stop();
-            return QString("VM \"%1\" got stopped.").arg(s);
+            return machines.at(i);
         }
+    }
+
+    return nullptr;
+}
+
+QString AQEMU_Service::stop(const QString& s)
+{
+    if(auto machine = getMachine(s))
+    {
+        machine->Stop();
+        return QString("VM \"%1\" got stopped.").arg(s);
     }
 
     return QString("VM \"%1\" could not be stopped.").arg(s);
@@ -250,13 +279,10 @@ QString AQEMU_Service::stop(const QString& s)
 
 QString AQEMU_Service::shutdown(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            machines.at(i)->Shutdown();
-            return QString("shutting down VM \"%1\".").arg(s);
-        }
+        machine->Shutdown();
+        return QString("shutting down VM \"%1\".").arg(s);
     }
 
     return QString("VM \"%1\" could not be shut down.").arg(s);
@@ -264,13 +290,10 @@ QString AQEMU_Service::shutdown(const QString& s)
 
 QString AQEMU_Service::reset(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            machines.at(i)->Reset();
-            return QString("VM \"%1\" got reset.").arg(s);
-        }
+        machine->Reset();
+        return QString("VM \"%1\" got reset.").arg(s);
     }
 
     return QString("VM \"%1\" could  not be reset.").arg(s);
@@ -279,13 +302,10 @@ QString AQEMU_Service::reset(const QString& s)
 
 QString AQEMU_Service::pause(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            machines.at(i)->Pause();
-            return QString("VM \"%1\" got paused.").arg(s);
-        }
+        machine->Pause();
+        return QString("VM \"%1\" got paused.").arg(s);
     }
 
     return QString("VM \"%1\" could not be paused.").arg(s);
@@ -293,13 +313,10 @@ QString AQEMU_Service::pause(const QString& s)
 
 QString AQEMU_Service::save(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            machines.at(i)->Save_VM_State();
-            return QString("VM state of \"%1\" got saved.").arg(s);
-        }
+        machine->Save_VM_State();
+        return QString("VM state of \"%1\" got saved.").arg(s);
     }
 
     return QString("VM state of \"%1\" could not be saved.").arg(s);
@@ -308,13 +325,10 @@ QString AQEMU_Service::save(const QString& s)
 
 QString AQEMU_Service::error(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            machines.at(i)->Show_Error_Log_Window();
-            return QString("VM error log window of \"%1\" got shown.").arg(s);
-        }
+        machine->Show_Error_Log_Window();
+        return QString("VM error log window of \"%1\" got shown.").arg(s);
     }
 
     return QString("VM error log window of \"%1\" could not be shown.").arg(s);
@@ -322,13 +336,10 @@ QString AQEMU_Service::error(const QString& s)
 
 QString AQEMU_Service::control(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            machines.at(i)->Show_Emu_Ctl_Win();
-            return QString("VM control window of \"%1\" got shown.").arg(s);
-        }
+        machine->Show_Emu_Ctl_Win();
+        return QString("VM control window of \"%1\" got shown.").arg(s);
     }
 
     return QString("VM control window of \"%1\" could not be shown.").arg(s);
@@ -336,14 +347,11 @@ QString AQEMU_Service::control(const QString& s)
 
 QString AQEMU_Service::status(const QString& s)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(s))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(s) )
-        {
-            vm_state_changed(machines.at(i),machines.at(i)->Get_State());
-            QString state = machines.at(i)->Get_State_Text();
-            return QString("VM state:  %1.").arg(state);
-        }
+        vm_state_changed(machine,machine->Get_State());
+        QString state = machine->Get_State_Text();
+        return QString("VM state:  %1.").arg(state);
     }
 
     return QString("Could not show state of VM \"%1\".").arg(s);
@@ -351,13 +359,10 @@ QString AQEMU_Service::status(const QString& s)
 
 QString AQEMU_Service::command(const QString &vm, const QString &command)
 {
-    for ( int i = 0; i < machines.count(); i++ )
+    if(auto machine = getMachine(vm))
     {
-        if ( QFileInfo(machines.at(i)->Get_VM_XML_File_Path()) == QFileInfo(vm) )
-        {
-            machines.at(i)->Send_Emulator_Command(command);
-            return QString("Sent command to VM \"%1\".").arg(vm);
-        }
+        machine->Send_Emulator_Command(command);
+        return QString("Sent command to VM \"%1\".").arg(vm);
     }
 
     return QString("Could not send command to VM \"%1\".").arg(vm);

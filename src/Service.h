@@ -70,7 +70,7 @@ class AQEMU_Service : public QObject
         void setMainWindow( bool );
         void setMain( AQEMU_Main* );
 
- private:
+    private:
         AQEMU_Service();
         ~AQEMU_Service();
 
@@ -90,6 +90,7 @@ class AQEMU_Service : public QObject
         void vm_state_changed(Virtual_Machine *vm, VM::VM_State s);
 
     private:
+        Virtual_Machine* getMachine(const QString& vm);
         bool init_service();
 
         Run_Guard* service;
