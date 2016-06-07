@@ -69,6 +69,7 @@ class AQEMU_Service : public QObject
         bool call(const QString &command, Virtual_Machine *vm, const QString &param2, bool noblock);
         void setMainWindow( bool );
         void setMain( AQEMU_Main* );
+        int machineCount() const;
 
     private:
         AQEMU_Service();

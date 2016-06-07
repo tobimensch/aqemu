@@ -145,11 +145,14 @@ int AQEMU_Main::main(int argc, char *argv[])
     {
         if ( service.isExternal() ) // called the already running service
         {
-            exit(0);
+            return 0;
         }
         else if ( service.successfulInit() ) // became the service
         {
-            return application->exec();
+            if ( service.machineCount() < 1 )
+                return 0;
+            else
+                return application->exec();
         }
         else //something went wrong while initializing service
         {

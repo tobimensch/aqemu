@@ -68,13 +68,18 @@ void AQEMU_Service::setMain( AQEMU_Main* m )
     main = m;
 }
 
+int AQEMU_Service::machineCount() const
+{
+    return machines.count();
+}
+
 void AQEMU_Service::vm_state_changed(Virtual_Machine *vm, VM::VM_State s)
 {
     if ( s == VM::VMS_Power_Off )
     {
         machines.removeAll(vm);
         //delete vm; //FIXME? segfault
-        if ( machines.count() < 1 )
+        if ( machineCount() < 1 )
         {
             if ( ! main_window )
             {
