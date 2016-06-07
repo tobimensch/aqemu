@@ -152,7 +152,10 @@ int AQEMU_Main::main(int argc, char *argv[])
             if ( service.machineCount() < 1 )
                 return 0;
             else
+            {
+                application->setQuitOnLastWindowClosed(false);
                 return application->exec();
+            }
         }
         else //something went wrong while initializing service
         {
