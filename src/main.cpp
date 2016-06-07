@@ -173,6 +173,7 @@ int AQEMU_Main::main(int argc, char *argv[])
         delete window;
         window = nullptr;
         service.setMainWindow( false );
+        application->setQuitOnLastWindowClosed(false);
         return application->exec();
     }
     return ret;
