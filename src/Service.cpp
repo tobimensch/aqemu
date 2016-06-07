@@ -327,6 +327,16 @@ QString AQEMU_Service::save(const QString& s)
     return QString("VM state of \"%1\" could not be saved.").arg(s);
 }
 
+QString AQEMU_Service::monitor(const QString& s)
+{
+    if(auto machine = getMachine(s))
+    {
+        machine->Show_Monitor_Window();
+        return QString("VM monitor window of \"%1\" got shown.").arg(s);
+    }
+
+    return QString("VM monitor window of \"%1\" could not be shown.").arg(s);
+}
 
 QString AQEMU_Service::error(const QString& s)
 {

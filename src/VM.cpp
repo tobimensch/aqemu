@@ -7269,6 +7269,11 @@ void Virtual_Machine::Show_Emu_Ctl_Win()
 	Emu_Ctl->activateWindow();
 }
 
+void Virtual_Machine::Show_Monitor_Window()
+{
+    Emu_Ctl->Show_Monitor();
+}
+
 void Virtual_Machine::Hide_Emu_Ctl_Win()
 {
 	Emu_Ctl->Set_Show_Close_Warning( false );

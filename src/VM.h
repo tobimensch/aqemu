@@ -99,6 +99,7 @@ class Virtual_Machine: public QObject
 		void Hide_Emu_Ctl_Win();
 		void Update_Removable_Devices_List();
 		const QString &Get_Removable_Devices_List() const;
+        void Show_Monitor_Window();
 		
 		// Error Log Window
 		void Show_Error_Log_Window();

@@ -87,7 +87,8 @@ class Main_Window: public QMainWindow
 		void on_actionShow_First_Run_Wizard_triggered();
 		void on_actionPower_On_triggered();
 		void on_actionSave_triggered();
-		void on_actionPower_Off_triggered();
+        void on_actionShutdown_triggered();
+        void on_actionPower_Off_triggered();
 		void on_actionPause_triggered();
 		void on_actionReset_triggered();
 		void on_actionLoad_VM_From_File_triggered();

@@ -794,6 +794,11 @@ void Emulator_Control_Window::on_actionReset_VM_triggered()
     AQEMU_Service::get().call("reset",Cur_VM);
 }
 
+void Emulator_Control_Window::Show_Monitor()
+{
+    on_actionQEMU_Monitor_triggered();
+}
+
 void Emulator_Control_Window::on_actionQEMU_Monitor_triggered()
 {
 	connect( Mon_Win, SIGNAL(Command_Sent(QString)), Cur_VM,

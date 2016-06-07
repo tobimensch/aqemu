@@ -47,6 +47,7 @@ class Emulator_Control_Window: public QMainWindow
 		void Init();
 		void Set_Show_Close_Warning( bool on );
 		void Use_Minimal_Size( bool use );
+        void Show_Monitor();
 		
 		Monitor_Window *Mon_Win;
 		bool First_Start;

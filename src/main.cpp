@@ -134,6 +134,8 @@ int AQEMU_Main::main(int argc, char *argv[])
         service.call("pause",AQEMU_FILE,false);
     else if ( args.at("save").asBool() )
         service.call("save",AQEMU_FILE,false);
+    else if ( args.at("monitor").asBool() )
+        service.call("monitor",AQEMU_FILE,false);
     else if ( args.at("error").asBool() )
         service.call("error",AQEMU_FILE,false);
     else if ( args.at("control").asBool() )

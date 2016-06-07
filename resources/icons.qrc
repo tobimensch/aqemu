@@ -69,5 +69,6 @@
     <file alias="serial-port.png">icons/serial-port.png</file>
     <file alias="parallel-port.png">icons/parallel-port.png</file>
     <file alias="system-search.png">icons/oxygen/system-search.png</file>
+    <file alias="shutdown.png">icons/oxygen/shutdown.png</file>
   </qresource>
 </RCC>

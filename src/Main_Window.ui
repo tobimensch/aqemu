@@ -131,7 +131,7 @@
            <enum>QTabWidget::Rounded</enum>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="Tab_Info">
            <attribute name="icon">
@@ -1349,7 +1349,7 @@
                   <string>Start in full screen</string>
                  </property>
                  <property name="text">
-                  <string>&amp;Fullscreen mode</string>
+                  <string>Full&amp;screen mode</string>
                  </property>
                 </widget>
                </item>
@@ -3089,10 +3089,11 @@
     <addaction name="actionCopy"/>
     <addaction name="separator"/>
     <addaction name="actionPower_On"/>
-    <addaction name="actionSave"/>
     <addaction name="actionPause"/>
+    <addaction name="actionShutdown"/>
     <addaction name="actionPower_Off"/>
     <addaction name="actionReset"/>
+    <addaction name="actionSave"/>
     <addaction name="separator"/>
     <addaction name="actionManage_Snapshots"/>
     <addaction name="actionShow_Emulator_Control"/>
@@ -3110,7 +3111,7 @@
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
-     <string>Fi&amp;le</string>
+     <string>&amp;File</string>
     </property>
     <addaction name="actionCreate_HDD_Image"/>
     <addaction name="actionConvert_HDD_Image"/>
@@ -3176,10 +3177,11 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionPower_On"/>
-   <addaction name="actionSave"/>
    <addaction name="actionPause"/>
+   <addaction name="actionShutdown"/>
    <addaction name="actionPower_Off"/>
    <addaction name="actionReset"/>
+   <addaction name="actionSave"/>
   </widget>
   <action name="actionAbout_AQEMU">
    <property name="icon">
@@ -3268,7 +3270,7 @@
      <normaloff>:/hdd.png</normaloff>:/hdd.png</iconset>
    </property>
    <property name="text">
-    <string>Con&amp;vert HDD Image</string>
+    <string>Convert &amp;HDD Image</string>
    </property>
    <property name="iconText">
     <string>Convert HDD Image</string>
@@ -3439,7 +3441,7 @@
      <normaloff>:/wizard.png</normaloff>:/wizard.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;First Start Wizard</string>
+    <string>First &amp;Start Wizard</string>
    </property>
   </action>
   <action name="actionCreate_Shell_Script">
@@ -3457,7 +3459,19 @@
      <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
    </property>
    <property name="text">
-    <string>Delete VM And &amp;Files</string>
+    <string>Delete VM A&amp;nd Files</string>
+   </property>
+  </action>
+  <action name="actionShutdown">
+   <property name="icon">
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/shutdown.png</normaloff>:/shutdown.png</iconset>
+   </property>
+   <property name="text">
+    <string>Sh&amp;utdown</string>
+   </property>
+   <property name="toolTip">
+    <string>Shutdown</string>
    </property>
   </action>
  </widget>

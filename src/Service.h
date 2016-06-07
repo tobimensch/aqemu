@@ -82,6 +82,7 @@ class AQEMU_Service : public QObject
         QString pause(const QString& vm);
         QString reset(const QString& vm);
         QString save(const QString& vm);
+        QString monitor(const QString& vm);
         QString error(const QString& vm);
         QString control(const QString& vm);
         QString status(const QString& vm);

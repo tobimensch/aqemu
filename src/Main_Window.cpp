@@ -115,11 +115,12 @@ Main_Window::Main_Window( QWidget *parent )
 	// Create Icon_Menu
 	Icon_Menu = new QMenu( ui.Machines_List );
 	
-	Icon_Menu->addAction( ui.actionPower_On );
-	Icon_Menu->addAction( ui.actionSave );
+    Icon_Menu->addAction( ui.actionPower_On );
 	Icon_Menu->addAction( ui.actionPause );
+    Icon_Menu->addAction( ui.actionShutdown );
 	Icon_Menu->addAction( ui.actionPower_Off );
 	Icon_Menu->addAction( ui.actionReset );
+    Icon_Menu->addAction( ui.actionSave );
 	Icon_Menu->addSeparator();
 	Icon_Menu->addAction( ui.actionDelete_VM );
 	Icon_Menu->addAction( ui.actionDelete_VM_And_Files );
@@ -3311,6 +3312,7 @@ void Main_Window::setStateActionsEnabled(bool enabled)
 	ui.actionSave->setEnabled( enabled );
 	ui.actionPause->setEnabled( enabled );
 	ui.actionPower_Off->setEnabled( enabled );
+    ui.actionShutdown->setEnabled( enabled );
 	ui.actionReset->setEnabled( enabled );
 }
 
@@ -3366,6 +3368,7 @@ void Main_Window::Show_State_Current( Virtual_Machine *vm)
 			ui.actionPause->setEnabled( false );
 			ui.actionPause->setChecked( false );
 			ui.actionPower_Off->setEnabled( true );
+            ui.actionShutdown->setEnabled( true );
 			ui.actionReset->setEnabled( true );
 
 			Set_Widgets_State( false );
@@ -4218,6 +4221,7 @@ void Main_Window::on_actionDelete_VM_triggered()
 		ui.actionPause->setEnabled( false );
 		ui.actionPower_Off->setEnabled( false );
 		ui.actionReset->setEnabled( false );
+        ui.actionShutdown->setEnabled( false );
 		
 		ui.Button_Apply->setEnabled( false );
 		ui.Button_Cancel->setEnabled( false );
@@ -4263,6 +4267,7 @@ void Main_Window::on_actionDelete_VM_And_Files_triggered()
 			ui.actionPause->setEnabled( false );
 			ui.actionPower_Off->setEnabled( false );
 			ui.actionReset->setEnabled( false );
+            ui.actionShutdown->setEnabled( false );
 			
 			ui.Button_Apply->setEnabled( false );
 			ui.Button_Cancel->setEnabled( false );
@@ -4630,6 +4635,29 @@ void Main_Window::on_actionPower_Off_triggered()
 
     AQEMU_Service::get().call( "stop" , cur_vm );
 }
+
+void Main_Window::on_actionShutdown_triggered()
+{
+    if( VM_List.count() <= 0 ) return;
+
+    Virtual_Machine *cur_vm = Get_Current_VM();
+    if( cur_vm == NULL )
+    {
+        AQError( "void Main_Window::on_actionShutdown_triggered()",
+                 "cur_vm == NULL" );
+        return;
+    }
+
+    if( QMessageBox::question(this, tr("Are you sure?"),
+        tr("Shutdown VM \"%1\"?").arg(cur_vm->Get_Machine_Name()),
+        QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No )
+    {
+        return;
+    }
+
+    AQEMU_Service::get().call( "shutdown" , cur_vm );
+}
+
 
 void Main_Window::on_actionPause_triggered()
 {
