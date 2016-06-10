@@ -627,5 +627,5 @@ void First_Start_Wizard::retranslateUi()
 	ui.Label_Add_Emulator_Version->setText( "Emulator version" );
 	ui.Button_Add_Emulator_Find->setText( "Start &searching" );
 	ui.Button_Add_Emulator_Manual_Mode->setText( "Show all settings..." );
-	ui.Label_Finish_Text->setText( tr("Congratulations! You can now configure and use virtual machines. Click on \"Finish\" to save these settings.") );
+    ui.Label_Finish_Text->setText( tr("Congratulations!\n\nYou can now configure and use virtual machines.\n\nClick on \"Finish\" to save these settings.") );
 }

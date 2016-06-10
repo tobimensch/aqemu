@@ -3336,7 +3336,7 @@
   <action name="actionReset">
    <property name="icon">
     <iconset resource="../resources/icons.qrc">
-     <normaloff>:/update.png</normaloff>:/update.png</iconset>
+     <normaloff>:/reboot.png</normaloff>:/reboot.png</iconset>
    </property>
    <property name="text">
     <string>&amp;Reset</string>
@@ -3375,7 +3375,7 @@
   <action name="actionSave">
    <property name="icon">
     <iconset resource="../resources/icons.qrc">
-     <normaloff>:/save.png</normaloff>:/save.png</iconset>
+     <normaloff>:/save-state.png</normaloff>:/save-state.png</iconset>
    </property>
    <property name="text">
     <string>Sa&amp;ve</string>
