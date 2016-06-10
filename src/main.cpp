@@ -108,10 +108,6 @@ int AQEMU_Main::main(int argc, char *argv[])
                          true,               // show help if requested
                           qPrintable( version ) );  // version string
 
-    for(auto const& arg : args) {
-        std::cout << arg.first <<  arg.second << std::endl;
-    }
-
     // Create QApplication
     application = new QApplication( argc, argv );
 
