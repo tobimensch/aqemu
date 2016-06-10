@@ -219,9 +219,9 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QLabel" name="label">
+             <widget class="Highlighted_Label" name="label">
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color: palette(link);&quot;&gt;Machine&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>Machine</string>
               </property>
              </widget>
             </item>
@@ -883,9 +883,9 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_2">
+             <widget class="Highlighted_Label" name="label_2">
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:palette(link);&quot;&gt;Memory&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>Memory</string>
               </property>
              </widget>
             </item>
@@ -1175,9 +1175,9 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_3">
+             <widget class="Highlighted_Label" name="label_3">
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:palette(link);&quot;&gt;Audio&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>Audio</string>
               </property>
              </widget>
             </item>
@@ -1281,9 +1281,9 @@
              </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="label_4">
+             <widget class="Highlighted_Label" name="label_4">
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:medium; font-weight:600; color:palette(link);&quot;&gt;Options&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>Options</string>
               </property>
              </widget>
             </item>
@@ -3481,6 +3481,11 @@
    <class>My_List_Widget</class>
    <extends>QListWidget</extends>
    <header>Settings_Widget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Highlighted_Label</class>
+   <extends>QLabel</extends>
+   <header>Highlighted_Label.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

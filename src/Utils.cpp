@@ -34,6 +34,8 @@
 #include <QStringList>
 #include <QTextStream>
 
+#include <cmath>
+
 #ifdef Q_OS_WIN32
 #include <iostream>
 #include <windows.h>
@@ -979,3 +981,20 @@ void Checkbox_Dependend_Set_Enabled(QList<QWidget*>& children_to_enable, QCheckB
 }
 
 
+//calculate contrast difference between two colors
+//(typically a background and a foreground color)
+//this code was based on the formula in this
+//stackoverflow post: http://stackoverflow.com/a/302961/6427928
+double calculateContrast(const QColor& col1, const QColor& col2)
+{
+    double l1, l2;
+
+    l1 = ( 0.2126 * pow((double)col1.red()/255.0, 2.2) +
+           0.7152 * pow((double)col1.green()/255.0, 2.2) +
+           0.0722 * pow((double)col1.blue()/255.0, 2.2) );
+    l2 = ( 0.2126 * pow((double)col2.red()/255.0, 2.2) +
+           0.7152 * pow((double)col2.green()/255.0, 2.2) +
+           0.0722 * pow((double)col2.blue()/255.0, 2.2) );
+
+    return (l1 > l2) ? (l1 / l2) : (l2 / l1);
+}

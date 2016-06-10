@@ -1679,8 +1679,12 @@ void Main_Window::Update_Info_Text( int info_mode )
 		QTextCharFormat format = QTextCharFormat();
 		
 		QTextCharFormat bold_format = format;
-		bold_format.setFontWeight( QFont::Bold );
-		bold_format.setForeground( qpal.color(QPalette::Link) );
+        bold_format.setFontWeight( QFont::Bold );
+
+        if ( calculateContrast(palette().color(QPalette::Window),palette().color(QPalette::Link)) > 3.0 )
+            bold_format.setForeground( qpal.color(QPalette::Link) );
+        else
+            bold_format.setForeground( qpal.color(QPalette::WindowText) );
 		
 		QTextTableFormat table_format;
 		
@@ -1734,9 +1738,12 @@ void Main_Window::Update_Info_Text( int info_mode )
 	}
 	
 	QTextCharFormat bold_format = format;
-	bold_format.setFontWeight( QFont::Bold );
-	bold_format.setForeground( qpal.color(QPalette::Link) );
-	
+    bold_format.setFontWeight( QFont::Bold );
+    if ( calculateContrast(palette().color(QPalette::Window),palette().color(QPalette::Link)) > 3.0 )
+        bold_format.setForeground( qpal.color(QPalette::Link) );
+    else
+        bold_format.setForeground( qpal.color(QPalette::WindowText) );
+
 	QTextTableFormat table_format;
 	
 	table_format.setAlignment( Qt::AlignLeft );

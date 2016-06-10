@@ -95,5 +95,7 @@ class QCheckBox;
 
 void Checkbox_Dependend_Set_Enabled(QList<QWidget*>& children_to_enable, QCheckBox* checkbox, bool enabled);
 
+double calculateContrast(const QColor& col1, const QColor& col2);
+
 #endif
 

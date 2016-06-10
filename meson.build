@@ -11,7 +11,8 @@ incdir = include_directories('src')
 
 add_global_arguments( ['-DVNC_DISPLAY', '-DQTONLY'] , language : 'cpp')
 
-aqemu_headers =    ['src/main.h',
+aqemu_headers =    ['src/Highlighted_Label.h',
+                    'src/main.h',
                     'src/Service.h',
                     'src/Run_Guard.h',
                     'src/QEMU_Docopt.h',
@@ -62,7 +63,8 @@ aqemu_headers =    ['src/main.h',
                     'src/Embedded_Display/vncclientthread.h',
                     'src/Embedded_Display/vncview.h']
 
-aqemu_sources =    ['src/Service.cpp',
+aqemu_sources =    ['src/Highlighted_Label.cpp',
+                    'src/Service.cpp',
                     'src/Run_Guard.cpp',
                     'src/QEMU_Docopt.cpp',
                     'src/IP_Edit.cpp',

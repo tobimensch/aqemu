@@ -28,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    src/Highlighted_Label.h
     src/Service.h
     src/Run_Guard.h
     src/QEMU_Docopt.h
@@ -76,6 +77,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    src/Highlighted_Label.cpp
     src/Service.cpp
     src/Run_Guard.cpp
     src/QEMU_Docopt.cpp
