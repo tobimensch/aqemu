@@ -6752,6 +6752,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 
 QStringList Virtual_Machine::Build_QEMU_Args_For_Tab_Info()
 {
+    Build_QEMU_Args_for_Script_Mode = true;
 	Build_QEMU_Args_for_Tab_Info = true;
 	return Build_QEMU_Args();
 }
