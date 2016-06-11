@@ -433,7 +433,10 @@ void Device_Manager_Widget::Update_Enabled_Actions()
 		
 		ui.actionAdd_HDD->setEnabled( false );
 		ui.TB_Add_HDD->setEnabled( false );
-		
+
+        ui.actionAdd_Device->setEnabled( false );
+        ui.TB_Add_Device->setEnabled( false );
+
 		ui.TB_Delete_Device->setEnabled( false );
 		ui.actionDelete->setEnabled( false );
 		
