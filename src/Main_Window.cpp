@@ -211,6 +211,7 @@ Main_Window::Main_Window( QWidget *parent )
 				ui.actionPause->setEnabled( false );
 				ui.actionPower_Off->setEnabled( false );
 				ui.actionReset->setEnabled( false );
+                ui.actionShutdown->setEnabled( false );
 				
 				Set_Widgets_State( false );
 				
