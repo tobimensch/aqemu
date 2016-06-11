@@ -170,14 +170,14 @@ bool AQEMU_Service::call(const QString& command, const QList<QVariant>& params, 
 
 bool AQEMU_Service::call(const QString &command, Virtual_Machine *vm, bool noblock)
 {
-    call(command, vm->Get_VM_XML_File_Path(), noblock);
+    return call(command, vm->Get_VM_XML_File_Path(), noblock);
 }
 
 bool AQEMU_Service::call(const QString &command, const QString& vm, bool noblock)
 {
     QList<QVariant> list;
     list << vm;
-    call(command, list, noblock);
+    return call(command, list, noblock);
 }
 
 bool AQEMU_Service::call(const QString &command, Virtual_Machine *vm, const QString& param2, bool noblock)
@@ -185,7 +185,7 @@ bool AQEMU_Service::call(const QString &command, Virtual_Machine *vm, const QStr
     QList<QVariant> list;
     list << vm->Get_VM_XML_File_Path();
     list << param2;
-    call(command, list, noblock);
+    return call(command, list, noblock);
 }
 
 
@@ -196,6 +196,7 @@ bool AQEMU_Service::init_service()
     service = new Run_Guard( "Gmp[0Ab6000" ); //if service is already running, skip this
     if (service->tryToRun() == false)
     {
+        delete service;
         service = nullptr;
         return false;
     }
@@ -367,6 +368,20 @@ QString AQEMU_Service::status(const QString& s)
         vm_state_changed(machine,machine->Get_State());
         QString state = machine->Get_State_Text();
         return QString("VM state:  %1.").arg(state);
+    }
+    else if ( s.isEmpty() )
+    {
+        QString text;
+        for ( int i = 0; i < machines.count(); i++ )
+        {
+            vm_state_changed(machines.at(i),machines.at(i)->Get_State());
+            text += QString("VM \"%1\" state: %2.\n").arg(machines.at(i)->Get_Machine_Name(),machines.at(i)->Get_State_Text());
+        }
+
+        if ( ! text.isEmpty() )
+            return text;
+        else
+            return QString("No VMs running.");
     }
 
     return QString("Could not show state of VM \"%1\".").arg(s);

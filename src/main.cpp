@@ -59,7 +59,7 @@ R"(Usage: aqemu [options]
        aqemu monitor   ( <AQEMU_FILE> | <VM_Name> )
        aqemu error     ( <AQEMU_FILE> | <VM_Name> )
        aqemu control   ( <AQEMU_FILE> | <VM_Name> )
-       aqemu status    ( <AQEMU_FILE> | <VM_Name> )
+       aqemu status    [ <AQEMU_FILE> | <VM_Name> ]
 
 Frontend for qemu.
 

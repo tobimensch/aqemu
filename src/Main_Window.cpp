@@ -1200,11 +1200,12 @@ bool Main_Window::Load_Virtual_Machines()
 			// Append new VM
 			VM_List << new_vm;
 
-            AQEMU_Service::get().call("status",fil[ix].filePath());
 		}
 		
 		++real_index;
 	}
+
+    AQEMU_Service::get().call("status","");
 	
 	// Set last used vm
 	int cur_row = Settings.value( "Current_VM_Index", 0 ).toInt();
