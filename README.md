@@ -19,5 +19,6 @@ Dependencies:
  - Qt5Network
  - Qt5Test
  - Qt5PrintSupport
+ - Qt5DBus
  - LibVNCServer
 
