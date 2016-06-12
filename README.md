@@ -1,6 +1,6 @@
 ![ScreenShot](https://i.imgur.com/PkvFUEk.png)
 
-Current stable release: https://github.com/tobimensch/aqemu/releases/tag/v0.9.1
+Current stable release: https://github.com/tobimensch/aqemu/releases/tag/v0.9.2
 See the CHANGELOG for details.
 
 Upgrading from 0.8.2 is highly recommended.
