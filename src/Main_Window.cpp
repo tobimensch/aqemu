@@ -69,11 +69,12 @@ QList<VM_USB> System_Info::Used_Host_USB;
 Main_Window::Main_Window( QWidget *parent )
 	: QMainWindow( parent )
 {
-    Advanced_Options = new QDialog;
-    Accelerator_Options = new QDialog;
-    Architecture_Options = new QDialog;
+    Advanced_Options = new QDialog(this);
+    Accelerator_Options = new QDialog(this);
+    Architecture_Options = new QDialog(this);
+    SMP_Settings = new SMP_Settings_Window(this);
 
-	ui.setupUi( this );
+    ui.setupUi( this );
 	ui_ao.setupUi( Advanced_Options );
 
     connect(ui_ao.CH_Start_Date,SIGNAL(toggled(bool)),this,SLOT(adv_on_CH_Start_Date_toggled(bool)));
@@ -267,6 +268,7 @@ Main_Window::~Main_Window()
     delete Dev_Manager;
     delete Folder_Sharing;
     delete Media_Settings_Widget;
+    delete SMP_Settings;
 
     QDBusConnection::sessionBus().unregisterService("org.aqemu.main_window");
 }
@@ -809,7 +811,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
         return false;
     }
 	tmp_vm->Set_SMP_CPU_Count( ui.CB_CPU_Count->currentText().toInt() );
-	tmp_vm->Set_SMP( SMP_Settings.Get_Values() );
+    tmp_vm->Set_SMP( SMP_Settings->Get_Values() );
 	
 	// Keyboard Layout
 	if( ui.CB_Keyboard_Layout->currentIndex() == 0 ) // Default
@@ -1207,7 +1209,7 @@ bool Main_Window::Load_Virtual_Machines()
 		++real_index;
 	}
 
-    AQEMU_Service::get().call("status","");
+    AQEMU_Service::get().call("status");
 	
 	// Set last used vm
 	int cur_row = Settings.value( "Current_VM_Index", 0 ).toInt();
@@ -1356,7 +1358,7 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	
 	// Count CPU's
 	ui.CB_CPU_Count->setEditText( QString::number(tmp_vm->Get_SMP_CPU_Count()) );
-	SMP_Settings.Set_Values( tmp_vm->Get_SMP(), curComp.PSO_SMP_Count, curComp.PSO_SMP_Cores,
+    SMP_Settings->Set_Values( tmp_vm->Get_SMP(), curComp.PSO_SMP_Count, curComp.PSO_SMP_Cores,
 							 curComp.PSO_SMP_Threads, curComp.PSO_SMP_Sockets, curComp.PSO_SMP_MaxCPUs );
 	
 	// Keyboard Layout
@@ -4874,15 +4876,16 @@ void Main_Window::on_actionShow_Emulator_Control_triggered()
 	if( cur_vm->Get_State() == VM::VMS_Running ||
 		cur_vm->Get_State() == VM::VMS_Pause )
 	{
-		// Emulator Control is Visible?
+        /*// Emulator Control is Visible?
 		if( (Settings.value("Use_VNC_Display", "no").toString() == "yes" && ui.Tabs->tabText(0) == tr("Display")) )
 		{
-			AQGraphic_Warning( tr("Warning"), tr("Emulator Control Already Show") );
+            AQGraphic_Warning( tr("Warning"), tr("Emulator Control Already Shown") );
 		}
 		else
-		{
-			cur_vm->Show_Emu_Ctl_Win();
-		}
+        {*/
+            AQEMU_Service::get().call( "control" , cur_vm );
+            //cur_vm->Show_Emu_Ctl_Win();
+        /*}*/
 	}
 	else
 	{
@@ -4984,8 +4987,8 @@ void Main_Window::on_actionShow_QEMU_Error_Log_Window_triggered()
 				 "cur_vm == NULL" );
 		return;
 	}
-	
-	cur_vm->Show_Error_Log_Window();
+
+    AQEMU_Service::get().call( "error" , cur_vm );
 }
 
 void Main_Window::on_Memory_Size_valueChanged( int value )
@@ -5545,18 +5548,18 @@ void Main_Window::on_TB_Show_SMP_Settings_Window_clicked()
 	if( ! Validate_CPU_Count(ui.CB_CPU_Count->currentText()) ) return;
 	
 	// New SMP count?
-	if( SMP_Settings.Get_Values().SMP_Count != ui.CB_CPU_Count->currentText().toInt() )
-		SMP_Settings.Set_SMP_Count( ui.CB_CPU_Count->currentText().toInt() );
+    if( SMP_Settings->Get_Values().SMP_Count != ui.CB_CPU_Count->currentText().toInt() )
+        SMP_Settings->Set_SMP_Count( ui.CB_CPU_Count->currentText().toInt() );
 	
-	if( SMP_Settings.exec() == QDialog::Accepted )
+    if( SMP_Settings->exec() == QDialog::Accepted )
 	{
-		if( SMP_Settings.Get_Values().SMP_Count != ui.CB_CPU_Count->currentText().toInt() )
+        if( SMP_Settings->Get_Values().SMP_Count != ui.CB_CPU_Count->currentText().toInt() )
 		{
 			// Set new CPU count value
 			disconnect( ui.CB_CPU_Count, SIGNAL(editTextChanged(const QString &)),
 						this, SLOT(Validate_CPU_Count(const QString&)) );
 			
-			ui.CB_CPU_Count->setEditText( QString::number(SMP_Settings.Get_Values().SMP_Count) );
+            ui.CB_CPU_Count->setEditText( QString::number(SMP_Settings->Get_Values().SMP_Count) );
 			
 			connect( ui.CB_CPU_Count, SIGNAL(editTextChanged(const QString &)),
 					 this, SLOT(Validate_CPU_Count(const QString&)) );
@@ -5564,7 +5567,7 @@ void Main_Window::on_TB_Show_SMP_Settings_Window_clicked()
 		else
 		{
 			// Settings changed?
-			if( SMP_Settings.Get_Values() != Get_Current_VM()->Get_SMP() )
+            if( SMP_Settings->Get_Values() != Get_Current_VM()->Get_SMP() )
 				VM_Changed();
 		}
 	}
@@ -5594,8 +5597,8 @@ bool Main_Window::Validate_CPU_Count( const QString &text )
 	if( cpuCountTmp <= tmpDev.PSO_SMP_Count )
 	{
 		// Reset old SMP options
-		if( SMP_Settings.Get_Values().SMP_Count != ui.CB_CPU_Count->currentText().toInt() )
-			SMP_Settings.Set_SMP_Count( cpuCountTmp );
+        if( SMP_Settings->Get_Values().SMP_Count != ui.CB_CPU_Count->currentText().toInt() )
+            SMP_Settings->Set_SMP_Count( cpuCountTmp );
 		
 		return true;
 	}

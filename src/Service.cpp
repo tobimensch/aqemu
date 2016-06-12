@@ -120,9 +120,6 @@ bool AQEMU_Service::isActive()
 
 bool AQEMU_Service::call(const QString& command, const QList<QVariant>& params, bool noblock)
 {
-    if ( params.count() < 1 )
-        return false;
-
     called_dbus = true;
 
     if ( init_service() )
@@ -180,6 +177,12 @@ bool AQEMU_Service::call(const QString &command, const QString& vm, bool noblock
     return call(command, list, noblock);
 }
 
+bool AQEMU_Service::call(const QString &command, bool noblock)
+{
+    QList<QVariant> list;
+    return call(command, list, noblock);
+}
+
 bool AQEMU_Service::call(const QString &command, Virtual_Machine *vm, const QString& param2, bool noblock)
 {
     QList<QVariant> list;
@@ -191,8 +194,6 @@ bool AQEMU_Service::call(const QString &command, Virtual_Machine *vm, const QStr
 
 bool AQEMU_Service::init_service()
 {
-    std::cout << "init service" << std::endl;
-
     service = new Run_Guard( "Gmp[0Ab6000" ); //if service is already running, skip this
     if (service->tryToRun() == false)
     {
@@ -200,8 +201,6 @@ bool AQEMU_Service::init_service()
         service = nullptr;
         return false;
     }
-
-    std::cout << "init service REALLY" << std::endl;
 
     //dbus listening stuff
 
@@ -218,7 +217,6 @@ bool AQEMU_Service::init_service()
         return false;
     }
 
-    std::cout << "registered" << std::endl;
     QDBusConnection::sessionBus().registerObject("/", this, QDBusConnection::ExportAllSlots);
     return true;
 }
@@ -387,6 +385,21 @@ QString AQEMU_Service::status(const QString& s)
     return QString("Could not show state of VM \"%1\".").arg(s);
 }
 
+QString AQEMU_Service::status()
+{
+    QString text;
+    for ( int i = 0; i < machines.count(); i++ )
+    {
+        vm_state_changed(machines.at(i),machines.at(i)->Get_State());
+        text += QString("VM \"%1\" state: %2.\n").arg(machines.at(i)->Get_Machine_Name(),machines.at(i)->Get_State_Text());
+    }
+
+    if ( ! text.isEmpty() )
+        return text;
+    else
+        return QString("No VMs running.");
+}
+
 QString AQEMU_Service::command(const QString &vm, const QString &command)
 {
     if(auto machine = getMachine(vm))
@@ -396,4 +409,10 @@ QString AQEMU_Service::command(const QString &vm, const QString &command)
     }
 
     return QString("Could not send command to VM \"%1\".").arg(vm);
+}
+
+QString AQEMU_Service::list()
+{
+    //return names of all available machines
+    return "";
 }

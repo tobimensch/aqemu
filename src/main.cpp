@@ -60,6 +60,7 @@ R"(Usage: aqemu [options]
        aqemu error     ( <AQEMU_FILE> | <VM_Name> )
        aqemu control   ( <AQEMU_FILE> | <VM_Name> )
        aqemu status    [ <AQEMU_FILE> | <VM_Name> ]
+       aqemu list
 
 Frontend for qemu.
 
@@ -138,6 +139,8 @@ int AQEMU_Main::main(int argc, char *argv[])
         service.call("control",AQEMU_FILE,false);
     else if ( args.at("status").asBool() )
         service.call("status",AQEMU_FILE,false);
+    else if ( args.at("list").asBool() )
+        service.call("list",false);
 
     if ( service.wasCalled() )
     {

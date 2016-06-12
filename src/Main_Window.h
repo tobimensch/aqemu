@@ -233,7 +233,7 @@ class Main_Window: public QMainWindow
 		QList<Virtual_Machine*> VM_List;
 		QList<Emulator> All_Emulators_List; // FIXME use call
 		
-		SMP_Settings_Window SMP_Settings;
+        SMP_Settings_Window* SMP_Settings;
 		
 		QList<VM::Boot_Order> Boot_Order_List;
 		bool Show_Boot_Menu;

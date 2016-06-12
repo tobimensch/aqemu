@@ -63,10 +63,11 @@ class AQEMU_Service : public QObject
             return ( service == 0 );
         }
         bool isActive();
-        bool call(const QString& command,const QList<QVariant>& params, bool noblock=true);
-        bool call(const QString& command,const QString& vm, bool noblock=true);
-        bool call(const QString& command,Virtual_Machine* vm, bool noblock=true);
-        bool call(const QString &command, Virtual_Machine *vm, const QString &param2, bool noblock);
+        bool call(const QString& command, const QList<QVariant>& params, bool noblock=true);
+        bool call(const QString& command, bool noblock=true);
+        bool call(const QString& command, const QString& vm, bool noblock=true);
+        bool call(const QString& command, Virtual_Machine* vm, bool noblock=true);
+        bool call(const QString& command, Virtual_Machine *vm, const QString &param2, bool noblock);
         void setMainWindow( bool );
         void setMain( AQEMU_Main* );
         int machineCount() const;
@@ -86,7 +87,12 @@ class AQEMU_Service : public QObject
         QString error(const QString& vm);
         QString control(const QString& vm);
         QString status(const QString& vm);
+        QString status();
         QString command(const QString& vm, const QString& command);
+        QString list();
+
+    signals:
+        QString callProcessed();
 
     private slots:
         void vm_state_changed(Virtual_Machine *vm, VM::VM_State s);
