@@ -228,6 +228,11 @@ void Settings_Widget::syncGroupIconSizes(QString g)
         min_total_list_width += max_width.at(j) +5;
     }
 
+    if ( max_list_height > 0  && max_list_height <= 58 )
+    {
+        max_list_height = 68;
+    }
+
     //then apply max_width to all
     for( int i = 0; i < list.count(); i++ )
     {

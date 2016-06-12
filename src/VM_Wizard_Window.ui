@@ -166,7 +166,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="Wizard_Pages">
      <property name="currentIndex">
-      <number>3</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="Wizard_Mode_Page">
       <layout class="QGridLayout" name="gridLayout_4">
@@ -678,7 +678,15 @@
          <property name="currentIndex">
           <number>1</number>
          </property>
-         <widget class="QWidget" name="toolBox_accelInfoPage2" native="true">
+         <widget class="QWidget" name="toolBox_accelInfoPage2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>108</width>
+            <height>380</height>
+           </rect>
+          </property>
           <attribute name="label">
            <string>TCG (for Tiny Code Generator)</string>
           </attribute>
@@ -707,7 +715,15 @@
            </item>
           </layout>
          </widget>
-         <widget class="QWidget" name="toolBox_accelInfoPage1" native="true">
+         <widget class="QWidget" name="toolBox_accelInfoPage1">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>578</width>
+            <height>122</height>
+           </rect>
+          </property>
           <attribute name="label">
            <string>KVM (for Kernel-based Virtual Machine)</string>
           </attribute>
@@ -759,7 +775,7 @@
             <item>
              <widget class="QRadioButton" name="RB_Emulator_QEMU">
               <property name="text">
-               <string>TCG (Choose this if the &amp;guest or host isn't x86)</string>
+               <string>TCG (Choose this if the guest or host isn't &amp;x86)</string>
               </property>
              </widget>
             </item>

@@ -71,9 +71,13 @@ void First_Start_Wizard::on_Button_Back_clicked()
 
 	if( ui.All_Pages->currentWidget() == ui.Find_Emulators_Page ||
 		ui.All_Pages->currentWidget() == ui.Add_Emulator_Page )
+    {
 		ui.All_Pages->setCurrentWidget( ui.General_Settings_Page );
+    }
 	else
+    {
 		ui.All_Pages->setCurrentIndex( ui.All_Pages->currentIndex() -1 );
+    }
 
 	ui.Button_Next->setEnabled( true );
 }

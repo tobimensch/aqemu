@@ -502,8 +502,8 @@ void VncView::enterEvent( QEvent* event )
 {
     auto enter = static_cast<QEnterEvent*>(event);
 
-    int x = enter->globalX();
-    int y = enter->globalY();
+    //int x = enter->globalX();
+    //int y = enter->globalY();
     int mx = enter->x();
     int my = enter->y();
 

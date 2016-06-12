@@ -355,9 +355,6 @@
                    <property name="text">
                     <string>Architecture</string>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
                   </widget>
                  </item>
                  <item row="3" column="0">
@@ -370,9 +367,6 @@
                    </property>
                    <property name="text">
                     <string>CP&amp;Us:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
                    <property name="buddy">
                     <cstring>CB_CPU_Count</cstring>
@@ -428,9 +422,6 @@
                    <property name="text">
                     <string>Accelerator:</string>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
                   </widget>
                  </item>
                  <item row="1" column="2">
@@ -454,9 +445,6 @@
                    </property>
                    <property name="text">
                     <string>&amp;Name:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
                    <property name="buddy">
                     <cstring>Edit_Machine_Name</cstring>
@@ -503,9 +491,6 @@
                    <property name="text">
                     <string/>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
                   </widget>
                  </item>
                  <item row="1" column="0">
@@ -518,9 +503,6 @@
                    </property>
                    <property name="text">
                     <string>&amp;Boot:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse</set>
@@ -585,9 +567,6 @@
                    <property name="text">
                     <string>&amp;Graphics:</string>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
                    <property name="buddy">
                     <cstring>CB_Video_Card</cstring>
                    </property>
@@ -622,9 +601,6 @@
                    </property>
                    <property name="text">
                     <string>&amp;Keyboard:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                    </property>
                    <property name="buddy">
                     <cstring>CB_Keyboard_Layout</cstring>
@@ -1463,9 +1439,6 @@
                      <property name="text">
                       <string>&amp;Kernel bzImage file:</string>
                      </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
                      <property name="buddy">
                       <cstring>Edit_Linux_bzImage_Path</cstring>
                      </property>
@@ -1489,9 +1462,6 @@
                      <property name="text">
                       <string>&amp;Initrd file:</string>
                      </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
                      <property name="buddy">
                       <cstring>Edit_Linux_Initrd_Path</cstring>
                      </property>
@@ -1504,9 +1474,6 @@
                      </property>
                      <property name="text">
                       <string>A&amp;ppend command line:</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                      </property>
                      <property name="buddy">
                       <cstring>Edit_Linux_Command_Line</cstring>
@@ -1955,9 +1922,6 @@
                         </property>
                         <property name="toolTip">
                          <string>For Connection Use Port 5900 + VNC Display Number</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                         </property>
                         <property name="minimum">
                          <number>1</number>
@@ -2880,9 +2844,6 @@
                     <property name="text">
                      <string>TFTP folder:</string>
                     </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
                     <property name="buddy">
                      <cstring>Edit_TFTP_Prefix</cstring>
                     </property>
@@ -2902,9 +2863,6 @@
                    <widget class="QLabel" name="Label_SMB_Folder">
                     <property name="text">
                      <string>Allow &amp;SMB access to:</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="buddy">
                      <cstring>Edit_SMB_Folder</cstring>
@@ -3003,9 +2961,6 @@
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>

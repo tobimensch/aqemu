@@ -227,7 +227,6 @@ Main_Window::Main_Window( QWidget *parent )
 		}
 	}
 
-
     Settings_Widget::syncGroupIconSizes("Main");
 }
 
