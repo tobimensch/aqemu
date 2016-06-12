@@ -7,7 +7,7 @@ Upgrading from 0.8.2 is highly recommended.
 
 ---
 
-Port of AQEmu 0.8.2 from Qt4 to Qt5.
+Port of AQEMU 0.8.2 from Qt4 to Qt5.
 
 ---
 
@@ -21,4 +21,10 @@ Dependencies:
  - Qt5PrintSupport
  - Qt5DBus
  - LibVNCServer
+
+
+---
+
+As an alternative to cmake the meson build system is also supported:
+https://github.com/mesonbuild/meson
 
