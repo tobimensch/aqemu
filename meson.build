@@ -11,7 +11,8 @@ incdir = include_directories('src')
 
 add_global_arguments( ['-DVNC_DISPLAY', '-DQTONLY'] , language : 'cpp')
 
-aqemu_headers =    ['src/Highlighted_Label.h',
+aqemu_headers =    ['src/No_Boot_Device.h',
+                    'src/Highlighted_Label.h',
                     'src/main.h',
                     'src/Service.h',
                     'src/Run_Guard.h',
@@ -63,7 +64,8 @@ aqemu_headers =    ['src/Highlighted_Label.h',
                     'src/Embedded_Display/vncclientthread.h',
                     'src/Embedded_Display/vncview.h']
 
-aqemu_sources =    ['src/Highlighted_Label.cpp',
+aqemu_sources =    ['src/No_Boot_Device.cpp',
+                    'src/Highlighted_Label.cpp',
                     'src/Service.cpp',
                     'src/Run_Guard.cpp',
                     'src/QEMU_Docopt.cpp',
@@ -118,7 +120,8 @@ aqemu_sources =    ['src/Highlighted_Label.cpp',
 aqemu_resources =  ['resources/icons.qrc',
                     'resources/shared_images.qrc']
 
-aqemu_ui =         ['src/About_Window.ui',
+aqemu_ui =         ['src/No_Boot_Device.ui',
+                    'src/About_Window.ui',
                     'src/Add_New_Device_Window.ui',
                     'src/Add_Port_Window.ui',
                     'src/Add_USB_Port_Window.ui',

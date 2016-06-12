@@ -48,6 +48,8 @@ class Network_Card_Widget;
 
 class Main_Window: public QMainWindow
 {
+    friend class No_Boot_Device;
+
 	Q_OBJECT
 	
 	public:

@@ -28,6 +28,7 @@ SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
 
 # Files
 SET( aqemu_headers
+    src/No_Boot_Device.h
     src/Highlighted_Label.h
     src/Service.h
     src/Run_Guard.h
@@ -77,6 +78,7 @@ SET( aqemu_headers
 )
 
 SET( aqemu_sources
+    src/No_Boot_Device.cpp
     src/Highlighted_Label.cpp
     src/Service.cpp
     src/Run_Guard.cpp
@@ -127,6 +129,7 @@ SET( aqemu_sources
 )
 
 SET( aqemu_ui
+    src/No_Boot_Device.ui
 	src/About_Window.ui
 	src/Add_New_Device_Window.ui
 	src/Add_Port_Window.ui

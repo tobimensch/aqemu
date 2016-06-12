@@ -56,6 +56,7 @@ class Settings_Widget : public QWidget
         void setIconSize(QSize);
         void addToGroup(QString);
         static void syncGroupIconSizes(QString);
+        void setCurrentIndex(int);
 
     private:
         My_List_Widget* list;

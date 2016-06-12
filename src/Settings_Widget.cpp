@@ -150,7 +150,11 @@ Settings_Widget::Settings_Widget(QTabWidget* tab_widget, QBoxLayout::Direction d
         if ( erase_margins )
             stack->setContentsMargins(0,0,0,0);
     }
+}
 
+void Settings_Widget::setCurrentIndex(int i)
+{
+    list->setCurrentRow(i);
 }
 
 QMap<QString,QList<Settings_Widget*>> Settings_Widget::groups = QMap<QString,QList<Settings_Widget*>>();

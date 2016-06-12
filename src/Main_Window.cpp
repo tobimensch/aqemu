@@ -57,6 +57,7 @@
 #include "Settings_Widget.h"
 #include "Utils.h"
 #include "Service.h"
+#include "No_Boot_Device.h"
 
 // This is static emulator devices data
 QMap<QString, Available_Devices> System_Info::Emulator_QEMU_2_0;
@@ -4100,7 +4101,8 @@ bool Main_Window::Boot_Is_Correct( Virtual_Machine *tmp_vm )
 	
 	if( foundEnabledDevice )
 	{
-		AQGraphic_Warning( tr("Error!"), tr("No boot device found!") );
+		//AQGraphic_Warning( tr("Error!"), tr("No boot device found!") );
+        No_Boot_Device(this).exec();
 		return false;
 	}
 	else return true; // boot device type: None
@@ -5485,7 +5487,7 @@ void Main_Window::Set_Boot_Order( const QList<VM::Boot_Order> &list )
 
 void Main_Window::on_TB_Show_Boot_Settings_Window_clicked()
 {
-	Boot_Device_Window boot_win;
+    Boot_Device_Window boot_win(this);
 	boot_win.setData( Boot_Order_List );
 	boot_win.setUseBootMenu( Show_Boot_Menu );
 	
