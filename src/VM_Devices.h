@@ -95,6 +95,18 @@ class VM
 				{
 					Audio_sb16 = Audio_es1370 = Audio_Adlib = Audio_PC_Speaker = Audio_GUS = Audio_AC97 = Audio_HDA = Audio_cs4231a = false;
 				}
+
+                bool isEnabled()
+                {
+                    return ( Audio_sb16 ||
+                             Audio_es1370 ||
+                             Audio_Adlib ||
+                             Audio_PC_Speaker ||
+                             Audio_GUS ||
+                             Audio_AC97 ||
+                             Audio_HDA ||
+                             Audio_cs4231a );
+                }
 				
 				bool operator==( const Sound_Cards &v ) const
 				{
@@ -121,9 +133,6 @@ class VM
 				}
 				
 		};
-		
-		// KQEMU module mode
-		enum Acseleration_Mode { KQEMU_Disabled, KQEMU_Enabled, KQEMU_Full, KQEMU_Default };
 		
 		// SMP Settings
 		class SMP_Options
@@ -178,6 +187,55 @@ class VM
 			Boot_Device Type;
 		};
 		
+        static QStringList Boot_Order_To_String_List(QList<Boot_Order> list)
+        {
+            QStringList bootStr;
+            for( int ix = 0; ix < list.count(); ix++ )
+            {
+                if( list[ix].Enabled )
+                {
+                    switch( list[ix].Type )
+                    {
+                        case VM::Boot_From_FDA:
+                            bootStr << "FDA";
+                            break;
+
+                        case VM::Boot_From_FDB:
+                            bootStr << "FDB";
+                            break;
+
+                        case VM::Boot_From_CDROM:
+                            bootStr << "CDROM";
+                            break;
+
+                        case VM::Boot_From_HDD:
+                            bootStr << "HDD";
+                            break;
+
+                        case VM::Boot_From_Network1:
+                            bootStr << "Net1";
+                            break;
+
+                        case VM::Boot_From_Network2:
+                            bootStr << "Net2";
+                            break;
+
+                        case VM::Boot_From_Network3:
+                            bootStr << "Net3";
+                            break;
+
+                        case VM::Boot_From_Network4:
+                            bootStr << "Net4";
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+            return bootStr;
+        }
+
 		// Kilobyte, Megabyte, Gigabyte
 		enum Size_Suffix { Size_Suf_Kb, Size_Suf_Mb, Size_Suf_Gb };
 		

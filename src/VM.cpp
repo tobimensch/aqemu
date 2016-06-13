@@ -43,6 +43,13 @@
 #include <QHBoxLayout>
 #include <QDesktopWidget>
 
+//GenerateHTMLInfo
+#include <QTextEdit>
+#include <QTextFrame>
+#include <QTextTableCell>
+#include <QPalette>
+//GenerateHTMLInfo
+
 #include "VM.h"
 #include "Utils.h"
 #include "Emulator_Control_Window.h"
@@ -113,8 +120,7 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 	this->Keyboard_Layout = vm.Get_Keyboard_Layout();
 	this->Boot_Order_List = vm.Get_Boot_Order_List();
 	this->Show_Boot_Menu = vm.Get_Show_Boot_Menu();
-	this->Video_Card = vm.Get_Video_Card();
-	this->KQEMU_Mode = vm.Get_KQEMU_Mode();
+    this->Video_Card = vm.Get_Video_Card();
 	
 	this->Audio_Card = vm.Get_Audio_Cards();
 	
@@ -354,8 +360,7 @@ void Virtual_Machine::Shared_Constructor()
 	
 	Show_Boot_Menu = true;
 	
-	Video_Card = "";
-	KQEMU_Mode = VM::KQEMU_Default;
+    Video_Card = "";
 	Audio_Card = VM::Sound_Cards();
 	Remove_RAM_Size_Limitation = false;
 	Memory_Size = 128;
@@ -461,8 +466,7 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 		this->SMP == vm.Get_SMP() &&
 		this->Keyboard_Layout == vm.Get_Keyboard_Layout() &&
 		this->Show_Boot_Menu == vm.Get_Show_Boot_Menu() &&
-		this->Video_Card == vm.Get_Video_Card() &&
-		this->KQEMU_Mode == vm.Get_KQEMU_Mode() &&
+        this->Video_Card == vm.Get_Video_Card() &&
 		this->Audio_Card == vm.Get_Audio_Cards() &&
 		this->Memory_Size == vm.Get_Memory_Size() &&
 		this->Remove_RAM_Size_Limitation == vm.Get_Remove_RAM_Size_Limitation() &&
@@ -689,8 +693,7 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 	this->Keyboard_Layout = vm.Get_Keyboard_Layout();
 	this->Boot_Order_List = vm.Get_Boot_Order_List();
 	this->Show_Boot_Menu = vm.Get_Show_Boot_Menu();
-	this->Video_Card = vm.Get_Video_Card();
-	this->KQEMU_Mode = vm.Get_KQEMU_Mode();
+    this->Video_Card = vm.Get_Video_Card();
 	this->Audio_Card = vm.Get_Audio_Cards();
 	this->Memory_Size = vm.Get_Memory_Size();
 	this->Remove_RAM_Size_Limitation = vm.Get_Remove_RAM_Size_Limitation();
@@ -1081,37 +1084,6 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 	Dom_Element = New_Dom_Document.createElement( "Video_Card" );
 	VM_Element.appendChild( Dom_Element );
 	Dom_Text = New_Dom_Document.createTextNode( Video_Card );
-	Dom_Element.appendChild( Dom_Text );
-	
-	// KQEMU Mode ( Acceleration )
-	Dom_Element = New_Dom_Document.createElement( "KQEMU_Mode" );
-	VM_Element.appendChild( Dom_Element );
-	
-	switch( KQEMU_Mode )
-	{
-		case VM::KQEMU_Disabled:
-			Dom_Text = New_Dom_Document.createTextNode( "Disabled" );
-			break;
-			
-		case VM::KQEMU_Enabled:
-			Dom_Text = New_Dom_Document.createTextNode( "Enabled" );
-			break;
-			
-		case VM::KQEMU_Full:
-			Dom_Text = New_Dom_Document.createTextNode( "Full" );
-			break;
-			
-		case VM::KQEMU_Default:
-			Dom_Text = New_Dom_Document.createTextNode( "Default" );
-			break;
-			
-		default:
-			AQWarning( "bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mode )",
-					   "Use Default KQEMU Mode: Enabled" );
-			Dom_Text = New_Dom_Document.createTextNode( "Enabled" );
-			break;
-	}
-	
 	Dom_Element.appendChild( Dom_Text );
 	
 	// Audio Cards
@@ -3790,32 +3762,6 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			// Video Card
 			Video_Card = Child_Element.firstChildElement("Video_Card").text();
 			
-			// KQEMU Mode ( Acseleration )
-			QString tmp_str = Child_Element.firstChildElement("KQEMU_Mode").text();
-			
-			if( tmp_str == "Enabled" )
-			{
-				KQEMU_Mode = VM::KQEMU_Enabled;
-			}
-			else if( tmp_str == "Disabled" )
-			{
-				KQEMU_Mode = VM::KQEMU_Disabled;
-			}
-			else if( tmp_str == "Full" )
-			{
-				KQEMU_Mode = VM::KQEMU_Full;
-			}
-			else if( tmp_str == "Default" )
-			{
-				KQEMU_Mode = VM::KQEMU_Default;
-			}
-			else
-			{
-				KQEMU_Mode = VM::KQEMU_Enabled;
-				AQWarning( "bool Virtual_Machine::Load_VM( const QString &file_name )",
-						   "KQEMU_Mode Invalid! Use Default!" );
-			}
-			
 			// Audio Cards
 			Second_Element = Child_Element.firstChildElement( "Audio_Cards" );
 			
@@ -4125,7 +4071,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				tmp_card.Set_Card_Model(
 						Second_Element.firstChildElement( "Card_Model" ).text() );
 				
-				tmp_str = Second_Element.firstChildElement( "Network_Mode" ).text();
+                QString tmp_str = Second_Element.firstChildElement( "Network_Mode" ).text();
 				
 				// Network Mode
 				if( tmp_str == "None" )
@@ -4384,7 +4330,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				
 				Second_Element = Child_Element.firstChildElement( "Serial_Port_" + QString::number(px) );
 				
-				tmp_str = Second_Element.firstChildElement( "Port_Redirection" ).text();
+                QString tmp_str = Second_Element.firstChildElement( "Port_Redirection" ).text();
 				
 				if( tmp_str == "vc" )
 					tmp_port.Set_Port_Redirection( VM::PR_vc );
@@ -4437,7 +4383,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				
 				Second_Element = Child_Element.firstChildElement( "Parallel_Port_" + QString::number(px) );
 			
-				tmp_str = Second_Element.firstChildElement( "Port_Redirection" ).text();
+                QString tmp_str = Second_Element.firstChildElement( "Port_Redirection" ).text();
 				
 				if( tmp_str == "vc" )
 					tmp_port.Set_Port_Redirection( VM::PR_vc );
@@ -5352,25 +5298,6 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		Args << Video_Card;
 	else if( ! Video_Card.isEmpty() ) // QEMU 0.10 style
 		Args << "-vga" << Video_Card;
-	
-	// Acseleration Mode
-	if( (Current_Emulator_Devices.PSO_KVM == false || Current_Emulator_Devices.PSO_Enable_KVM == false) &&
-		Current_Emulator_Devices.PSO_Kernel_KQEMU == true )
-	{
-		switch( KQEMU_Mode )
-		{
-			case VM::KQEMU_Disabled:
-				Args << "-no-kqemu";
-				break;
-			
-			case VM::KQEMU_Full:
-				Args << "-kernel-kqemu";
-				break;
-			
-			default:
-				break;
-		}
-	}
 
     // Accelerator
     Args << "-machine";
@@ -7771,16 +7698,6 @@ void Virtual_Machine::Set_Video_Card( const QString &card )
 	Video_Card = card;
 }
 
-VM::Acseleration_Mode Virtual_Machine::Get_KQEMU_Mode() const
-{
-	return KQEMU_Mode;
-}
-
-void Virtual_Machine::Set_KQEMU_Mode( VM::Acseleration_Mode mode )
-{
-	KQEMU_Mode = mode;
-}
-
 const QString &Virtual_Machine::Get_Additional_Args() const
 {
 	return Additional_Args;
@@ -9146,6 +9063,1307 @@ void Virtual_Machine::Execute_Emu_Ctl_Command( const QString &com )
 	
 	AQDebug( "void Virtual_Machine::Execute_Emu_Ctl_Command( const QString &com )",
 			 "Run: " + com );
+}
+
+QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
+{
+    QTextEdit textedit;
+
+    #define INFO_TEXT_INDENT 25
+
+    if( info_mode != 0 )
+    {
+        // This is for the Tab Info background color
+        QPalette qpal;
+        textedit.setHtml( "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head>"
+                                         "<body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">"
+                                         "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>" );
+
+        QTextCursor cursor = textedit.textCursor();
+        QTextCharFormat format = QTextCharFormat();
+
+        QTextCharFormat bold_format = format;
+        bold_format.setFontWeight( QFont::Bold );
+
+        if ( calculateContrast(qApp->palette().color(QPalette::Window),qApp->palette().color(QPalette::Link)) > 3.0 )
+            bold_format.setForeground( qpal.color(QPalette::Link) );
+        else
+            bold_format.setForeground( qpal.color(QPalette::WindowText) );
+
+        QTextTableFormat table_format;
+
+        table_format.setAlignment( Qt::AlignLeft );
+        table_format.setCellPadding( 0 );
+        table_format.setCellSpacing( 0 );
+
+        QVector<QTextLength> constraints;
+        constraints << QTextLength( QTextLength::FixedLength, INFO_TEXT_INDENT ) << QTextLength( QTextLength::FixedLength, 220 );
+        table_format.setColumnWidthConstraints(constraints);
+
+        if( info_mode == 1 ) cursor.insertText( tr("You must create a new virtual machine"), bold_format );
+        else if( info_mode == 2 ) cursor.insertText( tr("This VM uses the emulator \"%1\" that is not installed.\n"
+                                                        "The VM cannot work!").arg( (Get_Machine_Accelerator() == VM::TCG) ? "TCG" : "KVM" ), bold_format );
+
+        cursor.insertBlock();
+
+        return textedit.toHtml();
+    }
+
+    // This is for the Tab Info background color
+    QPalette qpal;
+    textedit.setHtml( "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">p, li { white-space: pre-wrap; }</style></head>"
+                                     "<body style=\" font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;\">"
+                                     "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>" );
+
+    QTextCursor cursor = textedit.textCursor();
+    QTextCharFormat format = QTextCharFormat();
+    QTextFrame *topFrame = cursor.currentFrame();
+
+    // Use Scrennshot in Save Mode
+    if( Settings.value("Info/Show_Screenshot_in_Save_Mode", "no").toString() == "yes" )
+    {
+        // Find Full Size Screenshot
+        QString img_path = QDir::toNativeSeparators( Settings.value("VM_Directory", "~").toString() +
+                Get_FS_Compatible_VM_Name(Get_Machine_Name()) + "_screenshot" );
+
+        if( ! QFile::exists(img_path) )
+        {
+            AQDebug( "void Main_Window::Update_Info_Text( int info_mode )",
+                     "Screenshot Path is Empty!" );
+        }
+        else
+        {
+            /*cursor.insertHtml( "<img width=\"" +
+                               QString::number(width() - ui.Machines_List->width() -50) +
+                               "\" src=\"" + img_path + "\">" );*/
+            cursor.insertHtml( "<img width=\"100%\" src=\"" + img_path + "\">" );
+
+            return textedit.toHtml();
+        }
+    }
+
+    QTextCharFormat bold_format = format;
+    bold_format.setFontWeight( QFont::Bold );
+    if ( calculateContrast(qApp->palette().color(QPalette::Window),qApp->palette().color(QPalette::Link)) > 3.0 )
+        bold_format.setForeground( qpal.color(QPalette::Link) );
+    else
+        bold_format.setForeground( qpal.color(QPalette::WindowText) );
+
+    QTextTableFormat table_format;
+
+    table_format.setAlignment( Qt::AlignLeft );
+    table_format.setCellPadding( 0 );
+    table_format.setCellSpacing( 0 );
+
+    QVector<QTextLength> constraints;
+    constraints << QTextLength( QTextLength::FixedLength, INFO_TEXT_INDENT )
+                << QTextLength( QTextLength::FixedLength, 220 )
+                << QTextLength( QTextLength::VariableLength, 250 );
+    table_format.setColumnWidthConstraints(constraints);
+
+    // Vairables
+    QTextTable *table;
+    QTextFrame *frame;
+    QTextFrameFormat frame_format;
+    QTextTableCell cell;
+    QTextCursor cell_cursor;
+
+    // Machine State
+    if( Settings.value("Info/Machine_Details", "yes").toString() == "yes" )
+    {
+
+        cursor.insertText( tr("Machine"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+        frame = cursor.currentFrame();
+
+        frame_format = frame->frameFormat();
+        frame_format.setBorder( 0 );
+        frame->setFrameFormat( frame_format );
+
+        if( Settings.value("Info/Machine_Name", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Name:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Machine_Name(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        cell = table->cellAt( table->rows()-1, 1 );
+        cell_cursor = cell.firstCursorPosition();
+        cell_cursor.insertText( tr("State:"), format );
+
+        QString state_text = Get_State_Text();
+
+        cell = table->cellAt( table->rows()-1, 2 );
+        cell_cursor = cell.firstCursorPosition();
+        cell_cursor.insertText( state_text, format );
+        table->insertRows( table->rows(), 1 );
+    }
+    else
+    {
+        // this code is mainly here to prevent a segfault
+        // it's a temporary hack, since all of the code in this method
+        // should really be refactored/rewritten.
+
+        table = cursor.insertTable( 1, 3, table_format );
+        frame = cursor.currentFrame();
+
+        frame_format = frame->frameFormat();
+        frame_format.setBorder( 0 );
+        frame->setFrameFormat( frame_format );
+    }
+
+    // General Tab
+    if( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" ||
+        Settings.value("Info/Emulator_Version", "no").toString() == "yes" ||
+        Settings.value("Info/Computer_Type", "yes").toString() == "yes" ||
+        Settings.value("Info/Machine_Type", "no").toString() == "yes" ||
+        Settings.value("Info/Boot_Priority", "yes").toString() == "yes" ||
+        Settings.value("Info/CPU_Type", "no").toString() == "yes" ||
+        Settings.value("Info/Number_of_CPU", "yes").toString() == "yes" ||
+        Settings.value("Info/Video_Card", "yes").toString() == "yes" ||
+        Settings.value("Info/Keyboard_Layout", "no").toString() == "yes" ||
+        Settings.value("Info/Memory_Size", "yes").toString() == "yes" ||
+        Settings.value("Info/Use_Sound", "yes").toString() == "yes" ||
+        Settings.value("Info/Fullscreen", "yes").toString() == "yes" ||
+        Settings.value("Info/Snapshot", "yes").toString() == "yes" ||
+        Settings.value("Info/Localtime", "yes").toString() == "yes" )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("General"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+
+        frame = cursor.currentFrame();
+        frame->setFrameFormat( frame_format );
+
+        if( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Accelerator:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( VM::Accel_To_String(Get_Machine_Accelerator()).toUpper(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Computer_Type", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Architecture:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Computer_Type(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Machine_Type", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Machine Type:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Machine_Type(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Boot_Priority", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Boot Priority:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( VM::Boot_Order_To_String_List(Get_Boot_Order_List()).join("/"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/CPU_Type", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("CPU Type:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_CPU_Type(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Number_of_CPU", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Number of CPU:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( QString::number(Get_SMP_CPU_Count()), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Video_Card", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Video Card:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Video_Card(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Keyboard_Layout", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Keyboard Layout:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Keyboard_Layout(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Memory_Size", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Memory Size:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( QString::number(Get_Memory_Size()), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Use_Sound", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Use Sound:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            if( Get_Audio_Cards().isEnabled() )
+            {
+                cell_cursor.insertText( tr("Yes"), format );
+            }
+            else
+            {
+                cell_cursor.insertText( tr("No"), format );
+            }
+
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Fullscreen", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Fullscreen Mode:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Fullscreen_Mode() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Snapshot", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Use Snapshot Mode:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Snapshot_Mode() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Localtime", "yes").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Use Local Time:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Local_Time() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+    }
+
+    // FDD/CD/HDD
+    if( (Settings.value("Info/Show_FDD", "yes").toString() == "yes" &&
+            (Get_FD0().Get_Enabled() ||
+             Get_FD1().Get_Enabled() ||
+             Get_Storage_Devices_List().count() > 0)) ||
+
+        (Settings.value("Info/Show_CD", "yes").toString() == "yes" &&
+            (Get_CD_ROM().Get_Enabled() ||
+             Get_Storage_Devices_List().count() > 0)) ||
+
+        (Settings.value("Info/Show_HDD", "yes").toString() == "yes" &&
+            (Get_HDA().Get_Enabled() ||
+             Get_HDB().Get_Enabled() ||
+             Get_HDC().Get_Enabled() ||
+             Get_HDD().Get_Enabled() ||
+             Get_Storage_Devices_List().count() > 0)) )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("Devices"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+
+        frame = cursor.currentFrame();
+        frame->setFrameFormat( frame_format );
+
+        if( true /*Settings.value("Use_Device_Manager", "no").toString() == "yes"*/ )
+        {
+            QFileInfo fi;
+
+            if( Settings.value("Info/Show_FDD", "yes").toString() == "yes" )
+            {
+                if( Get_FD0().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Floppy 1:"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+
+                    fi = QFileInfo( Get_FD0().Get_File_Name() );
+
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+
+                if( Get_FD1().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Floppy 2:"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    fi = QFileInfo( Get_FD1().Get_File_Name() );
+
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+            }
+
+            if( Settings.value("Info/Show_CD", "yes").toString() == "yes" )
+            {
+                if( Get_CD_ROM().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("CD/DVD-ROM:"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    fi = QFileInfo( Get_CD_ROM().Get_File_Name() );
+
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+            }
+
+            if( Settings.value("Info/Show_HDD", "yes").toString() == "yes" )
+            {
+                if( Get_HDA().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Primary Master (HDA):"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    fi = QFileInfo( Get_HDA().Get_File_Name() );
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+
+                if( Get_HDB().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Primary Slave (HDB):"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    fi = QFileInfo( Get_HDB().Get_File_Name() );
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+
+                if( Get_HDC().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Secondary Master (HDC):"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    fi = QFileInfo( Get_HDC().Get_File_Name() );
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+
+                if( Get_HDD().Get_Enabled() )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Secondary Slave (HDD):"), format );
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    fi = QFileInfo( Get_HDD().Get_File_Name() );
+                    cell_cursor.insertText( fi.fileName(), format );
+                    table->insertRows( table->rows(), 1 );
+                }
+            }
+        }
+    }
+
+    // Network
+    if( Settings.value("Info/Network_Cards", "yes").toString() == "yes" &&
+        ((Use_Nativ_Network() == false && Get_Network_Cards_Count() > 0) ||
+         (Use_Nativ_Network() == true  && Get_Network_Cards_Nativ().count() > 0)) )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("Network"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+
+        frame = cursor.currentFrame();
+        frame->setFrameFormat( frame_format );
+
+        if( Get_Use_Network() == false )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Use Network:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+        else
+        {
+            if( Use_Nativ_Network() == false )
+            {
+                for( int nx = 0; nx < Get_Network_Cards_Count(); ++nx )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Card: ") + QString::number(nx+1), format );
+
+                    QString con_mode = "";
+
+                    switch( Get_Network_Card(nx).Get_Net_Mode() )
+                    {
+                        case VM::Net_Mode_Usermode:
+                            con_mode = tr("User mode network stack");
+                            break;
+
+                        case VM::Net_Mode_Tuntap:
+                            con_mode = tr("TUN/TAP Interface");
+                            break;
+
+                        case VM::Net_Mode_Tuntapfd:
+                            con_mode = tr("TUN/TAP Interface");
+                            break;
+
+                        case VM::Net_Mode_Tcplisten:
+                            con_mode = tr("TCP Socket");
+                            break;
+
+                        case VM::Net_Mode_Tcpfd:
+                            con_mode = tr("TCP Socket");
+                            break;
+
+                        case VM::Net_Mode_Tcpconnect:
+                            con_mode = tr("VLAN");
+                            break;
+
+                        case VM::Net_Mode_Multicast:
+                            con_mode = tr("UDP multicast socket");
+                            break;
+
+                        case VM::Net_Mode_Multicastfd:
+                            con_mode = tr("UDP multicast socket");
+                            break;
+
+                        default:
+                            con_mode = tr("No Connection");
+                            break;
+                    }
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( con_mode, format );
+                    table->insertRows( table->rows(), 1 );
+                }
+            }
+            else
+            {
+                QList<VM_Net_Card_Nativ> nativ_Cards = Get_Network_Cards_Nativ();
+
+                for( int ix = 0; ix < nativ_Cards.count(); ix++ )
+                {
+                    cell = table->cellAt( table->rows()-1, 1 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( tr("Item %1").arg(ix+1), format );
+
+                    QString con_mode = "";
+
+                    switch( nativ_Cards[ix].Get_Network_Type() )
+                    {
+                        case VM::Net_Mode_Nativ_NIC:
+                            con_mode = tr( "NIC" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_User:
+                            con_mode = tr( "User" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_Chanel:
+                            con_mode = tr( "Channel" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_TAP:
+                            con_mode = tr( "TAP" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_Socket:
+                            con_mode = tr( "Socket" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_MulticastSocket:
+                            con_mode = tr( "Multicast Socket" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_VDE:
+                            con_mode = tr( "VDE" );
+                            break;
+
+                        case VM::Net_Mode_Nativ_Dump:
+                            con_mode = tr( "Dump" );
+                            break;
+
+                        default:
+                            con_mode = tr( "Unknown Type Item" );
+                            break;
+                    }
+
+                    cell = table->cellAt( table->rows()-1, 2 );
+                    cell_cursor = cell.firstCursorPosition();
+                    cell_cursor.insertText( con_mode, format );
+                    table->insertRows( table->rows(), 1 );
+                }
+            }
+        }
+    }
+
+    // Network Redirections
+    if( Settings.value("Info/Redirections", "no").toString() == "yes" )
+    {
+        if( Get_Use_Redirections() ||
+            Get_Network_Redirections_Count() < 1 )
+        {
+            for( int rx = 0; rx < Get_Network_Redirections_Count(); ++rx )
+            {
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("Redirection ") + QString::number(rx+1) + ":", format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText(
+                        Get_Network_Redirection(rx).Get_Protocol() + " " +
+                        QString::number(Get_Network_Redirection(rx).Get_Host_Port()) + ":" +
+                        Get_Network_Redirection(rx).Get_Guest_IP() + ":" +
+                        QString::number(Get_Network_Redirection(rx).Get_Guest_Port()), format );
+                table->insertRows( table->rows(), 1 );
+            }
+        }
+        else
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Use Redirections:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+    }
+
+    // Ports Tab
+    if( (Settings.value("Info/Serial_Port", "yes").toString() == "yes" && Get_Serial_Ports().count() > 0) ||
+        (Settings.value("Info/Parallel_Port", "yes").toString() == "yes" && Get_Parallel_Ports().count() > 0) ||
+        (Settings.value("Info/USB_Port", "yes").toString() == "yes" && Get_USB_Ports().count() > 0) )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("Ports"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+
+        frame = cursor.currentFrame();
+        frame->setFrameFormat( frame_format );
+
+        if( Settings.value("Info/Serial_Port", "yes").toString() == "yes" )
+        {
+            for( int ix = 0; ix < Get_Serial_Ports().count(); ix++ )
+            {
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("Serial Port %1:").arg(ix), format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+
+                switch( Get_Serial_Ports()[ix].Get_Port_Redirection() )
+                {
+                    case VM::PR_Default:
+                        cell_cursor.insertText( tr("Default"), format );
+                        break;
+
+                    case VM::PR_vc:
+                        cell_cursor.insertText( tr("vc"), format );
+                        break;
+
+                    case VM::PR_pty:
+                        cell_cursor.insertText( tr("pty"), format );
+                        break;
+
+                    case VM::PR_none:
+                        cell_cursor.insertText( tr("none"), format );
+                        break;
+
+                    case VM::PR_null:
+                        cell_cursor.insertText( tr("null"), format );
+                        break;
+
+                    case VM::PR_dev:
+                        cell_cursor.insertText( tr("dev"), format );
+                        break;
+
+                    case VM::PR_host_port:
+                        cell_cursor.insertText( tr("host_port"), format );
+                        break;
+
+                    case VM::PR_file:
+                        cell_cursor.insertText( tr("file"), format );
+                        break;
+
+                    case VM::PR_stdio:
+                        cell_cursor.insertText( tr("stdio"), format );
+                        break;
+
+                    case VM::PR_pipe:
+                        cell_cursor.insertText( tr("pipe"), format );
+                        break;
+
+                    case VM::PR_udp:
+                        cell_cursor.insertText( tr("udp"), format );
+                        break;
+
+                    case VM::PR_tcp:
+                        cell_cursor.insertText( tr("tcp"), format );
+                        break;
+
+                    case VM::PR_telnet:
+                        cell_cursor.insertText( tr("telnet"), format );
+                        break;
+
+                    case VM::PR_unix:
+                        cell_cursor.insertText( tr("unix"), format );
+                        break;
+
+                    default:
+                        cell_cursor.insertText( tr("Default"), format );
+                        break;
+                }
+
+                table->insertRows( table->rows(), 1 );
+            }
+        }
+
+        if( Settings.value("Info/Parallel_Port", "yes").toString() == "yes" )
+        {
+            for( int ix = 0; ix < Get_Parallel_Ports().count(); ix++ )
+            {
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("Parallel Port %1:").arg(ix), format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+
+                switch( Get_Parallel_Ports()[ix].Get_Port_Redirection() )
+                {
+                case VM::PR_Default:
+                    cell_cursor.insertText( tr("Default"), format );
+                    break;
+
+                case VM::PR_vc:
+                    cell_cursor.insertText( tr("vc"), format );
+                    break;
+
+                case VM::PR_pty:
+                    cell_cursor.insertText( tr("pty"), format );
+                    break;
+
+                case VM::PR_none:
+                    cell_cursor.insertText( tr("none"), format );
+                    break;
+
+                case VM::PR_null:
+                    cell_cursor.insertText( tr("null"), format );
+                    break;
+
+                case VM::PR_dev:
+                    cell_cursor.insertText( tr("dev"), format );
+                    break;
+
+                case VM::PR_host_port:
+                    cell_cursor.insertText( tr("host_port"), format );
+                    break;
+
+                case VM::PR_file:
+                    cell_cursor.insertText( tr("file"), format );
+                    break;
+
+                case VM::PR_stdio:
+                    cell_cursor.insertText( tr("stdio"), format );
+                    break;
+
+                case VM::PR_pipe:
+                    cell_cursor.insertText( tr("pipe"), format );
+                    break;
+
+                case VM::PR_udp:
+                    cell_cursor.insertText( tr("udp"), format );
+                    break;
+
+                case VM::PR_tcp:
+                    cell_cursor.insertText( tr("tcp"), format );
+                    break;
+
+                case VM::PR_telnet:
+                    cell_cursor.insertText( tr("telnet"), format );
+                    break;
+
+                case VM::PR_unix:
+                    cell_cursor.insertText( tr("unix"), format );
+                    break;
+
+                default:
+                    cell_cursor.insertText( tr("Default"), format );
+                    break;
+                }
+
+                table->insertRows( table->rows(), 1 );
+            }
+        }
+
+        if( Settings.value("Info/USB_Port", "yes").toString() == "yes" )
+        {
+            for( int ix = 0; ix < Get_USB_Ports().count(); ix++ )
+            {
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("USB Port %1:").arg(ix), format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( Get_USB_Ports()[ix].Get_Manufacturer_Name() + " " +
+                                        Get_USB_Ports()[ix].Get_Product_Name(), format );
+                table->insertRows( table->rows(), 1 );
+            }
+        }
+    }
+
+    // Other Tab
+    if( Settings.value("Info/Linux_Boot", "no").toString() == "yes" ||
+        Settings.value("Info/ROM_File", "no").toString() == "yes" ||
+        Settings.value("Info/MTDBlock", "no").toString() == "yes" ||
+        Settings.value("Info/SD_Image", "no").toString() == "yes" ||
+        Settings.value("Info/PFlash", "no").toString() == "yes" ||
+        Settings.value("Info/VNC", "no").toString() == "yes" ||
+        Settings.value("Info/SPICE", "no").toString() == "yes" ||
+        Settings.value("Info/Acceleration", "no").toString() == "yes" )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("Other"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+
+        frame = cursor.currentFrame();
+        frame->setFrameFormat( frame_format );
+
+        // Acceleration
+        if( Settings.value("Info/Acceleration", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Acceleration:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            //FIXME //or remove?
+            cell_cursor.insertText( tr("Use If Possible"), format );
+
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // VNC
+        if( Settings.value("Info/VNC", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("VNC Port:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            if ( Use_VNC() )
+                cell_cursor.insertText( QString::number( Get_VNC_Display_Number() + 5900 ) , format );
+            else
+                cell_cursor.insertText( QString::number( Settings.value("First_VNC_Port", "5910").toInt() + Get_Embedded_Display_Port() ) , format );
+
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // SPICE
+        if( Settings.value("Info/SPICE", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("SPICE Port:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( QString::number(Get_SPICE().Get_Port()) , format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // Linux Boot
+        if( Settings.value("Info/Linux_Boot", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Use Linux Boot:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Use_Linux_Boot() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+
+            if( Get_Use_Linux_Boot() )
+            {
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("Kernel bzImage:"), format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+                QFileInfo lb_tmp = QFileInfo( Get_bzImage_Path() );
+                cell_cursor.insertText( lb_tmp.fileName(), format );
+                table->insertRows( table->rows(), 1 );
+
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("Initrd File:"), format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+                lb_tmp = QFileInfo( Get_Initrd_Path() );
+                cell_cursor.insertText( lb_tmp.fileName(), format );
+                table->insertRows( table->rows(), 1 );
+
+                cell = table->cellAt( table->rows()-1, 1 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( tr("Kernel ComLine:"), format );
+
+                cell = table->cellAt( table->rows()-1, 2 );
+                cell_cursor = cell.firstCursorPosition();
+                cell_cursor.insertText( Get_Kernel_ComLine() , format );
+                table->insertRows( table->rows(), 1 );
+            }
+        }
+
+        QFileInfo im_info;
+
+        // ROM File
+        if( Settings.value("Info/ROM_File", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("ROM File:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            if( Get_Use_ROM_File() )
+            {
+                im_info = QFileInfo( Get_ROM_File() );
+                cell_cursor.insertText( im_info.fileName(), format );
+            }
+            else
+            {
+                cell_cursor.insertText( tr("No"), format );
+            }
+
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // On-Board Flash Image
+        if( Settings.value("Info/MTDBlock", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("On-Board Flash Image:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            if( Use_MTDBlock_File() )
+            {
+                im_info = QFileInfo( Get_MTDBlock_File() );
+                cell_cursor.insertText( im_info.fileName(), format );
+            }
+            else
+            {
+                cell_cursor.insertText( tr("No"), format );
+            }
+
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // SD Card Image
+        if( Settings.value("Info/SD_Image", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("SD Card Image:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            if( Use_SecureDigital_File() )
+            {
+                im_info = QFileInfo( Get_SecureDigital_File() );
+                cell_cursor.insertText( im_info.fileName(), format );
+            }
+            else
+            {
+                cell_cursor.insertText( tr("No"), format );
+            }
+
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // Parallel Flash Image
+        if( Settings.value("Info/PFlash", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Parallel Flash Image:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+
+            if( Use_PFlash_File() )
+            {
+                im_info = QFileInfo( Get_PFlash_File() );
+                cell_cursor.insertText( im_info.fileName(), format );
+            }
+            else
+            {
+                cell_cursor.insertText( tr("No"), format );
+            }
+
+            table->insertRows( table->rows(), 1 );
+        }
+    }
+
+    // Advanced Tab
+    if( Settings.value("Info/RTC_TD_Hack", "no").toString() == "yes" ||
+        Settings.value("Info/Win2K_Hack", "no").toString() == "yes" ||
+        Settings.value("Info/No_Shutdown", "no").toString() == "yes" ||
+        Settings.value("Info/No_Reboot", "no").toString() == "yes" ||
+        Settings.value("Info/Start_CPU", "no").toString() == "yes" ||
+        Settings.value("Info/Check_Boot_on_FDD", "no").toString() == "yes" ||
+        Settings.value("Info/ACPI", "no").toString() == "yes" ||
+        (Settings.value("Info/Start_Date", "no").toString() == "yes" && Use_Start_Date()) ||
+        Settings.value("Info/No_Frame", "no").toString() == "yes" ||
+        Settings.value("Info/Alt_Grab", "no").toString() == "yes" ||
+        Settings.value("Info/No_Quit", "no").toString() == "yes" ||
+        Settings.value("Info/Portrait", "no").toString() == "yes" ||
+        Settings.value("Info/Curses", "no").toString() == "yes" ||
+        Settings.value("Info/Show_Cursor", "no").toString() == "yes" ||
+        (Settings.value("Info/Init_Graphical_Mode", "no").toString() == "yes" && Get_Init_Graphic_Mode().Get_Enabled() ) )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("Advanced"), bold_format );
+        cursor.insertBlock();
+
+        table = cursor.insertTable( 1, 3, table_format );
+
+        frame = cursor.currentFrame();
+        frame->setFrameFormat( frame_format );
+
+        if( Settings.value("Info/RTC_TD_Hack", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("RTC TD Hack:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_RTC_TD_Hack() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Win2K_Hack", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Windows 2000 Hack:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Win2K_Hack() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/No_Shutdown", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("No Shutdown:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_No_Shutdown() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/No_Reboot", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("No Reboot:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_No_Reboot() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Start_CPU", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Start CPU at Startup:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Start_CPU() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Check_Boot_on_FDD", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Check Boot Sector on FDD:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Check_FDD_Boot_Sector() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/ACPI", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Enable ACPI:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_ACPI() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Start_Date", "no").toString() == "yes" &&
+            Use_Start_Date() )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Start Date:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Get_Start_Date().toString(), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        // Advanced -> QEMU Window Options
+        if( Settings.value("Info/No_Frame", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("No Frame:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_No_Frame() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Alt_Grab", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Alt Grab:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Alt_Grab() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/No_Quit", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("No Quit:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_No_Quit() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Portrait", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Portrait Mode:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Portrait() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Curses", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Curses:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Curses() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Show_Cursor", "no").toString() == "yes" )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Show Cursor:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( Use_Show_Cursor() ? tr("Yes") : tr("No"), format );
+            table->insertRows( table->rows(), 1 );
+        }
+
+        if( Settings.value("Info/Init_Graphical_Mode", "no").toString() == "yes" &&
+            Get_Init_Graphic_Mode().Get_Enabled() )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("Initial Graphical Mode:"), format );
+
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( QString("%1x%2x%3").arg(Get_Init_Graphic_Mode().Get_Width())
+                                                       .arg(Get_Init_Graphic_Mode().Get_Height())
+                                                       .arg(Get_Init_Graphic_Mode().Get_Depth()) , format );
+            table->insertRows( table->rows(), 1 );
+        }
+    }
+
+    // Show_QEMU_Arguments
+    if( Settings.value("Info/Show_QEMU_Args", "no").toString() == "yes" )
+    {
+        cursor.setPosition( topFrame->lastPosition() );
+        cursor.insertText( tr("QEMU Arguments"), bold_format );
+        cursor.insertBlock();
+
+        QTextTableFormat table_format2;
+
+        table_format2.setAlignment( Qt::AlignLeft );
+        table_format2.setCellPadding( 0 );
+        table_format2.setCellSpacing( 0 );
+
+        QVector<QTextLength> constraints2;
+        constraints2 << QTextLength( QTextLength::FixedLength, INFO_TEXT_INDENT )
+                     << QTextLength( QTextLength::VariableLength, 500 )
+                     << QTextLength( QTextLength::FixedLength, 10 );
+        table_format2.setColumnWidthConstraints( constraints2 );
+
+        QTextTable *table2 = cursor.insertTable( 1, 3, table_format2 );
+
+        frame = cursor.currentFrame();
+        QTextFrameFormat frame_format2 = frame->frameFormat();
+        frame_format2.setBorder( 0 );
+        frame->setFrameFormat( frame_format2 );
+
+        cell = table2->cellAt( table2->rows()-1, 1 );
+        cell_cursor = cell.firstCursorPosition();
+        cell_cursor.insertText( Build_QEMU_Args_For_Tab_Info().join(" ").replace(" -"," \\\n    -"), format );
+    }
+
+    // Move the cursor to the top
+    textedit.moveCursor(QTextCursor::Start);
+    textedit.ensureCursorVisible();
+
+    return textedit.toHtml();
 }
 
 //===========================================================================

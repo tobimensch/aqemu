@@ -44,7 +44,7 @@ class VM_Wizard_Window: public QDialog
 	private slots:
         void on_KVM_toggled(bool toggled);
 		bool Load_OS_Templates();
-		bool Create_New_VM();
+        bool Create_New_VM(bool simulate = false);
 		QString Find_OS_Icon( const QString os_name );
 		
 		void on_Button_Back_clicked();

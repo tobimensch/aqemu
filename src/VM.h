@@ -80,6 +80,8 @@ class Virtual_Machine: public QObject
 		bool Load_VM( const QString &file_name );
 		bool Save_VM();
 		bool Save_VM( const QString &file_name );
+
+        QString GenerateHTMLInfoText( int info_mode = 0 );
 		
 		QStringList Build_QEMU_Args(); // build all args for QEMU
 		QStringList Build_QEMU_Args_For_Tab_Info();
@@ -168,9 +170,6 @@ class Virtual_Machine: public QObject
 		
 		const QString &Get_Video_Card() const;
 		void Set_Video_Card( const QString &card );
-		
-		VM::Acseleration_Mode Get_KQEMU_Mode() const;
-		void Set_KQEMU_Mode( VM::Acseleration_Mode mode );
 		
 		VM::Sound_Cards Get_Audio_Cards() const;
 		void Set_Audio_Cards( VM::Sound_Cards card );
@@ -512,8 +511,7 @@ class Virtual_Machine: public QObject
 		QString Keyboard_Layout; // language en, ru, jp...
 		QList<VM::Boot_Order> Boot_Order_List; // New boot order
 		bool Show_Boot_Menu; // Enable interactive boot menu
-		QString Video_Card; // std vga, cirus logic
-		VM::Acseleration_Mode KQEMU_Mode; // acceleration mode
+        QString Video_Card; // std vga, cirus logic
 		VM::Sound_Cards Audio_Card; // sb16, es1370
 		bool Remove_RAM_Size_Limitation; // true - limitation off
 		int Memory_Size; // RAM Size

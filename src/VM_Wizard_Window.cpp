@@ -250,6 +250,8 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 		ui.Wizard_Pages->setCurrentWidget( ui.Finish_Page );
 		ui.Button_Next->setText( tr("&Finish") );
 		ui.Label_Page->setText( tr("Finish!") );
+        Create_New_VM(true);
+        ui.VM_Information_Text->setHtml(New_VM->GenerateHTMLInfoText());
 	}
 	else if( ui.Finish_Page == ui.Wizard_Pages->currentWidget() )
 	{
@@ -451,7 +453,7 @@ bool VM_Wizard_Window::Load_OS_Templates()
 	else return true;
 }
 
-bool VM_Wizard_Window::Create_New_VM()
+bool VM_Wizard_Window::Create_New_VM(bool simulate)
 {
 	// Icon
 	QString icon_path = Find_OS_Icon( ui.Edit_VM_Name->text() );
@@ -490,26 +492,30 @@ bool VM_Wizard_Window::Create_New_VM()
 
 		QString hd_path = Settings.value( "VM_Directory", "~" ).toString() + VM_File_Name;
 
-		Create_New_HDD_Image( hd_path + "_HDA.img", hd_size );
+        if ( ! simulate )
+            Create_New_HDD_Image( hd_path + "_HDA.img", hd_size );
 
 		New_VM->Set_HDA( VM_HDD(true, hd_path + "_HDA.img") );
 
 		// Other HDD's
 		if( New_VM->Get_HDB().Get_Enabled() )
 		{
-			Create_New_HDD_Image( hd_path + "_HDB.img", New_VM->Get_HDB().Get_Virtual_Size() );
+            if ( ! simulate )
+                Create_New_HDD_Image( hd_path + "_HDB.img", New_VM->Get_HDB().Get_Virtual_Size() );
 			New_VM->Set_HDB( VM_HDD(true, hd_path + "_HDB.img") );
 		}
 		
 		if( New_VM->Get_HDC().Get_Enabled() )
 		{
-			Create_New_HDD_Image( hd_path + "_HDC.img", New_VM->Get_HDC().Get_Virtual_Size() );
+            if ( ! simulate )
+                Create_New_HDD_Image( hd_path + "_HDC.img", New_VM->Get_HDC().Get_Virtual_Size() );
 			New_VM->Set_HDC( VM_HDD(true, hd_path + "_HDC.img") );
 		}
 		
 		if( New_VM->Get_HDD().Get_Enabled() )
 		{
-			Create_New_HDD_Image( hd_path + "_HDD.img", New_VM->Get_HDD().Get_Virtual_Size() );
+            if ( ! simulate )
+                Create_New_HDD_Image( hd_path + "_HDD.img", New_VM->Get_HDD().Get_Virtual_Size() );
 			New_VM->Set_HDD( VM_HDD(true, hd_path + "_HDD.img") );
 		}
 	}
@@ -588,9 +594,12 @@ bool VM_Wizard_Window::Create_New_VM()
 	tmp_emul.Set_Name( "" );
 	New_VM->Set_Emulator( tmp_emul );
 	
-	// Create New VM XML File
-	New_VM->Create_VM_File( Settings.value("VM_Directory", "~").toString() + VM_File_Name + ".aqemu", false );
-	
+    if ( ! simulate )
+    {
+        // Create New VM XML File
+        New_VM->Create_VM_File( Settings.value("VM_Directory", "~").toString() + VM_File_Name + ".aqemu", false );
+    }
+
 	return true;
 }
 
