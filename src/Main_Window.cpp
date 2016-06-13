@@ -3459,6 +3459,13 @@ void Main_Window::on_actionLoad_VM_From_File_triggered()
 
 void Main_Window::on_actionCopy_triggered()
 {
+    if ( Get_Current_VM() == nullptr )
+    {
+        AQError( "void Main_Window::on_actionCopy_triggered()",
+                 "cur_vm == NULL" );
+        return;
+    }
+
 	Copy_VM_Window copy_win;
 	
 	// Create Machine Name List
@@ -3470,14 +3477,7 @@ void Main_Window::on_actionCopy_triggered()
 	if( copy_win.exec() == QDialog::Accepted )
 	{
 		// Copy VM Object
-		Virtual_Machine *new_vm = Get_Current_VM();
-	
-		if( new_vm == NULL )
-		{
-			AQError( "void Main_Window::on_actionCopy_triggered()",
-					 "cur_vm == NULL" );
-			return;
-		}
+        auto new_vm = new Virtual_Machine(*Get_Current_VM());
 		
 		new_vm->Set_Machine_Name( copy_win.Get_New_VM_Name() );
 		new_vm->Set_VM_XML_File_Path( Get_Complete_VM_File_Path(copy_win.Get_New_VM_Name()) );
