@@ -2008,6 +2008,7 @@ void Main_Window::Change_The_Icon(Virtual_Machine* vm, QString _icon)
     auto pix = new QPixmap(icon.pixmap(QSize(s,s)));
 
     auto painter = new QPainter(pix);
+    painter->setRenderHint(QPainter::SmoothPixmapTransform, true);
     QPixmap pix2(QIcon(_icon).pixmap(QSize(s,s)));
 
     QRect rect(s/2,s/2,s/2,s/2);
