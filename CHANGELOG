@@ -1,3 +1,25 @@
+2016-06-?? Tobias Gläßer (Version 0.9.3)
+
+    * Fixed copy VM feature. The original VM's UI became unusable after copying.
+
+    * Added support for the meson build system as an alternative to cmake.
+
+    * New feature: Helpful dialog when no boot device could be found.
+
+    * Fixed ugly(low contrast) fonts in Info and VM tabs when using dark themes. (reported by gavsiu)
+
+    * New feature: An overview of the new VM is now shown on the "Finish" page of the New VM Wizard.
+
+    * Changed reset/save icons to fit better with Stop/Pause/Shutdown/... buttons.
+
+    * New feature: Button for sending ACPI shutdown request called "Shutdown".
+      In contrast to the "Stop" button, this will allow users to cleanly shutdown VMs.
+
+    * New feature enabled through new service capability: VMs now keep running when closing the main window.
+
+	* Added service capability, which allows users to start/stop and generally manipulate VMs
+      from the command line and/-or over DBus.
+
 2016-05-31 Tobias Gläßer (Version 0.9.2)
  
 	* Fixed bug that prevented AQEMU from closing when no VM was created yet
