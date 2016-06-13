@@ -3269,6 +3269,9 @@
    <property name="text">
     <string>St&amp;op</string>
    </property>
+   <property name="toolTip">
+    <string>Stop (Power Off)</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+D</string>
    </property>
@@ -3426,7 +3429,7 @@
     <string>Sh&amp;utdown</string>
    </property>
    <property name="toolTip">
-    <string>Shutdown</string>
+    <string>Shutdown (ACPI Request)</string>
    </property>
   </action>
  </widget>
