@@ -186,9 +186,6 @@ Main_Window::Main_Window( QWidget *parent )
 	
 	// Get max RAM size
 	on_TB_Update_Available_RAM_Size_clicked();
-	
-	// Singals for watch VM Changes
-	Connect_Signals();
 
     init_dbus();
 	
@@ -228,6 +225,10 @@ Main_Window::Main_Window( QWidget *parent )
 	}
 
     Settings_Widget::syncGroupIconSizes("Main");
+
+    // Signals for watching VM changes
+    Connect_Signals();
+    block_VM_changed_signals = false;
 }
 
 void Main_Window::init_dbus()
@@ -1243,6 +1244,8 @@ bool Main_Window::Save_Virtual_Machines()
 
 void Main_Window::Update_VM_Ui(bool update_info_tab)
 {
+    std::unique_ptr<Block_VM_Changed_Signals> bvmcs(new Block_VM_Changed_Signals(this));
+
 	Update_VM_Port_Number();
 	
 	if( ui.Machines_List->currentRow() < 0 )
@@ -2182,6 +2185,9 @@ void Main_Window::Set_Widgets_State( bool enabled )
 
 void Main_Window::VM_Changed()
 {
+    if ( block_VM_changed_signals )
+        return;
+
     // check if there's really a change compared
     // to the current VM /(and saved VM file)
     auto old_vm = Get_Current_VM();

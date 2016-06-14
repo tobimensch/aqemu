@@ -45,10 +45,31 @@ class Ports_Tab_Widget;
 class Device_Manager_Widget;
 class Folder_Sharing_Widget;
 class Network_Card_Widget;
+class Block_VM_Changed_Signals;
 
 class Main_Window: public QMainWindow
 {
     friend class No_Boot_Device;
+    friend class Block_VM_Changed_Signals;
+
+    class Block_VM_Changed_Signals
+    {
+        public:
+            Block_VM_Changed_Signals(Main_Window* _mw)
+            {
+                mw = _mw;
+                mw->block_VM_changed_signals = true;
+            }
+
+            ~Block_VM_Changed_Signals()
+            {
+                mw->block_VM_changed_signals = false;
+                mw->VM_Changed();
+            }
+
+        private:
+            Main_Window* mw;
+    };
 
 	Q_OBJECT
 	
@@ -261,6 +282,8 @@ class Main_Window: public QMainWindow
 		Old_Network_Widget *Old_Network_Settings_Widget;
 		
         SPICE_Settings_Widget* SPICE_Widget;
+
+        bool block_VM_changed_signals;
 };
 
 #endif
