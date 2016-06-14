@@ -23,8 +23,8 @@ IF( DEBUG )
 	ADD_DEFINITIONS( -Wall -g )
 ENDIF( DEBUG )
 
-# For find VNC libs
-SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules )
+# For finding VNC libs
+SET( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/resources/cmake/modules )
 
 # Files
 SET( aqemu_headers
