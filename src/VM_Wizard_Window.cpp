@@ -251,7 +251,7 @@ void VM_Wizard_Window::on_Button_Next_clicked()
 		ui.Button_Next->setText( tr("&Finish") );
 		ui.Label_Page->setText( tr("Finish!") );
         Create_New_VM(true);
-        ui.VM_Information_Text->setHtml(New_VM->GenerateHTMLInfoText());
+        ui.VM_Information_Text->setHtml(New_VM->GenerateHTMLInfoText(3));
 	}
 	else if( ui.Finish_Page == ui.Wizard_Pages->currentWidget() )
 	{

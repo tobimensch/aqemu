@@ -9065,13 +9065,46 @@ void Virtual_Machine::Execute_Emu_Ctl_Command( const QString &com )
 			 "Run: " + com );
 }
 
+class Setting_Or_Preview_Helper
+{
+    public:
+        Setting_Or_Preview_Helper(bool _preview)
+        {
+            preview = _preview;
+        }
+
+        bool either(bool settings)
+        {
+            if ( preview )
+                return true;
+
+            if ( settings )
+                return true;
+
+            return false;
+        }
+
+        bool setting(bool settings)
+        {
+            if ( preview )
+                return false;
+
+            if ( settings )
+                return true;
+
+            return false;
+        }
+
+        bool preview;
+};
+
 QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 {
     QTextEdit textedit;
 
     #define INFO_TEXT_INDENT 25
 
-    if( info_mode != 0 )
+    if( info_mode != 0 && info_mode < 3)
     {
         // This is for the Tab Info background color
         QPalette qpal;
@@ -9108,6 +9141,8 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 
         return textedit.toHtml();
     }
+
+    Setting_Or_Preview_Helper soph(info_mode == 3 );
 
     // This is for the Tab Info background color
     QPalette qpal;
@@ -9169,7 +9204,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     QTextCursor cell_cursor;
 
     // Machine State
-    if( Settings.value("Info/Machine_Details", "yes").toString() == "yes" )
+    if( soph.either( Settings.value("Info/Machine_Details", "yes").toString() == "yes" ) )
     {
 
         cursor.insertText( tr("Machine"), bold_format );
@@ -9182,7 +9217,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
         frame_format.setBorder( 0 );
         frame->setFrameFormat( frame_format );
 
-        if( Settings.value("Info/Machine_Name", "yes").toString() == "yes" )
+        if( soph.either ( Settings.value("Info/Machine_Name", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9194,16 +9229,19 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        cell = table->cellAt( table->rows()-1, 1 );
-        cell_cursor = cell.firstCursorPosition();
-        cell_cursor.insertText( tr("State:"), format );
+        if ( ! soph.preview )
+        {
+            cell = table->cellAt( table->rows()-1, 1 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( tr("State:"), format );
 
-        QString state_text = Get_State_Text();
+            QString state_text = Get_State_Text();
 
-        cell = table->cellAt( table->rows()-1, 2 );
-        cell_cursor = cell.firstCursorPosition();
-        cell_cursor.insertText( state_text, format );
-        table->insertRows( table->rows(), 1 );
+            cell = table->cellAt( table->rows()-1, 2 );
+            cell_cursor = cell.firstCursorPosition();
+            cell_cursor.insertText( state_text, format );
+            table->insertRows( table->rows(), 1 );
+        }
     }
     else
     {
@@ -9233,7 +9271,8 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
         Settings.value("Info/Use_Sound", "yes").toString() == "yes" ||
         Settings.value("Info/Fullscreen", "yes").toString() == "yes" ||
         Settings.value("Info/Snapshot", "yes").toString() == "yes" ||
-        Settings.value("Info/Localtime", "yes").toString() == "yes" )
+        Settings.value("Info/Localtime", "yes").toString() == "yes" ||
+        soph.preview )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("General"), bold_format );
@@ -9244,7 +9283,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
         frame = cursor.currentFrame();
         frame->setFrameFormat( frame_format );
 
-        if( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" )
+        if( soph.either( Settings.value("Info/Machine_Accelerator", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9256,7 +9295,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Computer_Type", "yes").toString() == "yes" )
+        if( soph.either( Settings.value("Info/Computer_Type", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9278,7 +9317,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Machine_Type", "no").toString() == "yes" )
+        if( soph.either( Settings.value("Info/Machine_Type", "no").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9303,7 +9342,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Boot_Priority", "yes").toString() == "yes" )
+        if( soph.either ( Settings.value("Info/Boot_Priority", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9315,7 +9354,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/CPU_Type", "no").toString() == "yes" )
+        if( soph.either ( Settings.value("Info/CPU_Type", "no").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9339,7 +9378,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Number_of_CPU", "yes").toString() == "yes" )
+        if( soph.either ( Settings.value("Info/Number_of_CPU", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9351,7 +9390,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Video_Card", "yes").toString() == "yes" )
+        if( soph.either ( Settings.value("Info/Video_Card", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9376,7 +9415,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Keyboard_Layout", "no").toString() == "yes" )
+        if( soph.either( Settings.value("Info/Keyboard_Layout", "no").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9388,7 +9427,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Memory_Size", "yes").toString() == "yes" )
+        if( soph.either( Settings.value("Info/Memory_Size", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9400,7 +9439,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Use_Sound", "yes").toString() == "yes" )
+        if( soph.either ( Settings.value("Info/Use_Sound", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9421,7 +9460,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Fullscreen", "yes").toString() == "yes" )
+        if( soph.setting( Settings.value("Info/Fullscreen", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9433,7 +9472,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Snapshot", "yes").toString() == "yes" )
+        if( soph.setting( Settings.value("Info/Snapshot", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9445,7 +9484,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             table->insertRows( table->rows(), 1 );
         }
 
-        if( Settings.value("Info/Localtime", "yes").toString() == "yes" )
+        if( soph.setting( Settings.value("Info/Localtime", "yes").toString() == "yes" ) )
         {
             cell = table->cellAt( table->rows()-1, 1 );
             cell_cursor = cell.firstCursorPosition();
@@ -9459,16 +9498,16 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // FDD/CD/HDD
-    if( (Settings.value("Info/Show_FDD", "yes").toString() == "yes" &&
+    if( ( soph.either( Settings.value("Info/Show_FDD", "yes").toString() == "yes" ) &&
             (Get_FD0().Get_Enabled() ||
              Get_FD1().Get_Enabled() ||
              Get_Storage_Devices_List().count() > 0)) ||
 
-        (Settings.value("Info/Show_CD", "yes").toString() == "yes" &&
+        ( soph.either( Settings.value("Info/Show_CD", "yes").toString() == "yes" ) &&
             (Get_CD_ROM().Get_Enabled() ||
              Get_Storage_Devices_List().count() > 0)) ||
 
-        (Settings.value("Info/Show_HDD", "yes").toString() == "yes" &&
+        ( soph.either( Settings.value("Info/Show_HDD", "yes").toString() == "yes" ) &&
             (Get_HDA().Get_Enabled() ||
              Get_HDB().Get_Enabled() ||
              Get_HDC().Get_Enabled() ||
@@ -9488,7 +9527,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
         {
             QFileInfo fi;
 
-            if( Settings.value("Info/Show_FDD", "yes").toString() == "yes" )
+            if( soph.either ( Settings.value("Info/Show_FDD", "yes").toString() == "yes" ) )
             {
                 if( Get_FD0().Get_Enabled() )
                 {
@@ -9520,7 +9559,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
                 }
             }
 
-            if( Settings.value("Info/Show_CD", "yes").toString() == "yes" )
+            if( soph.either ( Settings.value("Info/Show_CD", "yes").toString() == "yes" ) )
             {
                 if( Get_CD_ROM().Get_Enabled() )
                 {
@@ -9537,7 +9576,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
                 }
             }
 
-            if( Settings.value("Info/Show_HDD", "yes").toString() == "yes" )
+            if( soph.either ( Settings.value("Info/Show_HDD", "yes").toString() == "yes" ) )
             {
                 if( Get_HDA().Get_Enabled() )
                 {
@@ -9595,7 +9634,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // Network
-    if( Settings.value("Info/Network_Cards", "yes").toString() == "yes" &&
+    if( soph.either( Settings.value("Info/Network_Cards", "yes").toString() == "yes" ) &&
         ((Use_Nativ_Network() == false && Get_Network_Cards_Count() > 0) ||
          (Use_Nativ_Network() == true  && Get_Network_Cards_Nativ().count() > 0)) )
     {
@@ -9737,7 +9776,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // Network Redirections
-    if( Settings.value("Info/Redirections", "no").toString() == "yes" )
+    if( soph.setting ( Settings.value("Info/Redirections", "no").toString() == "yes" ) )
     {
         if( Get_Use_Redirections() ||
             Get_Network_Redirections_Count() < 1 )
@@ -9772,9 +9811,9 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // Ports Tab
-    if( (Settings.value("Info/Serial_Port", "yes").toString() == "yes" && Get_Serial_Ports().count() > 0) ||
-        (Settings.value("Info/Parallel_Port", "yes").toString() == "yes" && Get_Parallel_Ports().count() > 0) ||
-        (Settings.value("Info/USB_Port", "yes").toString() == "yes" && Get_USB_Ports().count() > 0) )
+    if( ( soph.setting( Settings.value("Info/Serial_Port", "yes").toString() == "yes" ) && Get_Serial_Ports().count() > 0) ||
+        ( soph.setting( Settings.value("Info/Parallel_Port", "yes").toString() == "yes" ) && Get_Parallel_Ports().count() > 0) ||
+        ( soph.setting( Settings.value("Info/USB_Port", "yes").toString() == "yes" ) && Get_USB_Ports().count() > 0) )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("Ports"), bold_format );
@@ -9959,14 +9998,14 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // Other Tab
-    if( Settings.value("Info/Linux_Boot", "no").toString() == "yes" ||
+    if( ( Settings.value("Info/Linux_Boot", "no").toString() == "yes" ||
         Settings.value("Info/ROM_File", "no").toString() == "yes" ||
         Settings.value("Info/MTDBlock", "no").toString() == "yes" ||
         Settings.value("Info/SD_Image", "no").toString() == "yes" ||
         Settings.value("Info/PFlash", "no").toString() == "yes" ||
         Settings.value("Info/VNC", "no").toString() == "yes" ||
         Settings.value("Info/SPICE", "no").toString() == "yes" ||
-        Settings.value("Info/Acceleration", "no").toString() == "yes" )
+        Settings.value("Info/Acceleration", "no").toString() == "yes" ) && ! soph.preview )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("Other"), bold_format );
@@ -10165,7 +10204,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // Advanced Tab
-    if( Settings.value("Info/RTC_TD_Hack", "no").toString() == "yes" ||
+    if( ( Settings.value("Info/RTC_TD_Hack", "no").toString() == "yes" ||
         Settings.value("Info/Win2K_Hack", "no").toString() == "yes" ||
         Settings.value("Info/No_Shutdown", "no").toString() == "yes" ||
         Settings.value("Info/No_Reboot", "no").toString() == "yes" ||
@@ -10180,6 +10219,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
         Settings.value("Info/Curses", "no").toString() == "yes" ||
         Settings.value("Info/Show_Cursor", "no").toString() == "yes" ||
         (Settings.value("Info/Init_Graphical_Mode", "no").toString() == "yes" && Get_Init_Graphic_Mode().Get_Enabled() ) )
+        && ! soph.preview )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("Advanced"), bold_format );
@@ -10377,7 +10417,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     }
 
     // Show_QEMU_Arguments
-    if( Settings.value("Info/Show_QEMU_Args", "no").toString() == "yes" )
+    if( soph.setting ( Settings.value("Info/Show_QEMU_Args", "no").toString() == "yes" ) )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("QEMU Arguments"), bold_format );
