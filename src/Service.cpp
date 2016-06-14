@@ -75,42 +75,49 @@ int AQEMU_Service::machineCount() const
 
 void AQEMU_Service::vm_state_changed(Virtual_Machine *vm, VM::VM_State s)
 {
-    if ( s == VM::VMS_Power_Off )
+    if (! QDBusConnection::sessionBus().isConnected())
     {
-        machines.removeAll(vm);
-        //delete vm; //FIXME? segfault
-        if ( machineCount() < 1 )
-        {
-            if ( ! main_window )
-            {
-                QMetaObject::invokeMethod(QCoreApplication::instance(), "quit");
-                //application->quit();
-            }
-        }
-    }
-
-    if (!QDBusConnection::sessionBus().isConnected()) {
         fprintf(stderr, "Cannot connect to the D-Bus session bus.\n"
                 "To start it, run:\n"
                 "\teval `dbus-launch --auto-syntax`\n");
-        return;
+    }
+    else
+    {
+        QDBusInterface iface("org.aqemu.main_window", "/main_window", "", QDBusConnection::sessionBus());
+        if (iface.isValid()) {
+            /*QDBusReply<QString> reply =*/
+
+            iface.call(QDBus::NoBlock, "VM_State_Changed", vm->Get_VM_XML_File_Path(), s );
+
+            /*if (reply.isValid()) {
+                printf("Reply was: %s\n", qPrintable(reply.value()));*/
+            //    return;
+            /*}
+
+            fprintf(stderr, "Call failed: %s\n", qPrintable(reply.error().message()));
+            return;*/
+        }
+        else
+        {
+            fprintf(stderr, "%s\n",
+                    qPrintable(QDBusConnection::sessionBus().lastError().message()));
+        }
     }
 
-    QDBusInterface iface("org.aqemu.main_window", "/main_window", "", QDBusConnection::sessionBus());
-    if (iface.isValid()) {
-        /*QDBusReply<QString> reply =*/ iface.call(QDBus::NoBlock, "VM_State_Changed", vm->Get_VM_XML_File_Path(), s );
-        /*if (reply.isValid()) {
-            printf("Reply was: %s\n", qPrintable(reply.value()));*/
-            return;
-        /*}
-
-        fprintf(stderr, "Call failed: %s\n", qPrintable(reply.error().message()));
-        return;*/
+    //remove VM from service and shutdown the service, if there are no VMs running
+    if ( s == VM::VMS_Power_Off )
+    {
+        machines.removeAll(vm);
+        //delete vm; //Segfaults //Destructor was already called at this point //Investigate how/why
     }
-
-    fprintf(stderr, "%s\n",
-            qPrintable(QDBusConnection::sessionBus().lastError().message()));
-
+    if ( machineCount() < 1 )
+    {
+        if ( ! main_window )
+        {
+            QMetaObject::invokeMethod(QCoreApplication::instance(), "quit");
+            //application->quit();
+        }
+    }
 }
 
 bool AQEMU_Service::isActive()
