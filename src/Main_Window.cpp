@@ -1244,7 +1244,7 @@ bool Main_Window::Save_Virtual_Machines()
 
 void Main_Window::Update_VM_Ui(bool update_info_tab)
 {
-    std::unique_ptr<Block_VM_Changed_Signals> bvmcs(new Block_VM_Changed_Signals(this));
+    Block_VM_Changed_Signals bvmcs(this);
 
 	Update_VM_Port_Number();
 	
@@ -2292,7 +2292,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 	
 	if( ui.Machines_List->row(previous) < 0 ) return;
 	
-	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
+    Virtual_Machine tmp_vm;
 	Virtual_Machine *old_vm = Get_VM_By_UID( previous->data(256).toString() );
 	
 	if( old_vm == NULL )
@@ -2302,7 +2302,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 		return;
 	}
 	
-	if( Create_VM_From_Ui(tmp_vm.get(), old_vm) == false &&
+    if( Create_VM_From_Ui(&tmp_vm, old_vm) == false &&
 		old_vm->Get_State() != VM::VMS_In_Error )
 	{
 		AQError( "void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem* current, QListWidgetItem* previous )",
@@ -2346,7 +2346,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 	}
 	
 	// if previous machine settings were changed
-	if( *old_vm != *tmp_vm.get() &&
+    if( *old_vm != tmp_vm &&
 		old_vm->Get_State() != VM::VMS_In_Error && ui.Button_Apply->isEnabled() )
 	{
 		int mes_res = QMessageBox::question( this, tr("Warning!"), tr("Current VM was changed. Save all changes?"),
@@ -2357,7 +2357,7 @@ void Main_Window::on_Machines_List_currentItemChanged( QListWidgetItem *current,
 			disconnect( old_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 						this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 			
-			*old_vm = *tmp_vm.get();
+            *old_vm = tmp_vm;
 			
 			connect( old_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 					 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
@@ -3222,7 +3222,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
     if( ui.Machines_List->count() == 0 )
         return true;
 
-	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
+    Virtual_Machine tmp_vm;
 	Virtual_Machine *cur_vm = Get_Current_VM();
 
 	if( cur_vm == NULL )
@@ -3232,7 +3232,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 		return false;
 	}
 
-	if( Create_VM_From_Ui(tmp_vm.get(), cur_vm) == false )
+    if( Create_VM_From_Ui(&tmp_vm, cur_vm) == false )
 	{
 		AQError( "void Main_Window::Save_Or_Discard()",
 				 "Cannot Create VM From Ui!" );
@@ -3241,7 +3241,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 	else
 	{
         //something must have been changed
-		if( *tmp_vm.get() != *cur_vm )
+        if( tmp_vm != *cur_vm )
 		{
             QMessageBox msgBox;
             msgBox.setWindowTitle(tr("The VM was modified"));
@@ -3264,7 +3264,7 @@ bool Main_Window::Save_Or_Discard(bool forced)
 				disconnect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 							this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 				
-				*cur_vm = *tmp_vm.get();
+                *cur_vm = tmp_vm;
 
 				cur_vm->Save_VM();
 				Update_VM_Ui();
@@ -4286,7 +4286,7 @@ void Main_Window::on_Tabs_currentChanged( int index )
 
 void Main_Window::on_Button_Apply_clicked()
 {
-	std::unique_ptr<Virtual_Machine> tmp_vm(new Virtual_Machine());
+    Virtual_Machine tmp_vm;
 	Virtual_Machine *cur_vm = Get_Current_VM();
 	
 	if( cur_vm == NULL )
@@ -4296,11 +4296,12 @@ void Main_Window::on_Button_Apply_clicked()
 		return;
 	}
 	
-	if( Create_VM_From_Ui(tmp_vm.get(), cur_vm) == false ) return;
+    if( Create_VM_From_Ui(&tmp_vm, cur_vm) == false )
+        return;
 	
 	QString old_path = "";
 	
-	if( cur_vm->Get_Machine_Name() != tmp_vm.get()->Get_Machine_Name() )
+    if( cur_vm->Get_Machine_Name() != tmp_vm.Get_Machine_Name() )
 	{
 		old_path = cur_vm->Get_VM_XML_File_Path();
 	}
@@ -4309,7 +4310,7 @@ void Main_Window::on_Button_Apply_clicked()
 	disconnect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 				this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
 	
-	*cur_vm = *tmp_vm.get();
+    *cur_vm = tmp_vm;
 	
 	connect( cur_vm, SIGNAL(State_Changed(Virtual_Machine*, VM::VM_State)),
 			 this, SLOT(VM_State_Changed(Virtual_Machine*, VM::VM_State)) );
