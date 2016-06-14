@@ -47,6 +47,11 @@ Properties_Window::Properties_Window( QWidget *parent )
 			 this, SLOT(on_Button_Update_Info_clicked()) );
 }
 
+Properties_Window::~Properties_Window()
+{
+    delete HDD_Info;
+}
+
 const VM_Storage_Device &Properties_Window::Get_Floppy()
 {
 	PW_Storage.Set_Enabled( true );

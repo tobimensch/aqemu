@@ -33,6 +33,7 @@ class Properties_Window: public QDialog
 
 	public:
 		Properties_Window( QWidget *parent = 0 );
+        ~Properties_Window();
 		
 		const VM_Storage_Device &Get_Floppy();
 		const VM_Storage_Device &Get_CD_ROM();

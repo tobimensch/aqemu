@@ -32,6 +32,11 @@ HDD_Image_Info::HDD_Image_Info( QObject *parent )
 	QEMU_IMG_Proc = new QProcess( this );
 }
 
+HDD_Image_Info::~HDD_Image_Info()
+{
+    delete QEMU_IMG_Proc;
+}
+
 VM::Disk_Info HDD_Image_Info::Get_Disk_Info() const
 {
 	return Info;

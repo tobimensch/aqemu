@@ -32,6 +32,7 @@ class HDD_Image_Info : public QObject
 	
 	public:
 		HDD_Image_Info( QObject *parent = 0 );
+        ~HDD_Image_Info();
 		VM::Disk_Info Get_Disk_Info() const;
 		
 	public slots:
