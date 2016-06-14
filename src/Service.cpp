@@ -151,7 +151,7 @@ bool AQEMU_Service::call(const QString& command, const QList<QVariant>& params, 
         {
             QDBusReply<QString> reply = iface.callWithArgumentList(QDBus::AutoDetect, command, params);
             if (reply.isValid()) {
-                printf("Reply was: %s\n", qPrintable(reply.value()));
+                std::cout<<qPrintable(reply.value())<<std::endl;
                 return true;
             }
 
@@ -413,6 +413,17 @@ QString AQEMU_Service::command(const QString &vm, const QString &command)
 
 QString AQEMU_Service::list()
 {
+    QSettings settings;
+    QDir vm_dir( QDir::toNativeSeparators(settings.value("VM_Directory", "~").toString()) );
+    QFileInfoList file = vm_dir.entryInfoList( QStringList("*.aqemu"), QDir::Files, QDir::Name );
+
+    if( file.count() <= 0 )
+        return "";
+
+    QStringList list;
+    for( int ix = 0; ix < file.count(); ix++ )
+        list << file[ix].filePath();
+
     //return names of all available machines
-    return "";
+    return list.join("\n");
 }
