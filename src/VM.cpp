@@ -9264,7 +9264,17 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 
             cell = table->cellAt( table->rows()-1, 2 );
             cell_cursor = cell.firstCursorPosition();
-            cell_cursor.insertText( Get_Computer_Type(), format );
+
+            QString name;
+            if ( Get_Current_Emulator_Devices()->System.QEMU_Name == Get_Computer_Type() &&
+                 ! Get_Current_Emulator_Devices()->System.Caption.isEmpty() )
+            {
+                name = Get_Current_Emulator_Devices()->System.Caption;
+            }
+            if ( Get_Computer_Type().isEmpty() )
+                name = tr("Default");
+
+            cell_cursor.insertText( name, format );
             table->insertRows( table->rows(), 1 );
         }
 
@@ -9276,7 +9286,20 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 
             cell = table->cellAt( table->rows()-1, 2 );
             cell_cursor = cell.firstCursorPosition();
-            cell_cursor.insertText( Get_Machine_Type(), format );
+
+            QString name;
+            for ( int i = 0; i < Get_Current_Emulator_Devices()->Machine_List.count(); i++ )
+            {
+                if ( Get_Current_Emulator_Devices()->Machine_List.at(i).QEMU_Name == Get_Machine_Type() &&
+                     ! Get_Current_Emulator_Devices()->Machine_List.at(i).Caption.isEmpty() )
+                {
+                    name = Get_Current_Emulator_Devices()->Machine_List.at(i).Caption;
+                }
+            }
+            if ( Get_Machine_Type().isEmpty() )
+                name = tr("Default");
+
+            cell_cursor.insertText( name, format );
             table->insertRows( table->rows(), 1 );
         }
 
@@ -9298,9 +9321,21 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             cell_cursor = cell.firstCursorPosition();
             cell_cursor.insertText( tr("CPU Type:"), format );
 
+            QString name;
+            for ( int i = 0; i < Get_Current_Emulator_Devices()->CPU_List.count(); i++ )
+            {
+                if ( Get_Current_Emulator_Devices()->CPU_List.at(i).QEMU_Name == Get_CPU_Type() &&
+                     ! Get_Current_Emulator_Devices()->CPU_List.at(i).Caption.isEmpty() )
+                {
+                    name = Get_Current_Emulator_Devices()->CPU_List.at(i).Caption;
+                }
+            }
+            if ( Get_CPU_Type().isEmpty() )
+                name = tr("Default");
+
             cell = table->cellAt( table->rows()-1, 2 );
             cell_cursor = cell.firstCursorPosition();
-            cell_cursor.insertText( Get_CPU_Type(), format );
+            cell_cursor.insertText( name, format );
             table->insertRows( table->rows(), 1 );
         }
 
@@ -9324,7 +9359,20 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 
             cell = table->cellAt( table->rows()-1, 2 );
             cell_cursor = cell.firstCursorPosition();
-            cell_cursor.insertText( Get_Video_Card(), format );
+
+            QString name;
+            for ( int i = 0; i < Get_Current_Emulator_Devices()->Video_Card_List.count(); i++ )
+            {
+                if ( Get_Current_Emulator_Devices()->Video_Card_List.at(i).QEMU_Name == Get_Video_Card() &&
+                     ! Get_Current_Emulator_Devices()->Video_Card_List.at(i).Caption.isEmpty() )
+                {
+                    name = Get_Current_Emulator_Devices()->Video_Card_List.at(i).Caption;
+                }
+            }
+            if ( Get_Video_Card().isEmpty() )
+                name = tr("Default");
+
+            cell_cursor.insertText( name, format );
             table->insertRows( table->rows(), 1 );
         }
 
