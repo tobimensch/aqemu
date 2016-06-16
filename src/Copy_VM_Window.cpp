@@ -70,7 +70,7 @@ void Copy_VM_Window::done(int r)
 		    }
 	    }
 	
-	    // OK, New Name Unuque
+        // OK, New Name Unique
     }
     QDialog::done(r);
 }

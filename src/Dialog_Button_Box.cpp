@@ -34,11 +34,11 @@ Dialog_Button_Box::Dialog_Button_Box() : QDialogButtonBox()
 
 void Dialog_Button_Box::init()
 {
-    if ( button(QDialogButtonBox::Ok) )
+    if ( button(QDialogButtonBox::Ok) && button(QDialogButtonBox::Ok)->icon().isNull() )
         button(QDialogButtonBox::Ok)->setIcon(QIcon(":/ok.png"));
-    if ( button(QDialogButtonBox::Cancel) )
+    if ( button(QDialogButtonBox::Cancel) && button(QDialogButtonBox::Cancel)->icon().isNull() )
         button(QDialogButtonBox::Cancel)->setIcon(QIcon(":/cancel.png"));
-    if ( button(QDialogButtonBox::Save) )
+    if ( button(QDialogButtonBox::Save) && button(QDialogButtonBox::Save)->icon().isNull() )
         button(QDialogButtonBox::Save)->setIcon(QIcon(":/save.png"));
 }
 

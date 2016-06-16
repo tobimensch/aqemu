@@ -124,7 +124,7 @@ Main_Window::Main_Window( QWidget *parent )
 	Icon_Menu->addAction( ui.actionReset );
     Icon_Menu->addAction( ui.actionSave );
 	Icon_Menu->addSeparator();
-	Icon_Menu->addAction( ui.actionDelete_VM );
+    //Icon_Menu->addAction( ui.actionDelete_VM );
 	Icon_Menu->addAction( ui.actionDelete_VM_And_Files );
 	Icon_Menu->addAction( ui.actionSave_As_Template );
 	Icon_Menu->addAction( ui.actionCopy );
@@ -2970,7 +2970,7 @@ void Main_Window::on_actionDelete_VM_And_Files_triggered()
 		return;
 	}
 	
-	Delete_VM_Files_Window del_win( cur_vm );
+    Delete_VM_Files_Window del_win( cur_vm, this );
 	
 	if( del_win.exec() == QDialog::Accepted )
 	{
@@ -2980,7 +2980,8 @@ void Main_Window::on_actionDelete_VM_And_Files_triggered()
 		
 		for( int ix = 0; ix < VM_List.count(); ix++ )
 		{
-			if( uid == VM_List[ix]->Get_UID() ) VM_List.removeAt( ix );
+            if( uid == VM_List[ix]->Get_UID() )
+                VM_List.removeAt( ix );
 		}
 		
 		// No VMs More?

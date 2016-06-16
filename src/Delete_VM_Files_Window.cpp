@@ -30,33 +30,68 @@
 Delete_VM_Files_Window::Delete_VM_Files_Window( QWidget *parent )
 	: QDialog( parent )
 {
-	ui.setupUi( this );
-	
-	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Files_List );
-	hv->setSectionResizeMode( QHeaderView::Fixed );
-	ui.Files_List->setVerticalHeader( hv );
-	
-	hv = new QHeaderView( Qt::Horizontal, ui.Files_List );
-	hv->setStretchLastSection( true );
-	hv->setSectionResizeMode( QHeaderView::ResizeToContents );
-	ui.Files_List->setHorizontalHeader( hv );
+    init();
 }
 
 Delete_VM_Files_Window::Delete_VM_Files_Window( Virtual_Machine *vm, QWidget *parent )
 	: QDialog( parent )
 {
-	ui.setupUi( this );
-	
-	QHeaderView *hv = new QHeaderView( Qt::Vertical, ui.Files_List );
-    hv->setSectionResizeMode( QHeaderView::Fixed );
-	ui.Files_List->setVerticalHeader( hv );
-	
-	hv = new QHeaderView( Qt::Horizontal, ui.Files_List );
-	hv->setStretchLastSection( true );
-	hv->setSectionResizeMode( QHeaderView::ResizeToContents );
-	ui.Files_List->setHorizontalHeader( hv );
+    init();
 	
 	Set_VM( vm );
+}
+
+void Delete_VM_Files_Window::init()
+{
+    ui.setupUi( this );
+
+    hv = new QHeaderView( Qt::Vertical, ui.Files_List );
+    hv->setSectionResizeMode( QHeaderView::Fixed );
+    ui.Files_List->setVerticalHeader( hv );
+    ui.Files_List->verticalHeader()->setVisible(false);
+
+    hv2 = new QHeaderView( Qt::Horizontal, ui.Files_List );
+    hv2->setStretchLastSection( true );
+    hv2->setSectionResizeMode( QHeaderView::ResizeToContents );
+    ui.Files_List->setHorizontalHeader( hv2 );
+
+    connect(ui.delete_VM_and_files_button,SIGNAL(clicked()),this,SLOT(Selected_Files_Page()));
+    connect(ui.delete_VM_button,SIGNAL(clicked()),this,SLOT(Selected_Only_VM_Page()));
+    connect(ui.back_button,SIGNAL(clicked()),this,SLOT(Start_Page()));
+
+    ui.buttonBox->button(QDialogButtonBox::Ok)->setIcon(QIcon(":/remove.png"));
+    ui.buttonBox->button(QDialogButtonBox::Ok)->setText(tr("Delete"));
+
+    Start_Page();
+}
+
+void Delete_VM_Files_Window::Selected_Only_VM_Page()
+{
+    ui.label_warning_vm->setVisible(true);
+    ui.label_warning_vm_and_files->setVisible(false);
+    ui.Files_List->setVisible(false);
+    ui.delete_files_select_box->setVisible(false);
+    ui.stackedWidget->setCurrentIndex(1);
+}
+
+void Delete_VM_Files_Window::Selected_Files_Page()
+{
+    ui.label_warning_vm->setVisible(false);
+    ui.label_warning_vm_and_files->setVisible(true);
+    ui.Files_List->setVisible(true);
+    ui.delete_files_select_box->setVisible(true);
+    ui.stackedWidget->setCurrentIndex(1);
+}
+
+void Delete_VM_Files_Window::Start_Page()
+{
+    ui.stackedWidget->setCurrentIndex(0);
+}
+
+Delete_VM_Files_Window::~Delete_VM_Files_Window()
+{
+    delete hv;
+    delete hv2;
 }
 
 void Delete_VM_Files_Window::Set_VM( Virtual_Machine *vm )
@@ -67,6 +102,9 @@ void Delete_VM_Files_Window::Set_VM( Virtual_Machine *vm )
 				 "vm == NULL" );
 		return;
 	}
+
+    ui.VM_Info_Text->setHtml(vm->GenerateHTMLInfoText(3));
+    ui.machine_Name_LineEdit->setText(vm->Get_Machine_Name());
 	
 	// Clear List
 	Clear_List();
@@ -296,63 +334,73 @@ void Delete_VM_Files_Window::Set_VM( Virtual_Machine *vm )
 			}
 		}
 	}
+
+    on_RB_Show_HDD_toggled(true);
 }
 
-void Delete_VM_Files_Window::on_Button_Delete_clicked()
+bool Delete_VM_Files_Window::Do_Delete()
 {
-	int mes_ret = QMessageBox::question( this, tr("Confirm Delete"),
-										 tr("Delete \"") + VM_Name + tr("\" VM and Selected Files?"),
-										 QMessageBox::Yes | QMessageBox::No, QMessageBox::No );
-	
-	QString no_Delete_Files_List;
-	
-	if( mes_ret == QMessageBox::Yes )
-	{
-		// Delete VM XML File
-		if( ! QFile::remove(VM_Path) )
-		{
-			AQError( "void Delete_VM_Files_Window::on_Button_Delete_clicked()",
-					 "Cannot Delete VM File: \"" + VM_Path + "\"" );
-			no_Delete_Files_List += VM_Path + "\n";
-		}
-		
-		// Delete Files
-		for( int ix = 0; ix < ui.Files_List->rowCount(); ix++ )
-		{
-			QTableWidgetItem *item_CheckBox = ui.Files_List->item( ix, 0 );
-			QTableWidgetItem *item_Text = ui.Files_List->item( ix, 2 );
-			
-			if( item_CheckBox == NULL || item_Text == NULL )
-			{
-				AQError( "void Delete_VM_Files_Window::on_Button_Delete_clicked()",
-						 "item_CheckBox == NULL || item_Text == NULL" );
-				continue;
-			}
-			
-			// Cheked?
-			if( item_CheckBox->checkState() == Qt::Checked )
-			{
-				if( ! QFile::remove(item_Text->text()) )
-				{
-					AQError( "void Delete_VM_Files_Window::on_Button_Delete_clicked()",
-							 "Cannot Delete File: \"" + item_Text->text() + "\"" );
-					no_Delete_Files_List += item_Text->text() + "\n";
-					continue;
-				}
-			}
-		}
-		
-		// Show Errors
-		if( ! no_Delete_Files_List.isEmpty() )
-		{
-			QMessageBox::information( this, tr("An error occurred while deleting files"),
-									tr("This Files Not Deleted:\n") + no_Delete_Files_List + tr("Please Check Permissions!"),
-									QMessageBox::Ok );
-		}
-		
-		// Send accept
-		accept();
-	}
+    QString no_Delete_Files_List;
+
+    // Delete VM XML File
+    if( ! QFile::remove(VM_Path) )
+    {
+        AQError( "void Delete_VM_Files_Window::on_Button_Delete_clicked()",
+                 "Cannot Delete VM File: \"" + VM_Path + "\"" );
+        no_Delete_Files_List += VM_Path + "\n";
+    }
+
+    if ( ui.Files_List->isVisible() )
+    {
+        // Delete Files
+        for( int ix = 0; ix < ui.Files_List->rowCount(); ix++ )
+        {
+            QTableWidgetItem *item_CheckBox = ui.Files_List->item( ix, 0 );
+            QTableWidgetItem *item_Text = ui.Files_List->item( ix, 2 );
+
+            if( item_CheckBox == NULL || item_Text == NULL )
+            {
+                AQError( "void Delete_VM_Files_Window::on_Button_Delete_clicked()",
+
+                         "item_CheckBox == NULL || item_Text == NULL" );
+                continue;
+            }
+
+            // Cheked?
+            if( item_CheckBox->checkState() == Qt::Checked )
+            {
+                if( ! QFile::remove(item_Text->text()) )
+                {
+                    AQError( "void Delete_VM_Files_Window::on_Button_Delete_clicked()",
+                             "Cannot Delete File: \"" + item_Text->text() + "\"" );
+                    no_Delete_Files_List += item_Text->text() + "\n";
+                    continue;
+                }
+            }
+        }
+    }
+
+    // Show Errors
+    if( ! no_Delete_Files_List.isEmpty() )
+    {
+        QMessageBox::information( this, tr("An error occurred while deleting files"),
+                                tr("These Files Could Not Be Deleted:\n") + no_Delete_Files_List + tr("Please Check Permissions!"),
+                                QMessageBox::Ok );
+
+        return ( ! no_Delete_Files_List.contains(VM_Path) );
+    }
+    return true;
+}
+
+void Delete_VM_Files_Window::done(int r)
+{
+    if ( r == QDialog::Accepted )
+    {
+        if ( ! Do_Delete() )
+            return;
+    }
+
+    QDialog::done(r);
 }
 
 void Delete_VM_Files_Window::on_RB_Show_HDD_toggled( bool checked )
@@ -368,7 +416,8 @@ void Delete_VM_Files_Window::on_RB_Show_HDD_toggled( bool checked )
 	{
 		if( checked )
 		{
-			if( File_List_Items[ix].Hard_Drive ) Add_To_Files_List( File_List_Items[ix] );
+            if( File_List_Items[ix].Hard_Drive )
+                Add_To_Files_List( File_List_Items[ix] );
 		}
 		else
 		{

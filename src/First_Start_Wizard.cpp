@@ -58,7 +58,7 @@ bool First_Start_Wizard::Find_Emulators()
 
 void First_Start_Wizard::on_Button_Cancel_clicked()
 {
-	if( QMessageBox::information(this, tr("Warning!"), tr("Are you sure? You can configure these options later in Settings windows."),
+    if( QMessageBox::information(this, tr("Warning!"), tr("Are you sure? You can set these options at any time in the configuration dialog. (File -> Configuration)"),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes )
 	{
 		reject();

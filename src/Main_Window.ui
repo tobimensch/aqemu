@@ -3038,7 +3038,6 @@
      <addaction name="actionLoad_VM_From_File"/>
     </widget>
     <addaction name="menuNew_VM"/>
-    <addaction name="actionDelete_VM"/>
     <addaction name="actionDelete_VM_And_Files"/>
     <addaction name="actionSave_As_Template"/>
     <addaction name="actionCopy"/>
@@ -3107,7 +3106,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionAdd_New_VM"/>
-   <addaction name="actionDelete_VM"/>
+   <addaction name="actionDelete_VM_And_Files"/>
    <addaction name="actionCreate_HDD_Image"/>
    <addaction name="actionManage_Snapshots"/>
    <addaction name="actionShow_QEMU_Arguments"/>
@@ -3417,7 +3416,7 @@
      <normaloff>:/remove.png</normaloff>:/remove.png</iconset>
    </property>
    <property name="text">
-    <string>Delete VM A&amp;nd Files</string>
+    <string>Delete VM</string>
    </property>
   </action>
   <action name="actionShutdown">
