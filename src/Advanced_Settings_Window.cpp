@@ -353,7 +353,7 @@ void Advanced_Settings_Window::Load_Templates()
 
 void Advanced_Settings_Window::on_Button_Create_Template_from_VM_clicked()
 {
-	Create_Template_Window *templ_win = new Create_Template_Window();
+    Create_Template_Window *templ_win = new Create_Template_Window(this);
 	
 	if( templ_win->exec() == QDialog::Accepted )
 	{
