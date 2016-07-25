@@ -1103,6 +1103,9 @@ bool Main_Window::Load_Settings()
 	
 	// Main Window Position
 	move( Settings.value("General_Window_Position", QPoint(300, 300)).toPoint() );
+
+        // Toolbar State
+        restoreState( Settings.value("General_Window_State").toByteArray());
 	
 	// Splitter
 	ui.splitter->restoreState( Settings.value("General_Splitter",
@@ -1139,6 +1142,9 @@ bool Main_Window::Save_Settings()
 	// Save Windows Size
 	Settings.setValue( "General_Window_Width", QString::number(this->width()) );
 	Settings.setValue( "General_Window_Height", QString::number(this->height()) );
+
+        // Save Toolbar State
+        Settings.setValue ( "General_Window_State", saveState() );
 	
 	// Save Main Window Position
 	Settings.setValue( "General_Window_Position", pos() );
