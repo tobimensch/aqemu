@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2009-2010 Andrey Rijov <ANDron142@yandex.ru>
+** Copyright (C) 2016 Tobias Gläßer
 **
 ** This file is part of AQEMU.
 **
@@ -20,6 +21,8 @@
 **
 ****************************************************************************/
 
+#include <QPushButton>
+
 #include "Utils.h"
 #include "Copy_VM_Window.h"
 
@@ -28,7 +31,16 @@ Copy_VM_Window::Copy_VM_Window( QWidget *parent )
 {
 	ui.setupUi( this );
 	
-	All_Machine_Names.clear();
+    All_Machine_Names.clear();
+
+    ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled( false );
+
+    connect( ui.Edit_New_VM_Name, SIGNAL(textChanged(const QString&)), this, SLOT(VM_Name_Changed(const QString&)) );
+}
+
+void Copy_VM_Window::VM_Name_Changed(const QString& s)
+{
+    ui.buttonBox->button(QDialogButtonBox::Ok)->setEnabled( ! s.isEmpty() );
 }
 
 QString Copy_VM_Window::Get_New_VM_Name() const

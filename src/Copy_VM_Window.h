@@ -1,6 +1,7 @@
 /****************************************************************************
 **
 ** Copyright (C) 2009-2010 Andrey Rijov <ANDron142@yandex.ru>
+** Copyright (C) 2016 Tobias Gläßer
 **
 ** This file is part of AQEMU.
 **
@@ -40,6 +41,7 @@ class Copy_VM_Window: public QDialog
 		void Add_VM_Machine_Name( const QString &name );
 	
 	private slots:
+        void VM_Name_Changed(const QString&);
 		void done(int);
 	
 	private:
