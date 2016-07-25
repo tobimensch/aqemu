@@ -34,6 +34,8 @@ Create_Template_Window::Create_Template_Window( QWidget *parent )
 	ui.setupUi( this );
 	
 	ui.Edit_Template_Folder->setText( QDir::toNativeSeparators(Settings.value("VM_Directory","").toString() + "/os_templates/") );
+
+    ui.Edit_Template_Name->setFocus();
 }
 
 void Create_Template_Window::Set_VM_Path( const QString &path )

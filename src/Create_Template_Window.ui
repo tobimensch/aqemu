@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>356</width>
-    <height>395</height>
+    <width>526</width>
+    <height>470</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,7 +26,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <widget class="QGroupBox" name="">
+    <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Create Template</string>
      </property>
@@ -167,7 +167,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QGroupBox" name="">
+    <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Options</string>
      </property>
