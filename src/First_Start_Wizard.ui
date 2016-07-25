@@ -39,7 +39,7 @@
    <item row="1" column="0">
     <widget class="QStackedWidget" name="All_Pages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="Welcome_Page">
       <layout class="QGridLayout" name="gridLayout_5">
@@ -110,7 +110,7 @@
            <item>
             <widget class="QLabel" name="Label_VM_Dir">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -123,26 +123,23 @@
              </property>
             </widget>
            </item>
-           <item>
-            <widget class="Line" name="line_2">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
           </layout>
+         </item>
+         <item>
+          <widget class="Line" name="line_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
          </item>
          <item>
           <layout class="QGridLayout" name="gridLayout_3">
            <property name="leftMargin">
-            <number>10</number>
+            <number>0</number>
            </property>
            <property name="spacing">
             <number>4</number>
            </property>
-           <item row="0" column="0">
-            <widget class="QLineEdit" name="Edit_VM_Dir"/>
-           </item>
            <item row="0" column="1">
             <widget class="QToolButton" name="TB_Browse_VM_Dir">
              <property name="text">
@@ -154,7 +151,7 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="0" colspan="2">
+           <item row="2" column="0" colspan="2">
             <spacer name="verticalSpacer_5">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -166,6 +163,9 @@
               </size>
              </property>
             </spacer>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="Edit_VM_Dir"/>
            </item>
           </layout>
          </item>
