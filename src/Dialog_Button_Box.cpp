@@ -40,6 +40,8 @@ void Dialog_Button_Box::init()
         button(QDialogButtonBox::Cancel)->setIcon(QIcon(":/cancel.png"));
     if ( button(QDialogButtonBox::Save) && button(QDialogButtonBox::Save)->icon().isNull() )
         button(QDialogButtonBox::Save)->setIcon(QIcon(":/save.png"));
+    if ( button(QDialogButtonBox::Close) && button(QDialogButtonBox::Close)->icon().isNull() )
+        button(QDialogButtonBox::Close)->setIcon(QIcon(":/dialog-close.png"));
 }
 
 Dialog_Button_Box::~Dialog_Button_Box()
