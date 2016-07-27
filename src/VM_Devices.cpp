@@ -1601,6 +1601,8 @@ VM_Nativ_Storage_Device::VM_Nativ_Storage_Device( const VM_Nativ_Storage_Device 
 	AIO = sd.Get_AIO();
 	UBoot = sd.Use_Boot();
 	Boot = sd.Get_Boot();
+	UDiscard = sd.Use_Discard();
+	Discard = sd.Get_Discard();
 }
 
 bool VM_Nativ_Storage_Device::Get_Nativ_Mode() const
@@ -1651,7 +1653,9 @@ bool VM_Nativ_Storage_Device::operator==( const VM_Nativ_Storage_Device &sd ) co
 		UAIO == sd.Use_AIO() &&
 		AIO == sd.Get_AIO() &&
 		UBoot == sd.Use_Boot() &&
-		Boot == sd.Get_Boot() )
+		Boot == sd.Get_Boot() &&
+		UDiscard == sd.Use_Discard() &&
+		Discard == sd.Get_Discard() )
 	{
 		return true;
 	}
@@ -1904,6 +1908,27 @@ bool VM_Nativ_Storage_Device::Get_Boot() const
 void VM_Nativ_Storage_Device::Set_Boot( bool boot )
 {
 	Boot = boot;
+}
+
+
+bool VM_Nativ_Storage_Device::Use_Discard() const
+{
+	return UDiscard;
+}
+
+void VM_Nativ_Storage_Device::Use_Discard( bool use )
+{
+	UDiscard = use;
+}
+
+bool VM_Nativ_Storage_Device::Get_Discard() const
+{
+	return Discard;
+}
+
+void VM_Nativ_Storage_Device::Set_Discard( bool discard )
+{
+	Discard = discard;
 }
 
 //===========================================================================

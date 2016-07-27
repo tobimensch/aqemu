@@ -4834,10 +4834,17 @@ VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDo
 	
 	// Use Boot
 	tmp_device.Use_Boot( Second_Element.firstChildElement("Use_Boot").text() == "true" );
-	
+
 	// Boot
 	tmp_device.Set_Boot( Second_Element.firstChildElement("Boot").text() == "true" );
+
+	// Use Discard
+	tmp_device.Use_Discard( Second_Element.firstChildElement("Use_Discard").text() == "true" );
 	
+	// Discard
+	tmp_device.Set_Discard( Second_Element.firstChildElement("Discard").text() == "true" );
+
+
 	return tmp_device;
 }
 
@@ -5128,6 +5135,27 @@ void Virtual_Machine::Save_VM_Nativ_Storage_Device( QDomDocument &New_Dom_Docume
 	else
 		Dom_Text = New_Dom_Document.createTextNode( "false" );
 	
+	Sec_Element.appendChild( Dom_Text );
+	// Use Discard
+	Sec_Element = New_Dom_Document.createElement( "Use_Discard" );
+	Dom_Element.appendChild( Sec_Element );
+
+	if( device.Use_Discard() )
+	        Dom_Text = New_Dom_Document.createTextNode( "true" );
+	else
+	        Dom_Text = New_Dom_Document.createTextNode( "false" );
+
+	Sec_Element.appendChild( Dom_Text );
+
+	// Discard
+	Sec_Element = New_Dom_Document.createElement( "Discard" );
+	Dom_Element.appendChild( Sec_Element );
+
+	if ( device.Get_Discard() )
+	        Dom_Text = New_Dom_Document.createTextNode( "true" );
+	else
+	        Dom_Text = New_Dom_Document.createTextNode( "false" );
+
 	Sec_Element.appendChild( Dom_Text );
 }
 
@@ -6805,6 +6833,14 @@ QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device de
 		else opt << "boot=off";
 	}
 	
+
+	// Discard
+	if( device.Use_Discard() )
+	{
+	        if( device.Get_Discard() ) opt << "discard=on";
+	        else opt << "discard=off";
+	}
+
 	// Create complete drive string
 	QString driveStr = "";
 	for( int ox = 0; ox < opt.count(); ++ox )

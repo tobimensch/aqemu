@@ -136,6 +136,11 @@ void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )
 	// Boot
 	ui.CH_Boot->setChecked( Device.Use_Boot() );
 	ui.CB_Boot->setCurrentIndex( Device.Get_Boot() ? 0 : 1 );
+
+	// Discard
+	ui.CH_Discard->setChecked( Device.Use_Discard() );
+	ui.CB_Discard->setCurrentIndex( Device.Get_Discard() ? 0 : 1 );
+
 	
 	// cyls, heads, secs, trans
 	ui.GB_hdachs_Settings->setChecked( Device.Use_hdachs() );
@@ -450,6 +455,11 @@ void Add_New_Device_Window::done(int r)
 	    Device.Use_Boot( ui.CH_Boot->isChecked() );
 	    Device.Set_Boot( (ui.CB_Boot->currentIndex() == 0) ? true : false );
 	
+
+	// Discard
+	Device.Use_Discard( ui.CH_Discard->isChecked() );
+	Device.Set_Discard( (ui.CB_Discard->currentIndex() == 0) ? true : false );
+
 	    // hdachs
 	    if( ui.GB_hdachs_Settings->isChecked() )
 	    {

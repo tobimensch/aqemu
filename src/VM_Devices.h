@@ -562,7 +562,11 @@ class VM_Nativ_Storage_Device
 		
 		bool Get_Boot() const;
 		void Set_Boot( bool use );
+		bool Use_Discard() const;
+		void Use_Discard( bool use );
 		
+		bool Get_Discard() const;
+		void Set_Discard( bool discard );
 	private:
 		bool UFile_Path;
 		QString File_Path;
@@ -593,6 +597,8 @@ class VM_Nativ_Storage_Device
 		
 		bool UBoot;
 		bool Boot;
+		bool UDiscard;
+		bool Discard;
 };
 
 // Virtual Machine Storage Device (FDD, CD, HDD)

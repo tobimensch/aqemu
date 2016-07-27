@@ -445,6 +445,30 @@
      </item>
     </layout>
    </item>
+   <item row="9" column="0">
+    <widget class="QCheckBox" name="CH_Discard">
+     <property name="text">
+      <string>&amp;Discard</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="2" colspan="3">
+    <widget class="QComboBox" name="CB_Discard">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <item>
+      <property name="text">
+       <string>on</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>off</string>
+      </property>
+     </item>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -690,6 +714,22 @@
     <hint type="destinationlabel">
      <x>193</x>
      <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CH_Discard</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>CB_Discard</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>56</x>
+     <y>368</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>368</y>
     </hint>
    </hints>
   </connection>
