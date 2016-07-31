@@ -51,7 +51,7 @@ class Device_Manager_Widget: public QWidget
 		VM_HDD HDC; // ide2 if cdrom is enabled, hdc be disibled
 		VM_HDD HDD; // ide3
 		
-		QList<VM_Nativ_Storage_Device> Storage_Devices;
+		QList<VM_Native_Storage_Device> Storage_Devices;
 		
 	public slots:
 		void Update_Enabled_Actions();

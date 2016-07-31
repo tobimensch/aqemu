@@ -151,7 +151,7 @@ Available_Devices::Available_Devices()
 
 //===========================================================================
 
-// VM_Nativ_Storage_Device --------------------------------------------------
+// VM_Native_Storage_Device --------------------------------------------------
 
 Emulator::Emulator()
 {
@@ -1545,9 +1545,9 @@ void Emulator::Set_Devices( const QMap<QString, Available_Devices> &devices )
 
 //---------------------------------------------------------------------------
 
-// VM_Nativ_Storage_Device --------------------------------------------------
+// VM_Native_Storage_Device --------------------------------------------------
 
-VM_Nativ_Storage_Device::VM_Nativ_Storage_Device()
+VM_Native_Storage_Device::VM_Native_Storage_Device()
 {
 	UFile_Path = false;
 	File_Path = "";
@@ -1575,7 +1575,7 @@ VM_Nativ_Storage_Device::VM_Nativ_Storage_Device()
 	Boot = false;
 }
 
-VM_Nativ_Storage_Device::VM_Nativ_Storage_Device( const VM_Nativ_Storage_Device &sd )
+VM_Native_Storage_Device::VM_Native_Storage_Device( const VM_Native_Storage_Device &sd )
 {
 	UFile_Path = sd.Use_File_Path();
 	File_Path = sd.Get_File_Path();
@@ -1605,7 +1605,7 @@ VM_Nativ_Storage_Device::VM_Nativ_Storage_Device( const VM_Nativ_Storage_Device 
 	Discard = sd.Get_Discard();
 }
 
-bool VM_Nativ_Storage_Device::Get_Nativ_Mode() const
+bool VM_Native_Storage_Device::Get_Native_Mode() const
 {
 	if( UAIO ) return true;
 	if( UBoot ) return true;
@@ -1622,13 +1622,13 @@ bool VM_Nativ_Storage_Device::Get_Nativ_Mode() const
 	return false;
 }
 
-QString VM_Nativ_Storage_Device::Get_QEMU_Device_Name() const
+QString VM_Native_Storage_Device::Get_QEMU_Device_Name() const
 {
 	// FIXME Get_QEMU_Device_Name()
 	return "ide0-hd1";
 }
 
-bool VM_Nativ_Storage_Device::operator==( const VM_Nativ_Storage_Device &sd ) const
+bool VM_Native_Storage_Device::operator==( const VM_Native_Storage_Device &sd ) const
 {
 	if( UFile_Path == sd.Use_File_Path() &&
 		File_Path == sd.Get_File_Path() &&
@@ -1665,268 +1665,268 @@ bool VM_Nativ_Storage_Device::operator==( const VM_Nativ_Storage_Device &sd ) co
 	}
 }
 
-bool VM_Nativ_Storage_Device::operator!=( const VM_Nativ_Storage_Device &sd ) const
+bool VM_Native_Storage_Device::operator!=( const VM_Native_Storage_Device &sd ) const
 {
 	return ! ( operator==(sd) );
 }
 
-bool VM_Nativ_Storage_Device::Use_File_Path() const
+bool VM_Native_Storage_Device::Use_File_Path() const
 {
 	return UFile_Path;
 }
 
-void VM_Nativ_Storage_Device::Use_File_Path( bool use )
+void VM_Native_Storage_Device::Use_File_Path( bool use )
 {
 	UFile_Path = use;
 }
 
-const QString &VM_Nativ_Storage_Device::Get_File_Path() const
+const QString &VM_Native_Storage_Device::Get_File_Path() const
 {
 	return File_Path;
 }
 
-void VM_Nativ_Storage_Device::Set_File_Path( const QString &path )
+void VM_Native_Storage_Device::Set_File_Path( const QString &path )
 {
 	File_Path = path;
 }
 
-bool VM_Nativ_Storage_Device::Use_Interface() const
+bool VM_Native_Storage_Device::Use_Interface() const
 {
 	return UInterface;
 }
 
-void VM_Nativ_Storage_Device::Use_Interface( bool use )
+void VM_Native_Storage_Device::Use_Interface( bool use )
 {
 	UInterface = use;
 }
 
-VM::Device_Interface VM_Nativ_Storage_Device::Get_Interface() const
+VM::Device_Interface VM_Native_Storage_Device::Get_Interface() const
 {
 	return Interface;
 }
 
-void VM_Nativ_Storage_Device::Set_Interface( VM::Device_Interface di )
+void VM_Native_Storage_Device::Set_Interface( VM::Device_Interface di )
 {
 	Interface = di;
 }
 
-bool VM_Nativ_Storage_Device::Use_Bus_Unit() const
+bool VM_Native_Storage_Device::Use_Bus_Unit() const
 {
 	return UBus_Unit;
 }
 
-void VM_Nativ_Storage_Device::Use_Bus_Unit( bool use )
+void VM_Native_Storage_Device::Use_Bus_Unit( bool use )
 {
 	UBus_Unit = use;
 }
 
-int VM_Nativ_Storage_Device::Get_Bus() const
+int VM_Native_Storage_Device::Get_Bus() const
 {
 	return Bus;
 }
 
-void VM_Nativ_Storage_Device::Set_Bus( int bus )
+void VM_Native_Storage_Device::Set_Bus( int bus )
 {
 	Bus = bus;
 }
 
-int VM_Nativ_Storage_Device::Get_Unit() const
+int VM_Native_Storage_Device::Get_Unit() const
 {
 	return Unit;
 }
 
-void VM_Nativ_Storage_Device::Set_Unit( int unit )
+void VM_Native_Storage_Device::Set_Unit( int unit )
 {
 	Unit = unit;
 }
 
-bool VM_Nativ_Storage_Device::Use_Index() const
+bool VM_Native_Storage_Device::Use_Index() const
 {
 	return UIndex;
 }
 
-void VM_Nativ_Storage_Device::Use_Index( bool use )
+void VM_Native_Storage_Device::Use_Index( bool use )
 {
 	UIndex = use;
 }
 
-int VM_Nativ_Storage_Device::Get_Index() const
+int VM_Native_Storage_Device::Get_Index() const
 {
 	return Index;
 }
 
-void VM_Nativ_Storage_Device::Set_Index( int index )
+void VM_Native_Storage_Device::Set_Index( int index )
 {
 	Index = index;
 }
 
-bool VM_Nativ_Storage_Device::Use_Media() const
+bool VM_Native_Storage_Device::Use_Media() const
 {
 	return UMedia;
 }
 
-void VM_Nativ_Storage_Device::Use_Media( bool use )
+void VM_Native_Storage_Device::Use_Media( bool use )
 {
 	UMedia = use;
 }
 
-VM::Device_Media VM_Nativ_Storage_Device::Get_Media() const
+VM::Device_Media VM_Native_Storage_Device::Get_Media() const
 {
 	return Media;
 }
 
-void VM_Nativ_Storage_Device::Set_Media( VM::Device_Media media )
+void VM_Native_Storage_Device::Set_Media( VM::Device_Media media )
 {
 	Media = media;
 }
 
-bool VM_Nativ_Storage_Device::Use_hdachs() const
+bool VM_Native_Storage_Device::Use_hdachs() const
 {
 	return Uhdachs;
 }
 
-void VM_Nativ_Storage_Device::Use_hdachs( bool use )
+void VM_Native_Storage_Device::Use_hdachs( bool use )
 {
 	Uhdachs = use;
 }
 
-unsigned long VM_Nativ_Storage_Device::Get_Cyls() const
+unsigned long VM_Native_Storage_Device::Get_Cyls() const
 {
 	return Cyls;
 }
 
-void VM_Nativ_Storage_Device::Set_Cyls( unsigned long cyls )
+void VM_Native_Storage_Device::Set_Cyls( unsigned long cyls )
 {
 	Cyls = cyls;
 }
 
-unsigned long VM_Nativ_Storage_Device::Get_Heads() const
+unsigned long VM_Native_Storage_Device::Get_Heads() const
 {
 	return Heads;
 }
 
-void VM_Nativ_Storage_Device::Set_Heads( unsigned long heads )
+void VM_Native_Storage_Device::Set_Heads( unsigned long heads )
 {
 	Heads = heads;
 }
 
-unsigned long VM_Nativ_Storage_Device::Get_Secs() const
+unsigned long VM_Native_Storage_Device::Get_Secs() const
 {
 	return Secs;
 }
 
-void VM_Nativ_Storage_Device::Set_Secs( unsigned long secs )
+void VM_Native_Storage_Device::Set_Secs( unsigned long secs )
 {
 	Secs = secs;
 }
 
-unsigned long VM_Nativ_Storage_Device::Get_Trans() const
+unsigned long VM_Native_Storage_Device::Get_Trans() const
 {
 	return Trans;
 }
 
-void VM_Nativ_Storage_Device::Set_Trans( unsigned long trans )
+void VM_Native_Storage_Device::Set_Trans( unsigned long trans )
 {
 	Trans = trans;
 }
 
-bool VM_Nativ_Storage_Device::Use_Snapshot() const
+bool VM_Native_Storage_Device::Use_Snapshot() const
 {
 	return USnapshot;
 }
 
-void VM_Nativ_Storage_Device::Use_Snapshot( bool use )
+void VM_Native_Storage_Device::Use_Snapshot( bool use )
 {
 	USnapshot = use;
 }
 
-bool VM_Nativ_Storage_Device::Get_Snapshot() const
+bool VM_Native_Storage_Device::Get_Snapshot() const
 {
 	return Snapshot;
 }
 
-void VM_Nativ_Storage_Device::Set_Snapshot( bool snapshot )
+void VM_Native_Storage_Device::Set_Snapshot( bool snapshot )
 {
 	Snapshot = snapshot;
 }
 
-bool VM_Nativ_Storage_Device::Use_Cache() const
+bool VM_Native_Storage_Device::Use_Cache() const
 {
 	return UCache;
 }
 
-void VM_Nativ_Storage_Device::Use_Cache( bool use )
+void VM_Native_Storage_Device::Use_Cache( bool use )
 {
 	UCache = use;
 }
 
-const QString &VM_Nativ_Storage_Device::Get_Cache() const
+const QString &VM_Native_Storage_Device::Get_Cache() const
 {
 	return Cache;
 }
 
-void VM_Nativ_Storage_Device::Set_Cache( const QString &cache )
+void VM_Native_Storage_Device::Set_Cache( const QString &cache )
 {
 	Cache = cache;
 }
 
-bool VM_Nativ_Storage_Device::Use_AIO() const
+bool VM_Native_Storage_Device::Use_AIO() const
 {
 	return UAIO;
 }
 
-void VM_Nativ_Storage_Device::Use_AIO( bool use )
+void VM_Native_Storage_Device::Use_AIO( bool use )
 {
 	UAIO = use;
 }
 
-const QString &VM_Nativ_Storage_Device::Get_AIO() const
+const QString &VM_Native_Storage_Device::Get_AIO() const
 {
 	return AIO;
 }
 
-void VM_Nativ_Storage_Device::Set_AIO( const QString &aio )
+void VM_Native_Storage_Device::Set_AIO( const QString &aio )
 {
 	AIO = aio;
 }
 
-bool VM_Nativ_Storage_Device::Use_Boot() const
+bool VM_Native_Storage_Device::Use_Boot() const
 {
 	return UBoot;
 }
 
-void VM_Nativ_Storage_Device::Use_Boot( bool use )
+void VM_Native_Storage_Device::Use_Boot( bool use )
 {
 	UBoot = use;
 }
 
-bool VM_Nativ_Storage_Device::Get_Boot() const
+bool VM_Native_Storage_Device::Get_Boot() const
 {
 	return Boot;
 }
 
-void VM_Nativ_Storage_Device::Set_Boot( bool boot )
+void VM_Native_Storage_Device::Set_Boot( bool boot )
 {
 	Boot = boot;
 }
 
 
-bool VM_Nativ_Storage_Device::Use_Discard() const
+bool VM_Native_Storage_Device::Use_Discard() const
 {
 	return UDiscard;
 }
 
-void VM_Nativ_Storage_Device::Use_Discard( bool use )
+void VM_Native_Storage_Device::Use_Discard( bool use )
 {
 	UDiscard = use;
 }
 
-bool VM_Nativ_Storage_Device::Get_Discard() const
+bool VM_Native_Storage_Device::Get_Discard() const
 {
 	return Discard;
 }
 
-void VM_Nativ_Storage_Device::Set_Discard( bool discard )
+void VM_Native_Storage_Device::Set_Discard( bool discard )
 {
 	Discard = discard;
 }
@@ -1939,37 +1939,37 @@ VM_Storage_Device::VM_Storage_Device()
 {
 	Enabled = false;
 	File_Name = "";
-	Nativ_Device = VM_Nativ_Storage_Device();
+    Native_Device = VM_Native_Storage_Device();
 }
 
 VM_Storage_Device::VM_Storage_Device( const VM_Storage_Device &device )
 {
 	Enabled = device.Get_Enabled();
 	File_Name = device.Get_File_Name();
-	Nativ_Device = device.Get_Nativ_Device();
+    Native_Device = device.Get_Native_Device();
 }
 
 VM_Storage_Device::VM_Storage_Device( bool enabled, const QString &file_name )
 {
 	Enabled = enabled;
 	File_Name = file_name;
-	Nativ_Device = VM_Nativ_Storage_Device();
-	Nativ_Device.Set_File_Path( file_name );
+    Native_Device = VM_Native_Storage_Device();
+    Native_Device.Set_File_Path( file_name );
 }
 
-VM_Storage_Device::VM_Storage_Device( bool enabled, const QString &file_name, bool nativ_mode, const VM_Nativ_Storage_Device &device )
+VM_Storage_Device::VM_Storage_Device( bool enabled, const QString &file_name, bool Native_mode, const VM_Native_Storage_Device &device )
 {
 	Enabled = enabled;
 	File_Name = file_name;
-	Nativ_Device = VM_Nativ_Storage_Device( device );
-	Nativ_Device.Set_File_Path( file_name );
+    Native_Device = VM_Native_Storage_Device( device );
+    Native_Device.Set_File_Path( file_name );
 }
 
 bool VM_Storage_Device::operator==( const VM_Storage_Device &device ) const
 {
 	if( Enabled == device.Get_Enabled() &&
 		File_Name == device.Get_File_Name() &&
-		Nativ_Device == device.Get_Nativ_Device() )
+        Native_Device == device.Get_Native_Device() )
 	{
 		return true;
 	}
@@ -1999,22 +1999,22 @@ const QString &VM_Storage_Device::Get_File_Name() const
 void VM_Storage_Device::Set_File_Name( const QString &file_name )
 {
 	File_Name = file_name;
-	Nativ_Device.Set_File_Path( file_name );
+    Native_Device.Set_File_Path( file_name );
 }
 
-bool VM_Storage_Device::Get_Nativ_Mode() const
+bool VM_Storage_Device::Get_Native_Mode() const
 {
-	return Nativ_Device.Get_Nativ_Mode();
+    return Native_Device.Get_Native_Mode();
 }
 
-const VM_Nativ_Storage_Device &VM_Storage_Device::Get_Nativ_Device() const
+const VM_Native_Storage_Device &VM_Storage_Device::Get_Native_Device() const
 {
-	return Nativ_Device;
+    return Native_Device;
 }
 
-void VM_Storage_Device::Set_Nativ_Device( const VM_Nativ_Storage_Device &device )
+void VM_Storage_Device::Set_Native_Device( const VM_Native_Storage_Device &device )
 {
-	Nativ_Device = device;
+    Native_Device = device;
 }
 
 //===========================================================================
@@ -2402,7 +2402,7 @@ void VM_Snapshot::Set_Description( const QString &desc )
 
 VM_Net_Card_Nativ::VM_Net_Card_Nativ()
 {
-	Network_Mode = VM::Net_Mode_Nativ_NIC;
+    Network_Mode = VM::Net_Mode_Native_NIC;
 	Card_Model = "";
 	MAC = "";
 	VLAN = 0;

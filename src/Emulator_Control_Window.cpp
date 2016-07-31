@@ -1594,13 +1594,13 @@ void Emulator_Control_Window::Set_Device( const QString &dev_name, const QString
 			{
 				Cur_VM->Set_CD_ROM( VM_Storage_Device( true,
 													   path,
-													   Cur_VM->Get_CD_ROM().Get_Nativ_Mode(),
-													   Cur_VM->Get_CD_ROM().Get_Nativ_Device()) );
+													   Cur_VM->Get_CD_ROM().Get_Native_Mode(),
+													   Cur_VM->Get_CD_ROM().Get_Native_Device()) );
 			}
 			else
 			{
 				// Find CD-ROM in other storage devices
-				QList<VM_Nativ_Storage_Device> devList = Cur_VM->Get_Storage_Devices_List();
+				QList<VM_Native_Storage_Device> devList = Cur_VM->Get_Storage_Devices_List();
 				
 				int cdromCount = 0;
 				int deviceIndex = -1;
@@ -1632,20 +1632,20 @@ void Emulator_Control_Window::Set_Device( const QString &dev_name, const QString
 			{
 				Cur_VM->Set_FD0( VM_Storage_Device( true,
 													path,
-													Cur_VM->Get_FD0().Get_Nativ_Mode(),
-													Cur_VM->Get_FD0().Get_Nativ_Device()) );
+													Cur_VM->Get_FD0().Get_Native_Mode(),
+													Cur_VM->Get_FD0().Get_Native_Device()) );
 			}
 			else if( dev_name == "floppy1" )
 			{
 				Cur_VM->Set_FD1( VM_Storage_Device( true,
 													path,
-													Cur_VM->Get_FD1().Get_Nativ_Mode(),
-													Cur_VM->Get_FD1().Get_Nativ_Device()) );
+													Cur_VM->Get_FD1().Get_Native_Mode(),
+													Cur_VM->Get_FD1().Get_Native_Device()) );
 			}
 			else
 			{
 				// Find floppy in storage devices
-				QList<VM_Nativ_Storage_Device> devList = Cur_VM->Get_Storage_Devices_List();
+				QList<VM_Native_Storage_Device> devList = Cur_VM->Get_Storage_Devices_List();
 				
 				int floppyCount = 0;
 				int deviceIndex = -1;

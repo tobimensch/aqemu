@@ -317,7 +317,7 @@ void Delete_VM_Files_Window::Set_VM( Virtual_Machine *vm )
 	// Storage Devices
 	if( vm->Get_Storage_Devices_List().count() > 0 )
 	{
-		QList<VM_Nativ_Storage_Device> tmp_dev = vm->Get_Storage_Devices_List();
+		QList<VM_Native_Storage_Device> tmp_dev = vm->Get_Storage_Devices_List();
 		
 		for( int ix = 0; ix < tmp_dev.count(); ix++ )
 		{

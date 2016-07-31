@@ -255,7 +255,7 @@ class VM
 		};
 		
 		// Storage Device Interfaces
-		enum Device_Interface { DI_IDE, DI_SCSI, DI_SD, DI_MTD, DI_Floppy, DI_PFlash, DI_Virtio };
+		enum Device_Interface { DI_IDE, DI_SCSI, DI_SD, DI_MTD, DI_Floppy, DI_PFlash, DI_Virtio, DI_Virtio_SCSI };
 		
 		// Storage Device Media
 		enum Device_Media { DM_Disk, DM_CD_ROM };
@@ -272,9 +272,9 @@ class VM
 							Net_Mode_Dummy };
 		
 		// New Network Modes
-		enum Network_Mode_Nativ { Net_Mode_Nativ_NIC, Net_Mode_Nativ_User, Net_Mode_Nativ_Chanel,
-								  Net_Mode_Nativ_TAP, Net_Mode_Nativ_Socket, Net_Mode_Nativ_MulticastSocket,
-								  Net_Mode_Nativ_VDE, Net_Mode_Nativ_Dump };
+		enum Network_Mode_Nativ { Net_Mode_Native_NIC, Net_Mode_Native_User, Net_Mode_Native_Chanel,
+								  Net_Mode_Native_TAP, Net_Mode_Native_Socket, Net_Mode_Native_MulticastSocket,
+								  Net_Mode_Native_VDE, Net_Mode_Native_Dump };
 		
 		// Image Compression Type (Used in SPICE)
 		enum SPICE_Image_Compression_Type { SPICE_IC_Type_on, SPICE_IC_Type_auto_glz, SPICE_IC_Type_auto_lz,
@@ -478,18 +478,18 @@ class Emulator
 };
 
 // Nativ Storage Device (QEMU >= 0.9.1 Device Style)
-class VM_Nativ_Storage_Device
+class VM_Native_Storage_Device
 {
 	public:
-		VM_Nativ_Storage_Device();
-		VM_Nativ_Storage_Device( const VM_Nativ_Storage_Device &sd );
+		VM_Native_Storage_Device();
+		VM_Native_Storage_Device( const VM_Native_Storage_Device &sd );
 		
-		bool Get_Nativ_Mode() const;
+		bool Get_Native_Mode() const;
 		
 		QString Get_QEMU_Device_Name() const;
 		
-		bool operator==( const VM_Nativ_Storage_Device &sd ) const;
-		bool operator!=( const VM_Nativ_Storage_Device &sd ) const;
+		bool operator==( const VM_Native_Storage_Device &sd ) const;
+		bool operator!=( const VM_Native_Storage_Device &sd ) const;
 		
 		bool Use_File_Path() const;
 		void Use_File_Path( bool use );
@@ -608,7 +608,7 @@ class VM_Storage_Device
 		VM_Storage_Device();
 		VM_Storage_Device( const VM_Storage_Device &device );
 		VM_Storage_Device( bool enabled, const QString &file_name );
-		VM_Storage_Device( bool enabled, const QString &file_name, bool nativ_mode, const VM_Nativ_Storage_Device &device ); // FIXME test const VM_Nativ_Storage_Device &device IN OLD version without const
+		VM_Storage_Device( bool enabled, const QString &file_name, bool Native_mode, const VM_Native_Storage_Device &device ); // FIXME test const VM_Native_Storage_Device &device IN OLD version without const
 		
 		bool operator==( const VM_Storage_Device &device ) const;
 		bool operator!=( const VM_Storage_Device &device ) const;
@@ -619,15 +619,15 @@ class VM_Storage_Device
 		const QString &Get_File_Name() const;
 		void Set_File_Name( const QString &file_name );
 		
-		bool Get_Nativ_Mode() const;
+		bool Get_Native_Mode() const;
 		
-		const VM_Nativ_Storage_Device &Get_Nativ_Device() const;
-		void Set_Nativ_Device( const VM_Nativ_Storage_Device &device );
+		const VM_Native_Storage_Device &Get_Native_Device() const;
+		void Set_Native_Device( const VM_Native_Storage_Device &device );
 		
 	protected:
 		bool Enabled;
 		QString File_Name;
-		VM_Nativ_Storage_Device Nativ_Device;
+		VM_Native_Storage_Device Native_Device;
 };
 
 

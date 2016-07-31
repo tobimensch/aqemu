@@ -92,7 +92,7 @@ Main_Window::Main_Window( QWidget *parent )
 	// This for Tab Info Backgroud Color
 	Update_Info_Text( 1 );
 	
-	Nativ_Device_Window = new Add_New_Device_Window();
+	Native_Device_Window = new Add_New_Device_Window();
 	
 	// Network Settigns
 	New_Network_Settings_Widget = new Network_Widget();
@@ -257,7 +257,7 @@ Main_Window::~Main_Window()
     delete Advanced_Options;
     delete Accelerator_Options;
     delete Architecture_Options;
-    delete Nativ_Device_Window;
+    delete Native_Device_Window;
     delete New_Network_Settings_Widget;
     delete Old_Network_Settings_Widget;
     delete SPICE_Widget;
@@ -873,7 +873,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	tmp_vm->Set_Use_Network( ui.CH_Use_Network->isChecked() );
 
 	// Use Nativ Network
-	tmp_vm->Use_Nativ_Network( ui.RB_Network_Mode_New->isChecked() );
+	tmp_vm->Use_Native_Network( ui.RB_Network_Mode_New->isChecked() );
 
 	// Redirections List
 	if( ui.CH_Redirections->isChecked() && ui.Redirections_List->rowCount() < 1 )
@@ -1481,8 +1481,8 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	New_Network_Settings_Widget->Set_Network_Cards( tmp_vm->Get_Network_Cards_Nativ() );
 	
 	// Use Nativ Network Cards
-	ui.RB_Network_Mode_New->setChecked( tmp_vm->Use_Nativ_Network() );
-	ui.RB_Network_Mode_Old->setChecked( ! tmp_vm->Use_Nativ_Network() );
+	ui.RB_Network_Mode_New->setChecked( tmp_vm->Use_Native_Network() );
+	ui.RB_Network_Mode_Old->setChecked( ! tmp_vm->Use_Native_Network() );
 	on_RB_Network_Mode_New_toggled( ui.RB_Network_Mode_New->isChecked() );
 	
 	ui.Edit_TFTP_Prefix->setText( tmp_vm->Get_TFTP_Prefix() );

@@ -87,7 +87,7 @@ class Virtual_Machine: public QObject
 		QStringList Build_QEMU_Args_For_Tab_Info();
 		QStringList Build_QEMU_Args_For_Script();
 		
-		QStringList Build_Nativ_Device_Args( VM_Nativ_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode );
+        QStringList Build_Native_Device_Args( VM_Native_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode );
 		QStringList Build_Shared_Folder_Args( VM_Shared_Folder folder, int id, bool Build_QEMU_Args_for_Script_Mode );
 
 		bool Start_Snapshot( const QString &tag );
@@ -236,11 +236,11 @@ class Virtual_Machine: public QObject
 		
 		void Set_Snapshot( int index, const VM_Snapshot &s );
 		
-		const QList<VM_Nativ_Storage_Device> &Get_Storage_Devices_List() const;
-		void Set_Storage_Devices_List( const QList<VM_Nativ_Storage_Device> &list );
+        const QList<VM_Native_Storage_Device> &Get_Storage_Devices_List() const;
+        void Set_Storage_Devices_List( const QList<VM_Native_Storage_Device> &list );
 		 		
-		const VM_Nativ_Storage_Device &Get_Storage_Device( int index ) const;
-		void Set_Storage_Device( int index, const VM_Nativ_Storage_Device &device );
+        const VM_Native_Storage_Device &Get_Storage_Device( int index ) const;
+        void Set_Storage_Device( int index, const VM_Native_Storage_Device &device );
 		
 		const QList<VM_Shared_Folder> &Get_Shared_Folders_List() const;
 		void Set_Shared_Folders_List( const QList<VM_Shared_Folder> &list );
@@ -248,8 +248,8 @@ class Virtual_Machine: public QObject
 		bool Get_Use_Network() const;
 		void Set_Use_Network( bool use );
 		
-		bool Use_Nativ_Network() const;
-		void Use_Nativ_Network( bool use );
+        bool Use_Native_Network() const;
+        void Use_Native_Network( bool use );
 		
 		bool Get_Use_Redirections() const;
 		void Set_Use_Redirections( bool r );
@@ -464,10 +464,10 @@ class Virtual_Machine: public QObject
 		// for Emulator_Control_Window
 		void Execute_Emu_Ctl_Command( const QString &com );
 		
-		VM_Nativ_Storage_Device Load_VM_Nativ_Storage_Device( const TXML2QDOM::QDomElement &Second_Element ) const;
+        VM_Native_Storage_Device Load_VM_Native_Storage_Device( const TXML2QDOM::QDomElement &Second_Element ) const;
 		VM_Shared_Folder Load_VM_Shared_Folder( const TXML2QDOM::QDomElement &Second_Element ) const;
-		void Save_VM_Nativ_Storage_Device( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
-										   const VM_Nativ_Storage_Device &device ) const;
+        void Save_VM_Native_Storage_Device( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
+                                           const VM_Native_Storage_Device &device ) const;
 		
 		void Save_VM_Shared_Folder( TXML2QDOM::QDomDocument &New_Dom_Document, TXML2QDOM::QDomElement &Dom_Element,
 										   const VM_Shared_Folder &device ) const;
@@ -536,14 +536,16 @@ class Virtual_Machine: public QObject
 		VM_HDD HDC; // ide2 if cdrom is enabled, hdc be disabled
 		VM_HDD HDD; // ide3
 		QList<VM_Snapshot> Snapshots; // VM State Snapshots
-		QList<VM_Nativ_Storage_Device> Storage_Devices; // For QEMU 0.8.2 Device Style
+        QList<VM_Native_Storage_Device> Storage_Devices; // For QEMU 0.8.2 Device Style
+        int native_device_count; // to keep track of the number of native devices when building
+                                 // the argument list
 
         // shared folders
         QList<VM_Shared_Folder> Shared_Folders;
 		
 		// Network
 		bool Use_Network;
-		bool Nativ_Network;
+        bool Native_Network;
 		bool Use_Redirections; // 1 or more net cards be avirable
 		
 		QList<VM_Net_Card> Network_Cards; // Network Cards. Max 8

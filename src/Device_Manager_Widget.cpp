@@ -709,7 +709,7 @@ void Device_Manager_Widget::on_actionAdd_HDD_triggered()
 void Device_Manager_Widget::on_actionAdd_Device_triggered()
 {
 	Add_New_Device_Window Device_Window;
-	VM_Nativ_Storage_Device tmp_dev;
+	VM_Native_Storage_Device tmp_dev;
 	Device_Window.Set_Emulator_Devices( *Current_Machine_Devices );
 	Device_Window.Set_Device( tmp_dev );
 	

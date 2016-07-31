@@ -397,7 +397,7 @@ void Properties_Window::on_TB_FD_Advanced_Settings_clicked()
 {
 	// Set device
 	Add_New_Device_Window *win = new Add_New_Device_Window();
-	win->Set_Device( PW_Storage.Get_Nativ_Device() );
+	win->Set_Device( PW_Storage.Get_Native_Device() );
 	
 	// Set emulator
 	if( ! Current_Machine_Devices )
@@ -413,14 +413,14 @@ void Properties_Window::on_TB_FD_Advanced_Settings_clicked()
 	if( win->exec() == QDialog::Accepted )
 	{
 		// Set new values
-		PW_Storage.Set_Nativ_Device( win->Get_Device() );
+		PW_Storage.Set_Native_Device( win->Get_Device() );
 		
-		if( PW_Storage.Get_Nativ_Device().Get_File_Path() != ui.CB_FD_Devices->currentText() )
-			ui.CB_FD_Devices->setEditText( PW_Storage.Get_Nativ_Device().Get_File_Path() );
+		if( PW_Storage.Get_Native_Device().Get_File_Path() != ui.CB_FD_Devices->currentText() )
+			ui.CB_FD_Devices->setEditText( PW_Storage.Get_Native_Device().Get_File_Path() );
 		
 		// Nativ Mode - on, File - not used
-		if( PW_Storage.Get_Nativ_Device().Get_Nativ_Mode() &&
-			PW_Storage.Get_Nativ_Device().Use_File_Path() == false )
+		if( PW_Storage.Get_Native_Device().Get_Native_Mode() &&
+			PW_Storage.Get_Native_Device().Use_File_Path() == false )
 			ui.CB_FD_Devices->setEditText( "" );
 	}
 	
@@ -431,7 +431,7 @@ void Properties_Window::on_CB_FD_Devices_editTextChanged( const QString &text )
 {
 	PW_Storage.Set_File_Name( text );
 	
-	VM_Nativ_Storage_Device tmpDev = PW_Storage.Get_Nativ_Device();
+	VM_Native_Storage_Device tmpDev = PW_Storage.Get_Native_Device();
 	
 	// Update nativ device file path
 	if( text.isEmpty() )
@@ -442,11 +442,11 @@ void Properties_Window::on_CB_FD_Devices_editTextChanged( const QString &text )
 	{
 		tmpDev.Set_File_Path( text );
 		
-		if( PW_Storage.Get_Nativ_Device().Get_Nativ_Mode() )
+		if( PW_Storage.Get_Native_Device().Get_Native_Mode() )
 			tmpDev.Use_File_Path( true );
 	}
 	
-	PW_Storage.Set_Nativ_Device( tmpDev );
+	PW_Storage.Set_Native_Device( tmpDev );
 	
 	// Update info
 	on_Button_Update_Info_clicked();
@@ -456,7 +456,7 @@ void Properties_Window::on_TB_CDROM_Advanced_Settings_clicked()
 {
 	// Set device
 	Add_New_Device_Window *win = new Add_New_Device_Window();
-	win->Set_Device( PW_Storage.Get_Nativ_Device() );
+	win->Set_Device( PW_Storage.Get_Native_Device() );
 	
 	// Set emulator
 	if( ! Current_Machine_Devices )
@@ -472,14 +472,14 @@ void Properties_Window::on_TB_CDROM_Advanced_Settings_clicked()
 	if( win->exec() == QDialog::Accepted )
 	{
 		// Set new values
-		PW_Storage.Set_Nativ_Device( win->Get_Device() );
+		PW_Storage.Set_Native_Device( win->Get_Device() );
 		
-		if( PW_Storage.Get_Nativ_Device().Get_File_Path() != ui.CB_CDROM_Devices->currentText() )
-			ui.CB_CDROM_Devices->setEditText( PW_Storage.Get_Nativ_Device().Get_File_Path() );
+		if( PW_Storage.Get_Native_Device().Get_File_Path() != ui.CB_CDROM_Devices->currentText() )
+			ui.CB_CDROM_Devices->setEditText( PW_Storage.Get_Native_Device().Get_File_Path() );
 		
 		// Nativ Mode - on, File - not used
-		if( PW_Storage.Get_Nativ_Device().Get_Nativ_Mode() &&
-			PW_Storage.Get_Nativ_Device().Use_File_Path() == false )
+		if( PW_Storage.Get_Native_Device().Get_Native_Mode() &&
+			PW_Storage.Get_Native_Device().Use_File_Path() == false )
 			ui.CB_CDROM_Devices->setEditText( "" );
 	}
 	
@@ -490,7 +490,7 @@ void Properties_Window::on_CB_CDROM_Devices_editTextChanged( const QString &text
 {
 	PW_Storage.Set_File_Name( text );
 	
-	VM_Nativ_Storage_Device tmpDev = PW_Storage.Get_Nativ_Device();
+	VM_Native_Storage_Device tmpDev = PW_Storage.Get_Native_Device();
 	
 	// Update nativ device file path
 	if( text.isEmpty() )
@@ -501,11 +501,11 @@ void Properties_Window::on_CB_CDROM_Devices_editTextChanged( const QString &text
 	{
 		tmpDev.Set_File_Path( text );
 		
-		if( PW_Storage.Get_Nativ_Device().Get_Nativ_Mode() )
+		if( PW_Storage.Get_Native_Device().Get_Native_Mode() )
 			tmpDev.Use_File_Path( true );
 	}
 	
-	PW_Storage.Set_Nativ_Device( tmpDev );
+	PW_Storage.Set_Native_Device( tmpDev );
 	
 	// Update info
 	on_Button_Update_Info_clicked();
@@ -515,7 +515,7 @@ void Properties_Window::on_TB_HDD_Advanced_Settings_clicked()
 {
 	// Set device
 	Add_New_Device_Window *win = new Add_New_Device_Window();
-	win->Set_Device( PW_HDD.Get_Nativ_Device() );
+	win->Set_Device( PW_HDD.Get_Native_Device() );
 	
 	// Set emulator
 	if( ! Current_Machine_Devices )
@@ -531,14 +531,14 @@ void Properties_Window::on_TB_HDD_Advanced_Settings_clicked()
 	if( win->exec() == QDialog::Accepted )
 	{
 		// Set new values
-		PW_HDD.Set_Nativ_Device( win->Get_Device() );
+		PW_HDD.Set_Native_Device( win->Get_Device() );
 		
-		if( PW_HDD.Get_Nativ_Device().Get_File_Path() != ui.Edit_HDD_Image_Path->text() )
-			ui.Edit_HDD_Image_Path->setText( PW_HDD.Get_Nativ_Device().Get_File_Path() );
+		if( PW_HDD.Get_Native_Device().Get_File_Path() != ui.Edit_HDD_Image_Path->text() )
+			ui.Edit_HDD_Image_Path->setText( PW_HDD.Get_Native_Device().Get_File_Path() );
 		
 		// Nativ Mode - on, File - not used
-		if( PW_HDD.Get_Nativ_Device().Get_Nativ_Mode() &&
-			PW_HDD.Get_Nativ_Device().Use_File_Path() == false )
+		if( PW_HDD.Get_Native_Device().Get_Native_Mode() &&
+			PW_HDD.Get_Native_Device().Use_File_Path() == false )
 			ui.Edit_HDD_Image_Path->setText( "" );
 	}
 	
@@ -549,7 +549,7 @@ void Properties_Window::on_Edit_HDD_Image_Path_textChanged()
 {
 	PW_HDD.Set_File_Name( ui.Edit_HDD_Image_Path->text() );
 	
-	VM_Nativ_Storage_Device tmpDev = PW_HDD.Get_Nativ_Device();
+	VM_Native_Storage_Device tmpDev = PW_HDD.Get_Native_Device();
 	
 	// Update nativ device file path
 	if( ui.Edit_HDD_Image_Path->text().isEmpty() )
@@ -560,11 +560,11 @@ void Properties_Window::on_Edit_HDD_Image_Path_textChanged()
 	{
 		tmpDev.Set_File_Path( ui.Edit_HDD_Image_Path->text() );
 		
-		if( PW_HDD.Get_Nativ_Device().Get_Nativ_Mode() )
+		if( PW_HDD.Get_Native_Device().Get_Native_Mode() )
 			tmpDev.Use_File_Path( true );
 	}
 	
-	PW_HDD.Set_Nativ_Device( tmpDev );
+	PW_HDD.Set_Native_Device( tmpDev );
 	
 	// Update info
 	//on_Button_Update_Info_clicked();

@@ -90,53 +90,53 @@ void Network_Widget::Set_Network_Cards( const QList<VM_Net_Card_Nativ> &cards )
 			
 			switch( Network_Cards[nx].Get_Network_Type() )
 			{
-				case VM::Net_Mode_Nativ_NIC:
+				case VM::Net_Mode_Native_NIC:
 					new QListWidgetItem( "NIC " + ( item_name.isEmpty() ?
 													QString::number(++nic) :
 													"(" + Network_Cards[nx].Get_Name() + ")" ),
 										 ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_User:
+				case VM::Net_Mode_Native_User:
 					new QListWidgetItem( "User " + ( item_name.isEmpty() ?
 													 QString::number(++user) :
 													 "(" + Network_Cards[nx].Get_Name() + ")" ),
 										 ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_Chanel:
+				case VM::Net_Mode_Native_Chanel:
 					new QListWidgetItem( "Channel " + QString::number(++chanel), ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_TAP:
+				case VM::Net_Mode_Native_TAP:
 					new QListWidgetItem( "TAP " + ( item_name.isEmpty() ?
 													QString::number(++tap) :
 													"(" + Network_Cards[nx].Get_Name() + ")" ),
 										 ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_Socket:
+				case VM::Net_Mode_Native_Socket:
 					new QListWidgetItem( "Socket " + ( item_name.isEmpty() ?
 													   QString::number(++socket) :
 													   "(" + Network_Cards[nx].Get_Name() + ")" ),
 										 ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_MulticastSocket:
+				case VM::Net_Mode_Native_MulticastSocket:
 					new QListWidgetItem( "Multicast Socket " + ( item_name.isEmpty() ?
 																 QString::number(++multi) :
 																 "(" + Network_Cards[nx].Get_Name() + ")" ),
 										 ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_VDE:
+				case VM::Net_Mode_Native_VDE:
 					new QListWidgetItem( "VDE " + ( item_name.isEmpty() ?
 													QString::number(++vde) :
 													"(" + Network_Cards[nx].Get_Name() + ")" ),
 										 ui.Items_List );
 					break;
 					
-				case VM::Net_Mode_Nativ_Dump:
+				case VM::Net_Mode_Native_Dump:
 					new QListWidgetItem( "Dump " + QString::number(++dump), ui.Items_List );
 					break;
 					
@@ -1370,41 +1370,41 @@ VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const
 	switch( ui.CB_Network_Type->currentIndex() )
 	{
 		case 0:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_NIC );
+			card.Set_Network_Type( VM::Net_Mode_Native_NIC );
 			break;
 			
 		case 1:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_User );
+			card.Set_Network_Type( VM::Net_Mode_Native_User );
 			break;
 			
 		case 2:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_Chanel );
+			card.Set_Network_Type( VM::Net_Mode_Native_Chanel );
 			break;
 			
 		case 3:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_TAP );
+			card.Set_Network_Type( VM::Net_Mode_Native_TAP );
 			break;
 			
 		case 4:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_Socket );
+			card.Set_Network_Type( VM::Net_Mode_Native_Socket );
 			break;
 			
 		case 5:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_MulticastSocket );
+			card.Set_Network_Type( VM::Net_Mode_Native_MulticastSocket );
 			break;
 			
 		case 6:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_VDE );
+			card.Set_Network_Type( VM::Net_Mode_Native_VDE );
 			break;
 			
 		case 7:
-			card.Set_Network_Type( VM::Net_Mode_Nativ_Dump );
+			card.Set_Network_Type( VM::Net_Mode_Native_Dump );
 			break;
 			
 		default:
 			AQError( "VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const",
 					 "Cannot Read Network Type! Use Default: User Mode" );
-			card.Set_Network_Type( VM::Net_Mode_Nativ_User );
+			card.Set_Network_Type( VM::Net_Mode_Native_User );
 			break;
 	}
 	
@@ -1593,35 +1593,35 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card )
 {
 	switch( card.Get_Network_Type() )
 	{
-		case VM::Net_Mode_Nativ_NIC:
+		case VM::Net_Mode_Native_NIC:
 			ui.CB_Network_Type->setCurrentIndex( 0 );
 			break;
 			
-		case VM::Net_Mode_Nativ_User:
+		case VM::Net_Mode_Native_User:
 			ui.CB_Network_Type->setCurrentIndex( 1 );
 			break;
 			
-		case VM::Net_Mode_Nativ_Chanel:
+		case VM::Net_Mode_Native_Chanel:
 			ui.CB_Network_Type->setCurrentIndex( 2 );
 			break;
 			
-		case VM::Net_Mode_Nativ_TAP:
+		case VM::Net_Mode_Native_TAP:
 			ui.CB_Network_Type->setCurrentIndex( 3 );
 			break;
 			
-		case VM::Net_Mode_Nativ_Socket:
+		case VM::Net_Mode_Native_Socket:
 			ui.CB_Network_Type->setCurrentIndex( 4 );
 			break;
 			
-		case VM::Net_Mode_Nativ_MulticastSocket:
+		case VM::Net_Mode_Native_MulticastSocket:
 			ui.CB_Network_Type->setCurrentIndex( 5 );
 			break;
 			
-		case VM::Net_Mode_Nativ_VDE:
+		case VM::Net_Mode_Native_VDE:
 			ui.CB_Network_Type->setCurrentIndex( 6 );
 			break;
 			
-		case VM::Net_Mode_Nativ_Dump:
+		case VM::Net_Mode_Native_Dump:
 			ui.CB_Network_Type->setCurrentIndex( 7 );
 			break;
 			
@@ -2002,40 +2002,40 @@ void Network_Widget::Update_Card_Item()
 	{
 		case 0:
 			ui.Items_List->currentItem()->setText( "NIC " + (item_name.isEmpty() ?
-												   Get_Items_Count(VM::Net_Mode_Nativ_NIC) : n) );
+												   Get_Items_Count(VM::Net_Mode_Native_NIC) : n) );
 			break;
 			
 		case 1:
 			ui.Items_List->currentItem()->setText( "User " + (item_name.isEmpty() ?
-												   Get_Items_Count(VM::Net_Mode_Nativ_User) : n) );
+												   Get_Items_Count(VM::Net_Mode_Native_User) : n) );
 			break;
 			
 		case 2:
-			ui.Items_List->currentItem()->setText( "Channel " + Get_Items_Count(VM::Net_Mode_Nativ_Chanel) );
+			ui.Items_List->currentItem()->setText( "Channel " + Get_Items_Count(VM::Net_Mode_Native_Chanel) );
 			break;
 			
 		case 3:
 			ui.Items_List->currentItem()->setText( "TAP " + (item_name.isEmpty() ?
-												   Get_Items_Count(VM::Net_Mode_Nativ_TAP) : n) );
+												   Get_Items_Count(VM::Net_Mode_Native_TAP) : n) );
 			break;
 			
 		case 4:
 			ui.Items_List->currentItem()->setText( "Socket " + (item_name.isEmpty() ?
-												   Get_Items_Count(VM::Net_Mode_Nativ_Socket) : n) );
+												   Get_Items_Count(VM::Net_Mode_Native_Socket) : n) );
 			break;
 			
 		case 5:
 			ui.Items_List->currentItem()->setText( "Multicast Socket " + (item_name.isEmpty() ?
-												   Get_Items_Count(VM::Net_Mode_Nativ_MulticastSocket) : n) );
+												   Get_Items_Count(VM::Net_Mode_Native_MulticastSocket) : n) );
 			break;
 			
 		case 6:
 			ui.Items_List->currentItem()->setText( "VDE " + (item_name.isEmpty() ?
-												   Get_Items_Count(VM::Net_Mode_Nativ_VDE) : n) );
+												   Get_Items_Count(VM::Net_Mode_Native_VDE) : n) );
 			break;
 			
 		case 7:
-			ui.Items_List->currentItem()->setText( "Dump " + Get_Items_Count(VM::Net_Mode_Nativ_Dump) );
+			ui.Items_List->currentItem()->setText( "Dump " + Get_Items_Count(VM::Net_Mode_Native_Dump) );
 			break;
 			
 		default:

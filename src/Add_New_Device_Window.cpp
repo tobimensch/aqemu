@@ -31,12 +31,12 @@ Add_New_Device_Window::Add_New_Device_Window( QWidget *parent )
 	ui.setupUi( this );
 }
 
-VM_Nativ_Storage_Device Add_New_Device_Window::Get_Device() const
+VM_Native_Storage_Device Add_New_Device_Window::Get_Device() const
 {
 	return Device;
 }
 
-void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )
+void Add_New_Device_Window::Set_Device( const VM_Native_Storage_Device &dev )
 {
 	Device = dev;
 	
@@ -73,9 +73,13 @@ void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )
 		case VM::DI_Virtio:
 			ui.CB_Interface->setCurrentIndex( 6 );
 			break;
+
+        case VM::DI_Virtio_SCSI:
+			ui.CB_Interface->setCurrentIndex( 7 );
+			break;
 			
 		default:
-			AQError( "void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )",
+            AQError( "void Add_New_Device_Window::Set_Device( const VM_Native_Storage_Device &dev )",
 					 "Interface Default Section! Use IDE!" );
 			break;
 	}
@@ -94,7 +98,7 @@ void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )
 			break;
 			
 		default:
-			AQError( "void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )",
+            AQError( "void Add_New_Device_Window::Set_Device( const VM_Native_Storage_Device &dev )",
 					 "Media Default Section! Use Disk!" );
 			break;
 	}
@@ -122,7 +126,7 @@ void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )
 	if( index != -1 )
 		ui.CB_Cache->setCurrentIndex( index );
 	else
-		AQError( "void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )",
+        AQError( "void Add_New_Device_Window::Set_Device( const VM_Native_Storage_Device &dev )",
 				 "Cache: " + Device.Get_Cache() );
 	
 	// AIO
@@ -130,7 +134,7 @@ void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )
 	index = ui.CB_AIO->findText( Device.Get_AIO() );
 	if( index != -1 ) ui.CB_AIO->setCurrentIndex( index );
 	else
-		AQError( "void Add_New_Device_Window::Set_Device( const VM_Nativ_Storage_Device &dev )",
+        AQError( "void Add_New_Device_Window::Set_Device( const VM_Native_Storage_Device &dev )",
 				 "AIO: " + Device.Get_AIO() );
 	
 	// Boot
@@ -388,6 +392,10 @@ void Add_New_Device_Window::done(int r)
 			    Device.Set_Interface( VM::DI_Virtio );
 			    break;
 			
+		    case 7:
+                Device.Set_Interface( VM::DI_Virtio_SCSI );
+			    break;
+
 		    default:
 			    AQError( "void Add_New_Device_Window::done(int)",
 					     "Invalid Interface Index! Use IDE" );

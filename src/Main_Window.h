@@ -264,15 +264,15 @@ class Main_Window: public QMainWindow
 		HDD_Image_Info* HDC_Info;
 		HDD_Image_Info* HDD_Info;
 		
-		Add_New_Device_Window *Nativ_Device_Window;
+		Add_New_Device_Window *Native_Device_Window;
 		
-		VM_Nativ_Storage_Device Nativ_FD0;
-		VM_Nativ_Storage_Device Nativ_FD1;
-		VM_Nativ_Storage_Device Nativ_CD_ROM;
-		VM_Nativ_Storage_Device Nativ_HDA;
-		VM_Nativ_Storage_Device Nativ_HDB;
-		VM_Nativ_Storage_Device Nativ_HDC;
-		VM_Nativ_Storage_Device Nativ_HDD;
+		VM_Native_Storage_Device Native_FD0;
+		VM_Native_Storage_Device Native_FD1;
+		VM_Native_Storage_Device Native_CD_ROM;
+		VM_Native_Storage_Device Native_HDA;
+		VM_Native_Storage_Device Native_HDB;
+		VM_Native_Storage_Device Native_HDC;
+		VM_Native_Storage_Device Native_HDD;
 		
 		Ports_Tab_Widget *Ports_Tab;
 		Device_Manager_Widget *Dev_Manager;

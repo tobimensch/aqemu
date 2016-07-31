@@ -35,8 +35,8 @@ class Add_New_Device_Window: public QDialog
 	public:
 		Add_New_Device_Window( QWidget *parent = 0 );
 		
-		VM_Nativ_Storage_Device Get_Device() const;
-		void Set_Device( const VM_Nativ_Storage_Device &dev );
+		VM_Native_Storage_Device Get_Device() const;
+		void Set_Device( const VM_Native_Storage_Device &dev );
 		
 		void Set_Emulator_Devices( const Available_Devices &devices );
 		
@@ -48,7 +48,7 @@ class Add_New_Device_Window: public QDialog
 		void done(int);
 	
 	private:
-		VM_Nativ_Storage_Device Device;
+		VM_Native_Storage_Device Device;
 		Ui::Add_New_Device_Window ui;
 };
 

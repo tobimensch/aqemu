@@ -159,7 +159,7 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 
 	// Network Tab
 	this->Use_Network = vm.Get_Use_Network();
-	this->Nativ_Network = vm.Use_Nativ_Network();
+    this->Native_Network = vm.Use_Native_Network();
 	this->Use_Redirections = vm.Get_Use_Redirections();
 	
 	this->Network_Cards.clear();
@@ -384,7 +384,7 @@ void Virtual_Machine::Shared_Constructor()
 	HDD = VM_HDD();
 	
 	Use_Network = true;
-	Nativ_Network = false;
+    Native_Network = false;
 	Use_Redirections = false;
 	TFTP_Prefix = "";
 	SMB_Directory = "";
@@ -487,7 +487,7 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 		this->HDC == vm.Get_HDC() &&
 		this->HDD == vm.Get_HDD() &&
 		this->Use_Network == vm.Get_Use_Network() &&
-		this->Nativ_Network == vm.Use_Nativ_Network() &&
+        this->Native_Network == vm.Use_Native_Network() &&
 		this->Use_Redirections == vm.Get_Use_Redirections() &&
 		this->Get_Network_Cards_Count() == vm.Get_Network_Cards_Count() &&
 		this->Get_Network_Redirections_Count() == vm.Get_Network_Redirections_Count() &&
@@ -729,7 +729,7 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 
 	// Network Tab
 	this->Use_Network = vm.Get_Use_Network();
-	this->Nativ_Network = vm.Use_Nativ_Network();
+    this->Native_Network = vm.Use_Native_Network();
 	this->Use_Redirections = vm.Get_Use_Redirections();
 	
 	this->Network_Cards.clear();
@@ -1319,8 +1319,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1341,8 +1341,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1363,8 +1363,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1388,8 +1388,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, FD0.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, FD0.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1411,8 +1411,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, FD1.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, FD1.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1434,8 +1434,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, CD_ROM.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, CD_ROM.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1460,8 +1460,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1482,8 +1482,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1504,8 +1504,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1526,8 +1526,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, VM_Nativ_Storage_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1555,8 +1555,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, HDA.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDA.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1582,8 +1582,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, HDB.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDB.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1609,8 +1609,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, HDC.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDC.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1636,8 +1636,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Sec_Element.appendChild( Dom_Text );
 		
 		// Nativ Device
-		Sec_Element = New_Dom_Document.createElement( "Nativ_Device" );
-		Save_VM_Nativ_Storage_Device( New_Dom_Document, Sec_Element, HDD.Get_Nativ_Device() );
+        Sec_Element = New_Dom_Document.createElement( "Native_Device" );
+        Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDD.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
 		
 		VM_Element.appendChild( Dom_Element );
@@ -1656,7 +1656,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		for( int sx = 0; sx < Storage_Devices.count(); ++sx )
 		{
 			Dom_Element = New_Dom_Document.createElement( "Storage_Device_" + QString::number(sx) );
-			Save_VM_Nativ_Storage_Device( New_Dom_Document, Dom_Element, Storage_Devices[sx] );
+            Save_VM_Native_Storage_Device( New_Dom_Document, Dom_Element, Storage_Devices[sx] );
 			VM_Element.appendChild( Dom_Element );
 		}
 	}
@@ -1748,8 +1748,8 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "false" );
 		Dom_Element.appendChild( Dom_Text );
 		
-		// Use Nativ_Network
-		Dom_Element = New_Dom_Document.createElement( "Nativ_Network" );
+        // Use Native_Network
+        Dom_Element = New_Dom_Document.createElement( "Native_Network" );
 		VM_Element.appendChild( Dom_Element );
 		Dom_Text = New_Dom_Document.createTextNode( "false" );
 		Dom_Element.appendChild( Dom_Text );
@@ -1767,7 +1767,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Element.appendChild( Dom_Text );
 		
 		// Network Cards Count
-		Dom_Element = New_Dom_Document.createElement( "Network_Cards_Nativ_Count" );
+        Dom_Element = New_Dom_Document.createElement( "Network_Cards_Native_Count" );
 		VM_Element.appendChild( Dom_Element );
 		Dom_Text = New_Dom_Document.createTextNode( QString::number(0) );
 		Dom_Element.appendChild( Dom_Text );
@@ -1941,11 +1941,11 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 			VM_Element.appendChild( Dom_Element );
 		}
 		
-		// Use Nativ_Network
-		Dom_Element = New_Dom_Document.createElement( "Nativ_Network" );
+        // Use Native_Network
+        Dom_Element = New_Dom_Document.createElement( "Native_Network" );
 		VM_Element.appendChild( Dom_Element );
 		
-		if( Nativ_Network )
+        if( Native_Network )
 			Dom_Text = New_Dom_Document.createTextNode( "true" );
 		else
 			Dom_Text = New_Dom_Document.createTextNode( "false" );
@@ -1954,49 +1954,49 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		
 		// Nativ Network Card
 		// Network Cards Count
-		Dom_Element = New_Dom_Document.createElement( "Network_Cards_Nativ_Count" );
+        Dom_Element = New_Dom_Document.createElement( "Network_Cards_Native_Count" );
 		VM_Element.appendChild( Dom_Element );
 		Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ.count()) );
 		Dom_Element.appendChild( Dom_Text );
 		
 		for( int nx = 0; nx < Network_Cards_Nativ.count(); nx++ )
 		{
-			Dom_Element = New_Dom_Document.createElement( "Network_Card_Nativ_" + QString::number(nx) );
+            Dom_Element = New_Dom_Document.createElement( "Network_Card_Native_" + QString::number(nx) );
 			
 			Sec_Element = New_Dom_Document.createElement( "Network_Type" );
 			Dom_Element.appendChild( Sec_Element );
 			
 			switch( Network_Cards_Nativ[nx].Get_Network_Type() )
 			{
-				case VM::Net_Mode_Nativ_NIC:
+                case VM::Net_Mode_Native_NIC:
 					Dom_Text = New_Dom_Document.createTextNode( "NIC" );
 					break;
 					
-				case VM::Net_Mode_Nativ_User:
+                case VM::Net_Mode_Native_User:
 					Dom_Text = New_Dom_Document.createTextNode( "User" );
 					break;
 					
-				case VM::Net_Mode_Nativ_Chanel:
+                case VM::Net_Mode_Native_Chanel:
 					Dom_Text = New_Dom_Document.createTextNode( "Chanel" );
 					break;
 					
-				case VM::Net_Mode_Nativ_TAP:
+                case VM::Net_Mode_Native_TAP:
 					Dom_Text = New_Dom_Document.createTextNode( "TAP" );
 					break;
 					
-				case VM::Net_Mode_Nativ_Socket:
+                case VM::Net_Mode_Native_Socket:
 					Dom_Text = New_Dom_Document.createTextNode( "Socket" );
 					break;
 					
-				case VM::Net_Mode_Nativ_MulticastSocket:
+                case VM::Net_Mode_Native_MulticastSocket:
 					Dom_Text = New_Dom_Document.createTextNode( "MulticastSocket" );
 					break;
 					
-				case VM::Net_Mode_Nativ_VDE:
+                case VM::Net_Mode_Native_VDE:
 					Dom_Text = New_Dom_Document.createTextNode( "VDE" );
 					break;
 					
-				case VM::Net_Mode_Nativ_Dump:
+                case VM::Net_Mode_Native_Dump:
 					Dom_Text = New_Dom_Document.createTextNode( "Dump" );
 					break;
 					
@@ -3884,8 +3884,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					FD0.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 					FD0.Set_File_Name( Second_Element.firstChildElement("File_Name").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					FD0.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    FD0.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 					
 					// Floppy 1
 					FD1 = VM_Storage_Device();
@@ -3893,8 +3893,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					FD1.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 					FD1.Set_File_Name( Second_Element.firstChildElement("File_Name").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					FD1.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    FD1.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 					
 					// CD-ROM
 					CD_ROM = VM_Storage_Device();
@@ -3902,8 +3902,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					CD_ROM.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 					CD_ROM.Set_File_Name( Second_Element.firstChildElement("File_Name").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					CD_ROM.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    CD_ROM.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 				}
 			}
 			
@@ -3918,8 +3918,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					HDA.Set_Virtual_Size( HDA.String_to_Device_Size(Second_Element.firstChildElement("Size").text()) );
 					HDA.Set_Image_Format( Second_Element.firstChildElement("Format").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					HDA.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    HDA.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 					
 					// HDB
 					Second_Element = Child_Element.firstChildElement( "HDB" );
@@ -3927,8 +3927,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					HDB.Set_Virtual_Size( HDB.String_to_Device_Size(Second_Element.firstChildElement("Size").text()) );
 					HDB.Set_Image_Format( Second_Element.firstChildElement("Format").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					HDB.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    HDB.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 					
 					// HDC
 					Second_Element = Child_Element.firstChildElement( "HDC" );
@@ -3936,8 +3936,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					HDC.Set_Virtual_Size( HDC.String_to_Device_Size(Second_Element.firstChildElement("Size").text()) );
 					HDC.Set_Image_Format( Second_Element.firstChildElement("Format").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					HDC.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    HDC.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 					
 					// HDD
 					Second_Element = Child_Element.firstChildElement( "HDD" );
@@ -3945,8 +3945,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 					HDD.Set_Virtual_Size( HDD.String_to_Device_Size(Second_Element.firstChildElement("Size").text()) );
 					HDD.Set_Image_Format( Second_Element.firstChildElement("Format").text() );
 					
-					Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-					HDD.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                    Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                    HDD.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 				}
 				else
 				{
@@ -3978,32 +3978,32 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				HDA.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 				HDA.Set_File_Name( Second_Element.firstChildElement("Image_File_Name").text() );
 				
-				Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-				HDA.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                HDA.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 				
 				// HDB
 				Second_Element = Child_Element.firstChildElement( "HDB" );
 				HDB.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 				HDB.Set_File_Name( Second_Element.firstChildElement("Image_File_Name").text() );
 				
-				Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-				HDB.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                HDB.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 				
 				// HDC
 				Second_Element = Child_Element.firstChildElement( "HDC" );
 				HDC.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 				HDC.Set_File_Name( Second_Element.firstChildElement("Image_File_Name").text() );
 				
-				Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-				HDC.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                HDC.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 				
 				// HDD
 				Second_Element = Child_Element.firstChildElement( "HDD" );
 				HDD.Set_Enabled( (Second_Element.firstChildElement("Enabled").text() == "true") );
 				HDD.Set_File_Name( Second_Element.firstChildElement("Image_File_Name").text() );
 				
-				Second_Element = Second_Element.firstChildElement( "Nativ_Device" );
-				HDD.Set_Nativ_Device( Load_VM_Nativ_Storage_Device(Second_Element) );
+                Second_Element = Second_Element.firstChildElement( "Native_Device" );
+                HDD.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 			}
 			
 			// Nativ Storage Devices
@@ -4014,7 +4014,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				Second_Element = Child_Element.firstChildElement( "Storage_Device_" + QString::number(sx) );
 				
 				// Add Device
-				Storage_Devices << Load_VM_Nativ_Storage_Device( Second_Element );
+                Storage_Devices << Load_VM_Native_Storage_Device( Second_Element );
 			}
 
 			// Shared Folders
@@ -4148,44 +4148,44 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			}
 			
 			// Nativ Network Card
-			// Use Nativ_Network
-			Nativ_Network = (Child_Element.firstChildElement("Nativ_Network").text() == "true");
+            // Use Native_Network
+            Native_Network = (Child_Element.firstChildElement("Native_Network").text() == "true");
 			
 			// Network Cards Count
-			int NetCardsNativCount = Child_Element.firstChildElement( "Network_Cards_Nativ_Count" ).text().toInt();
+            int NetCardsNativCount = Child_Element.firstChildElement( "Network_Cards_Native_Count" ).text().toInt();
 			Network_Cards_Nativ.clear();
 			
 			// Network Cards...
 			for( int nx = 0; nx < NetCardsNativCount; nx++ )
 			{
-				Second_Element = Child_Element.firstChildElement( "Network_Card_Nativ_" + QString::number(nx) );
+                Second_Element = Child_Element.firstChildElement( "Network_Card_Native_" + QString::number(nx) );
 				
 				VM_Net_Card_Nativ tmp_card;
 				
 				// Network_Type
-				QString netCardNativ_Type = Second_Element.firstChildElement( "Network_Type" ).text();
+                QString netCardNative_Type = Second_Element.firstChildElement( "Network_Type" ).text();
 				
-				if( netCardNativ_Type == "NIC" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_NIC );
-				else if( netCardNativ_Type == "User" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_User );
-				else if( netCardNativ_Type == "Chanel" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_Chanel );
-				else if( netCardNativ_Type == "TAP" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_TAP );
-				else if( netCardNativ_Type == "Socket" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_Socket );
-				else if( netCardNativ_Type == "MulticastSocket" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_MulticastSocket );
-				else if( netCardNativ_Type == "VDE" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_VDE );
-				else if( netCardNativ_Type == "Dump" )
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_Dump );
+                if( netCardNative_Type == "NIC" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_NIC );
+                else if( netCardNative_Type == "User" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_User );
+                else if( netCardNative_Type == "Chanel" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_Chanel );
+                else if( netCardNative_Type == "TAP" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_TAP );
+                else if( netCardNative_Type == "Socket" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_Socket );
+                else if( netCardNative_Type == "MulticastSocket" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_MulticastSocket );
+                else if( netCardNative_Type == "VDE" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_VDE );
+                else if( netCardNative_Type == "Dump" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_Dump );
 				else
 				{
 					AQWarning( "bool Virtual_Machine::Load_VM( const QString &file_name )",
 							   "Invalid Network Type. Use Default: User" );
-					tmp_card.Set_Network_Type( VM::Net_Mode_Nativ_User );
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_User );
 				}
 				
 				tmp_card.Set_Card_Model( Second_Element.firstChildElement("Card_Model").text() );
@@ -4730,9 +4730,9 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 	}
 }
 
-VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDomElement &Second_Element ) const
+VM_Native_Storage_Device Virtual_Machine::Load_VM_Native_Storage_Device( const QDomElement &Second_Element ) const
 {
-	VM_Nativ_Storage_Device tmp_device;
+    VM_Native_Storage_Device tmp_device;
 	
 	// Use File Path
 	tmp_device.Use_File_Path( Second_Element.firstChildElement("Use_File_Path").text() == "true" );
@@ -4760,10 +4760,12 @@ VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDo
 		tmp_device.Set_Interface( VM::DI_PFlash );
 	else if( interface_str == "Virtio" )
 		tmp_device.Set_Interface( VM::DI_Virtio );
+	else if( interface_str == "Virtio_SCSI" )
+		tmp_device.Set_Interface( VM::DI_Virtio_SCSI );
 	else if( interface_str == "" ) ; // No Value
 	else
 	{
-		AQError( "VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDomElement &Second_Element ) const",
+        AQError( "VM_Native_Storage_Device Virtual_Machine::Load_VM_Native_Storage_Device( const QDomElement &Second_Element ) const",
 				 "Storage Device Interface Default Section! Value: \"" + interface_str + "\"" );
 	}
 	
@@ -4795,7 +4797,7 @@ VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDo
 	else if( media_str == "" ) ; // No value
 	else
 	{
-		AQError( "VM_Nativ_Storage_Device Virtual_Machine::Load_VM_Nativ_Storage_Device( const QDomElement &Second_Element ) const",
+        AQError( "VM_Native_Storage_Device Virtual_Machine::Load_VM_Native_Storage_Device( const QDomElement &Second_Element ) const",
 				 "Storage Device Media Default Section!" );
 	}
 	
@@ -4860,8 +4862,8 @@ VM_Shared_Folder Virtual_Machine::Load_VM_Shared_Folder( const QDomElement &Seco
 }
 
 
-void Virtual_Machine::Save_VM_Nativ_Storage_Device( QDomDocument &New_Dom_Document, QDomElement &Dom_Element,
-													const VM_Nativ_Storage_Device &device ) const
+void Virtual_Machine::Save_VM_Native_Storage_Device( QDomDocument &New_Dom_Document, QDomElement &Dom_Element,
+                                                    const VM_Native_Storage_Device &device ) const
 {
 	// Use File Path
 	QDomElement Sec_Element = New_Dom_Document.createElement( "Use_File_Path" );
@@ -4941,6 +4943,13 @@ void Virtual_Machine::Save_VM_Nativ_Storage_Device( QDomDocument &New_Dom_Docume
 			Sec_Element = New_Dom_Document.createElement( "Interface" );
 			Dom_Element.appendChild( Sec_Element );
 			Dom_Text = New_Dom_Document.createTextNode( "Virtio" );
+			Sec_Element.appendChild( Dom_Text );
+			break;
+
+		case VM::DI_Virtio_SCSI:
+			Sec_Element = New_Dom_Document.createElement( "Interface" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( "Virtio_SCSI" );
 			Sec_Element.appendChild( Dom_Text );
 			break;
 			
@@ -5185,6 +5194,16 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 {
 	QStringList Args;
 
+	// Introducing a second argument collector for the Storage-part,
+	// because the new 'Virtio_SCSI' generated argument list requires the
+	// VirtIO SCSI storage adapter leading any storage device in the
+	// argument list. Because i can only detect the requirement of this
+	// additional arg after each storage device has been examined, these
+	// storage arguments must be collected in a separate list and then
+	// appended to Args *after* the "-device" "virtio-scsi-pci,id=aq-vscsi"
+	// arguments where appended ...
+	QStringList StorageArgs;
+
 	#ifdef Q_OS_WIN32
 	Args << "-monitor" << QString("tcp:%1:%2,server,nowait")
 						  .arg(Settings.value("Emulator_Monitor_Hostname", "localhost").toString() )
@@ -5393,22 +5412,35 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	
 	if( Current_Emulator_Devices.PSO_No_Shutdown && No_Shutdown )
 		Args << "-no-shutdown";
-	
+
+	// This flag is used for the decision if the 'virtio-scsi-pci' storage
+	// adapter must be inserted into the argument list. It is set if only
+	// one of the storage devices was defined with the 'virtio-scsi'
+	// (Virtio_SCSI) interface type ...
+	bool has_virt_scsi = false;
+    native_device_count = 0;
+
 	// FD0
 	if( FD0.Get_Enabled() )
 	{
-		if( FD0.Get_Nativ_Mode() )
+        if( FD0.Get_Native_Mode() )
 		{
-			Args << Build_Nativ_Device_Args( FD0.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+			// Testing for 'virtio-scsi' interface type
+            VM::Device_Interface iftype = FD0.Get_Native_Device().Get_Interface();
+			if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( FD0.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
 		else
 		{
 			if( QFile::exists(FD0.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-fda" << "\"" + FD0.Get_File_Name() + "\"";
+					StorageArgs << "-fda" << "\"" + FD0.Get_File_Name() + "\"";
 				else
-					Args << "-fda" << FD0.Get_File_Name();
+					StorageArgs << "-fda" << FD0.Get_File_Name();
 			}
 			else
 			{
@@ -5421,19 +5453,25 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// FD1
 	if( FD1.Get_Enabled() )
 	{
-		if( FD1.Get_Nativ_Mode() )
-		{
-			Args << Build_Nativ_Device_Args( FD1.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+        if( FD1.Get_Native_Mode() )
+        {
+            // Testing for the interface type 'virtio-scsi'
+            VM::Device_Interface iftype = FD1.Get_Native_Device().Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( FD1.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
-		else
+        else
 		{
 			if( QFile::exists(FD1.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-fdb" << "\"" + FD1.Get_File_Name() + "\"";
+					StorageArgs << "-fdb" << "\"" + FD1.Get_File_Name() + "\"";
 				else
-					Args << "-fdb" << FD1.Get_File_Name();
-			}
+					StorageArgs << "-fdb" << FD1.Get_File_Name();
+            }
 			else
 			{
 				AQError( "QStringList Virtual_Machine::Build_QEMU_Args()",
@@ -5444,19 +5482,25 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	
 	// CD-ROM
 	if( CD_ROM.Get_Enabled() )
-	{
-		if( CD_ROM.Get_Nativ_Mode() )
-		{
-			Args << Build_Nativ_Device_Args( CD_ROM.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+    {
+        if( CD_ROM.Get_Native_Mode() )
+        {
+            // Testing for the interface type 'virtio-scsi'
+            VM::Device_Interface iftype = CD_ROM.Get_Native_Device().Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( CD_ROM.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
 		else
 		{
 			if( QFile::exists(CD_ROM.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-cdrom" << "\"" + CD_ROM.Get_File_Name() + "\"";
+					StorageArgs << "-cdrom" << "\"" + CD_ROM.Get_File_Name() + "\"";
 				else
-					Args << "-cdrom" << CD_ROM.Get_File_Name();
+					StorageArgs << "-cdrom" << CD_ROM.Get_File_Name();
 			}
 			else
 			{
@@ -5469,18 +5513,24 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// HDA
 	if( HDA.Get_Enabled() )
 	{
-		if( HDA.Get_Nativ_Mode() )
-		{
-			Args << Build_Nativ_Device_Args( HDA.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+        if( HDA.Get_Native_Mode() )
+        {
+            // Testing for the interface type 'virtio-scsi'
+            VM::Device_Interface iftype = HDA.Get_Native_Device().Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( HDA.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
 		else
 		{
 			if( QFile::exists(HDA.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-hda" << "\"" + HDA.Get_File_Name() + "\"";
+					StorageArgs << "-hda" << "\"" + HDA.Get_File_Name() + "\"";
 				else
-					Args << "-hda" << HDA.Get_File_Name();
+					StorageArgs << "-hda" << HDA.Get_File_Name();
 			}
 			else
 			{
@@ -5493,18 +5543,24 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// HDB
 	if( HDB.Get_Enabled() )
 	{
-		if( HDB.Get_Nativ_Mode() )
-		{
-			Args << Build_Nativ_Device_Args( HDB.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+        if( HDB.Get_Native_Mode() )
+        {
+            // Testing for the interface type 'virtio-scsi'
+            VM::Device_Interface iftype = HDB.Get_Native_Device().Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( HDB.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
 		else
 		{
 			if( QFile::exists(HDB.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-hdb" << "\"" + HDB.Get_File_Name() + "\"";
+					StorageArgs << "-hdb" << "\"" + HDB.Get_File_Name() + "\"";
 				else
-					Args << "-hdb" << HDB.Get_File_Name();
+					StorageArgs << "-hdb" << HDB.Get_File_Name();
 			}
 			else
 			{
@@ -5517,18 +5573,24 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// HDC
 	if( HDC.Get_Enabled() )
 	{
-		if( HDC.Get_Nativ_Mode() )
-		{
-			Args << Build_Nativ_Device_Args( HDC.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+        if( HDC.Get_Native_Mode() )
+        {
+            // Testing for the interface type 'virtio-scsi'
+            VM::Device_Interface iftype = HDC.Get_Native_Device().Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( HDC.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
 		else
 		{
 			if( QFile::exists(HDC.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-hdc" << "\"" + HDC.Get_File_Name() + "\"";
+					StorageArgs << "-hdc" << "\"" + HDC.Get_File_Name() + "\"";
 				else
-					Args << "-hdc" << HDC.Get_File_Name();
+					StorageArgs << "-hdc" << HDC.Get_File_Name();
 			}
 			else
 			{
@@ -5541,18 +5603,24 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	// HDD
 	if( HDD.Get_Enabled() )
 	{
-		if( HDD.Get_Nativ_Mode() )
-		{
-			Args << Build_Nativ_Device_Args( HDD.Get_Nativ_Device(), Build_QEMU_Args_for_Tab_Info );
+        if( HDD.Get_Native_Mode() )
+        {
+            // Testing for the interface type 'virtio-scsi'
+            VM::Device_Interface iftype = HDD.Get_Native_Device().Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+            }
+            StorageArgs << Build_Native_Device_Args( HDD.Get_Native_Device(), Build_QEMU_Args_for_Tab_Info );
 		}
 		else
 		{
 			if( QFile::exists(HDD.Get_File_Name()) || Build_QEMU_Args_for_Tab_Info )
 			{
 				if( Build_QEMU_Args_for_Script_Mode )
-					Args << "-hdd" << "\"" + HDD.Get_File_Name() + "\"";
+					StorageArgs << "-hdd" << "\"" + HDD.Get_File_Name() + "\"";
 				else
-					Args << "-hdd" << HDD.Get_File_Name();
+					StorageArgs << "-hdd" << HDD.Get_File_Name();
 			}
 			else
 			{
@@ -5567,8 +5635,14 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 		Storage_Devices.count() > 0 )
 	{
 		for( int ix = 0; ix < Storage_Devices.count(); ++ix )
-		{
-			Args << Build_Nativ_Device_Args( Storage_Devices[ix], Build_QEMU_Args_for_Tab_Info );
+        {
+            // Testing for the 'virtio-scsi' interface type
+            VM::Device_Interface iftype = Storage_Devices[ix].Get_Interface();
+            if (iftype == VM::DI_Virtio_SCSI)
+            {
+				has_virt_scsi = true;
+			}
+            StorageArgs << Build_Native_Device_Args( Storage_Devices[ix], Build_QEMU_Args_for_Tab_Info );
 		}
 	}
 	
@@ -5580,6 +5654,21 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			Args << Build_Shared_Folder_Args( Shared_Folders[ix], ix,  Build_QEMU_Args_for_Tab_Info );
 		}
 	}
+
+	//      AQEMU's advanced device settings. If one of the detected storage
+	//      devices is defined with this interface type, the required storage
+	//      adapter must be added to the argument list *before* any
+	//      of the storage devices ...
+	//
+    if (has_virt_scsi)
+    {
+		Args << "-device" << "virtio-scsi-pci,id=aq-vscsi";
+	}
+
+	//      After the storage adapter has been added to the argument list,
+	//      the storage device arguments can be appended here without any
+	//      (further) problems ...
+	Args << StorageArgs;
 
 	// Boot Device
 	if( Current_Emulator_Devices.PSO_Boot_Order )
@@ -5645,15 +5734,15 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	}
 	
 	// Network Cards
-	if( (Use_Nativ_Network() == false && Network_Cards.count() < 1) ||
-		(Use_Nativ_Network() == true  && Network_Cards_Nativ.count() < 1) ||
+    if( (Use_Native_Network() == false && Network_Cards.count() < 1) ||
+        (Use_Native_Network() == true  && Network_Cards_Nativ.count() < 1) ||
 		Use_Network == false )
 	{
 		Args << "-net" << "none";
 	}
 	else
 	{
-		if( Use_Nativ_Network() )
+        if( Use_Native_Network() )
 		{
 			for( int nc = 0; nc < Network_Cards_Nativ.count(); nc++ )
 			{
@@ -5671,7 +5760,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				switch( Network_Cards_Nativ[nc].Get_Network_Type() )
 				{
 					// -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
-					case VM::Net_Mode_Nativ_NIC:
+                    case VM::Net_Mode_Native_NIC:
 						nic_str += "nic";
 						u_vlan = u_macaddr = u_model = u_name = u_addr = u_vectors = true;
 						break;
@@ -5679,46 +5768,46 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 					// -net user[,vlan=n][,name=str][,net=addr[/mask]][,host=addr][,restrict=y|n]
 					//			[,hostname=host][,dhcpstart=addr][,dns=addr][,tftp=dir][,bootfile=f]
 					//			[,hostfwd=rule][,guestfwd=rule][,smb=dir[,smbserver=addr]]
-					case VM::Net_Mode_Nativ_User:
+                    case VM::Net_Mode_Native_User:
 						nic_str += "user";
 						u_vlan = u_name = u_net = u_host = u_restrict = u_hostname = u_dhcpstart = u_dns =
 							     u_tftp = u_bootfile = u_hostfwd = u_guestfwd = u_smb = u_smbserver = true;
 						break;
 						
 					// -net channel,port:dev
-					case VM::Net_Mode_Nativ_Chanel:
+                    case VM::Net_Mode_Native_Chanel:
 						nic_str += "channel";
 						u_port_dev = true;
 						break;
 						
 					// -net tap[,vlan=n][,name=str][,fd=h][,ifname=name][,script=file][,downscript=dfile]
 					//		   [,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h]
-					case VM::Net_Mode_Nativ_TAP:
+                    case VM::Net_Mode_Native_TAP:
 						nic_str += "tap";
 						u_vlan = u_name = u_fd = u_ifname = u_script = u_downscript = u_sndbuf = u_vnet_hdr = u_vhost = u_vhostfd = true;
 						break;
 						
 					// -net socket[,vlan=n][,name=str][,fd=h][,listen=[host]:port][,connect=host:port]
-					case VM::Net_Mode_Nativ_Socket:
+                    case VM::Net_Mode_Native_Socket:
 						nic_str += "socket";
 						u_vlan = u_name = u_fd = u_listen = u_connect = true;
 						break;
 						
 					// -net socket[,vlan=n][,name=str][,fd=h][,mcast=maddr:port]
-					case VM::Net_Mode_Nativ_MulticastSocket:
+                    case VM::Net_Mode_Native_MulticastSocket:
 						nic_str += "socket";
 						u_vlan = u_name = u_fd = u_mcast = true;
 						break;
 						
 					// -net vde[,vlan=n][,name=str][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
-					case VM::Net_Mode_Nativ_VDE:
+                    case VM::Net_Mode_Native_VDE:
 						if( ! Current_Emulator_Devices.PSO_Net_type_vde ) continue;
 						nic_str += "vde";
 						u_vlan = u_name = u_sock = u_port = u_group = u_mode = true;
 						break;
 						
 					// -net dump[,vlan=n][,file=file][,len=len]
-					case VM::Net_Mode_Nativ_Dump:
+                    case VM::Net_Mode_Native_Dump:
 						if( ! Current_Emulator_Devices.PSO_Net_type_dump ) continue;
 						nic_str += "dump";
 						u_vlan = u_file = u_len = true;
@@ -6718,10 +6807,22 @@ QStringList Virtual_Machine::Build_QEMU_Args_For_Script()
 	return Build_QEMU_Args();
 }
 
-QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode )
+//      Build_Native_Device_Args now has an additional variable - an index.
+//      This variable is (together with a short string) concatenated to the
+//      device-id of the storage device image. The resulting name (aqcd<N> or
+//      aqhd<N>) is used for concatenating the device-definition arguments
+//      with the drive-image arguments, e.g.
+//         -device scsi-hd,driv=aqhd3
+//      with
+//         -drive file=/path/to/image,if=none,id=aqhd3
+// ...
+QStringList Virtual_Machine::Build_Native_Device_Args( VM_Native_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode )
 {
 	QStringList opt;
-	
+
+	QString vsname = (device.Get_Media() == VM::DM_CD_ROM ? "aqcd" : "aqhd")
+               + QString::number (native_device_count++);
+
 	// File
 	if( device.Use_File_Path() )
 	{
@@ -6763,9 +6864,13 @@ QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device de
 			case VM::DI_Virtio:
 				opt << "if=virtio";
 				break;
+
+			case VM::DI_Virtio_SCSI:
+				opt << "if=none,id=" + vsname;
+				break;
 				
 			default:
-				AQError( "QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode )",
+                AQError( "QStringList Virtual_Machine::Build_Native_Device_Args( VM_Native_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode )",
 						 "Storage Device Interface Default Section!" );
 				break;
 		}
@@ -6796,7 +6901,7 @@ QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device de
 				break;
 				
 			default:
-				AQError( "QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode )",
+                AQError( "QStringList Virtual_Machine::Build_Native_Device_Args( VM_Native_Storage_Device device, bool Build_QEMU_Args_for_Script_Mode )",
 						 "Storage Device Media Default Section!" );
 				break;
 		}
@@ -6837,8 +6942,8 @@ QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device de
 	// Discard
 	if( device.Use_Discard() )
 	{
-	        if( device.Get_Discard() ) opt << "discard=on";
-	        else opt << "discard=off";
+	        if( device.Get_Discard() ) opt << "discard=unmap";
+	        else opt << "discard=ignore";
 	}
 
 	// Create complete drive string
@@ -6850,6 +6955,11 @@ QStringList Virtual_Machine::Build_Nativ_Device_Args( VM_Nativ_Storage_Device de
 	
 	// return
 	QStringList args;
+	if (device.Get_Interface() == VM::DI_Virtio_SCSI) {
+	    QString devtype =
+		(device.Get_Media() == VM::DM_CD_ROM ? "scsi-cd" : "scsi-hd");
+	    args << "-device" << devtype + ",drive=" + vsname;
+	}
 	args << "-drive" << driveStr;
 	return args;
 }
@@ -7988,7 +8098,7 @@ void Virtual_Machine::Set_Snapshot( int index, const VM_Snapshot &s )
 	}
 }
 
-const QList<VM_Nativ_Storage_Device> &Virtual_Machine::Get_Storage_Devices_List() const
+const QList<VM_Native_Storage_Device> &Virtual_Machine::Get_Storage_Devices_List() const
 {
 	return Storage_Devices;
 }
@@ -7998,13 +8108,13 @@ const QList<VM_Shared_Folder> &Virtual_Machine::Get_Shared_Folders_List() const
 	return Shared_Folders;
 }
 
-void Virtual_Machine::Set_Storage_Devices_List( const QList<VM_Nativ_Storage_Device> &list )
+void Virtual_Machine::Set_Storage_Devices_List( const QList<VM_Native_Storage_Device> &list )
 {
 	Storage_Devices.clear();
 	
 	for( int ix = 0; ix < list.count(); ++ix )
 	{
-		Storage_Devices.append( VM_Nativ_Storage_Device(list[ix]) );
+        Storage_Devices.append( VM_Native_Storage_Device(list[ix]) );
 	}
 }
 
@@ -8018,19 +8128,19 @@ void Virtual_Machine::Set_Shared_Folders_List( const QList<VM_Shared_Folder> &li
 	}
 }
 
-const VM_Nativ_Storage_Device &Virtual_Machine::Get_Storage_Device( int index ) const
+const VM_Native_Storage_Device &Virtual_Machine::Get_Storage_Device( int index ) const
 {
 	if( index < 0 || index > Storage_Devices.count() )
 	{
 		// FIXME message
-		VM_Nativ_Storage_Device *empty_dev = new VM_Nativ_Storage_Device();
+        VM_Native_Storage_Device *empty_dev = new VM_Native_Storage_Device();
 		return *empty_dev;
 	}
 	
 	return Storage_Devices[ index ];
 }
 
-void Virtual_Machine::Set_Storage_Device( int index, const VM_Nativ_Storage_Device &device )
+void Virtual_Machine::Set_Storage_Device( int index, const VM_Native_Storage_Device &device )
 {
 	if( index < 0 || index > Storage_Devices.count() )
 	{
@@ -8204,14 +8314,14 @@ void Virtual_Machine::Set_Use_Network( bool use )
 	Use_Network = use;
 }
 
-bool Virtual_Machine::Use_Nativ_Network() const
+bool Virtual_Machine::Use_Native_Network() const
 {
-	return Nativ_Network;
+    return Native_Network;
 }
 
-void Virtual_Machine::Use_Nativ_Network( bool use )
+void Virtual_Machine::Use_Native_Network( bool use )
 {
-	Nativ_Network = use;
+    Native_Network = use;
 }
 
 bool Virtual_Machine::Get_Use_Redirections() const
@@ -9671,8 +9781,8 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 
     // Network
     if( soph.either( Settings.value("Info/Network_Cards", "yes").toString() == "yes" ) &&
-        ((Use_Nativ_Network() == false && Get_Network_Cards_Count() > 0) ||
-         (Use_Nativ_Network() == true  && Get_Network_Cards_Nativ().count() > 0)) )
+        ((Use_Native_Network() == false && Get_Network_Cards_Count() > 0) ||
+         (Use_Native_Network() == true  && Get_Network_Cards_Nativ().count() > 0)) )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("Network"), bold_format );
@@ -9696,7 +9806,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
         }
         else
         {
-            if( Use_Nativ_Network() == false )
+            if( Use_Native_Network() == false )
             {
                 for( int nx = 0; nx < Get_Network_Cards_Count(); ++nx )
                 {
@@ -9753,9 +9863,9 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             }
             else
             {
-                QList<VM_Net_Card_Nativ> nativ_Cards = Get_Network_Cards_Nativ();
+                QList<VM_Net_Card_Nativ> Native_Cards = Get_Network_Cards_Nativ();
 
-                for( int ix = 0; ix < nativ_Cards.count(); ix++ )
+                for( int ix = 0; ix < Native_Cards.count(); ix++ )
                 {
                     cell = table->cellAt( table->rows()-1, 1 );
                     cell_cursor = cell.firstCursorPosition();
@@ -9763,37 +9873,37 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
 
                     QString con_mode = "";
 
-                    switch( nativ_Cards[ix].Get_Network_Type() )
+                    switch( Native_Cards[ix].Get_Network_Type() )
                     {
-                        case VM::Net_Mode_Nativ_NIC:
+                        case VM::Net_Mode_Native_NIC:
                             con_mode = tr( "NIC" );
                             break;
 
-                        case VM::Net_Mode_Nativ_User:
+                        case VM::Net_Mode_Native_User:
                             con_mode = tr( "User" );
                             break;
 
-                        case VM::Net_Mode_Nativ_Chanel:
+                        case VM::Net_Mode_Native_Chanel:
                             con_mode = tr( "Channel" );
                             break;
 
-                        case VM::Net_Mode_Nativ_TAP:
+                        case VM::Net_Mode_Native_TAP:
                             con_mode = tr( "TAP" );
                             break;
 
-                        case VM::Net_Mode_Nativ_Socket:
+                        case VM::Net_Mode_Native_Socket:
                             con_mode = tr( "Socket" );
                             break;
 
-                        case VM::Net_Mode_Nativ_MulticastSocket:
+                        case VM::Net_Mode_Native_MulticastSocket:
                             con_mode = tr( "Multicast Socket" );
                             break;
 
-                        case VM::Net_Mode_Nativ_VDE:
+                        case VM::Net_Mode_Native_VDE:
                             con_mode = tr( "VDE" );
                             break;
 
-                        case VM::Net_Mode_Nativ_Dump:
+                        case VM::Net_Mode_Native_Dump:
                             con_mode = tr( "Dump" );
                             break;
 
