@@ -46,11 +46,11 @@ QWidget#scrollAreaWidgetContents
 )");
 }
 
-bool Network_Widget::Get_Network_Cards( QList<VM_Net_Card_Nativ> &cards )
+bool Network_Widget::Get_Network_Cards( QList<VM_Net_Card_Native> &cards )
 {
 	if( ui.Items_List->count() < 1 )
 	{
-		AQDebug( "bool Network_Widget::Get_Network_Card( QList<VM_Net_Card_Nativ> &cards ) const",
+		AQDebug( "bool Network_Widget::Get_Network_Card( QList<VM_Net_Card_Native> &cards ) const",
 				 "No Items" );
 		cards.clear();
 		return true;
@@ -68,7 +68,7 @@ bool Network_Widget::Get_Network_Cards( QList<VM_Net_Card_Nativ> &cards )
 	return true;
 }
 
-void Network_Widget::Set_Network_Cards( const QList<VM_Net_Card_Nativ> &cards )
+void Network_Widget::Set_Network_Cards( const QList<VM_Net_Card_Native> &cards )
 {
 	ui.Items_List->clear();
 	Network_Cards = cards;
@@ -698,7 +698,7 @@ void Network_Widget::on_Button_Add_clicked()
 		QMessageBox::information( this, tr("Warning!"), tr("Maximum Network Cards Count is 8.") );
 	else
 	{
-		VM_Net_Card_Nativ tmp_card;
+		VM_Net_Card_Native tmp_card;
 		Network_Cards.append( tmp_card );
 		
 		new QListWidgetItem( tr("New Item"), ui.Items_List );
@@ -1363,9 +1363,9 @@ void Network_Widget::on_CH_smb_toggled( bool checked )
 		ui.Edit_smbserver->setEnabled( false );
 }
 
-VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const
+VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const
 {
-	VM_Net_Card_Nativ card;
+	VM_Net_Card_Native card;
 	
 	switch( ui.CB_Network_Type->currentIndex() )
 	{
@@ -1402,7 +1402,7 @@ VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const
 			break;
 			
 		default:
-			AQError( "VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const",
+			AQError( "VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const",
 					 "Cannot Read Network Type! Use Default: User Mode" );
 			card.Set_Network_Type( VM::Net_Mode_Native_User );
 			break;
@@ -1589,7 +1589,7 @@ VM_Net_Card_Nativ Network_Widget::Get_Net_Card_From_Ui() const
 	return card;
 }
 
-void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card )
+void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 {
 	switch( card.Get_Network_Type() )
 	{
@@ -1626,7 +1626,7 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card )
 			break;
 			
 		default:
-			AQError( "void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card )",
+			AQError( "void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )",
 					 "Cannot Read Network Type! Use Default: User Mode" );
 			ui.CB_Network_Type->setCurrentIndex( 1 );
 			break;
@@ -1635,7 +1635,7 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card )
 	// Model
 	if( ui.CB_model->count() < 1 )
 	{
-		AQError( "void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card )",
+		AQError( "void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )",
 				 "Cannot Read Network Model!" );
 	}
 	else
@@ -2065,7 +2065,7 @@ void Network_Widget::Enable_Buttons( bool add, bool del )
 	
 	if( ! del ) // Clear GUI
 	{
-		VM_Net_Card_Nativ tmp_card;
+		VM_Net_Card_Native tmp_card;
 		Set_Net_Card_To_Ui( tmp_card );
 	}
 }

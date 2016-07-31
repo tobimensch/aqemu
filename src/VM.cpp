@@ -579,7 +579,7 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 		else return false;
 		
 		// Network Cards Nativ
-		QList<VM_Net_Card_Nativ> tmp_card_nativ = vm.Get_Network_Cards_Nativ();
+        QList<VM_Net_Card_Native> tmp_card_nativ = vm.Get_Network_Cards_Nativ();
 		
 		if( Network_Cards_Nativ.count() == tmp_card_nativ.count() )
 		{
@@ -4160,7 +4160,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 			{
                 Second_Element = Child_Element.firstChildElement( "Network_Card_Native_" + QString::number(nx) );
 				
-				VM_Net_Card_Nativ tmp_card;
+                VM_Net_Card_Native tmp_card;
 				
 				// Network_Type
                 QString netCardNative_Type = Second_Element.firstChildElement( "Network_Type" ).text();
@@ -8181,12 +8181,12 @@ void Virtual_Machine::Set_Network_Cards( const QList<VM_Net_Card> &cards )
 	Network_Cards = cards;
 }
 
-const QList<VM_Net_Card_Nativ> &Virtual_Machine::Get_Network_Cards_Nativ() const
+const QList<VM_Net_Card_Native> &Virtual_Machine::Get_Network_Cards_Nativ() const
 {
 	return Network_Cards_Nativ;
 }
 
-void Virtual_Machine::Set_Network_Cards_Nativ( const QList<VM_Net_Card_Nativ> &cards )
+void Virtual_Machine::Set_Network_Cards_Nativ( const QList<VM_Net_Card_Native> &cards )
 {
 	Network_Cards_Nativ = cards;
 }
@@ -9863,7 +9863,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             }
             else
             {
-                QList<VM_Net_Card_Nativ> Native_Cards = Get_Network_Cards_Nativ();
+                QList<VM_Net_Card_Native> Native_Cards = Get_Network_Cards_Nativ();
 
                 for( int ix = 0; ix < Native_Cards.count(); ix++ )
                 {

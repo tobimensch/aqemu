@@ -33,8 +33,8 @@ class Network_Widget: public QWidget
 	public:
 		Network_Widget( QWidget *parent = 0 );
 		
-		bool Get_Network_Cards( QList<VM_Net_Card_Nativ> &cards );
-		void Set_Network_Cards( const QList<VM_Net_Card_Nativ> &cards );
+		bool Get_Network_Cards( QList<VM_Net_Card_Native> &cards );
+		void Set_Network_Cards( const QList<VM_Net_Card_Native> &cards );
 		
 		void Set_Network_Card_Models( const QList<Device_Map> &models );
 		void Set_Devices( const Available_Devices &devices );
@@ -59,8 +59,8 @@ class Network_Widget: public QWidget
 		void Update_Card_Item();
 		
 	private:
-		VM_Net_Card_Nativ Get_Net_Card_From_Ui() const;
-		void Set_Net_Card_To_Ui( const VM_Net_Card_Nativ &card );
+		VM_Net_Card_Native Get_Net_Card_From_Ui() const;
+		void Set_Net_Card_To_Ui( const VM_Net_Card_Native &card );
 		
 		bool Net_Card_is_Valid();
 		bool No_File_Found( const QString &name, const QString &path );
@@ -74,7 +74,7 @@ class Network_Widget: public QWidget
 		
 	private:
 		Ui::Network_Widget ui;
-		QList<VM_Net_Card_Nativ> Network_Cards;
+		QList<VM_Net_Card_Native> Network_Cards;
 		QStringList Card_Models_QEMU_Name;
 		int nic, user, chanel, tap, socket, multi, vde, dump;
 		

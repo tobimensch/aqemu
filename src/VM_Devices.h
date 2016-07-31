@@ -792,14 +792,14 @@ class VM_Net_Card
 };
 
 // Network Card Nativ
-class VM_Net_Card_Nativ
+class VM_Net_Card_Native
 {
 	public:
-		VM_Net_Card_Nativ();
-		VM_Net_Card_Nativ( const VM_Net_Card_Nativ &nc );
+		VM_Net_Card_Native();
+		VM_Net_Card_Native( const VM_Net_Card_Native &nc );
 		
-		bool operator==( const VM_Net_Card_Nativ &nc ) const;
-		bool operator!=( const VM_Net_Card_Nativ &nc ) const;
+		bool operator==( const VM_Net_Card_Native &nc ) const;
+		bool operator!=( const VM_Net_Card_Native &nc ) const;
 		
 		QString Generate_MAC() const;
 		

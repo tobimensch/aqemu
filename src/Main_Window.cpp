@@ -931,7 +931,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
     }
 
 	// Nativ
-	QList<VM_Net_Card_Nativ> tmp_net_cards_nativ;
+	QList<VM_Net_Card_Native> tmp_net_cards_nativ;
 	if( New_Network_Settings_Widget->Get_Network_Cards(tmp_net_cards_nativ) )
 	{
 		tmp_vm->Set_Network_Cards_Nativ( tmp_net_cards_nativ );

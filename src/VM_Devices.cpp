@@ -2398,9 +2398,9 @@ void VM_Snapshot::Set_Description( const QString &desc )
 
 //===========================================================================
 
-// VM_Net_Card_Nativ --------------------------------------------------------
+// VM_Net_Card_Native --------------------------------------------------------
 
-VM_Net_Card_Nativ::VM_Net_Card_Nativ()
+VM_Net_Card_Native::VM_Net_Card_Native()
 {
     Network_Mode = VM::Net_Mode_Native_NIC;
 	Card_Model = "";
@@ -2476,7 +2476,7 @@ VM_Net_Card_Nativ::VM_Net_Card_Nativ()
 	_Use_VHostFd = false;
 }
 
-VM_Net_Card_Nativ::VM_Net_Card_Nativ( const VM_Net_Card_Nativ &nc )
+VM_Net_Card_Native::VM_Net_Card_Native( const VM_Net_Card_Native &nc )
 {
 	Network_Mode = nc.Get_Network_Type();
 	Card_Model = nc.Get_Card_Model();
@@ -2552,7 +2552,7 @@ VM_Net_Card_Nativ::VM_Net_Card_Nativ( const VM_Net_Card_Nativ &nc )
 	_Use_VHostFd = nc.Use_VHostFd();
 }
 
-bool VM_Net_Card_Nativ::operator==( const VM_Net_Card_Nativ &nc ) const
+bool VM_Net_Card_Native::operator==( const VM_Net_Card_Native &nc ) const
 {
 	if( Network_Mode == nc.Get_Network_Type() &&
 		Card_Model == nc.Get_Card_Model() &&
@@ -2634,725 +2634,725 @@ bool VM_Net_Card_Nativ::operator==( const VM_Net_Card_Nativ &nc ) const
 	}
 }
 
-bool VM_Net_Card_Nativ::operator!=( const VM_Net_Card_Nativ &nc ) const
+bool VM_Net_Card_Native::operator!=( const VM_Net_Card_Native &nc ) const
 {
 	return ! operator ==( nc );
 }
 
-QString VM_Net_Card_Nativ::Generate_MAC() const
+QString VM_Net_Card_Native::Generate_MAC() const
 {
 	VM_Net_Card tmp_card;
 	tmp_card.Set_Card_Model( Card_Model );
 	return tmp_card.Generate_MAC();
 }
 
-VM::Network_Mode_Nativ VM_Net_Card_Nativ::Get_Network_Type() const
+VM::Network_Mode_Nativ VM_Net_Card_Native::Get_Network_Type() const
 {
 	return Network_Mode;
 }
 
-void VM_Net_Card_Nativ::Set_Network_Type( VM::Network_Mode_Nativ mode )
+void VM_Net_Card_Native::Set_Network_Type( VM::Network_Mode_Nativ mode )
 {
 	Network_Mode = mode;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Card_Model() const
+const QString &VM_Net_Card_Native::Get_Card_Model() const
 {
 	return Card_Model;
 }
 
-void VM_Net_Card_Nativ::Set_Card_Model( const QString &m )
+void VM_Net_Card_Native::Set_Card_Model( const QString &m )
 {
 	Card_Model = m;
 }
 
-bool VM_Net_Card_Nativ::Use_MAC_Address() const
+bool VM_Net_Card_Native::Use_MAC_Address() const
 {
 	return _Use_MAC;
 }
 
-void VM_Net_Card_Nativ::Use_MAC_Address( bool use )
+void VM_Net_Card_Native::Use_MAC_Address( bool use )
 {
 	_Use_MAC = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_MAC_Address() const
+const QString &VM_Net_Card_Native::Get_MAC_Address() const
 {
 	return MAC;
 }
 
-void VM_Net_Card_Nativ::Set_MAC_Address( const QString &ma )
+void VM_Net_Card_Native::Set_MAC_Address( const QString &ma )
 {
 	MAC = ma;
 }
 
-bool VM_Net_Card_Nativ::Use_VLAN() const
+bool VM_Net_Card_Native::Use_VLAN() const
 {
 	return _Use_VLAN;
 }
 
-void VM_Net_Card_Nativ::Use_VLAN( bool use )
+void VM_Net_Card_Native::Use_VLAN( bool use )
 {
 	_Use_VLAN = use;
 }
 
-int VM_Net_Card_Nativ::Get_VLAN() const
+int VM_Net_Card_Native::Get_VLAN() const
 {
 	return VLAN;
 }
 
-void VM_Net_Card_Nativ::Set_VLAN( int vl )
+void VM_Net_Card_Native::Set_VLAN( int vl )
 {
 	VLAN = vl;
 }
 
-bool VM_Net_Card_Nativ::Use_Name() const
+bool VM_Net_Card_Native::Use_Name() const
 {
 	return _Use_Name;
 }
 
-void VM_Net_Card_Nativ::Use_Name( bool use )
+void VM_Net_Card_Native::Use_Name( bool use )
 {
 	_Use_Name = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Name() const
+const QString &VM_Net_Card_Native::Get_Name() const
 {
 	return Name;
 }
 
-void VM_Net_Card_Nativ::Set_Name( const QString &name )
+void VM_Net_Card_Native::Set_Name( const QString &name )
 {
 	Name = name;
 }
 
-bool VM_Net_Card_Nativ::Use_Hostname() const
+bool VM_Net_Card_Native::Use_Hostname() const
 {
 	return _Use_Hostname;
 }
 
-void VM_Net_Card_Nativ::Use_Hostname( bool use )
+void VM_Net_Card_Native::Use_Hostname( bool use )
 {
 	_Use_Hostname = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Hostname() const
+const QString &VM_Net_Card_Native::Get_Hostname() const
 {
 	return Hostname;
 }
 
-void VM_Net_Card_Nativ::Set_Hostname( const QString &hostname )
+void VM_Net_Card_Native::Set_Hostname( const QString &hostname )
 {
 	Hostname = hostname;
 }
 
-const QString &VM_Net_Card_Nativ::Get_PortDev() const
+const QString &VM_Net_Card_Native::Get_PortDev() const
 {
 	return PortDev;
 }
 
-void VM_Net_Card_Nativ::Set_PortDev( const QString &portDev )
+void VM_Net_Card_Native::Set_PortDev( const QString &portDev )
 {
 	PortDev = portDev;
 }
 
-bool VM_Net_Card_Nativ::Use_File_Descriptor() const
+bool VM_Net_Card_Native::Use_File_Descriptor() const
 {
 	return _Use_File_Descriptor;
 }
 
-void VM_Net_Card_Nativ::Use_File_Descriptor( bool use )
+void VM_Net_Card_Native::Use_File_Descriptor( bool use )
 {
 	_Use_File_Descriptor = use;
 }
 
-int VM_Net_Card_Nativ::Get_File_Descriptor() const
+int VM_Net_Card_Native::Get_File_Descriptor() const
 {
 	return File_Descriptor;
 }
 
-void VM_Net_Card_Nativ::Set_File_Descriptor( int f )
+void VM_Net_Card_Native::Set_File_Descriptor( int f )
 {
 	File_Descriptor = f;
 }
 
-bool VM_Net_Card_Nativ::Use_Interface_Name() const
+bool VM_Net_Card_Native::Use_Interface_Name() const
 {
 	return _Use_Interface_Name;
 }
 
-void VM_Net_Card_Nativ::Use_Interface_Name( bool use )
+void VM_Net_Card_Native::Use_Interface_Name( bool use )
 {
 	_Use_Interface_Name = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Interface_Name() const
+const QString &VM_Net_Card_Native::Get_Interface_Name() const
 {
 	return Interface_Name;
 }
 
-void VM_Net_Card_Nativ::Set_Interface_Name( const QString &n )
+void VM_Net_Card_Native::Set_Interface_Name( const QString &n )
 {
 	Interface_Name = n;
 }
 
-bool VM_Net_Card_Nativ::Use_TUN_TAP_Script() const
+bool VM_Net_Card_Native::Use_TUN_TAP_Script() const
 {
 	return _Use_TUN_TAP_Script;
 }
 
-void VM_Net_Card_Nativ::Use_TUN_TAP_Script( bool use )
+void VM_Net_Card_Native::Use_TUN_TAP_Script( bool use )
 {
 	_Use_TUN_TAP_Script = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_TUN_TAP_Script() const
+const QString &VM_Net_Card_Native::Get_TUN_TAP_Script() const
 {
 	return TUN_TAP_Script;
 }
 
-void VM_Net_Card_Nativ::Set_TUN_TAP_Script( const QString &s )
+void VM_Net_Card_Native::Set_TUN_TAP_Script( const QString &s )
 {
 	TUN_TAP_Script = s;
 }
 
-bool VM_Net_Card_Nativ::Use_TUN_TAP_Down_Script() const
+bool VM_Net_Card_Native::Use_TUN_TAP_Down_Script() const
 {
 	return _Use_TUN_TAP_Down_Script;
 }
 
-void VM_Net_Card_Nativ::Use_TUN_TAP_Down_Script( bool use )
+void VM_Net_Card_Native::Use_TUN_TAP_Down_Script( bool use )
 {
 	_Use_TUN_TAP_Down_Script = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_TUN_TAP_Down_Script() const
+const QString &VM_Net_Card_Native::Get_TUN_TAP_Down_Script() const
 {
 	return TUN_TAP_Down_Script;
 }
 
-void VM_Net_Card_Nativ::Set_TUN_TAP_Down_Script( const QString &s )
+void VM_Net_Card_Native::Set_TUN_TAP_Down_Script( const QString &s )
 {
 	TUN_TAP_Down_Script = s;
 }
 
-bool VM_Net_Card_Nativ::Use_Listen() const
+bool VM_Net_Card_Native::Use_Listen() const
 {
 	return _Use_Listen;
 }
 
-void VM_Net_Card_Nativ::Use_Listen( bool use )
+void VM_Net_Card_Native::Use_Listen( bool use )
 {
 	_Use_Listen = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Listen() const
+const QString &VM_Net_Card_Native::Get_Listen() const
 {
 	return Listen;
 }
 
-void VM_Net_Card_Nativ::Set_Listen( const QString &listen )
+void VM_Net_Card_Native::Set_Listen( const QString &listen )
 {
 	Listen = listen;
 }
 
-bool VM_Net_Card_Nativ::Use_Connect() const
+bool VM_Net_Card_Native::Use_Connect() const
 {
 	return _Use_Connect;
 }
 
-void VM_Net_Card_Nativ::Use_Connect( bool use )
+void VM_Net_Card_Native::Use_Connect( bool use )
 {
 	_Use_Connect = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Connect() const
+const QString &VM_Net_Card_Native::Get_Connect() const
 {
 	return Connect;
 }
 
-void VM_Net_Card_Nativ::Set_Connect( const QString &con )
+void VM_Net_Card_Native::Set_Connect( const QString &con )
 {
 	Connect = con;
 }
 
-bool VM_Net_Card_Nativ::Use_MCast() const
+bool VM_Net_Card_Native::Use_MCast() const
 {
 	return _Use_MCast;
 }
 
-void VM_Net_Card_Nativ::Use_MCast( bool use )
+void VM_Net_Card_Native::Use_MCast( bool use )
 {
 	_Use_MCast = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_MCast() const
+const QString &VM_Net_Card_Native::Get_MCast() const
 {
 	return MCast;
 }
 
-void VM_Net_Card_Nativ::Set_MCast( const QString &mcast )
+void VM_Net_Card_Native::Set_MCast( const QString &mcast )
 {
 	MCast = mcast;
 }
 
-bool VM_Net_Card_Nativ::Use_Sock() const
+bool VM_Net_Card_Native::Use_Sock() const
 {
 	return _Use_Sock;
 }
 
-void VM_Net_Card_Nativ::Use_Sock( bool use )
+void VM_Net_Card_Native::Use_Sock( bool use )
 {
 	_Use_Sock = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Sock() const
+const QString &VM_Net_Card_Native::Get_Sock() const
 {
 	return Sock;
 }
 
-void VM_Net_Card_Nativ::Set_Sock( const QString &sock )
+void VM_Net_Card_Native::Set_Sock( const QString &sock )
 {
 	Sock = sock;
 }
 
-bool VM_Net_Card_Nativ::Use_Port() const
+bool VM_Net_Card_Native::Use_Port() const
 {
 	return _Use_Port;
 }
 
-void VM_Net_Card_Nativ::Use_Port( bool use )
+void VM_Net_Card_Native::Use_Port( bool use )
 {
 	_Use_Port = use;
 }
 
-int VM_Net_Card_Nativ::Get_Port() const
+int VM_Net_Card_Native::Get_Port() const
 {
 	return Port;
 }
 
-void VM_Net_Card_Nativ::Set_Port( int p )
+void VM_Net_Card_Native::Set_Port( int p )
 {
 	Port = p;
 }
 
-bool VM_Net_Card_Nativ::Use_Group() const
+bool VM_Net_Card_Native::Use_Group() const
 {
 	return _Use_Group;
 }
 
-void VM_Net_Card_Nativ::Use_Group( bool use )
+void VM_Net_Card_Native::Use_Group( bool use )
 {
 	_Use_Group = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Group() const
+const QString &VM_Net_Card_Native::Get_Group() const
 {
 	return Group;
 }
 
-void VM_Net_Card_Nativ::Set_Group( const QString &group )
+void VM_Net_Card_Native::Set_Group( const QString &group )
 {
 	Group = group;
 }
 
-bool VM_Net_Card_Nativ::Use_Mode() const
+bool VM_Net_Card_Native::Use_Mode() const
 {
 	return _Use_Mode;
 }
 
-void VM_Net_Card_Nativ::Use_Mode( bool use )
+void VM_Net_Card_Native::Use_Mode( bool use )
 {
 	_Use_Mode = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Mode() const
+const QString &VM_Net_Card_Native::Get_Mode() const
 {
 	return Mode;
 }
 
-void VM_Net_Card_Nativ::Set_Mode( const QString &mode )
+void VM_Net_Card_Native::Set_Mode( const QString &mode )
 {
 	Mode = mode;
 }
 
-bool VM_Net_Card_Nativ::Use_File() const
+bool VM_Net_Card_Native::Use_File() const
 {
 	return _Use_File;
 }
 
-void VM_Net_Card_Nativ::Use_File( bool use )
+void VM_Net_Card_Native::Use_File( bool use )
 {
 	_Use_File = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_File() const
+const QString &VM_Net_Card_Native::Get_File() const
 {
 	return File;
 }
 
-void VM_Net_Card_Nativ::Set_File( const QString &file )
+void VM_Net_Card_Native::Set_File( const QString &file )
 {
 	File = file;
 }
 
-bool VM_Net_Card_Nativ::Use_Len() const
+bool VM_Net_Card_Native::Use_Len() const
 {
 	return _Use_Len;
 }
 
-void VM_Net_Card_Nativ::Use_Len( bool use )
+void VM_Net_Card_Native::Use_Len( bool use )
 {
 	_Use_Len = use;
 }
 
-int VM_Net_Card_Nativ::Get_Len() const
+int VM_Net_Card_Native::Get_Len() const
 {
 	return Len;
 }
 
-void VM_Net_Card_Nativ::Set_Len( int kb )
+void VM_Net_Card_Native::Set_Len( int kb )
 {
 	Len = kb;
 }
 
-bool VM_Net_Card_Nativ::Use_Addr() const
+bool VM_Net_Card_Native::Use_Addr() const
 {
 	return _Use_Addr;
 }
 
-void VM_Net_Card_Nativ::Use_Addr( bool use )
+void VM_Net_Card_Native::Use_Addr( bool use )
 {
 	_Use_Addr = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Addr() const
+const QString &VM_Net_Card_Native::Get_Addr() const
 {
 	return Addr;
 }
 
-void VM_Net_Card_Nativ::Set_Addr( const QString &addr )
+void VM_Net_Card_Native::Set_Addr( const QString &addr )
 {
 	Addr = addr;
 }
 
 
-bool VM_Net_Card_Nativ::Use_Vectors() const
+bool VM_Net_Card_Native::Use_Vectors() const
 {
 	return _Use_Vectors;
 }
 
-void VM_Net_Card_Nativ::Use_Vectors( bool use )
+void VM_Net_Card_Native::Use_Vectors( bool use )
 {
 	_Use_Vectors = use;
 }
 
-int VM_Net_Card_Nativ::Get_Vectors() const
+int VM_Net_Card_Native::Get_Vectors() const
 {
 	return Vectors;
 }
 
-void VM_Net_Card_Nativ::Set_Vectors( int vectors )
+void VM_Net_Card_Native::Set_Vectors( int vectors )
 {
 	Vectors = vectors;
 }
 
-bool VM_Net_Card_Nativ::Use_Net() const
+bool VM_Net_Card_Native::Use_Net() const
 {
 	return _Use_Net;
 }
 
-void VM_Net_Card_Nativ::Use_Net( bool use )
+void VM_Net_Card_Native::Use_Net( bool use )
 {
 	_Use_Net = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Net() const
+const QString &VM_Net_Card_Native::Get_Net() const
 {
 	return Net;
 }
 
-void VM_Net_Card_Nativ::Set_Net( const QString &net )
+void VM_Net_Card_Native::Set_Net( const QString &net )
 {
 	Net = net;
 }
 
-bool VM_Net_Card_Nativ::Use_Host() const
+bool VM_Net_Card_Native::Use_Host() const
 {
 	return _Use_Host;
 }
 
-void VM_Net_Card_Nativ::Use_Host( bool use )
+void VM_Net_Card_Native::Use_Host( bool use )
 {
 	_Use_Host = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Host() const
+const QString &VM_Net_Card_Native::Get_Host() const
 {
 	return Host;
 }
 
-void VM_Net_Card_Nativ::Set_Host( const QString &host )
+void VM_Net_Card_Native::Set_Host( const QString &host )
 {
 	Host = host;
 }
 
-bool VM_Net_Card_Nativ::Use_Restrict() const
+bool VM_Net_Card_Native::Use_Restrict() const
 {
 	return _Use_Restrict;
 }
 
-void VM_Net_Card_Nativ::Use_Restrict( bool use )
+void VM_Net_Card_Native::Use_Restrict( bool use )
 {
 	_Use_Restrict = use;
 }
 
-bool VM_Net_Card_Nativ::Get_Restrict() const
+bool VM_Net_Card_Native::Get_Restrict() const
 {
 	return Restrict;
 }
 
-void VM_Net_Card_Nativ::Set_Restrict( bool use )
+void VM_Net_Card_Native::Set_Restrict( bool use )
 {
 	Restrict = use;
 }
 
-bool VM_Net_Card_Nativ::Use_DHCPstart() const
+bool VM_Net_Card_Native::Use_DHCPstart() const
 {
 	return _Use_DHCPstart;
 }
 
-void VM_Net_Card_Nativ::Use_DHCPstart( bool use )
+void VM_Net_Card_Native::Use_DHCPstart( bool use )
 {
 	_Use_DHCPstart = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_DHCPstart() const
+const QString &VM_Net_Card_Native::Get_DHCPstart() const
 {
 	return DHCPstart;
 }
 
-void VM_Net_Card_Nativ::Set_DHCPstart( const QString &addr )
+void VM_Net_Card_Native::Set_DHCPstart( const QString &addr )
 {
 	DHCPstart = addr;
 }
 
-bool VM_Net_Card_Nativ::Use_DNS() const
+bool VM_Net_Card_Native::Use_DNS() const
 {
 	return _Use_DNS;
 }
 
-void VM_Net_Card_Nativ::Use_DNS( bool use )
+void VM_Net_Card_Native::Use_DNS( bool use )
 {
 	_Use_DNS = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_DNS() const
+const QString &VM_Net_Card_Native::Get_DNS() const
 {
 	return DNS;
 }
 
-void VM_Net_Card_Nativ::Set_DNS( const QString &addr )
+void VM_Net_Card_Native::Set_DNS( const QString &addr )
 {
 	DNS = addr;
 }
 
-bool VM_Net_Card_Nativ::Use_Tftp() const
+bool VM_Net_Card_Native::Use_Tftp() const
 {
 	return _Use_Tftp;
 }
 
-void VM_Net_Card_Nativ::Use_Tftp( bool use )
+void VM_Net_Card_Native::Use_Tftp( bool use )
 {
 	_Use_Tftp = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Tftp() const
+const QString &VM_Net_Card_Native::Get_Tftp() const
 {
 	return Tftp;
 }
 
-void VM_Net_Card_Nativ::Set_Tftp( const QString &dir )
+void VM_Net_Card_Native::Set_Tftp( const QString &dir )
 {
 	Tftp = dir;
 }
 
-bool VM_Net_Card_Nativ::Use_Bootfile() const
+bool VM_Net_Card_Native::Use_Bootfile() const
 {
 	return _Use_Bootfile;
 }
 
-void VM_Net_Card_Nativ::Use_Bootfile( bool use )
+void VM_Net_Card_Native::Use_Bootfile( bool use )
 {
 	_Use_Bootfile = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_Bootfile() const
+const QString &VM_Net_Card_Native::Get_Bootfile() const
 {
 	return Bootfile;
 }
 
-void VM_Net_Card_Nativ::Set_Bootfile( const QString &file )
+void VM_Net_Card_Native::Set_Bootfile( const QString &file )
 {
 	Bootfile = file;
 }
 
-bool VM_Net_Card_Nativ::Use_HostFwd() const
+bool VM_Net_Card_Native::Use_HostFwd() const
 {
 	return _Use_HostFwd;
 }
 
-void VM_Net_Card_Nativ::Use_HostFwd( bool use )
+void VM_Net_Card_Native::Use_HostFwd( bool use )
 {
 	_Use_HostFwd = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_HostFwd() const
+const QString &VM_Net_Card_Native::Get_HostFwd() const
 {
 	return HostFwd;
 }
 
-void VM_Net_Card_Nativ::Set_HostFwd( const QString &rule )
+void VM_Net_Card_Native::Set_HostFwd( const QString &rule )
 {
 	HostFwd = rule;
 }
 
-bool VM_Net_Card_Nativ::Use_GuestFwd() const
+bool VM_Net_Card_Native::Use_GuestFwd() const
 {
 	return _Use_GuestFwd;
 }
 
-void VM_Net_Card_Nativ::Use_GuestFwd( bool use )
+void VM_Net_Card_Native::Use_GuestFwd( bool use )
 {
 	_Use_GuestFwd = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_GuestFwd() const
+const QString &VM_Net_Card_Native::Get_GuestFwd() const
 {
 	return GuestFwd;
 }
 
-void VM_Net_Card_Nativ::Set_GuestFwd( const QString &rule )
+void VM_Net_Card_Native::Set_GuestFwd( const QString &rule )
 {
 	GuestFwd = rule;
 }
 
-bool VM_Net_Card_Nativ::Use_SMB() const
+bool VM_Net_Card_Native::Use_SMB() const
 {
 	return _Use_SMB;
 }
 
-void VM_Net_Card_Nativ::Use_SMB( bool use )
+void VM_Net_Card_Native::Use_SMB( bool use )
 {
 	_Use_SMB = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_SMB() const
+const QString &VM_Net_Card_Native::Get_SMB() const
 {
 	return SMB;
 }
 
-void VM_Net_Card_Nativ::Set_SMB( const QString &dir )
+void VM_Net_Card_Native::Set_SMB( const QString &dir )
 {
 	SMB = dir;
 }
 
-bool VM_Net_Card_Nativ::Use_SMBserver() const
+bool VM_Net_Card_Native::Use_SMBserver() const
 {
 	return _Use_SMBserver;
 }
 
-void VM_Net_Card_Nativ::Use_SMBserver( bool use )
+void VM_Net_Card_Native::Use_SMBserver( bool use )
 {
 	_Use_SMBserver = use;
 }
 
-const QString &VM_Net_Card_Nativ::Get_SMBserver() const
+const QString &VM_Net_Card_Native::Get_SMBserver() const
 {
 	return SMBserver;
 }
 
-void VM_Net_Card_Nativ::Set_SMBserver( const QString &addr )
+void VM_Net_Card_Native::Set_SMBserver( const QString &addr )
 {
 	SMBserver = addr;
 }
 
-bool VM_Net_Card_Nativ::Use_Sndbuf() const
+bool VM_Net_Card_Native::Use_Sndbuf() const
 {
 	return _Use_Sndbuf;
 }
 
-void VM_Net_Card_Nativ::Use_Sndbuf( bool use )
+void VM_Net_Card_Native::Use_Sndbuf( bool use )
 {
 	_Use_Sndbuf = use;
 }
 
-int VM_Net_Card_Nativ::Get_Sndbuf() const
+int VM_Net_Card_Native::Get_Sndbuf() const
 {
 	return Sndbuf;
 }
 
-void VM_Net_Card_Nativ::Set_Sndbuf( int bytes )
+void VM_Net_Card_Native::Set_Sndbuf( int bytes )
 {
 	Sndbuf = bytes;
 }
 
-bool VM_Net_Card_Nativ::Use_VNet_hdr() const
+bool VM_Net_Card_Native::Use_VNet_hdr() const
 {
 	return _Use_VNet_hdr;
 }
 
-void VM_Net_Card_Nativ::Use_VNet_hdr( bool use )
+void VM_Net_Card_Native::Use_VNet_hdr( bool use )
 {
 	_Use_VNet_hdr = use;
 }
 
-bool VM_Net_Card_Nativ::Get_VNet_hdr() const
+bool VM_Net_Card_Native::Get_VNet_hdr() const
 {
 	return VNet_hdr;
 }
 
-void VM_Net_Card_Nativ::Set_VNet_hdr( bool use )
+void VM_Net_Card_Native::Set_VNet_hdr( bool use )
 {
 	VNet_hdr = use;
 }
 
-bool VM_Net_Card_Nativ::Use_VHost() const
+bool VM_Net_Card_Native::Use_VHost() const
 {
 	return _Use_VHost;
 }
 
-void VM_Net_Card_Nativ::Use_VHost( bool use )
+void VM_Net_Card_Native::Use_VHost( bool use )
 {
 	_Use_VHost = use;
 }
 
-bool VM_Net_Card_Nativ::Get_VHost() const
+bool VM_Net_Card_Native::Get_VHost() const
 {
 	return VHost;
 }
 
-void VM_Net_Card_Nativ::Set_VHost( bool use )
+void VM_Net_Card_Native::Set_VHost( bool use )
 {
 	VHost = use;
 }
 
-bool VM_Net_Card_Nativ::Use_VHostFd() const
+bool VM_Net_Card_Native::Use_VHostFd() const
 {
 	return _Use_VHostFd;
 }
 
-void VM_Net_Card_Nativ::Use_VHostFd( bool use )
+void VM_Net_Card_Native::Use_VHostFd( bool use )
 {
 	_Use_VHostFd = use;
 }
 
-int VM_Net_Card_Nativ::Get_VHostFd() const
+int VM_Net_Card_Native::Get_VHostFd() const
 {
 	return VHostFd;
 }
 
-void VM_Net_Card_Nativ::Set_VHostFd( int port )
+void VM_Net_Card_Native::Set_VHostFd( int port )
 {
 	VHostFd = port;
 }
