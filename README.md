@@ -1,14 +1,14 @@
-Latest news:
+###Latest news:
 0.9.3 is on the way with many new features. But development has stalled for a while,
 mostly due to life demanding my attention for other tasks.
 
-I set up a crowdfunding page for AQEMU, it will enable users to donate for the whole
+I set up a [crowdfunding page for AQEMU](https://salt.bountysource.com/teams/aqemu), it will enable users to donate for the whole
 project and/or for individual issues. Please consider setting up a monthly donation.
 
 I want AQEMU to pick up steam again with your help, with the goal of making the best
 virtual machine manager GUI available.
 
-https://salt.bountysource.com/teams/aqemu
+Bountysource crowdfunding page for AQEMU: https://salt.bountysource.com/teams/aqemu
 
 ![ScreenShot](https://i.imgur.com/PkvFUEk.png)
 
