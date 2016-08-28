@@ -6,7 +6,7 @@ I set up a [crowdfunding page for AQEMU](https://salt.bountysource.com/teams/aqe
 project and/or for individual issues. Please consider setting up a monthly donation.
 
 I want AQEMU to pick up steam again with your help, with the goal of making the best
-virtual machine manager GUI available.
+virtual machine manager GUI.
 
 Bountysource crowdfunding page for AQEMU: https://salt.bountysource.com/teams/aqemu
 
