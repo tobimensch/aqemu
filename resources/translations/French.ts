@@ -3880,7 +3880,7 @@ Cliquez sur le boutton « Suivant » pour aller à la page suivante ou sur le bo
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="777"/>
-        <source>Set &amp;Versions Manualy</source>
+        <source>Set &amp;Versions Manually</source>
         <translation>Paramètrer la &amp;version manuellement</translation>
     </message>
     <message>
