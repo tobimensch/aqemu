@@ -666,27 +666,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="75"/>
         <source>pty (Pseudo TTY)</source>
-        <translation type="unfinished"></translation>
+        <translation>pty (Sözde TTY)</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="82"/>
         <source>none</source>
-        <translation type="unfinished"></translation>
+        <translation>yok</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="89"/>
         <source>null (/dev/null)</source>
-        <translation type="unfinished"></translation>
+        <translation>boş (/dev/null)</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="99"/>
         <source>/dev/</source>
-        <translation type="unfinished"></translation>
+        <translation>/dev/</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="123"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="133"/>
@@ -741,7 +741,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="264"/>
         <source>Additional Arguments:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ek argümanlar</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="288"/>
@@ -751,27 +751,27 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="325"/>
         <source>Arguments Help:</source>
-        <translation type="unfinished"></translation>
+        <translation>Argümanlar Yardımı:</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="375"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="386"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="180"/>
         <source>Open File</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Aç</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="182"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="194"/>
@@ -779,43 +779,47 @@ p, li { white-space: pre-wrap; }
 800x600
 It is also possible to specify width or height in characters:
 80Cx24C</source>
-        <translation type="unfinished"></translation>
+        <translation>İsteğe bağlı olarak genişlik ve yükseklik piksel cinsinden verilebilir
+800x600
+Genişlik veya yüksekliği karakter olarak belirtmek de mümkündür:
+80Cx24C</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="195"/>
         <source>[Linux only] Pseudo TTY (a new PTY is automatically allocated)</source>
-        <translation type="unfinished"></translation>
+        <translation>[Yalnızca Linux] Sözde TTY (yeni bir PTY otomatik olarak ayrılır)</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="196"/>
         <source>No device is allocated.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt tahsis edilmemiştir.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="197"/>
         <source>Void device</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçersiz aygıt</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="198"/>
         <source>[Unix only] standard input/output</source>
-        <translation type="unfinished"></translation>
+        <translation>[Sadece Unix] standart giriş/çıkış</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="199"/>
         <source>[Linux only] Use host tty, e.g. /dev/ttyS0.
 The host serial port parameters are set according to the emulated ones.</source>
-        <translation type="unfinished"></translation>
+        <translation>[Yalnızca Linux] Ana makine tty'yi kullan, ör. /dev/ttyS0.
+Ana seri bağlantı noktası parametreleri taklit edilen seri portlarına göre ayarlanır.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="200"/>
         <source>COMn Use host serial port n</source>
-        <translation type="unfinished"></translation>
+        <translation>COMn Ana seri bağlantı noktası kullan n</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="201"/>
         <source>filename - Write output to filename. No character can be read.</source>
-        <translation type="unfinished"></translation>
+        <translation>dosya adı - Çıktıyı dosya adına yazın.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="202"/>
@@ -826,7 +830,8 @@ The host serial port parameters are set according to the emulated ones.</source>
         <location filename="Add_Port_Window.cpp" line="203"/>
         <source>[remote_host]:remote_port[@[src_ip]:src_port]
 This implements UDP Net Console. When remote_host or src_ip are not specified they default to 0.0.0.0. When not using a specified src_port a random port is automatically chosen.</source>
-        <translation type="unfinished"></translation>
+        <translation type=>[remote_host]:remote_port[@[src_ip]:src_port]
+Bu UDP Net Konsolu uygular. Remote_host veya src_ip belirtilmediğinde, varsayılan olarak 0.0.0.0'dır. Belirtilen bir src_port kullanmadığınızda, rasgele bir port otomatik olarak seçilir.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="204"/>
@@ -843,30 +848,34 @@ Example to not wait and listen on ip 192.168.0.100 port 4444
         <location filename="Add_Port_Window.cpp" line="205"/>
         <source>host:port[,server][,nowait][,nodelay]
 The telnet protocol is used instead of raw tcp sockets.</source>
-        <translation type="unfinished"></translation>
+        <translation>host:port[,server][,nowait][,nodelay]
+Ham tcp yuvaları yerine telnet protokolü kullanılır.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="206"/>
         <source>path[,server][,nowait]
 A unix domain socket is used instead of a tcp socket. The option works the same as if you had specified -serial tcp except the unix domain socket path is used for connections.</source>
-        <translation type="unfinished"></translation>
+        <translation>path[,server][,nowait]
+Bir tcp yuvası yerine bir unix alan yuvası kullanılır. Seçenek, unix alan soketi yolu bağlantıları için kullanıldığı sürece -serial tcp belirtmişsiniz gibi çalışır.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="207"/>
         <source>Three button serial mouse. Configure the guest to use Microsoft protocol.</source>
-        <translation type="unfinished"></translation>
+        <translation>Üç düğmeli seri fare. Konuk Microsoft protokolünü kullanacak şekilde yapılandırın.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="208"/>
         <source>mon:dev_string
 This is a special option to allow the monitor to be multiplexed onto another serial port.</source>
-        <translation type="unfinished"></translation>
+        <translation type=>mon:dev_string
+Bu, monitörün başka bir seri bağlantı noktasına çoğaltılmasına izin vermek için özel bir seçenektir.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="209"/>
         <source>Braille device.
 This will use BrlAPI to display the braille output on a real or fake device.</source>
-        <translation type="unfinished"></translation>
+        <translation>Braille aleti.
+Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için BrlAPI kullanacaktır.</translation>
     </message>
 </context>
 <context>
@@ -874,154 +883,154 @@ This will use BrlAPI to display the braille output on a real or fake device.</so
     <message>
         <location filename="Add_USB_Port_Window.ui" line="14"/>
         <source>Adding USB </source>
-        <translation type="unfinished"></translation>
+        <translation>USB ekleniyor</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="32"/>
         <source>Connecting virtual QEMU/KVM USB device</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal QEMU/KVM USB aygıtı bağlanıyor</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="71"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Fare</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="81"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Klavye</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="105"/>
         <source>Tablet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tablet</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="112"/>
         <source>Wacom tablet</source>
-        <translation type="unfinished"></translation>
+        <translation>Wacom tablet</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="136"/>
         <source>Braille</source>
-        <translation type="unfinished"></translation>
+        <translation>Braille</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="169"/>
         <source>Connecting USB host device</source>
-        <translation type="unfinished"></translation>
+        <translation>USB ana cihazı bağlanıyor</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="222"/>
         <location filename="Add_USB_Port_Window.ui" line="348"/>
         <source>Manufacturer:</source>
-        <translation type="unfinished"></translation>
+        <translation>Üretici:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="227"/>
         <location filename="Add_USB_Port_Window.ui" line="355"/>
         <source>Product:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ürün</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="232"/>
         <source>bus.addr:</source>
-        <translation type="unfinished"></translation>
+        <translation>veriyolu.adresi:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="248"/>
         <source>Show devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıtları göster</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="269"/>
         <source>All host devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm ana cihazlar</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="292"/>
         <source>Not used in running VM</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalışan sanal makinede kullanılmaz</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="325"/>
         <source>Selected device</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçilen aygıt</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="379"/>
         <source>Speed:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hız:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="386"/>
         <source>Bus.Address:</source>
-        <translation type="unfinished"></translation>
+        <translation>Veriyolu.adresi:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="410"/>
         <source>Vendor ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>Satıcı kimliği:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="417"/>
         <source>Product ID:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ürün kimliği:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="446"/>
         <source>Update USB host list</source>
-        <translation type="unfinished"></translation>
+        <translation>USB ana bilgisayar listesini güncelle</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="470"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="481"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="84"/>
         <location filename="Add_USB_Port_Window.cpp" line="186"/>
         <source>Manufacturer: </source>
-        <translation type="unfinished"></translation>
+        <translation>Üretici: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="85"/>
         <location filename="Add_USB_Port_Window.cpp" line="187"/>
         <source>Product: </source>
-        <translation type="unfinished"></translation>
+        <translation>Ürün: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="86"/>
         <location filename="Add_USB_Port_Window.cpp" line="188"/>
         <source>Speed: </source>
-        <translation type="unfinished"></translation>
+        <translation>Hız: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="87"/>
         <source>bus.addr: </source>
-        <translation type="unfinished"></translation>
+        <translation>veriyolu.adresi: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="88"/>
         <location filename="Add_USB_Port_Window.cpp" line="190"/>
         <source>Vendor ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Satıcı kimliği: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="89"/>
         <location filename="Add_USB_Port_Window.cpp" line="191"/>
         <source>Product ID: </source>
-        <translation type="unfinished"></translation>
+        <translation>Ürün kimliği: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="189"/>
         <source>Bus.Address: </source>
-        <translation type="unfinished"></translation>
+        <translation>Veriyolu.adresi: </translation>
     </message>
 </context>
 <context>
@@ -1029,37 +1038,37 @@ This will use BrlAPI to display the braille output on a real or fake device.</so
     <message>
         <location filename="Advanced_Settings_Window.ui" line="15"/>
         <source>Advanced Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş Ayarlar</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="40"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="51"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="68"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="82"/>
         <source>Screenshot Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Görüntüsü Ayarları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="113"/>
         <source>File Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Biçimi</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="128"/>
         <source>Original (PPM)</source>
-        <translation type="unfinished"></translation>
+        <translation>Orijinal (PPM)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="135"/>
@@ -1069,140 +1078,140 @@ This will use BrlAPI to display the braille output on a real or fake device.</so
     <message>
         <location filename="Advanced_Settings_Window.ui" line="142"/>
         <source>PNG</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="165"/>
         <source>Jpeg Quality:</source>
-        <translation type="unfinished"></translation>
+        <translation>Jpeg Kalitesi:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="245"/>
         <source>Shared screenshot folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Paylaşılan ekran görüntüsü dizini</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="260"/>
         <source>Folder Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dizin Yolu:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="312"/>
         <source>Installed Emulators</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurulu Emülatörler</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="328"/>
         <source>Find All Emulators</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Emülatörleri Bul</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="348"/>
         <location filename="Advanced_Settings_Window.ui" line="1363"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekle</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="368"/>
         <location filename="Advanced_Settings_Window.ui" line="1385"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="388"/>
         <location filename="Advanced_Settings_Window.ui" line="1374"/>
         <source>Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>Düzenle</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="408"/>
         <source>Use Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılanı Kullan</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="453"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Ad</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="458"/>
         <source>Type and version</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür ve sürüm</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="463"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Yol</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="468"/>
         <source>Use default</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılanı kullan</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="477"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="491"/>
         <source>AQEMU Logging</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU günlüğü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="520"/>
         <source>Write log to</source>
-        <translation type="unfinished"></translation>
+        <translation>Günlüğü yaz</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="541"/>
         <source>Save in File</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosyaya Kaydet</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="564"/>
         <source>Print to STDOUT</source>
-        <translation type="unfinished"></translation>
+        <translation>STDOUT'a yazdır</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="594"/>
         <source>Log Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Günlük iletileri</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="615"/>
         <source>Debug Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Ayıklama iletileri</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="638"/>
         <source>Warning Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı iletileri</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="661"/>
         <source>Error Messages</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata iletileri</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="681"/>
         <source>Log Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Günlük yolu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="733"/>
         <source>qemu-img path</source>
-        <translation type="unfinished"></translation>
+        <translation>qemu-img yolu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="796"/>
         <source>VM Network Card MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Ağ Kartı MAC Adresi</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="817"/>
         <source>Random MAC Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Rastgele MAC Adresi</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="824"/>
