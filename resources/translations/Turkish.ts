@@ -1709,62 +1709,62 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Boot_Device_Window.ui" line="53"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.ui" line="108"/>
         <source>Enable interactive boot &amp;menu</source>
-        <translation type="unfinished"></translation>
+        <translation>Etkileşimli önyüklemeyi etkinleştir &amp;menü</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.ui" line="117"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.ui" line="141"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="86"/>
         <source>Floppy A</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket A</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="91"/>
         <source>Floppy B</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket B</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="96"/>
         <source>CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-ROM</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="101"/>
         <source>Hard Drive</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Disk</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="106"/>
         <source>Network 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ 1</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="111"/>
         <source>Network 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ 2</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="116"/>
         <source>Network 3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ 3</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.cpp" line="121"/>
         <source>Network 4</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ 4</translation>
     </message>
 </context>
 <context>
@@ -1772,147 +1772,153 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="15"/>
         <source>Convert HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıbını Dönüştür</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="25"/>
         <source>Input image</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş Kalıbı</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="31"/>
         <location filename="Convert_HDD_Image_Window.ui" line="116"/>
         <source>File name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya adı:</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="57"/>
         <source>Image Format: none
 Allocated Disk Space: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp formatı: yok
+Ayrılan Disk Alanı: 0</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="81"/>
         <source>Virtual Size: 0
 Cluster Size: 0</source>
-        <translation type="unfinished"></translation>
+        <translation type=>Sanal boyut: 0
+Küme Boyutu: 0</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="110"/>
         <source>Output image</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Kalıbı</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="143"/>
         <source>Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>Biçim:</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="180"/>
         <source>QCOW format options</source>
-        <translation type="unfinished"></translation>
+        <translation>QCOW biçim seçenekleri</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="201"/>
         <source>Com&amp;press image</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kalıbı sıkıştır</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="221"/>
         <source>&amp;Encrypt image</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kalıbı Şifrele</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="246"/>
         <source>Con&amp;vert</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dönüştür</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="257"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="107"/>
         <source>Select Base HDD Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>Temel HDD Kalıp Dosyasını Seç</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="109"/>
         <location filename="Convert_HDD_Image_Window.cpp" line="153"/>
         <source>All Files (*);;Images Files (*.img *.qcow *.qcow2 *.wmdk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.qcow *.qcow2 *.wmdk)</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="118"/>
         <location filename="Convert_HDD_Image_Window.cpp" line="185"/>
         <location filename="Convert_HDD_Image_Window.cpp" line="238"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="118"/>
         <source>Cannot Locate Input File!</source>
-        <translation type="unfinished"></translation>
+        <translation>Giriş Dosyası Bulunamıyor!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="132"/>
         <source>Image Format: %1
 Allocated Disk Space: %2 %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp Biçimi: % 1
+Ayrılan Disk Alanı: %2 %3</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="137"/>
         <source>Virtual Size: %1 %2
 Cluster Size: %3</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Boyut: %1 %2
+Küme Boyutu: %3</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="151"/>
         <source>Save Out HDD Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıp Dosyasını Kaydet</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="179"/>
         <source>File Name is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Adı Boş!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="179"/>
         <source>Please Enter Correct HDD Image filename!</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen HDD Kalıp dosya adını doğru girin!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="185"/>
         <source>Cannot get a valid format for current HDD image!</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli HDD Kalıbı için geçerli bir format alınamıyor!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="214"/>
         <source>Please Wait. Converting HDD Image...</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen Bekleyin. HDD Kalıbı Dönüştürülüyor...</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="214"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Vazgeç</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="231"/>
         <source>Information:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi:</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="231"/>
         <source>Conversion completed sucessfuly!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dönüşüm başarıyla tamamlandı!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="239"/>
         <source>Cannot convert image!
 Details:
 %1</source>
-        <translation type="unfinished"></translation>
+        <translation type=>Kalıp dönüştürülemez!
+Detaylar:
+%1</translation>
     </message>
 </context>
 <context>
@@ -1920,47 +1926,47 @@ Details:
     <message>
         <location filename="Copy_VM_Window.ui" line="15"/>
         <source>Copy VM</source>
-        <translation type="unfinished"></translation>
+        <translation type=>Sanal Makineyi Kopyala</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="25"/>
         <source>New VM Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Sanal Makine Adı:</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="38"/>
         <source>Copy Disk Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Disk Kalıplarını Kopyala</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="53"/>
         <source>Copy Floppy Images</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket Kalıplarını Kopyala</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="60"/>
         <source>Copy Hard Drive Images</source>
-        <translation type="unfinished"></translation>
+        <translation<Sabit Disk Kalıplarını Kopyala/translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="87"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="98"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.cpp" line="65"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.cpp" line="66"/>
         <source>This VM Name is Already Used!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makine Adı Zaten Kullanıldı</translation>
     </message>
 </context>
 <context>
@@ -1968,28 +1974,28 @@ Details:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="15"/>
         <source>Create HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni HDD Kalıbı</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="31"/>
         <source>New Image &amp;File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Kalıp &amp;Dosya Adı:</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="49"/>
         <location filename="Create_HDD_Image_Window.ui" line="301"/>
         <source>Browse...</source>
-        <translation type="unfinished"></translation>
+        <translation>Tara...</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="74"/>
         <source>&amp;Format:</source>
-        <translation type="unfinished"></translation>
+        <translation>>&amp;Biçim:</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="99"/>
         <source>qcow2</source>
-        <translation type="unfinished"></translation>
+        <translation>qcow2</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="104"/>
@@ -1999,93 +2005,93 @@ Details:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="109"/>
         <source>vmdk</source>
-        <translation type="unfinished"></translation>
+        <translation>vmdk</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="114"/>
         <source>cow</source>
-        <translation type="unfinished"></translation>
+        <translation>cow</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="119"/>
         <source>raw</source>
-        <translation type="unfinished"></translation>
+        <translation>raw</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="124"/>
         <source>cloop</source>
-        <translation type="unfinished"></translation>
+        <translation>cloop</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="132"/>
         <source>&amp;Help...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yardım...</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="157"/>
         <source>&amp;Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Boyut:</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="201"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="206"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="211"/>
         <source>GB</source>
-        <translation type="unfinished"></translation>
+        <translation>GB</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="245"/>
-        <source>Additional features</source>
-        <translation type="unfinished"></translation>
+        <source>Additional Features</source>
+        <translation>Ek özellikler</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="266"/>
         <source>Image Must be &amp;Encrypted (QCOW Format Only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp &amp;Şifreli Olmalı (Sadece QCOW Biçimi)</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="279"/>
         <source>Use &amp;Base HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Temel HDD Kalıbını Kullan</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="330"/>
         <source>C&amp;reate</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluştur</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="341"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="53"/>
         <source>F&amp;ormat</source>
-        <translation type="unfinished"></translation>
+        <translation>Biçim</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="94"/>
         <source>Select Base HDD Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>Temel HDD Kalıbını Seç</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="96"/>
         <location filename="Create_HDD_Image_Window.cpp" line="106"/>
         <source>All Files (*);;Images Files (*.img *.qcow *.qcow2 *.wmdk)</source>
-        <translation type="unfinished"></translation>
+        <translation type=>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.qcow *.qcow2 *.wmdk)</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="104"/>
         <source>Create HDD Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıp Dosyası Oluştur</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="128"/>
@@ -2093,22 +2099,22 @@ Details:
         <location filename="Create_HDD_Image_Window.cpp" line="162"/>
         <location filename="Create_HDD_Image_Window.cpp" line="183"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="128"/>
         <source>Image File Name is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp Dosyası Adı Boş!</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="134"/>
         <source>Invalid image size!</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçersiz kalıp boyutu!</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="162"/>
         <source>Base Image File doesn&apos;t Exists!</source>
-        <translation type="unfinished"></translation>
+        <translation>Temel Kalıp Dosyası yok</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="183"/>
