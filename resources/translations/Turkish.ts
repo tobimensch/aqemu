@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="en">
+<TS version="2.1" language="tr_TR">
 <context>
     <name>About_Window</name>
     <message>
         <location filename="About_Window.ui" line="15"/>
         <source>About AQEMU</source>
-        <translation>AQEMU Hakkında</translation>
+        <translation type="unfinished">AQEMU Hakkında</translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="87"/>
@@ -60,7 +60,7 @@ p, a { white-space: pre-wrap; margin-top:0px; margin-bottom:0px; margin-left:0px
     <message>
         <location filename="About_Window.ui" line="172"/>
         <source>Thanks To</source>
-        <translation>'e teşekkürler</translation>
+        <translation>Sayesinde</translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="184"/>
@@ -498,12 +498,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="160"/>
         <source>CD-ROM</source>
-        <translation>CD-OKUYUCU</translation>
+        <translation type="unfinished">CD-ROM</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="168"/>
         <source>Cac&amp;he</source>
-        <translation>Cac&amp;o</translation>
+        <translation type="unfinished">Ön&amp;bellek</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="179"/>
@@ -565,7 +565,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="336"/>
         <source>s&amp;ecs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">saniy&amp;e</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="346"/>
@@ -580,17 +580,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="379"/>
         <source>&amp;heads</source>
-        <translation>kafalar</translation>
+        <translation type="unfinished">&amp;başlıklar</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="415"/>
         <source>&amp;OK</source>
-        <translation>Tamam</translation>
+        <translation type="unfinished">&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="426"/>
         <source>&amp;Cancel</source>
-        <translation>Vazgeç</translation>
+        <translation type="unfinished">&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="343"/>
@@ -618,7 +618,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Add_New_Device_Window.cpp" line="473"/>
         <location filename="Add_New_Device_Window.cpp" line="480"/>
         <source>Warning!</source>
-        <translation>Uyarı</translation>
+        <translation type="unfinished">Uyarı!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="459"/>
@@ -628,12 +628,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.cpp" line="466"/>
         <source>&quot;Heads&quot; value is incorrect!</source>
-        <translation>&quot;Heads&quot; değer yanlış!</translation>
+        <translation type="unfinished">&quot;Başlıklar&quot; değer yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="473"/>
         <source>&quot;Secs&quot; value is incorrect!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&quot;Saniyeler&quot; değer yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="480"/>
@@ -691,7 +691,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="133"/>
         <source>stdio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">stdio</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="140"/>
@@ -701,42 +701,42 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="150"/>
         <source>COM</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">COM</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="157"/>
         <source>UDP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">UDP</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="164"/>
         <source>msmouse</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ms.fare</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="188"/>
         <source>TCP</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TCP</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="195"/>
         <source>Telnet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Telnet</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="202"/>
         <source>Unix</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Unix</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="209"/>
         <source>mon</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">mon</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="216"/>
         <source>braille</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">braille</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="264"/>
@@ -746,7 +746,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="288"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">...</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="325"/>
@@ -808,8 +808,8 @@ Genişlik veya yüksekliği karakter olarak belirtmek de mümkündür:
         <location filename="Add_Port_Window.cpp" line="199"/>
         <source>[Linux only] Use host tty, e.g. /dev/ttyS0.
 The host serial port parameters are set according to the emulated ones.</source>
-        <translation>[Yalnızca Linux] Ana makine tty'yi kullan, ör. /dev/ttyS0.
-Ana seri bağlantı noktası parametreleri taklit edilen seri portlarına göre ayarlanır.</translation>
+        <translation type="unfinished">[Yalnızca Linux] Ana makine tty&apos;yi kullan, ör. /dev/ttyS0.
+Ana makine seri bağlantı noktası parametreleri taklit edilen seri portlarına göre ayarlanır.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="200"/>
@@ -830,8 +830,8 @@ Ana seri bağlantı noktası parametreleri taklit edilen seri portlarına göre 
         <location filename="Add_Port_Window.cpp" line="203"/>
         <source>[remote_host]:remote_port[@[src_ip]:src_port]
 This implements UDP Net Console. When remote_host or src_ip are not specified they default to 0.0.0.0. When not using a specified src_port a random port is automatically chosen.</source>
-        <translation type=>[remote_host]:remote_port[@[src_ip]:src_port]
-Bu UDP Net Konsolu uygular. Remote_host veya src_ip belirtilmediğinde, varsayılan olarak 0.0.0.0'dır. Belirtilen bir src_port kullanmadığınızda, rasgele bir port otomatik olarak seçilir.</translation>
+        <translation>[remote_host]:remote_port[@[src_ip]:src_port]
+Bu UDP Net Konsolu uygular. Remote_host veya src_ip belirtilmediğinde, varsayılan olarak 0.0.0.0&amp;dır. Belirtilen bir src_port kullanmadığınızda, rasgele bir port otomatik olarak seçilir.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="204"/>
@@ -867,7 +867,7 @@ Bir tcp yuvası yerine bir unix alan yuvası kullanılır. Seçenek, unix alan s
         <location filename="Add_Port_Window.cpp" line="208"/>
         <source>mon:dev_string
 This is a special option to allow the monitor to be multiplexed onto another serial port.</source>
-        <translation type=>mon:dev_string
+        <translation>mon:dev_string
 Bu, monitörün başka bir seri bağlantı noktasına çoğaltılmasına izin vermek için özel bir seçenektir.</translation>
     </message>
     <message>
@@ -930,7 +930,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
         <location filename="Add_USB_Port_Window.ui" line="227"/>
         <location filename="Add_USB_Port_Window.ui" line="355"/>
         <source>Product:</source>
-        <translation>Ürün</translation>
+        <translation type="unfinished">Ürün:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="232"/>
@@ -945,7 +945,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Add_USB_Port_Window.ui" line="269"/>
         <source>All host devices</source>
-        <translation>Tüm ana cihazlar</translation>
+        <translation type="unfinished">Tüm ana makine aygıtları</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="292"/>
@@ -1171,7 +1171,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="564"/>
         <source>Print to STDOUT</source>
-        <translation>STDOUT'a yazdır</translation>
+        <translation type="unfinished">STDOUT&apos;a yazdır</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="594"/>
@@ -1196,7 +1196,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="681"/>
         <source>Log Path:</source>
-        <translation>Günlük yolu</translation>
+        <translation type="unfinished">Günlük yolu:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="733"/>
@@ -1226,12 +1226,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="864"/>
         <source>Don&apos;t use default audio driver</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Varsayılan ses sürücüsünü kullanma</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="894"/>
         <source>Host Sound System:</source>
-        <translation>Ana Bilgisayar Ses Sistemi</translation>
+        <translation type="unfinished">Ana Bilgisayar Ses Sistemi:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="914"/>
@@ -1281,12 +1281,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="992"/>
         <source>Execute Before Starting QEMU/KVM:</source>
-        <translation>QEMU/KVM'ye Başlamadan Önce Yürüt:</translation>
+        <translation type="unfinished">QEMU/KVM Başlamadan Önce Yürüt:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1016"/>
         <source>Execute After Stoping QEMU/KVM:</source>
-        <translation>QEMU/KVM durdurulduktan Sonra Yürüt:</translation>
+        <translation type="unfinished">QEMU/KVM Durduktan Sonra Yürüt:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1067"/>
@@ -1296,7 +1296,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1088"/>
         <source>Recent CD-ROM Images Count</source>
-        <translation>Son CD-ROM İmaj Sayısı</translation>
+        <translation type="unfinished">Son CD-ROM Kalıp Sayısı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1108"/>
@@ -1316,7 +1316,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1196"/>
         <source>stdio (Does not work with Windows version of QEMU)</source>
-        <translation>stdio (QEMU'nun Windows sürümü ile çalışmaz)</translation>
+        <translation>stdio (QEMU&apos;nun Windows sürümü ile çalışmaz)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1208"/>
@@ -1376,7 +1376,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1497"/>
         <source>Machine Name</source>
-        <translation>Makine adı</translation>
+        <translation type="unfinished">Makine Adı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1511"/>
@@ -1451,7 +1451,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1637"/>
         <source>Fullscreen Mode</source>
-        <translation>Tam Ekran</translation>
+        <translation type="unfinished">Tam Ekran Modu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1644"/>
@@ -1531,7 +1531,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1777"/>
         <source>No Shutdown</source>
-        <translation>Kapatma Yok</translation>
+        <translation type="unfinished">Kapatma Yok</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1784"/>
@@ -1561,7 +1561,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1819"/>
         <source>Check Boot Sector on FDD</source>
-        <translation>FDD'de Önyükleme Kesimini Kontrol Edin</translation>
+        <translation>FDD&apos;de Önyükleme Kesimini Kontrol Edin</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1826"/>
@@ -1650,7 +1650,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
         <location filename="Advanced_Settings_Window.cpp" line="649"/>
         <location filename="Advanced_Settings_Window.cpp" line="665"/>
         <source>Error!</source>
-        <translation>Hata</translation>
+        <translation type="unfinished">Hata!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="570"/>
@@ -1676,12 +1676,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="643"/>
         <source>Default QEMU Emulator isn&apos;t selected!</source>
-        <translation>Varsayılan QEMU Emülator seçilmedi!</translation>
+        <translation type="unfinished">Varsayılan QEMU Emülator seçili değil!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="649"/>
         <source>Default KVM Emulator isn&apos;t selected!</source>
-        <translation>Varsayılan KVM Emülator seçilmedi!</translation>
+        <translation type="unfinished">Varsayılan KVM Emülator seçili değil!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="666"/>
@@ -1796,7 +1796,7 @@ Ayrılan Disk Alanı: 0</translation>
         <location filename="Convert_HDD_Image_Window.ui" line="81"/>
         <source>Virtual Size: 0
 Cluster Size: 0</source>
-        <translation type=>Sanal boyut: 0
+        <translation>Sanal boyut: 0
 Küme Boyutu: 0</translation>
     </message>
     <message>
@@ -1916,7 +1916,7 @@ Küme Boyutu: %3</translation>
         <source>Cannot convert image!
 Details:
 %1</source>
-        <translation type=>Kalıp dönüştürülemez!
+        <translation>Kalıp dönüştürülemez!
 Detaylar:
 %1</translation>
     </message>
@@ -1926,7 +1926,7 @@ Detaylar:
     <message>
         <location filename="Copy_VM_Window.ui" line="15"/>
         <source>Copy VM</source>
-        <translation type=>Sanal Makineyi Kopyala</translation>
+        <translation>Sanal Makineyi Kopyala</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="25"/>
@@ -1946,7 +1946,7 @@ Detaylar:
     <message>
         <location filename="Copy_VM_Window.ui" line="60"/>
         <source>Copy Hard Drive Images</source>
-        <translation<Sabit Disk Kalıplarını Kopyala/translation>
+        <translation>Sabit Disk Kalıplarını Kopyala</translation>
     </message>
     <message>
         <location filename="Copy_VM_Window.ui" line="87"/>
@@ -1974,7 +1974,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="15"/>
         <source>Create HDD Image</source>
-        <translation>Yeni HDD Kalıbı</translation>
+        <translation type="unfinished">HDD Kalıbı Oluştur</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="31"/>
@@ -1990,7 +1990,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="74"/>
         <source>&amp;Format:</source>
-        <translation>>&amp;Biçim:</translation>
+        <translation type="unfinished">&amp;Biçim:</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="99"/>
@@ -2000,7 +2000,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="104"/>
         <source>qcow</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">qcow</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="109"/>
@@ -2065,7 +2065,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="330"/>
         <source>C&amp;reate</source>
-        <translation>Oluştur</translation>
+        <translation type="unfinished">&amp;Oluştur</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="341"/>
@@ -2075,18 +2075,18 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="53"/>
         <source>F&amp;ormat</source>
-        <translation>Biçim</translation>
+        <translation type="unfinished">&amp;Biçim</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="94"/>
         <source>Select Base HDD Image File</source>
-        <translation>Temel HDD Kalıbını Seç</translation>
+        <translation type="unfinished">Temel HDD Kalıp Dosyasını Seç</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="96"/>
         <location filename="Create_HDD_Image_Window.cpp" line="106"/>
         <source>All Files (*);;Images Files (*.img *.qcow *.qcow2 *.wmdk)</source>
-        <translation type=>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.qcow *.qcow2 *.wmdk)</translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.qcow *.qcow2 *.wmdk)</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="104"/>
@@ -2119,12 +2119,12 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="183"/>
         <source>Image was Not Created!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kalıp Oluşturulmadı!</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="190"/>
         <source>QEMU-IMG Supported formats</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QEMU-IMG Desteklenen Biçimler</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="191"/>
@@ -2145,7 +2145,23 @@ VMware 3 and 4 compatible image format.
 
 cloop
 Linux Compressed Loop image, useful only to reuse directly compressed CD-ROM images present for example in the Knoppix CD-ROMs.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">raw
+Ham disk kalıbı biçimi. Bu biçim, basit ve kolayca diğer tüm emülatörlere verilebilir olma avantajına sahiptir. Dosya sisteminiz boşlukları destekliyorsa (örneğin, Linux&apos;ta ext2 veya ext3 veya Windows&apos;da NTFS), o zaman sadece yazılı sektörler boşluk ayırır. Unix / Linux&apos;da kalıp veya ls -ls tarafından kullanılan gerçek boyutu bilmek için qemu-img info kullanın.
+
+qcow2
+QEMU kalıp biçimi, en çok yönlü biçim. Daha küçük kalıplara sahip olmak için kullanın (dosya sisteminiz Windows&apos;da olduğu gibi boşlukları desteklemiyorsa kullanışlıdır), isteğe bağlı AES şifrelemesi, zlib tabanlı sıkıştırma ve birden fazla Sanal Makine anlık görüntüsünü destekleme.
+
+qcow
+Eski QEMU kalıp biçimi. Uyumluluk için ayrıldı.
+
+cow
+Kullanıcı Modu Linux Kopyası Üstüne Kalıp Biçimi. QEMU&apos;da büyüyen tek kalıp biçimi olarak kullanılır. Yalnızca önceki sürümlerle uyumluluk için desteklenmektedir. Win32 üzerinde çalışmaz.
+
+vmdk
+VMware 3 ve 4 uyumlu kalıp biçimi.
+
+cloop
+Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&apos;larında bulunan doğrudan sıkıştırılmış CD-ROM kalıplarını yeniden kullanmak için kullanışlıdır.</translation>
     </message>
 </context>
 <context>
