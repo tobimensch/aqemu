@@ -1073,7 +1073,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="135"/>
         <source>JPEG</source>
-        <translation type="unfinished"></translation>
+        <translation>JPEG</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="142"/>
@@ -1216,12 +1216,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="824"/>
         <source>QEMU Segment MAC Address (52:54:00:XX:XX:XX)</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU Segmenti MAC Adresi (52:54:00:XX:XX:XX)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="831"/>
         <source>Valid MAC Address (Especial For Each Network Card model)</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli MAC Adresi (Her Ağ Kartı modeli için özel)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="864"/>
@@ -1231,102 +1231,102 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="894"/>
         <source>Host Sound System:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana Bilgisayar Ses Sistemi</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="914"/>
         <source>alsa</source>
-        <translation type="unfinished"></translation>
+        <translation>alsa</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="919"/>
         <source>oss</source>
-        <translation type="unfinished"></translation>
+        <translation>oss</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="924"/>
         <source>pa</source>
-        <translation type="unfinished"></translation>
+        <translation>pa</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="929"/>
         <source>esd</source>
-        <translation type="unfinished"></translation>
+        <translation>esd</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="934"/>
         <source>sdl</source>
-        <translation type="unfinished"></translation>
+        <translation>sdl</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="939"/>
         <source>wav</source>
-        <translation type="unfinished"></translation>
+        <translation>wav</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="944"/>
         <source>none</source>
-        <translation type="unfinished"></translation>
+        <translation>yok</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="955"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="971"/>
         <source>Start/Stop QEMU/KVM emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM emülatörü Başlat/Durdur</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="992"/>
         <source>Execute Before Starting QEMU/KVM:</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM'ye Başlamadan Önce Yürüt:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1016"/>
         <source>Execute After Stoping QEMU/KVM:</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM durdurulduktan Sonra Yürüt:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1067"/>
         <source>Other Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer Ayarlar</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1088"/>
         <source>Recent CD-ROM Images Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Son CD-ROM İmaj Sayısı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1108"/>
         <source>Recent Floppy Images Count</source>
-        <translation type="unfinished"></translation>
+        <translation>Son Disket İmajı Saysı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1128"/>
         <source>First VNC Port for Embedded Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Gömülü Ekran için ilk VNC Bağlantı Noktası</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1175"/>
         <source>QEMU/KVM Monitor Connection Type</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Monitör Bağlantı Türü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1196"/>
         <source>stdio (Does not work with Windows version of QEMU)</source>
-        <translation type="unfinished"></translation>
+        <translation>stdio (QEMU'nun Windows sürümü ile çalışmaz)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1208"/>
         <source>TCP Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Yuvası</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1234"/>
         <source>Hostname</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana Bilgisayar Adı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1245"/>
@@ -1336,177 +1336,177 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1250"/>
         <source>127.0.0.1</source>
-        <translation type="unfinished"></translation>
+        <translation>127.0.0.1</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1277"/>
         <source>First port</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Bağlantı Noktası</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1339"/>
         <source>Additional CD/DVD Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>İlave CD/DVD Aygıtları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1401"/>
         <source>Information in Info Tab</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi Sekmesindeki bilgiler</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1416"/>
         <source>Show Tab Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekme Bilgisini Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1440"/>
         <source>Show Inside Tab Info Screenshot in Save Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Sekme Bilgisi Ekran Görüntüsünü Güvenli Modda Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1456"/>
         <source>Show QEMU/KVM Arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Argümanlarını Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1483"/>
         <source>Machine Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine Detayları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1497"/>
         <source>Machine Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine adı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1511"/>
         <source>Boot Priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme Önceliği</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1518"/>
         <source>Emulator Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Türü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1525"/>
         <source>CPU Type</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci Türü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1532"/>
         <source>Emulator Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Sürümü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1539"/>
         <source>Number of CPU</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci Sayısı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1546"/>
         <source>Computer Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayar Türü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1553"/>
         <source>Video Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Kartı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1560"/>
         <source>Machine Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine Türü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1567"/>
         <source>Keyboard Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>Klavye Düzeni</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1581"/>
         <source>Memory Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Boyutu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1595"/>
         <source>Network Cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kartı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1602"/>
         <source>Use Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses Kullan</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1609"/>
         <source>Network Redirections</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Yönlendirmeleri</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1623"/>
         <source>Show Floppy</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1637"/>
         <source>Fullscreen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam Ekran</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1644"/>
         <source>Show CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-ROM Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1651"/>
         <source>Snapshot Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlık Görüntü Modu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1658"/>
         <source>Show HDD</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Disk Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1665"/>
         <source>Use Local Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerel Saati Kullan</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1679"/>
         <source>Serial Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri Bağlantı Noktaları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1693"/>
         <source>VNC</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1700"/>
         <source>Parallel Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Bağlantı Noktaları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1707"/>
         <source>SPICE</source>
-        <translation type="unfinished"></translation>
+        <translation>SPICE</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1714"/>
         <source>USB Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>USB Bağlantı Noktaları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1721"/>
         <source>Use Linux Boot</source>
-        <translation type="unfinished"></translation>
+        <translation>Linux Önyükleme Kullan</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1735"/>
         <source>No Frame</source>
-        <translation type="unfinished"></translation>
+        <translation>Çerçevesiz</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1749"/>
@@ -1526,22 +1526,22 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1770"/>
         <source>No Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Yok</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1777"/>
         <source>No Shutdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapatma Yok</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1784"/>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Portre</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1791"/>
         <source>No Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden Başlatma Yok</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1798"/>
@@ -1551,98 +1551,98 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1805"/>
         <source>Start CPU at Startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıçta İşlemciyi başlat</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1812"/>
         <source>Show cursor</source>
-        <translation type="unfinished"></translation>
+        <translation>İmleci Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1819"/>
         <source>Check Boot Sector on FDD</source>
-        <translation type="unfinished"></translation>
+        <translation>FDD'de Önyükleme Kesimini Kontrol Edin</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1826"/>
         <source>Initial graphical mode</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk grafik modu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1833"/>
         <source>Enable ACPI</source>
-        <translation type="unfinished"></translation>
+        <translation>ACPI Etkin</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1840"/>
         <source>Acceleration</source>
-        <translation type="unfinished"></translation>
+        <translation>Hızlanma</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1847"/>
         <source>Start Date</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıç Tarihi</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1861"/>
         <source>Flash Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Flaş Kalıbı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1868"/>
         <source>Parallel Flash Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Flaş Kalıbı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1875"/>
         <source>ROM File</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1882"/>
         <source>SD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>SD Kalıbı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="222"/>
         <source>Invalid Value!</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçersiz değer!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="222"/>
         <source>Shared screenshot folder doesn&apos;t exist!</source>
-        <translation type="unfinished"></translation>
+        <translation>Paylaşılan ekran görüntüsü dizini mevcut değil!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="388"/>
         <location filename="Advanced_Settings_Window.cpp" line="398"/>
         <location filename="Advanced_Settings_Window.cpp" line="418"/>
         <source>Select executable</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalıştırılabilir Seç</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="390"/>
         <location filename="Advanced_Settings_Window.cpp" line="400"/>
         <source>All Files (*);;Scripts (*.sh)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Scripts (*.sh)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="408"/>
         <source>Select or Create Log File</source>
-        <translation type="unfinished"></translation>
+        <translation>Günlük Dosyası Seç veya Oluştur</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="410"/>
         <location filename="Advanced_Settings_Window.cpp" line="420"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="490"/>
         <location filename="Advanced_Settings_Window.cpp" line="503"/>
         <location filename="Advanced_Settings_Window.cpp" line="691"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Evet</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="569"/>
@@ -1650,53 +1650,53 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
         <location filename="Advanced_Settings_Window.cpp" line="649"/>
         <location filename="Advanced_Settings_Window.cpp" line="665"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="570"/>
         <source>Cannot find any emulators installed on your OS! Please add them manually!</source>
-        <translation type="unfinished"></translation>
+        <translation>İşletim Sisteminize kurulmuş herhangi bir emülatör bulunamadı! Lütfen bunları elle ekleyin!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="584"/>
         <location filename="Advanced_Settings_Window.cpp" line="595"/>
         <source>Add CD/DVD Device</source>
-        <translation type="unfinished"></translation>
+        <translation>CD/DVD Aygıtı Ekleyin</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="584"/>
         <source>Enter Device Name. Example: /dev/cdrom</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Adı Gir. Örneğin: /dev/cdrom</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="595"/>
         <source>Enter Device Name. Sample: /dev/cdrom</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Adı Gir. Örneğin: /dev/cdrom</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="643"/>
         <source>Default QEMU Emulator isn&apos;t selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan QEMU Emülator seçilmedi!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="649"/>
         <source>Default KVM Emulator isn&apos;t selected!</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan KVM Emülator seçilmedi!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="666"/>
         <source>Cannot save emulator &quot;%1&quot;!</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; emülatörü kaydedilemiyor!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="691"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Hayır</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="698"/>
         <source>Choose screenshot folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran görüntüsü dizinini seç</translation>
     </message>
 </context>
 <context>
@@ -1704,7 +1704,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Boot_Device_Window.ui" line="15"/>
         <source>Boot settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme Ayarları</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.ui" line="53"/>
