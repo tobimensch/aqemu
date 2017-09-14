@@ -6,7 +6,7 @@
     <message>
         <location filename="About_Window.ui" line="15"/>
         <source>About AQEMU</source>
-        <translation type="unfinished">AQEMU Hakkında</translation>
+        <translation>AQEMU Hakkında</translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="87"/>
@@ -55,7 +55,26 @@ p, a { white-space: pre-wrap; margin-top:0px; margin-bottom:0px; margin-left:0px
 &lt;/b&gt;
 &lt;/body&gt;
 &lt;/html&gt;</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+p, a { white-space: pre-wrap; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#3C6E05}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;b&gt;
+&lt;p&gt;AQEMU programı QEMU ve KVM Emülator Önyüzüdür&lt;/p&gt;
+&lt;p&gt;Sürüm: 0.9.0 / 2016.04.20&lt;/p&gt;
+&lt;p&gt;Lisans: GNU GPL Sürüm 2&lt;/p&gt;
+&lt;p&gt;Yazar: Andrey Rijov (a.k.a. RDron)&lt;/p&gt;
+&lt;p&gt;E-posta: &lt;a href=&quot;mailto:ANDron142@yandex.ru&quot;&gt;ANDron142@yandex.ru&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Web Adresi: &lt;a href=&quot;https://github.com/tobimensch/aqemu&quot;&gt;https://github.com/tobimensch/aqemu&lt;/a&gt; &lt;a href=&quot;http://sourceforge.net/projects/aqemu/&quot;&gt;http://sourceforge.net/projects/aqemu/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Desteklenen Emulatorler:&lt;br&gt;QEMU 0.9.0-0.14.1 and KVM 60-88-0.14.1&lt;/p&gt;
+&lt;/b&gt;
+&lt;/body&gt;
+&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="172"/>
@@ -103,7 +122,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</oldsource>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="211"/>
@@ -356,7 +375,7 @@ p, li { white-space: pre-wrap; }
 &lt;tr&gt;
 &lt;td style=&quot;border: none;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-weight:600; color:#aa0000;&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="557"/>
@@ -498,12 +517,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="160"/>
         <source>CD-ROM</source>
-        <translation type="unfinished">CD-ROM</translation>
+        <translation>CD-ROM</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="168"/>
         <source>Cac&amp;he</source>
-        <translation type="unfinished">Ön&amp;bellek</translation>
+        <translation>Ön&amp;bellek</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="179"/>
@@ -565,7 +584,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="336"/>
         <source>s&amp;ecs</source>
-        <translation type="unfinished">saniy&amp;e</translation>
+        <translation>saniy&amp;e</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="346"/>
@@ -580,17 +599,17 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="379"/>
         <source>&amp;heads</source>
-        <translation type="unfinished">&amp;başlıklar</translation>
+        <translation>&amp;başlıklar</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="415"/>
         <source>&amp;OK</source>
-        <translation type="unfinished">&amp;Tamam</translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="426"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished">&amp;Vazgeç</translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="343"/>
@@ -610,7 +629,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.cpp" line="418"/>
         <source>File does not exist!</source>
-        <translation>Dosya bulunamadı</translation>
+        <translation>Dosya bulunamadı!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="459"/>
@@ -618,7 +637,7 @@ p, li { white-space: pre-wrap; }
         <location filename="Add_New_Device_Window.cpp" line="473"/>
         <location filename="Add_New_Device_Window.cpp" line="480"/>
         <source>Warning!</source>
-        <translation type="unfinished">Uyarı!</translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="459"/>
@@ -628,12 +647,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.cpp" line="466"/>
         <source>&quot;Heads&quot; value is incorrect!</source>
-        <translation type="unfinished">&quot;Başlıklar&quot; değer yanlış!</translation>
+        <translation>&quot;Başlıklar&quot; değer yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="473"/>
         <source>&quot;Secs&quot; value is incorrect!</source>
-        <translation type="unfinished">&quot;Saniyeler&quot; değer yanlış!</translation>
+        <translation>&quot;Saniyeler&quot; değer yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="480"/>
@@ -691,7 +710,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="133"/>
         <source>stdio</source>
-        <translation type="unfinished">stdio</translation>
+        <translation>stdio</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="140"/>
@@ -701,52 +720,52 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="150"/>
         <source>COM</source>
-        <translation type="unfinished">COM</translation>
+        <translation>COM</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="157"/>
         <source>UDP</source>
-        <translation type="unfinished">UDP</translation>
+        <translation>UDP</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="164"/>
         <source>msmouse</source>
-        <translation type="unfinished">ms.fare</translation>
+        <translation>ms.fare</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="188"/>
         <source>TCP</source>
-        <translation type="unfinished">TCP</translation>
+        <translation>TCP</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="195"/>
         <source>Telnet</source>
-        <translation type="unfinished">Telnet</translation>
+        <translation>Telnet</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="202"/>
         <source>Unix</source>
-        <translation type="unfinished">Unix</translation>
+        <translation>Unix</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="209"/>
         <source>mon</source>
-        <translation type="unfinished">mon</translation>
+        <translation>mon</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="216"/>
         <source>braille</source>
-        <translation type="unfinished">braille</translation>
+        <translation>braille</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="264"/>
         <source>Additional Arguments:</source>
-        <translation>Ek argümanlar</translation>
+        <translation>Ek argümanlar:</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="288"/>
         <source>...</source>
-        <translation type="unfinished">...</translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="325"/>
@@ -808,7 +827,7 @@ Genişlik veya yüksekliği karakter olarak belirtmek de mümkündür:
         <location filename="Add_Port_Window.cpp" line="199"/>
         <source>[Linux only] Use host tty, e.g. /dev/ttyS0.
 The host serial port parameters are set according to the emulated ones.</source>
-        <translation type="unfinished">[Yalnızca Linux] Ana makine tty&apos;yi kullan, ör. /dev/ttyS0.
+        <translation>[Yalnızca Linux] Ana makine tty&apos;yi kullan, ör. /dev/ttyS0.
 Ana makine seri bağlantı noktası parametreleri taklit edilen seri portlarına göre ayarlanır.</translation>
     </message>
     <message>
@@ -831,7 +850,7 @@ Ana makine seri bağlantı noktası parametreleri taklit edilen seri portlarına
         <source>[remote_host]:remote_port[@[src_ip]:src_port]
 This implements UDP Net Console. When remote_host or src_ip are not specified they default to 0.0.0.0. When not using a specified src_port a random port is automatically chosen.</source>
         <translation>[remote_host]:remote_port[@[src_ip]:src_port]
-Bu UDP Net Konsolu uygular. Remote_host veya src_ip belirtilmediğinde, varsayılan olarak 0.0.0.0&amp;dır. Belirtilen bir src_port kullanmadığınızda, rasgele bir port otomatik olarak seçilir.</translation>
+Bu UDP Net Konsolu uygular. Remote_host veya src_ip belirtilmediğinde, varsayılan olarak 0.0.0.0 dır. Belirtilen bir src_port kullanmadığınızda, rasgele bir port otomatik olarak seçilir.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="204"/>
@@ -875,7 +894,7 @@ Bu, monitörün başka bir seri bağlantı noktasına çoğaltılmasına izin ve
         <source>Braille device.
 This will use BrlAPI to display the braille output on a real or fake device.</source>
         <translation>Braille aleti.
-Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için BrlAPI kullanacaktır.</translation>
+Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için BrlAPI kullanacaktır.</translation>
     </message>
 </context>
 <context>
@@ -930,7 +949,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
         <location filename="Add_USB_Port_Window.ui" line="227"/>
         <location filename="Add_USB_Port_Window.ui" line="355"/>
         <source>Product:</source>
-        <translation type="unfinished">Ürün:</translation>
+        <translation>Ürün:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="232"/>
@@ -945,7 +964,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Add_USB_Port_Window.ui" line="269"/>
         <source>All host devices</source>
-        <translation type="unfinished">Tüm ana makine aygıtları</translation>
+        <translation>Tüm ana makine aygıtları</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="292"/>
@@ -1171,7 +1190,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="564"/>
         <source>Print to STDOUT</source>
-        <translation type="unfinished">STDOUT&apos;a yazdır</translation>
+        <translation>STDOUT&apos;a yazdır</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="594"/>
@@ -1196,7 +1215,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="681"/>
         <source>Log Path:</source>
-        <translation type="unfinished">Günlük yolu:</translation>
+        <translation>Günlük yolu:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="733"/>
@@ -1226,12 +1245,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="864"/>
         <source>Don&apos;t use default audio driver</source>
-        <translation type="unfinished">Varsayılan ses sürücüsünü kullanma</translation>
+        <translation>Varsayılan ses sürücüsünü kullanma</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="894"/>
         <source>Host Sound System:</source>
-        <translation type="unfinished">Ana Bilgisayar Ses Sistemi:</translation>
+        <translation>Ana Bilgisayar Ses Sistemi:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="914"/>
@@ -1281,12 +1300,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="992"/>
         <source>Execute Before Starting QEMU/KVM:</source>
-        <translation type="unfinished">QEMU/KVM Başlamadan Önce Yürüt:</translation>
+        <translation>QEMU/KVM Başlamadan Önce Yürüt:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1016"/>
         <source>Execute After Stoping QEMU/KVM:</source>
-        <translation type="unfinished">QEMU/KVM Durduktan Sonra Yürüt:</translation>
+        <translation>QEMU/KVM Durduktan Sonra Yürüt:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1067"/>
@@ -1296,7 +1315,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1088"/>
         <source>Recent CD-ROM Images Count</source>
-        <translation type="unfinished">Son CD-ROM Kalıp Sayısı</translation>
+        <translation>Son CD-ROM Kalıp Sayısı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1108"/>
@@ -1376,7 +1395,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1497"/>
         <source>Machine Name</source>
-        <translation type="unfinished">Makine Adı</translation>
+        <translation>Makine Adı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1511"/>
@@ -1451,7 +1470,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1637"/>
         <source>Fullscreen Mode</source>
-        <translation type="unfinished">Tam Ekran Modu</translation>
+        <translation>Tam Ekran Modu</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1644"/>
@@ -1531,7 +1550,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1777"/>
         <source>No Shutdown</source>
-        <translation type="unfinished">Kapatma Yok</translation>
+        <translation>Kapatma Yok</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1784"/>
@@ -1650,7 +1669,7 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
         <location filename="Advanced_Settings_Window.cpp" line="649"/>
         <location filename="Advanced_Settings_Window.cpp" line="665"/>
         <source>Error!</source>
-        <translation type="unfinished">Hata!</translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="570"/>
@@ -1676,12 +1695,12 @@ Bu, braille çıkışını gerçek veya sahte bir cihazda görüntülemek için 
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="643"/>
         <source>Default QEMU Emulator isn&apos;t selected!</source>
-        <translation type="unfinished">Varsayılan QEMU Emülator seçili değil!</translation>
+        <translation>Varsayılan QEMU Emülator seçili değil!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="649"/>
         <source>Default KVM Emulator isn&apos;t selected!</source>
-        <translation type="unfinished">Varsayılan KVM Emülator seçili değil!</translation>
+        <translation>Varsayılan KVM Emülator seçili değil!</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="666"/>
@@ -1974,7 +1993,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="15"/>
         <source>Create HDD Image</source>
-        <translation type="unfinished">HDD Kalıbı Oluştur</translation>
+        <translation>HDD Kalıbı Oluştur</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="31"/>
@@ -1990,7 +2009,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="74"/>
         <source>&amp;Format:</source>
-        <translation type="unfinished">&amp;Biçim:</translation>
+        <translation>&amp;Biçim:</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="99"/>
@@ -2000,7 +2019,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="104"/>
         <source>qcow</source>
-        <translation type="unfinished">qcow</translation>
+        <translation>qcow</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="109"/>
@@ -2065,7 +2084,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="330"/>
         <source>C&amp;reate</source>
-        <translation type="unfinished">&amp;Oluştur</translation>
+        <translation>Oluştu&amp;r</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="341"/>
@@ -2075,12 +2094,12 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="53"/>
         <source>F&amp;ormat</source>
-        <translation type="unfinished">&amp;Biçim</translation>
+        <translation>&amp;Biçim</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="94"/>
         <source>Select Base HDD Image File</source>
-        <translation type="unfinished">Temel HDD Kalıp Dosyasını Seç</translation>
+        <translation>Temel HDD Kalıp Dosyasını Seç</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="96"/>
@@ -2114,17 +2133,17 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="162"/>
         <source>Base Image File doesn&apos;t Exists!</source>
-        <translation>Temel Kalıp Dosyası yok</translation>
+        <translation>Temel Kalıp Dosyası yok!</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="183"/>
         <source>Image was Not Created!</source>
-        <translation type="unfinished">Kalıp Oluşturulmadı!</translation>
+        <translation>Kalıp Oluşturulmadı!</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="190"/>
         <source>QEMU-IMG Supported formats</source>
-        <translation type="unfinished">QEMU-IMG Desteklenen Biçimler</translation>
+        <translation>QEMU-IMG Desteklenen Biçimler</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="191"/>
@@ -2145,7 +2164,7 @@ VMware 3 and 4 compatible image format.
 
 cloop
 Linux Compressed Loop image, useful only to reuse directly compressed CD-ROM images present for example in the Knoppix CD-ROMs.</source>
-        <translation type="unfinished">raw
+        <translation>raw
 Ham disk kalıbı biçimi. Bu biçim, basit ve kolayca diğer tüm emülatörlere verilebilir olma avantajına sahiptir. Dosya sisteminiz boşlukları destekliyorsa (örneğin, Linux&apos;ta ext2 veya ext3 veya Windows&apos;da NTFS), o zaman sadece yazılı sektörler boşluk ayırır. Unix / Linux&apos;da kalıp veya ls -ls tarafından kullanılan gerçek boyutu bilmek için qemu-img info kullanın.
 
 qcow2
@@ -2169,136 +2188,136 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Create_Template_Window.ui" line="21"/>
         <source>Create Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon Oluştur</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="39"/>
         <source>New VM template name</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Sanal Makine şablon adı</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="92"/>
         <source>Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosyalar</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="113"/>
         <source>Virtual machine file</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal makine dosyası</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="141"/>
         <source>Use default folder for new template</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni şablon için varsayılan dizini kullan</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="159"/>
         <source>Other folder for new template:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni şablon için diğer dizin:</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="215"/>
         <source>Creating Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçenekler Oluşturma</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="236"/>
         <source>Save Floppy and CD-ROM Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket ve CD-ROM Ayarlarını Kaydet</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="246"/>
         <source>Save Hard Disks Size or Format Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Disk Boyut ve Biçim Ayarlarını Kaydet</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="256"/>
         <source>Save Network Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Ayarlarını Kaydet</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="266"/>
         <source>Save Ports (USB/Serial/Parallel)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktalarını Kaydet (USB/Seri/Paralel)</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="299"/>
         <source>C&amp;reate</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluştu&amp;r</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="310"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="47"/>
         <source>Open VM File</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Dosyası Aç</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="49"/>
         <source>AQEMU VM Files (*.aqemu)</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU Sanal Makine Dosyaları (*.aqemu)</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="57"/>
         <source>Select Template Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon Dizini Seç</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="70"/>
         <location filename="Create_Template_Window.cpp" line="84"/>
         <location filename="Create_Template_Window.cpp" line="91"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="71"/>
         <source>Template Name is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon Adı Boş!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="85"/>
         <source>VM file doesn&apos;t exist!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine dosyası yokı!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="92"/>
         <source>Cannot Locate Template Folder!</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon Dizini Bulunamıyor!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="106"/>
         <location filename="Create_Template_Window.cpp" line="145"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="107"/>
         <source>Cannot Load VM!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Yüklenemiyor!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="146"/>
         <source>Cannot Create Template!</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon Oluşturulamıyor!</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="176"/>
         <location filename="Create_Template_Window.cpp" line="198"/>
         <source>Replace</source>
-        <translation type="unfinished"></translation>
+        <translation>Değiştir</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="177"/>
         <source>Your template name is already used! Do you want replace previous template?</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon adınız zaten kullanılmıştır! Önceki şablonu değiştirmek istiyor musunuz?</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.cpp" line="199"/>
         <source>You Name For Template in Not Unique! Replace Previous Template?</source>
-        <translation type="unfinished"></translation>
+        <translation>Benzersiz Olmayan Şablon İçin Adınız! Önceki Şablonu Değiştir?</translation>
     </message>
 </context>
 <context>
@@ -2306,163 +2325,164 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="15"/>
         <source>Delete VM and Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makineyi ve Dosyalarını Sil</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="27"/>
         <source>Show only:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sadece göster:</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="50"/>
         <source>&amp;Hard drive images</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sabit Disk Kalıpları</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="76"/>
         <source>&amp;All VM files</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm S&amp;anal Makine Dosyaları</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="123"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="128"/>
         <source>Device name</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt adı</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="133"/>
         <source>Path</source>
-        <translation type="unfinished"></translation>
+        <translation>Yol</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="156"/>
         <source>&amp;Delete selected</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Seçileni sil</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.ui" line="167"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="84"/>
         <source>Screenshot</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Görüntüsü</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="95"/>
         <source>Floppy A</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket A</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="106"/>
         <source>Floppy B</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket B</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="117"/>
         <source>CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-ROM</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="128"/>
         <source>HDA (Primary Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDA (Birincil Ana)</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="139"/>
         <source>HDB (Primary Slave)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDB (Birincil Köle)</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="150"/>
         <source>HDC (Secondary Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDC (İkincil Ana)</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="161"/>
         <source>HDD (Secondary Slave)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD (İkincil Köle)</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="172"/>
         <source>ROM File</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="183"/>
         <source>MTDBlock File</source>
-        <translation type="unfinished"></translation>
+        <translation>MTD Blok Dosyası</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="194"/>
         <source>SD Card File</source>
-        <translation type="unfinished"></translation>
+        <translation>SD Kart Dosyası</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="205"/>
         <source>PFlash File</source>
-        <translation type="unfinished"></translation>
+        <translation>PFlash Dosyası</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="216"/>
         <source>Kernel bzImage</source>
-        <translation type="unfinished"></translation>
+        <translation>Kernel bzKalıbı</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="227"/>
         <source>Kernel Initrd</source>
-        <translation type="unfinished"></translation>
+        <translation>Kernel Initrd</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="246"/>
         <source>Serial Port Redirection</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri Bağlantı Noktası Yönlendirmesi</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="268"/>
         <source>Parallel Port Redirection</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Bağlantı Noktası Yönlendirmesi</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="290"/>
         <source>Storage Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Depolama Aygıtı</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="302"/>
         <source>Confirm Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Silmeyi Onayla</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="303"/>
         <source>Delete &quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil&quot;</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="303"/>
         <source>&quot; VM and Selected Files?</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Sanal Makine ve Seçilen Dosyaları?</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="347"/>
         <source>An error occurred while deleting files</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosyalar silinirken bir hata oluştu.</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="348"/>
         <source>This Files Not Deleted:
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Dosyalar Silinmedi:
+</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="348"/>
         <source>Please Check Permissions!</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen İzinleri Kontrol Edin!</translation>
     </message>
 </context>
 <context>
@@ -2470,29 +2490,29 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Device_Manager_Widget.ui" line="15"/>
         <source>Device Manager Widget</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Yöneticisi Widget&apos;ı</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="55"/>
         <source>View Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Görüntüleme Modu</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="70"/>
         <location filename="Device_Manager_Widget.ui" line="492"/>
         <source>Icon Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Simge Modu</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="90"/>
         <location filename="Device_Manager_Widget.ui" line="483"/>
         <source>List Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Lise Modu</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="122"/>
         <source>Manage Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayıtları Yönet</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="137"/>
@@ -2500,78 +2520,78 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.ui" line="462"/>
         <location filename="Device_Manager_Widget.ui" line="465"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Özellikler</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="157"/>
         <location filename="Device_Manager_Widget.ui" line="474"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="177"/>
         <location filename="Device_Manager_Widget.ui" line="450"/>
         <source>Format HDD</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Diski Biçimlendir</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="197"/>
         <location filename="Device_Manager_Widget.ui" line="200"/>
         <location filename="Device_Manager_Widget.ui" line="501"/>
         <source>Quick Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Hızlı Biçimlendir</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="236"/>
         <source>Add Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Ekle</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="251"/>
         <location filename="Device_Manager_Widget.ui" line="423"/>
         <source>Add Floppy</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket Ekle</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="271"/>
         <location filename="Device_Manager_Widget.ui" line="432"/>
         <source>Add CD/DVD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD/DVD-ROM Ekle</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="291"/>
         <location filename="Device_Manager_Widget.ui" line="441"/>
         <source>Add HDD</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Disk Ekle</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="314"/>
         <source>Add Storage Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Depolama Aygıtı Ekle</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="353"/>
         <source>Device List:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Ekle:</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="403"/>
         <source>Information:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi:</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="510"/>
         <location filename="Device_Manager_Widget.ui" line="513"/>
         <location filename="Device_Manager_Widget.ui" line="516"/>
         <source>Add Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Ekle</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="203"/>
         <location filename="Device_Manager_Widget.cpp" line="235"/>
         <location filename="Device_Manager_Widget.cpp" line="280"/>
         <source>Type: Host Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: Ana Bilgisayar Aygıtı</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="215"/>
@@ -2584,7 +2604,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="297"/>
         <location filename="Device_Manager_Widget.cpp" line="303"/>
         <source>Type: Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: Kalıp</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="216"/>
@@ -2597,7 +2617,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="298"/>
         <location filename="Device_Manager_Widget.cpp" line="304"/>
         <source>On Disk Size: </source>
-        <translation type="unfinished"></translation>
+        <translation>Diskteki Boyutu:</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="216"/>
@@ -2606,7 +2626,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="248"/>
         <location filename="Device_Manager_Widget.cpp" line="253"/>
         <source>KB</source>
-        <translation type="unfinished"></translation>
+        <translation>KB</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="259"/>
@@ -2614,7 +2634,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="298"/>
         <location filename="Device_Manager_Widget.cpp" line="304"/>
         <source>MB</source>
-        <translation type="unfinished"></translation>
+        <translation>MB</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="329"/>
@@ -2626,7 +2646,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1228"/>
         <location filename="Device_Manager_Widget.cpp" line="1238"/>
         <source>Image Virtual Size: </source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp Sanal Boyutu:</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="331"/>
@@ -2638,12 +2658,12 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1230"/>
         <location filename="Device_Manager_Widget.cpp" line="1240"/>
         <source>Image On Disk Size: </source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp Disk Boyutu:</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="372"/>
         <source>Type: Storage Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: Depolama Aygıtı</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="554"/>
@@ -2652,7 +2672,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="754"/>
         <location filename="Device_Manager_Widget.cpp" line="1130"/>
         <source>Floppy 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket 1</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="574"/>
@@ -2661,104 +2681,104 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="777"/>
         <location filename="Device_Manager_Widget.cpp" line="1139"/>
         <source>Floppy 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket 2</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="593"/>
         <location filename="Device_Manager_Widget.cpp" line="624"/>
         <location filename="Device_Manager_Widget.cpp" line="709"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="594"/>
         <source>Maximum Floppy Disk Count is 2</source>
-        <translation type="unfinished"></translation>
+        <translation>En Fazla Disket Sayısı 2</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="604"/>
         <location filename="Device_Manager_Widget.cpp" line="787"/>
         <source>CD/DVD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD/DVD-ROM</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="614"/>
         <location filename="Device_Manager_Widget.cpp" line="800"/>
         <location filename="Device_Manager_Widget.cpp" line="1148"/>
         <source>CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-ROM</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="625"/>
         <source>Maximum CD-ROM Disk Count is 1</source>
-        <translation type="unfinished"></translation>
+        <translation>En Fazla CD-ROM Sayısı 1</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="635"/>
         <location filename="Device_Manager_Widget.cpp" line="810"/>
         <source>HDA (First Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDA (İlk Ana)</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="642"/>
         <location filename="Device_Manager_Widget.cpp" line="823"/>
         <location filename="Device_Manager_Widget.cpp" line="1157"/>
         <source>HDA</source>
-        <translation type="unfinished"></translation>
+        <translation>HDA</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="654"/>
         <location filename="Device_Manager_Widget.cpp" line="833"/>
         <source>HDB (First Slave)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDB (İlk Köle)</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="661"/>
         <location filename="Device_Manager_Widget.cpp" line="846"/>
         <location filename="Device_Manager_Widget.cpp" line="1166"/>
         <source>HDB</source>
-        <translation type="unfinished"></translation>
+        <translation>HDB</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="673"/>
         <location filename="Device_Manager_Widget.cpp" line="856"/>
         <source>HDC (Second Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDC (İkincil Ana)</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="680"/>
         <location filename="Device_Manager_Widget.cpp" line="869"/>
         <location filename="Device_Manager_Widget.cpp" line="1175"/>
         <source>HDC</source>
-        <translation type="unfinished"></translation>
+        <translation>HDC</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="692"/>
         <location filename="Device_Manager_Widget.cpp" line="879"/>
         <source>HDD (Second Slave)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD (İkincil Köle)</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="699"/>
         <location filename="Device_Manager_Widget.cpp" line="892"/>
         <location filename="Device_Manager_Widget.cpp" line="1184"/>
         <source>HDD</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="710"/>
         <source>Maximum Hard Disk Count is 4 excluding CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>En Fazla Sabit Disk Sayısı 4 (CD-ROM hariç)</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="942"/>
         <source>Delete?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil?</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="943"/>
         <source>Delete Device?</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıtı Sil?</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1034"/>
@@ -2768,23 +2788,23 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1094"/>
         <location filename="Device_Manager_Widget.cpp" line="1100"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata?</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1034"/>
         <location filename="Device_Manager_Widget.cpp" line="1100"/>
         <source>Incorrect Device!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanlış Aygıt!</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1047"/>
         <source>Format?</source>
-        <translation type="unfinished"></translation>
+        <translation>Biçimlendir?</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1048"/>
         <source>Format Virtual Hard Disk?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Sabit Diski Biçimlendir?</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1057"/>
@@ -2792,7 +2812,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1079"/>
         <location filename="Device_Manager_Widget.cpp" line="1090"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1057"/>
@@ -2800,7 +2820,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1079"/>
         <location filename="Device_Manager_Widget.cpp" line="1090"/>
         <source>Complete!</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamamlandı!</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1061"/>
@@ -2808,7 +2828,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1083"/>
         <location filename="Device_Manager_Widget.cpp" line="1094"/>
         <source>Cannot Format!</source>
-        <translation type="unfinished"></translation>
+        <translation>Biçimlenemiyor!</translation>
     </message>
 </context>
 <context>
@@ -2816,83 +2836,83 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Edit_Emulator_Version_Window.ui" line="14"/>
         <source>Edit Emulator Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Sürümünü Düzenle</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.ui" line="35"/>
         <source>&amp;Available Versions:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uygun Sürümler:</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.ui" line="95"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.ui" line="106"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="44"/>
         <location filename="Edit_Emulator_Version_Window.cpp" line="49"/>
         <source>%1 (Located in %2)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 (%2&apos;de yer almaktadır)</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="84"/>
         <source>QEMU 0.9.0</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.9.0</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="85"/>
         <source>QEMU 0.9.1</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.9.1</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="86"/>
         <source>QEMU 0.10.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.10.X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="87"/>
         <source>QEMU 0.11.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.11.X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="88"/>
         <source>QEMU 0.12.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.12.X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="89"/>
         <source>QEMU 0.13.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.13.X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="95"/>
         <source>KVM 7X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 7X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="96"/>
         <source>KVM 8X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 8X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="97"/>
         <source>KVM 0.11.X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 0.11.X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="98"/>
         <source>KVM 0.12.X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 0.12.X</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="99"/>
         <source>KVM 0.13.X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 0.13.X</translation>
     </message>
 </context>
 <context>
@@ -2900,207 +2920,207 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="14"/>
         <source>Emulator Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kontrolü</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="42"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yardım</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="48"/>
         <source>&amp;VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sanal Makine</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="69"/>
         <source>Send &amp;Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Anahtarları &amp;Gönder</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="73"/>
         <source>Ctrl-Alt-&amp;F#</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-Alt-&amp;F#</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="99"/>
         <source>&amp;Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bağlan</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="103"/>
         <source>Floppy &amp;B</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket &amp;B</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="111"/>
         <location filename="Emulator_Control_Window.ui" line="131"/>
         <location filename="Emulator_Control_Window.ui" line="185"/>
         <source>Recent Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Son Dosyalar</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="123"/>
         <source>Floppy &amp;A</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket &amp;A</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="143"/>
         <source>&amp;USB</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;USB</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="151"/>
         <source>Connect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlan</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="162"/>
         <source>Disconnect</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantıyı Ayır</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="177"/>
         <source>&amp;CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;CD-ROM</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="203"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Görünüm</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="221"/>
         <source>Save Screens&amp;hot</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran &amp;Görüntüsünü Kaydet</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="230"/>
         <source>&amp;Save VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sanal Makine Kaydet</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="239"/>
         <source>&amp;Load VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sanal Makine Yükle</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="242"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="251"/>
         <source>&amp;Pause VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sanal Makineyi Durdur</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="260"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Çık</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="269"/>
         <source>Save VM S&amp;tate...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Durumunu Kayde&amp;t...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="278"/>
         <source>Load VM St&amp;ate...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal M&amp;akine Durumunu Yükle...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="287"/>
         <source>&amp;Reset VM</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makineyi Sıfı&amp;rla</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="296"/>
         <source>Power &amp;Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Gücü &amp;Kapat</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="305"/>
         <source>&amp;Commit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yorum</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="314"/>
         <source>Ctrl-Alt-&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-Alt-&amp;Delete</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="319"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="324"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="329"/>
         <source>3</source>
-        <translation type="unfinished"></translation>
+        <translation>3</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="334"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="339"/>
         <source>5</source>
-        <translation type="unfinished"></translation>
+        <translation>5</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="344"/>
         <source>6</source>
-        <translation type="unfinished"></translation>
+        <translation>6</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="349"/>
         <source>7</source>
-        <translation type="unfinished"></translation>
+        <translation>7</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="354"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="359"/>
         <source>9</source>
-        <translation type="unfinished"></translation>
+        <translation>9</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="364"/>
         <source>10</source>
-        <translation type="unfinished"></translation>
+        <translation>10</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="369"/>
         <source>11</source>
-        <translation type="unfinished"></translation>
+        <translation>11</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="374"/>
         <source>12</source>
-        <translation type="unfinished"></translation>
+        <translation>12</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="383"/>
         <location filename="Emulator_Control_Window.ui" line="429"/>
         <source>/dev/fd0</source>
-        <translation type="unfinished"></translation>
+        <translation>/dev/fd0</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="388"/>
         <location filename="Emulator_Control_Window.ui" line="452"/>
         <location filename="Emulator_Control_Window.ui" line="493"/>
         <source>/dev/null</source>
-        <translation type="unfinished"></translation>
+        <translation>/dev/null</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="397"/>
@@ -3109,81 +3129,81 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Emulator_Control_Window.ui" line="540"/>
         <location filename="Emulator_Control_Window.ui" line="550"/>
         <source>Other...</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="406"/>
         <location filename="Emulator_Control_Window.ui" line="447"/>
         <location filename="Emulator_Control_Window.ui" line="479"/>
         <source>Eject</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkar</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="411"/>
         <source>Update Device List</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Listesini Güncelle</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="420"/>
         <source>&amp;About Emulator Control...</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kontrol Hakkınd&amp;a...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="461"/>
         <source>/dev/cdrom</source>
-        <translation type="unfinished"></translation>
+        <translation>/dev/cdrom</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="488"/>
         <location filename="Emulator_Control_Window.cpp" line="317"/>
         <source>Save Screenshot As...</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Görüntüsünü Farklı Kaydet...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="498"/>
         <source>All Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Aygıtlar</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="507"/>
         <source>&amp;Other Keys...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Diğer Anahtarlar...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="516"/>
         <source>QEMU/KVM &amp;Monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM &amp;Monitör</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="525"/>
         <source>Ctrl-Alt-Backspace</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-Alt-Backspace</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="530"/>
         <location filename="Emulator_Control_Window.ui" line="555"/>
         <source>null (/dev/null)</source>
-        <translation type="unfinished"></translation>
+        <translation>null (/dev/null)</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="535"/>
         <source>stdio (Standard In Out)</source>
-        <translation type="unfinished"></translation>
+        <translation>stdio (Standart Giriş Çıkış)</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="545"/>
         <source>/dev/ttyS0</source>
-        <translation type="unfinished"></translation>
+        <translation>/dev/ttyS0</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="560"/>
         <source>By Bus.Address</source>
-        <translation type="unfinished"></translation>
+        <translation>Veriyolu Adresiyle</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="569"/>
         <source>Manage Snapshots</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlık Görüntüleri Yönet</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="574"/>
@@ -3193,27 +3213,27 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="586"/>
         <source>Display Scaling</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Ölçekleme</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="598"/>
         <source>Fullscreen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>tam Ekran Modu</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="601"/>
         <source>Ctrl+Alt+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="609"/>
         <source>Show Status Bar</source>
-        <translation type="unfinished"></translation>
+        <translation>Durum Çubuğunu Göster</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="618"/>
         <source>Reinit VNC</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC&apos;yi yeniden etkinleştir</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="623"/>
@@ -3224,145 +3244,146 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.cpp" line="87"/>
         <source> [Paused]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Durduruldu]</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="91"/>
         <source> [Saved]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Kaydedildi]</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="118"/>
         <source>Power Off This VM?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makineyi Kapat?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="119"/>
         <source>Selected VM is running now. Shutdown anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçilen Sanal Makine çalışıyor. Yine de kapatılsın mı?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="175"/>
         <source> (Emulator Control)</source>
-        <translation type="unfinished"></translation>
+        <translation> (Emulatör Kontrol)</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="318"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="349"/>
         <location filename="Emulator_Control_Window.cpp" line="361"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>Emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="350"/>
         <source>Are you sure to shutdown VM &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine &quot;% 1&quot; i kapatmaya emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="362"/>
         <source>Are you sure to reboot VM &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine &quot;% 1&quot; i yeniden başlatmaya emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="408"/>
         <location filename="Emulator_Control_Window.cpp" line="466"/>
         <location filename="Emulator_Control_Window.cpp" line="524"/>
         <source>Open Device or Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt veya Kalıp Dosyası Aç</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="410"/>
         <location filename="Emulator_Control_Window.cpp" line="468"/>
         <source>All Files (*);;Images Files (*.img *.ima)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.ima)</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="526"/>
         <source>All Files (*);;Images Files (*.iso)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.iso)</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="592"/>
         <location filename="Emulator_Control_Window.cpp" line="645"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="592"/>
         <source>Cannot Find USB Device!</source>
-        <translation type="unfinished"></translation>
+        <translation>USB Aygıtı Bulunamadı!</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="646"/>
         <source>Cannot Get USB Information From System!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistemden USB Bilgileri Alınamıyor!</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="693"/>
         <source>Disconnect USB</source>
-        <translation type="unfinished"></translation>
+        <translation>USB Bağlantısını Ayır</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="694"/>
         <source>Enter You Bus.Address VM USB Value</source>
-        <translation type="unfinished"></translation>
+        <translation>Veri.Yolu Adresini Sanal Makine USB Değerine Gir</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="735"/>
         <source>Send Keys</source>
-        <translation type="unfinished"></translation>
+        <translation>Anahtarları Gönder</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="736"/>
         <source>Enter your key combinations such as ctrl-alt-del or alt-f2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl-alt-del veya alt-f2 gibi tuş kombinasyonlarınızı girin</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="819"/>
         <source>Fullscreen mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam Ekran Modu</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="820"/>
         <source>To enable window mode press Ctrl-Alt-F
 Do you want to show this message again?</source>
-        <translation type="unfinished"></translation>
+        <translation>Pencere modunu etkinleştirmek için Ctrl-Alt-F tuşlarına basın.
+Bu mesajı tekrar görmek istiyor musunuz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="867"/>
         <source>About Emulator Control...</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kontrol Hakkında...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="868"/>
         <source>Emulator Control is a Tool for Managing QEMU in Runtime.</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kontrol, Çalışma Zamanında QEMU&apos;yu Yönetmek için bir Araçtır.</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="877"/>
         <location filename="Emulator_Control_Window.cpp" line="892"/>
         <location filename="Emulator_Control_Window.cpp" line="908"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="877"/>
         <source>In This VM Floppy 1 Not Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makinede Disket 1 Bulunamadı!</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="892"/>
         <source>In This VM Floppy 2 Not Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makinede Disket 2 Bulunamadı!</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="908"/>
         <source>In This VM CD-ROM Not Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal MakinedeCD-ROM Bulunamadı!</translation>
     </message>
 </context>
 <context>
@@ -3370,102 +3391,102 @@ Do you want to show this message again?</source>
     <message>
         <location filename="Emulator_Options_Window.ui" line="15"/>
         <source>Emulator Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Ayarları</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="25"/>
         <source>Name (Emulator identifier)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ad (Emülatör tanımlayıcı)</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="103"/>
         <source>Find emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör bul</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="134"/>
         <source>Emulator type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör türü:</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="157"/>
         <source>QEMU</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="180"/>
         <source>KVM</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="200"/>
         <source>(For adding QEMU-KVM, add them one by one)</source>
-        <translation type="unfinished"></translation>
+        <translation>(QEMU-KVM&apos;yi eklemek için bunları tek tek ekleyin)</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="219"/>
         <source>Path to Emutators Binary Directory:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör İkili Dosyaları Dizin Yolu:</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="234"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="254"/>
         <source>&amp;Find Emulators</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Emülatörleri Bul</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="291"/>
         <source>Emulators Executables Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Çalıştırılabilir Dosyaları</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="328"/>
         <source>QEMU/KVM System</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Sistemi</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="333"/>
         <source>Binary File Name</source>
-        <translation type="unfinished"></translation>
+        <translation>İkili Dosya Adı</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="373"/>
         <source>Emulator Version</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Sürümü</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="394"/>
         <source>Use saved available emulator options (Recomended to choose it again after emulator updating)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydedilen kullanılabilir emülatör seçeneklerini kullan (emülatör güncellemesinden sonra tekrar seçmek için önerilir)</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="404"/>
         <source>Always check available emulator options while starting AQEMU (Slow)</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU&apos;yu başlatırken daima kullanılabilir emülatör seçeneklerini kontrol et (Yavaş)</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="411"/>
         <source>Always check emulator version while starting AQEMU</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU başlatılırken daima emülatör sürümünü kontrol et</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="429"/>
         <source>Set version and available options manually</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürümü ve uygun seçenekleri elle ayarla</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="500"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="511"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="58"/>
@@ -3474,112 +3495,112 @@ Do you want to show this message again?</source>
         <location filename="Emulator_Options_Window.cpp" line="416"/>
         <location filename="Emulator_Options_Window.cpp" line="437"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="58"/>
         <source>Path is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yol Boş!</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="65"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="65"/>
         <source>Path doesn&apos;t exist!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yol yok!</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="104"/>
         <source>Select Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Dizini Seç</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="117"/>
         <source>Enulator Name is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Adı Boş!</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="123"/>
         <source>This emulator name is already used!</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Adı Zaten Kullanıldı!</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="184"/>
         <source>QEMU 0.9.0</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.9.0</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="185"/>
         <source>QEMU 0.9.1</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.9.1</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="186"/>
         <source>QEMU 0.10.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.10.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="187"/>
         <source>QEMU 0.11.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.11.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="188"/>
         <source>QEMU 0.12.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.12.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="189"/>
         <source>QEMU 0.13.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.13.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="196"/>
         <source>KVM 7X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 7X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="197"/>
         <source>KVM 8X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 8X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="198"/>
         <source>KVM 0.11.X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 0.11.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="199"/>
         <source>KVM 0.12.X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 0.12.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="200"/>
         <source>KVM 0.13.X</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM 0.13.X</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="330"/>
         <source>Select QEMU Binary File</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU İkili Dosyası Seç</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="332"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="417"/>
         <source>Cannot get emulator info! For file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör bilgisi alınamıyor! Dosya için: %1</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="437"/>
         <source>Cannot get version for emulator!</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör için sürüm alınamıyor!</translation>
     </message>
 </context>
 <context>
