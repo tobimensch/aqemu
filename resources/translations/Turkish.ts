@@ -3608,48 +3608,49 @@ Bu mesajı tekrar görmek istiyor musunuz?</translation>
     <message>
         <location filename="Error_Log_Window.ui" line="15"/>
         <source>QEMU Error Log</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU Hata günlüğü</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="40"/>
         <source>Error Window Show Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Penceresi Göster Modu</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="67"/>
         <source>Normal Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Normal Mod</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="77"/>
         <source>Do Not Show Until Next VM Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki Sanal Makine Başlayana Kadar Gösterme</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="87"/>
         <source>Do Not Show Until Next AQEMU Started</source>
-        <translation type="unfinished"></translation>
+        <translation>Sonraki AQEMU Başlayana Kadar Gösterme</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="94"/>
         <source>Never show it
 (For View Error Log Select VM-&gt;Show QEMU/KVM Error Log Window)</source>
-        <translation type="unfinished"></translation>
+        <translation>Asla gösterme
+Sanal Makine Hata Günlüğünü Görüntülemek için-&gt;QEMU/KVM Hata Günlüğü Göster Penceresi&apos;ni seçin)</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="106"/>
         <source>&amp;Clear Errors List</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata Listesini &amp;Temizle</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="130"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tamam</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.cpp" line="43"/>
         <source>Error #</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata #</translation>
     </message>
 </context>
 <context>
@@ -3657,229 +3658,231 @@ Bu mesajı tekrar görmek istiyor musunuz?</translation>
     <message>
         <location filename="First_Start_Wizard.ui" line="14"/>
         <source>First Start Wizard</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Başlangıç Sihirbazı</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="82"/>
         <source>English</source>
-        <translation type="unfinished"></translation>
+        <translation>English</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="469"/>
         <source>QEMU 0.9.0</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.9.0</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="474"/>
         <source>QEMU 0.9.1</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.9.1</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="479"/>
         <source>QEMU 0.10.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.10.X</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="484"/>
         <source>QEMU 0.11.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.11.X</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="489"/>
         <source>QEMU 0.12.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.12.X</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.ui" line="494"/>
         <source>QEMU 0.13.X</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU 0.13.X</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="59"/>
         <location filename="First_Start_Wizard.cpp" line="723"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="59"/>
         <source>Are you sure? You can configure these options later in Settings windows.</source>
-        <translation type="unfinished"></translation>
+        <translation>Emin misiniz? Bu seçenekleri daha sonra Ayarlar penceresinden yapılandırabilirsiniz.</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="127"/>
         <source>Set Folder for you VM&apos;s</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makineleriniz için Dizin Ayarla</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="289"/>
         <source>Search...</source>
-        <translation type="unfinished"></translation>
+        <translation>Arama...</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="289"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Vazgeç</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="307"/>
         <location filename="First_Start_Wizard.cpp" line="417"/>
         <location filename="First_Start_Wizard.cpp" line="644"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="308"/>
         <location filename="First_Start_Wizard.cpp" line="417"/>
         <source>Cannot get emulator info! For file: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör bilgisi alınamıyor! Dosya için: %1</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="347"/>
         <source>QEMU Found in &quot;%1&quot;, version: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;&apos;de QEMU bulundu, sürüm:%2</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="453"/>
         <source>KVM Found in &quot;%1&quot;, version: %2</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot;&apos;de KVM bulundu, sürüm: %2</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="526"/>
         <source>Emulator Version Modified By User</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı Tarafından Değiştirilen Emülatör Sürümü</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="535"/>
         <source>Select QEMU emulator directory</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QEMU emülatör dizini seç</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="575"/>
         <source>&amp;Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bitti</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="579"/>
         <location filename="First_Start_Wizard.cpp" line="764"/>
         <source>&amp;Next</source>
-        <translation type="unfinished"></translation>
+        <translation>So&amp;nraki</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="644"/>
         <source>Cannot Create New Folder!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Dizin Oluşturulamıyor!</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="709"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="709"/>
         <source>Emulator binary files not exists! Please click Back and set it manual.</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör ikili dosyaları yok! Lütfen Geri&apos;yi tıklayın ve elle ayarlayın.</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="724"/>
         <source>Cannot find qemu-img.exe! You most set it path in: File-&gt;Advanced Settings-&gt;Advanced-&gt;qemu-img path</source>
-        <translation type="unfinished"></translation>
+        <translation>qemu-img.exe bulunamıyor! En çok bunu yol olarak ayarlayın: Dosya-&gt; Gelişmiş Ayarlar-&gt; Gelişmiş-&gt; qemu-img yolu</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="755"/>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Hoşgeldiniz</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="756"/>
         <source>General Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel Ayarlar</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="757"/>
         <source>Find Emulators</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatörleri Bul</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="758"/>
         <source>Setup Emulator</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kurulumu</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="759"/>
         <source>Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitti</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="763"/>
         <source>&amp;Back</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Geri</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="765"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vazgeç</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="767"/>
         <source>Welcome to AQEMU settings wizard!
 This wizard will help you to choose options AQEMU needed to work correctly.
 Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button to go back to previous page.</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU ayar sihirbazına hoş geldiniz!
+Bu sihirbaz, AQEMU&apos;nun düzgün çalışması gereken seçenekleri seçmenize yardımcı olacaktır.
+Bir sonraki sayfaya gitmek için &quot;İleri&quot; düğmesine veya önceki sayfaya dönmek için &quot;Geri&quot; düğmesine basın.</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="768"/>
         <source>Here you can choose interface language</source>
-        <translation type="unfinished"></translation>
+        <translation>Burada arabirim dilini seçebilirsiniz</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="769"/>
         <source>Please select folder for AQEMU virtual machines</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen AQEMU sanal makineleri için dizin seçin</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="770"/>
         <source>If the &quot;Device manager&quot; mode is active, storage devices (Floppy, CD/DVD, HDD) will be displayed in virtual machine as icons, like in file manager window.</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Aygıt yöneticisi&quot; modu etkinse, dosya yöneticisi penceresinde olduğu gibi sanal aygıtta depolama aygıtları (Disket, CD / DVD, HDD) simgeler olarak görüntülenir.</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="771"/>
         <source>Use Device manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt yöneticisini kullan</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="772"/>
         <source>New experimental work mode is available in AQEMU. In this mode QEMU/KVM display will be showed in AQEMU main window. Note that this mode is still unstable so here may be some problems. If you want to enable this feature you must mark the &quot;Include Emdedded VNC Display in Main Window&quot; flag.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni deneysel çalışma modu AQEMU&apos;da mevcuttur. Bu modda QEMU / KVM ekranı AQEMU ana penceresinde gösterilecektir. Bu modun hala dengesiz olduğunu unutmayın, çünkü burada bazı sorunlar olabilir. Bu özelliği etkinleştirmek isterseniz, &quot;Gömülü VNC Ekranı Ana Pencereye Dahil Et&quot; bayrağını işaretlemelisiniz.</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="773"/>
         <source>Include Emdedded VNC Display in Main Window</source>
-        <translation type="unfinished"></translation>
+        <translation>Gömülü VNC Ekranını Ana Pencereye Dahil Et</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="774"/>
         <source>For correct working AQEMU must know your emulators locations and versions. For searching push the &quot;Search&quot; button. If automatic search can&apos;t find out your emulators, you should configure AQEMU yourself later. You can do it in &quot;File-&gt;Advanced Settings&quot; menu.</source>
-        <translation type="unfinished"></translation>
+        <translation>Doğru çalışma için, AQEMU emülatör yer ve sürümlerini bilmelidir. Arama yapmak için &quot;Ara&quot; düğmesine basın. Otomatik arama, emülatörlerinizi bulamazsa, AQEMU&apos;yu kendiniz kurmanız gerekir. Bunu &quot;Dosya-&gt; Gelişmiş Ayarlar&quot; menüsünden yapabilirsiniz.</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="775"/>
         <source>&amp;Search</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Arama</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="776"/>
         <source>S&amp;kip Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Aramayı &amp;Atla</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="777"/>
         <source>Set &amp;Versions Manualy</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürümleri Elle Ayarla</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="783"/>
         <source>Congratulations! The Wizard has got all necessary settings for configuring AQEMU. Push &quot;Finish&quot; button to save your settings.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tebrik ederiz! Sihirbaz, AQEMU&apos;yu yapılandırmak için gerekli tüm ayarları almıştır. Ayarlarınızı kaydetmek için &quot;Bitti&quot; düğmesine basın.</translation>
     </message>
 </context>
 <context>
@@ -3887,12 +3890,12 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
     <message>
         <location filename="Embedded_Display/Machine_View.cpp" line="188"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Embedded_Display/Machine_View.cpp" line="189"/>
         <source>Cannot Reinit VNC Connection!</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC Bağlantısı Yeniden Başlatılamıyor!</translation>
     </message>
 </context>
 <context>
@@ -3900,478 +3903,478 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
     <message>
         <location filename="Main_Window.ui" line="15"/>
         <source>AQEMU</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="114"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="171"/>
         <location filename="Main_Window.cpp" line="1969"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="185"/>
         <source>Machine &amp;Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine &amp;Adı:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="214"/>
         <location filename="Main_Window.cpp" line="1993"/>
         <source>Emulator Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="240"/>
         <location filename="Main_Window.cpp" line="2005"/>
         <source>Emulator Version:</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Sürümü:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="266"/>
         <location filename="Main_Window.cpp" line="2017"/>
         <source>Computer Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayar Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="298"/>
         <source>Machine &amp;Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine &amp;Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="356"/>
         <source>B&amp;oot Priority:</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme &amp;Önceliği:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="387"/>
         <source>Floppy</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="392"/>
         <location filename="Main_Window.ui" line="1273"/>
         <location filename="Main_Window.cpp" line="1153"/>
         <source>HDD</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="397"/>
         <source>CD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD-ROM</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="402"/>
         <location filename="Main_Window.ui" line="2458"/>
         <location filename="Main_Window.cpp" line="2314"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="407"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Yok</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="437"/>
         <source>&amp;CPU Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlem&amp;ci Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="472"/>
         <source>Number of CP&amp;U:</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci &amp;Sayısı</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="503"/>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation>1</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="508"/>
         <source>2</source>
-        <translation type="unfinished"></translation>
+        <translation>2</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="513"/>
         <source>4</source>
-        <translation type="unfinished"></translation>
+        <translation>4</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="518"/>
         <location filename="Main_Window.ui" line="3307"/>
         <source>8</source>
-        <translation type="unfinished"></translation>
+        <translation>8</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="523"/>
         <location filename="Main_Window.ui" line="3312"/>
         <source>16</source>
-        <translation type="unfinished"></translation>
+        <translation>16</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="528"/>
         <location filename="Main_Window.ui" line="3322"/>
         <source>32</source>
-        <translation type="unfinished"></translation>
+        <translation>32</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="533"/>
         <source>64</source>
-        <translation type="unfinished"></translation>
+        <translation>64</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="538"/>
         <source>128</source>
-        <translation type="unfinished"></translation>
+        <translation>128</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="543"/>
         <source>255</source>
-        <translation type="unfinished"></translation>
+        <translation>255</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="573"/>
         <source>&amp;Video Card:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ekran Kartı:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="608"/>
         <source>&amp;Keyboard Layout</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Klavye Düzeni</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="631"/>
         <source>en-us (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>en-us (varsayılan)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="636"/>
         <source>ar</source>
-        <translation type="unfinished"></translation>
+        <translation>ar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="641"/>
         <source>da</source>
-        <translation type="unfinished"></translation>
+        <translation>da</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="646"/>
         <source>de</source>
-        <translation type="unfinished"></translation>
+        <translation>de</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="651"/>
         <source>de-ch</source>
-        <translation type="unfinished"></translation>
+        <translation>de-ch</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="656"/>
         <source>en-gb</source>
-        <translation type="unfinished"></translation>
+        <translation>en-gb</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="661"/>
         <source>en-us</source>
-        <translation type="unfinished"></translation>
+        <translation>en-us</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="666"/>
         <source>es</source>
-        <translation type="unfinished"></translation>
+        <translation>es</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="671"/>
         <source>et</source>
-        <translation type="unfinished"></translation>
+        <translation>et</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="676"/>
         <source>fi</source>
-        <translation type="unfinished"></translation>
+        <translation>fi</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="681"/>
         <source>fo</source>
-        <translation type="unfinished"></translation>
+        <translation>fo</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="686"/>
         <source>fr</source>
-        <translation type="unfinished"></translation>
+        <translation>fr</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="691"/>
         <source>fr-be</source>
-        <translation type="unfinished"></translation>
+        <translation>fr-be</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="696"/>
         <source>fr-ca</source>
-        <translation type="unfinished"></translation>
+        <translation>b</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="701"/>
         <source>fr-ch</source>
-        <translation type="unfinished"></translation>
+        <translation>fr-ch</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="706"/>
         <source>hr</source>
-        <translation type="unfinished"></translation>
+        <translation>hr</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="711"/>
         <source>hu</source>
-        <translation type="unfinished"></translation>
+        <translation>hu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="716"/>
         <source>is</source>
-        <translation type="unfinished"></translation>
+        <translation>is</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="721"/>
         <source>it</source>
-        <translation type="unfinished"></translation>
+        <translation>it</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="726"/>
         <source>ja</source>
-        <translation type="unfinished"></translation>
+        <translation>ja</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="731"/>
         <source>lt</source>
-        <translation type="unfinished"></translation>
+        <translation>lt</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="736"/>
         <source>lv</source>
-        <translation type="unfinished"></translation>
+        <translation>lv</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="741"/>
         <source>mk</source>
-        <translation type="unfinished"></translation>
+        <translation>mk</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="746"/>
         <source>nl</source>
-        <translation type="unfinished"></translation>
+        <translation>nl</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="751"/>
         <source>nl-be</source>
-        <translation type="unfinished"></translation>
+        <translation>nl-be</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="756"/>
         <source>no</source>
-        <translation type="unfinished"></translation>
+        <translation>no</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="761"/>
         <source>pl</source>
-        <translation type="unfinished"></translation>
+        <translation>pl</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="766"/>
         <source>pt</source>
-        <translation type="unfinished"></translation>
+        <translation>pt</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="771"/>
         <source>pt-br</source>
-        <translation type="unfinished"></translation>
+        <translation>pt-br</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="776"/>
         <source>ru</source>
-        <translation type="unfinished"></translation>
+        <translation>ru</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="781"/>
         <source>sl</source>
-        <translation type="unfinished"></translation>
+        <translation>sl</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="786"/>
         <source>sv</source>
-        <translation type="unfinished"></translation>
+        <translation>sv</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="791"/>
         <source>th</source>
-        <translation type="unfinished"></translation>
+        <translation>th</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="796"/>
         <source>tr</source>
-        <translation type="unfinished"></translation>
+        <translation>tr</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="819"/>
         <source>Memory Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Boyutu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="869"/>
         <source>1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>1 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="889"/>
         <source>Updating free memory information</source>
-        <translation type="unfinished"></translation>
+        <translation>Boş bellek bilgisini güncelleme</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="892"/>
         <source>Free memory: 768 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>Boş bellek: 768 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="922"/>
         <source>2048 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>2048 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="968"/>
         <source>32 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>32 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="973"/>
         <source>64 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>64 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="978"/>
         <source>128 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>128 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="983"/>
         <source>256 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>256 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="988"/>
         <source>512 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>512 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="993"/>
         <source>1 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>1 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="998"/>
         <source>2 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>2 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1003"/>
         <source>3 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>3 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1008"/>
         <source>4 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>4 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1013"/>
         <source>8 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>8 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1018"/>
         <source>16 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>16 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1023"/>
         <source>32 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>32 GB</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1044"/>
         <source>Remove limitation on maximum amount of memory</source>
-        <translation type="unfinished"></translation>
+        <translation>En fazla bellek miktarı sınırlamasını kaldır</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1067"/>
         <source>Audio Cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses Kartları</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1079"/>
         <source>Sound &amp;Blaster 16</source>
-        <translation type="unfinished"></translation>
+        <translation>Sound &amp;Blaster 16</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1102"/>
         <source>&amp;ENSONIQ ES1370</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;ENSONIQ ES1370</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1122"/>
         <source>&amp;Yamaha YM3812</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yamaha YM3812</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1129"/>
         <source>AC97 (Intel 82801AA)</source>
-        <translation type="unfinished"></translation>
+        <translation>AC97 (Intel 82801AA)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1149"/>
         <source>Gravis &amp;Ultrasound GF1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gravis &amp;Ultrasound GF1</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1169"/>
         <source>PC Speaker</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgisayar Hoparlörü</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1192"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Seçenekler</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1204"/>
         <source>Start in full screen</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam ekranda başlat</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1207"/>
         <source>&amp;Fullscreen Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Tam Ekran Modu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1233"/>
         <source>Snapshot &amp;Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Anlık Görüntü Modu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1259"/>
         <source>Set real time clock to local time. Default=utc</source>
-        <translation type="unfinished"></translation>
+        <translation>Gerçek zaman saatini yerel saate ayarla. Varsayılan=utc</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1262"/>
         <source>Use &amp;Local Time</source>
-        <translation type="unfinished"></translation>
+        <translation>Yere&amp;l Saati Kullan</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1279"/>
         <source>HDA (Primary Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDA (Birincil Ana)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1318"/>
@@ -4379,7 +4382,7 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
         <location filename="Main_Window.ui" line="1710"/>
         <location filename="Main_Window.ui" line="1906"/>
         <source>Select Disk Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Disk Kalıbı Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1321"/>
@@ -4390,7 +4393,7 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
         <location filename="Main_Window.ui" line="2252"/>
         <location filename="Main_Window.ui" line="2383"/>
         <source>Open</source>
-        <translation type="unfinished"></translation>
+        <translation>Aç</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1341"/>
@@ -4398,7 +4401,7 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
         <location filename="Main_Window.ui" line="1733"/>
         <location filename="Main_Window.ui" line="1929"/>
         <source>Create New HDD</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni HDD Oluştur</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1344"/>
@@ -4406,7 +4409,7 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
         <location filename="Main_Window.ui" line="1736"/>
         <location filename="Main_Window.ui" line="1932"/>
         <source>Create</source>
-        <translation type="unfinished"></translation>
+        <translation>Oluştur</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1363"/>
@@ -4415,7 +4418,8 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
         <location filename="Main_Window.ui" line="1951"/>
         <source>Image Format: none
 Allocated Disk Space: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp Biçimi: yok
+Ayrılan Disk Alanı: 0</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1390"/>
@@ -4424,7 +4428,8 @@ Allocated Disk Space: 0</source>
         <location filename="Main_Window.ui" line="1978"/>
         <source>Virtual Size: 0
 Cluster Size: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Boyut: 0
+Küme Boyutu: 0</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1419"/>
@@ -4432,7 +4437,7 @@ Cluster Size: 0</source>
         <location filename="Main_Window.ui" line="1811"/>
         <location filename="Main_Window.ui" line="2007"/>
         <source>Format</source>
-        <translation type="unfinished"></translation>
+        <translation>Biçim</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1442"/>
@@ -4443,40 +4448,40 @@ Cluster Size: 0</source>
         <location filename="Main_Window.ui" line="2293"/>
         <location filename="Main_Window.ui" line="2424"/>
         <source>All settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm ayarlar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1475"/>
         <source>HDB (Primary Slave)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDB (Birincil Köle)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1671"/>
         <source>HDC (Secondary Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDC (İkinil Ana)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1867"/>
         <source>HDD (Secondary Slave)</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD (İkincil Köle)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2061"/>
         <location filename="Main_Window.cpp" line="1156"/>
         <source>CD/DVD/Floppy</source>
-        <translation type="unfinished"></translation>
+        <translation>CD/DVD/Disket</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2078"/>
         <source>CD/DVD-ROM</source>
-        <translation type="unfinished"></translation>
+        <translation>CD/DVD-ROM</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2118"/>
         <location filename="Main_Window.ui" line="2249"/>
         <location filename="Main_Window.ui" line="2380"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>Tara</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2139"/>
@@ -4486,132 +4491,132 @@ Cluster Size: 0</source>
         <location filename="Main_Window.cpp" line="3434"/>
         <location filename="Main_Window.cpp" line="3441"/>
         <source>Type: none     Size: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: yok     Boyut: 0</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2209"/>
         <source>Floppy A</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket A</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2340"/>
         <source>Floppy B</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket B</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2470"/>
         <source>Use &amp;Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağı Kulla&amp;n</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2496"/>
         <source>Network Settings GUI Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Ayarları Arayüz Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2519"/>
         <source>Basic</source>
-        <translation type="unfinished"></translation>
+        <translation>Temel</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2529"/>
         <source>Native</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2549"/>
         <source>Additional Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ek Ayarlar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2567"/>
         <source>&amp;Redirections</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirmele&amp;r</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2615"/>
         <source>Protocol</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2620"/>
         <source>Host Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Ana Bilgisayar Bağlantı Noktası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2625"/>
         <source>Guest IP</source>
-        <translation type="unfinished"></translation>
+        <translation>Misafir IP</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2630"/>
         <source>Guest Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Misafir Bağlantı Noktası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2644"/>
         <source>A&amp;dd item</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğe &amp;Ekle</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2661"/>
         <source>D&amp;elete item</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğ&amp;e Sil</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2678"/>
         <source>&amp;Clear list</source>
-        <translation type="unfinished"></translation>
+        <translation>Listeyi &amp;Temizle</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2731"/>
         <source>Redirect item settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirme öğesi ayarları</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2764"/>
         <source>Protocol:</source>
-        <translation type="unfinished"></translation>
+        <translation>Protokol:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2771"/>
         <source>&amp;TCP</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;TCP</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2781"/>
         <source>&amp;UDP</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;UDP</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2820"/>
         <source>&amp;Host Port</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ana Bilgisayar Bağlantı Noktası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2843"/>
         <source>to &amp;guest IP</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;misafir IP&apos;ye</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2856"/>
         <source>Guest Por&amp;t</source>
-        <translation type="unfinished"></translation>
+        <translation>Misafir Bağlantı Nok&amp;tası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2898"/>
         <source>Other network settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer ağ ayarları</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2925"/>
         <source>T&amp;FTP Server Prefix:</source>
-        <translation type="unfinished"></translation>
+        <translation>T&amp;FTP Sunucu Öneki:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2938"/>
         <source>Allow &amp;SMB Access to:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;SMB Erişimine İzin ver:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2951"/>
@@ -4625,184 +4630,184 @@ Cluster Size: 0</source>
         <location filename="Main_Window.ui" line="4184"/>
         <location filename="Main_Window.ui" line="4228"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2988"/>
         <location filename="Main_Window.cpp" line="2911"/>
         <source>Advanced</source>
-        <translation type="unfinished"></translation>
+        <translation>Gelişmiş</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3004"/>
         <source>Additional Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Ek Seçenekler</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3010"/>
         <source>Fix Windows 2000 install Bug</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows 2000 kurulum hatası düzeltme</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3013"/>
         <source>&amp;Windows 2K Hack</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Windows 2K Hack</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3020"/>
         <source>RTC TD Hack (Fix Time Drift in Windows ACPI HAL)</source>
-        <translation type="unfinished"></translation>
+        <translation>RTC TD Hack (Windows ACPI HAL&apos;de Sürenin Kaymasının Düzeltilmesi)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3027"/>
         <source>No Shutdown</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapatma Yok</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3034"/>
         <source>Exit instead of rebooting</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden başlatmak yerine çık</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3037"/>
         <source>No Reboot</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden Başlatma Yok</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3044"/>
         <source>Start CP&amp;U at Startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıçta İşle&amp;mciyi Başlat</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3051"/>
         <source>Check Floppy Disk boot signature in VM BIOS</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine BIOS&apos;unda Disket önyükleme imzasını kontrol et</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3054"/>
         <source>Check Boot Secto&amp;r on FDD</source>
-        <translation type="unfinished"></translation>
+        <translation>FDD&apos;de Önyükleme Kesimini Kont&amp;rol Et</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3067"/>
         <source>Enable ACP&amp;I</source>
-        <translation type="unfinished"></translation>
+        <translation>ACP&amp;I Etkin</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3082"/>
         <source>Start Date (Day.Month.Year Hour:Minute:Second)</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıç Tarihi (Gün.Ay.Yıl Saat: Dakika: Saniye)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3136"/>
         <source>dd.MM.yyyy HH:mm:ss</source>
-        <translation type="unfinished"></translation>
+        <translation>dd.MM.yyyy HH:mm:ss</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3146"/>
         <source>QEMU/KVM Window Options</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Pencere Seçenekleri</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3152"/>
         <source>Show QEMU/KVM Window Without a Frame and Window Decorations</source>
-        <translation type="unfinished"></translation>
+        <translation>Çerçeve ve Pencere Süslemeleri olmadan QEMU/KVM Penceresini Göster</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3159"/>
         <source>Use Ctrl-Alt-Shift to Grab Mouse (Default is Ctrl-Alt)</source>
-        <translation type="unfinished"></translation>
+        <translation>Fare yakalama için Ctrl-Alt-Shift kullan (Varsayılan: Ctrl-Alt)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3166"/>
         <source>Disable QEMU/KVM Window Close Capability</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Pencere Kapanma Yeteneğini Devre Dışı Bırak</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3173"/>
         <source>Rotate Graphical Output 90 Deg Left (Only PXA LCD)</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafik Çıktıyı Döndür 90 Drc Sola (Sadece PXA LCD)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3180"/>
         <source>Curses (Use a curses/ncurses Interface Instead of SDL)</source>
-        <translation type="unfinished"></translation>
+        <translation>Curses (SDL yerine bir curses/ncurses Arabirimi kullan)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3187"/>
         <source>Show Cursor (It Works Only in QEMU/KVM SDL Window)</source>
-        <translation type="unfinished"></translation>
+        <translation>İmleci Göster (Sadece QEMU/KVM SDL Penceresinde Çalışır)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3194"/>
         <source>Initial Graphical Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Grafik Modu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3209"/>
         <source>Width</source>
-        <translation type="unfinished"></translation>
+        <translation>Genişlik</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3251"/>
         <source>Height</source>
-        <translation type="unfinished"></translation>
+        <translation>Yükseklik</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3293"/>
         <source>Depth</source>
-        <translation type="unfinished"></translation>
+        <translation>Derinlik</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3317"/>
         <source>24</source>
-        <translation type="unfinished"></translation>
+        <translation>24</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3384"/>
         <source>Send Only User Arguments Without AQEMU Arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU Argümanları olmadan yalnızca Kullanıcı Argümanları Gönderme</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3399"/>
         <source>Use Emulator Binary File in &quot;Additional QEMU/KVM Arguments&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör İkili Dosyayı &quot;Ek QEMU/KVM Argümanlarında&quot; kullanın</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3437"/>
         <source>Additional QEMU/KVM &amp;Arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>Ek QEMU/KVM &amp;Argümanları</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3451"/>
         <location filename="Main_Window.cpp" line="2683"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Diğer</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3461"/>
         <source>Hardware Virtualization</source>
-        <translation type="unfinished"></translation>
+        <translation>Donanım Sanallaştırma</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3475"/>
         <source>KVM Options</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM Seçenekleri</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3499"/>
         <source>Enable KVM</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM Etkinlişetir</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3509"/>
         <source>Disable KVM kernel mode PIC/IOAPIC/LAPIC</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM çekirdeği modu PIC / IOAPIC / LAPIC&apos;i devre dışı bırak</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3516"/>
         <source>Disable KVM kernel mode PIT</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM çekirdek modu PIT&apos;i devre dışı bırak</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3523"/>
@@ -4812,408 +4817,414 @@ Cluster Size: 0</source>
     <message>
         <location filename="Main_Window.ui" line="3530"/>
         <source>Nesting (Support for Running a VM Inside other VM (AMD Only)</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerleştirme (Bir bir sanal makineyi diğer sanal makinede çalıştırma desteği (Yalnızca AMD)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3537"/>
         <source>KVM Shadow Memory</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM Gölge Bellek</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3566"/>
         <location filename="Main_Window.cpp" line="3459"/>
         <source>Mb</source>
-        <translation type="unfinished"></translation>
+        <translation>Mb</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3612"/>
         <source>KQEMU Acceleration Module</source>
-        <translation type="unfinished"></translation>
+        <translation>KQEMU Hızlandırma Modülü</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3636"/>
         <source>Disabled
 (Disable KQEMU Accelerator module)</source>
-        <translation type="unfinished"></translation>
+        <translation>Devre Dışı
+(KQEMU Hızlandırıcı modülünü devre dışı bırak)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3644"/>
         <source>Use If Possible
 (AQEMU won&apos;t check loaded KQEMU module)</source>
-        <translation type="unfinished"></translation>
+        <translation>Mümkünse kullan
+(AQEMU yüklü KQEMU modülünü kontrol etmeyecektir)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3655"/>
         <source>Enabled
 (AQEMU checks loaded KQEMU module. If it isn&apos;t loaded QEMU won&apos;t started)</source>
-        <translation type="unfinished"></translation>
+        <translation>Etkin
+(AQEMU yüklü KQEMU modülünü kontrol eder, yüklü değilse QEMU başlatılmaz)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3663"/>
         <source>Full
 (Enable full virtualization mode for best performances)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam
+(En iyi performanslar için tam sanallaştırma modunu etkinleştirin)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3687"/>
         <source>VNC</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3693"/>
         <source>Activate VNC</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC&apos;yi etkinleştir</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3717"/>
         <source>General settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel Ayarlar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3738"/>
         <source>VNC Display Number</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC Ekran Numarası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3748"/>
         <source>For Connection Use Port 5900 + VNC Display Number</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı İçin Bağlantı Noktası 5900 + VNC Ekran Numarası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3764"/>
         <source>UNIX Domain Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>UNIX Etki Alanı Soketi</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3802"/>
         <source>Security settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Güvenlik ayarları</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3823"/>
         <source>Use Password (You must set a password when you starting the VM)</source>
-        <translation type="unfinished"></translation>
+        <translation>Parola Kullan (VM başlatırken bir parola ayarlamanız gerekir)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3830"/>
         <source>Use TLS</source>
-        <translation type="unfinished"></translation>
+        <translation>TLS Kullan</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3855"/>
         <source>x509 Folder Path</source>
-        <translation type="unfinished"></translation>
+        <translation>x509 Dizin Yolu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3893"/>
         <source>x509verify Folder Path</source>
-        <translation type="unfinished"></translation>
+        <translation>x509 Doğrulama Dizin Yolu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3952"/>
         <source>Warning: Globaly Activated Embedded Display in Emulator Control Window.
 To Disable This Function in Current VM choose &quot;Don&apos;t Use Embedded VNC Display&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı: Emulator Kontrol Penceresinde Genel Olarak Gömülü Ekran Etkin.
+Bu İşlevi Geçerli Sanal Makinede Devre Dışı Bırakmak İçin &quot;Gömülü VNC Ekranı Kullanma&quot; Seçin</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3960"/>
         <source>Don&apos;t use embedded VNC Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Gömülü VNC Ekranı Kullanma</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3968"/>
         <source>Optional Images</source>
-        <translation type="unfinished"></translation>
+        <translation>İsteğe Bağlı Kalıplar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3974"/>
         <source>ROM File (For EtherBoot)</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası (EtherBoot İçin)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4012"/>
         <source>On-Board Flash Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Bütünleşik Flaş Kalıbı</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4050"/>
         <source>SecureDigital Card Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Güvenli Dijital Kart Kalıbı</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4088"/>
         <source>Parallel Flash Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Flaş Kalıbı</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4140"/>
         <source>Boot Linux Kernel</source>
-        <translation type="unfinished"></translation>
+        <translation>Linux Çekirdeği Önyüklemesi</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4146"/>
         <source>Use &amp;Linux Boot</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Linux Önyükleme Kullan</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4156"/>
         <source>Kernel bzImage File:</source>
-        <translation type="unfinished"></translation>
+        <translation>Çekirdek bzKalıp Dosyası:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4200"/>
         <source>&amp;Initrd File:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Initrd Dosyası</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4244"/>
         <source>Append Command Line:</source>
-        <translation type="unfinished"></translation>
+        <translation>Komut Satırı Ekle:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4310"/>
         <source>&amp;Apply</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Uygula</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4321"/>
         <source>&amp;Discard Changes</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Değişiklikleri Gözardı Et</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4348"/>
         <source>&amp;VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sanal Makine</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4352"/>
         <source>&amp;New VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yeni Sanal Makine</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4384"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yardım</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4391"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Dosya</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4446"/>
         <source>&amp;About AQEMU</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;AQEMU Hakkında</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4449"/>
         <location filename="Main_Window.ui" line="4452"/>
         <source>About AQEMU</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU Hakkında</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4455"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4464"/>
         <source>About &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Qt Hakkında</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4473"/>
         <source>&amp;Delete VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sanal Makineyi Sil</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4482"/>
         <source>&amp;Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Çık</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4485"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4494"/>
         <source>&amp;Wizard...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sihirbaz...</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4497"/>
         <source>Ctrl+W</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+W</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4506"/>
         <source>&amp;Add New VM</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Yeni Sanal Makine Ekle</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4509"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4518"/>
         <source>&amp;Create HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıbı &amp;Oluştur</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4527"/>
         <source>Con&amp;vert HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıbı &amp;Dönüştür</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4530"/>
         <location filename="Main_Window.ui" line="4533"/>
         <source>Convert HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıbı Dönüştür</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4542"/>
         <source>General &amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Genel &amp;Ayarlar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4545"/>
         <location filename="Main_Window.ui" line="4548"/>
         <source>AQEMU &amp;Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU &amp;Ayarları</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4557"/>
         <source>&amp;Start</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Başlat</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4560"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4569"/>
         <source>Sto&amp;p</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Durdur</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4572"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4584"/>
         <source>&amp;Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Duraklat</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4587"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4596"/>
         <source>&amp;Reset</source>
-        <translation type="unfinished"></translation>
+        <translation>Sıfı&amp;rla</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4599"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4608"/>
         <source>&amp;Load VM From File</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosyadan Sanal Makine Yük&amp;le</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4617"/>
         <source>Save As &amp;Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablon Olarak Kayde&amp;t</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4626"/>
         <source>Show QEMU/KVM &amp;Arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM &amp;Argümanlarını Göster</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4635"/>
         <source>Sa&amp;ve</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Kaydet</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4644"/>
         <source>Change Icon</source>
-        <translation type="unfinished"></translation>
+        <translation>Simgeyi Değştir</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4653"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopyala</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4662"/>
         <source>Manage Snapshots</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlık Görüntüleri Yönet</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4671"/>
         <source>Show Emulator Control</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kontrolünü Göster</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4680"/>
         <source>Show QEMU/KVM Error Log Window</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Hata Günlüğü Penceresini Göster</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4689"/>
         <source>&amp;Advanced Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Gelişmiş Ayarlar</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4698"/>
         <source>Start &amp;First Run Wizard</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Çalışma &amp;Sihirbazını Başlat</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4707"/>
         <source>Create Shell Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabuk Betiği Oluştur</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4716"/>
         <source>Delete VM And Files</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine ve Dosyalarını Sil</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="109"/>
         <source>SPICE</source>
-        <translation type="unfinished"></translation>
+        <translation>SPICE</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="149"/>
         <location filename="Main_Window.cpp" line="2491"/>
         <source>Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktaları</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="216"/>
         <source>Cannot Save Settings!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayarlar Kaydedilemiyor!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="226"/>
         <source>Close AQEMU?</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU&apos;yu Kapat?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="227"/>
         <source>One or More VM is Running!
 Terminate All Running VM and Close AQEMU?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir veya daha fazla Sanal Makine Çalışıyor!
+Tüm Çalışan Sanal Makineleri Sona Erdir ve AQEMU&apos;yu Kapat?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="710"/>
@@ -5230,54 +5241,56 @@ Terminate All Running VM and Close AQEMU?</source>
         <location filename="Main_Window.cpp" line="6305"/>
         <location filename="Main_Window.cpp" line="6387"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="710"/>
         <source>VM Name is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Adı Boş!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="904"/>
         <source>Redirection List is Empty! Please Disable Redirections!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirme Listesi Boş! Lütfen Yönlendirmeleri Devre Dışı Bırakın!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1140"/>
         <source>Device Manager</source>
-        <translation type="unfinished"></translation>
+        <translation>Aygıt Yöneticisi</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1232"/>
         <source>VM File &quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Dosyası</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1232"/>
         <source>&quot; is Read Only!
 Check Permissions!</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;Sadece Okunabilir!
+İzinleri Kontrol Edin!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1505"/>
         <source>Memory size &lt; 1! Using default value: 256 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek boyutu &lt;1! Varsayılan değer kullanılıyor: 256 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1511"/>
         <source>Memory size &gt; all free memory on this system!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek boyutu&gt; Bu sistemdeki boş hafıza!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1840"/>
         <source>You must create a new virtual machine</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni bir sanal makine oluşturmalısınız</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1841"/>
         <source>This VM uses an emulator &quot;%1&quot; which is not installed in the system.
 The work of the VM is not possible!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makine, sisteme kurulmamış bir &quot;%1&quot; öykünücüsü kullanıyor.
+Sanal Makineninnin çalışması mümkün değildir!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1907"/>
@@ -6246,7 +6259,7 @@ Add This Record?</source>
     <message>
         <location filename="Main_Window.cpp" line="6544"/>
         <source>Select x509 Verify Certificate Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>x509 Sertifika Doğrulama Dizininiı seçin</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6554"/>
