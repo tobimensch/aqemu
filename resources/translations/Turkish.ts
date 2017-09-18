@@ -2470,7 +2470,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="347"/>
         <source>An error occurred while deleting files</source>
-        <translation>Dosyalar silinirken bir hata oluştu.</translation>
+        <translation>Dosyalar silinirken bir hata oluştu</translation>
     </message>
     <message>
         <location filename="Delete_VM_Files_Window.cpp" line="348"/>
@@ -3280,12 +3280,12 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.cpp" line="350"/>
         <source>Are you sure to shutdown VM &quot;%1&quot;?</source>
-        <translation>Sanal Makine &quot;% 1&quot; i kapatmaya emin misiniz?</translation>
+        <translation>&quot;% 1&quot; Sanal Makinesini kapatmaya emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="362"/>
         <source>Are you sure to reboot VM &quot;%1&quot;?</source>
-        <translation>Sanal Makine &quot;% 1&quot; i yeniden başlatmaya emin misiniz?</translation>
+        <translation>&quot;% 1&quot; Sanal Makinesini yeniden başlatmaya emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="408"/>
@@ -3752,7 +3752,7 @@ Sanal Makine Hata Günlüğünü Görüntülemek için-&gt;QEMU/KVM Hata Günlü
     <message>
         <location filename="First_Start_Wizard.cpp" line="535"/>
         <source>Select QEMU emulator directory</source>
-        <translation type="unfinished">QEMU emülatör dizini seç</translation>
+        <translation>QEMU emülatör dizini seç</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="575"/>
@@ -4812,7 +4812,7 @@ Küme Boyutu: 0</translation>
     <message>
         <location filename="Main_Window.ui" line="3523"/>
         <source>Disable KVM kernel mode PIT interrupt reinjection</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM çekirdek modunu devre dışı bırak PIT kesmeyi tekrar enjekte et</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3530"/>
@@ -5295,77 +5295,77 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="1907"/>
         <source>Machine Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine Ayrıntıları</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1919"/>
         <source>Machine State:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nakine Durumu:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1925"/>
         <source>Running</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalışıyor</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1929"/>
         <source>Power Off</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapat</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1933"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Durdur</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1937"/>
         <source>Saved</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydedildi</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1981"/>
         <source>Machine Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine Adı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2029"/>
         <source>Machine Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>Makine Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2041"/>
         <source>Boot Priority:</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme Önceliği:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2053"/>
         <source>CPU Type:</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci Türü:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2065"/>
         <source>Number of CPU:</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci Sayısı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2077"/>
         <source>Video Card:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran Kartı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2089"/>
         <source>Keyboard Layout:</source>
-        <translation type="unfinished"></translation>
+        <translation>Klavye Düzeni:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2101"/>
         <source>Memory Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Boyutu:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2113"/>
         <source>Use Sound:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ses Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2121"/>
@@ -5387,7 +5387,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="3073"/>
         <location filename="Main_Window.cpp" line="3085"/>
         <source>Yes</source>
-        <translation type="unfinished"></translation>
+        <translation>Evet</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2125"/>
@@ -5415,145 +5415,145 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="3073"/>
         <location filename="Main_Window.cpp" line="3085"/>
         <source>No</source>
-        <translation type="unfinished"></translation>
+        <translation>Hayır</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2135"/>
         <source>Fullscreen Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam Ekran Modu:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2147"/>
         <source>Use Snapshot Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anlık Görüntü Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2159"/>
         <source>Use Local Time:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerel Saati Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2186"/>
         <source>Storage Devices</source>
-        <translation type="unfinished"></translation>
+        <translation>Depolama Aygıtları</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2208"/>
         <source>Floppy 1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket 1:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2223"/>
         <source>Floppy 2:</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket 2:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2240"/>
         <source>CD/DVD-ROM:</source>
-        <translation type="unfinished"></translation>
+        <translation>CD/DVD-ROM:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2257"/>
         <source>Primary Master (HDA):</source>
-        <translation type="unfinished"></translation>
+        <translation>Birincil Ana (HDA):</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2270"/>
         <source>Primary Slave (HDB):</source>
-        <translation type="unfinished"></translation>
+        <translation>Birincil Köle (HDB):</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2283"/>
         <source>Secondary Master (HDC):</source>
-        <translation type="unfinished"></translation>
+        <translation>İkincil Ana (HDC):</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2296"/>
         <source>Secondary Slave (HDD):</source>
-        <translation type="unfinished"></translation>
+        <translation>İkincil Köle (HDD):</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2326"/>
         <source>Use Network:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2341"/>
         <source>Card: </source>
-        <translation type="unfinished"></translation>
+        <translation>Kart: </translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2348"/>
         <source>User mode network stack</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı modu ağ yığını</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2352"/>
         <location filename="Main_Window.cpp" line="2356"/>
         <source>TUN/TAP Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>TUN/TAP Arabirimi</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2360"/>
         <location filename="Main_Window.cpp" line="2364"/>
         <source>TCP Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>TCP Yuvası</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2368"/>
         <source>VLAN</source>
-        <translation type="unfinished"></translation>
+        <translation>VLAN</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2372"/>
         <location filename="Main_Window.cpp" line="2376"/>
         <source>UDP multicast socket</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP çok noktaya yayın yuvası</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2380"/>
         <source>No Connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Yok</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2398"/>
         <source>Item %1</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Öğesi</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2405"/>
         <source>NIC</source>
-        <translation type="unfinished"></translation>
+        <translation>NIC</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2409"/>
         <source>User</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2413"/>
         <source>Channel</source>
-        <translation type="unfinished"></translation>
+        <translation>Kanal</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2417"/>
         <source>TAP</source>
-        <translation type="unfinished"></translation>
+        <translation>TAP</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2421"/>
         <source>Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Yuva</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2425"/>
         <source>Multicast Socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Çok noktaya yayın yuvası</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2429"/>
         <source>VDE</source>
-        <translation type="unfinished"></translation>
+        <translation>VDE</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2433"/>
@@ -5563,22 +5563,22 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="2437"/>
         <source>Unknown Type Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen Tür Öğe</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2460"/>
         <source>Redirection </source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirme </translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2476"/>
         <source>Use Redirections:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yönlendirmeleri Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2505"/>
         <source>Serial Port %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri Bağlantı Noktası %1:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2513"/>
@@ -5587,156 +5587,156 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="2647"/>
         <location filename="Main_Window.cpp" line="6020"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Varsayılan</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2517"/>
         <location filename="Main_Window.cpp" line="2595"/>
         <source>vc</source>
-        <translation type="unfinished"></translation>
+        <translation>vc</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2521"/>
         <location filename="Main_Window.cpp" line="2599"/>
         <source>pty</source>
-        <translation type="unfinished"></translation>
+        <translation>pty</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2525"/>
         <location filename="Main_Window.cpp" line="2603"/>
         <source>none</source>
-        <translation type="unfinished"></translation>
+        <translation>yok</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2529"/>
         <location filename="Main_Window.cpp" line="2607"/>
         <source>null</source>
-        <translation type="unfinished"></translation>
+        <translation>boş</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2533"/>
         <location filename="Main_Window.cpp" line="2611"/>
         <source>dev</source>
-        <translation type="unfinished"></translation>
+        <translation>dev</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2537"/>
         <location filename="Main_Window.cpp" line="2615"/>
         <source>host_port</source>
-        <translation type="unfinished"></translation>
+        <translation>anamakine_bağlantı noktası</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2541"/>
         <location filename="Main_Window.cpp" line="2619"/>
         <source>file</source>
-        <translation type="unfinished"></translation>
+        <translation>dosya</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2545"/>
         <location filename="Main_Window.cpp" line="2623"/>
         <source>stdio</source>
-        <translation type="unfinished"></translation>
+        <translation>stdio</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2549"/>
         <location filename="Main_Window.cpp" line="2627"/>
         <source>pipe</source>
-        <translation type="unfinished"></translation>
+        <translation>pipe</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2553"/>
         <location filename="Main_Window.cpp" line="2631"/>
         <source>udp</source>
-        <translation type="unfinished"></translation>
+        <translation>udp</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2557"/>
         <location filename="Main_Window.cpp" line="2635"/>
         <source>tcp</source>
-        <translation type="unfinished"></translation>
+        <translation>tcp</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2561"/>
         <location filename="Main_Window.cpp" line="2639"/>
         <source>telnet</source>
-        <translation type="unfinished"></translation>
+        <translation>telnet</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2565"/>
         <location filename="Main_Window.cpp" line="2643"/>
         <source>unix</source>
-        <translation type="unfinished"></translation>
+        <translation>unix</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2583"/>
         <source>Parallel Port %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Bağlantı Noktası %1:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2661"/>
         <source>USB Port %1:</source>
-        <translation type="unfinished"></translation>
+        <translation>USB Bağlantı Noktası %1:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2696"/>
         <source>Acceleration:</source>
-        <translation type="unfinished"></translation>
+        <translation>Hızlandırma:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2703"/>
         <location filename="Main_Window.cpp" line="2721"/>
         <source>Use If Possible</source>
-        <translation type="unfinished"></translation>
+        <translation>Mümkünse Kullan</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2707"/>
         <source>Disabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Devre Dışı</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2711"/>
         <source>Enabled</source>
-        <translation type="unfinished"></translation>
+        <translation>Etkin</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2715"/>
         <source>Full</source>
-        <translation type="unfinished"></translation>
+        <translation>Tam</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2732"/>
         <source>VNC Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC Bağlantı Noktası:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2745"/>
         <source>SPICE Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>SPICE Bağlantı Noktası:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2758"/>
         <source>Use Linux Boot:</source>
-        <translation type="unfinished"></translation>
+        <translation>Linux Önyükleme Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2769"/>
         <source>Kernel bzImage:</source>
-        <translation type="unfinished"></translation>
+        <translation>Çekirdek bzKalıbı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2779"/>
         <source>Initrd File:</source>
-        <translation type="unfinished"></translation>
+        <translation>Initrd Dosyası:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2789"/>
         <source>Kernel ComLine:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kernel ComLine:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2805"/>
         <source>ROM File:</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2828"/>
@@ -5746,72 +5746,72 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="2851"/>
         <source>SD Card Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>SD Kart Kalıbı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2874"/>
         <source>Parallel Flash Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Flaş Kalıbı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2923"/>
         <source>RTC TD Hack:</source>
-        <translation type="unfinished"></translation>
+        <translation>RTC TD Hack:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2935"/>
         <source>Windows 2000 Hack:</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows 2000 Hack:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2947"/>
         <source>No Shutdown:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapatma Yok:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2959"/>
         <source>No Reboot:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeniden Başlatma Yok:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2971"/>
         <source>Start CPU at Startup:</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemciyi Başlangıçta Başlat:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2983"/>
         <source>Check Boot Sector on FDD:</source>
-        <translation type="unfinished"></translation>
+        <translation>FDD üzerinde Önyükleme Kesimi Kontrolü:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2995"/>
         <source>Enable ACPI:</source>
-        <translation type="unfinished"></translation>
+        <translation>ACPI Etkin:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3008"/>
         <source>Start Date:</source>
-        <translation type="unfinished"></translation>
+        <translation>Başlangıç Tarihi:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3021"/>
         <source>No Frame:</source>
-        <translation type="unfinished"></translation>
+        <translation>Çerçeve Yok:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3033"/>
         <source>Alt Grab:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yakalama:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3045"/>
         <source>No Quit:</source>
-        <translation type="unfinished"></translation>
+        <translation>Çıkış Yok:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3057"/>
         <source>Portrait Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Poertre Modu:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3069"/>
@@ -5821,54 +5821,54 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="3081"/>
         <source>Show Cursor:</source>
-        <translation type="unfinished"></translation>
+        <translation>İmleci Göster:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3094"/>
         <source>Initial Graphical Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>İlk Grafik Modu:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3109"/>
         <source>QEMU/KVM Arguments</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Değişkenleri</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3440"/>
         <source>Type: Host Device</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: Anabilgisayar Aygıtı</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3442"/>
         <source>Type: Image     Size: 0</source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: Kalıp     Boyutu: 0</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3449"/>
         <source>Byte</source>
-        <translation type="unfinished"></translation>
+        <translation>Byte</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3454"/>
         <source>Kb</source>
-        <translation type="unfinished"></translation>
+        <translation>Kb</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3464"/>
         <source>Gb</source>
-        <translation type="unfinished"></translation>
+        <translation>Gb</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3468"/>
         <source>Type: Image     Size: </source>
-        <translation type="unfinished"></translation>
+        <translation>Tür: Kalıp     Boyutu: </translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3648"/>
         <location filename="Main_Window.cpp" line="3654"/>
         <location filename="Main_Window.cpp" line="5078"/>
         <source>Display</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekran</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3725"/>
@@ -5877,17 +5877,17 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="4825"/>
         <location filename="Main_Window.cpp" line="6469"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3725"/>
         <source>Current VM was changed. Discard all changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli Sanal Makine değiştirildi. Tüm değişiklikler silinsin mi?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3766"/>
         <source>Current VM was changed. Save all changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli VM değiştirildi. Tüm değişiklikler kaydedilsin mi?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3841"/>
@@ -5896,184 +5896,184 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="5089"/>
         <location filename="Main_Window.cpp" line="6328"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3841"/>
         <source>Cannot Change Icon When VM in Save State.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Kaydetme Durumunda Simge Değiştirilemiyor.</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4092"/>
         <source>bzImage</source>
-        <translation type="unfinished"></translation>
+        <translation>bzKalıbı</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4105"/>
         <source>Initrd</source>
-        <translation type="unfinished"></translation>
+        <translation>Initrd</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4122"/>
         <source>ROM File</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4139"/>
         <source>On-Board Flash</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerleşik Flaş</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4156"/>
         <source>SecureDigital Card</source>
-        <translation type="unfinished"></translation>
+        <translation>Korumalı Dijital Kart</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4173"/>
         <source>Parallel Flash</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Flaş</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4192"/>
         <source>VNC x509 Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC x509 Dizin</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4208"/>
         <source>VNC x509verify Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC x509doğrulama Dizini</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4264"/>
         <source>No boot device found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme aygıtı bulunamadı!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4273"/>
         <source>%1 Image &quot;%2&quot; doesn&apos;t Exist! Continue Without this Image?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Kalıp &quot;%2&quot; yok! Bu kalıp olmadan devam edilsin mi?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4364"/>
         <source>Delete?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4365"/>
         <source>Delete &quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Sil &quot;</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4365"/>
         <source>&quot; VM?</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot; Sanal Makine?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4383"/>
         <source>Cannot Delete VM XML File!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine XML Dosyası Silinemiyor!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4491"/>
         <source>VM Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Adı</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4491"/>
         <source>New Virtual Machine Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Sanal Makine Adı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4513"/>
         <source>Your New VM Name is Empty! VM isn&apos;t Created!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Sanal Makine Adınız Boş! Sanal Makine oluşturulmadı!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4764"/>
         <source>VM be Changed. Save Changes?</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine değiştirildi. Değişiklikleri Kaydet?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4825"/>
         <source>QEMU running in snapshot mode. VM can not be saved in this mode.</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU anlık görüntü modunda çalışıyor. Sanal Makine bu moda kaydedilemiyor.</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4861"/>
         <location filename="Main_Window.cpp" line="4900"/>
         <source>Are you sure?</source>
-        <translation type="unfinished"></translation>
+        <translation>Emin misiniz?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4862"/>
         <source>Shutdown VM &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; Sanal Makinesini kapat?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4901"/>
         <source>Reboot VM &quot;%1&quot;?</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; Sanal Makinesini Yniden Başlat?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4912"/>
         <source>Open AQEMU VM File</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU Sanal Makine Dosysı Aç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4914"/>
         <source>AQEMU VM (*.aqemu)</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU Sanal Makine (*.aqemu)</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4926"/>
         <source>VM With This Name Already Exists!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Adla Sanal Makine Zaten Var!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5056"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilgi</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5056"/>
         <source>New Template Created!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Şablon Oluşturuldu!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5080"/>
         <source>Emulator Control Already Show</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Kontrolü Zaten Gösteriliyor</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5089"/>
         <source>This Function Works Only On Running VM!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu İşlev Sadece Çalışan Sanal Makinede işler!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5119"/>
         <location filename="Main_Window.cpp" line="5120"/>
         <source>QEMU/KVM Arguments:</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Değişkenleri:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5120"/>
         <source>No VM Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hiçbir Sanal Makine Bulunamadı!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5152"/>
         <source>Save VM to Script</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makineyi Komut Dosyasına Kaydet</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5154"/>
         <source>Shell Script Files (*.sh);;All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Kabuk Komut Dosyaları (*.sh);;Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5172"/>
         <source>Cannot Open File!</source>
-        <translation type="unfinished"></translation>
+        <translation>Dosya Açılamadı!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5217"/>
@@ -6085,72 +6085,74 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="5285"/>
         <location filename="Main_Window.cpp" line="5330"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5218"/>
         <location filename="Main_Window.cpp" line="5226"/>
         <source>Cannot convert &quot;%1&quot; to memory size!</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; değeri bellek boyutuna dönüştürülemedi!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5235"/>
         <source>Cannot convert &quot;%1&quot; to integer!</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; değeri tamsayıya dönüştürülemiyor!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5244"/>
         <source>Cannot convert &quot;%1&quot; to size suffix! Valid suffixes are: MB, GB</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; boyut sonekine dönüştürülemez! Geçerli sonekler: MB, GB</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5250"/>
         <source>Memory size &lt; 0! Valid size is 1 or more</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek boyutu &lt; 0! Geçerli boyut 1 veya daha fazla</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5259"/>
         <source>Your memory size %1 MB &gt; %2 MB - all free RAM on this system!
 To set this value, check &quot;Remove limitation on maximum amount of memory&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek boyutunuz%1 MB &gt; %2 MB - bu sistemdeki tüm boş RAM!
+Bu değeri ayarlamak için &quot;Azami bellek miktarındaki sınırlamayı kaldır&quot; seçeneğini işaretleyin.</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5285"/>
         <source>Current memory size more of all host memory!
 Use the maximum available size.</source>
-        <translation type="unfinished"></translation>
+        <translation>Şu anki bellek boyutu, tüm ana bilgisayar belleğinden daha fazla!
+Mevcut olan en fazla boyutu kullanın.</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5297"/>
         <source>Free memory: %1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>Boş bellek: %1 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5330"/>
         <source>Free memory on this system is less than 32 MB!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu sistemdeki boş hafıza 32 MB&apos;dan daha az!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5351"/>
         <location filename="Main_Window.cpp" line="5416"/>
         <source>Open Floppy Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>Disket Kalıp Dosyası Aç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5353"/>
         <location filename="Main_Window.cpp" line="5418"/>
         <source>All Files (*);;Images Files (*.img *.ima)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.ima)</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5481"/>
         <source>Open CD\DVD-ROM Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>CD\DVD-ROM Kalıp Dosyası Aç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5483"/>
         <source>All Files (*);;Images Files (*.iso)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.iso)</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5546"/>
@@ -6158,7 +6160,7 @@ Use the maximum available size.</source>
         <location filename="Main_Window.cpp" line="5715"/>
         <location filename="Main_Window.cpp" line="5800"/>
         <source>Open HDD Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıp Dosyası Aç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5548"/>
@@ -6166,79 +6168,81 @@ Use the maximum available size.</source>
         <location filename="Main_Window.cpp" line="5717"/>
         <location filename="Main_Window.cpp" line="5802"/>
         <source>All Files (*);;Images Files (*.img *.qcow *.qcow2 *.wmdk)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Kalıp Dosyaları (*.img *.qcow *.qcow2 *.wmdk)</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5895"/>
         <source>Image Format: </source>
-        <translation type="unfinished"></translation>
+        <translation>Kalıp Biçimi: </translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5895"/>
         <source>Allocated Disk Space: </source>
-        <translation type="unfinished"></translation>
+        <translation>Ayrılan Disk Alanı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5896"/>
         <source>Virtual Size: </source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Boyut: </translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5896"/>
         <source>Cluster Size: </source>
-        <translation type="unfinished"></translation>
+        <translation>Küme Boyutu: </translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6014"/>
         <source>QEMU</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6015"/>
         <source>KVM</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6305"/>
         <source>CPU count value is not valid digit!</source>
-        <translation type="unfinished"></translation>
+        <translation>CPU sayım değeri geçerli rakam değil!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6328"/>
         <source>CPU count &gt; max CPU count for this emulator!</source>
-        <translation type="unfinished"></translation>
+        <translation>İşlemci sayısı&gt; Bu emülatör için en fazla İşlemci sayısı!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6387"/>
         <source>Cannot Save This VM to File!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makine Dosyaya Kaydedilemiyor!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6432"/>
         <source>Network Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Ayarları</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6434"/>
         <source>Network Cards</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kartları</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6470"/>
         <source>To Create Socket With Port Number &lt; 1024, in Unix You Need to Run AQEMU in root Mode!
 Press &quot;Ignore&quot; button for hide this message in future.
 Add This Record?</source>
-        <translation type="unfinished"></translation>
+        <translation>Unix&apos;te &lt;1024 Port Numarası ile Soket Oluşturmak İçin Yetkili Modunda AQEMU&apos;yu Çalıştırmanız Gerekir!
+Gelecekte bu mesajı gizlemek için &quot;Yoksay&quot; düğmesine basın.
+Bu Kaydı Ekle?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6509"/>
         <source>Select SMB Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>SMB Dizinini Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6524"/>
         <source>UNIX Domain Socket Path</source>
-        <translation type="unfinished"></translation>
+        <translation>UNIX Etki Alanı Soketi Yolu</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6526"/>
@@ -6249,12 +6253,12 @@ Add This Record?</source>
         <location filename="Main_Window.cpp" line="6596"/>
         <location filename="Main_Window.cpp" line="6606"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6534"/>
         <source>Select x509 Certificate Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>x509 Sertifika Dizinini Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6544"/>
@@ -6264,32 +6268,32 @@ Add This Record?</source>
     <message>
         <location filename="Main_Window.cpp" line="6554"/>
         <source>Select Kernel Image File</source>
-        <translation type="unfinished"></translation>
+        <translation>Çekirdek Kalıp Dosyası Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6564"/>
         <source>Select InitRD File</source>
-        <translation type="unfinished"></translation>
+        <translation>InitRD Dosyası Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6574"/>
         <source>Select ROM File</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6584"/>
         <source>Select On-Board Flash Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Yerleşik Flaş Kalıbı Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6594"/>
         <source>Select SecureDigital Card Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Korumalı Dijital Kart Kalıbı Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6604"/>
         <source>Select Parallel Flash Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel Flaş Kalıbı Seç</translation>
     </message>
 </context>
 <context>
@@ -6297,32 +6301,32 @@ Add This Record?</source>
     <message>
         <location filename="Monitor_Window.ui" line="15"/>
         <source>QEMU/KVM Monitor</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU/KVM Monitör</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="115"/>
         <source>Com&amp;mand:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ko&amp;mut:</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="141"/>
         <source>info version</source>
-        <translation type="unfinished"></translation>
+        <translation>bilgi sürümü</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="146"/>
         <source>info network</source>
-        <translation type="unfinished"></translation>
+        <translation>bilgi ağı</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="151"/>
         <source>info block</source>
-        <translation type="unfinished"></translation>
+        <translation>bilgi bloğu</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="156"/>
         <source>info registers</source>
-        <translation type="unfinished"></translation>
+        <translation>bilgi kayıtları</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="161"/>
@@ -6407,22 +6411,22 @@ Add This Record?</source>
     <message>
         <location filename="Monitor_Window.ui" line="250"/>
         <source>&amp;Run</source>
-        <translation type="unfinished"></translation>
+        <translation>Çalıştı&amp;r</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="267"/>
         <source>&amp;Clear</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Temizle</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="284"/>
         <source>Change font</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazıtipini Değiştir</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="287"/>
         <source>Font</source>
-        <translation type="unfinished"></translation>
+        <translation>Yazıtipi</translation>
     </message>
 </context>
 <context>
@@ -6430,98 +6434,98 @@ Add This Record?</source>
     <message>
         <location filename="Network_Widget.ui" line="14"/>
         <source>AQEMU Network Widget</source>
-        <translation type="unfinished"></translation>
+        <translation>AQEMU Ağ Widget&apos;i</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="20"/>
         <source>Items List:</source>
-        <translation type="unfinished"></translation>
+        <translation>Öğeler Listesi:</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="82"/>
         <source>&amp;Add</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ekle</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="112"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sil</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="175"/>
         <source>Connection Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Türü</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="203"/>
         <source>?</source>
-        <translation type="unfinished"></translation>
+        <translation>?</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="222"/>
         <source>Model</source>
-        <translation type="unfinished"></translation>
+        <translation>Model</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="248"/>
         <source>macaddr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">macaddr</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="272"/>
         <source>aa:bb:cc:dd:ee</source>
-        <translation type="unfinished"></translation>
+        <translation>aa:bb:cc:dd:ee</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="282"/>
         <source>Generate New MAC</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni MAC Oluştur</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="304"/>
         <source>vlan</source>
-        <translation type="unfinished"></translation>
+        <translation>vlan</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="330"/>
         <source>name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">name</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="356"/>
         <source>hostname</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">hostname</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="382"/>
         <source>port:dev</source>
-        <translation type="unfinished"></translation>
+        <translation>port:dev</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="405"/>
         <source>fd</source>
-        <translation type="unfinished"></translation>
+        <translation>fd</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="431"/>
         <source>ifname</source>
-        <translation type="unfinished"></translation>
+        <translation>ifname</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="457"/>
         <source>script</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">script</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="488"/>
         <location filename="Network_Widget.ui" line="538"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="507"/>
         <source>downscript</source>
-        <translation type="unfinished"></translation>
+        <translation>downscript</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="557"/>
@@ -6536,17 +6540,17 @@ Add This Record?</source>
     <message>
         <location filename="Network_Widget.ui" line="609"/>
         <source>mcast</source>
-        <translation type="unfinished"></translation>
+        <translation>mcast</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="635"/>
         <source>sock</source>
-        <translation type="unfinished"></translation>
+        <translation>sock</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="661"/>
         <source>port</source>
-        <translation type="unfinished"></translation>
+        <translation>port</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="690"/>
@@ -6561,67 +6565,67 @@ Add This Record?</source>
     <message>
         <location filename="Network_Widget.ui" line="742"/>
         <source>file</source>
-        <translation type="unfinished"></translation>
+        <translation>dosya</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="768"/>
         <source>len</source>
-        <translation type="unfinished"></translation>
+        <translation>len</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="785"/>
         <source>64Kb (default)</source>
-        <translation type="unfinished"></translation>
+        <translation>64Kb (varsayılan)</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="790"/>
         <source>128Kb</source>
-        <translation type="unfinished"></translation>
+        <translation>128Kb</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="795"/>
         <source>512Kb</source>
-        <translation type="unfinished"></translation>
+        <translation>512Kb</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="800"/>
         <source>1Mb</source>
-        <translation type="unfinished"></translation>
+        <translation>1Mb</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="805"/>
         <source>5Mb</source>
-        <translation type="unfinished"></translation>
+        <translation>5Mb</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="810"/>
         <source>10Mb</source>
-        <translation type="unfinished"></translation>
+        <translation>10Mb</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="818"/>
         <source>addr</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">addr</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="832"/>
         <source>vectors</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">vectors</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="849"/>
         <source>net</source>
-        <translation type="unfinished"></translation>
+        <translation>net</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="863"/>
         <source>host</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">host</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="877"/>
         <source>restrict</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">restrict</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="888"/>
@@ -6636,42 +6640,42 @@ Add This Record?</source>
     <message>
         <location filename="Network_Widget.ui" line="901"/>
         <source>dhcpstart</source>
-        <translation type="unfinished"></translation>
+        <translation>dhcpstart</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="915"/>
         <source>dns</source>
-        <translation type="unfinished"></translation>
+        <translation>dns</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="929"/>
         <source>tftp</source>
-        <translation type="unfinished"></translation>
+        <translation>tftp</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="943"/>
         <source>bootfile</source>
-        <translation type="unfinished"></translation>
+        <translation>önyüklemedosyası</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="978"/>
         <source>smb</source>
-        <translation type="unfinished"></translation>
+        <translation>smb</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1013"/>
         <source>smbserver</source>
-        <translation type="unfinished"></translation>
+        <translation>smbserver</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1027"/>
         <source>sndbuf</source>
-        <translation type="unfinished"></translation>
+        <translation>sndbuf</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1044"/>
         <source>vnet_hdr</source>
-        <translation type="unfinished"></translation>
+        <translation>vnet_hdr</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1055"/>
@@ -6688,70 +6692,72 @@ Add This Record?</source>
     <message>
         <location filename="Network_Widget.ui" line="1068"/>
         <source>vhost</source>
-        <translation type="unfinished"></translation>
+        <translation>vhost</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1092"/>
         <source>vhostfd</source>
-        <translation type="unfinished"></translation>
+        <translation>vhostfd</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1109"/>
         <source>hostfwd</source>
-        <translation type="unfinished"></translation>
+        <translation>hostfwd</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1123"/>
         <source>guestfwd</source>
-        <translation type="unfinished"></translation>
+        <translation>guestfwd</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="133"/>
         <location filename="Network_Widget.cpp" line="2025"/>
         <source>Unknown Type Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Bilinmeyen Öğe Türü</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="687"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="687"/>
         <source>Maximum Network Cards Count is 8.</source>
-        <translation type="unfinished"></translation>
+        <translation>En Fazla Ağ Kartı Sayısı 8.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="693"/>
         <source>New Item</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni Öğe</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="755"/>
         <source>nic</source>
-        <translation type="unfinished"></translation>
+        <translation>nic</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="755"/>
         <source>-net nic[,vlan=n][,macaddr=addr][,model=type][,name=name] 
 Create a new Network Interface Card and connect it to VLAN n (n = 0 is the default). The NIC is an ne2k_pci by default on the PC target. Optionally, the MAC address can be changed to addr and a name can be assigned for use in monitor commands. If no &apos;-net&apos; option is specified, a single NIC is created. Qemu can emulate several different models of network card. Valid values for type are i82551, i82557b, i82559er, ne2k_pci, ne2k_isa, pcnet, rtl8139, e1000, smc91c111, lance and mcf_fec. Not all devices are supported on all targets. Use -net nic,model=? for a list of available devices for your target.</source>
-        <translation type="unfinished"></translation>
+        <translation>-net nic [,vlan=n][,macaddr=addr][,model=tür][,name=name]
+Yeni bir Ağ Arabirim Kartı oluşturun ve VLAN n e bağlayın (varsayılan değer n = 0&apos;dır). NIC varsayılan olarak PC hedefinde bir ne2k_pci&apos;dir. İsteğe bağlı olarak, MAC adresi addr olarak değiştirilebilir ve monitör komutlarında kullanılmak üzere bir ad atanabilir. &apos;-net&apos; seçeneği yoksa, tek bir NIC oluşturulur. Qemu, birkaç farklı ağ kartı modelini taklit edebilir. Tür için geçerli değerler i82551, i82557b, i82559er, ne2k_pci, ne2k_isa, pcnet, rtl8139, e1000, smc91c111, lance ve mcf_fec&apos;dir. Tüm cihazlar tüm hedeflerde desteklenmez. -net nic, model =? Hedefiniz için kullanılabilen cihazların bir listesi için.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="759"/>
         <source>user</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">kullanıcı</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="759"/>
         <source>-net user[,vlan=n][,hostname=name][,name=name] 
 Use the user mode network stack which requires no administrator privilege to run. &apos;hostname=name&apos; can be used to specify the client hostname reported by the builtin DHCP server.</source>
-        <translation type="unfinished"></translation>
+        <translation>-net user[,vlan=n][,hostname=name][,name=name] 
+Çalıştırmak için yönetici ayrıcalığı gerektirmeyen kullanıcı modu ağ yığınını kullanın. yerleşik DHCP sunucusu tarafından bildirilen istemci ana makine adını belirtmek için &apos;hostname = name&apos; kullanılabilir.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="763"/>
         <source>channel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">channel</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="763"/>
@@ -6762,13 +6768,14 @@ Forward &apos;user&apos; TCP connection to port port to character device dev</so
     <message>
         <location filename="Network_Widget.cpp" line="767"/>
         <source>tap</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">tap</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="767"/>
         <source>-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile] 
 Connect the host TAP network interface name to VLAN n, use the network script file to configure it and the network script dfile to deconfigure it. If name is not provided, the OS automatically provides one. &apos;fd&apos;=h can be used to specify the handle of an already opened host TAP interface. The default network configure script is &apos;/etc/qemu-ifup&apos; and the default network deconfigure script is &apos;/etc/qemu-ifdown&apos;. Use &apos;script=no&apos; or &apos;downscript=no&apos; to disable script execution.</source>
-        <translation type="unfinished"></translation>
+        <translation>-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile] 
+Ana bilgisayar TAP ağ arabirimi adını VLAN n&apos;e bağlayın, yapılandırmak için ağ komut dosyası kullanın ve yapılandırmayı geri almak için ağ komut dosyası dfile kullanın. Ad sağlanmazsa, OS otomatik olarak bir tane sağlar. &apos;fd&apos; = h, önceden açılmış bir ana bilgisayar TAP arayüzünün tanıtıcısını belirtmek için kullanılabilir. Varsayılan ağ yapılandırma komut dosyası &apos;/etc/qemu-ifup&apos; ve varsayılan ağ yapılandırma betiği &apos;/etc/qemu-ifdown&apos; şeklindedir. Komut dosyasının çalıştırılmasını devre dışı bırakmak için &apos;script=no&apos; veya &apos;downscript=no&apos; kullanın.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="771"/>
@@ -6780,7 +6787,8 @@ Connect the host TAP network interface name to VLAN n, use the network script fi
         <location filename="Network_Widget.cpp" line="771"/>
         <source>-net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port] 
 Connect the VLAN n to a remote VLAN in another QEMU virtual machine using a TCP socket connection. If &apos;listen&apos; is specified, QEMU waits for incoming connections on port (host is optional). &apos;connect&apos; is used to connect to another QEMU instance using the &apos;listen&apos; option. &apos;fd&apos;=h specifies an already opened TCP socket.</source>
-        <translation type="unfinished"></translation>
+        <translation>-net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port] 
+VLAN n&apos;i TCP soket bağlantısı kullanarak başka bir QEMU sanal makinesindeki uzak VLAN&apos;a bağlayın. Eğer &apos;listen&apos; belirtilmişse, QEMU portta gelen bağlantıları bekler (sunucu isteğe bağlıdır). &apos;connect&apos;, &apos;listen&apos; seçeneğini kullanarak başka bir QEMU örneğine bağlanmak için kullanılır. &apos;fd&apos;=h zaten açılmış bir TCP soketini belirtir.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="775"/>
@@ -6790,23 +6798,29 @@ NOTES:
 1. Several QEMU can be running on different hosts and share same bus (assuming correct multicast setup for these hosts). 
 2. mcast support is compatible with User Mode Linux (argument &apos;ethN=mcast&apos;), see http://user-mode-linux.sf.net. 
 3. Use &apos;fd=h&apos; to specify an already opened UDP multicast socket.</source>
-        <translation type="unfinished"></translation>
+        <translation>-net socket[,vlan=n][,name=name][,fd=h][,mcast=maddr:port] 
+Bir UDP çok noktaya yayın soketi kullanarak başka bir QEMU sanal makineleriyle paylaşılan bir VLAN oluşturun ve aynı multicast adres maddr ve port ile her QEMU için etkin bir veri yolu oluşturun.
+NOTLAR: 
+1. Birkaç QEMU farklı ana makinelerde çalışıyor olabilir ve aynı veriyolu paylaşabilir (bu ana bilgisayarlar için doğru çoklu yayın kurulumunu varsayarsak).
+2. mcast desteği Kullanıcı Modu Linux&apos;u ile uyumludur (değişken &apos;ethN = mcast&apos;), bkz. Http://user-mode-linux.sf.net.
+3. Açılmış bir UDP çok noktaya yayın soketini belirtmek için &apos;fd=h&apos; kullanın.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="779"/>
         <source>vde</source>
-        <translation type="unfinished"></translation>
+        <translation>vde</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="779"/>
         <source>-net vde[,vlan=n][,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode] 
 Connect VLAN n to PORT n of a vde switch running on host and listening for incoming connections on socketpath. Use GROUP groupname and MODE octalmode to change default ownership and permissions for communication port. This option is available only if QEMU has been compiled with vde support enabled.</source>
-        <translation type="unfinished"></translation>
+        <translation>-net vde[,vlan=n][,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode] 
+Ana bilgisayarda çalışan bir vde anahtarının PORT n&apos;una VLAN n bağlayın ve gelen bağlantıları socket yolunda dinleyin. İletişim bağlantı noktası için varsayılan sahiplik ve izinleri değiştirmek için GROUP groupname ve MODE sekizli mod kullanın. Bu seçenek yalnızca QEMU&apos;nun vde desteği etkinleştirilmiş haliyle derlendiği durumda kullanılabilir.</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="783"/>
         <source>dump</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">dump</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="783"/>
@@ -6818,28 +6832,28 @@ dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet
         <location filename="Network_Widget.cpp" line="794"/>
         <location filename="Network_Widget.cpp" line="804"/>
         <source>Select script</source>
-        <translation type="unfinished"></translation>
+        <translation>Komut dosyası seç</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="796"/>
         <location filename="Network_Widget.cpp" line="806"/>
         <source>All Files (*);;Scripts (*.sh)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Komut dosyaları (*.sh)</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1328"/>
         <source>Boot file</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme dosyası</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1330"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1338"/>
         <source>SMB directory</source>
-        <translation type="unfinished"></translation>
+        <translation>SMB Dizini</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1869"/>
@@ -6847,27 +6861,27 @@ dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet
         <location filename="Network_Widget.cpp" line="1891"/>
         <location filename="Network_Widget.cpp" line="1962"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1869"/>
         <source>Incorrect MAC address!</source>
-        <translation type="unfinished"></translation>
+        <translation>Yanlış MAC adresi!</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1880"/>
         <source>Invalid name! Valid characters are:: a-z A-Z 0-9 _ -</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçersiz isim! Geçerli karakterler:: a-z A-Z 0-9 _ -</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1891"/>
         <source>Invalid Hostname! Valid characters are:: a-z A-Z 0-9 _ -</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçersiz Ana Bilgisayar Adı! Geçerli karakterler:: a-z A-Z 0-9 _ -</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="1963"/>
         <source>%1 File &quot;%2&quot; doesn&apos;t Exist! Continue Without this File?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Dosya &quot;%2&quot; Yok! Bu Dosya Olmadan Devam Edilsin mi?</translation>
     </message>
 </context>
 <context>
@@ -6875,215 +6889,216 @@ dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet
     <message>
         <location filename="Old_Network_Widget.ui" line="14"/>
         <source>Old Network Widget</source>
-        <translation type="unfinished"></translation>
+        <translation>Eski Ağ Widgeti</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="26"/>
         <source>Cards List:</source>
-        <translation type="unfinished"></translation>
+        <translation>Kart Listesi:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="53"/>
         <source>Add</source>
-        <translation type="unfinished"></translation>
+        <translation>Ekle</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="77"/>
         <source>&amp;Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sil</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="100"/>
         <source>Network Card Model:</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kartı Modeli:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="123"/>
         <source>Connection &amp;Mode:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı &amp;Modu:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="146"/>
         <source>Use the user mode network stack</source>
-        <translation type="unfinished"></translation>
+        <translation>Kullanıcı modu ağ yığınını kullan</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="151"/>
         <source>Open a TUN/TAP interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Bir TUN/TAP arayüzü aç</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="156"/>
         <source>Use an already open TUN/TAP interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaten açık olan TUN/TAP arayüzünü kullanın</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="161"/>
         <source>Open a listening TCP socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Dinleyen bir TCP soketini aç</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="166"/>
         <source>Use an already open TCP socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaten açık bir TCP soketi kullan</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="171"/>
         <source>Connect to listening TCP socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Dinleyen TCP soketine bağlan</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="176"/>
         <source>Create shared VLAN via UDP multicast socket</source>
-        <translation type="unfinished"></translation>
+        <translation>UDP çok noktaya yayın soketi üzerinden paylaşılan VLAN oluştur</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="181"/>
         <source>Use an already open UDP multicast socket</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaten açık olan UDP çok noktaya yayın soketi kullan</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="186"/>
         <source>No connection</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı yok</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="205"/>
         <source>VM Hostname:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Ana Bilgisayar Adı</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="224"/>
         <source>&amp;IP Address:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;IP Adresi:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="253"/>
         <source>&amp;MAC Address:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;MAC Adresi:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="281"/>
         <source>Generate New MAC</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni MAC adresi oluştur</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="317"/>
         <source>&amp;VLAN:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;VLAN:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="349"/>
         <source>&amp;Port:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Port:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="387"/>
         <source>&amp;FD:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;FD:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="409"/>
         <source>If the value is 0 then it will not be used</source>
-        <translation type="unfinished"></translation>
+        <translation>Değer 0 ise, kullanılamaz</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="436"/>
         <source>&amp;TUN/TAP Script:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;TUN/TAP Komut Dosyası:</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="454"/>
         <source>...</source>
-        <translation type="unfinished"></translation>
+        <translation>...</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.ui" line="467"/>
         <source>&amp;Interface Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Arayüz Adı</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="63"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="63"/>
         <source>Network Card #% Not Valid!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kartı  #% Geçerli değil!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="84"/>
         <location filename="Old_Network_Widget.cpp" line="218"/>
         <location filename="Old_Network_Widget.cpp" line="249"/>
         <source>Card </source>
-        <translation type="unfinished"></translation>
+        <translation>Kart </translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="211"/>
         <location filename="Old_Network_Widget.cpp" line="237"/>
         <location filename="Old_Network_Widget.cpp" line="269"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="211"/>
         <source>Maximum Network Cards Count is 8.</source>
-        <translation type="unfinished"></translation>
+        <translation>En Fazla Ağ Kartı Sayısı 8</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="237"/>
         <source>Network Cards List is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kartı Listesi Boş!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="269"/>
         <source>Cannot Delete Network Card!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Kartı Silinemedi!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="561"/>
         <source>Select script</source>
-        <translation type="unfinished"></translation>
+        <translation>Komut Dosyası Seç</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="563"/>
         <source>All Files (*);;Scripts (*.sh)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*);;Komut Dosyası (*.sh)</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="657"/>
         <location filename="Old_Network_Widget.cpp" line="679"/>
         <location filename="Old_Network_Widget.cpp" line="693"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="658"/>
         <source>IP Address in Card </source>
-        <translation type="unfinished"></translation>
+        <translation>Karttaki IP Adresi</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="658"/>
         <location filename="Old_Network_Widget.cpp" line="680"/>
         <source> Invalid!</source>
-        <translation type="unfinished"></translation>
+        <translation> Geçersiz!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="680"/>
         <source>MAC Address in Card </source>
-        <translation type="unfinished"></translation>
+        <translation>Karttaki MAC Adresi</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="693"/>
         <source>In Card </source>
-        <translation type="unfinished"></translation>
+        <translation>Kartın İçinde </translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="694"/>
         <source> TUN/TAP Script File &quot;%1&quot; Not Exists!
 Continue Without It File?</source>
-        <translation type="unfinished"></translation>
+        <translation> TUN/TAP Komut Dosyası &quot;% 1&quot; Yok!
+Bu olmadan Devam Etmek istermisiniz?</translation>
     </message>
 </context>
 <context>
@@ -7091,105 +7106,105 @@ Continue Without It File?</source>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="15"/>
         <source>Ports</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktaları</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="31"/>
         <source>Add port</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktası ekle</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="45"/>
         <source>Serial (COM)</source>
-        <translation type="unfinished"></translation>
+        <translation>Seri (COM)</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="68"/>
         <source>Parallel (LPT)</source>
-        <translation type="unfinished"></translation>
+        <translation>Paralel (LPT)</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="91"/>
         <source>USB</source>
-        <translation type="unfinished"></translation>
+        <translation>USB</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="168"/>
         <source>Edit Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktasını Düzenle</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="191"/>
         <source>Delete Port</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktasını Sil</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="226"/>
         <source>Ports List</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlanı Noktaları Listesi</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="261"/>
         <source>Port type</source>
-        <translation type="unfinished"></translation>
+        <translation>Bağlantı Noktası Türü</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="266"/>
         <source>Details</source>
-        <translation type="unfinished"></translation>
+        <translation>Ayrıntılar</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="78"/>
         <location filename="Ports_Tab_Widget.cpp" line="228"/>
         <source>COM (Serial Port)</source>
-        <translation type="unfinished"></translation>
+        <translation>COM (Seri Bağlantı Noktası)</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="110"/>
         <location filename="Ports_Tab_Widget.cpp" line="261"/>
         <source>LPT (Parallel Port)</source>
-        <translation type="unfinished"></translation>
+        <translation>LPT (Paralel Bağlantı Noktası)</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="142"/>
         <location filename="Ports_Tab_Widget.cpp" line="288"/>
         <source>USB Port</source>
-        <translation type="unfinished"></translation>
+        <translation>USB Bağlantı Noktası</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="175"/>
         <source>Keyboard</source>
-        <translation type="unfinished"></translation>
+        <translation>Klavye</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="176"/>
         <source>Mouse</source>
-        <translation type="unfinished"></translation>
+        <translation>Fare</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="177"/>
         <source>Tablet</source>
-        <translation type="unfinished"></translation>
+        <translation>Tablet</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="178"/>
         <source>Wacom Tablet</source>
-        <translation type="unfinished"></translation>
+        <translation>Wacom Tablet</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="179"/>
         <source>Braille</source>
-        <translation type="unfinished"></translation>
+        <translation>Braille</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="186"/>
         <source>Virtual QEMU/KVM Device: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal QEMU/KVM Aygıtı: %1</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="192"/>
         <source>%1 %2 (Vendor ID: %3 Product ID: %4)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 Satıcı kimliği: %3 Ürün kimliği: %4)</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="199"/>
