@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="tr_TR">
+<TS version="2.1" language="tr">
 <context>
     <name>About_Window</name>
     <message>
@@ -319,7 +319,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;  5. You are not required to accept this License, since you have not&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Sans Serif&apos;; font-size:9pt;&quot;&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="421"/>
@@ -358,7 +358,36 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Nimbus Sans L&apos;;&quot;&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;DejaVu Sans&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;table border=&quot;0&quot; style=&quot;-qt-table-type: root; margin-top:4px; margin-bottom:4px; margin-left:4px; margin-right:4px;&quot;&gt;
+&lt;tr&gt;
+&lt;td style=&quot;border: none;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;MS Shell Dlg 2&apos;; font-size:8pt;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:&apos;Nimbus Sans L&apos;;&quot;&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="About_Window.ui" line="496"/>
@@ -415,7 +444,37 @@ p, li { white-space: pre-wrap; }
 &lt;br&gt;Crystal SVG - Icon Theme From Everaldo.com Design Studio
 &lt;br&gt;Oxygen - Icon Theme From Oxygen Team
 </source>
-        <translation>Geliştiriciler</translation>
+        <translation>&lt;b&gt;Geliştiriciler:&lt;/b&gt;
+&lt;br&gt;Andrey Rijov (aka RDron) - Yazar
+&lt;br&gt;&lt;br&gt;&lt;b&gt;Katkıcılar:&lt;/b&gt;
+&lt;br&gt;Max Brazhnikov - FreeBSD Port
+&lt;br&gt;Boris Savelev - ALTLinux Paketi
+&lt;br&gt;Denis Smirnov (aka reMiND) - Arch Linux Paketi ve Diğer Yardımlar
+&lt;br&gt;Ignace Mouzannar - Debian Paketi
+&lt;br&gt;Michael Brandstetter - İyileştirme Komut Dosyaları
+&lt;br&gt;Robert Warnke - Almanca AQEMU Belge Tercümesi
+&lt;br&gt;Michael SchmÃ¶ller (aka schmoemi) - Almanca Tercüme ve İngilizce Tercüme Doğrulaması
+&lt;br&gt;Guillem Rieu - Ağ Yönlendirmeleri İçin Yama
+&lt;br&gt;Karol Krenski - IP Address RegExp Fix
+&lt;br&gt;Alexander Romanov (aka romale) - Test, Yeni Fikirler ve Diğer Yardımlar
+&lt;br&gt;Timothy Redaelli - CMake İçin Yama
+&lt;br&gt;Pavel Serebryakov (aka Kronoph) - İngilizce Tercüme Doğrulaması
+&lt;br&gt;&lt;br&gt;&lt;b&gt;Özel Teşekkür:&lt;/b&gt;
+&lt;br&gt;Sergey Sinitsa (aka sin)
+&lt;br&gt;Grigory Pulyaev (aka Rodegast)
+&lt;br&gt;Alexander Saifulin (aka Ne01eX)
+&lt;br&gt;Mihail Parshin (aka Skeeper)
+&lt;br&gt;Garret Acott (aka gacott)
+&lt;br&gt;Damir Vafin (aka Denver-22)
+&lt;br&gt;&lt;br&gt;&lt;b&gt;Test ve iyileştirme önerileri için tüm www.nclug.ru grubuna teşekkürler&lt;/b&gt;
+&lt;br&gt;&lt;br&gt;&lt;b&gt;AQEMU used code from QtEMU and Krdc thanks all developers:&lt;/b&gt;
+&lt;br&gt;Tim Jansen (tim@tjansen.de)
+&lt;br&gt;Urs Wolfer (uwolfer@kde.org)
+&lt;br&gt;Ben Klopfenstein (benklop@gmail.com)
+&lt;br&gt;&lt;br&gt;&lt;b&gt;Icons:&lt;/b&gt;
+&lt;br&gt;Everaldo.com Tasarım Stüdyosundan Crystal SVG - Simge Teması
+&lt;br&gt;Oxygen takımından Oxygen -Simge Teması
+</translation>
     </message>
     <message>
         <location filename="About_Window.cpp" line="102"/>
@@ -423,12 +482,12 @@ p, li { white-space: pre-wrap; }
         <location filename="About_Window.cpp" line="185"/>
         <location filename="About_Window.cpp" line="208"/>
         <source>Error!</source>
-        <translation>Hata</translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="About_Window.cpp" line="103"/>
         <source>Unable to save the file %1: %2.</source>
-        <translation>Dosya kaydedilemiyor</translation>
+        <translation>%1 dosyası kaydedilemiyor: %2.</translation>
     </message>
     <message>
         <location filename="About_Window.cpp" line="137"/>
@@ -439,7 +498,7 @@ p, li { white-space: pre-wrap; }
         <location filename="About_Window.cpp" line="186"/>
         <location filename="About_Window.cpp" line="209"/>
         <source>Download failed: %1.</source>
-        <translation>İndirme başarısız</translation>
+        <translation>İndirme başarısız: %1.</translation>
     </message>
 </context>
 <context>
@@ -502,7 +561,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="123"/>
         <source>Bus, Unit (For SCSI)</source>
-        <translation>Taşıyıcı, Birim (SCSI için)</translation>
+        <translation>Veriyoluı, Birim (SCSI için)</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="144"/>
@@ -532,7 +591,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="184"/>
         <source>writeback</source>
-        <translation>cevap yaz</translation>
+        <translation>geriyaz</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="189"/>
@@ -547,7 +606,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="208"/>
         <source>threads</source>
-        <translation type="unfinished"></translation>
+        <translation>threads</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="213"/>
@@ -589,12 +648,12 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.ui" line="346"/>
         <source>&amp;trans</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;trans</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="366"/>
         <source>c&amp;yls</source>
-        <translation type="unfinished"></translation>
+        <translation>c&amp;yls</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.ui" line="379"/>
@@ -619,7 +678,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.cpp" line="345"/>
         <source>All Files (*)</source>
-        <translation>Tüm dosyalar (*)</translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="418"/>
@@ -629,7 +688,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.cpp" line="418"/>
         <source>File does not exist!</source>
-        <translation>Dosya bulunamadı!</translation>
+        <translation>Dosya yok!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="459"/>
@@ -642,22 +701,22 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_New_Device_Window.cpp" line="459"/>
         <source>&quot;Cyls&quot; value is incorrect!</source>
-        <translation>&quot;Cyls&quot; değer yanlış!</translation>
+        <translation>&quot;Cyls&quot; değeri yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="466"/>
         <source>&quot;Heads&quot; value is incorrect!</source>
-        <translation>&quot;Başlıklar&quot; değer yanlış!</translation>
+        <translation>&quot;Başlıklar&quot; değeri yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="473"/>
         <source>&quot;Secs&quot; value is incorrect!</source>
-        <translation>&quot;Saniyeler&quot; değer yanlış!</translation>
+        <translation>&quot;Saniyeler&quot; değeri yanlış!</translation>
     </message>
     <message>
         <location filename="Add_New_Device_Window.cpp" line="480"/>
         <source>&quot;Trans&quot; value is incorrect!</source>
-        <translation>&quot;Trans&quot; değer yanlış!</translation>
+        <translation>&quot;Trans&quot; değeri yanlış!</translation>
     </message>
 </context>
 <context>
@@ -715,7 +774,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="140"/>
         <source>Pipe</source>
-        <translation type="unfinished"></translation>
+        <translation>Pipe</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="150"/>
@@ -760,7 +819,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="264"/>
         <source>Additional Arguments:</source>
-        <translation>Ek argümanlar:</translation>
+        <translation>Ek Değişkenler:</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="288"/>
@@ -770,7 +829,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="Add_Port_Window.ui" line="325"/>
         <source>Arguments Help:</source>
-        <translation>Argümanlar Yardımı:</translation>
+        <translation>Değişkenler Yardımı:</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.ui" line="375"/>
@@ -833,17 +892,17 @@ Ana makine seri bağlantı noktası parametreleri taklit edilen seri portlarına
     <message>
         <location filename="Add_Port_Window.cpp" line="200"/>
         <source>COMn Use host serial port n</source>
-        <translation>COMn Ana seri bağlantı noktası kullan n</translation>
+        <translation>COMn Ana Makine seri bağlantı noktası kullan n</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="201"/>
         <source>filename - Write output to filename. No character can be read.</source>
-        <translation>dosya adı - Çıktıyı dosya adına yazın.</translation>
+        <translation>dosya adı - Çıktıyı dosya adına yaz. Hiçbir karakter okunamaz.</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="202"/>
         <source>filename - name pipe filename</source>
-        <translation type="unfinished"></translation>
+        <translation>dosyaadı - ad pipe dosyaadı</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="203"/>
@@ -861,7 +920,13 @@ Example to listen and wait on port 4444 for connection
 :4444,server
 Example to not wait and listen on ip 192.168.0.100 port 4444
 192.168.0.100:4444,server,nowait</source>
-        <translation type="unfinished"></translation>
+        <translation>[host]:port[,server][,nowait][,nodelay]
+Example to send tcp console to 192.168.0.2 port 4444
+92.168.0.2:4444
+Example to listen and wait on port 4444 for connection
+:4444,server
+Example to not wait and listen on ip 192.168.0.100 port 4444
+192.168.0.100:4444,server,nowait</translation>
     </message>
     <message>
         <location filename="Add_Port_Window.cpp" line="205"/>
@@ -937,7 +1002,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Add_USB_Port_Window.ui" line="169"/>
         <source>Connecting USB host device</source>
-        <translation>USB ana cihazı bağlanıyor</translation>
+        <translation>USB ana bilgisayar cihazı bağlanıyor</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="222"/>
@@ -964,7 +1029,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Add_USB_Port_Window.ui" line="269"/>
         <source>All host devices</source>
-        <translation>Tüm ana makine aygıtları</translation>
+        <translation>Tüm ana bilgisayar aygıtları</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="292"/>
@@ -989,12 +1054,12 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Add_USB_Port_Window.ui" line="410"/>
         <source>Vendor ID:</source>
-        <translation>Satıcı kimliği:</translation>
+        <translation>Satıcı Kimliği:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="417"/>
         <source>Product ID:</source>
-        <translation>Ürün kimliği:</translation>
+        <translation>Ürün Kimliği:</translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.ui" line="446"/>
@@ -1038,18 +1103,18 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
         <location filename="Add_USB_Port_Window.cpp" line="88"/>
         <location filename="Add_USB_Port_Window.cpp" line="190"/>
         <source>Vendor ID: </source>
-        <translation>Satıcı kimliği: </translation>
+        <translation>Satıcı Kimliği: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="89"/>
         <location filename="Add_USB_Port_Window.cpp" line="191"/>
         <source>Product ID: </source>
-        <translation>Ürün kimliği: </translation>
+        <translation>Ürün Kimliği: </translation>
     </message>
     <message>
         <location filename="Add_USB_Port_Window.cpp" line="189"/>
         <source>Bus.Address: </source>
-        <translation>Veriyolu.adresi: </translation>
+        <translation>Veriyolu.Adresi: </translation>
     </message>
 </context>
 <context>
@@ -1082,7 +1147,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="113"/>
         <source>File Format:</source>
-        <translation>Dosya Biçimi</translation>
+        <translation>Dosya Biçimi:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="128"/>
@@ -1175,7 +1240,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="491"/>
         <source>AQEMU Logging</source>
-        <translation>AQEMU günlüğü</translation>
+        <translation>AQEMU Günlüğü</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="520"/>
@@ -1215,7 +1280,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="681"/>
         <source>Log Path:</source>
-        <translation>Günlük yolu:</translation>
+        <translation>Günlük Yolu:</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="733"/>
@@ -1320,7 +1385,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1108"/>
         <source>Recent Floppy Images Count</source>
-        <translation>Son Disket İmajı Saysı</translation>
+        <translation>Son Disket Kalıbı Saysı</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1128"/>
@@ -1350,7 +1415,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1245"/>
         <source>localhost</source>
-        <translation type="unfinished"></translation>
+        <translation>localhost</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1250"/>
@@ -1385,7 +1450,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1456"/>
         <source>Show QEMU/KVM Arguments</source>
-        <translation>QEMU/KVM Argümanlarını Göster</translation>
+        <translation>QEMU/KVM Değişkenlerini Göster</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1483"/>
@@ -1450,7 +1515,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1595"/>
         <source>Network Cards</source>
-        <translation>Ağ Kartı</translation>
+        <translation>Ağ Kartları</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1602"/>
@@ -1530,17 +1595,17 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1749"/>
         <source>Windows 2K Hack</source>
-        <translation type="unfinished"></translation>
+        <translation>Windows 2K Hack</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1756"/>
         <source>Alt Grab</source>
-        <translation type="unfinished"></translation>
+        <translation>Alt Grab</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1763"/>
         <source>RTC TD Hack</source>
-        <translation type="unfinished"></translation>
+        <translation>RTC TD Hack</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1770"/>
@@ -1565,7 +1630,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1798"/>
         <source>Curses</source>
-        <translation type="unfinished"></translation>
+        <translation>Curses</translation>
     </message>
     <message>
         <location filename="Advanced_Settings_Window.ui" line="1805"/>
@@ -1715,7 +1780,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Advanced_Settings_Window.cpp" line="698"/>
         <source>Choose screenshot folder</source>
-        <translation>Ekran görüntüsü dizinini seç</translation>
+        <translation>Ekran görüntüsü dizini seç</translation>
     </message>
 </context>
 <context>
@@ -1733,7 +1798,7 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
     <message>
         <location filename="Boot_Device_Window.ui" line="108"/>
         <source>Enable interactive boot &amp;menu</source>
-        <translation>Etkileşimli önyüklemeyi etkinleştir &amp;menü</translation>
+        <translation>Etkileşimli önyükleme &amp;menüsünü etkinleştir</translation>
     </message>
     <message>
         <location filename="Boot_Device_Window.ui" line="117"/>
@@ -1808,14 +1873,14 @@ Bu, braille çıkışını gerçek veya sahte bir aygıtta görüntülemek için
         <location filename="Convert_HDD_Image_Window.ui" line="57"/>
         <source>Image Format: none
 Allocated Disk Space: 0</source>
-        <translation>Kalıp formatı: yok
+        <translation>Kalıp Biçimi: yok
 Ayrılan Disk Alanı: 0</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="81"/>
         <source>Virtual Size: 0
 Cluster Size: 0</source>
-        <translation>Sanal boyut: 0
+        <translation>Sanal Boyut: 0
 Küme Boyutu: 0</translation>
     </message>
     <message>
@@ -1836,12 +1901,12 @@ Küme Boyutu: 0</translation>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="201"/>
         <source>Com&amp;press image</source>
-        <translation>&amp;Kalıbı sıkıştır</translation>
+        <translation>Kalıbı &amp;sıkıştır</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="221"/>
         <source>&amp;Encrypt image</source>
-        <translation>&amp;Kalıbı Şifrele</translation>
+        <translation>Kalıbı &amp;Şifrele</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.ui" line="246"/>
@@ -1880,7 +1945,7 @@ Küme Boyutu: 0</translation>
         <location filename="Convert_HDD_Image_Window.cpp" line="132"/>
         <source>Image Format: %1
 Allocated Disk Space: %2 %3</source>
-        <translation>Kalıp Biçimi: % 1
+        <translation>Kalıp Biçimi: %1
 Ayrılan Disk Alanı: %2 %3</translation>
     </message>
     <message>
@@ -1908,7 +1973,7 @@ Küme Boyutu: %3</translation>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="185"/>
         <source>Cannot get a valid format for current HDD image!</source>
-        <translation>Geçerli HDD Kalıbı için geçerli bir format alınamıyor!</translation>
+        <translation>Geçerli HDD Kalıbı için geçerli bir biçim alınamıyor!</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="214"/>
@@ -1985,7 +2050,7 @@ Detaylar:
     <message>
         <location filename="Copy_VM_Window.cpp" line="66"/>
         <source>This VM Name is Already Used!</source>
-        <translation>Bu Sanal Makine Adı Zaten Kullanıldı</translation>
+        <translation>Bu Sanal Makine Adı Zaten Kullanıldı!</translation>
     </message>
 </context>
 <context>
@@ -2069,7 +2134,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="245"/>
         <source>Additional Features</source>
-        <translation>Ek özellikler</translation>
+        <translation>Ek Özellikler</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.ui" line="266"/>
@@ -2099,7 +2164,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="94"/>
         <source>Select Base HDD Image File</source>
-        <translation>Temel HDD Kalıp Dosyasını Seç</translation>
+        <translation>Temel HDD Kalıp Dosyası Seç</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="96"/>
@@ -2143,7 +2208,7 @@ Detaylar:
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="190"/>
         <source>QEMU-IMG Supported formats</source>
-        <translation>QEMU-IMG Desteklenen Biçimler</translation>
+        <translation>QEMU-IMG Desteklenen biçimler</translation>
     </message>
     <message>
         <location filename="Create_HDD_Image_Window.cpp" line="191"/>
@@ -2218,7 +2283,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Create_Template_Window.ui" line="215"/>
         <source>Creating Options</source>
-        <translation>Seçenekler Oluşturma</translation>
+        <translation>Oluşturma Seçenekleri</translation>
     </message>
     <message>
         <location filename="Create_Template_Window.ui" line="236"/>
@@ -2507,7 +2572,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.ui" line="90"/>
         <location filename="Device_Manager_Widget.ui" line="483"/>
         <source>List Mode</source>
-        <translation>Lise Modu</translation>
+        <translation>Liste Modu</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="122"/>
@@ -2572,7 +2637,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Device_Manager_Widget.ui" line="353"/>
         <source>Device List:</source>
-        <translation>Aygıt Ekle:</translation>
+        <translation>Aygıt Listesi:</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.ui" line="403"/>
@@ -2658,7 +2723,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1230"/>
         <location filename="Device_Manager_Widget.cpp" line="1240"/>
         <source>Image On Disk Size: </source>
-        <translation>Kalıp Disk Boyutu:</translation>
+        <translation>Kalıbın Diskteki Boyutu: </translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="372"/>
@@ -2768,7 +2833,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Device_Manager_Widget.cpp" line="710"/>
         <source>Maximum Hard Disk Count is 4 excluding CD-ROM</source>
-        <translation>En Fazla Sabit Disk Sayısı 4 (CD-ROM hariç)</translation>
+        <translation>CD-ROM hariç En Fazla Sabit Disk Sayısı 4</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="942"/>
@@ -2788,7 +2853,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Device_Manager_Widget.cpp" line="1094"/>
         <location filename="Device_Manager_Widget.cpp" line="1100"/>
         <source>Error!</source>
-        <translation>Hata?</translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1034"/>
@@ -2799,7 +2864,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1047"/>
         <source>Format?</source>
-        <translation>Biçimlendir?</translation>
+        <translation>Biçim?</translation>
     </message>
     <message>
         <location filename="Device_Manager_Widget.cpp" line="1048"/>
@@ -2857,7 +2922,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Edit_Emulator_Version_Window.cpp" line="44"/>
         <location filename="Edit_Emulator_Version_Window.cpp" line="49"/>
         <source>%1 (Located in %2)</source>
-        <translation>%1 (%2&apos;de yer almaktadır)</translation>
+        <translation>%1 (%2 &apos;de yer almaktadır)</translation>
     </message>
     <message>
         <location filename="Edit_Emulator_Version_Window.cpp" line="84"/>
@@ -2987,7 +3052,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="203"/>
         <source>View</source>
-        <translation>Görünüm</translation>
+        <translation>Görüntüle</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="221"/>
@@ -2997,12 +3062,12 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="230"/>
         <source>&amp;Save VM</source>
-        <translation>&amp;Sanal Makine Kaydet</translation>
+        <translation>Sanal Makine &amp;Kaydet</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="239"/>
         <source>&amp;Load VM</source>
-        <translation>&amp;Sanal Makine Yükle</translation>
+        <translation>&amp;Sanal Makine &amp;Yükle</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="242"/>
@@ -3012,7 +3077,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="251"/>
         <source>&amp;Pause VM</source>
-        <translation>&amp;Sanal Makineyi Durdur</translation>
+        <translation>Sanal Makineyi &amp;Durdur</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="260"/>
@@ -3022,12 +3087,12 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="269"/>
         <source>Save VM S&amp;tate...</source>
-        <translation>Sanal Makine Durumunu Kayde&amp;t...</translation>
+        <translation>Sanal Makine &amp;Durumunu Kaydet...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="278"/>
         <source>Load VM St&amp;ate...</source>
-        <translation>Sanal M&amp;akine Durumunu Yükle...</translation>
+        <translation>Sanal Makine Durumunu &amp;Yükle...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="287"/>
@@ -3146,7 +3211,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="420"/>
         <source>&amp;About Emulator Control...</source>
-        <translation>Emülatör Kontrol Hakkınd&amp;a...</translation>
+        <translation>Emülatör Kontrol &amp;Hakkında...</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="461"/>
@@ -3208,7 +3273,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="574"/>
         <source>d</source>
-        <translation type="unfinished"></translation>
+        <translation>d</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="586"/>
@@ -3218,7 +3283,7 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.ui" line="598"/>
         <source>Fullscreen Mode</source>
-        <translation>tam Ekran Modu</translation>
+        <translation>Tam Ekran Modu</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.ui" line="601"/>
@@ -3239,17 +3304,17 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
         <location filename="Emulator_Control_Window.ui" line="623"/>
         <location filename="Emulator_Control_Window.ui" line="628"/>
         <source>a</source>
-        <translation type="unfinished"></translation>
+        <translation>a</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="87"/>
         <source> [Paused]</source>
-        <translation>[Durduruldu]</translation>
+        <translation> [Durduruldu]</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="91"/>
         <source> [Saved]</source>
-        <translation>[Kaydedildi]</translation>
+        <translation> [Kaydedildi]</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="118"/>
@@ -3280,12 +3345,12 @@ Linux Sıkıştırılmış Çevrim kalıbı, yalnızca örneğin Knoppix CD-ROM&
     <message>
         <location filename="Emulator_Control_Window.cpp" line="350"/>
         <source>Are you sure to shutdown VM &quot;%1&quot;?</source>
-        <translation>&quot;% 1&quot; Sanal Makinesini kapatmaya emin misiniz?</translation>
+        <translation>&quot;%1&quot; Sanal Makinesini kapatmaya emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="362"/>
         <source>Are you sure to reboot VM &quot;%1&quot;?</source>
-        <translation>&quot;% 1&quot; Sanal Makinesini yeniden başlatmaya emin misiniz?</translation>
+        <translation>&quot;%1&quot; Sanal Makinesini yeniden başlatmaya emin misiniz?</translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="408"/>
@@ -3515,7 +3580,7 @@ Bu mesajı tekrar görmek istiyor musunuz?</translation>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="104"/>
         <source>Select Directory</source>
-        <translation>Dizini Seç</translation>
+        <translation>Dizin Seç</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.cpp" line="117"/>
@@ -3635,7 +3700,7 @@ Bu mesajı tekrar görmek istiyor musunuz?</translation>
         <source>Never show it
 (For View Error Log Select VM-&gt;Show QEMU/KVM Error Log Window)</source>
         <translation>Asla gösterme
-Sanal Makine Hata Günlüğünü Görüntülemek için-&gt;QEMU/KVM Hata Günlüğü Göster Penceresi&apos;ni seçin)</translation>
+(Hata Günlüğünü Görüntülemek için Sanal Makine-&gt;QEMU/KVM Hata Günlüğü Göster Penceresi&apos;ni seçin)</translation>
     </message>
     <message>
         <location filename="Error_Log_Window.ui" line="106"/>
@@ -3783,7 +3848,7 @@ Sanal Makine Hata Günlüğünü Görüntülemek için-&gt;QEMU/KVM Hata Günlü
     <message>
         <location filename="First_Start_Wizard.cpp" line="724"/>
         <source>Cannot find qemu-img.exe! You most set it path in: File-&gt;Advanced Settings-&gt;Advanced-&gt;qemu-img path</source>
-        <translation>qemu-img.exe bulunamıyor! En çok bunu yol olarak ayarlayın: Dosya-&gt; Gelişmiş Ayarlar-&gt; Gelişmiş-&gt; qemu-img yolu</translation>
+        <translation>qemu-img.exe bulunamıyor!Çoğunlukla bu yoldan ayarlanır: Dosya-&gt; Gelişmiş Ayarlar-&gt; Gelişmiş-&gt; qemu-img yolu</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="755"/>
@@ -3877,7 +3942,7 @@ Bir sonraki sayfaya gitmek için &quot;İleri&quot; düğmesine veya önceki say
     <message>
         <location filename="First_Start_Wizard.cpp" line="777"/>
         <source>Set &amp;Versions Manualy</source>
-        <translation>Sürümleri Elle Ayarla</translation>
+        <translation>&amp;Sürümleri Elle Ayarla</translation>
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="783"/>
@@ -3986,7 +4051,7 @@ Bir sonraki sayfaya gitmek için &quot;İleri&quot; düğmesine veya önceki say
     <message>
         <location filename="Main_Window.ui" line="472"/>
         <source>Number of CP&amp;U:</source>
-        <translation>İşlemci &amp;Sayısı</translation>
+        <translation>İşlemci &amp;Sayısı:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="503"/>
@@ -4359,7 +4424,7 @@ Bir sonraki sayfaya gitmek için &quot;İleri&quot; düğmesine veya önceki say
     <message>
         <location filename="Main_Window.ui" line="1233"/>
         <source>Snapshot &amp;Mode</source>
-        <translation>&amp;Anlık Görüntü Modu</translation>
+        <translation>Anlık Görüntü &amp;Modu</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="1259"/>
@@ -4561,7 +4626,7 @@ Küme Boyutu: 0</translation>
     <message>
         <location filename="Main_Window.ui" line="2661"/>
         <source>D&amp;elete item</source>
-        <translation>Öğ&amp;e Sil</translation>
+        <translation>Öğe &amp;Sil</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="2678"/>
@@ -4766,17 +4831,17 @@ Küme Boyutu: 0</translation>
     <message>
         <location filename="Main_Window.ui" line="3384"/>
         <source>Send Only User Arguments Without AQEMU Arguments</source>
-        <translation>AQEMU Argümanları olmadan yalnızca Kullanıcı Argümanları Gönderme</translation>
+        <translation>AQEMU Değişkenleri Olmadan Yalnızca Kullanıcı Değişkenlerini Gönder</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3399"/>
         <source>Use Emulator Binary File in &quot;Additional QEMU/KVM Arguments&quot;</source>
-        <translation>Emülatör İkili Dosyayı &quot;Ek QEMU/KVM Argümanlarında&quot; kullanın</translation>
+        <translation>Emülatör İkili Dosyasını &quot;Ek QEMU/KVM Değişkenlerinde&quot; kullan</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3437"/>
         <source>Additional QEMU/KVM &amp;Arguments</source>
-        <translation>Ek QEMU/KVM &amp;Argümanları</translation>
+        <translation>Ek QEMU/KVM &amp;Değişkenleri</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3451"/>
@@ -4846,7 +4911,7 @@ Küme Boyutu: 0</translation>
         <location filename="Main_Window.ui" line="3644"/>
         <source>Use If Possible
 (AQEMU won&apos;t check loaded KQEMU module)</source>
-        <translation>Mümkünse kullan
+        <translation>Mümkünse Kullan
 (AQEMU yüklü KQEMU modülünü kontrol etmeyecektir)</translation>
     </message>
     <message>
@@ -4861,7 +4926,7 @@ Küme Boyutu: 0</translation>
         <source>Full
 (Enable full virtualization mode for best performances)</source>
         <translation>Tam
-(En iyi performanslar için tam sanallaştırma modunu etkinleştirin)</translation>
+(En iyi performans için tam sanallaştırma modunu etkinleştirin)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3687"/>
@@ -4886,7 +4951,7 @@ Küme Boyutu: 0</translation>
     <message>
         <location filename="Main_Window.ui" line="3748"/>
         <source>For Connection Use Port 5900 + VNC Display Number</source>
-        <translation>Bağlantı İçin Bağlantı Noktası 5900 + VNC Ekran Numarası</translation>
+        <translation>Bağlantı İçin 5900  Bağlantı Noktası + VNC Ekran Numarası kullan</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3764"/>
@@ -4901,7 +4966,7 @@ Küme Boyutu: 0</translation>
     <message>
         <location filename="Main_Window.ui" line="3823"/>
         <source>Use Password (You must set a password when you starting the VM)</source>
-        <translation>Parola Kullan (VM başlatırken bir parola ayarlamanız gerekir)</translation>
+        <translation>Şifre Kullan (Sanal Makine başlatırken bir şifre ayarlamanız gerekir)</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="3830"/>
@@ -4973,7 +5038,7 @@ Bu İşlevi Geçerli Sanal Makinede Devre Dışı Bırakmak İçin &quot;Gömül
     <message>
         <location filename="Main_Window.ui" line="4200"/>
         <source>&amp;Initrd File:</source>
-        <translation>&amp;Initrd Dosyası</translation>
+        <translation>&amp;Initrd Dosyası:</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4244"/>
@@ -5034,7 +5099,7 @@ Bu İşlevi Geçerli Sanal Makinede Devre Dışı Bırakmak İçin &quot;Gömül
     <message>
         <location filename="Main_Window.ui" line="4473"/>
         <source>&amp;Delete VM</source>
-        <translation>&amp;Sanal Makineyi Sil</translation>
+        <translation>Sanal Makineyi &amp;Sil</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4482"/>
@@ -5146,7 +5211,7 @@ Bu İşlevi Geçerli Sanal Makinede Devre Dışı Bırakmak İçin &quot;Gömül
     <message>
         <location filename="Main_Window.ui" line="4626"/>
         <source>Show QEMU/KVM &amp;Arguments</source>
-        <translation>QEMU/KVM &amp;Argümanlarını Göster</translation>
+        <translation>QEMU/KVM &amp;Değişkenlerini Göster</translation>
     </message>
     <message>
         <location filename="Main_Window.ui" line="4635"/>
@@ -5261,7 +5326,7 @@ Tüm Çalışan Sanal Makineleri Sona Erdir ve AQEMU&apos;yu Kapat?</translation
     <message>
         <location filename="Main_Window.cpp" line="1232"/>
         <source>VM File &quot;</source>
-        <translation>Sanal Makine Dosyası</translation>
+        <translation>Sanal Makine Dosyası &quot;</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1232"/>
@@ -5273,7 +5338,7 @@ Check Permissions!</source>
     <message>
         <location filename="Main_Window.cpp" line="1505"/>
         <source>Memory size &lt; 1! Using default value: 256 MB</source>
-        <translation>Bellek boyutu &lt;1! Varsayılan değer kullanılıyor: 256 MB</translation>
+        <translation>Bellek boyutu &lt; 1! Varsayılan değer kullanılıyor: 256 MB</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="1511"/>
@@ -5425,7 +5490,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="2147"/>
         <source>Use Snapshot Mode:</source>
-        <translation>Anlık Görüntü Kullan:</translation>
+        <translation>Anlık Görüntü Modu Kullan:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2159"/>
@@ -5558,7 +5623,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="2433"/>
         <source>Dump</source>
-        <translation type="unfinished"></translation>
+        <translation>Dump</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2437"/>
@@ -5605,7 +5670,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <location filename="Main_Window.cpp" line="2525"/>
         <location filename="Main_Window.cpp" line="2603"/>
         <source>none</source>
-        <translation>yok</translation>
+        <translation>hiçbiri</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2529"/>
@@ -5741,7 +5806,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="2828"/>
         <source>On-Board Flash Image:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bütünleşik Flaş Kalıbı:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="2851"/>
@@ -5816,7 +5881,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="3069"/>
         <source>Curses:</source>
-        <translation type="unfinished"></translation>
+        <translation>Curses:</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3081"/>
@@ -5841,7 +5906,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="3442"/>
         <source>Type: Image     Size: 0</source>
-        <translation>Tür: Kalıp     Boyutu: 0</translation>
+        <translation>Tür: Kalıp     Boyut: 0</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="3449"/>
@@ -5921,7 +5986,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="4139"/>
         <source>On-Board Flash</source>
-        <translation>Yerleşik Flaş</translation>
+        <translation>Bütünleşik Flaş</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4156"/>
@@ -6012,7 +6077,7 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
     <message>
         <location filename="Main_Window.cpp" line="4901"/>
         <source>Reboot VM &quot;%1&quot;?</source>
-        <translation>&quot;%1&quot; Sanal Makinesini Yniden Başlat?</translation>
+        <translation>&quot;%1&quot; Sanal Makinesini Yeniden Başlat?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4912"/>
@@ -6113,14 +6178,14 @@ Sanal Makineninnin çalışması mümkün değildir!</translation>
         <source>Your memory size %1 MB &gt; %2 MB - all free RAM on this system!
 To set this value, check &quot;Remove limitation on maximum amount of memory&quot;.</source>
         <translation>Bellek boyutunuz%1 MB &gt; %2 MB - bu sistemdeki tüm boş RAM!
-Bu değeri ayarlamak için &quot;Azami bellek miktarındaki sınırlamayı kaldır&quot; seçeneğini işaretleyin.</translation>
+Bu değeri ayarlamak için &quot;En fazla bellek miktarı sınırlamasını kaldır&quot; seçeneğini işaretleyin.</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5285"/>
         <source>Current memory size more of all host memory!
 Use the maximum available size.</source>
         <translation>Şu anki bellek boyutu, tüm ana bilgisayar belleğinden daha fazla!
-Mevcut olan en fazla boyutu kullanın.</translation>
+Kullanılabilir olan en fazla boyutu kullanın.</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5297"/>
@@ -6203,7 +6268,7 @@ Mevcut olan en fazla boyutu kullanın.</translation>
     <message>
         <location filename="Main_Window.cpp" line="6305"/>
         <source>CPU count value is not valid digit!</source>
-        <translation>CPU sayım değeri geçerli rakam değil!</translation>
+        <translation>İşlemci sayısı değeri geçerli rakam değil!</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6328"/>
@@ -6237,7 +6302,7 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Main_Window.cpp" line="6509"/>
         <source>Select SMB Directory</source>
-        <translation>SMB Dizinini Seç</translation>
+        <translation>SMB Dizini Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6524"/>
@@ -6283,7 +6348,7 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Main_Window.cpp" line="6584"/>
         <source>Select On-Board Flash Image</source>
-        <translation>Yerleşik Flaş Kalıbı Seç</translation>
+        <translation>Bütünleşik Flaş Kalıbı Seç</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="6594"/>
@@ -6311,102 +6376,102 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Monitor_Window.ui" line="141"/>
         <source>info version</source>
-        <translation>bilgi sürümü</translation>
+        <translation>sürüm bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="146"/>
         <source>info network</source>
-        <translation>bilgi ağı</translation>
+        <translation>ağ bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="151"/>
         <source>info block</source>
-        <translation>bilgi bloğu</translation>
+        <translation>blok bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="156"/>
         <source>info registers</source>
-        <translation>bilgi kayıtları</translation>
+        <translation>kayıtlar bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="161"/>
         <source>info cpus</source>
-        <translation type="unfinished"></translation>
+        <translation>işlemciler bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="166"/>
         <source>info history</source>
-        <translation type="unfinished"></translation>
+        <translation>geçmiş bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="171"/>
         <source>info irq</source>
-        <translation type="unfinished"></translation>
+        <translation>irq bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="176"/>
         <source>info pic</source>
-        <translation type="unfinished"></translation>
+        <translation>pic bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="181"/>
         <source>info pci</source>
-        <translation type="unfinished"></translation>
+        <translation>pci bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="186"/>
         <source>info tlb</source>
-        <translation type="unfinished"></translation>
+        <translation>tlb bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="191"/>
         <source>info mem</source>
-        <translation type="unfinished"></translation>
+        <translation>bellek bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="196"/>
         <source>info jit</source>
-        <translation type="unfinished"></translation>
+        <translation>jit bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="201"/>
         <source>info kqemu</source>
-        <translation type="unfinished"></translation>
+        <translation>kqemu bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="206"/>
         <source>info usb</source>
-        <translation type="unfinished"></translation>
+        <translation>usb bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="211"/>
         <source>info usbhost</source>
-        <translation type="unfinished"></translation>
+        <translation>usbanabilgisayar bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="216"/>
         <source>info profile</source>
-        <translation type="unfinished"></translation>
+        <translation>profil bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="221"/>
         <source>info capture</source>
-        <translation type="unfinished"></translation>
+        <translation>yakalama bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="226"/>
         <source>info snapshots</source>
-        <translation type="unfinished"></translation>
+        <translation>anlık görüntü bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="231"/>
         <source>info mice</source>
-        <translation type="unfinished"></translation>
+        <translation>fare bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="236"/>
         <source>info vnc</source>
-        <translation type="unfinished"></translation>
+        <translation>vnc bilgisi</translation>
     </message>
     <message>
         <location filename="Monitor_Window.ui" line="250"/>
@@ -6469,7 +6534,7 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="248"/>
         <source>macaddr</source>
-        <translation type="unfinished">macaddr</translation>
+        <translation>macaddr</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="272"/>
@@ -6489,12 +6554,12 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="330"/>
         <source>name</source>
-        <translation type="unfinished">name</translation>
+        <translation>ad</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="356"/>
         <source>hostname</source>
-        <translation type="unfinished">hostname</translation>
+        <translation>anabilgisayaradı</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="382"/>
@@ -6514,7 +6579,7 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="457"/>
         <source>script</source>
-        <translation type="unfinished">script</translation>
+        <translation>komut dosyası</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="488"/>
@@ -6530,12 +6595,12 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="557"/>
         <source>listen</source>
-        <translation type="unfinished"></translation>
+        <translation>dinle</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="583"/>
         <source>connect</source>
-        <translation type="unfinished"></translation>
+        <translation>bağlan</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="609"/>
@@ -6555,12 +6620,12 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="690"/>
         <source>group</source>
-        <translation type="unfinished"></translation>
+        <translation>grup</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="716"/>
         <source>mode</source>
-        <translation type="unfinished"></translation>
+        <translation>mod</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="742"/>
@@ -6605,12 +6670,12 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="818"/>
         <source>addr</source>
-        <translation type="unfinished">addr</translation>
+        <translation>addr</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="832"/>
         <source>vectors</source>
-        <translation type="unfinished">vectors</translation>
+        <translation>vektörler</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="849"/>
@@ -6620,22 +6685,22 @@ Bu Kaydı Ekle?</translation>
     <message>
         <location filename="Network_Widget.ui" line="863"/>
         <source>host</source>
-        <translation type="unfinished">host</translation>
+        <translation>anabilgisayar</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="877"/>
         <source>restrict</source>
-        <translation type="unfinished">restrict</translation>
+        <translation>kısıtla</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="888"/>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>e</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="893"/>
         <source>n</source>
-        <translation type="unfinished"></translation>
+        <translation>n</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="901"/>
@@ -6681,13 +6746,13 @@ Bu Kaydı Ekle?</translation>
         <location filename="Network_Widget.ui" line="1055"/>
         <location filename="Network_Widget.ui" line="1079"/>
         <source>on</source>
-        <translation type="unfinished"></translation>
+        <translation>açık</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1060"/>
         <location filename="Network_Widget.ui" line="1084"/>
         <source>off</source>
-        <translation type="unfinished"></translation>
+        <translation>kapalı</translation>
     </message>
     <message>
         <location filename="Network_Widget.ui" line="1068"/>
@@ -6713,7 +6778,7 @@ Bu Kaydı Ekle?</translation>
         <location filename="Network_Widget.cpp" line="133"/>
         <location filename="Network_Widget.cpp" line="2025"/>
         <source>Unknown Type Item</source>
-        <translation>Bilinmeyen Öğe Türü</translation>
+        <translation>Bilinmeyen Tür Öğe</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="687"/>
@@ -6745,7 +6810,7 @@ Yeni bir Ağ Arabirim Kartı oluşturun ve VLAN n e bağlayın (varsayılan değ
     <message>
         <location filename="Network_Widget.cpp" line="759"/>
         <source>user</source>
-        <translation type="unfinished">kullanıcı</translation>
+        <translation>kullanıcı</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="759"/>
@@ -6757,18 +6822,19 @@ Use the user mode network stack which requires no administrator privilege to run
     <message>
         <location filename="Network_Widget.cpp" line="763"/>
         <source>channel</source>
-        <translation type="unfinished">channel</translation>
+        <translation>kanal</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="763"/>
         <source>-net channel,port:dev 
 Forward &apos;user&apos; TCP connection to port port to character device dev</source>
-        <translation type="unfinished"></translation>
+        <translation>-net channel,port:dev 
+Forward &apos;user&apos; TCP connection to port port to character device dev</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="767"/>
         <source>tap</source>
-        <translation type="unfinished">tap</translation>
+        <translation>tap</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="767"/>
@@ -6781,7 +6847,7 @@ Ana bilgisayar TAP ağ arabirimi adını VLAN n&apos;e bağlayın, yapılandırm
         <location filename="Network_Widget.cpp" line="771"/>
         <location filename="Network_Widget.cpp" line="775"/>
         <source>socket</source>
-        <translation type="unfinished"></translation>
+        <translation>soket</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="771"/>
@@ -6820,13 +6886,14 @@ Ana bilgisayarda çalışan bir vde anahtarının PORT n&apos;una VLAN n bağlay
     <message>
         <location filename="Network_Widget.cpp" line="783"/>
         <source>dump</source>
-        <translation type="unfinished">dump</translation>
+        <translation>dump</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="783"/>
         <source>-net dump[,vlan=n][,file=f][,len=n] 
 dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet)</source>
-        <translation type="unfinished"></translation>
+        <translation>-net dump[,vlan=n][,file=f][,len=n] 
+dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet)</translation>
     </message>
     <message>
         <location filename="Network_Widget.cpp" line="794"/>
@@ -7024,7 +7091,7 @@ dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet
     <message>
         <location filename="Old_Network_Widget.cpp" line="63"/>
         <source>Network Card #% Not Valid!</source>
-        <translation>Ağ Kartı  #% Geçerli değil!</translation>
+        <translation>Ağ Kartı #% Geçerli değil!</translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="84"/>
@@ -7075,7 +7142,7 @@ dump traffic on vlan &apos;n&apos; to file &apos;f&apos; (max n bytes per packet
     <message>
         <location filename="Old_Network_Widget.cpp" line="658"/>
         <source>IP Address in Card </source>
-        <translation>Karttaki IP Adresi</translation>
+        <translation>Karttaki IP Adresi </translation>
     </message>
     <message>
         <location filename="Old_Network_Widget.cpp" line="658"/>
@@ -7141,7 +7208,7 @@ Bu olmadan Devam Etmek istermisiniz?</translation>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="226"/>
         <source>Ports List</source>
-        <translation>Bağlanı Noktaları Listesi</translation>
+        <translation>Bağlantı Noktaları Listesi</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.ui" line="261"/>
@@ -7209,7 +7276,7 @@ Bu olmadan Devam Etmek istermisiniz?</translation>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="199"/>
         <source>%1 %2 (BusAddr: %3)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 (BusAddr: %3)</translation>
     </message>
     <message>
         <location filename="Ports_Tab_Widget.cpp" line="210"/>
@@ -8140,9 +8207,9 @@ Dosya için İzinleri Kontrol Et: </translation>
         <source>This is a first AQEMU start and program running in root mode.
 In some Linux distributions you may have problems with configuration saving.
 Close AQEMU?</source>
-        <translation>Bu, kök modunda çalışan ilk bir AQEMU başlatma ve programdır.
+        <translation>Bu, kök modunda çalışan bir ilk AQEMU başlatma ve programdır.
 Bazı Linux dağıtımlarında yapılandırmanın kaydedilmesi ile ilgili sorun yaşayabilirsiniz.
-AQEMU&apos;yu kapatın?</translation>
+AQEMU&apos;yu kapat?</translation>
     </message>
     <message>
         <location filename="main.cpp" line="156"/>
@@ -8226,7 +8293,7 @@ Eksik (sıfır) değerler hesaplanacaktır.</translation>
     <message>
         <location filename="SMP_Settings_Window.ui" line="128"/>
         <source>Threads per core</source>
-        <translation type="unfinished"></translation>
+        <translation>Threads per core</translation>
     </message>
     <message>
         <location filename="SMP_Settings_Window.ui" line="152"/>
@@ -8284,7 +8351,7 @@ Eksik (sıfır) değerler hesaplanacaktır.</translation>
     <message>
         <location filename="Select_Icon_Window.ui" line="266"/>
         <source>Your Icon Path:</source>
-        <translation>Sizin Simge Yolunuz:</translation>
+        <translation>Simge Yolunuz:</translation>
     </message>
     <message>
         <location filename="Select_Icon_Window.ui" line="283"/>
@@ -8357,7 +8424,7 @@ Eksik (sıfır) değerler hesaplanacaktır.</translation>
     <message>
         <location filename="Settings_Window.ui" line="147"/>
         <source>View</source>
-        <translation>Görünüm</translation>
+        <translation>Görüntüle</translation>
     </message>
     <message>
         <location filename="Settings_Window.ui" line="174"/>
@@ -8497,14 +8564,14 @@ Eksik (sıfır) değerler hesaplanacaktır.</translation>
         <source>Language will set after restarting AQEMU
 Show this message in future?</source>
         <translation>AQEMU yeniden başlatıldıktan sonra dil ayarlanır
-Bu mesajı gelecekte gösterilsin mi?</translation>
+Bu mesaj gelecekte gösterilsin mi?</translation>
     </message>
     <message>
         <location filename="Settings_Window.cpp" line="235"/>
         <source>Icons theme be set after restart AQEMU
 Show this message in future?</source>
-        <translation>AQEMU yeniden başlatıldıktan sonra simgeler teması ayarlanacak
-Bu mesajı gelecekte gösterilsin mi?</translation>
+        <translation>AQEMU yeniden başlatıldıktan sonra simge teması ayarlanacak
+Bu mesaj gelecekte gösterilsin mi?</translation>
     </message>
     <message>
         <location filename="Settings_Window.cpp" line="262"/>
@@ -8939,7 +9006,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="VM_Wizard_Window.ui" line="959"/>
         <source>Remove limitation on maximum amount of memory</source>
-        <translation type="unfinished"></translation>
+        <translation>En fazla bellek miktarı sınırlamasını kaldır</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="983"/>
@@ -8948,37 +9015,41 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Select a hard disk image to be used as a boot hard disk of the virtual machine. You can either create a new hard disk using the &lt;span style=&quot; font-weight:600;&quot;&gt;New&lt;/span&gt; button or select an existing hard disk image by pressing the &lt;span style=&quot; font-weight:600;&quot;&gt;Existing&lt;/span&gt; button.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Sanal Makinenin önyükleme sabit diski olarak kullanılacak bir sabit disk kalıbı seçin. Ya &lt;span style=&quot; font-weight:600;&quot;&gt;Yeni&lt;/span&gt; düğmesini kullanarak yeni bir sabit disk oluşturabilir veya &lt;span style=&quot; font-weight:600;&quot;&gt;Varolan&lt;/span&gt; düğmesine basarak mevcut bir sabit disk kalıbı seçebilirsiniz.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1024"/>
         <source>Boot Hard Disk (Primary Master)</source>
-        <translation type="unfinished"></translation>
+        <translation>Önyükleme Sabit Diski (Birincil Ana)</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1045"/>
         <source>N&amp;ew...</source>
-        <translation type="unfinished"></translation>
+        <translation>Y&amp;eni...</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1056"/>
         <source>E&amp;xisting...</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Varolan...</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1099"/>
         <source>Select network type using on your new virtual machine.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni sanal makinenizde kullanılacak ağ türünü seçin.</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1122"/>
         <source>&amp;User Mode Network Connection (Uses the user mode network stack)</source>
-        <translation type="unfinished"></translation>
+        <translation>K&amp;ullanıcı Modu Ağ Bağlantısı (Kullanıcı modu ağ yığını kullanacak)</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1132"/>
         <source>N&amp;o Network (No net cards installed on VM)</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ Y&amp;ok (Sanal makinede kurulu net kartları yok)</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1175"/>
@@ -8988,72 +9059,77 @@ p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;If the above is correct press the &lt;span style=&quot; font-weight:600;&quot;&gt;Finish&lt;/span&gt; button. Once you press it, a new virtual machine will be created. &lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Note that you can alter these and all other setting of the created virtual machine at any time.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Nimbus Sans L&apos;; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Yukarıdakiler doğruysa &lt;span style=&quot; font-weight:600;&quot;&gt;Bitir&lt;/span&gt; düğmesine basın. Bastığınızda, yeni bir sanal makine oluşturulur. &lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Oluşturulan sanal makinenin bu ve diğer ayarlarını istediğiniz zaman değiştirebileceğinizi unutmayın.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1197"/>
         <source>Enter your new virtual machine hard disk capacity.</source>
-        <translation type="unfinished"></translation>
+        <translation>Yeni sanal makine sabit diskinizin kapasitesini girin.</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.ui" line="1222"/>
         <source>Disk Size in GB (Gigabytes):</source>
-        <translation type="unfinished"></translation>
+        <translation>Disk Boyutu GB (Gigabyte):</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="82"/>
         <location filename="VM_Wizard_Window.cpp" line="168"/>
         <source>Emulator Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Türü</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="87"/>
         <location filename="VM_Wizard_Window.cpp" line="93"/>
         <location filename="VM_Wizard_Window.cpp" line="156"/>
         <source>Wizard Mode</source>
-        <translation type="unfinished"></translation>
+        <translation>Sihirbaz Modu</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="98"/>
         <source>VM Hardware Template</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Donanım Şablonu</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="103"/>
         <location filename="VM_Wizard_Window.cpp" line="390"/>
         <source>VM Name and CPU Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Adı ve İşlemci Türü</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="112"/>
         <location filename="VM_Wizard_Window.cpp" line="380"/>
         <source>Virtual Machine Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Adı</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="121"/>
         <location filename="VM_Wizard_Window.cpp" line="421"/>
         <source>Memory</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="128"/>
         <location filename="VM_Wizard_Window.cpp" line="416"/>
         <source>Hard Disk Size</source>
-        <translation type="unfinished"></translation>
+        <translation>Sabit Disk Boyutu</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="133"/>
         <location filename="VM_Wizard_Window.cpp" line="428"/>
         <source>Virtual Hard Disk</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Sabit Disk</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="139"/>
         <location filename="VM_Wizard_Window.cpp" line="433"/>
         <location filename="VM_Wizard_Window.cpp" line="438"/>
         <source>Network</source>
-        <translation type="unfinished"></translation>
+        <translation>Ağ</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="184"/>
@@ -9061,53 +9137,53 @@ p, li { white-space: pre-wrap; }
         <location filename="VM_Wizard_Window.cpp" line="366"/>
         <location filename="VM_Wizard_Window.cpp" line="581"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="184"/>
         <source>Please Add One Or More Emulators in Advanced Settings!</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen Bir Veya Daha Fazla Emülatörü Gelişmiş Ayarlarda Ekleyin!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="206"/>
         <location filename="VM_Wizard_Window.cpp" line="239"/>
         <source>Template For VM</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine İçin Şablon</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="249"/>
         <source>Cannot Create New VM from Template!</source>
-        <translation type="unfinished"></translation>
+        <translation>Şablondan Yeni Sanal Makine Oluşturulamadı!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="367"/>
         <source>Cannot Find Emulator System ID!</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör Sistem Kimliği Bulunamadı!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="408"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="408"/>
         <source>This VM Name is Already Exists!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu Sanal Makine Adı Zaten Var!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="443"/>
         <source>&amp;Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Bitti</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="444"/>
         <source>Finish!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitti!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="582"/>
         <source>Cannot Find QEMU System ID!</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU Sistem Kimliği Bulunamadı!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="766"/>
@@ -9119,60 +9195,62 @@ p, li { white-space: pre-wrap; }
         <location filename="VM_Wizard_Window.cpp" line="834"/>
         <location filename="VM_Wizard_Window.cpp" line="879"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="767"/>
         <location filename="VM_Wizard_Window.cpp" line="775"/>
         <source>Cannot convert &quot;%1&quot; to memory size!</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; bellek boyutuna dönüştürülemedi!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="784"/>
         <source>Cannot convert &quot;%1&quot; to integer!</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; değerine dönüştürülemedi!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="793"/>
         <source>Cannot convert &quot;%1&quot; to size suffix! Valid suffixes: MB, GB</source>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; son ek boyutuna dönüştürülemedi! Geçerli son ek: MB, GB</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="799"/>
         <source>Memory size &lt; 0! Valid size is 1 or more</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek Boyutu &lt; 0! Geçerli boyut 1 yada daha fazla</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="808"/>
         <source>Your memory size %1 MB &gt; %2 MB - all free RAM on this system!
 To setup this value, check &quot;Remove limitation on maximum amount of memory&quot;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Bellek boyutunuz %1 MB &gt; %2 MB - bu sistemdeki tüm boş RAM!
+Bu değeri ayarlamak için, &quot;En fazla bellek miktarı sınırını sil&quot; kontrolü yapın.</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="834"/>
         <source>Current memory size bigger than all existing host memory!
 Using maximum available size.</source>
-        <translation type="unfinished"></translation>
+        <translation>Geçerli bellek boyutu tüm mevcut ana bilgisayar belleğinden daha büyük!
+En fazla kullanılabilir boyutu kullanın.</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="846"/>
         <source>Free memory: %1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>Boş bellek: %1 MB</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="879"/>
         <source>Free memory on this system is lower than 32 MB!</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu sistemdeki boş bellek 32 MB&apos; tan daha az!</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="918"/>
         <source>Select HDD Image</source>
-        <translation type="unfinished"></translation>
+        <translation>HDD Kalıbı Seç</translation>
     </message>
     <message>
         <location filename="VM_Wizard_Window.cpp" line="920"/>
         <source>All Files (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Tüm Dosyalar (*)</translation>
     </message>
 </context>
 <context>
@@ -9180,38 +9258,38 @@ Using maximum available size.</source>
     <message>
         <location filename="VNC_Password_Window.ui" line="13"/>
         <source>VNC Password</source>
-        <translation type="unfinished"></translation>
+        <translation>VNC Şifresi</translation>
     </message>
     <message>
         <location filename="VNC_Password_Window.ui" line="29"/>
         <source>Password:</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifre:</translation>
     </message>
     <message>
         <location filename="VNC_Password_Window.ui" line="56"/>
         <source>Confirm:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tekrarlayın:</translation>
     </message>
     <message>
         <location filename="VNC_Password_Window.ui" line="63"/>
         <source>OK</source>
-        <translation type="unfinished"></translation>
+        <translation>Tamam</translation>
     </message>
     <message>
         <location filename="VNC_Password_Window.cpp" line="41"/>
         <location filename="VNC_Password_Window.cpp" line="47"/>
         <source>Warning</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı</translation>
     </message>
     <message>
         <location filename="VNC_Password_Window.cpp" line="41"/>
         <source>Password is Empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifre Boş!</translation>
     </message>
     <message>
         <location filename="VNC_Password_Window.cpp" line="47"/>
         <source>Password Not Confirmed!</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifre Tekrarlanmadı!</translation>
     </message>
 </context>
 <context>
@@ -9219,23 +9297,24 @@ Using maximum available size.</source>
     <message>
         <location filename="VM.cpp" line="3481"/>
         <source>Version Invalid!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sürüm Geçerli Değil!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="3482"/>
         <source>Version of this AQEMU VM File isn&apos;t 0.5
 Load This File anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>Bu AQEMU Sanal Makine Dosyasının sürümü 0.5 değil
+Bu Dosyayı yine de yükle?</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6162"/>
         <source>Warning!</source>
-        <translation type="unfinished"></translation>
+        <translation>Uyarı!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6163"/>
         <source>USB Device %1 %2 (%3 %4) Not Found!</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 %2 (%3 %4) Usb Aygıtı yok!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6240"/>
@@ -9245,24 +9324,26 @@ Load This File anyway?</source>
         <location filename="VM.cpp" line="6869"/>
         <location filename="VM.cpp" line="8809"/>
         <source>Error!</source>
-        <translation type="unfinished"></translation>
+        <translation>Hata!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6240"/>
         <source>ROM File doesn&apos;t Exists! Can&apos;t run emulator!</source>
-        <translation type="unfinished"></translation>
+        <translation>ROM Dosyası Yok! Emülatör çalıştırılamadı!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6513"/>
         <source>Additional Arguments is Empty! Cannot Use User Arguments!</source>
-        <translation type="unfinished"></translation>
+        <translation>Ek Değişkenler Boş! Kullanıcı Değişkenleri Kullanılamadı!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6758"/>
         <source>KVM Kernel Module Not Loaded!
 To load this Module, Enter in Terminal with root privileges: &quot;modprobe kvm-intel&quot;. Or If Use AMD Processor: &quot;modprobe kvm-amd&quot;.
 Ignore This Error?</source>
-        <translation type="unfinished"></translation>
+        <translation>KVM Çekirdek Modülü Yüklenmedi!
+Bu modülü yüklemek için, kök ayrıcalıklarıyla terminale girip: &quot;modrope kvm-intel&quot; veya AMD işlemci kullanıyorsanız: &quot;modrope kvm-amd&quot; komutu verin.
+Bu Hatayı Yoksay?</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6812"/>
@@ -9272,42 +9353,47 @@ For Loading KQEMU Module Type:
 &quot;modprobe kqemu&quot;
 in root mode
 Or Disable Acceleration in &quot;Other-&gt;Hardware Virtualization&quot; tab.</source>
-        <translation type="unfinished"></translation>
+        <translation>KQEMU Çekirdek Modülü Yüklenmedi!
+Bu Modül QEMU için Hızlandırma Sağlar.
+KQEMU Modül Türünü Yüklemek İçin:
+kök modunda
+&quot;modrope kqemu&quot;
+Veya &quot;Diğer-&gt;Donanım Sanallaştırma&quot; sekmesinde Hızlandırmayı Devre Dışı yapın.</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="6870"/>
         <source>Cannot start emulator! Binary path is empty!</source>
-        <translation type="unfinished"></translation>
+        <translation>Emülatör başlatılamadı! İkili yolu boş!</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="7041"/>
         <source>QEMU Error Log</source>
-        <translation type="unfinished"></translation>
+        <translation>QEMU Hata Günlüğü</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="7077"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Yükleniyor...</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="7078"/>
         <source>Loading Virtual Machine. Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Yükleniyor. Lütfen Bekleyin...</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="7110"/>
         <source>Saving...</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaydediliyor...</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="7111"/>
         <source>Saving Virtual Machine. Please wait...</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal Makine Kaydediliyor. Lütfen Bekleyin...</translation>
     </message>
     <message>
         <location filename="VM.cpp" line="8810"/>
         <source>You must add HDD image in QCOW2 format to save virtual machine!</source>
-        <translation type="unfinished"></translation>
+        <translation>Sanal makineyi kaydetmek için QCOW2 biçiminde HDD kalıbı eklemelisiniz!</translation>
     </message>
 </context>
 <context>
@@ -9315,12 +9401,12 @@ Or Disable Acceleration in &quot;Other-&gt;Hardware Virtualization&quot; tab.</s
     <message>
         <location filename="Embedded_Display/vncview.cpp" line="260"/>
         <source>Password required</source>
-        <translation type="unfinished"></translation>
+        <translation>Şifre gerekli</translation>
     </message>
     <message>
         <location filename="Embedded_Display/vncview.cpp" line="261"/>
         <source>Please enter the password for the remote desktop:</source>
-        <translation type="unfinished"></translation>
+        <translation>Lütfen uzak masaüstünün şifresini girin:</translation>
     </message>
 </context>
 </TS>
