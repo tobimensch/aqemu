@@ -177,7 +177,8 @@ SET( translations
      transtations/Russian.ts
      translations/Ukrainian.ts
      translations/French.ts
-     translations/English.ts )
+     translations/English.ts
+     translations/Turkish.ts )
 
 SET( files_to_translate ${files_to_translate} ${aqemu_headers} ${aqemu_sources} ${aqemu_ui} )
 
