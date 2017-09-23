@@ -214,11 +214,11 @@ ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
 
 # TODO: port from Qt4 to Qt5
 # For translation
-IF( UPDATE_TRANSLATIONS )
-	QT5_CREATE_TRANSLATION( qm_files ${CMAKE_CURRENT_SOURCE_DIR} ${files_to_translate} ${translations} )
-ELSE( UPDATE_TRANSLATIONS )
-	QT5_ADD_TRANSLATION( qm_files ${translations} )
-ENDIF( UPDATE_TRANSLATIONS )
+#IF( UPDATE_TRANSLATIONS )
+#	QT5_CREATE_TRANSLATION( qm_files ${CMAKE_CURRENT_SOURCE_DIR} ${files_to_translate} ${translations} )
+#ELSE( UPDATE_TRANSLATIONS )
+#	QT5_ADD_TRANSLATION( qm_files ${translations} )
+#ENDIF( UPDATE_TRANSLATIONS )
 
 ADD_CUSTOM_TARGET( translations_target DEPENDS ${qm_files} )
 
