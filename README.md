@@ -10,6 +10,11 @@ virtual machine manager GUI.
 
 Bountysource crowdfunding page for AQEMU: https://salt.bountysource.com/teams/aqemu
 
+Patreon crowdfunding page: https://www.patreon.com/tobimensch
+
+Donate via PayPal: donate2aqemu@emailn.de
+
+
 ![ScreenShot](https://i.imgur.com/PkvFUEk.png)
 
 Current stable release: https://github.com/tobimensch/aqemu/releases/tag/v0.9.2
