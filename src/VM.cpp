@@ -3600,20 +3600,13 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				         << "/usr/local/share/aqemu/";
 
                 QSettings settings;    
-                bool abs_found = false;
                 for ( int i = 0; i < dataDirs.count(); i++ )
                 {
                     if ( Icon_Path.startsWith(dataDirs.at(i)) )
                     {
                         Icon_Path.replace(dataDirs.at(i),settings.value( "AQEMU_Data_Folder","").toString());
-                        abs_found = true;
                         break;
                     }
-                }
-
-                if ( ! abs_found )
-                {
-                    Icon_Path = settings.value( "AQEMU_Data_Folder","").toString() + Icon_Path;
                 }
             }
 
