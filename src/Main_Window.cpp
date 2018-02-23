@@ -3358,7 +3358,7 @@ void Main_Window::on_actionPower_Off_triggered()
 	}
 
 	if( QMessageBox::question(this, tr("Are you sure?"),
-		tr("Shutdown VM \"%1\"?").arg(cur_vm->Get_Machine_Name()),
+		tr("Poweroff VM \"%1\"?").arg(cur_vm->Get_Machine_Name()),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No )
 	{
 		return;
@@ -3420,7 +3420,7 @@ void Main_Window::on_actionReset_triggered()
 	}
 
 	if( QMessageBox::question(this, tr("Are you sure?"),
-		tr("Reboot VM \"%1\"?").arg(cur_vm->Get_Machine_Name()),
+		tr("Reset VM \"%1\"?").arg(cur_vm->Get_Machine_Name()),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No )
 	{
 		return;

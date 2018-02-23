@@ -3598,8 +3598,14 @@ Do you want to show this message again?</source>
         <translation type="obsolete">VM &quot;%1&quot; herunterfahren?</translation>
     </message>
     <message>
-        <source>Reboot VM &quot;%1&quot;?</source>
-        <translation type="obsolete">VМ &quot;%1&quot; neu starten?</translation>
+        <location filename="Main_Window.cpp" line="4862"/>
+        <source>Poweroff VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Main_Window.cpp" line="4901"/>
+        <source>Reset VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="87"/>

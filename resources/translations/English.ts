@@ -5945,8 +5945,13 @@ The work of the VM is not possible!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="Main_Window.cpp" line="4862"/>
+        <source>Poweroff VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Main_Window.cpp" line="4901"/>
-        <source>Reboot VM &quot;%1&quot;?</source>
+        <source>Reset VM &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
