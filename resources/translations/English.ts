@@ -3228,12 +3228,17 @@ Linux Compressed Loop image, useful only to reuse directly compressed CD-ROM ima
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="350"/>
-        <source>Are you sure to shutdown VM &quot;%1&quot;?</source>
+        <source>Are you sure you want to shutdown VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Emulator_Control_Window.cpp" line="350"/>
+        <source>Are you sure you want to poweroff VM &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="362"/>
-        <source>Are you sure to reboot VM &quot;%1&quot;?</source>
+        <source>Are you sure you want to reset VM &quot;%1&quot;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -58,6 +58,7 @@
     <addaction name="actionCommit"/>
     <addaction name="separator"/>
     <addaction name="actionPause_VM"/>
+    <addaction name="actionShutdown"/>
     <addaction name="actionPower_Off"/>
     <addaction name="actionReset_VM"/>
     <addaction name="separator"/>
@@ -652,6 +653,15 @@
    </property>
    <property name="text">
     <string>&amp;Grab Mouse</string>
+   </property>
+  </action>
+  <action name="actionShutdown">
+   <property name="icon">
+    <iconset resource="../resources/icons.qrc">
+     <normaloff>:/shutdown.png</normaloff>:/shutdown.png</iconset>
+   </property>
+   <property name="text">
+    <string>Shut&amp;down</string>
    </property>
   </action>
  </widget>
