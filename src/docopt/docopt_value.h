@@ -13,6 +13,7 @@
 #include <vector>
 #include <functional> // std::hash
 #include <iosfwd>
+#include <stdexcept>
 
 namespace docopt {
 
