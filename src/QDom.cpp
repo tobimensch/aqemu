@@ -314,7 +314,7 @@ bool QDomDocument::setContent(QFile* file, bool b, QString* s, int* i, int* i2)
 {
     if ( document )
     {
-        XMLError err = document->LoadFile(file->fileName().toLatin1());
+        XMLError err = document->LoadFile(file->fileName().toUtf8());
         if ( err == XML_NO_ERROR )
         {
             return true;
