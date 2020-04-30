@@ -4162,7 +4162,7 @@ Push the &quot;Next&quot; button to go to next page or &quot;Back&quot; button t
     </message>
     <message>
         <location filename="First_Start_Wizard.cpp" line="777"/>
-        <source>Set &amp;Versions Manualy</source>
+        <source>Set &amp;Versions Manually</source>
         <translation>Установить версию &amp;вручную</translation>
     </message>
     <message>
