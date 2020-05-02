@@ -3686,13 +3686,8 @@ void Main_Window::on_actionCreate_Shell_Script_triggered()
 		}
 
 		QTextStream out( &scriptFile );
-<<<<<<< HEAD
-		out << script_code << " $*\n";
-
-=======
 		out << script_code << " \"$@\"\n";
 		
->>>>>>> f318d11cfad78bce18a4f3ce9f27e50f895d3ed6
 		// Set File Permissions
 		scriptFile.setPermissions( scriptFile.permissions() | QFile::ExeOwner | QFile::ExeUser );
 	}
