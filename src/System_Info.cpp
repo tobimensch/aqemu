@@ -2752,6 +2752,93 @@ bool System_Info::Update_Host_USB()
 
 #endif // FreeBSD
 
+#ifdef Q_OS_MAC
+
+#include <sys/sysctl.h>
+#include <mach/host_info.h>
+#include <mach/mach_host.h>
+#include <mach/task_info.h>
+#include <mach/task.h>
+#include <QDir>
+#include <QFileInfoList>
+
+void System_Info::Get_Free_Memory_Size( int &allRAM, int &freeRAM )
+{
+	int mib[6]; 
+	mib[0] = CTL_HW;
+	mib[1] = HW_PAGESIZE;
+
+	int page_size;
+	size_t length;
+	length = sizeof (page_size);
+	if (sysctl (mib, 2, &page_size, &length, NULL, 0) < 0)
+	{
+				AQError( "void  System_Info::Get_Free_Memory_Size( int &allRAM, int &freeRAM )",
+				 "Cannot Get Memory Pagesize! (sysctl)" );
+	}
+
+	mach_msg_type_number_t count = HOST_VM_INFO_COUNT;
+
+	vm_statistics_data_t vmstat;
+	if (host_statistics (mach_host_self (), HOST_VM_INFO, (host_info_t) &vmstat, &count) != KERN_SUCCESS)
+	{
+		AQError( "void  System_Info::Get_Free_Memory_Size( int &allRAM, int &freeRAM )",
+				 "Cannot Get Information on Memory! (host_statistics)" );
+	}
+	
+	double all_ram = vmstat.wire_count + vmstat.active_count + vmstat.inactive_count + vmstat.free_count;
+	double free_ram = vmstat.free_count;
+	double cached_ram = vmstat.inactive_count;
+		
+	all_ram *= page_size;
+	free_ram *= page_size;
+	cached_ram *= page_size;
+	
+	allRAM = (int)(all_ram / 1024.0 / 1024.0);
+	freeRAM = (int)((free_ram + cached_ram) / 1024.0 / 1024.0);
+}
+
+QStringList System_Info::Get_Host_FDD_List()
+{
+	// Find Floppy's
+	QDir dev_dir( "/dev/fd/" );
+	QFileInfoList devices = dev_dir.entryInfoList( QStringList("*"), QDir::System, QDir::Name );
+	
+	QStringList tmp_list;
+	
+	for( int d = 0; d < devices.count(); ++d )
+	{
+		tmp_list << devices[d].absoluteFilePath();
+	}
+	
+	return tmp_list;
+}
+
+QStringList System_Info::Get_Host_CDROM_List()
+{
+	// Find CD-ROM's
+	QDir dev_dir( "/dev/" );
+	QFileInfoList devices = dev_dir.entryInfoList( QStringList("acd*"), QDir::System, QDir::Name );
+	
+	QStringList tmp_list;
+	
+	for( int d = 0; d < devices.count(); ++d )
+	{
+		tmp_list << devices[d].absoluteFilePath();
+	}
+	
+	return tmp_list;
+}
+
+bool System_Info::Update_Host_USB()
+{
+	AQError( "System_Info::Update_Host_USB()",
+			 "Not implemented!" );
+	return false;
+}
+
+#endif // macOS
+
 #ifdef Q_OS_WIN32
 
 #include <windows.h>
