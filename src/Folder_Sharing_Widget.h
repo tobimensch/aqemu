@@ -35,7 +35,7 @@ class Folder_Sharing_Widget: public QWidget
 	Q_OBJECT
 	
 	public:
-		Folder_Sharing_Widget( QWidget *parent = 0 );
+		explicit Folder_Sharing_Widget( QWidget *parent = 0 );
 		~Folder_Sharing_Widget();
 		void Set_VM( const Virtual_Machine &vm );
 		
