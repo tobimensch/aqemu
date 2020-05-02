@@ -35,6 +35,7 @@
 
 My_List_Widget::My_List_Widget(QWidget* parent) : QListWidget(parent)
 {
+  
 }
 
 void My_List_Widget::wheelEvent(QWheelEvent* e)
