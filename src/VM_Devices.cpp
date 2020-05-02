@@ -113,8 +113,10 @@ Available_Devices::Available_Devices()
 	PSO_Net_guestfwd = false;
 	
 	PSO_Net_ifname = false;
+	PSO_Net_bridge = false;
 	PSO_Net_script = false;
 	PSO_Net_downscript = false;
+	PSO_Net_helper = false;
 	PSO_Net_sndbuf = false;
 	PSO_Net_vnet_hdr = false;
 	PSO_Net_vhost = false;
@@ -537,8 +539,10 @@ bool Emulator::Load( const QString &path )
 			tmpDev.PSO_Net_guestfwd = (childElement.firstChildElement("Net_guestfwd").text() == "yes" );
 			
 			tmpDev.PSO_Net_ifname = (childElement.firstChildElement("Net_ifname").text() == "yes" );
+			tmpDev.PSO_Net_bridge = (childElement.firstChildElement("Net_bridge").text() == "yes" );
 			tmpDev.PSO_Net_script = (childElement.firstChildElement("Net_script").text() == "yes" );
 			tmpDev.PSO_Net_downscript = (childElement.firstChildElement("Net_downscript").text() == "yes" );
+			tmpDev.PSO_Net_helper = (childElement.firstChildElement("Net_helper").text() == "yes" );
 			tmpDev.PSO_Net_sndbuf = (childElement.firstChildElement("Net_sndbuf").text() == "yes" );
 			tmpDev.PSO_Net_vnet_hdr = (childElement.firstChildElement("Net_vnet_hdr").text() == "yes" );
 			tmpDev.PSO_Net_vhost = (childElement.firstChildElement("Net_vhost").text() == "yes" );
@@ -1166,6 +1170,12 @@ bool Emulator::Save() const
 		domText = domDocument.createTextNode( (tmpDev.PSO_Net_ifname ? "yes" : "no") );
 		deviceElement.appendChild( domText );
 		
+		// PSO_Net_bridge
+		deviceElement = domDocument.createElement( "Net_bridge" );
+		domElement.appendChild( deviceElement );
+		domText = domDocument.createTextNode( (tmpDev.PSO_Net_bridge ? "yes" : "no") );
+		deviceElement.appendChild( domText );
+
 		// PSO_Net_script
 		deviceElement = domDocument.createElement( "Net_script" );
 		domElement.appendChild( deviceElement );
@@ -1178,6 +1188,12 @@ bool Emulator::Save() const
 		domText = domDocument.createTextNode( (tmpDev.PSO_Net_downscript ? "yes" : "no") );
 		deviceElement.appendChild( domText );
 		
+		// PSO_Net_helper
+		deviceElement = domDocument.createElement( "Net_helper" );
+		domElement.appendChild( deviceElement );
+		domText = domDocument.createTextNode( (tmpDev.PSO_Net_helper ? "yes" : "no") );
+		deviceElement.appendChild( domText );
+
 		// PSO_Net_sndbuf
 		deviceElement = domDocument.createElement( "Net_sndbuf" );
 		domElement.appendChild( deviceElement );
@@ -2411,8 +2427,10 @@ VM_Net_Card_Native::VM_Net_Card_Native()
 	PortDev = "";
 	File_Descriptor = 0;
 	Interface_Name = "";
+	Bridge_Name = "";
 	TUN_TAP_Script = "";
 	TUN_TAP_Down_Script = "";
+	Bridge_Helper = "";
 	Listen = "";
 	Connect = "";
 	MCast = "";
@@ -2446,8 +2464,10 @@ VM_Net_Card_Native::VM_Net_Card_Native()
 	_Use_Hostname = false;
 	_Use_File_Descriptor = false;
 	_Use_Interface_Name = false;
+	_Use_Bridge_Name = false;
 	_Use_TUN_TAP_Script = false;
 	_Use_TUN_TAP_Down_Script = false;
+	_Use_Bridge_Helper = false;
 	_Use_Listen = false;
 	_Use_Connect = false;
 	_Use_MCast = false;
@@ -2487,8 +2507,10 @@ VM_Net_Card_Native::VM_Net_Card_Native( const VM_Net_Card_Native &nc )
 	PortDev = nc.Get_PortDev();
 	File_Descriptor = nc.Get_File_Descriptor();
 	Interface_Name = nc.Get_Interface_Name();
+	Bridge_Name = nc.Get_Bridge_Name();
 	TUN_TAP_Script = nc.Get_TUN_TAP_Script();
 	TUN_TAP_Down_Script = nc.Get_TUN_TAP_Down_Script();
+	Bridge_Helper = nc.Get_Bridge_Helper();
 	Listen = nc.Get_Listen();
 	Connect = nc.Get_Connect();
 	MCast = nc.Get_MCast();
@@ -2522,8 +2544,10 @@ VM_Net_Card_Native::VM_Net_Card_Native( const VM_Net_Card_Native &nc )
 	_Use_Hostname = nc.Use_Hostname();
 	_Use_File_Descriptor = nc.Use_File_Descriptor();
 	_Use_Interface_Name = nc.Use_Interface_Name();
+	_Use_Bridge_Name = nc.Use_Bridge_Name();
 	_Use_TUN_TAP_Script = nc.Use_TUN_TAP_Script();
 	_Use_TUN_TAP_Down_Script = nc.Use_TUN_TAP_Down_Script();
+	_Use_Bridge_Helper = nc.Use_Bridge_Helper();
 	_Use_Listen = nc.Use_Listen();
 	_Use_Connect = nc.Use_Connect();
 	_Use_MCast = nc.Use_MCast();
@@ -2563,8 +2587,10 @@ bool VM_Net_Card_Native::operator==( const VM_Net_Card_Native &nc ) const
 		PortDev == nc.Get_PortDev() &&
 		File_Descriptor == nc.Get_File_Descriptor() &&
 		Interface_Name == nc.Get_Interface_Name() &&
+		Bridge_Name == nc.Get_Bridge_Name() &&
 		TUN_TAP_Script == nc.Get_TUN_TAP_Script() &&
 		TUN_TAP_Down_Script == nc.Get_TUN_TAP_Down_Script() &&
+		Bridge_Helper == nc.Get_Bridge_Helper() &&
 		Listen == nc.Get_Listen() &&
 		Connect == nc.Get_Connect() &&
 		MCast == nc.Get_MCast() &&
@@ -2597,8 +2623,10 @@ bool VM_Net_Card_Native::operator==( const VM_Net_Card_Native &nc ) const
 		_Use_Hostname == nc.Use_Hostname() &&
 		_Use_File_Descriptor == nc.Use_File_Descriptor() &&
 		_Use_Interface_Name == nc.Use_Interface_Name() &&
+		_Use_Bridge_Name == nc.Use_Bridge_Name() &&
 		_Use_TUN_TAP_Script == nc.Use_TUN_TAP_Script() &&
 		_Use_TUN_TAP_Down_Script == nc.Use_TUN_TAP_Down_Script() &&
+		_Use_Bridge_Helper == nc.Use_Bridge_Helper() &&
 		_Use_Listen == nc.Use_Listen() &&
 		_Use_Connect == nc.Use_Connect() &&
 		_Use_MCast == nc.Use_MCast() &&
@@ -2796,6 +2824,26 @@ void VM_Net_Card_Native::Set_Interface_Name( const QString &n )
 	Interface_Name = n;
 }
 
+bool VM_Net_Card_Native::Use_Bridge_Name() const
+{
+	return _Use_Bridge_Name;
+}
+
+void VM_Net_Card_Native::Use_Bridge_Name( bool use )
+{
+	_Use_Bridge_Name = use;
+}
+
+const QString &VM_Net_Card_Native::Get_Bridge_Name() const
+{
+	return Bridge_Name;
+}
+
+void VM_Net_Card_Native::Set_Bridge_Name( const QString &n )
+{
+	Bridge_Name = n;
+}
+
 bool VM_Net_Card_Native::Use_TUN_TAP_Script() const
 {
 	return _Use_TUN_TAP_Script;
@@ -2834,6 +2882,26 @@ const QString &VM_Net_Card_Native::Get_TUN_TAP_Down_Script() const
 void VM_Net_Card_Native::Set_TUN_TAP_Down_Script( const QString &s )
 {
 	TUN_TAP_Down_Script = s;
+}
+
+bool VM_Net_Card_Native::Use_Bridge_Helper() const
+{
+	return _Use_Bridge_Helper;
+}
+
+void VM_Net_Card_Native::Use_Bridge_Helper( bool use )
+{
+	_Use_Bridge_Helper = use;
+}
+
+const QString &VM_Net_Card_Native::Get_Bridge_Helper() const
+{
+	return Bridge_Helper;
+}
+
+void VM_Net_Card_Native::Set_Bridge_Helper( const QString &s )
+{
+	Bridge_Helper = s;
 }
 
 bool VM_Net_Card_Native::Use_Listen() const

@@ -13,7 +13,7 @@
 ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ** GNU General Public License for more details.
 **
-** You should have received a copy of the GNU General Public License
+*lob/master/tabbar/packages.el* You should have received a copy of the GNU General Public License
 ** along with this program; if not, write to the Free Software
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor,
 ** Boston, MA  02110-1301, USA.
@@ -75,7 +75,7 @@ void Network_Widget::Set_Network_Cards( const QList<VM_Net_Card_Native> &cards )
 	
 	if( Network_Cards.count() > 0 )
 	{
-		nic = user = chanel = tap = socket = multi = vde = dump = 0;
+		nic = user = chanel = bridge = tap = socket = multi = vde = dump = 0;
 		
 		// Max net card count == 8
 		for( int nx = 0; nx < Network_Cards.count() && nx < 8; ++nx )
@@ -108,6 +108,13 @@ void Network_Widget::Set_Network_Cards( const QList<VM_Net_Card_Native> &cards )
 					new QListWidgetItem( "Channel " + QString::number(++chanel), ui.Items_List );
 					break;
 					
+				case VM::Net_Mode_Native_Bridge:
+					new QListWidgetItem( "Bridge " + ( item_name.isEmpty() ?
+													QString::number(++bridge) :
+													"(" + Network_Cards[nx].Get_Name() + ")" ),
+										 ui.Items_List );
+					break;
+
 				case VM::Net_Mode_Native_TAP:
 					new QListWidgetItem( "TAP " + ( item_name.isEmpty() ?
 													QString::number(++tap) :
@@ -187,6 +194,7 @@ void Network_Widget::Set_Devices( const Available_Devices &devices )
 	ui.CB_Network_Type->addItem( "nic" );
 	ui.CB_Network_Type->addItem( "user" );
 	ui.CB_Network_Type->addItem( "channel" );
+	ui.CB_Network_Type->addItem( "bridge" );
 	ui.CB_Network_Type->addItem( "tap" );
 	ui.CB_Network_Type->addItem( "socket" );
 	ui.CB_Network_Type->addItem( "multicast socket" );
@@ -211,8 +219,10 @@ void Network_Widget::Set_Devices( const Available_Devices &devices )
 	PSO_Net_guestfwd = devices.PSO_Net_guestfwd;
 	
 	PSO_Net_ifname = devices.PSO_Net_ifname;
+	PSO_Net_bridge = devices.PSO_Net_bridge;
 	PSO_Net_script = devices.PSO_Net_script;
 	PSO_Net_downscript = devices.PSO_Net_downscript;
+	PSO_Net_helper = devices.PSO_Net_helper;
 	PSO_Net_sndbuf = devices.PSO_Net_sndbuf;
 	PSO_Net_vnet_hdr = devices.PSO_Net_vnet_hdr;
 	PSO_Net_vhost = devices.PSO_Net_vhost;
@@ -284,9 +294,15 @@ void Network_Widget::Connect_Slots()
 	connect( ui.CH_ifname, SIGNAL(clicked()),
 			 this, SIGNAL(Changed()) );
 	
+	connect( ui.CH_bridge, SIGNAL(clicked()),
+			 this, SIGNAL(Changed()) );
+
 	connect( ui.Edit_ifname, SIGNAL(textChanged(const QString &)),
 			 this, SIGNAL(Changed()) );
 	
+	connect( ui.Edit_bridge, SIGNAL(textChanged(const QString &)),
+			 this, SIGNAL(Changed()) );
+
 	connect( ui.CH_script, SIGNAL(clicked()),
 			 this, SIGNAL(Changed()) );
 	
@@ -299,6 +315,12 @@ void Network_Widget::Connect_Slots()
 	connect( ui.Edit_downscript, SIGNAL(textChanged(const QString &)),
 			 this, SIGNAL(Changed()) );
 	
+	connect( ui.CH_helper, SIGNAL(clicked()),
+			 this, SIGNAL(Changed()) );
+
+	connect( ui.Edit_helper, SIGNAL(textChanged(const QString &)),
+			 this, SIGNAL(Changed()) );
+
 	connect( ui.CH_listen, SIGNAL(clicked()),
 			 this, SIGNAL(Changed()) );
 	
@@ -513,6 +535,12 @@ void Network_Widget::Disconnect_Slots()
 	disconnect( ui.Edit_ifname, SIGNAL(textChanged(const QString &)),
 				this, SIGNAL(Changed()) );
 	
+	disconnect( ui.CH_bridge, SIGNAL(clicked()),
+				this, SIGNAL(Changed()) );
+
+	disconnect( ui.Edit_bridge, SIGNAL(textChanged(const QString &)),
+				this, SIGNAL(Changed()) );
+
 	disconnect( ui.CH_script, SIGNAL(clicked()),
 				this, SIGNAL(Changed()) );
 	
@@ -525,6 +553,12 @@ void Network_Widget::Disconnect_Slots()
 	disconnect( ui.Edit_downscript, SIGNAL(textChanged(const QString &)),
 				this, SIGNAL(Changed()) );
 	
+	disconnect( ui.CH_helper, SIGNAL(clicked()),
+				this, SIGNAL(Changed()) );
+
+	disconnect( ui.Edit_helper, SIGNAL(textChanged(const QString &)),
+				this, SIGNAL(Changed()) );
+
 	disconnect( ui.CH_listen, SIGNAL(clicked()),
 				this, SIGNAL(Changed()) );
 	
@@ -773,9 +807,13 @@ void Network_Widget::on_TB_Help_clicked()
 	else if( ui.CB_Network_Type->currentText() == "channel" )
 		QMessageBox::information( this, tr("channel"), tr("-net channel,port:dev \nForward \'user\' TCP connection to port port to character device dev") );
 	
+	// -net bridge[,vlan=n][,name=name][,br=bridge][,helper=helper]
+	else if( ui.CB_Network_Type->currentText() == "bridge" )
+		QMessageBox::information( this, tr("bridge"), tr("-net bridge[,vlan=n][,name=name][,br=bridge][,helper=helper] \nConnect a host TAP network interface to a host bridge device. \nUse the network helper to configure the TAP interface and attach it to the bridge. The default network helper executable is \'/path/to/qemu-bridge-helper\' and the default bridge device is \'br0\'.") );
+
 	// -net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]
 	else if( ui.CB_Network_Type->currentText() == "tap" )
-		QMessageBox::information( this, tr("tap"), tr("-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile] \nConnect the host TAP network interface name to VLAN n, use the network script file to configure it and the network script dfile to deconfigure it. If name is not provided, the OS automatically provides one. \'fd\'=h can be used to specify the handle of an already opened host TAP interface. The default network configure script is \'/etc/qemu-ifup\' and the default network deconfigure script is \'/etc/qemu-ifdown\'. Use \'script=no\' or \'downscript=no\' to disable script execution.") );
+		QMessageBox::information( this, tr("tap"), tr("-net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile][,helper=helper] \nConnect the host TAP network interface name to VLAN n. \nUse the network script file to configure it and the network script dfile to deconfigure it. If name is not provided, the OS automatically provides one. The default network configure script is /etc/qemu-ifup and the default network deconfigure script is /etc/qemu-ifdown. Use \'script=no\' or \'downscript=no\' to disable script execution. \nIf running QEMU as an unprivileged user, use the network helper \'helper\' to configure the TAP interface. The default network helper executable is \'/path/to/qemu-bridge-helper\'. \n\'fd\'=h can be used to specify the handle of an already opened host TAP interface.") );
 	
 	// -net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
 	else if( ui.CB_Network_Type->currentText() == "socket" )
@@ -820,6 +858,16 @@ void Network_Widget::on_TB_Browse_downscript_clicked()
 		ui.Edit_downscript->setText( QDir::toNativeSeparators(fileName) );
 }
 
+void Network_Widget::on_TB_Browse_helper_clicked()
+{
+	QString fileName = QFileDialog::getOpenFileName( this, tr("Select network helper"),
+													 Get_Last_Dir_Path(ui.Edit_helper->text()),
+												 tr("All Files (*);;") );
+
+	if( ! fileName.isEmpty() )
+		ui.Edit_helper->setText( QDir::toNativeSeparators(fileName) );
+}
+
 void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 {
 	// Hide All
@@ -848,6 +896,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 	ui.CH_ifname->setVisible( false );
 	ui.Edit_ifname->setVisible( false );
 	
+	ui.CH_bridge->setVisible( false );
+	ui.Edit_bridge->setVisible( false );
+
 	ui.CH_script->setVisible( false );
 	ui.Edit_script->setVisible( false );
 	ui.TB_Browse_script->setVisible( false );
@@ -856,6 +907,10 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 	ui.Edit_downscript->setVisible( false );
 	ui.TB_Browse_downscript->setVisible( false );
 	
+	ui.CH_helper->setVisible( false );
+	ui.Edit_helper->setVisible( false );
+	ui.TB_Browse_helper->setVisible( false );
+
 	ui.CH_listen->setVisible( false );
 	ui.Edit_listen->setVisible( false );
 	
@@ -1012,8 +1067,24 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.Label_port_dev->setVisible( true );
 		ui.Edit_port_dev->setVisible( true );
 	}
+	// -net bridge[,vlan=n][,name=name][,br=str][,helper=file]
+	else if( ui.CB_Network_Type->currentText() == "bridge" )
+	{
+		ui.CH_vlan->setVisible( true );
+		ui.SB_vlan->setVisible( true );
+
+		ui.CH_name->setVisible( true );
+		ui.Edit_name->setVisible( true );
+
+		ui.CH_bridge->setVisible( true );
+		ui.Edit_bridge->setVisible( true );
+
+		ui.CH_helper->setVisible( true );
+		ui.Edit_helper->setVisible( true );
+		ui.TB_Browse_helper->setVisible( true );
+	}
 	// -net tap[,vlan=n][,name=str][,fd=h][,ifname=name][,script=file][,downscript=dfile]
-	//		   [,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h]
+	//                 [helper=file][,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h]
 	else if( ui.CB_Network_Type->currentText() == "tap" )
 	{
 		ui.CH_vlan->setVisible( true );
@@ -1028,6 +1099,9 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.CH_ifname->setVisible( true );
 		ui.Edit_ifname->setVisible( true );
 		
+		ui.CH_bridge->setVisible( true );
+		ui.Edit_bridge->setVisible( true );
+
 		ui.CH_script->setVisible( true );
 		ui.Edit_script->setVisible( true );
 		ui.TB_Browse_script->setVisible( true );
@@ -1036,6 +1110,10 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.Edit_downscript->setVisible( true );
 		ui.TB_Browse_downscript->setVisible( true );
 		
+		ui.CH_helper->setVisible( true );
+		ui.Edit_helper->setVisible( true );
+		ui.TB_Browse_helper->setVisible( true );
+
 		ui.CH_sndbuf->setVisible( true );
 		ui.SB_sndbuf->setVisible( true );
 		
@@ -1210,6 +1288,12 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.Edit_ifname->setVisible( false );
 	}
 	
+	if( ! PSO_Net_bridge )
+	{
+		ui.CH_bridge->setVisible( false );
+		ui.Edit_bridge->setVisible( false );
+	}
+
 	if( ! PSO_Net_script )
 	{
 		ui.CH_script->setVisible( false );
@@ -1224,6 +1308,13 @@ void Network_Widget::on_CB_Network_Type_currentIndexChanged( int index )
 		ui.TB_Browse_downscript->setVisible( false );
 	}
 	
+	if( ! PSO_Net_helper )
+	{
+		ui.CH_helper->setVisible( false );
+		ui.Edit_helper->setVisible( false );
+		ui.TB_Browse_helper->setVisible( false );
+	}
+
 	if( ! PSO_Net_sndbuf )
 	{
 		ui.CH_sndbuf->setVisible( false );
@@ -1382,22 +1473,26 @@ VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const
 			break;
 			
 		case 3:
-			card.Set_Network_Type( VM::Net_Mode_Native_TAP );
+			card.Set_Network_Type( VM::Net_Mode_Native_Bridge );
 			break;
 			
 		case 4:
-			card.Set_Network_Type( VM::Net_Mode_Native_Socket );
+			card.Set_Network_Type( VM::Net_Mode_Native_TAP );
 			break;
 			
 		case 5:
-			card.Set_Network_Type( VM::Net_Mode_Native_MulticastSocket );
+			card.Set_Network_Type( VM::Net_Mode_Native_Socket );
 			break;
 			
 		case 6:
-			card.Set_Network_Type( VM::Net_Mode_Native_VDE );
+			card.Set_Network_Type( VM::Net_Mode_Native_MulticastSocket );
 			break;
 			
 		case 7:
+			card.Set_Network_Type( VM::Net_Mode_Native_VDE );
+			break;
+
+		case 8:
 			card.Set_Network_Type( VM::Net_Mode_Native_Dump );
 			break;
 			
@@ -1444,6 +1539,10 @@ VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const
 	card.Use_Interface_Name( ui.CH_ifname->isChecked() );
 	card.Set_Interface_Name( ui.Edit_ifname->text() );
 	
+	// bridge
+	card.Use_Bridge_Name( ui.CH_bridge->isChecked() );
+	card.Set_Bridge_Name( ui.Edit_bridge->text() );
+
 	// script
 	card.Use_TUN_TAP_Script( ui.CH_script->isChecked() );
 	card.Set_TUN_TAP_Script( ui.Edit_script->text() );
@@ -1452,6 +1551,10 @@ VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const
 	card.Use_TUN_TAP_Down_Script( ui.CH_downscript->isChecked() );
 	card.Set_TUN_TAP_Down_Script( ui.Edit_downscript->text() );
 	
+	// bridge helper
+	card.Use_Bridge_Helper( ui.CH_helper->isChecked() );
+	card.Set_Bridge_Helper( ui.Edit_helper->text() );
+
 	// listen
 	card.Use_Listen( ui.CH_listen->isChecked() );
 	card.Set_Listen( ui. Edit_listen->text() );
@@ -1502,14 +1605,18 @@ VM_Net_Card_Native Network_Widget::Get_Net_Card_From_Ui() const
 			break;
 			
 		case 3:
-			card.Set_Len( 1024 );
+			card.Set_Len( 768 );
 			break;
 			
 		case 4:
-			card.Set_Len( 5120 );
+			card.Set_Len( 1024 );
 			break;
 			
 		case 5:
+			card.Set_Len( 5120 );
+			break;
+
+		case 6:
 			card.Set_Len( 10240 );
 			break;
 			
@@ -1605,26 +1712,30 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 			ui.CB_Network_Type->setCurrentIndex( 2 );
 			break;
 			
-		case VM::Net_Mode_Native_TAP:
+		case VM::Net_Mode_Native_Bridge:
 			ui.CB_Network_Type->setCurrentIndex( 3 );
 			break;
 			
-		case VM::Net_Mode_Native_Socket:
+		case VM::Net_Mode_Native_TAP:
 			ui.CB_Network_Type->setCurrentIndex( 4 );
 			break;
 			
-		case VM::Net_Mode_Native_MulticastSocket:
+		case VM::Net_Mode_Native_Socket:
 			ui.CB_Network_Type->setCurrentIndex( 5 );
 			break;
 			
-		case VM::Net_Mode_Native_VDE:
+		case VM::Net_Mode_Native_MulticastSocket:
 			ui.CB_Network_Type->setCurrentIndex( 6 );
 			break;
 			
-		case VM::Net_Mode_Native_Dump:
+		case VM::Net_Mode_Native_VDE:
 			ui.CB_Network_Type->setCurrentIndex( 7 );
 			break;
 			
+		case VM::Net_Mode_Native_Dump:
+			ui.CB_Network_Type->setCurrentIndex( 8 );
+			break;
+
 		default:
 			AQError( "void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )",
 					 "Cannot Read Network Type! Use Default: User Mode" );
@@ -1678,6 +1789,10 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 	ui.CH_ifname->setChecked( card.Use_Interface_Name() );
 	ui.Edit_ifname->setText( card.Get_Interface_Name() );
 	
+	// bridge
+	ui.CH_bridge->setChecked( card.Use_Bridge_Name() );
+	ui.Edit_bridge->setText( card.Get_Bridge_Name() );
+
 	// script
 	ui.CH_script->setChecked( card.Use_TUN_TAP_Script() );
 	ui.Edit_script->setText( card.Get_TUN_TAP_Script() );
@@ -1686,6 +1801,10 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 	ui.CH_downscript->setChecked( card.Use_TUN_TAP_Down_Script() );
 	ui.Edit_downscript->setText( card.Get_TUN_TAP_Down_Script() );
 	
+	// bridge helper
+	ui.CH_helper->setChecked( card.Use_Bridge_Helper() );
+	ui.Edit_helper->setText( card.Get_Bridge_Helper() );
+
 	// listen
 	ui.CH_listen->setChecked( card.Use_Listen() );
 	ui.Edit_listen->setText( card.Get_Listen() );
@@ -1735,18 +1854,22 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 			ui.CB_len->setCurrentIndex( 2 );
 			break;
 			
-		case 1024:
+		case 768:
 			ui.CB_len->setCurrentIndex( 3 );
 			break;
 			
-		case 5120:
+		case 1024:
 			ui.CB_len->setCurrentIndex( 4 );
 			break;
 			
-		case 10240:
+		case 5120:
 			ui.CB_len->setCurrentIndex( 5 );
 			break;
 			
+		case 10240:
+			ui.CB_len->setCurrentIndex( 6 );
+			break;
+
 		default:
 			ui.CB_len->setCurrentIndex( 0 );
 			break;
@@ -1826,10 +1949,12 @@ void Network_Widget::Set_Net_Card_To_Ui( const VM_Net_Card_Native &card )
 bool Network_Widget::Net_Card_is_Valid()
 {
 	bool u_macaddr, u_name, u_hostname, u_port_dev, u_ifname, u_script, u_downscript,
- 		 u_listen, u_connect, u_mcast, u_sock, u_group, u_mode, u_file, u_len;
+		 u_bridge, u_helper, u_listen, u_connect, u_mcast, u_sock, u_group, u_mode,
+		 u_file, u_len;
 	
 	u_macaddr = u_name = u_hostname = u_port_dev = u_ifname = u_script = u_downscript =
-	u_listen = u_connect = u_mcast = u_sock = u_group = u_mode = u_file = u_len = false;
+	u_bridge = u_helper = u_listen = u_connect = u_mcast = u_sock = u_group = u_mode =
+	u_file = u_len = false;
 	
 	switch( ui.CB_Network_Type->currentIndex() )
 	{
@@ -1848,28 +1973,33 @@ bool Network_Widget::Net_Card_is_Valid()
 			u_port_dev = true;
 			break;
 		
-		// -net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile]
+		// -net bridge[,vlan=n][,name=name][,br=bridge][,helper=helper]
 		case 3:
-			u_name = u_ifname = u_script = u_downscript = true;
+			u_name = u_bridge = u_helper = true;
 			break;
 		
-		// -net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
+		// -net tap[,vlan=n][,name=name][,fd=h][,ifname=name][,script=file][,downscript=dfile][,helper=helper]
 		case 4:
+			u_name = u_ifname = u_script = u_downscript = u_helper= true;
+			break;
+
+		// -net socket[,vlan=n][,name=name][,fd=h][,listen=[host]:port][,connect=host:port]
+		case 5:
 			u_name = u_listen = u_connect = true;
 			break;
 		
 		// -net socket[,vlan=n][,name=name][,fd=h][,mcast=maddr:port]
-		case 5:
+		case 6:
 			u_name = u_mcast = true;
 			break;
 		
 		// -net vde[,vlan=n][,name=name][,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]
-		case 6:
+		case 7:
 			u_name = u_sock = u_group = u_mode = true;
 			break;
 		
 		// -net dump[,vlan=n][,file=file][,len=len]
-		case 7:
+		case 8:
 			u_file = u_len = true;
 			break;
 		
@@ -1940,6 +2070,21 @@ bool Network_Widget::Net_Card_is_Valid()
 				ui.CH_downscript->setChecked( false );
 			}
 			else return false;
+		}
+	}
+
+	if( u_bridge && ui.CH_bridge->isChecked() )
+	{
+	}
+
+	if( u_helper && ui.CH_helper->isChecked() )
+	{
+		if( ! QFile::exists(ui.Edit_helper->text()) )
+		{
+			if( No_File_Found("helper", ui.Edit_helper->text()) )
+			{
+				ui.CH_helper->setChecked( false );
+			}
 		}
 	}
 	
@@ -2015,26 +2160,31 @@ void Network_Widget::Update_Card_Item()
 			break;
 			
 		case 3:
+			ui.Items_List->currentItem()->setText( "Bridge " + (item_name.isEmpty() ?
+												   Get_Items_Count(VM::Net_Mode_Native_Bridge) : n) );
+			break;
+
+		case 4:
 			ui.Items_List->currentItem()->setText( "TAP " + (item_name.isEmpty() ?
 												   Get_Items_Count(VM::Net_Mode_Native_TAP) : n) );
 			break;
 			
-		case 4:
+		case 5:
 			ui.Items_List->currentItem()->setText( "Socket " + (item_name.isEmpty() ?
 												   Get_Items_Count(VM::Net_Mode_Native_Socket) : n) );
 			break;
 			
-		case 5:
+		case 6:
 			ui.Items_List->currentItem()->setText( "Multicast Socket " + (item_name.isEmpty() ?
 												   Get_Items_Count(VM::Net_Mode_Native_MulticastSocket) : n) );
 			break;
 			
-		case 6:
+		case 7:
 			ui.Items_List->currentItem()->setText( "VDE " + (item_name.isEmpty() ?
 												   Get_Items_Count(VM::Net_Mode_Native_VDE) : n) );
 			break;
 			
-		case 7:
+		case 8:
 			ui.Items_List->currentItem()->setText( "Dump " + Get_Items_Count(VM::Net_Mode_Native_Dump) );
 			break;
 			

@@ -897,8 +897,10 @@ bool System_Info::Update_VM_Computers_List()
 	ad.PSO_Net_guestfwd = true;
 	
 	ad.PSO_Net_ifname = true;
+	ad.PSO_Net_bridge = true;
 	ad.PSO_Net_script = true;
 	ad.PSO_Net_downscript = true;
+	ad.PSO_Net_helper = true;
 	
 	ad.PSO_Net_listen = true;
 	ad.PSO_Net_connect = true;
@@ -996,8 +998,10 @@ bool System_Info::Update_VM_Computers_List()
 	ad.PSO_Net_guestfwd = true;
 	
 	ad.PSO_Net_ifname = true;
+	ad.PSO_Net_bridge = true;
 	ad.PSO_Net_script = true;
 	ad.PSO_Net_downscript = true;
+	ad.PSO_Net_helper = true;
 	
 	ad.PSO_Net_listen = true;
 	ad.PSO_Net_connect = true;
@@ -1449,6 +1453,14 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		if( rx_list.count() > 1 ) net_str += rx_list[ 1 ];
 	}
 	
+	// -net bridge
+	rx = QRegExp( ".*(-net\\s+bridge.*)-net.*" );
+	if( rx.exactMatch(all_help) )
+	{
+		QStringList rx_list = rx.capturedTexts();
+		if( rx_list.count() > 1 ) net_str += rx_list[ 1 ];
+	}
+
 	// -net tap
 	rx = QRegExp( ".*(-net\\s+tap.*)-net.*" );
 	if( rx.exactMatch(all_help) )
@@ -1554,6 +1566,10 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		rx = QRegExp( ".*ifname=.*" );
 		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_ifname = true;
 		
+		// bridge
+		rx = QRegExp( ".*br=.*" );
+		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_bridge = true;
+
 		// script
 		rx = QRegExp( ".*script=.*" );
 		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_script = true;
@@ -1562,6 +1578,10 @@ Available_Devices System_Info::Get_Emulator_Info( const QString &path, bool *ok,
 		rx = QRegExp( ".*downscript=.*" );
 		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_downscript = true;
 		
+		// helper
+		rx = QRegExp( ".*helper=.*" );
+		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_helper = true;
+
 		// sndbuf
 		rx = QRegExp( ".*sndbuf=.*" );
 		if( rx.exactMatch(net_str) ) tmp_dev.PSO_Net_sndbuf = true;

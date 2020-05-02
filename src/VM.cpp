@@ -1978,8 +1978,12 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 					
                 case VM::Net_Mode_Native_Chanel:
 					Dom_Text = New_Dom_Document.createTextNode( "Chanel" );
-					break;
-					
+                    break;
+
+                case VM::Net_Mode_Native_Bridge:
+                    Dom_Text = New_Dom_Document.createTextNode( "Bridge" );
+                    break;
+
                 case VM::Net_Mode_Native_TAP:
 					Dom_Text = New_Dom_Document.createTextNode( "TAP" );
 					break;
@@ -2087,6 +2091,17 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Interface_Name() );
 			Sec_Element.appendChild( Dom_Text );
 			
+			// Bridge_Name
+			Sec_Element = New_Dom_Document.createElement( "Use_Bridge_Name" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Bridge_Name() ? "yes" : "no" );
+			Sec_Element.appendChild( Dom_Text );
+
+			Sec_Element = New_Dom_Document.createElement( "Bridge_Name" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Bridge_Name() );
+			Sec_Element.appendChild( Dom_Text );
+
 			// TUN_TAP_Script
 			Sec_Element = New_Dom_Document.createElement( "Use_TUN_TAP_Script" );
 			Dom_Element.appendChild( Sec_Element );
@@ -2109,6 +2124,17 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_TUN_TAP_Down_Script() );
 			Sec_Element.appendChild( Dom_Text );
 			
+			// Bridge_Helper
+			Sec_Element = New_Dom_Document.createElement( "Use_Bridge_Helper" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Bridge_Helper() ? "yes" : "no" );
+			Sec_Element.appendChild( Dom_Text );
+
+			Sec_Element = New_Dom_Document.createElement( "Bridge_Helper" );
+			Dom_Element.appendChild( Sec_Element );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Bridge_Helper() );
+			Sec_Element.appendChild( Dom_Text );
+
 			// Listen
 			Sec_Element = New_Dom_Document.createElement( "Use_Listen" );
 			Dom_Element.appendChild( Sec_Element );
@@ -4171,6 +4197,8 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
                     tmp_card.Set_Network_Type( VM::Net_Mode_Native_User );
                 else if( netCardNative_Type == "Chanel" )
                     tmp_card.Set_Network_Type( VM::Net_Mode_Native_Chanel );
+                else if( netCardNative_Type == "Bridge" )
+                    tmp_card.Set_Network_Type( VM::Net_Mode_Native_Bridge );
                 else if( netCardNative_Type == "TAP" )
                     tmp_card.Set_Network_Type( VM::Net_Mode_Native_TAP );
                 else if( netCardNative_Type == "Socket" )
@@ -4209,12 +4237,18 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				tmp_card.Use_Interface_Name( Second_Element.firstChildElement("Use_Interface_Name").text() == "yes" );
 				tmp_card.Set_Interface_Name( Second_Element.firstChildElement("Interface_Name").text() );
 				
+				tmp_card.Use_Bridge_Name( Second_Element.firstChildElement("Use_Bridge_Name").text() == "yes" );
+				tmp_card.Set_Bridge_Name( Second_Element.firstChildElement("Bridge_Name").text() );
+
 				tmp_card.Use_TUN_TAP_Script( Second_Element.firstChildElement("Use_TUN_TAP_Script").text() == "yes" );
 				tmp_card.Set_TUN_TAP_Script( Second_Element.firstChildElement("TUN_TAP_Script").text() );
 				
 				tmp_card.Use_TUN_TAP_Down_Script( Second_Element.firstChildElement("Use_TUN_TAP_Down_Script").text() == "yes" );
 				tmp_card.Set_TUN_TAP_Down_Script( Second_Element.firstChildElement("TUN_TAP_Down_Script").text() );
 				
+				tmp_card.Use_Bridge_Helper( Second_Element.firstChildElement("Use_Bridge_Helper").text() == "yes" );
+				tmp_card.Set_Bridge_Helper( Second_Element.firstChildElement("Bridge_Helper").text() );
+
 				tmp_card.Use_Listen( Second_Element.firstChildElement("Use_Listen").text() == "yes" );
 				tmp_card.Set_Listen( Second_Element.firstChildElement("Listen").text() );
 				
@@ -5748,14 +5782,16 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 			{
 				QString nic_str = "";
 				bool u_vlan, u_macaddr, u_model, u_name, u_hostname, u_port_dev, u_fd, u_ifname, u_script,
-					 u_downscript, u_listen, u_connect, u_mcast, u_sock, u_port, u_group, u_mode, u_file,
-					 u_len, u_addr, u_vectors, u_net, u_host, u_restrict, u_dhcpstart, u_dns, u_tftp, u_bootfile,
-					 u_hostfwd, u_guestfwd, u_smb, u_smbserver, u_sndbuf, u_vnet_hdr, u_vhost, u_vhostfd;
+					 u_downscript, u_bridge, u_helper, u_listen, u_connect, u_mcast, u_sock, u_port, u_group,
+					 u_mode, u_file, u_len, u_addr, u_vectors, u_net, u_host, u_restrict, u_dhcpstart, u_dns,
+					 u_tftp, u_bootfile, u_hostfwd, u_guestfwd, u_smb, u_smbserver, u_sndbuf, u_vnet_hdr,
+					 u_vhost, u_vhostfd;
 				
 				u_vlan = u_macaddr = u_model = u_name = u_hostname = u_port_dev = u_fd = u_ifname = u_script =
-				u_downscript = u_listen = u_connect = u_mcast = u_sock = u_port = u_group = u_mode = u_file =
-				u_len = u_addr = u_vectors = u_net = u_host = u_restrict = u_dhcpstart = u_dns = u_tftp = u_bootfile =
-				u_hostfwd = u_guestfwd = u_smb = u_smbserver = u_sndbuf = u_vnet_hdr = u_vhost = u_vhostfd = false;
+				u_downscript = u_bridge = u_helper = u_listen = u_connect = u_mcast = u_sock = u_port = u_group =
+				u_mode = u_file = u_len = u_addr = u_vectors = u_net = u_host = u_restrict = u_dhcpstart = u_dns =
+				u_tftp = u_bootfile = u_hostfwd = u_guestfwd = u_smb = u_smbserver = u_sndbuf = u_vnet_hdr =
+				u_vhost = u_vhostfd = false;
 				
 				switch( Network_Cards_Nativ[nc].Get_Network_Type() )
 				{
@@ -5781,10 +5817,11 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 						break;
 						
 					// -net tap[,vlan=n][,name=str][,fd=h][,ifname=name][,script=file][,downscript=dfile]
-					//		   [,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h]
+                    //                 [,helper=helper][,sndbuf=nbytes][,vnet_hdr=on|off][,vhost=on|off][,vhostfd=h]
                     case VM::Net_Mode_Native_TAP:
 						nic_str += "tap";
-						u_vlan = u_name = u_fd = u_ifname = u_script = u_downscript = u_sndbuf = u_vnet_hdr = u_vhost = u_vhostfd = true;
+                        u_vlan = u_name = u_fd = u_ifname = u_script = u_downscript = u_helper = u_sndbuf =
+                        u_vnet_hdr = u_vhost = u_vhostfd = true;
 						break;
 						
 					// -net socket[,vlan=n][,name=str][,fd=h][,listen=[host]:port][,connect=host:port]
@@ -5842,6 +5879,9 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				if( Network_Cards_Nativ[nc].Use_Interface_Name() && u_ifname && Current_Emulator_Devices.PSO_Net_ifname )
 					nic_str += ",ifname=" + Network_Cards_Nativ[ nc ].Get_Interface_Name();
 				
+				if( Network_Cards_Nativ[nc].Use_Bridge_Name() && u_bridge && Current_Emulator_Devices.PSO_Net_bridge )
+					nic_str += ",br=" + Network_Cards_Nativ[ nc ].Get_Bridge_Name();
+
 				if( u_script && Current_Emulator_Devices.PSO_Net_script )
 				{
 					QString s_script;
@@ -5872,6 +5912,21 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 						nic_str += ",downscript=" + s_downscript;
 				}
 				
+				if( u_helper && Current_Emulator_Devices.PSO_Net_helper )
+				{
+					QString s_helper;
+
+					if( Network_Cards_Nativ[nc].Use_Bridge_Helper() )
+					{
+						s_helper = Network_Cards_Nativ[ nc ].Get_Bridge_Helper();
+
+						if( Build_QEMU_Args_for_Script_Mode )
+							nic_str += ",helper=\"" + s_helper + "\"";
+						else
+							nic_str += ",helper=" + s_helper;
+					}
+				}
+
 				if( Network_Cards_Nativ[nc].Use_Listen() && u_listen && Current_Emulator_Devices.PSO_Net_listen )
 					nic_str += ",listen=" + Network_Cards_Nativ[ nc ].Get_Listen();
 				

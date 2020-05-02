@@ -51,6 +51,7 @@ class Network_Widget: public QWidget
 		void on_TB_Help_clicked();
 		void on_TB_Browse_script_clicked();
 		void on_TB_Browse_downscript_clicked();
+		void on_TB_Browse_helper_clicked();
 		void on_CB_Network_Type_currentIndexChanged( int index );
 		void on_TB_Generate_New_MAC_clicked();
 		void on_TB_Browse_bootfile_clicked();
@@ -76,7 +77,7 @@ class Network_Widget: public QWidget
 		Ui::Network_Widget ui;
 		QList<VM_Net_Card_Native> Network_Cards;
 		QStringList Card_Models_QEMU_Name;
-		int nic, user, chanel, tap, socket, multi, vde, dump;
+		int nic, user, chanel, bridge, tap, socket, multi, vde, dump;
 		
 		bool PSO_Net_name;
 		bool PSO_Net_addr;
@@ -94,8 +95,10 @@ class Network_Widget: public QWidget
 		bool PSO_Net_guestfwd;
 		
 		bool PSO_Net_ifname;
+		bool PSO_Net_bridge;
 		bool PSO_Net_script;
 		bool PSO_Net_downscript;
+		bool PSO_Net_helper;
 		bool PSO_Net_sndbuf;
 		bool PSO_Net_vnet_hdr;
 		bool PSO_Net_vhost;

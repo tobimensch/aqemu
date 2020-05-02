@@ -273,8 +273,8 @@ class VM
 		
 		// New Network Modes
 		enum Network_Mode_Nativ { Net_Mode_Native_NIC, Net_Mode_Native_User, Net_Mode_Native_Chanel,
-								  Net_Mode_Native_TAP, Net_Mode_Native_Socket, Net_Mode_Native_MulticastSocket,
-								  Net_Mode_Native_VDE, Net_Mode_Native_Dump };
+								  Net_Mode_Native_Bridge, Net_Mode_Native_TAP, Net_Mode_Native_Socket,
+								  Net_Mode_Native_MulticastSocket, Net_Mode_Native_VDE, Net_Mode_Native_Dump };
 		
 		// Image Compression Type (Used in SPICE)
 		enum SPICE_Image_Compression_Type { SPICE_IC_Type_on, SPICE_IC_Type_auto_glz, SPICE_IC_Type_auto_lz,
@@ -386,8 +386,10 @@ class Available_Devices
 		bool PSO_Net_guestfwd;
 		
 		bool PSO_Net_ifname;
+		bool PSO_Net_bridge;
 		bool PSO_Net_script;
 		bool PSO_Net_downscript;
+		bool PSO_Net_helper;
 		bool PSO_Net_sndbuf;
 		bool PSO_Net_vnet_hdr;
 		bool PSO_Net_vhost;
@@ -764,7 +766,7 @@ class VM_Net_Card
 		
 		int Get_VLAN() const;
 		void Set_VLAN( int vl );
-		
+
 		bool Get_Use_TUN_TAP_Script() const;
 		void Set_Use_TUN_TAP_Script( bool use );
 		
@@ -774,6 +776,11 @@ class VM_Net_Card
 		const QString &Get_Interface_Name() const;
 		void Set_Interface_Name( const QString &n );
 		
+		bool Use_Bridge_Name() const;
+		void Use_Bridge_Name( bool use );
+		const QString &Get_Bridge_Name() const;
+		void Set_Bridge_Name( const QString &n );
+
 		int Get_File_Descriptor() const;
 		void Set_File_Descriptor( int f );
 		
@@ -842,6 +849,11 @@ class VM_Net_Card_Native
 		const QString &Get_Interface_Name() const;
 		void Set_Interface_Name( const QString &n );
 		
+		bool Use_Bridge_Name() const;
+		void Use_Bridge_Name( bool use );
+		const QString &Get_Bridge_Name() const;
+		void Set_Bridge_Name( const QString &n );
+
 		bool Use_TUN_TAP_Script() const;
 		void Use_TUN_TAP_Script( bool use );
 		const QString &Get_TUN_TAP_Script() const;
@@ -852,6 +864,11 @@ class VM_Net_Card_Native
 		const QString &Get_TUN_TAP_Down_Script() const;
 		void Set_TUN_TAP_Down_Script( const QString &s );
 		
+		bool Use_Bridge_Helper() const;
+		void Use_Bridge_Helper( bool use );
+		const QString &Get_Bridge_Helper() const;
+		void Set_Bridge_Helper( const QString &s );
+
 		bool Use_Listen() const;
 		void Use_Listen( bool use );
 		const QString &Get_Listen() const;
@@ -992,8 +1009,10 @@ class VM_Net_Card_Native
 		QString PortDev;
 		int File_Descriptor;
 		QString Interface_Name;
+		QString Bridge_Name;
 		QString TUN_TAP_Script;
 		QString TUN_TAP_Down_Script;
+		QString Bridge_Helper;
 		QString Listen;
 		QString Connect;
 		QString MCast;
@@ -1022,9 +1041,9 @@ class VM_Net_Card_Native
 		int VHostFd;
 		
 		bool _Use_MAC, _Use_VLAN, _Use_Name, _Use_Hostname, _Use_File_Descriptor,
-			 _Use_Interface_Name, _Use_TUN_TAP_Script, _Use_TUN_TAP_Down_Script,
-			 _Use_Listen, _Use_Connect, _Use_MCast, _Use_Sock, _Use_Port, _Use_Group,
-			 _Use_Mode, _Use_File, _Use_Len, _Use_Addr, _Use_Vectors, _Use_Net, 
+			 _Use_Interface_Name, _Use_Bridge_Name, _Use_TUN_TAP_Script, _Use_TUN_TAP_Down_Script,
+			 _Use_Bridge_Helper, _Use_Listen, _Use_Connect, _Use_MCast, _Use_Sock, _Use_Port,
+			 _Use_Group, _Use_Mode, _Use_File, _Use_Len, _Use_Addr, _Use_Vectors, _Use_Net,
 			 _Use_Host, _Use_Restrict, _Use_DHCPstart, _Use_DNS, _Use_Tftp, _Use_Bootfile,
 			 _Use_HostFwd, _Use_GuestFwd, _Use_SMB, _Use_SMBserver, _Use_Sndbuf,
 			 _Use_VNet_hdr, _Use_VHost, _Use_VHostFd;
