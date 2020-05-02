@@ -1,4 +1,5 @@
-2016-06-?? Tobias Gläßer (Version 0.9.3)
+2016-06-?? Tobias Gläßer (Version 0.9.6)
+    * Merged changes from forks/contributors. Thanks you to all who contributed!
 
 	* Fixed copy VM feature. The original VM's UI became unusable after copying.
 
