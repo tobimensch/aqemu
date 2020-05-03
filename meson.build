@@ -62,7 +62,8 @@ aqemu_headers =    ['src/No_Boot_Device.h',
                     'src/Embedded_Display/Machine_View.h',
                     'src/Embedded_Display/remoteview.h',
                     'src/Embedded_Display/vncclientthread.h',
-                    'src/Embedded_Display/vncview.h']
+                    'src/Embedded_Display/vncview.h',
+                    'src/Embedded_Display/krdc_debug.h']
 
 aqemu_sources =    ['src/No_Boot_Device.cpp',
                     'src/Highlighted_Label.cpp',

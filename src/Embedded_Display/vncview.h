@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2007-2008 Urs Wolfer <uwolfer @ kde.org>
+** Copyright (C) 2007 - 2013 Urs Wolfer <uwolfer @ kde.org>
 **
 ** This file is part of KDE.
 **
@@ -33,7 +33,13 @@
     #include "vnchostpreferences.h"
 #endif
 
+#ifdef LIBSSH_FOUND
+    #include "vncsshtunnelthread.h"
+#endif
+
+
 #include <QClipboard>
+#include <QMap>
 
 extern "C" {
 #include <rfb/rfbclient.h>
@@ -44,37 +50,37 @@ class VncView: public RemoteView
     Q_OBJECT
 
 public:
-    explicit VncView(QWidget *parent = 0, const KUrl &url = KUrl(), KConfigGroup configGroup = KConfigGroup());
-    ~VncView();
+    explicit VncView(QWidget *parent = nullptr, const QUrl &url = QUrl(), KConfigGroup configGroup = KConfigGroup());
+    ~VncView() override;
 
-    QSize framebufferSize();
-    QSize sizeHint() const;
-    QSize minimumSizeHint() const;
-    void startQuitting();
-    bool isQuitting();
-    bool start();
-    bool supportsScaling() const;
-    bool supportsLocalCursor() const;
+    QSize framebufferSize() override;
+    QSize sizeHint() const override;
+    QSize minimumSizeHint() const override;
+    void startQuitting() override;
+    bool isQuitting() override;
+    bool start() override;
+    bool supportsScaling() const override;
+    bool supportsLocalCursor() const override;
+    bool supportsViewOnly() const override;
     
 #ifndef QTONLY
-    HostPreferences* hostPreferences();
+    HostPreferences* hostPreferences() override;
 #endif
 
-    void setViewOnly(bool viewOnly);
-    void showDotCursor(DotCursorState state);
-    void enableScaling(bool scale);
-    
-    virtual void updateConfiguration();
+    void setViewOnly(bool viewOnly) override;
+    void showDotCursor(DotCursorState state) override;
+    void enableScaling(bool scale) override;
 
-public slots:
-    void scaleResize(int w, int h);
+    void updateConfiguration() override;
+
+public Q_SLOTS:
+    void scaleResize(int w, int h) override;
 
 protected:
-    void enterEvent( QEvent* event);
-    void paintEvent(QPaintEvent *event);
-    bool event(QEvent *event);
-    void resizeEvent(QResizeEvent *event);
-    bool eventFilter(QObject *obj, QEvent *event);
+    void paintEvent(QPaintEvent *event) override;
+    bool event(QEvent *event) override;
+    void resizeEvent(QResizeEvent *event) override;
+    bool eventFilter(QObject *obj, QEvent *event) override;
 
 private:
     VncClientThread vncThread;
@@ -82,11 +88,8 @@ private:
     bool m_initDone;
     int m_buttonMask;
     QMap<unsigned int, bool> m_mods;
-    int m_x, m_y, m_w, m_h;
-    bool m_repaint;
     bool m_quitFlag;
     bool m_firstPasswordTry;
-    bool m_authenticaionCanceled;
     bool m_dontSendClipboard;
     qreal m_horizontalFactor;
     qreal m_verticalFactor;
@@ -95,26 +98,28 @@ private:
 #endif
     QImage m_frame;
     bool m_forceLocalCursor;
+#ifdef LIBSSH_FOUND
+    VncSshTunnelThread *m_sshTunnelThread;
+
+    QString readWalletSshPassword();
+    void saveWalletSshPassword();
+#endif
 
     void keyEventHandler(QKeyEvent *e);
     void unpressModifiers();
     void wheelEventHandler(QWheelEvent *event);
     void mouseEventHandler(QMouseEvent *event);
-    
-private slots:
+
+private Q_SLOTS:
     void updateImage(int x, int y, int w, int h);
     void setCut(const QString &text);
-    void requestPassword();
+    void requestPassword(bool includingUsername);
+#ifdef LIBSSH_FOUND
+    void sshRequestPassword(VncSshTunnelThread::PasswordRequestFlags flags);
+#endif
     void outputErrorMessage(const QString &message);
-    void clipboardSelectionChanged();
+    void sshErrorMessage(const QString &message);
     void clipboardDataChanged();
-
-signals:
-	void MouseEnteredFromTheLeft();
-	void MouseEnteredFromTheRight();
-	void MouseEnteredFromTheTop();
-	void MouseEnteredFromTheBottom();
-	
 };
 
 #endif

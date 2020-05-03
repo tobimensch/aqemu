@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2007-2008 Urs Wolfer <uwolfer @ kde.org>
+** Copyright (C) 2007 - 2013 Urs Wolfer <uwolfer @ kde.org>
 **
 ** This file is part of KDE.
 **
@@ -25,13 +25,9 @@
 #define VNCCLIENTTHREAD_H
 
 #ifdef QTONLY
-    #include <QDebug>
-    #define kDebug(n) qDebug()
-    #define kBacktrace() ""
     #define i18n tr
 #else
-    #include <KDebug>
-    #include <KLocale>
+    #include <KLocalizedString>
 #endif
 
 #include "remoteview.h"
@@ -59,7 +55,7 @@ public:
     KeyClientEvent(int key, int pressed)
             : m_key(key), m_pressed(pressed) {}
 
-    void fire(rfbClient*);
+    void fire(rfbClient*) override;
 
 private:
     int m_key;
@@ -72,7 +68,7 @@ public:
     PointerClientEvent(int x, int y, int buttonMask)
             : m_x(x), m_y(y), m_buttonMask(buttonMask) {}
 
-    void fire(rfbClient*);
+    void fire(rfbClient*) override;
 
 private:
     int m_x;
@@ -83,10 +79,10 @@ private:
 class ClientCutEvent : public ClientEvent
 {
 public:
-    ClientCutEvent(const QString &text)
+    explicit ClientCutEvent(const QString &text)
             : text(text) {}
 
-    void fire(rfbClient*);
+    void fire(rfbClient*) override;
 
 private:
     QString text;
@@ -97,8 +93,15 @@ class VncClientThread: public QThread
     Q_OBJECT
 
 public:
-    explicit VncClientThread(QObject *parent = 0);
-    ~VncClientThread();
+    enum ColorDepth {
+        bpp32,
+        bpp16,
+        bpp8
+    };
+    Q_ENUM(ColorDepth)
+
+    explicit VncClientThread(QObject *parent = nullptr);
+    ~VncClientThread() override;
     const QImage image(int x = 0, int y = 0, int w = 0, int h = 0);
     void setImage(const QImage &img);
     void emitUpdated(int x, int y, int w, int h);
@@ -113,44 +116,115 @@ public:
     const QString password() const {
         return m_password;
     }
+    void setUsername(const QString &username) {
+        m_username = username;
+    }
+    const QString username() const {
+        return m_username;
+    }
 
     RemoteView::Quality quality() const;
+    ColorDepth colorDepth() const;
     uint8_t *frameBuffer;
 
-signals:
+Q_SIGNALS:
     void imageUpdated(int x, int y, int w, int h);
     void gotCut(const QString &text);
-    void passwordRequest();
+    void passwordRequest(bool includingUsername = false);
     void outputErrorMessage(const QString &message);
 
-public slots:
+    /**
+     * When we connect/disconnect/reconnect/etc., this signal will be emitted.
+     *
+     * @param status            Is the client connected?
+     * @param details           A sentence describing what happened.
+     */
+    void clientStateChanged(RemoteView::RemoteStatus status, const QString &details);
+
+public Q_SLOTS:
     void mouseEvent(int x, int y, int buttonMask);
     void keyEvent(int key, bool pressed);
     void clientCut(const QString &text);
 
 protected:
-    void run();
+    void run() override;
 
 private:
-    static rfbBool newclient(rfbClient *cl);
-    static void updatefb(rfbClient *cl, int x, int y, int w, int h);
-    static void cuttext(rfbClient *cl, const char *text, int textlen);
-    static char* passwdHandler(rfbClient *cl);
-    static void outputHandler(const char *format, ...);
+    void setClientColorDepth(rfbClient *cl, ColorDepth cd);
+    void setColorDepth(ColorDepth colorDepth);
+
+    // These static methods are callback functions for libvncclient. Each
+    // of them calls back into the corresponding member function via some
+    // TLS-based logic.
+    static rfbBool newclientStatic(rfbClient *cl);
+    static void updatefbStatic(rfbClient *cl, int x, int y, int w, int h);
+    static void cuttextStatic(rfbClient *cl, const char *text, int textlen);
+    static char *passwdHandlerStatic(rfbClient *cl);
+    static rfbCredential *credentialHandlerStatic(rfbClient *cl, int credentialType);
+    static void outputHandlerStatic(const char *format, ...);
+
+    // Member functions corresponding to the above static methods.
+    rfbBool newclient();
+    void updatefb(int x, int y, int w, int h);
+    void cuttext(const char *text, int textlen);
+    char *passwdHandler();
+    rfbCredential *credentialHandler(int credentialType);
+    void outputHandler(const char *format, va_list args);
 
     QImage m_image;
     rfbClient *cl;
     QString m_host;
     QString m_password;
+    QString m_username;
     int m_port;
     QMutex mutex;
     RemoteView::Quality m_quality;
+    ColorDepth m_colorDepth;
     QQueue<ClientEvent* > m_eventQueue;
+    //color table for 8bit indexed colors
+    QVector<QRgb> m_colorTable;
+    QString outputErrorMessageString;
 
     volatile bool m_stopped;
     volatile bool m_passwordError;
 
-private slots:
+    /**
+     * Connection keepalive/reconnection support.
+     */
+    struct {
+        /**
+         * Number of seconds between probes. If zero, we will not attempt
+         * to enable it.
+         */
+        int intervalSeconds;
+        /**
+         * Number of failed probes required to recognise a disconnect.
+         */
+        int failedProbes;
+        /**
+         * Was keepalive successfully set?
+         */
+        bool set;
+        /**
+         * Did keepalive detect a disconnect?
+         */
+        volatile bool failed;
+    } m_keepalive;
+
+    // Initialise the VNC client library object.
+    bool clientCreate(bool reinitialising);
+
+    // Uninitialise the VNC client library object.
+    void clientDestroy();
+
+    // Turn on keepalive support.
+    void clientSetKeepalive();
+
+    // Record a state change.
+    void clientStateChange(RemoteView::RemoteStatus status, const QString &details);
+    QString m_previousDetails;
+
+private Q_SLOTS:
     void checkOutputErrorMessage();
 };
 

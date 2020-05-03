@@ -25,15 +25,14 @@
 #ifndef REMOTEVIEW_H
 #define REMOTEVIEW_H
 
-#ifdef QTONLY
-    #include <QUrl>
-    #define KUrl QUrl
-    #define KDE_EXPORT
+#ifndef QTONLY
+    #include <KWallet/KWallet>
+    #include "krdccore_export.h"
 #else
-    #include <KUrl>
-    #include <KWallet/Wallet>
+    #define KRDCCORE_EXPORT
 #endif
 
+#include <QUrl>
 #include <QWidget>
 
 class HostPreferences;
@@ -55,13 +54,11 @@ class HostPreferences;
  *     MotionNotify events will be forwarded.
  *
  */
-class KDE_EXPORT RemoteView : public QWidget
+class KRDCCORE_EXPORT RemoteView : public QWidget
 {
     Q_OBJECT
 
 public:
-
-    Q_ENUMS(Quality)
 
     enum Quality {
         Unknown,
@@ -69,16 +66,15 @@ public:
         Medium,
         Low
     };
+    Q_ENUM(Quality)
 
     /**
     * Describes the state of a local cursor, if there is such a concept in the backend.
     * With local cursors, there are two cursors: the cursor on the local machine (client),
     * and the cursor on the remote machine (server). Because there is usually some lag,
-    * some backends show both cursors simultanously. In the VNC backend the local cursor
+    * some backends show both cursors simultaneously. In the VNC backend the local cursor
     * is a dot and the remote cursor is the 'real' cursor, usually an arrow.
     */
-
-    Q_ENUMS(DotCursorState)
 
     enum DotCursorState {
         CursorOn,  ///< Always show local cursor (and the remote one).
@@ -86,6 +82,7 @@ public:
         /// Try to measure the lag and enable the local cursor if the latency is too high.
         CursorAuto
     };
+    Q_ENUM(DotCursorState)
 
     /**
     * State of the connection. The state of the connection is returned
@@ -102,8 +99,6 @@ public:
     * (If you add/remove a state here, you must adapt it)
     */
 
-    Q_ENUMS(RemoteStatus)
-
     enum RemoteStatus {
         Connecting     = 0,
         Authenticating = 1,
@@ -112,8 +107,7 @@ public:
         Disconnecting  = -1,
         Disconnected   = -2
     };
-
-    Q_ENUMS(ErrorCode)
+    Q_ENUM(RemoteStatus)
 
     enum ErrorCode {
         None = 0,
@@ -126,8 +120,9 @@ public:
         ServerBlocked,
         Authentication
     };
+    Q_ENUM(ErrorCode)
 
-    virtual ~RemoteView();
+    ~RemoteView() override;
 
     /**
      * Checks whether the backend supports scaling. The
@@ -174,6 +169,16 @@ public:
      * @see supportsLocalCursor()
      */
     virtual DotCursorState dotCursorState() const;
+
+    /**
+     * Checks whether the backend supports the view only mode. The
+     * default implementation returns false.
+     * @return true if view-only mode is supported
+     * @see DotCursorState
+     * @see showDotCursor()
+     * @see dotCursorState()
+     */
+    virtual bool supportsViewOnly() const;
 
     /**
      * Checks whether the view is in view-only mode. This means
@@ -237,20 +242,25 @@ public:
      * @see statusChanged()
      */
     virtual bool start() = 0;
-    
+
     /**
      * Called when the configuration is changed.
      * The default implementation does nothing.
      */
     virtual void updateConfiguration();
-    
+
+    /**
+     * @return screenshot of the view
+     */
+    virtual QPixmap takeScreenshot();
+
 #ifndef QTONLY
     /**
      * Returns the current host preferences of this view.
      */
     virtual HostPreferences* hostPreferences() = 0;
 #endif
-    
+
     /**
      * Returns the current status of the connection.
      * @return the status of the connection
@@ -261,14 +271,14 @@ public:
     /**
      * @return the current url
      */
-    KUrl url();
+    QUrl url();
 
-public slots:
+public Q_SLOTS:
     /**
      * Called to enable or disable scaling.
      * Ignored if @ref supportsScaling() is false.
      * The default implementation does nothing.
-     * @param s true to enable, false to disable.
+     * @param scale true to enable, false to disable.
      * @see supportsScaling()
      * @see scaling()
      */
@@ -312,12 +322,12 @@ public slots:
      */
     virtual void scaleResize(int w, int h);
 
-signals:
+Q_SIGNALS:
     /**
      * Emitted when the size of the remote screen changes. Also
      * called when the size is known for the first time.
-     * @param x the width of the screen
-     * @param y the height of the screen
+     * @param w the width of the screen
+     * @param h the height of the screen
      */
     void framebufferSizeChanged(int w, int h);
 
@@ -340,7 +350,7 @@ signals:
      * Emitted when the view has a specific error.
      */
     void errorMessage(const QString &title, const QString &message);
- 
+
     /**
      * Emitted when the status of the view changed.
      * @param s the new status
@@ -363,10 +373,10 @@ signals:
     void mouseStateChanged(int x, int y, int buttonMask);
 
 protected:
-    RemoteView(QWidget *parent = 0);
+    RemoteView(QWidget *parent = nullptr);
 
-    void focusInEvent(QFocusEvent *event);
-    void focusOutEvent(QFocusEvent *event);
+    void focusInEvent(QFocusEvent *event) override;
+    void focusOutEvent(QFocusEvent *event) override;
 
     /**
      * The status of the remote view.
@@ -377,7 +387,7 @@ protected:
      * Set the status of the connection.
      * Emits a statusChanged() signal.
      * Note that the states need to be set in a certain order,
-     * see @ref Status. setStatus() will try to do this
+     * see @ref RemoteStatus. setStatus() will try to do this
      * transition automatically, so if you are in Connecting
      * and call setStatus(Preparing), setStatus() will
      * emit a Authenticating and then Preparing.
@@ -395,11 +405,13 @@ protected:
     bool m_grabAllKeys;
     bool m_scale;
     bool m_keyboardIsGrabbed;
-    KUrl m_url;
+    QUrl m_url;
 
 #ifndef QTONLY
     QString readWalletPassword(bool fromUserNameOnly = false);
     void saveWalletPassword(const QString &password, bool fromUserNameOnly = false);
+    QString readWalletPasswordForKey(const QString &key);
+    void saveWalletPasswordForKey(const QString &key, const QString &password);
     KWallet::Wallet *m_wallet;
 #endif
 
