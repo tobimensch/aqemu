@@ -315,13 +315,13 @@ bool QDomDocument::setContent(QFile* file, bool b, QString* s, int* i, int* i2)
     if ( document )
     {
         XMLError err = document->LoadFile(file->fileName().toUtf8());
-        if ( err == XML_NO_ERROR )
+        if ( err == XML_SUCCESS )
         {
             return true;
         }
         else
         {
-            const char* err_str =  document->GetErrorStr1();
+            const char* err_str =  document->ErrorStr();
             if ( err_str != NULL )
                 s->fromLatin1(err_str);
 
