@@ -8,5 +8,7 @@ Categories=System;Emulator;
 
 Name=AQEMU
 Comment=Virtual machine manager
+Name[tr]=AQEMU
+Comment[tr]=Sanal makine yöneticisi
 Name[ru]=AQEMU
 Comment[ru]=Управление виртуальными машинами
