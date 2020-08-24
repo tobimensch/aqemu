@@ -7,6 +7,7 @@
 
 PROJECT( AQEMU CXX )
 CMAKE_MINIMUM_REQUIRED( VERSION 3.1.0 FATAL_ERROR )
+INCLUDE(GNUInstallDirs)
 
 # Available options
 OPTION( DEBUG "Build with debug information" )
@@ -255,25 +256,25 @@ ENDIF( NOT WITHOUT_EMBEDDED_DISPLAY )
 # Install files
 INSTALL( TARGETS aqemu DESTINATION bin )
 
-INSTALL( FILES ${qm_files} DESTINATION share/aqemu )
+INSTALL( FILES ${qm_files} DESTINATION ${CMAKE_INSTALL_DATADIR}/aqemu )
 
 FILE( GLOB os_icons "${CMAKE_CURRENT_SOURCE_DIR}/resources/os_icons/*.*" )
-INSTALL( FILES ${os_icons} DESTINATION share/aqemu/os_icons )
+INSTALL( FILES ${os_icons} DESTINATION ${CMAKE_INSTALL_DATADIR}/aqemu/os_icons )
 
 FILE( GLOB os_templates "${CMAKE_CURRENT_SOURCE_DIR}/resources/os_templates/*.*")
-INSTALL( FILES ${os_templates} DESTINATION share/aqemu/os_templates )
+INSTALL( FILES ${os_templates} DESTINATION ${CMAKE_INSTALL_DATADIR}/aqemu/os_templates )
 
 FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/resources/docs/links.html" )
-INSTALL( FILES ${links} DESTINATION share/aqemu/docs )
+INSTALL( FILES ${links} DESTINATION ${CMAKE_INSTALL_DATADIR}/aqemu/docs )
 
 FILE( GLOB pixmaps "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/*.png" )
-INSTALL( FILES ${pixmaps} DESTINATION share/pixmaps )
+INSTALL( FILES ${pixmaps} DESTINATION ${CMAKE_INSTALL_DATADIR}/pixmaps )
 
 FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu.desktop" )
-INSTALL( FILES ${app_menu} DESTINATION share/applications )
+INSTALL( FILES ${app_menu} DESTINATION ${CMAKE_INSTALL_DATADIR}/applications )
 
 FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu.appdata.xml" )
-INSTALL( FILES ${app_menu} DESTINATION share/appdata )
+INSTALL( FILES ${app_menu} DESTINATION ${CMAKE_INSTALL_DATADIR}/appdata )
 
 # Create docs .bz2 files
 MACRO( create_docs _sources )
@@ -291,7 +292,7 @@ ENDMACRO( create_docs )
 
 CREATE_DOCS( docs_bz2 AUTHORS CHANGELOG README TODO )
 ADD_CUSTOM_TARGET( docs ALL DEPENDS ${docs_bz2} )
-INSTALL( FILES ${docs_bz2} DESTINATION share/doc/aqemu )
+INSTALL( FILES ${docs_bz2} DESTINATION ${CMAKE_INSTALL_DOCDIR} )
 
 # Compress and install MAN page file
 IF( NOT MAN_PAGE_COMPRESSOR )
@@ -325,11 +326,11 @@ IF( INSTALL_MAN )
 						WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} )
 		
 		# Install MAN
-		INSTALL( FILES ${CMAKE_SOURCE_DIR}/${aqemu_man_page}.${COMPRESSOR_SUFFIX} DESTINATION share/man/man1 )
+		INSTALL( FILES ${CMAKE_SOURCE_DIR}/${aqemu_man_page}.${COMPRESSOR_SUFFIX} DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
 	ELSE( COMPRESSOR_SUFFIX )
 		MESSAGE( STATUS "MAN_PAGE_COMPRESSOR flag not set. Available values: gzip, bzip2, lzma" )
 		MESSAGE( STATUS "Will be installed not compressed MAN pages" )
 		
-		INSTALL( FILES ${CMAKE_SOURCE_DIR}/${aqemu_man_page} DESTINATION share/man/man1 )
+		INSTALL( FILES ${CMAKE_SOURCE_DIR}/${aqemu_man_page} DESTINATION ${CMAKE_INSTALL_MANDIR}/man1 )
 	ENDIF( COMPRESSOR_SUFFIX )
 ENDIF( INSTALL_MAN )
