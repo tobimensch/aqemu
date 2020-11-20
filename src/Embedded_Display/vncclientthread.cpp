@@ -32,6 +32,12 @@
 #include <QMutexLocker>
 #include <QThreadStorage>
 #include <QTimer>
+#if !defined(SOL_TCP) && defined(IPPROTO_TCP)
+#define SOL_TCP IPPROTO_TCP
+#endif
+#if !defined(TCP_KEEPIDLE) && defined(TCP_KEEPALIVE)
+#define TCP_KEEPIDLE TCP_KEEPALIVE
+#endif
 
 //for detecting intel AMT KVM vnc server
 static const QString INTEL_AMT_KVM_STRING= QLatin1String("Intel(r) AMT KVM");

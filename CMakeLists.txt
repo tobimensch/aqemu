@@ -198,6 +198,8 @@ FIND_PACKAGE( Qt5Test )
 FIND_PACKAGE( Qt5PrintSupport )
 FIND_PACKAGE( Qt5DBus )
 
+include_directories(/usr/local/opt/libvncserver/include)
+
 # Embedded VNC display
 IF( NOT WITHOUT_EMBEDDED_DISPLAY )
 	FIND_PACKAGE( LibVNCServer REQUIRED )
