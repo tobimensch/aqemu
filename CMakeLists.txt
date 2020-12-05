@@ -266,8 +266,8 @@ INSTALL( FILES ${os_templates} DESTINATION share/aqemu/os_templates )
 FILE( GLOB links "${CMAKE_CURRENT_SOURCE_DIR}/resources/docs/links.html" )
 INSTALL( FILES ${links} DESTINATION share/aqemu/docs )
 
-FILE( GLOB pixmaps "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/*.png" )
-INSTALL( FILES ${pixmaps} DESTINATION share/pixmaps )
+INSTALL( FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu_48x48.png DESTINATION share/icons/hicolor/48x48/apps/ RENAME aqemu.png)
+INSTALL( FILES ${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu_64x64.png DESTINATION share/icons/hicolor/64x64/apps/ RENAME aqemu.png)
 
 FILE( GLOB app_menu "${CMAKE_CURRENT_SOURCE_DIR}/resources/menu_data/aqemu.desktop" )
 INSTALL( FILES ${app_menu} DESTINATION share/applications )
