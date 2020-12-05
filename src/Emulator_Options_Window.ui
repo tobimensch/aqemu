@@ -306,7 +306,7 @@
         <item>
          <widget class="QRadioButton" name="RB_Save_Options">
           <property name="text">
-           <string>&amp;Use saved available emulator options (Recomended to choose it again after emulator updating)</string>
+           <string>&amp;Use saved available emulator options (Recommended to choose it again after emulator updating)</string>
           </property>
           <property name="checked">
            <bool>true</bool>

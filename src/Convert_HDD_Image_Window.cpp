@@ -225,7 +225,7 @@ void Convert_HDD_Image_Window::Conversion_Done( bool ok )
 	{
 		ProgDial->accept();
 		Conv_Thread.terminate();
-		QMessageBox::information( this, tr("Information:"), tr("Conversion completed sucessfuly!") );
+		QMessageBox::information( this, tr("Information:"), tr("Conversion completed successfully!") );
 		accept();
 	}
 	else

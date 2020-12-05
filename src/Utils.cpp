@@ -158,7 +158,7 @@ void AQGraphic_Warning( const QString &sender, const QString &caption, const QSt
 	{
 		QMessageBox::warning( NULL, caption,
 					QString("Sender: %1\nMessage: %2\n").arg(sender).arg(mes) +
-					QObject::tr("This Fatal Error. Recomend Close AQEMU."),
+					QObject::tr("This Fatal Error. Recommend Close AQEMU."),
 					QMessageBox::Ok );
 	}
 	else

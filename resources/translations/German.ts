@@ -2083,7 +2083,7 @@ Clustergröße: %3</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="231"/>
-        <source>Conversion completed sucessfuly!</source>
+        <source>Conversion completed successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3836,8 +3836,8 @@ Diese Nachricht erneut anzeigen?</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="394"/>
-        <source>Use saved available emulator options (Recomended to choose it again after emulator updating)</source>
-        <oldsource>Use saved emulator available options (Recomend refind after update emulator)</oldsource>
+        <source>Use saved available emulator options (Recommended to choose it again after emulator updating)</source>
+        <oldsource>Use saved emulator available options (Recommend refind after update emulator)</oldsource>
         <translation type="unfinished">Использовать сохранённое описание возможностей эмулятора
 (Рекомендуется после обновления эмулятора выполнить заново поиск)</translation>
     </message>
@@ -8322,7 +8322,7 @@ Check Permissions For File: </source>
     </message>
     <message>
         <location filename="Utils.cpp" line="134"/>
-        <source>This Fatal Error. Recomend Close AQEMU.</source>
+        <source>This Fatal Error. Recommend Close AQEMU.</source>
         <translation>Это фатальная ошибка. Рекомендуется закрыть AQEMU.</translation>
     </message>
     <message>
