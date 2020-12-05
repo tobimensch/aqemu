@@ -6287,7 +6287,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	{
 		if( Parallel_Ports[ix].Get_Port_Redirection() == VM::PR_Default ) continue;
 		
-		Args << "-Parallel";
+		Args << "-parallel";
 		
 		switch( Parallel_Ports[ix].Get_Port_Redirection() )
 		{
