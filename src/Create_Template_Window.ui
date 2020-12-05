@@ -167,7 +167,7 @@
     </spacer>
    </item>
    <item>
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
       <string>Options</string>
      </property>
@@ -230,7 +230,7 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout">
+    <layout class="QHBoxLayout" name="hboxLayout">
      <property name="spacing">
       <number>6</number>
      </property>
@@ -247,7 +247,7 @@
       <number>0</number>
      </property>
      <item>
-      <spacer>
+      <spacer name="spacer">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
