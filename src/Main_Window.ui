@@ -2457,7 +2457,7 @@
                     </layout>
                    </item>
                    <item row="1" column="0" colspan="2">
-                    <widget class="QWidget" name="widget" native="true">
+                    <widget class="QWidget" name="widget_2" native="true">
                      <layout class="QHBoxLayout" name="Widget_Redirection_Protocol">
                       <property name="spacing">
                        <number>6</number>
@@ -2515,7 +2515,7 @@
                     </widget>
                    </item>
                    <item row="2" column="0" colspan="2">
-                    <widget class="QWidget" name="widget" native="true">
+                    <widget class="QWidget" name="widget_3" native="true">
                      <layout class="QHBoxLayout" name="Widget_Redirection_Net">
                       <property name="spacing">
                        <number>6</number>
