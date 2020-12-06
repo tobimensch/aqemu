@@ -2240,7 +2240,7 @@ Bus.Path value is changed. Update it in USB settings.</string>
                <item>
                 <widget class="QRadioButton" name="RB_USB_ID_VendorProduct">
                  <property name="text">
-                  <string>Vendor_ID + Product_ID - Recomend If you do &amp;not connect multiple 
+                  <string>Vendor_ID + Product_ID - Recommend If you do &amp;not connect multiple 
 identical USB devices to the host system.</string>
                  </property>
                 </widget>

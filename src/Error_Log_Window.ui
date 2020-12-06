@@ -40,7 +40,7 @@
         <item>
          <widget class="QRadioButton" name="RB_Normal_Mode">
           <property name="text">
-           <string>Everytime an error occurs or an option is &amp;deprecated.</string>
+           <string>Every time an error occurs or an option is &amp;deprecated.</string>
           </property>
           <property name="checked">
            <bool>true</bool>
@@ -50,7 +50,7 @@
         <item>
          <widget class="QRadioButton" name="RB_User_Normal_Mode">
           <property name="text">
-           <string>Everytime an error occurs. (Defau&amp;lt)</string>
+           <string>Every time an error occurs. (Defau&amp;lt)</string>
           </property>
           <property name="checked">
            <bool>false</bool>

@@ -152,11 +152,11 @@ namespace docopt {
 		}
 
 		virtual std::string const& name() const override {
-			throw std::runtime_error("Logic error: name() shouldnt be called on a BranchPattern");
+			throw std::runtime_error("Logic error: name() shouldn't be called on a BranchPattern");
 		}
 
 		virtual value const& getValue() const {
-			throw std::runtime_error("Logic error: name() shouldnt be called on a BranchPattern");
+			throw std::runtime_error("Logic error: name() shouldn't be called on a BranchPattern");
 		}
 
 		virtual std::vector<Pattern*> flat(bool (*filter)(Pattern const*)) override {

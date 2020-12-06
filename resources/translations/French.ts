@@ -1948,7 +1948,7 @@ Taille de cluster : %3</translation>
     </message>
     <message>
         <location filename="Convert_HDD_Image_Window.cpp" line="231"/>
-        <source>Conversion completed sucessfuly!</source>
+        <source>Conversion completed successfully!</source>
         <translation>Conversion complètement terminée !</translation>
     </message>
     <message>
@@ -3464,7 +3464,7 @@ Voulez-vous voir ce message la prochaine fois ?</translation>
     </message>
     <message>
         <location filename="Emulator_Options_Window.ui" line="394"/>
-        <source>Use saved available emulator options (Recomended to choose it again after emulator updating)</source>
+        <source>Use saved available emulator options (Recommended to choose it again after emulator updating)</source>
         <translation>Utiliser les options disponibles sauvegardées de l&apos;émulateur (il est recommandé de rechoisir ceci après la mise à jour de l&apos;émulateur)</translation>
     </message>
     <message>
@@ -7981,7 +7981,7 @@ On Disk Size: </source>
     </message>
     <message>
         <location filename="Utils.cpp" line="134"/>
-        <source>This Fatal Error. Recomend Close AQEMU.</source>
+        <source>This Fatal Error. Recommend Close AQEMU.</source>
         <translation>Erreur fatale. Il est recommandé de fermer AQEMU.</translation>
     </message>
     <message>
