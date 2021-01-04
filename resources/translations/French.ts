@@ -3283,13 +3283,18 @@ Linux Compressed Loop image, useful only to reuse directly compressed CD-ROM ima
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="350"/>
-        <source>Are you sure to shutdown VM &quot;%1&quot;?</source>
+        <source>Are you sure you want to shutdown VM &quot;%1&quot;?</source>
         <translation>Êtes-vous sûr de vouloir éteindre la VM « %1 » ?</translation>
     </message>
     <message>
+        <location filename="Emulator_Control_Window.cpp" line="350"/>
+        <source>Are you sure you want to poweroff VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Emulator_Control_Window.cpp" line="362"/>
-        <source>Are you sure to reboot VM &quot;%1&quot;?</source>
-        <translation>Êtes-vous sûr de vouloir redémarrer la VM « %1 » ?</translation>
+        <source>Are you sure you want to reset VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="408"/>
@@ -6007,9 +6012,14 @@ The work of the VM is not possible!</source>
         <translation>Éteindre la VM « %1 » ?</translation>
     </message>
     <message>
+        <location filename="Main_Window.cpp" line="4862"/>
+        <source>Poweroff VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Main_Window.cpp" line="4901"/>
-        <source>Reboot VM &quot;%1&quot;?</source>
-        <translation>Redémarrer la VM « %1 » ?</translation>
+        <source>Reset VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="4912"/>

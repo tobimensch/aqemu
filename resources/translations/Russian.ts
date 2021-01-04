@@ -3462,13 +3462,18 @@ Linux Compressed Loop image, useful only to reuse directly compressed CD-ROM ima
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="350"/>
-        <source>Are you sure to shutdown VM &quot;%1&quot;?</source>
+        <source>Are you sure you want to shutdown VM &quot;%1&quot;?</source>
         <translation>Выключить ВМ &quot;%1&quot;?</translation>
     </message>
     <message>
+        <location filename="Emulator_Control_Window.cpp" line="350"/>
+        <source>Are you sure you want to poweroff VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="Emulator_Control_Window.cpp" line="362"/>
-        <source>Are you sure to reboot VM &quot;%1&quot;?</source>
-        <translation>Перезагрузить ВМ &quot;%1&quot;?</translation>
+        <source>Are you sure you want to reset VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="592"/>
@@ -3595,8 +3600,14 @@ Do you want to show this message again?</source>
         <translation type="obsolete">Выключить ВМ &quot;%1&quot;?</translation>
     </message>
     <message>
-        <source>Reboot VM &quot;%1&quot;?</source>
-        <translation type="obsolete">Перезагрузить ВМ &quot;%1&quot;?</translation>
+        <location filename="Main_Window.cpp" line="4862"/>
+        <source>Poweroff VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="Main_Window.cpp" line="4901"/>
+        <source>Reset VM &quot;%1&quot;?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="Emulator_Control_Window.cpp" line="87"/>
@@ -6120,11 +6131,6 @@ The work of the VM is not possible!</source>
         <location filename="Main_Window.cpp" line="4862"/>
         <source>Shutdown VM &quot;%1&quot;?</source>
         <translation>Выключить ВМ &quot;%1&quot;?</translation>
-    </message>
-    <message>
-        <location filename="Main_Window.cpp" line="4901"/>
-        <source>Reboot VM &quot;%1&quot;?</source>
-        <translation>Перезагрузить ВМ &quot;%1&quot;?</translation>
     </message>
     <message>
         <location filename="Main_Window.cpp" line="5895"/>

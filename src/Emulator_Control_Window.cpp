@@ -770,10 +770,22 @@ void Emulator_Control_Window::on_actionPause_VM_triggered()
     AQEMU_Service::get().call("pause",Cur_VM);
 }
 
+void Emulator_Control_Window::on_actionShutdown_triggered()
+{
+	if ( QMessageBox::question(this, tr("Are you sure?"),
+		 tr("Are you sure you want to shutdown VM \"%1\"?").arg(Cur_VM->Get_Machine_Name()),
+		 QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No)
+	{
+		return;
+	}
+
+	AQEMU_Service::get().call("shutdown",Cur_VM);
+}
+
 void Emulator_Control_Window::on_actionPower_Off_triggered()
 {
 	if( QMessageBox::question(this, tr("Are you sure?"),
-		tr("Are you sure to shutdown VM \"%1\"?").arg(Cur_VM->Get_Machine_Name()),
+		tr("Are you sure you want to poweroff VM \"%1\"?").arg(Cur_VM->Get_Machine_Name()),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No )
 	{
 		return;
@@ -785,7 +797,7 @@ void Emulator_Control_Window::on_actionPower_Off_triggered()
 void Emulator_Control_Window::on_actionReset_VM_triggered()
 {
 	if( QMessageBox::question(this, tr("Are you sure?"),
-		tr("Are you sure to reboot VM \"%1\"?").arg(Cur_VM->Get_Machine_Name()),
+		tr("Are you sure you want to reset VM \"%1\"?").arg(Cur_VM->Get_Machine_Name()),
 		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes) == QMessageBox::No )
 	{
 		return;
