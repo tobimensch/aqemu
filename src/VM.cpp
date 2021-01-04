@@ -171,9 +171,9 @@ Virtual_Machine::Virtual_Machine( const Virtual_Machine &vm )
 		this->Network_Cards.append( VM_Net_Card(n_card) );
 	}
 	
-	// Nativ
-	this->Network_Cards_Nativ.clear();
-	this->Network_Cards_Nativ = vm.Get_Network_Cards_Nativ();
+	// Native
+	this->Network_Cards_Native.clear();
+	this->Network_Cards_Native = vm.Get_Network_Cards_Native();
 	
 	this->Network_Redirections.clear();
 	for( int rx = 0; rx < vm.Get_Network_Redirections_Count(); rx++ )
@@ -579,14 +579,14 @@ bool Virtual_Machine::operator==( const Virtual_Machine &vm ) const
 		}
 		else return false;
 		
-		// Network Cards Nativ
-        QList<VM_Net_Card_Native> tmp_card_nativ = vm.Get_Network_Cards_Nativ();
+		// Network Cards Native
+        QList<VM_Net_Card_Native> tmp_card_native = vm.Get_Network_Cards_Native();
 		
-		if( Network_Cards_Nativ.count() == tmp_card_nativ.count() )
+		if( Network_Cards_Native.count() == tmp_card_native.count() )
 		{
-			for( int nx = 0; nx < tmp_card_nativ.count(); ++nx )
+			for( int nx = 0; nx < tmp_card_native.count(); ++nx )
 			{
-				if( Network_Cards_Nativ[nx] != tmp_card_nativ[nx] ) return false;
+				if( Network_Cards_Native[nx] != tmp_card_native[nx] ) return false;
 			}
 		}
 		else return false;
@@ -741,9 +741,9 @@ Virtual_Machine &Virtual_Machine::operator=( const Virtual_Machine &vm )
 		this->Network_Cards.append( VM_Net_Card(n_card) );
 	}
 	
-	// Nativ
-	this->Network_Cards_Nativ.clear();
-	this->Network_Cards_Nativ = vm.Get_Network_Cards_Nativ();
+	// Native
+	this->Network_Cards_Native.clear();
+	this->Network_Cards_Native = vm.Get_Network_Cards_Native();
 	
 	this->Network_Redirections.clear();
 	for( int rx = 0; rx < vm.Get_Network_Redirections_Count(); rx++ )
@@ -1319,7 +1319,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1341,7 +1341,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1363,7 +1363,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1388,7 +1388,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( FD0.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, FD0.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1411,7 +1411,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( FD1.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, FD1.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1434,7 +1434,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( CD_ROM.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, CD_ROM.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1460,7 +1460,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1482,7 +1482,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1504,7 +1504,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1526,7 +1526,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( "" );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, VM_Native_Storage_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1555,7 +1555,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( HDA.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDA.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1582,7 +1582,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( HDB.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDB.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1609,7 +1609,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( HDC.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDC.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1636,7 +1636,7 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		Dom_Text = New_Dom_Document.createTextNode( HDD.Get_File_Name() );
 		Sec_Element.appendChild( Dom_Text );
 		
-		// Nativ Device
+		// Native Device
         Sec_Element = New_Dom_Document.createElement( "Native_Device" );
         Save_VM_Native_Storage_Device( New_Dom_Document, Sec_Element, HDD.Get_Native_Device() );
 		Dom_Element.appendChild( Sec_Element );
@@ -1953,21 +1953,21 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 		
 		Dom_Element.appendChild( Dom_Text );
 		
-		// Nativ Network Card
+		// Native Network Card
 		// Network Cards Count
         Dom_Element = New_Dom_Document.createElement( "Network_Cards_Native_Count" );
 		VM_Element.appendChild( Dom_Element );
-		Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ.count()) );
+		Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native.count()) );
 		Dom_Element.appendChild( Dom_Text );
 		
-		for( int nx = 0; nx < Network_Cards_Nativ.count(); nx++ )
+		for( int nx = 0; nx < Network_Cards_Native.count(); nx++ )
 		{
             Dom_Element = New_Dom_Document.createElement( "Network_Card_Native_" + QString::number(nx) );
 			
 			Sec_Element = New_Dom_Document.createElement( "Network_Type" );
 			Dom_Element.appendChild( Sec_Element );
 			
-			switch( Network_Cards_Nativ[nx].Get_Network_Type() )
+			switch( Network_Cards_Native[nx].Get_Network_Type() )
 			{
                 case VM::Net_Mode_Native_NIC:
 					Dom_Text = New_Dom_Document.createTextNode( "NIC" );
@@ -2017,409 +2017,409 @@ bool Virtual_Machine::Create_VM_File( const QString &file_name, bool template_mo
 			// Card_Model
 			Sec_Element = New_Dom_Document.createElement( "Card_Model" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Card_Model() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Card_Model() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// MAC_Address
 			Sec_Element = New_Dom_Document.createElement( "Use_MAC_Address" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_MAC_Address() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_MAC_Address() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "MAC_Address" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_MAC_Address() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_MAC_Address() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// VLAN
 			Sec_Element = New_Dom_Document.createElement( "Use_VLAN" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_VLAN() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_VLAN() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "VLAN" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_VLAN()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_VLAN()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Name
 			Sec_Element = New_Dom_Document.createElement( "Use_Name" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Name() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Name() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Name" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Name() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Name() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Hostname
 			Sec_Element = New_Dom_Document.createElement( "Use_Hostname" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Hostname() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Hostname() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Hostname" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Hostname() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Hostname() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// PortDev
 			Sec_Element = New_Dom_Document.createElement( "PortDev" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_PortDev() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_PortDev() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// File_Descriptor
 			Sec_Element = New_Dom_Document.createElement( "Use_File_Descriptor" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_File_Descriptor() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_File_Descriptor() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "File_Descriptor" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_File_Descriptor()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_File_Descriptor()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Interface_Name
 			Sec_Element = New_Dom_Document.createElement( "Use_Interface_Name" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Interface_Name() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Interface_Name() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Interface_Name" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Interface_Name() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Interface_Name() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Bridge_Name
 			Sec_Element = New_Dom_Document.createElement( "Use_Bridge_Name" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Bridge_Name() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Bridge_Name() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 
 			Sec_Element = New_Dom_Document.createElement( "Bridge_Name" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Bridge_Name() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Bridge_Name() );
 			Sec_Element.appendChild( Dom_Text );
 
 			// TUN_TAP_Script
 			Sec_Element = New_Dom_Document.createElement( "Use_TUN_TAP_Script" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_TUN_TAP_Script() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_TUN_TAP_Script() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "TUN_TAP_Script" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_TUN_TAP_Script() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_TUN_TAP_Script() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// TUN_TAP_Down_Script
 			Sec_Element = New_Dom_Document.createElement( "Use_TUN_TAP_Down_Script" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_TUN_TAP_Down_Script() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_TUN_TAP_Down_Script() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "TUN_TAP_Down_Script" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_TUN_TAP_Down_Script() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_TUN_TAP_Down_Script() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Bridge_Helper
 			Sec_Element = New_Dom_Document.createElement( "Use_Bridge_Helper" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Bridge_Helper() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Bridge_Helper() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 
 			Sec_Element = New_Dom_Document.createElement( "Bridge_Helper" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Bridge_Helper() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Bridge_Helper() );
 			Sec_Element.appendChild( Dom_Text );
 
 			// Listen
 			Sec_Element = New_Dom_Document.createElement( "Use_Listen" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Listen() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Listen() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Listen" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Listen() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Listen() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Connect
 			Sec_Element = New_Dom_Document.createElement( "Use_Connect" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Connect() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Connect() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Connect" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Connect() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Connect() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// MCast
 			Sec_Element = New_Dom_Document.createElement( "Use_MCast" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_MCast() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_MCast() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "MCast" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_MCast() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_MCast() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Sock
 			Sec_Element = New_Dom_Document.createElement( "Use_Sock" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Sock() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Sock() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Sock" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Sock() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Sock() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Port
 			Sec_Element = New_Dom_Document.createElement( "Use_Port" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Port() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Port() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Port" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_Port()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_Port()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Group
 			Sec_Element = New_Dom_Document.createElement( "Use_Group" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Group() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Group() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Group" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Group() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Group() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Mode
 			Sec_Element = New_Dom_Document.createElement( "Use_Mode" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Mode() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Mode() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Mode" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Mode() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Mode() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// File
 			Sec_Element = New_Dom_Document.createElement( "Use_File" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_File() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_File() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "File" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_File() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_File() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Len
 			Sec_Element = New_Dom_Document.createElement( "Use_Len" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Len() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Len() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Len" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_Len()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_Len()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Addr
 			Sec_Element = New_Dom_Document.createElement( "Use_Addr" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Addr() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Addr() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Addr" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Addr() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Addr() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Vectors
 			Sec_Element = New_Dom_Document.createElement( "Use_Vectors" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Vectors() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Vectors() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Vectors" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_Vectors()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_Vectors()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Net
 			Sec_Element = New_Dom_Document.createElement( "Use_Net" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Net() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Net() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Net" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Net() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Net() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Host
 			Sec_Element = New_Dom_Document.createElement( "Use_Host" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Host() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Host() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Host" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Host() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Host() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Restrict
 			Sec_Element = New_Dom_Document.createElement( "Use_Restrict" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Restrict() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Restrict() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Restrict" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Restrict() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Restrict() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// DHCPstart
 			Sec_Element = New_Dom_Document.createElement( "Use_DHCPstart" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_DHCPstart() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_DHCPstart() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "DHCPstart" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_DHCPstart() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_DHCPstart() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// DNS
 			Sec_Element = New_Dom_Document.createElement( "Use_DNS" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_DNS() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_DNS() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "DNS" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_DNS() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_DNS() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Tftp
 			Sec_Element = New_Dom_Document.createElement( "Use_Tftp" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Tftp() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Tftp() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Tftp" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Tftp() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Tftp() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Bootfile
 			Sec_Element = New_Dom_Document.createElement( "Use_Bootfile" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Bootfile() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Bootfile() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Bootfile" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_Bootfile() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_Bootfile() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// HostFwd
 			Sec_Element = New_Dom_Document.createElement( "Use_HostFwd" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_HostFwd() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_HostFwd() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "HostFwd" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_HostFwd() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_HostFwd() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// GuestFwd
 			Sec_Element = New_Dom_Document.createElement( "Use_GuestFwd" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_GuestFwd() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_GuestFwd() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "GuestFwd" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_GuestFwd() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_GuestFwd() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// SMB
 			Sec_Element = New_Dom_Document.createElement( "Use_SMB" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_SMB() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_SMB() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "SMB" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_SMB() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_SMB() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// SMBserver
 			Sec_Element = New_Dom_Document.createElement( "Use_SMBserver" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_SMBserver() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_SMBserver() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "SMBserver" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_SMBserver() );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_SMBserver() );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// Sndbuf
 			Sec_Element = New_Dom_Document.createElement( "Use_Sndbuf" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_Sndbuf() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_Sndbuf() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "Sndbuf" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_Sndbuf()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_Sndbuf()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// VNet_hdr
 			Sec_Element = New_Dom_Document.createElement( "Use_VNet_hdr" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_VNet_hdr() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_VNet_hdr() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "VNet_hdr" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_VNet_hdr() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_VNet_hdr() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// VHost
 			Sec_Element = New_Dom_Document.createElement( "Use_VHost" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_VHost() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_VHost() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "VHost" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Get_VHost() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Get_VHost() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			// VHostFd
 			Sec_Element = New_Dom_Document.createElement( "Use_VHostFd" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Nativ[nx].Use_VHostFd() ? "yes" : "no" );
+			Dom_Text = New_Dom_Document.createTextNode( Network_Cards_Native[nx].Use_VHostFd() ? "yes" : "no" );
 			Sec_Element.appendChild( Dom_Text );
 			
 			Sec_Element = New_Dom_Document.createElement( "VHostFd" );
 			Dom_Element.appendChild( Sec_Element );
-			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Nativ[nx].Get_VHostFd()) );
+			Dom_Text = New_Dom_Document.createTextNode( QString::number(Network_Cards_Native[nx].Get_VHostFd()) );
 			Sec_Element.appendChild( Dom_Text );
 			
 			VM_Element.appendChild( Dom_Element );
@@ -4033,7 +4033,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
                 HDD.Set_Native_Device( Load_VM_Native_Storage_Device(Second_Element) );
 			}
 			
-			// Nativ Storage Devices
+			// Native Storage Devices
 			int Storage_Device_Count = Child_Element.firstChildElement( "Storage_Device_Count" ).text().toInt();
 			
 			for( int sx = 0; sx < Storage_Device_Count; ++sx )
@@ -4174,16 +4174,16 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				Add_Network_Card( tmp_card );
 			}
 			
-			// Nativ Network Card
+			// Native Network Card
             // Use Native_Network
             Native_Network = (Child_Element.firstChildElement("Native_Network").text() == "true");
 			
 			// Network Cards Count
-            int NetCardsNativCount = Child_Element.firstChildElement( "Network_Cards_Native_Count" ).text().toInt();
-			Network_Cards_Nativ.clear();
+            int NetCardsNativeCount = Child_Element.firstChildElement( "Network_Cards_Native_Count" ).text().toInt();
+			Network_Cards_Native.clear();
 			
 			// Network Cards...
-			for( int nx = 0; nx < NetCardsNativCount; nx++ )
+			for( int nx = 0; nx < NetCardsNativeCount; nx++ )
 			{
                 Second_Element = Child_Element.firstChildElement( "Network_Card_Native_" + QString::number(nx) );
 				
@@ -4328,7 +4328,7 @@ bool Virtual_Machine::Load_VM( const QString &file_name )
 				tmp_card.Use_VHostFd( Second_Element.firstChildElement("Use_VHostFd").text() == "yes" );
 				tmp_card.Set_VHostFd( Second_Element.firstChildElement("VHostFd").text().toInt() );
 				
-				Network_Cards_Nativ << tmp_card;
+				Network_Cards_Native << tmp_card;
 			}
 			
 			// Redirections count
@@ -5770,7 +5770,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	
 	// Network Cards
     if( (Use_Native_Network() == false && Network_Cards.count() < 1) ||
-        (Use_Native_Network() == true  && Network_Cards_Nativ.count() < 1) ||
+        (Use_Native_Network() == true  && Network_Cards_Native.count() < 1) ||
 		Use_Network == false )
 	{
 		Args << "-net" << "none";
@@ -5779,7 +5779,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 	{
         if( Use_Native_Network() )
 		{
-			for( int nc = 0; nc < Network_Cards_Nativ.count(); nc++ )
+			for( int nc = 0; nc < Network_Cards_Native.count(); nc++ )
 			{
 				QString nic_str = "";
 				bool u_vlan, u_macaddr, u_model, u_name, u_hostname, u_port_dev, u_fd, u_ifname, u_script,
@@ -5794,7 +5794,7 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				u_tftp = u_bootfile = u_hostfwd = u_guestfwd = u_smb = u_smbserver = u_sndbuf = u_vnet_hdr =
 				u_vhost = u_vhostfd = false;
 				
-				switch( Network_Cards_Nativ[nc].Get_Network_Type() )
+				switch( Network_Cards_Native[nc].Get_Network_Type() )
 				{
 					// -net nic[,vlan=n][,macaddr=mac][,model=type][,name=str][,addr=str][,vectors=v]
                     case VM::Net_Mode_Native_NIC:
@@ -5856,39 +5856,39 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				}
 				
 				// Create String
-				if( Network_Cards_Nativ[nc].Use_VLAN() && u_vlan )
-					nic_str += ",vlan=" + QString::number( Network_Cards_Nativ[nc].Get_VLAN() );
+				if( Network_Cards_Native[nc].Use_VLAN() && u_vlan )
+					nic_str += ",vlan=" + QString::number( Network_Cards_Native[nc].Get_VLAN() );
 				
-				if( Network_Cards_Nativ[nc].Use_MAC_Address() && u_macaddr )
-					nic_str += ",macaddr=" + Network_Cards_Nativ[ nc ].Get_MAC_Address();
+				if( Network_Cards_Native[nc].Use_MAC_Address() && u_macaddr )
+					nic_str += ",macaddr=" + Network_Cards_Native[ nc ].Get_MAC_Address();
 				
-				if( Network_Cards_Nativ[ nc ].Get_Card_Model().isEmpty() == false && u_model )
-					nic_str += ",model=" + Network_Cards_Nativ[ nc ].Get_Card_Model();
+				if( Network_Cards_Native[ nc ].Get_Card_Model().isEmpty() == false && u_model )
+					nic_str += ",model=" + Network_Cards_Native[ nc ].Get_Card_Model();
 				
-				if( Network_Cards_Nativ[nc].Use_Name() && u_name && Current_Emulator_Devices.PSO_Net_name )
-					nic_str += ",name=\"" + Network_Cards_Nativ[ nc ].Get_Name() + "\"";
+				if( Network_Cards_Native[nc].Use_Name() && u_name && Current_Emulator_Devices.PSO_Net_name )
+					nic_str += ",name=\"" + Network_Cards_Native[ nc ].Get_Name() + "\"";
 				
-				if( Network_Cards_Nativ[nc].Use_Hostname() && u_hostname )
-					nic_str += ",hostname=" + Network_Cards_Nativ[ nc ].Get_Hostname();
+				if( Network_Cards_Native[nc].Use_Hostname() && u_hostname )
+					nic_str += ",hostname=" + Network_Cards_Native[ nc ].Get_Hostname();
 				
 				if( u_port_dev )
-					nic_str += ",port:" + Network_Cards_Nativ[ nc ].Get_PortDev();
+					nic_str += ",port:" + Network_Cards_Native[ nc ].Get_PortDev();
 				
-				if( Network_Cards_Nativ[nc].Use_File_Descriptor() && u_fd )
-					nic_str += ",fd=" + QString::number( Network_Cards_Nativ[nc].Get_File_Descriptor() );
+				if( Network_Cards_Native[nc].Use_File_Descriptor() && u_fd )
+					nic_str += ",fd=" + QString::number( Network_Cards_Native[nc].Get_File_Descriptor() );
 				
-				if( Network_Cards_Nativ[nc].Use_Interface_Name() && u_ifname && Current_Emulator_Devices.PSO_Net_ifname )
-					nic_str += ",ifname=" + Network_Cards_Nativ[ nc ].Get_Interface_Name();
+				if( Network_Cards_Native[nc].Use_Interface_Name() && u_ifname && Current_Emulator_Devices.PSO_Net_ifname )
+					nic_str += ",ifname=" + Network_Cards_Native[ nc ].Get_Interface_Name();
 				
-				if( Network_Cards_Nativ[nc].Use_Bridge_Name() && u_bridge && Current_Emulator_Devices.PSO_Net_bridge )
-					nic_str += ",br=" + Network_Cards_Nativ[ nc ].Get_Bridge_Name();
+				if( Network_Cards_Native[nc].Use_Bridge_Name() && u_bridge && Current_Emulator_Devices.PSO_Net_bridge )
+					nic_str += ",br=" + Network_Cards_Native[ nc ].Get_Bridge_Name();
 
 				if( u_script && Current_Emulator_Devices.PSO_Net_script )
 				{
 					QString s_script;
 					
-					if( Network_Cards_Nativ[nc].Use_TUN_TAP_Script() )
-						s_script = Network_Cards_Nativ[ nc ].Get_TUN_TAP_Script();
+					if( Network_Cards_Native[nc].Use_TUN_TAP_Script() )
+						s_script = Network_Cards_Native[ nc ].Get_TUN_TAP_Script();
 					else
 						s_script = "no";
 					
@@ -5902,8 +5902,8 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				{
 					QString s_downscript;
 					
-					if( Network_Cards_Nativ[nc].Use_TUN_TAP_Down_Script() )
-						s_downscript = Network_Cards_Nativ[ nc ].Get_TUN_TAP_Down_Script();
+					if( Network_Cards_Native[nc].Use_TUN_TAP_Down_Script() )
+						s_downscript = Network_Cards_Native[ nc ].Get_TUN_TAP_Down_Script();
 					else
 						s_downscript = "no";
 					
@@ -5917,9 +5917,9 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 				{
 					QString s_helper;
 
-					if( Network_Cards_Nativ[nc].Use_Bridge_Helper() )
+					if( Network_Cards_Native[nc].Use_Bridge_Helper() )
 					{
-						s_helper = Network_Cards_Nativ[ nc ].Get_Bridge_Helper();
+						s_helper = Network_Cards_Native[ nc ].Get_Bridge_Helper();
 
 						if( Build_QEMU_Args_for_Script_Mode )
 							nic_str += ",helper=\"" + s_helper + "\"";
@@ -5928,103 +5928,103 @@ QStringList Virtual_Machine::Build_QEMU_Args()
 					}
 				}
 
-				if( Network_Cards_Nativ[nc].Use_Listen() && u_listen && Current_Emulator_Devices.PSO_Net_listen )
-					nic_str += ",listen=" + Network_Cards_Nativ[ nc ].Get_Listen();
+				if( Network_Cards_Native[nc].Use_Listen() && u_listen && Current_Emulator_Devices.PSO_Net_listen )
+					nic_str += ",listen=" + Network_Cards_Native[ nc ].Get_Listen();
 				
-				if( Network_Cards_Nativ[nc].Use_Connect() && u_connect && Current_Emulator_Devices.PSO_Net_connect )
-					nic_str += ",connect=" + Network_Cards_Nativ[ nc ].Get_Connect();
+				if( Network_Cards_Native[nc].Use_Connect() && u_connect && Current_Emulator_Devices.PSO_Net_connect )
+					nic_str += ",connect=" + Network_Cards_Native[ nc ].Get_Connect();
 				
-				if( Network_Cards_Nativ[nc].Use_MCast() && u_mcast && Current_Emulator_Devices.PSO_Net_mcast )
-					nic_str += ",mcast=" + Network_Cards_Nativ[ nc ].Get_MCast();
+				if( Network_Cards_Native[nc].Use_MCast() && u_mcast && Current_Emulator_Devices.PSO_Net_mcast )
+					nic_str += ",mcast=" + Network_Cards_Native[ nc ].Get_MCast();
 				
-				if( Network_Cards_Nativ[nc].Use_Sock() && u_sock && Current_Emulator_Devices.PSO_Net_sock )
-					nic_str += ",sock=" + Network_Cards_Nativ[ nc ].Get_Sock();
+				if( Network_Cards_Native[nc].Use_Sock() && u_sock && Current_Emulator_Devices.PSO_Net_sock )
+					nic_str += ",sock=" + Network_Cards_Native[ nc ].Get_Sock();
 				
-				if( Network_Cards_Nativ[nc].Use_Port() && u_port && Current_Emulator_Devices.PSO_Net_port )
-					nic_str += ",port=" + QString::number( Network_Cards_Nativ[ nc ].Get_Port() );
+				if( Network_Cards_Native[nc].Use_Port() && u_port && Current_Emulator_Devices.PSO_Net_port )
+					nic_str += ",port=" + QString::number( Network_Cards_Native[ nc ].Get_Port() );
 				
-				if( Network_Cards_Nativ[nc].Use_Group() && u_group && Current_Emulator_Devices.PSO_Net_group )
-					nic_str += ",group=" + Network_Cards_Nativ[ nc ].Get_Group();
+				if( Network_Cards_Native[nc].Use_Group() && u_group && Current_Emulator_Devices.PSO_Net_group )
+					nic_str += ",group=" + Network_Cards_Native[ nc ].Get_Group();
 				
-				if( Network_Cards_Nativ[nc].Use_Mode() && u_mode && Current_Emulator_Devices.PSO_Net_mode )
-					nic_str += ",mode=" + Network_Cards_Nativ[ nc ].Get_Mode();
+				if( Network_Cards_Native[nc].Use_Mode() && u_mode && Current_Emulator_Devices.PSO_Net_mode )
+					nic_str += ",mode=" + Network_Cards_Native[ nc ].Get_Mode();
 				
-				if( Network_Cards_Nativ[nc].Use_File() && u_file && Current_Emulator_Devices.PSO_Net_file )
+				if( Network_Cards_Native[nc].Use_File() && u_file && Current_Emulator_Devices.PSO_Net_file )
 				{
 					if( Build_QEMU_Args_for_Script_Mode )
-						nic_str += ",file=\"" + Network_Cards_Nativ[ nc ].Get_File() + "\"";
+						nic_str += ",file=\"" + Network_Cards_Native[ nc ].Get_File() + "\"";
 					else
-						nic_str += ",file=" + Network_Cards_Nativ[ nc ].Get_File();
+						nic_str += ",file=" + Network_Cards_Native[ nc ].Get_File();
 				}
 				
-				if( Network_Cards_Nativ[nc].Use_Len() && u_len && Current_Emulator_Devices.PSO_Net_len )
-					nic_str += ",len=" + QString::number( Network_Cards_Nativ[nc].Get_Len() );
+				if( Network_Cards_Native[nc].Use_Len() && u_len && Current_Emulator_Devices.PSO_Net_len )
+					nic_str += ",len=" + QString::number( Network_Cards_Native[nc].Get_Len() );
 				
-				if( Network_Cards_Nativ[nc].Use_Addr() && u_addr && Current_Emulator_Devices.PSO_Net_addr )
-					nic_str += ",addr=" + Network_Cards_Nativ[ nc ].Get_Addr();
+				if( Network_Cards_Native[nc].Use_Addr() && u_addr && Current_Emulator_Devices.PSO_Net_addr )
+					nic_str += ",addr=" + Network_Cards_Native[ nc ].Get_Addr();
 				
-				if( Network_Cards_Nativ[nc].Use_Vectors() && u_vectors && Current_Emulator_Devices.PSO_Net_vectors )
-					nic_str += ",vectors=" + QString::number( Network_Cards_Nativ[ nc ].Get_Vectors() );
+				if( Network_Cards_Native[nc].Use_Vectors() && u_vectors && Current_Emulator_Devices.PSO_Net_vectors )
+					nic_str += ",vectors=" + QString::number( Network_Cards_Native[ nc ].Get_Vectors() );
 				
-				if( Network_Cards_Nativ[nc].Use_Net() && u_net && Current_Emulator_Devices.PSO_Net_net )
-					nic_str += ",net=" + Network_Cards_Nativ[ nc ].Get_Net();
+				if( Network_Cards_Native[nc].Use_Net() && u_net && Current_Emulator_Devices.PSO_Net_net )
+					nic_str += ",net=" + Network_Cards_Native[ nc ].Get_Net();
 				
-				if( Network_Cards_Nativ[nc].Use_Host() && u_host && Current_Emulator_Devices.PSO_Net_host )
-					nic_str += ",host=" + Network_Cards_Nativ[ nc ].Get_Host();
+				if( Network_Cards_Native[nc].Use_Host() && u_host && Current_Emulator_Devices.PSO_Net_host )
+					nic_str += ",host=" + Network_Cards_Native[ nc ].Get_Host();
 				
-				if( Network_Cards_Nativ[nc].Use_Restrict() && u_restrict && Current_Emulator_Devices.PSO_Net_restrict )
-					nic_str += ",restrict=" + Network_Cards_Nativ[nc].Get_Restrict() ? "y" : "n";
+				if( Network_Cards_Native[nc].Use_Restrict() && u_restrict && Current_Emulator_Devices.PSO_Net_restrict )
+					nic_str += ",restrict=" + Network_Cards_Native[nc].Get_Restrict() ? "y" : "n";
 				
-				if( Network_Cards_Nativ[nc].Use_DHCPstart() && u_dhcpstart && Current_Emulator_Devices.PSO_Net_dhcpstart )
-					nic_str += ",dhcpstart=" + Network_Cards_Nativ[ nc ].Get_DHCPstart();
+				if( Network_Cards_Native[nc].Use_DHCPstart() && u_dhcpstart && Current_Emulator_Devices.PSO_Net_dhcpstart )
+					nic_str += ",dhcpstart=" + Network_Cards_Native[ nc ].Get_DHCPstart();
 				
-				if( Network_Cards_Nativ[nc].Use_DNS() && u_dns && Current_Emulator_Devices.PSO_Net_dns )
-					nic_str += ",dns=" + Network_Cards_Nativ[ nc ].Get_DNS();
+				if( Network_Cards_Native[nc].Use_DNS() && u_dns && Current_Emulator_Devices.PSO_Net_dns )
+					nic_str += ",dns=" + Network_Cards_Native[ nc ].Get_DNS();
 				
-				if( Network_Cards_Nativ[nc].Use_Tftp() && u_tftp && Current_Emulator_Devices.PSO_Net_tftp )
+				if( Network_Cards_Native[nc].Use_Tftp() && u_tftp && Current_Emulator_Devices.PSO_Net_tftp )
 				{
 					if( Build_QEMU_Args_for_Script_Mode )
-						nic_str += ",tftp=\"" + Network_Cards_Nativ[ nc ].Get_Tftp() + "\"";
+						nic_str += ",tftp=\"" + Network_Cards_Native[ nc ].Get_Tftp() + "\"";
 					else
-						nic_str += ",tftp=" + Network_Cards_Nativ[ nc ].Get_Tftp();
+						nic_str += ",tftp=" + Network_Cards_Native[ nc ].Get_Tftp();
 				}
 				
-				if( Network_Cards_Nativ[nc].Use_Bootfile() && u_bootfile && Current_Emulator_Devices.PSO_Net_bootfile )
+				if( Network_Cards_Native[nc].Use_Bootfile() && u_bootfile && Current_Emulator_Devices.PSO_Net_bootfile )
 				{
 					if( Build_QEMU_Args_for_Script_Mode )
-						nic_str += ",bootfile=\"" + Network_Cards_Nativ[ nc ].Get_Bootfile() + "\"";
+						nic_str += ",bootfile=\"" + Network_Cards_Native[ nc ].Get_Bootfile() + "\"";
 					else
-						nic_str += ",bootfile=" + Network_Cards_Nativ[ nc ].Get_Bootfile();
+						nic_str += ",bootfile=" + Network_Cards_Native[ nc ].Get_Bootfile();
 				}
 				
-				if( Network_Cards_Nativ[nc].Use_HostFwd() && u_hostfwd && Current_Emulator_Devices.PSO_Net_hostfwd )
-					nic_str += ",hostfwd=" + Network_Cards_Nativ[ nc ].Get_HostFwd();
+				if( Network_Cards_Native[nc].Use_HostFwd() && u_hostfwd && Current_Emulator_Devices.PSO_Net_hostfwd )
+					nic_str += ",hostfwd=" + Network_Cards_Native[ nc ].Get_HostFwd();
 				
-				if( Network_Cards_Nativ[nc].Use_GuestFwd() && u_guestfwd && Current_Emulator_Devices.PSO_Net_guestfwd )
-					nic_str += ",guestfwd=" + Network_Cards_Nativ[ nc ].Get_GuestFwd();
+				if( Network_Cards_Native[nc].Use_GuestFwd() && u_guestfwd && Current_Emulator_Devices.PSO_Net_guestfwd )
+					nic_str += ",guestfwd=" + Network_Cards_Native[ nc ].Get_GuestFwd();
 				
-				if( Network_Cards_Nativ[nc].Use_SMB() && u_smb && Current_Emulator_Devices.PSO_Net_smb )
+				if( Network_Cards_Native[nc].Use_SMB() && u_smb && Current_Emulator_Devices.PSO_Net_smb )
 				{
 					if( Build_QEMU_Args_for_Script_Mode )
-						nic_str += ",smb=\"" + Network_Cards_Nativ[ nc ].Get_SMB() + "\"";
+						nic_str += ",smb=\"" + Network_Cards_Native[ nc ].Get_SMB() + "\"";
 					else
-						nic_str += ",smb=" + Network_Cards_Nativ[ nc ].Get_SMB();
+						nic_str += ",smb=" + Network_Cards_Native[ nc ].Get_SMB();
 					
-					if( Network_Cards_Nativ[nc].Use_SMBserver() && u_smbserver )
-						nic_str += ",smbserver=" + Network_Cards_Nativ[ nc ].Get_SMBserver();
+					if( Network_Cards_Native[nc].Use_SMBserver() && u_smbserver )
+						nic_str += ",smbserver=" + Network_Cards_Native[ nc ].Get_SMBserver();
 				}
 				
-				if( Network_Cards_Nativ[nc].Use_Sndbuf() && u_sndbuf && Current_Emulator_Devices.PSO_Net_sndbuf )
-					nic_str += ",sndbuf=" + QString::number( Network_Cards_Nativ[nc].Get_Sndbuf() );
+				if( Network_Cards_Native[nc].Use_Sndbuf() && u_sndbuf && Current_Emulator_Devices.PSO_Net_sndbuf )
+					nic_str += ",sndbuf=" + QString::number( Network_Cards_Native[nc].Get_Sndbuf() );
 				
-				if( Network_Cards_Nativ[nc].Use_VNet_hdr() && u_vnet_hdr && Current_Emulator_Devices.PSO_Net_vnet_hdr )
-					nic_str += ",vnet_hdr=" + Network_Cards_Nativ[ nc ].Get_VNet_hdr() ? "on" : "off";
+				if( Network_Cards_Native[nc].Use_VNet_hdr() && u_vnet_hdr && Current_Emulator_Devices.PSO_Net_vnet_hdr )
+					nic_str += ",vnet_hdr=" + Network_Cards_Native[ nc ].Get_VNet_hdr() ? "on" : "off";
 				
-				if( Network_Cards_Nativ[nc].Get_VHost() && u_vhost && Current_Emulator_Devices.PSO_Net_vhost )
-					nic_str += ",vhost=" + Network_Cards_Nativ[ nc ].Get_VHost() ? "on" : "off";
+				if( Network_Cards_Native[nc].Get_VHost() && u_vhost && Current_Emulator_Devices.PSO_Net_vhost )
+					nic_str += ",vhost=" + Network_Cards_Native[ nc ].Get_VHost() ? "on" : "off";
 				
-				if( Network_Cards_Nativ[nc].Use_VHostFd() && u_vhostfd && Current_Emulator_Devices.PSO_Net_vhostfd )
-					nic_str += ",vhostfd=" + QString::number( Network_Cards_Nativ[nc].Get_VHostFd() );
+				if( Network_Cards_Native[nc].Use_VHostFd() && u_vhostfd && Current_Emulator_Devices.PSO_Net_vhostfd )
+					nic_str += ",vhostfd=" + QString::number( Network_Cards_Native[nc].Get_VHostFd() );
 				
 				// Add to Args
 				Args << "-net";
@@ -8237,14 +8237,14 @@ void Virtual_Machine::Set_Network_Cards( const QList<VM_Net_Card> &cards )
 	Network_Cards = cards;
 }
 
-const QList<VM_Net_Card_Native> &Virtual_Machine::Get_Network_Cards_Nativ() const
+const QList<VM_Net_Card_Native> &Virtual_Machine::Get_Network_Cards_Native() const
 {
-	return Network_Cards_Nativ;
+	return Network_Cards_Native;
 }
 
-void Virtual_Machine::Set_Network_Cards_Nativ( const QList<VM_Net_Card_Native> &cards )
+void Virtual_Machine::Set_Network_Cards_Native( const QList<VM_Net_Card_Native> &cards )
 {
-	Network_Cards_Nativ = cards;
+	Network_Cards_Native = cards;
 }
 
 const VM_Net_Card &Virtual_Machine::Get_Network_Card( int index ) const
@@ -9838,7 +9838,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
     // Network
     if( soph.either( Settings.value("Info/Network_Cards", "yes").toString() == "yes" ) &&
         ((Use_Native_Network() == false && Get_Network_Cards_Count() > 0) ||
-         (Use_Native_Network() == true  && Get_Network_Cards_Nativ().count() > 0)) )
+         (Use_Native_Network() == true  && Get_Network_Cards_Native().count() > 0)) )
     {
         cursor.setPosition( topFrame->lastPosition() );
         cursor.insertText( tr("Network"), bold_format );
@@ -9919,7 +9919,7 @@ QString Virtual_Machine::GenerateHTMLInfoText(int info_mode)
             }
             else
             {
-                QList<VM_Net_Card_Native> Native_Cards = Get_Network_Cards_Nativ();
+                QList<VM_Net_Card_Native> Native_Cards = Get_Network_Cards_Native();
 
                 for( int ix = 0; ix < Native_Cards.count(); ix++ )
                 {

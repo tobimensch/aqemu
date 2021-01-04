@@ -2194,7 +2194,7 @@ void Network_Widget::Update_Card_Item()
 	}
 }
 
-QString Network_Widget::Get_Items_Count( VM::Network_Mode_Nativ type )
+QString Network_Widget::Get_Items_Count( VM::Network_Mode_Native type )
 {
 	int count = 0;
 	

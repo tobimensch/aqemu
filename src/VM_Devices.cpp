@@ -1634,7 +1634,7 @@ bool VM_Native_Storage_Device::Get_Native_Mode() const
 	if( UMedia ) return true;
 	if( USnapshot ) return true;
 	
-	// Nativ device options not used
+	// Native device options not used
 	return false;
 }
 
@@ -2674,12 +2674,12 @@ QString VM_Net_Card_Native::Generate_MAC() const
 	return tmp_card.Generate_MAC();
 }
 
-VM::Network_Mode_Nativ VM_Net_Card_Native::Get_Network_Type() const
+VM::Network_Mode_Native VM_Net_Card_Native::Get_Network_Type() const
 {
 	return Network_Mode;
 }
 
-void VM_Net_Card_Native::Set_Network_Type( VM::Network_Mode_Nativ mode )
+void VM_Net_Card_Native::Set_Network_Type( VM::Network_Mode_Native mode )
 {
 	Network_Mode = mode;
 }

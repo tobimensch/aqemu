@@ -272,7 +272,7 @@ class VM
 							Net_Mode_Dummy };
 		
 		// New Network Modes
-		enum Network_Mode_Nativ { Net_Mode_Native_NIC, Net_Mode_Native_User, Net_Mode_Native_Chanel,
+		enum Network_Mode_Native { Net_Mode_Native_NIC, Net_Mode_Native_User, Net_Mode_Native_Chanel,
 								  Net_Mode_Native_Bridge, Net_Mode_Native_TAP, Net_Mode_Native_Socket,
 								  Net_Mode_Native_MulticastSocket, Net_Mode_Native_VDE, Net_Mode_Native_Dump };
 		
@@ -479,7 +479,7 @@ class Emulator
 		QMap<QString, Available_Devices> Devices; // VALUE is Available_Devices class
 };
 
-// Nativ Storage Device (QEMU >= 0.9.1 Device Style)
+// Native Storage Device (QEMU >= 0.9.1 Device Style)
 class VM_Native_Storage_Device
 {
 	public:
@@ -798,7 +798,7 @@ class VM_Net_Card
 		int File_Descriptor;
 };
 
-// Network Card Nativ
+// Network Card Native
 class VM_Net_Card_Native
 {
 	public:
@@ -810,8 +810,8 @@ class VM_Net_Card_Native
 		
 		QString Generate_MAC() const;
 		
-		VM::Network_Mode_Nativ Get_Network_Type() const;
-		void Set_Network_Type( VM::Network_Mode_Nativ mode );
+		VM::Network_Mode_Native Get_Network_Type() const;
+		void Set_Network_Type( VM::Network_Mode_Native mode );
 		
 		const QString &Get_Card_Model() const;
 		void Set_Card_Model( const QString &m );
@@ -1000,7 +1000,7 @@ class VM_Net_Card_Native
 		void Set_VHostFd( int port );
 		
 	private:
-		VM::Network_Mode_Nativ Network_Mode;
+		VM::Network_Mode_Native Network_Mode;
 		QString Card_Model;
 		QString MAC;
 		int VLAN;

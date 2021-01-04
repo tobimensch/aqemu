@@ -418,7 +418,7 @@ void Properties_Window::on_TB_FD_Advanced_Settings_clicked()
 		if( PW_Storage.Get_Native_Device().Get_File_Path() != ui.CB_FD_Devices->currentText() )
 			ui.CB_FD_Devices->setEditText( PW_Storage.Get_Native_Device().Get_File_Path() );
 		
-		// Nativ Mode - on, File - not used
+		// Native Mode - on, File - not used
 		if( PW_Storage.Get_Native_Device().Get_Native_Mode() &&
 			PW_Storage.Get_Native_Device().Use_File_Path() == false )
 			ui.CB_FD_Devices->setEditText( "" );
@@ -433,7 +433,7 @@ void Properties_Window::on_CB_FD_Devices_editTextChanged( const QString &text )
 	
 	VM_Native_Storage_Device tmpDev = PW_Storage.Get_Native_Device();
 	
-	// Update nativ device file path
+	// Update native device file path
 	if( text.isEmpty() )
 	{
 		tmpDev.Use_File_Path( false );
@@ -477,7 +477,7 @@ void Properties_Window::on_TB_CDROM_Advanced_Settings_clicked()
 		if( PW_Storage.Get_Native_Device().Get_File_Path() != ui.CB_CDROM_Devices->currentText() )
 			ui.CB_CDROM_Devices->setEditText( PW_Storage.Get_Native_Device().Get_File_Path() );
 		
-		// Nativ Mode - on, File - not used
+		// Native Mode - on, File - not used
 		if( PW_Storage.Get_Native_Device().Get_Native_Mode() &&
 			PW_Storage.Get_Native_Device().Use_File_Path() == false )
 			ui.CB_CDROM_Devices->setEditText( "" );
@@ -492,7 +492,7 @@ void Properties_Window::on_CB_CDROM_Devices_editTextChanged( const QString &text
 	
 	VM_Native_Storage_Device tmpDev = PW_Storage.Get_Native_Device();
 	
-	// Update nativ device file path
+	// Update native device file path
 	if( text.isEmpty() )
 	{
 		tmpDev.Use_File_Path( false );
@@ -536,7 +536,7 @@ void Properties_Window::on_TB_HDD_Advanced_Settings_clicked()
 		if( PW_HDD.Get_Native_Device().Get_File_Path() != ui.Edit_HDD_Image_Path->text() )
 			ui.Edit_HDD_Image_Path->setText( PW_HDD.Get_Native_Device().Get_File_Path() );
 		
-		// Nativ Mode - on, File - not used
+		// Native Mode - on, File - not used
 		if( PW_HDD.Get_Native_Device().Get_Native_Mode() &&
 			PW_HDD.Get_Native_Device().Use_File_Path() == false )
 			ui.Edit_HDD_Image_Path->setText( "" );
@@ -551,7 +551,7 @@ void Properties_Window::on_Edit_HDD_Image_Path_textChanged()
 	
 	VM_Native_Storage_Device tmpDev = PW_HDD.Get_Native_Device();
 	
-	// Update nativ device file path
+	// Update native device file path
 	if( ui.Edit_HDD_Image_Path->text().isEmpty() )
 	{
 		tmpDev.Use_File_Path( false );

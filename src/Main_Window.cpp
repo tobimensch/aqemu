@@ -872,7 +872,7 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
 	// Network Tab
 	tmp_vm->Set_Use_Network( ui.CH_Use_Network->isChecked() );
 
-	// Use Nativ Network
+	// Use Native Network
 	tmp_vm->Use_Native_Network( ui.RB_Network_Mode_New->isChecked() );
 
 	// Redirections List
@@ -930,11 +930,11 @@ bool Main_Window::Create_VM_From_Ui( Virtual_Machine *tmp_vm, Virtual_Machine *o
         return false;
     }
 
-	// Nativ
-	QList<VM_Net_Card_Native> tmp_net_cards_nativ;
-	if( New_Network_Settings_Widget->Get_Network_Cards(tmp_net_cards_nativ) )
+	// Native
+	QList<VM_Net_Card_Native> tmp_net_cards_native;
+	if( New_Network_Settings_Widget->Get_Network_Cards(tmp_net_cards_native) )
 	{
-		tmp_vm->Set_Network_Cards_Nativ( tmp_net_cards_nativ );
+		tmp_vm->Set_Network_Cards_Native( tmp_net_cards_native );
 	}
     else
     {
@@ -1478,9 +1478,9 @@ void Main_Window::Update_VM_Ui(bool update_info_tab)
 	Old_Network_Settings_Widget->Set_Network_Cards( tmp_vm->Get_Network_Cards() );
 
 	New_Network_Settings_Widget->Set_Network_Card_Models( curComp.Network_Card_List );
-	New_Network_Settings_Widget->Set_Network_Cards( tmp_vm->Get_Network_Cards_Nativ() );
+	New_Network_Settings_Widget->Set_Network_Cards( tmp_vm->Get_Network_Cards_Native() );
 
-	// Use Nativ Network Cards
+	// Use Native Network Cards
 	ui.RB_Network_Mode_New->setChecked( tmp_vm->Use_Native_Network() );
 	ui.RB_Network_Mode_Old->setChecked( ! tmp_vm->Use_Native_Network() );
 	on_RB_Network_Mode_New_toggled( ui.RB_Network_Mode_New->isChecked() );
@@ -1829,7 +1829,7 @@ void Main_Window::Update_Disabled_Controls()
 	//else
 
 	New_Network_Settings_Widget->Set_Devices( curComp );
-	// Nativ mode network
+	// Native mode network
 	if( ui.RB_Network_Mode_New->isChecked() )
 	{
 		// FIXME
@@ -3936,7 +3936,7 @@ void Main_Window::Computer_Type_Changed()
 
 	ui.CB_Video_Card->addItems( cl );
 
-	// Use Nativ Network Cards FIXME set emulator PSO to net card widget
+	// Use Native Network Cards FIXME set emulator PSO to net card widget
 	if( ui.RB_Network_Mode_New->isChecked() )
 		New_Network_Settings_Widget->Set_Network_Card_Models( curComp.Network_Card_List );
 	else
