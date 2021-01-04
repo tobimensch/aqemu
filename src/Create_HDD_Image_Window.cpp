@@ -20,7 +20,9 @@
 **
 ****************************************************************************/
 
+#include <QDir>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QMessageBox>
 
 #include "Utils.h"
@@ -157,9 +159,15 @@ void Create_HDD_Image_Window::on_Button_Create_clicked()
 	
 	if( ui.CH_Base_Image->isChecked() )
 	{
-		if( ! QFile::exists(ui.Edit_Base_Image_File_Name->text()) )
+		QFileInfo base_image_path(ui.Edit_Base_Image_File_Name->text());
+		if (base_image_path.isRelative()) {
+			base_image_path.setFile(QDir::cleanPath(ui.Edit_File_Name->text() + "/../"
+													+ ui.Edit_Base_Image_File_Name->text()));
+		}
+
+		if(!base_image_path.exists())
 		{
-			AQGraphic_Warning( tr("Error!"), tr("Base Image File doesn't Exists!") );
+			AQGraphic_Warning( tr("Error!"), tr("Base image file doesn't exist!") );
 			return;
 		}
 		else
