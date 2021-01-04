@@ -66,7 +66,7 @@ class Network_Widget: public QWidget
 		bool Net_Card_is_Valid();
 		bool No_File_Found( const QString &name, const QString &path );
 		
-		QString Get_Items_Count( VM::Network_Mode_Nativ type );
+		QString Get_Items_Count( VM::Network_Mode_Native type );
 		
 		void Enable_Buttons( bool add, bool del );
 		

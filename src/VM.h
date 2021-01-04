@@ -263,8 +263,8 @@ class Virtual_Machine: public QObject
 		const QList<VM_Net_Card> &Get_Network_Cards() const;
 		void Set_Network_Cards( const QList<VM_Net_Card> &cards );
 		
-		const QList<VM_Net_Card_Native> &Get_Network_Cards_Nativ() const;
-		void Set_Network_Cards_Nativ( const QList<VM_Net_Card_Native> &cards );
+		const QList<VM_Net_Card_Native> &Get_Network_Cards_Native() const;
+		void Set_Network_Cards_Native( const QList<VM_Net_Card_Native> &cards );
 		
 		const VM_Net_Card &Get_Network_Card( int index ) const;
 		void Set_VM_Network_Card( int index, const VM_Net_Card &nc );
@@ -549,7 +549,7 @@ class Virtual_Machine: public QObject
 		bool Use_Redirections; // 1 or more net cards be avirable
 		
 		QList<VM_Net_Card> Network_Cards; // Network Cards. Max 8
-		QList<VM_Net_Card_Native> Network_Cards_Nativ; // Nativ QEMU Network Cards. Max 8
+		QList<VM_Net_Card_Native> Network_Cards_Native; // Native QEMU Network Cards. Max 8
 		QList<VM_Redirection> Network_Redirections; // List Redirections
 		
 		QString TFTP_Prefix; // Buildin TFTP Server

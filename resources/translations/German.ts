@@ -6292,7 +6292,7 @@ To set this value, check &quot;Remove limitation on maximum amount of memory&quo
     <message>
         <location filename="Main_Window.ui" line="2529"/>
         <source>Native</source>
-        <oldsource>Nativ</oldsource>
+        <oldsource>Native</oldsource>
         <translation type="unfinished">Нативный</translation>
     </message>
     <message>

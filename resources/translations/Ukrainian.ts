@@ -4512,7 +4512,7 @@ Cluster Size: 0</source>
     <message>
         <location filename="Main_Window.ui" line="2529"/>
         <source>Native</source>
-        <oldsource>Nativ</oldsource>
+        <oldsource>Native</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
