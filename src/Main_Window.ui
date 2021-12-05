@@ -226,7 +226,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QWidget" name="widget" native="true">
+             <widget class="QWidget" name="general_Machine_Sets" native="true">
               <layout class="QGridLayout" name="gridLayout_12">
                <property name="leftMargin">
                 <number>24</number>
@@ -275,9 +275,6 @@
                    <property name="maxCount">
                     <number>64</number>
                    </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-                   </property>
                   </widget>
                  </item>
                  <item row="3" column="1">
@@ -293,9 +290,6 @@
                    </property>
                    <property name="maxCount">
                     <number>16</number>
-                   </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
                    </property>
                    <item>
                     <property name="text">
@@ -394,9 +388,6 @@
                      <horstretch>0</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
-                   </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
                    </property>
                   </widget>
                  </item>
@@ -526,9 +517,6 @@
                    <property name="maxCount">
                     <number>8</number>
                    </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-                   </property>
                    <item>
                     <property name="text">
                      <string>Floppy</string>
@@ -586,9 +574,6 @@
                    <property name="maxCount">
                     <number>8</number>
                    </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
-                   </property>
                   </widget>
                  </item>
                  <item row="3" column="0">
@@ -617,9 +602,6 @@
                    </property>
                    <property name="maxCount">
                     <number>128</number>
-                   </property>
-                   <property name="sizeAdjustPolicy">
-                    <enum>QComboBox::AdjustToMinimumContentsLength</enum>
                    </property>
                    <item>
                     <property name="text">
@@ -1333,7 +1315,7 @@
              </widget>
             </item>
            </layout>
-           <zorder>widget</zorder>
+           <zorder>general_Machine_Sets</zorder>
            <zorder>GB_Options</zorder>
            <zorder>GB_Audio</zorder>
            <zorder>GB_Memory</zorder>
@@ -2457,7 +2439,7 @@
                     </layout>
                    </item>
                    <item row="1" column="0" colspan="2">
-                    <widget class="QWidget" name="widget" native="true">
+                    <widget class="QWidget" name="protocol_Sets" native="true">
                      <layout class="QHBoxLayout" name="Widget_Redirection_Protocol">
                       <property name="spacing">
                        <number>6</number>
@@ -2515,7 +2497,7 @@
                     </widget>
                    </item>
                    <item row="2" column="0" colspan="2">
-                    <widget class="QWidget" name="widget" native="true">
+                    <widget class="QWidget" name="ip_Sets" native="true">
                      <layout class="QHBoxLayout" name="Widget_Redirection_Net">
                       <property name="spacing">
                        <number>6</number>
@@ -3018,7 +3000,7 @@
      <x>0</x>
      <y>0</y>
      <width>982</width>
-     <height>32</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuVM">
