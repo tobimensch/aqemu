@@ -1,12 +1,14 @@
-###Latest news:
+### Latest news:
 2020: 0.9.6 is now the current development version (in master for now),
-use TBK fork if you want to use a stable checkout now, but use this repository
+use [the TBK fork](https://github.com/TBK/aqemu) if you want to use a stable checkout now, but use this repository
 if you want to contribute to AQEMU's future.
+
 Building using meson/ninja is recommended now.
 See the changelog for all the new features that will work in the next stable
 release, I'm most exciting about AQEMU being turned into a manager for VM services.
 This means you can close the AQEMU UI and your VMs will keep running, also you
 can restart the UI and manage running VMs you previously started with AQEMU.
+
 And even better, you're able to start/stop VMs from the command line without
 the need for a UI. Giving you a lot more flexibility, and hopefully increasing
 the audience for AQEMU. As you may have guessed there are still many issues with this
