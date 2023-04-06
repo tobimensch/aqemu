@@ -33,6 +33,12 @@
 #include <QThreadStorage>
 #include <QTimer>
 
+// Fix TCP_KEEPIDLE undefined on macOS
+// Taken from https://gitlab.freedesktop.org/spice/usbredir/-/issues/9#note_106724
+#if !defined(TCP_KEEPIDLE) && defined(TCP_KEEPALIVE)
+#define TCP_KEEPIDLE TCP_KEEPALIVE
+#endif
+
 //for detecting intel AMT KVM vnc server
 static const QString INTEL_AMT_KVM_STRING= QLatin1String("Intel(r) AMT KVM");
 static QThreadStorage<VncClientThread **> instances;
